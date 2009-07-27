@@ -49,6 +49,7 @@
 		C62D0FC8101AF48600469DF2 /* profileRuns.ods */ = {isa = PBXFileReference; lastKnownFileType = file; name = profileRuns.ods; path = /Users/aquarius/Masterthesis/code/cudatracer/profileRuns.ods; sourceTree = "<absolute>"; };
 		C62D0FC9101AF48600469DF2 /* vector.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vector.c; path = /Users/aquarius/Masterthesis/code/cudatracer/vector.c; sourceTree = "<absolute>"; };
 		C62D1091101DD7B400469DF2 /* common.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = common.mk; path = CUDA/common/common.mk; sourceTree = DEVELOPER_DIR; };
+		C62D117F101DF05700469DF2 /* setprecisionandrounding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = setprecisionandrounding.cpp; path = CUDA/projects/MeanShift/setprecisionandrounding.cpp; sourceTree = DEVELOPER_DIR; };
 		C6779BBF100B9A12000B8058 /* edison.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = edison.cpp; path = CUDA/projects/MeanShift/edison.cpp; sourceTree = DEVELOPER_DIR; };
 		C6779BC1100B9A12000B8058 /* meanshift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshift.cpp; path = CUDA/projects/MeanShift/meanshift.cpp; sourceTree = DEVELOPER_DIR; };
 		C6779BC2100B9A12000B8058 /* meanshiftfilter_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshiftfilter_gold.cpp; path = CUDA/projects/MeanShift/meanshiftfilter_gold.cpp; sourceTree = DEVELOPER_DIR; };
@@ -243,6 +244,7 @@
 				C6779BC1100B9A12000B8058 /* meanshift.cpp */,
 				C6779BC2100B9A12000B8058 /* meanshiftfilter_gold.cpp */,
 				C6779BC3100B9A12000B8058 /* meanshiftfilter_kernel.cu */,
+				C62D117F101DF05700469DF2 /* setprecisionandrounding.cpp */,
 				C62D09CF101867AE00469DF2 /* rgbluv.h */,
 				C62D09D0101867AE00469DF2 /* rgbluv.cpp */,
 				C62D0B5E1018A34100469DF2 /* filter.h */,
