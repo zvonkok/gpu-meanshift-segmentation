@@ -51,7 +51,7 @@
 		C62D1091101DD7B400469DF2 /* common.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = common.mk; path = CUDA/common/common.mk; sourceTree = DEVELOPER_DIR; };
 		C6779BBF100B9A12000B8058 /* edison.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = edison.cpp; path = CUDA/projects/MeanShift/edison.cpp; sourceTree = DEVELOPER_DIR; };
 		C6779BC1100B9A12000B8058 /* meanshift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshift.cpp; path = CUDA/projects/MeanShift/meanshift.cpp; sourceTree = DEVELOPER_DIR; };
-		C6779BC2100B9A12000B8058 /* meanshift_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshift_gold.cpp; path = CUDA/projects/MeanShift/meanshift_gold.cpp; sourceTree = DEVELOPER_DIR; };
+		C6779BC2100B9A12000B8058 /* meanshiftfilter_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshiftfilter_gold.cpp; path = CUDA/projects/MeanShift/meanshiftfilter_gold.cpp; sourceTree = DEVELOPER_DIR; };
 		C6779BC3100B9A12000B8058 /* meanshiftfilter_kernel.cu */ = {isa = PBXFileReference; explicitFileType = sourcecode.cuda; fileEncoding = 4; name = meanshiftfilter_kernel.cu; path = CUDA/projects/MeanShift/meanshiftfilter_kernel.cu; sourceTree = DEVELOPER_DIR; };
 		C6779BC4100B9A23000B8058 /* edison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = edison.h; path = CUDA/projects/MeanShift/edison.h; sourceTree = DEVELOPER_DIR; };
 		C6779BC5100B9A23000B8058 /* rlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rlist.h; path = CUDA/projects/MeanShift/rlist.h; sourceTree = DEVELOPER_DIR; };
@@ -241,7 +241,7 @@
 				C6779BC4100B9A23000B8058 /* edison.h */,
 				C6779BBF100B9A12000B8058 /* edison.cpp */,
 				C6779BC1100B9A12000B8058 /* meanshift.cpp */,
-				C6779BC2100B9A12000B8058 /* meanshift_gold.cpp */,
+				C6779BC2100B9A12000B8058 /* meanshiftfilter_gold.cpp */,
 				C6779BC3100B9A12000B8058 /* meanshiftfilter_kernel.cu */,
 				C62D09CF101867AE00469DF2 /* rgbluv.h */,
 				C62D09D0101867AE00469DF2 /* rgbluv.cpp */,

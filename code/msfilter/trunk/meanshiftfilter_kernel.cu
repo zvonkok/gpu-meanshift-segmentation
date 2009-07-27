@@ -6,6 +6,13 @@
 __device__ const float EPSILON = 0.01;	// define threshold (approx. Value of Mh at a peak or plateau)
 __device__ const int   LIMIT   = 100;	// define max. # of iterations to find mode
 
+/*
+__device__ unsigned int height;
+__device__ unsigned int width;
+__device__ unsigned int sigmaS;
+__device__ unsigned int sigmaR;
+*/
+
 __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, float* d_dst, 
 							  unsigned int width, unsigned int height,
 							  unsigned int sigmaS, unsigned int sigmaR)
