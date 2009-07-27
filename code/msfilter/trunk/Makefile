@@ -38,7 +38,8 @@ EXECUTABLE	:= MeanShift
 # Cuda source files (compiled with cudacc)
 CUFILES		:= meanshiftfilter_kernel.cu
 # C/C++ source files (compiled with gcc / c++)
-CCFILES		:= meanshift.cpp meanshift_gold.cpp edison.cpp rlist.cpp rgbluv.cpp #filter.cpp
+CCFILES		:= meanshift.cpp meanshiftfilter_gold.cpp edison.cpp rlist.cpp rgbluv.cpp \
+			   setprecisionandrounding.cpp
 
 USEGLLIB         := 1
 USEGLUT	         := 1
