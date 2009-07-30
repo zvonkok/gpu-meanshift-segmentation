@@ -48,7 +48,7 @@ emu=1
 verbose=1
 keep=1
 #debug=1
-#maxregisters=24
+#maxregisters=12
 
 ################################################################################
 # Rules and targets
