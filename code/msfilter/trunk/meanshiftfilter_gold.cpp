@@ -70,7 +70,7 @@ void computeGold(void)
 	typedef unsigned char BYTE;
 	typedef unsigned short WORD;
 	extern void set_FPU_Precision_Rounding(BYTE precision, BYTE rounding);
-	set_FPU_Precision_Rounding(24, 0);
+	set_FPU_Precision_Rounding(53, 0);
 	
 	filterGold();
 	connect();
