@@ -10,8 +10,9 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-const float	EPSILON		= 0.01;	// define threshold (approx. Value of Mh at a peak or plateau)
-const int		LIMIT       = 100;	// define max. # of iterations to find mode
+const float	EPSILON	= 0.01f;	// define threshold (approx. Value of Mh at a peak or plateau)
+const float	LIMIT   = 100.0f;	// define max. # of iterations to find mode
+
 
 extern "C" void Filter();
 

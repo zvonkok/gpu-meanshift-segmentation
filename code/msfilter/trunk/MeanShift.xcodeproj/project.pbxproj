@@ -7,241 +7,42 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C62D09CF101867AE00469DF2 /* rgbluv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgbluv.h; path = CUDA/projects/MeanShift/rgbluv.h; sourceTree = DEVELOPER_DIR; };
-		C62D09D0101867AE00469DF2 /* rgbluv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rgbluv.cpp; path = CUDA/projects/MeanShift/rgbluv.cpp; sourceTree = DEVELOPER_DIR; };
-		C62D0ADA101899E400469DF2 /* boxFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = boxFilter.cpp; path = CUDA/projects/boxFilter/boxFilter.cpp; sourceTree = DEVELOPER_DIR; };
-		C62D0ADB101899E400469DF2 /* boxFilter_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = boxFilter_gold.cpp; path = CUDA/projects/boxFilter/boxFilter_gold.cpp; sourceTree = DEVELOPER_DIR; };
-		C62D0ADC101899E400469DF2 /* boxFilter_kernel.cu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cuda; name = boxFilter_kernel.cu; path = CUDA/projects/boxFilter/boxFilter_kernel.cu; sourceTree = DEVELOPER_DIR; };
-		C62D0ADD101899E400469DF2 /* boxFilter_kernel.linkinfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = boxFilter_kernel.linkinfo; path = CUDA/projects/boxFilter/boxFilter_kernel.linkinfo; sourceTree = DEVELOPER_DIR; };
-		C62D0ADF101899E400469DF2 /* lena.ppm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lena.ppm; path = CUDA/projects/boxFilter/data/lena.ppm; sourceTree = DEVELOPER_DIR; };
-		C62D0AE0101899E400469DF2 /* lena_bw.pgm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lena_bw.pgm; path = CUDA/projects/boxFilter/data/lena_bw.pgm; sourceTree = DEVELOPER_DIR; };
-		C62D0AE1101899E400469DF2 /* ref_10.ppm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ref_10.ppm; path = CUDA/projects/boxFilter/data/ref_10.ppm; sourceTree = DEVELOPER_DIR; };
-		C62D0AE2101899E400469DF2 /* ref_14.ppm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ref_14.ppm; path = CUDA/projects/boxFilter/data/ref_14.ppm; sourceTree = DEVELOPER_DIR; };
-		C62D0AE3101899E400469DF2 /* ref_18.ppm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ref_18.ppm; path = CUDA/projects/boxFilter/data/ref_18.ppm; sourceTree = DEVELOPER_DIR; };
-		C62D0AE4101899E400469DF2 /* ref_22.ppm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ref_22.ppm; path = CUDA/projects/boxFilter/data/ref_22.ppm; sourceTree = DEVELOPER_DIR; };
-		C62D0AE6101899E400469DF2 /* boxFilter_lg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = boxFilter_lg.gif; path = CUDA/projects/boxFilter/doc/boxFilter_lg.gif; sourceTree = DEVELOPER_DIR; };
-		C62D0AE7101899E400469DF2 /* boxFilter_md.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = boxFilter_md.gif; path = CUDA/projects/boxFilter/doc/boxFilter_md.gif; sourceTree = DEVELOPER_DIR; };
-		C62D0AE8101899E400469DF2 /* boxFilter_sm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = boxFilter_sm.gif; path = CUDA/projects/boxFilter/doc/boxFilter_sm.gif; sourceTree = DEVELOPER_DIR; };
-		C62D0AE9101899E400469DF2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = CUDA/projects/boxFilter/Makefile; sourceTree = DEVELOPER_DIR; };
-		C62D0AEC101899E400469DF2 /* boxFilter.cpp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = boxFilter.cpp.o; path = CUDA/projects/boxFilter/obj/emurelease/boxFilter.cpp.o; sourceTree = DEVELOPER_DIR; };
-		C62D0AED101899E400469DF2 /* boxFilter_gold.cpp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = boxFilter_gold.cpp.o; path = CUDA/projects/boxFilter/obj/emurelease/boxFilter_gold.cpp.o; sourceTree = DEVELOPER_DIR; };
-		C62D0AEE101899E400469DF2 /* boxFilter_kernel.cu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = boxFilter_kernel.cu.o; path = CUDA/projects/boxFilter/obj/emurelease/boxFilter_kernel.cu.o; sourceTree = DEVELOPER_DIR; };
-		C62D0AF0101899E400469DF2 /* boxFilter.cpp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = boxFilter.cpp.o; path = CUDA/projects/boxFilter/obj/release/boxFilter.cpp.o; sourceTree = DEVELOPER_DIR; };
-		C62D0AF1101899E400469DF2 /* boxFilter_gold.cpp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = boxFilter_gold.cpp.o; path = CUDA/projects/boxFilter/obj/release/boxFilter_gold.cpp.o; sourceTree = DEVELOPER_DIR; };
-		C62D0AF2101899E400469DF2 /* boxFilter_kernel.cu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = boxFilter_kernel.cu.o; path = CUDA/projects/boxFilter/obj/release/boxFilter_kernel.cu.o; sourceTree = DEVELOPER_DIR; };
-		C62D0B5E1018A34100469DF2 /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = filter.h; path = CUDA/projects/MeanShift/filter.h; sourceTree = DEVELOPER_DIR; };
-		C62D0B5F1018A34100469DF2 /* filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = filter.cpp; path = CUDA/projects/MeanShift/filter.cpp; sourceTree = DEVELOPER_DIR; };
-		C62D0C9E1019C57400469DF2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = CUDA/projects/matrixMul/Makefile; sourceTree = DEVELOPER_DIR; };
-		C62D0C9F1019C57400469DF2 /* matrixMul.cu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cuda; name = matrixMul.cu; path = CUDA/projects/matrixMul/matrixMul.cu; sourceTree = DEVELOPER_DIR; };
-		C62D0CA01019C57400469DF2 /* matrixMul.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = matrixMul.h; path = CUDA/projects/matrixMul/matrixMul.h; sourceTree = DEVELOPER_DIR; };
-		C62D0CA11019C57400469DF2 /* matrixMul.linkinfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = matrixMul.linkinfo; path = CUDA/projects/matrixMul/matrixMul.linkinfo; sourceTree = DEVELOPER_DIR; };
-		C62D0CA21019C57400469DF2 /* matrixMul_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = matrixMul_gold.cpp; path = CUDA/projects/matrixMul/matrixMul_gold.cpp; sourceTree = DEVELOPER_DIR; };
-		C62D0CA31019C57400469DF2 /* matrixMul_kernel.cu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cuda; name = matrixMul_kernel.cu; path = CUDA/projects/matrixMul/matrixMul_kernel.cu; sourceTree = DEVELOPER_DIR; };
-		C62D0CA61019C57400469DF2 /* matrixMul.cu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = matrixMul.cu.o; path = CUDA/projects/matrixMul/obj/emurelease/matrixMul.cu.o; sourceTree = DEVELOPER_DIR; };
-		C62D0CA71019C57400469DF2 /* matrixMul_gold.cpp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = matrixMul_gold.cpp.o; path = CUDA/projects/matrixMul/obj/emurelease/matrixMul_gold.cpp.o; sourceTree = DEVELOPER_DIR; };
-		C62D0CA91019C57400469DF2 /* matrixMul.cu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = matrixMul.cu.o; path = CUDA/projects/matrixMul/obj/release/matrixMul.cu.o; sourceTree = DEVELOPER_DIR; };
-		C62D0CAA1019C57400469DF2 /* matrixMul_gold.cpp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = matrixMul_gold.cpp.o; path = CUDA/projects/matrixMul/obj/release/matrixMul_gold.cpp.o; sourceTree = DEVELOPER_DIR; };
-		C62D0FC1101AF48600469DF2 /* cudatracer.cu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cuda; name = cudatracer.cu; path = /Users/aquarius/Masterthesis/code/cudatracer/cudatracer.cu; sourceTree = "<absolute>"; };
-		C62D0FC2101AF48600469DF2 /* cudatracer_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cudatracer_gold.cpp; path = /Users/aquarius/Masterthesis/code/cudatracer/cudatracer_gold.cpp; sourceTree = "<absolute>"; };
-		C62D0FC3101AF48600469DF2 /* cudatracer_kernel.cu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cuda; name = cudatracer_kernel.cu; path = /Users/aquarius/Masterthesis/code/cudatracer/cudatracer_kernel.cu; sourceTree = "<absolute>"; };
-		C62D0FC4101AF48600469DF2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = /Users/aquarius/Masterthesis/code/cudatracer/Makefile; sourceTree = "<absolute>"; };
-		C62D0FC7101AF48600469DF2 /* profile.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = profile.csv; path = /Users/aquarius/Masterthesis/code/cudatracer/profile.csv; sourceTree = "<absolute>"; };
-		C62D0FC8101AF48600469DF2 /* profileRuns.ods */ = {isa = PBXFileReference; lastKnownFileType = file; name = profileRuns.ods; path = /Users/aquarius/Masterthesis/code/cudatracer/profileRuns.ods; sourceTree = "<absolute>"; };
-		C62D0FC9101AF48600469DF2 /* vector.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vector.c; path = /Users/aquarius/Masterthesis/code/cudatracer/vector.c; sourceTree = "<absolute>"; };
-		C62D1091101DD7B400469DF2 /* common.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = common.mk; path = CUDA/common/common.mk; sourceTree = DEVELOPER_DIR; };
-		C62D117F101DF05700469DF2 /* setprecisionandrounding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = setprecisionandrounding.cpp; path = CUDA/projects/MeanShift/setprecisionandrounding.cpp; sourceTree = DEVELOPER_DIR; };
-		C62D11F710207ECE00469DF2 /* meanshiftfilter_kernel.ptx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = meanshiftfilter_kernel.ptx; path = CUDA/projects/MeanShift/meanshiftfilter_kernel.ptx; sourceTree = DEVELOPER_DIR; };
-		C62D11F810207ECE00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = meanshiftfilter_kernel.sm_10.cubin; path = CUDA/projects/MeanShift/meanshiftfilter_kernel.sm_10.cubin; sourceTree = DEVELOPER_DIR; };
-		C6779BBF100B9A12000B8058 /* edison.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = edison.cpp; path = CUDA/projects/MeanShift/edison.cpp; sourceTree = DEVELOPER_DIR; };
-		C6779BC1100B9A12000B8058 /* meanshift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshift.cpp; path = CUDA/projects/MeanShift/meanshift.cpp; sourceTree = DEVELOPER_DIR; };
-		C6779BC2100B9A12000B8058 /* meanshiftfilter_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshiftfilter_gold.cpp; path = CUDA/projects/MeanShift/meanshiftfilter_gold.cpp; sourceTree = DEVELOPER_DIR; };
-		C6779BC3100B9A12000B8058 /* meanshiftfilter_kernel.cu */ = {isa = PBXFileReference; explicitFileType = sourcecode.cuda; fileEncoding = 4; name = meanshiftfilter_kernel.cu; path = CUDA/projects/MeanShift/meanshiftfilter_kernel.cu; sourceTree = DEVELOPER_DIR; };
-		C6779BC4100B9A23000B8058 /* edison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = edison.h; path = CUDA/projects/MeanShift/edison.h; sourceTree = DEVELOPER_DIR; };
-		C6779BC5100B9A23000B8058 /* rlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rlist.h; path = CUDA/projects/MeanShift/rlist.h; sourceTree = DEVELOPER_DIR; };
-		C6779BC6100B9A2D000B8058 /* rlist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rlist.cpp; path = CUDA/projects/MeanShift/rlist.cpp; sourceTree = DEVELOPER_DIR; };
-		C6779BC7100B9A36000B8058 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = CUDA/projects/MeanShift/Makefile; sourceTree = DEVELOPER_DIR; };
-		C6CBEBBF100BB2D000A70431 /* cutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cutil.h; path = CUDA/common/inc/cutil.h; sourceTree = DEVELOPER_DIR; };
+		C62D120210218EDC00469DF2 /* edison.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = edison.cpp; path = "GPU Computing/C/src/MeanShift/edison.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120310218EDC00469DF2 /* edison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = edison.h; path = "GPU Computing/C/src/MeanShift/edison.h"; sourceTree = DEVELOPER_DIR; };
+		C62D120410218EDC00469DF2 /* filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = filter.cpp; path = "GPU Computing/C/src/MeanShift/filter.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120510218EDC00469DF2 /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = filter.h; path = "GPU Computing/C/src/MeanShift/filter.h"; sourceTree = DEVELOPER_DIR; };
+		C62D120610218EDC00469DF2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "GPU Computing/C/src/MeanShift/main.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120710218EDC00469DF2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = "GPU Computing/C/src/MeanShift/Makefile"; sourceTree = DEVELOPER_DIR; };
+		C62D120810218EDC00469DF2 /* meanshift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshift.cpp; path = "GPU Computing/C/src/MeanShift/meanshift.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120910218EDC00469DF2 /* rgbluv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rgbluv.cpp; path = "GPU Computing/C/src/MeanShift/rgbluv.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120A10218EDC00469DF2 /* rgbluv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgbluv.h; path = "GPU Computing/C/src/MeanShift/rgbluv.h"; sourceTree = DEVELOPER_DIR; };
+		C62D120B10218EDC00469DF2 /* rlist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rlist.cpp; path = "GPU Computing/C/src/MeanShift/rlist.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120C10218EDC00469DF2 /* rlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rlist.h; path = "GPU Computing/C/src/MeanShift/rlist.h"; sourceTree = DEVELOPER_DIR; };
+		C62D120D10218EDC00469DF2 /* setprecisionandrounding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = setprecisionandrounding.cpp; path = "GPU Computing/C/src/MeanShift/setprecisionandrounding.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120E10218F1800469DF2 /* common.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = common.mk; path = "GPU Computing/C/common/common.mk"; sourceTree = DEVELOPER_DIR; };
+		C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshiftfilter_gold.cpp; path = "GPU Computing/C/src/MeanShift/meanshiftfilter_gold.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cuda; name = meanshiftfilter_kernel.cu; path = "GPU Computing/C/src/MeanShift/meanshiftfilter_kernel.cu"; sourceTree = DEVELOPER_DIR; };
+		C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = meanshiftfilter_kernel.ptx; path = "GPU Computing/C/src/MeanShift/meanshiftfilter_kernel.ptx"; sourceTree = DEVELOPER_DIR; };
+		C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = meanshiftfilter_kernel.sm_10.cubin; path = "GPU Computing/C/src/MeanShift/meanshiftfilter_kernel.sm_10.cubin"; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		08FB7794FE84155DC02AAC07 /* MeanShift */ = {
 			isa = PBXGroup;
 			children = (
-				C62D0FC0101AF48600469DF2 /* cudatracer */,
-				C62D0AD7101899C900469DF2 /* SDK Projects */,
+				C62D120710218EDC00469DF2 /* Makefile */,
 				C6CBEBC0100BB2D600A70431 /* CUDA */,
-				C6779BC7100B9A36000B8058 /* Makefile */,
 				C6779BBD100B99F4000B8058 /* Source */,
 				C62D11F610207EA300469DF2 /* Intermediate Files */,
 			);
 			name = MeanShift;
 			sourceTree = "<group>";
 		};
-		C62D0AD7101899C900469DF2 /* SDK Projects */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0C9D1019C57400469DF2 /* matrixMul */,
-				C62D0AD9101899E400469DF2 /* boxFilter */,
-			);
-			name = "SDK Projects";
-			sourceTree = "<group>";
-		};
-		C62D0AD9101899E400469DF2 /* boxFilter */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0ADA101899E400469DF2 /* boxFilter.cpp */,
-				C62D0ADB101899E400469DF2 /* boxFilter_gold.cpp */,
-				C62D0ADC101899E400469DF2 /* boxFilter_kernel.cu */,
-				C62D0ADD101899E400469DF2 /* boxFilter_kernel.linkinfo */,
-				C62D0ADE101899E400469DF2 /* data */,
-				C62D0AE5101899E400469DF2 /* doc */,
-				C62D0AE9101899E400469DF2 /* Makefile */,
-				C62D0AEA101899E400469DF2 /* obj */,
-			);
-			name = boxFilter;
-			path = CUDA/projects/boxFilter;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0ADE101899E400469DF2 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0ADF101899E400469DF2 /* lena.ppm */,
-				C62D0AE0101899E400469DF2 /* lena_bw.pgm */,
-				C62D0AE1101899E400469DF2 /* ref_10.ppm */,
-				C62D0AE2101899E400469DF2 /* ref_14.ppm */,
-				C62D0AE3101899E400469DF2 /* ref_18.ppm */,
-				C62D0AE4101899E400469DF2 /* ref_22.ppm */,
-			);
-			name = data;
-			path = CUDA/projects/boxFilter/data;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0AE5101899E400469DF2 /* doc */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0AE6101899E400469DF2 /* boxFilter_lg.gif */,
-				C62D0AE7101899E400469DF2 /* boxFilter_md.gif */,
-				C62D0AE8101899E400469DF2 /* boxFilter_sm.gif */,
-			);
-			name = doc;
-			path = CUDA/projects/boxFilter/doc;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0AEA101899E400469DF2 /* obj */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0AEB101899E400469DF2 /* emurelease */,
-				C62D0AEF101899E400469DF2 /* release */,
-			);
-			name = obj;
-			path = CUDA/projects/boxFilter/obj;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0AEB101899E400469DF2 /* emurelease */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0AEC101899E400469DF2 /* boxFilter.cpp.o */,
-				C62D0AED101899E400469DF2 /* boxFilter_gold.cpp.o */,
-				C62D0AEE101899E400469DF2 /* boxFilter_kernel.cu.o */,
-			);
-			name = emurelease;
-			path = CUDA/projects/boxFilter/obj/emurelease;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0AEF101899E400469DF2 /* release */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0AF0101899E400469DF2 /* boxFilter.cpp.o */,
-				C62D0AF1101899E400469DF2 /* boxFilter_gold.cpp.o */,
-				C62D0AF2101899E400469DF2 /* boxFilter_kernel.cu.o */,
-			);
-			name = release;
-			path = CUDA/projects/boxFilter/obj/release;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0C9D1019C57400469DF2 /* matrixMul */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0C9E1019C57400469DF2 /* Makefile */,
-				C62D0C9F1019C57400469DF2 /* matrixMul.cu */,
-				C62D0CA01019C57400469DF2 /* matrixMul.h */,
-				C62D0CA11019C57400469DF2 /* matrixMul.linkinfo */,
-				C62D0CA21019C57400469DF2 /* matrixMul_gold.cpp */,
-				C62D0CA31019C57400469DF2 /* matrixMul_kernel.cu */,
-				C62D0CA41019C57400469DF2 /* obj */,
-			);
-			name = matrixMul;
-			path = CUDA/projects/matrixMul;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0CA41019C57400469DF2 /* obj */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0CA51019C57400469DF2 /* emurelease */,
-				C62D0CA81019C57400469DF2 /* release */,
-			);
-			name = obj;
-			path = CUDA/projects/matrixMul/obj;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0CA51019C57400469DF2 /* emurelease */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0CA61019C57400469DF2 /* matrixMul.cu.o */,
-				C62D0CA71019C57400469DF2 /* matrixMul_gold.cpp.o */,
-			);
-			name = emurelease;
-			path = CUDA/projects/matrixMul/obj/emurelease;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0CA81019C57400469DF2 /* release */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0CA91019C57400469DF2 /* matrixMul.cu.o */,
-				C62D0CAA1019C57400469DF2 /* matrixMul_gold.cpp.o */,
-			);
-			name = release;
-			path = CUDA/projects/matrixMul/obj/release;
-			sourceTree = DEVELOPER_DIR;
-		};
-		C62D0FC0101AF48600469DF2 /* cudatracer */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0FC1101AF48600469DF2 /* cudatracer.cu */,
-				C62D0FC2101AF48600469DF2 /* cudatracer_gold.cpp */,
-				C62D0FC3101AF48600469DF2 /* cudatracer_kernel.cu */,
-				C62D0FC4101AF48600469DF2 /* Makefile */,
-				C62D0FC5101AF48600469DF2 /* obj */,
-				C62D0FC7101AF48600469DF2 /* profile.csv */,
-				C62D0FC8101AF48600469DF2 /* profileRuns.ods */,
-				C62D0FC9101AF48600469DF2 /* vector.c */,
-			);
-			name = cudatracer;
-			path = /Users/aquarius/Masterthesis/code/cudatracer;
-			sourceTree = "<absolute>";
-		};
-		C62D0FC5101AF48600469DF2 /* obj */ = {
-			isa = PBXGroup;
-			children = (
-				C62D0FC6101AF48600469DF2 /* release */,
-			);
-			name = obj;
-			path = /Users/aquarius/Masterthesis/code/cudatracer/obj;
-			sourceTree = "<absolute>";
-		};
-		C62D0FC6101AF48600469DF2 /* release */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = release;
-			path = /Users/aquarius/Masterthesis/code/cudatracer/obj/release;
-			sourceTree = "<absolute>";
-		};
 		C62D11F610207EA300469DF2 /* Intermediate Files */ = {
 			isa = PBXGroup;
 			children = (
-				C62D11F710207ECE00469DF2 /* meanshiftfilter_kernel.ptx */,
-				C62D11F810207ECE00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */,
+				C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */,
+				C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */,
 			);
 			name = "Intermediate Files";
 			sourceTree = "<group>";
@@ -249,18 +50,19 @@
 		C6779BBD100B99F4000B8058 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C6779BC5100B9A23000B8058 /* rlist.h */,
-				C6779BC6100B9A2D000B8058 /* rlist.cpp */,
-				C6779BC4100B9A23000B8058 /* edison.h */,
-				C6779BBF100B9A12000B8058 /* edison.cpp */,
-				C6779BC1100B9A12000B8058 /* meanshift.cpp */,
-				C6779BC2100B9A12000B8058 /* meanshiftfilter_gold.cpp */,
-				C6779BC3100B9A12000B8058 /* meanshiftfilter_kernel.cu */,
-				C62D117F101DF05700469DF2 /* setprecisionandrounding.cpp */,
-				C62D09CF101867AE00469DF2 /* rgbluv.h */,
-				C62D09D0101867AE00469DF2 /* rgbluv.cpp */,
-				C62D0B5E1018A34100469DF2 /* filter.h */,
-				C62D0B5F1018A34100469DF2 /* filter.cpp */,
+				C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */,
+				C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */,
+				C62D120210218EDC00469DF2 /* edison.cpp */,
+				C62D120310218EDC00469DF2 /* edison.h */,
+				C62D120410218EDC00469DF2 /* filter.cpp */,
+				C62D120510218EDC00469DF2 /* filter.h */,
+				C62D120610218EDC00469DF2 /* main.cpp */,
+				C62D120810218EDC00469DF2 /* meanshift.cpp */,
+				C62D120910218EDC00469DF2 /* rgbluv.cpp */,
+				C62D120A10218EDC00469DF2 /* rgbluv.h */,
+				C62D120B10218EDC00469DF2 /* rlist.cpp */,
+				C62D120C10218EDC00469DF2 /* rlist.h */,
+				C62D120D10218EDC00469DF2 /* setprecisionandrounding.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -268,8 +70,7 @@
 		C6CBEBC0100BB2D600A70431 /* CUDA */ = {
 			isa = PBXGroup;
 			children = (
-				C62D1091101DD7B400469DF2 /* common.mk */,
-				C6CBEBBF100BB2D000A70431 /* cutil.h */,
+				C62D120E10218F1800469DF2 /* common.mk */,
 			);
 			name = CUDA;
 			sourceTree = "<group>";

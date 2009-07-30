@@ -67,11 +67,12 @@ void computeGold(void)
 	//    1 : round to nearest or even      : default
 	//    2 : round up
 	//    3 : round down
+	/*
 	typedef unsigned char BYTE;
 	typedef unsigned short WORD;
 	extern void set_FPU_Precision_Rounding(BYTE precision, BYTE rounding);
 	set_FPU_Precision_Rounding(53, 0);
-	
+	*/
 	filterGold();
 	connect();
 	boundaries();
