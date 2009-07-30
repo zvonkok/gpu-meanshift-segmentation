@@ -35,9 +35,6 @@ extern float sigmaR;
 extern float minRegion;
 
 // EDISON //////////////////////////////////////////////////////////////////
-
-char *image_filename = "image.ppm";
-
 unsigned int width;
 unsigned int height;
 
@@ -53,22 +50,40 @@ float * d_src = NULL; // device source data
 float * d_dst = NULL; // device manipulated data
 float * h_tmp = NULL; // result from device 
 
-#define SEGM 0
-#define FILT 1
-#define BNDY 2
+const unsigned int FILT = 0;
+const unsigned int SEGM = 1;
+const unsigned int BNDY = 2;
+const unsigned int APPD = 3;
 
-const char *imgOut[] = {
-"segmimage.ppm",
-"filtimage.ppm",
-"bndyimage.pgm",
-NULL
+std::string image = "source.ppm";
+std::string path = "../../../src/MeanShift/data/";
+
+std::string imgOutGOLD[] = {
+    path + "filtimage_gold.ppm",
+    path + "segmimage_gold.ppm",
+    path + "bndyimage_gold.ppm",
+    path + "appd_fsb_gold.ppm"
 };
 
-const char *imgRef[] = {
-"segmimage0.ppm",
-"filtimage0.ppm",
-"bndyimage0.pgm",
-NULL
+std::string imgOutCUDA[] = {
+	path + "filtimage_cuda.ppm",
+    path + "segmimage_cuda.ppm",
+    path + "bndyimage_cuda.ppm",
+    path + "appd_fsb_cuda.ppm"
+};
+
+std::string imgRef[] = {
+    path + "filtimage_ref.ppm",
+    path + "segmimage_ref.ppm",
+    path + "bndyimage_ref.pgm",
+    path + "appd_fsb_ref.ppm"
+};
+
+std::string imgDiff[] = {
+    path + "filtimage_diff.ppm",
+    path + "segmimage_diff.ppm",
+    path + "bndyimage_diff.pgm",
+    path + "appd_fsb_diff.ppm"
 };
 
 extern void connect();
@@ -80,11 +95,12 @@ extern void computeGold(void);
 void loadImageData(int argc, char **argv)
 {
     // load image (needed so we can get the width and height before we create the window
-    char* image_path = cutFindFilePath(image_filename, argv[0]);
+    char* image_path = cutFindFilePath(image.c_str(), argv[0]);
     if (image_path == 0) {
-        fprintf(stderr, "Error finding image file '%s'\n", image_filename);
+        fprintf(stderr, "Error finding image file '%s'\n", image.c_str());
         exit(EXIT_FAILURE);
     }
+	printf("Image path %s\n", image_path);
 	
     cutilCheckError(cutLoadPPM4ub(image_path, (unsigned char **) &h_img, &width, &height));
 	
@@ -127,16 +143,39 @@ int main( int argc, char** argv)
 		RGBtoLUV(pix, &h_src[N * i]);
 	}
 	
+	std::string append = "convert +append ";
+	std::string compare = "compare ";
+	std::string open = "open " + imgDiff[APPD];
+	
 	if (cutCheckCmdLineFlag(argc, (const char**)argv, "gold")) {
 		computeGold();
+		cutilCheckError(cutSavePPM4ub(imgOutGOLD[FILT].c_str(), (unsigned char *)h_filt, width, height));	
+		cutilCheckError(cutSavePPM4ub(imgOutGOLD[SEGM].c_str(), (unsigned char *)h_segm, width, height));
+		cutilCheckError(cutSavePGMub( imgOutGOLD[BNDY].c_str(), (unsigned char *)h_bndy, width, height));
+		append += imgOutGOLD[FILT] + " ";
+		append += imgOutGOLD[SEGM] + " ";
+		append += imgOutGOLD[BNDY] + " ";
+		append += imgOutGOLD[APPD];
+		compare += imgOutGOLD[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
+		
 	} else {
 		computeCUDA();
+		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (unsigned char *)h_filt, width, height));	
+		cutilCheckError(cutSavePPM4ub(imgOutCUDA[SEGM].c_str(), (unsigned char *)h_segm, width, height));
+		cutilCheckError(cutSavePGMub( imgOutCUDA[BNDY].c_str(), (unsigned char *)h_bndy, width, height));
+		append += imgOutCUDA[FILT] + " ";
+		append += imgOutCUDA[SEGM] + " ";
+		append += imgOutCUDA[BNDY] + " ";
+		append += imgOutCUDA[APPD];
+
+		compare += imgOutCUDA[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
 	}
-		
-	cutilCheckError(cutSavePPM4ub(imgOut[FILT], (unsigned char *)h_filt, width, height));	
-	cutilCheckError(cutSavePPM4ub(imgOut[SEGM], (unsigned char *)h_segm, width, height));
-	cutilCheckError(cutSavePGMub( imgOut[BNDY], (unsigned char *)h_bndy, width, height));
 	
+	system(append.c_str());
+	system(compare.c_str());
+	system(open.c_str());
+
+			
 	exit(EXIT_SUCCESS);
 }
 
@@ -154,6 +193,7 @@ void computeCUDA()
 	
 	// convert to float array and then copy ... 
 	// if we use textures omit this step 
+	
 #ifdef GLOBAL_MEMORY
 	float * h_flt = new float[imgSize];
 	// we need here h_src the converted rgb data not h_img the plain rgb!!
