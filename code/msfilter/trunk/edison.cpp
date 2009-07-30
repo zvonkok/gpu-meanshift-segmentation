@@ -14,7 +14,6 @@
 #include "rgbluv.h"
 #include "filter.h"
 
-#include "edison.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
@@ -409,6 +408,7 @@ float SqDistance(int mode1, int mode2)
 	
 }
 
+#define NODE_MULTIPLE 10
 
 void BuildRAM( void )
 {

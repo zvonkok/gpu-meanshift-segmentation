@@ -5,6 +5,8 @@
 #include <cutil_inline.h>
 #include "meanshiftfilter_common.h"
 
+#define USE_CONST_MEMORY 1
+
 __constant__ float d_options[MAX_OPTS];
 
 __constant__ float EPSILON = 0.01f;	// define threshold (approx. Value of Mh at a peak or plateau)
@@ -28,10 +30,17 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, f
 	
 	//the lattice is a 2dimensional subspace whose
 	//search window bandwidth is specified by sigmaS:
+#ifndef USE_CONST_MEMORY
 	int LowerBoundX = yk[0] - sigmaS;
 	int LowerBoundY = yk[1] - sigmaS;
 	int UpperBoundX = yk[0] + sigmaS;
 	int UpperBoundY = yk[1] + sigmaS;
+#else
+	int LowerBoundX = yk[0] - d_options[SIGMAS];
+	int LowerBoundY = yk[1] - d_options[SIGMAS];
+	int UpperBoundX = yk[0] + d_options[SIGMAS];
+	int UpperBoundY = yk[1] + d_options[SIGMAS];
+#endif
 	
 	if (LowerBoundX < 0)
 	LowerBoundX = 0;
@@ -58,11 +67,21 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, f
 		
 		//Determine if inside search window
 		//Calculate distance squared of sub-space s	
+#ifndef USE_CONST_MEMORY
 		dx = (j - yk[0]) / sigmaS;
 		dy = (i - yk[1]) / sigmaS;
 		dl = (data_l - yk[2]) / sigmaR;               
 		du = (data_u - yk[3]) / sigmaR;               
 		dv = (data_v - yk[4]) / sigmaR;               
+#else
+		dx = (j - yk[0]) / d_options[SIGMAS];
+		dy = (i - yk[1]) / d_options[SIGMAS];
+		dl = (data_l - yk[2]) / d_options[SIGMAR];               
+		du = (data_u - yk[3]) / d_options[SIGMAR];               
+		dv = (data_v - yk[4]) / d_options[SIGMAR];               
+		
+#endif
+		
 		
 		diff0 += dx * dx;
 		diff0 += dy * dy;
@@ -166,10 +185,8 @@ __device__ void filter(float* d_src, float* d_dst,
 	
 	// Traverse each data point applying mean shift
 	// to each data point
-	
-	// Allcocate memory for yk
-	float	yk[5];
-	float	Mh[5];
+	float yk[5];
+	float Mh[5];
 	
 	
 	int ix = blockIdx.x * blockDim.x + threadIdx.x;
@@ -177,16 +194,11 @@ __device__ void filter(float* d_src, float* d_dst,
 	
 	int i = ix * width + iy;
 	
-	//printf("%d:%d  %d\n", ix, iy, ix * width + iy);
-	//printf("%d\n ", i);
-	// 	for(i = 0; i < width * height; i++) {
-	
 	// Assign window center (window centers are
 	// initialized by createLattice to be the point
-	// data[i])
-	yk[0] = (float)(i%width); // x
-	yk[1] = (float)(i/width); // y 
-	
+	// data[i])	
+	yk[0] = iy;
+	yk[1] = ix;
 	yk[2] = d_src[3 * i + 0]; // l
 	yk[3] = d_src[3 * i + 1]; // u
 	yk[4] = d_src[3 * i + 2]; // v
@@ -247,9 +259,9 @@ __device__ void filter(float* d_src, float* d_dst,
 	yk[4] += Mh[4];
 	
 	//store result into msRawData...
-	d_dst[3 * i + 0] = (float)(yk[0 + 2]);
-	d_dst[3 * i + 1] = (float)(yk[1 + 2]);
-	d_dst[3 * i + 2] = (float)(yk[2 + 2]);
+	d_dst[3 * i + 0] = (float)(yk[2]);
+	d_dst[3 * i + 1] = (float)(yk[3]);
+	d_dst[3 * i + 2] = (float)(yk[4]);
 
 	//}
 	// done.
@@ -262,6 +274,8 @@ __global__ void mean_shift_filter(float* d_src, float* d_dst,
 {
 	filter(d_src, d_dst, width, height, sigmaS, sigmaR);
 }
+
+
 
 extern "C" void setArgs(float* h_options)
 {

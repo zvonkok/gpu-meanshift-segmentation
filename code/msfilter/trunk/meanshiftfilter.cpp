@@ -14,6 +14,8 @@
 #include <rendercheck_gl.h>
 
 extern "C" 
+void setArgs(float*);
+extern "C" 
 void meanShiftFilter(dim3, dim3, float*, float*, unsigned int, unsigned int,
 					 unsigned int, unsigned int);
 
@@ -87,7 +89,7 @@ std::string imgDiff[] = {
 };
 // Used for constants needed by the kernel
 // e.g. sigmaS, sigmaR ...
-float h_args[MAX_ARGS];
+float h_options[MAX_OPTS];
 
 
 
@@ -133,6 +135,9 @@ int main( int argc, char** argv)
 	N = 3;
 	L = height * width;
 
+	// Set options which are transferred to the device
+	h_options[SIGMAS] = sigmaS;
+	h_options[SIGMAR] = sigmaR;
 	
 	//Allocate memory for h_dst (filtered image output)
 	h_dst = new float[3 /*N*/ * height * width];
@@ -216,8 +221,7 @@ void computeCUDA()
     cutilCheckError(cutCreateTimer(&timer));
     cutilCheckError(cutStartTimer(timer));
 
-	// copy 
-	
+	setArgs(h_options);
 	
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
