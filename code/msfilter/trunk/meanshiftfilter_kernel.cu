@@ -2,16 +2,13 @@
 #define _MSFILTER_KERNEL_H_
 
 #include <stdio.h>
+#include <cutil_inline.h>
+#include "meanshiftfilter_common.h"
 
-__device__ const float EPSILON = 0.01;	// define threshold (approx. Value of Mh at a peak or plateau)
-__device__ const int   LIMIT   = 100;	// define max. # of iterations to find mode
+__constant__ float d_options[MAX_OPTS];
 
-/*
-__device__ unsigned int height;
-__device__ unsigned int width;
-__device__ unsigned int sigmaS;
-__device__ unsigned int sigmaR;
-*/
+__constant__ float EPSILON = 0.01f;	// define threshold (approx. Value of Mh at a peak or plateau)
+__constant__ float LIMIT   = 100.0f;	// define max. # of iterations to find mode
 
 __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, float* d_dst, 
 							  unsigned int width, unsigned int height,
@@ -266,8 +263,12 @@ __global__ void mean_shift_filter(float* d_src, float* d_dst,
 	filter(d_src, d_dst, width, height, sigmaS, sigmaR);
 }
 
-extern "C" 
-void meanShiftFilter(dim3 grid, dim3 threads, float* d_src, float* d_dst,
+extern "C" void setArgs(float* h_options)
+{
+	CUDA_SAFE_CALL(cudaMemcpyToSymbol(d_options, h_options, MAX_OPTS * sizeof(float)));
+}
+
+extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float* d_src, float* d_dst,
 					 unsigned int width, unsigned int height,
 					 unsigned int sigmaS, unsigned int sigmaR)
 {
