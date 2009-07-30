@@ -13,16 +13,16 @@
 #include <cuda_gl_interop.h>
 #include <rendercheck_gl.h>
 
-// includes, kernels
-// #include "meanshiftfilter_kernel.cu"
 extern "C" 
 void meanShiftFilter(dim3, dim3, float*, float*, unsigned int, unsigned int,
 					 unsigned int, unsigned int);
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions
-#include "edison.h"
+
 #include "rgbluv.h"
+#include "meanshiftfilter_common.h"
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -85,6 +85,12 @@ std::string imgDiff[] = {
     path + "bndyimage_diff.pgm",
     path + "appd_fsb_diff.ppm"
 };
+// Used for constants needed by the kernel
+// e.g. sigmaS, sigmaR ...
+float h_args[MAX_ARGS];
+
+
+
 
 extern void connect();
 extern void boundaries();
@@ -210,7 +216,9 @@ void computeCUDA()
     cutilCheckError(cutCreateTimer(&timer));
     cutilCheckError(cutStartTimer(timer));
 
-
+	// copy 
+	
+	
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
 	dim3 grid(width/thx, height/thy);

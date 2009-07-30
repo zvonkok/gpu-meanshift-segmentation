@@ -45,20 +45,18 @@ USEGLLIB         := 1
 USEGLUT	         := 1
 USERENDERCHECKGL := 1
 
-CFLAGS	+= -fflloat-store
-CXXFLAGS	+= -ffloat-store
-
-
-#emu=1
+emu=1
 verbose=1
 keep=1
 #debug=1
+#maxregisters=24
 
 ################################################################################
 # Rules and targets
 
 include ../../common/common.mk
 
-CFLAGS += -fasm-blocks
-CXXFLAGS += -fasm-blocks
-NVCCFLAGS += --opencc-options -LIST:source=on 
+CFLAGS += -fasm-blocks 
+CXXFLAGS += -fasm-blocks 
+NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v 
+
