@@ -277,6 +277,7 @@
 								<string>C6CBEBC0100BB2D600A70431</string>
 								<string>C6779BBD100B99F4000B8058</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>1C08E77C0454961000C914BD</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -286,7 +287,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 104}, {263, 865}}</string>
+							<string>{{0, 121}, {263, 865}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -307,7 +308,7 @@
 							<real>241</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>235 103 965 924 0 0 1680 1028 </string>
+						<string>235 102 965 924 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -325,7 +326,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>meanshiftfilter_gold.cpp</string>
+								<string>Makefile</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -333,27 +334,29 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>meanshiftfilter_gold.cpp</string>
+										<string>Makefile</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C62D11B8101DF34400469DF2</string>
+										<string>C62D11F410207DFE00469DF2</string>
 										<key>history</key>
 										<array>
 											<string>C6779BCC100B9A61000B8058</string>
 											<string>C62D09DE101868C300469DF2</string>
 											<string>C62D0B271018A04400469DF2</string>
-											<string>C62D0B2A1018A04400469DF2</string>
 											<string>C62D0DA51019E39100469DF2</string>
 											<string>C62D0DF51019E63500469DF2</string>
-											<string>C62D0E8F1019EB7800469DF2</string>
-											<string>C62D1175101DF03900469DF2</string>
-											<string>C62D1176101DF03900469DF2</string>
 											<string>C62D1180101DF09900469DF2</string>
 											<string>C62D1181101DF09900469DF2</string>
-											<string>C62D119A101DF21F00469DF2</string>
-											<string>C62D119B101DF21F00469DF2</string>
-											<string>C62D119C101DF21F00469DF2</string>
+											<string>C62D11BC101DF4AD00469DF2</string>
+											<string>C62D11BD101DF4AD00469DF2</string>
+											<string>C62D11BE101DF4AD00469DF2</string>
+											<string>C62D11BF101DF4AD00469DF2</string>
+											<string>C62D11CC101DF56300469DF2</string>
+											<string>C62D11E210207CEC00469DF2</string>
+											<string>C62D11ED10207DF500469DF2</string>
+											<string>C62D11EE10207DF500469DF2</string>
+											<string>C62D11EF10207DF500469DF2</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -388,6 +391,21 @@
 											<string>C62D11A0101DF21F00469DF2</string>
 											<string>C62D11A1101DF21F00469DF2</string>
 											<string>C62D11A2101DF21F00469DF2</string>
+											<string>C62D11C2101DF4AD00469DF2</string>
+											<string>C62D11C3101DF4AD00469DF2</string>
+											<string>C62D11C4101DF4AD00469DF2</string>
+											<string>C62D11C5101DF4AD00469DF2</string>
+											<string>C62D11C6101DF4AD00469DF2</string>
+											<string>C62D11C7101DF4AD00469DF2</string>
+											<string>C62D11CE101DF56300469DF2</string>
+											<string>C62D11CF101DF56300469DF2</string>
+											<string>C62D11D9101DF6DC00469DF2</string>
+											<string>C62D11DE101DF82400469DF2</string>
+											<string>C62D11E510207CEC00469DF2</string>
+											<string>C62D11E610207CEC00469DF2</string>
+											<string>C62D11F010207DF500469DF2</string>
+											<string>C62D11F110207DF500469DF2</string>
+											<string>C62D11F210207DF500469DF2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -401,7 +419,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {680, 734}}</string>
 								<key>RubberWindowFrame</key>
-								<string>235 103 965 924 0 0 1680 1028 </string>
+								<string>235 102 965 924 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -421,7 +439,7 @@
 								<key>Frame</key>
 								<string>{{0, 739}, {680, 144}}</string>
 								<key>RubberWindowFrame</key>
-								<string>235 103 965 924 0 0 1680 1028 </string>
+								<string>235 102 965 924 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -581,13 +599,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>C62D11A6101DF27400469DF2</string>
 		<string>C6779BDC100BA820000B8058</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Developer/CUDA/projects/MeanShift/MeanShift.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>235 103 965 924 0 0 1680 1028 </string>
+	<string>235 102 965 924 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

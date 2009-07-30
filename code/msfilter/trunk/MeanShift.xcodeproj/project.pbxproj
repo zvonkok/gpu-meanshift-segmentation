@@ -50,6 +50,8 @@
 		C62D0FC9101AF48600469DF2 /* vector.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vector.c; path = /Users/aquarius/Masterthesis/code/cudatracer/vector.c; sourceTree = "<absolute>"; };
 		C62D1091101DD7B400469DF2 /* common.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = common.mk; path = CUDA/common/common.mk; sourceTree = DEVELOPER_DIR; };
 		C62D117F101DF05700469DF2 /* setprecisionandrounding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = setprecisionandrounding.cpp; path = CUDA/projects/MeanShift/setprecisionandrounding.cpp; sourceTree = DEVELOPER_DIR; };
+		C62D11F710207ECE00469DF2 /* meanshiftfilter_kernel.ptx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = meanshiftfilter_kernel.ptx; path = CUDA/projects/MeanShift/meanshiftfilter_kernel.ptx; sourceTree = DEVELOPER_DIR; };
+		C62D11F810207ECE00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = meanshiftfilter_kernel.sm_10.cubin; path = CUDA/projects/MeanShift/meanshiftfilter_kernel.sm_10.cubin; sourceTree = DEVELOPER_DIR; };
 		C6779BBF100B9A12000B8058 /* edison.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = edison.cpp; path = CUDA/projects/MeanShift/edison.cpp; sourceTree = DEVELOPER_DIR; };
 		C6779BC1100B9A12000B8058 /* meanshift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshift.cpp; path = CUDA/projects/MeanShift/meanshift.cpp; sourceTree = DEVELOPER_DIR; };
 		C6779BC2100B9A12000B8058 /* meanshiftfilter_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshiftfilter_gold.cpp; path = CUDA/projects/MeanShift/meanshiftfilter_gold.cpp; sourceTree = DEVELOPER_DIR; };
@@ -70,6 +72,7 @@
 				C6CBEBC0100BB2D600A70431 /* CUDA */,
 				C6779BC7100B9A36000B8058 /* Makefile */,
 				C6779BBD100B99F4000B8058 /* Source */,
+				C62D11F610207EA300469DF2 /* Intermediate Files */,
 			);
 			name = MeanShift;
 			sourceTree = "<group>";
@@ -233,6 +236,15 @@
 			name = release;
 			path = /Users/aquarius/Masterthesis/code/cudatracer/obj/release;
 			sourceTree = "<absolute>";
+		};
+		C62D11F610207EA300469DF2 /* Intermediate Files */ = {
+			isa = PBXGroup;
+			children = (
+				C62D11F710207ECE00469DF2 /* meanshiftfilter_kernel.ptx */,
+				C62D11F810207ECE00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */,
+			);
+			name = "Intermediate Files";
+			sourceTree = "<group>";
 		};
 		C6779BBD100B99F4000B8058 /* Source */ = {
 			isa = PBXGroup;

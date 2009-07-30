@@ -49,11 +49,16 @@ CFLAGS	+= -fflloat-store
 CXXFLAGS	+= -ffloat-store
 
 
-emu=1
+#emu=1
 verbose=1
+keep=1
 #debug=1
 
 ################################################################################
 # Rules and targets
 
 include ../../common/common.mk
+
+CFLAGS += -fasm-blocks
+CXXFLAGS += -fasm-blocks
+NVCCFLAGS += --opencc-options -LIST:source=on 
