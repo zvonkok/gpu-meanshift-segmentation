@@ -9,4 +9,4 @@
 
 #define SIGMAS 0
 #define SIGMAR 1
-#define MAX_ARGS 2
+#define MAX_OPTS 2

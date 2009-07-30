@@ -224,7 +224,7 @@ void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
 void filterGold()
 {
 	// Declare Variables
-	int   iterationCount, i;
+	int   iterationCount;
 	float mvAbs;
 	
 	// Traverse each data point applying mean shift

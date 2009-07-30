@@ -7,7 +7,7 @@
 		);
 		breakpoints = (
 			C6CBEB9B100BB04F00A70431 /* meanshift.cpp:105 */,
-			C62D12C71021A40900469DF2 /* meanshift.cpp:170 */,
+			C62D12C71021A40900469DF2 /* meanshift.cpp:175 */,
 		);
 		codeSenseManager = C6779BB6100B9987000B8058 /* Code sense */;
 		perUserDictionary = {
@@ -599,6 +599,98 @@
 			C62D142E1021BEAC00469DF2 /* PBXTextBookmark */ = C62D142E1021BEAC00469DF2 /* PBXTextBookmark */;
 			C62D142F1021BEAC00469DF2 /* PBXTextBookmark */ = C62D142F1021BEAC00469DF2 /* PBXTextBookmark */;
 			C62D14301021BEAC00469DF2 /* PBXTextBookmark */ = C62D14301021BEAC00469DF2 /* PBXTextBookmark */;
+			C62D14371021BED900469DF2 /* PBXTextBookmark */ = C62D14371021BED900469DF2 /* PBXTextBookmark */;
+			C62D14381021BED900469DF2 /* PBXTextBookmark */ = C62D14381021BED900469DF2 /* PBXTextBookmark */;
+			C62D14391021BED900469DF2 /* PBXTextBookmark */ = C62D14391021BED900469DF2 /* PBXTextBookmark */;
+			C62D143A1021BED900469DF2 /* PBXTextBookmark */ = C62D143A1021BED900469DF2 /* PBXTextBookmark */;
+			C62D143B1021BED900469DF2 /* PBXTextBookmark */ = C62D143B1021BED900469DF2 /* PBXTextBookmark */;
+			C62D143C1021BED900469DF2 /* PBXTextBookmark */ = C62D143C1021BED900469DF2 /* PBXTextBookmark */;
+			C62D143D1021BED900469DF2 /* PBXTextBookmark */ = C62D143D1021BED900469DF2 /* PBXTextBookmark */;
+			C62D14411021BF2D00469DF2 /* PBXTextBookmark */ = C62D14411021BF2D00469DF2 /* PBXTextBookmark */;
+			C62D14431021BF5600469DF2 /* PBXTextBookmark */ = C62D14431021BF5600469DF2 /* PBXTextBookmark */;
+			C62D14451021BF9C00469DF2 /* PBXTextBookmark */ = C62D14451021BF9C00469DF2 /* PBXTextBookmark */;
+			C62D14461021BF9C00469DF2 /* PBXTextBookmark */ = C62D14461021BF9C00469DF2 /* PBXTextBookmark */;
+			C62D14471021BF9C00469DF2 /* PBXTextBookmark */ = C62D14471021BF9C00469DF2 /* PBXTextBookmark */;
+			C62D14481021BF9C00469DF2 /* PBXTextBookmark */ = C62D14481021BF9C00469DF2 /* PBXTextBookmark */;
+			C62D144A1021BFD600469DF2 /* PBXTextBookmark */ = C62D144A1021BFD600469DF2 /* PBXTextBookmark */;
+			C62D144C1021C04B00469DF2 /* PBXTextBookmark */ = C62D144C1021C04B00469DF2 /* PBXTextBookmark */;
+			C62D144F1021C06F00469DF2 /* PBXTextBookmark */ = C62D144F1021C06F00469DF2 /* PBXTextBookmark */;
+			C62D14501021C06F00469DF2 /* PBXTextBookmark */ = C62D14501021C06F00469DF2 /* PBXTextBookmark */;
+			C62D14511021C06F00469DF2 /* PBXTextBookmark */ = C62D14511021C06F00469DF2 /* PBXTextBookmark */;
+			C62D14561021C08700469DF2 /* PBXTextBookmark */ = C62D14561021C08700469DF2 /* PBXTextBookmark */;
+			C62D14571021C08700469DF2 /* PBXTextBookmark */ = C62D14571021C08700469DF2 /* PBXTextBookmark */;
+			C62D14581021C08700469DF2 /* PBXTextBookmark */ = C62D14581021C08700469DF2 /* PBXTextBookmark */;
+			C62D14591021C08700469DF2 /* PBXTextBookmark */ = C62D14591021C08700469DF2 /* PBXTextBookmark */;
+			C62D145B1021C0BF00469DF2 /* PBXTextBookmark */ = C62D145B1021C0BF00469DF2 /* PBXTextBookmark */;
+			C62D145C1021C0BF00469DF2 /* PBXTextBookmark */ = C62D145C1021C0BF00469DF2 /* PBXTextBookmark */;
+			C62D145D1021C0BF00469DF2 /* PBXTextBookmark */ = C62D145D1021C0BF00469DF2 /* PBXTextBookmark */;
+			C62D145E1021C0BF00469DF2 /* PBXTextBookmark */ = C62D145E1021C0BF00469DF2 /* PBXTextBookmark */;
+			C62D145F1021C0DC00469DF2 /* PBXTextBookmark */ = C62D145F1021C0DC00469DF2 /* PBXTextBookmark */;
+			C62D14601021C10000469DF2 /* PBXTextBookmark */ = C62D14601021C10000469DF2 /* PBXTextBookmark */;
+			C62D14621021C16400469DF2 /* PBXTextBookmark */ = C62D14621021C16400469DF2 /* PBXTextBookmark */;
+			C62D14631021C16400469DF2 /* PBXTextBookmark */ = C62D14631021C16400469DF2 /* PBXTextBookmark */;
+			C62D14641021C16400469DF2 /* PBXTextBookmark */ = C62D14641021C16400469DF2 /* PBXTextBookmark */;
+			C62D14651021C16400469DF2 /* PBXTextBookmark */ = C62D14651021C16400469DF2 /* PBXTextBookmark */;
+			C62D14671021C1AC00469DF2 /* PBXTextBookmark */ = C62D14671021C1AC00469DF2 /* PBXTextBookmark */;
+			C62D14691021C1DD00469DF2 /* PBXTextBookmark */ = C62D14691021C1DD00469DF2 /* PBXTextBookmark */;
+			C62D146A1021C1DD00469DF2 /* PBXTextBookmark */ = C62D146A1021C1DD00469DF2 /* PBXTextBookmark */;
+			C62D146B1021C1DD00469DF2 /* PBXTextBookmark */ = C62D146B1021C1DD00469DF2 /* PBXTextBookmark */;
+			C62D146C1021C1DD00469DF2 /* PBXTextBookmark */ = C62D146C1021C1DD00469DF2 /* PBXTextBookmark */;
+			C62D146E1021C1FB00469DF2 /* PBXTextBookmark */ = C62D146E1021C1FB00469DF2 /* PBXTextBookmark */;
+			C62D14711021CB9900469DF2 /* PBXTextBookmark */ = C62D14711021CB9900469DF2 /* PBXTextBookmark */;
+			C62D14721021CB9900469DF2 /* PBXTextBookmark */ = C62D14721021CB9900469DF2 /* PBXTextBookmark */;
+			C62D14731021CB9900469DF2 /* PBXTextBookmark */ = C62D14731021CB9900469DF2 /* PBXTextBookmark */;
+			C62D14741021CB9900469DF2 /* PBXTextBookmark */ = C62D14741021CB9900469DF2 /* PBXTextBookmark */;
+			C62D14751021CB9900469DF2 /* PBXTextBookmark */ = C62D14751021CB9900469DF2 /* PBXTextBookmark */;
+			C62D14791021CDDE00469DF2 /* PBXTextBookmark */ = C62D14791021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D147A1021CDDE00469DF2 /* PBXTextBookmark */ = C62D147A1021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D147B1021CDDE00469DF2 /* PBXTextBookmark */ = C62D147B1021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D147C1021CDDE00469DF2 /* PBXTextBookmark */ = C62D147C1021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D147D1021CDDE00469DF2 /* PBXTextBookmark */ = C62D147D1021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D147E1021CDDE00469DF2 /* PBXTextBookmark */ = C62D147E1021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D147F1021CDDE00469DF2 /* PBXTextBookmark */ = C62D147F1021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D14801021CDDE00469DF2 /* PBXTextBookmark */ = C62D14801021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D14811021CDDE00469DF2 /* PBXTextBookmark */ = C62D14811021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D14821021CDDE00469DF2 /* PBXTextBookmark */ = C62D14821021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D14831021CDDE00469DF2 /* PBXTextBookmark */ = C62D14831021CDDE00469DF2 /* PBXTextBookmark */;
+			C62D14841021CE5400469DF2 /* PBXTextBookmark */ = C62D14841021CE5400469DF2 /* PBXTextBookmark */;
+			C62D14851021CE5400469DF2 /* PBXTextBookmark */ = C62D14851021CE5400469DF2 /* PBXTextBookmark */;
+			C62D14861021CE5400469DF2 /* PBXTextBookmark */ = C62D14861021CE5400469DF2 /* PBXTextBookmark */;
+			C62D14871021CE5400469DF2 /* PBXTextBookmark */ = C62D14871021CE5400469DF2 /* PBXTextBookmark */;
+			C62D148A1021CEC600469DF2 /* PBXTextBookmark */ = C62D148A1021CEC600469DF2 /* PBXTextBookmark */;
+			C62D148B1021CF3F00469DF2 /* PBXTextBookmark */ = C62D148B1021CF3F00469DF2 /* PBXTextBookmark */;
+			C62D148C1021CF7700469DF2 /* PBXTextBookmark */ = C62D148C1021CF7700469DF2 /* PBXTextBookmark */;
+			C62D148D1021CF7700469DF2 /* PBXTextBookmark */ = C62D148D1021CF7700469DF2 /* PBXTextBookmark */;
+			C62D148E1021CF7700469DF2 /* PBXTextBookmark */ = C62D148E1021CF7700469DF2 /* PBXTextBookmark */;
+			C62D148F1021CF7700469DF2 /* PBXTextBookmark */ = C62D148F1021CF7700469DF2 /* PBXTextBookmark */;
+			C62D14901021CF7700469DF2 /* PBXTextBookmark */ = C62D14901021CF7700469DF2 /* PBXTextBookmark */;
+			C62D14921021CF9200469DF2 /* PBXTextBookmark */ = C62D14921021CF9200469DF2 /* PBXTextBookmark */;
+			C62D14941021CFBD00469DF2 /* PBXTextBookmark */ = C62D14941021CFBD00469DF2 /* PBXTextBookmark */;
+			C62D14961021CFCD00469DF2 /* PBXTextBookmark */ = C62D14961021CFCD00469DF2 /* PBXTextBookmark */;
+			C62D14981021D08D00469DF2 /* PBXTextBookmark */ = C62D14981021D08D00469DF2 /* PBXTextBookmark */;
+			C62D14991021D0D800469DF2 /* PBXTextBookmark */ = C62D14991021D0D800469DF2 /* PBXTextBookmark */;
+			C62D149A1021D14900469DF2 /* PBXTextBookmark */ = C62D149A1021D14900469DF2 /* PBXTextBookmark */;
+			C62D149B1021D14900469DF2 /* PBXTextBookmark */ = C62D149B1021D14900469DF2 /* PBXTextBookmark */;
+			C62D149C1021D14900469DF2 /* PBXTextBookmark */ = C62D149C1021D14900469DF2 /* PBXTextBookmark */;
+			C62D149D1021D14900469DF2 /* PBXTextBookmark */ = C62D149D1021D14900469DF2 /* PBXTextBookmark */;
+			C62D14A21021D1B800469DF2 /* PBXTextBookmark */ = C62D14A21021D1B800469DF2 /* PBXTextBookmark */;
+			C62D14A31021D1B800469DF2 /* PBXTextBookmark */ = C62D14A31021D1B800469DF2 /* PBXTextBookmark */;
+			C62D14A41021D1B800469DF2 /* PBXTextBookmark */ = C62D14A41021D1B800469DF2 /* PBXTextBookmark */;
+			C62D14AA1021D1C400469DF2 /* PBXTextBookmark */ = C62D14AA1021D1C400469DF2 /* PBXTextBookmark */;
+			C62D14AB1021D1C400469DF2 /* PBXTextBookmark */ = C62D14AB1021D1C400469DF2 /* PBXTextBookmark */;
+			C62D14AC1021D1C400469DF2 /* PBXTextBookmark */ = C62D14AC1021D1C400469DF2 /* PBXTextBookmark */;
+			C62D14AD1021D1C400469DF2 /* PBXTextBookmark */ = C62D14AD1021D1C400469DF2 /* PBXTextBookmark */;
+			C62D14B01021D26A00469DF2 /* PBXTextBookmark */ = C62D14B01021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B11021D26A00469DF2 /* PBXTextBookmark */ = C62D14B11021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B21021D26A00469DF2 /* PBXTextBookmark */ = C62D14B21021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B31021D26A00469DF2 /* PBXTextBookmark */ = C62D14B31021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B41021D26A00469DF2 /* PBXTextBookmark */ = C62D14B41021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B51021D26A00469DF2 /* PBXTextBookmark */ = C62D14B51021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B61021D26A00469DF2 /* PBXTextBookmark */ = C62D14B61021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B71021D26A00469DF2 /* PBXTextBookmark */ = C62D14B71021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B81021D26A00469DF2 /* PBXTextBookmark */ = C62D14B81021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14B91021D26A00469DF2 /* PBXTextBookmark */ = C62D14B91021D26A00469DF2 /* PBXTextBookmark */;
+			C62D14BA1021D26A00469DF2 /* PBXTextBookmark */ = C62D14BA1021D26A00469DF2 /* PBXTextBookmark */;
 			C6779BCC100B9A61000B8058 = C6779BCC100B9A61000B8058 /* PBXTargetBookmark */;
 			C6CBEBC6100BB4D100A70431 = C6CBEBC6100BB4D100A70431 /* PBXTextBookmark */;
 			C6CBECB0100BCE0B00A70431 = C6CBECB0100BCE0B00A70431 /* PBXTextBookmark */;
@@ -2346,45 +2438,58 @@
 	};
 	C62D120210218EDC00469DF2 /* edison.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {619, 20298}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 955}";
+			sepNavIntBoundsRect = "{{0, 0}, {833, 20502}}";
+			sepNavSelRange = "{10194, 0}";
+			sepNavVisRange = "{10057, 667}";
 		};
 	};
 	C62D120310218EDC00469DF2 /* edison.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = edison.h;
+		path = "/Developer/GPU Computing/C/src/MeanShift/edison.h";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {619, 702}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 153}";
+			sepNavSelRange = "{73, 0}";
+			sepNavVisRange = "{0, 73}";
 		};
 	};
 	C62D120510218EDC00469DF2 /* filter.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {619, 702}}";
-			sepNavSelRange = "{346, 0}";
+			sepNavSelRange = "{551, 0}";
 			sepNavVisRange = "{0, 615}";
 		};
 	};
 	C62D120610218EDC00469DF2 /* main.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {619, 10030}}";
-			sepNavSelRange = "{358, 0}";
-			sepNavVisRange = "{0, 1981}";
+			sepNavIntBoundsRect = "{{0, 0}, {696, 10455}}";
+			sepNavSelRange = "{424, 0}";
+			sepNavVisRange = "{15891, 1551}";
 		};
 	};
 	C62D120710218EDC00469DF2 /* Makefile */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {619, 1071}}";
-			sepNavSelRange = "{1813, 0}";
-			sepNavVisRange = "{1050, 1337}";
+			sepNavIntBoundsRect = "{{0, 0}, {619, 1054}}";
+			sepNavSelRange = "{1988, 0}";
+			sepNavVisRange = "{974, 1384}";
 		};
 	};
-	C62D120810218EDC00469DF2 /* meanshift.cpp */ = {
+	C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {619, 3853}}";
 			sepNavSelRange = "{4087, 0}";
 			sepNavVisRange = "{2885, 1425}";
 			sepNavWindowFrame = "{{15, 56}, {1176, 967}}";
+		};
+	};
+	C62D120910218EDC00469DF2 /* rgbluv.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {619, 2159}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1062}";
 		};
 	};
 	C62D120E10218F1800469DF2 /* common.mk */ = {
@@ -2430,7 +2535,7 @@
 	};
 	C62D12141021907800469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 1";
 		rLen = 0;
 		rLoc = 0;
@@ -2460,40 +2565,40 @@
 	};
 	C62D12171021907800469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 94";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 2645;
 		rType = 0;
 		vrLen = 968;
 		vrLoc = 1631;
 	};
 	C62D121C102190A000469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 94";
 		rLen = 0;
-		rLoc = 2610;
+		rLoc = 2647;
 		rType = 0;
 		vrLen = 1377;
 		vrLoc = 2609;
 	};
 	C62D121D102190DD00469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 94";
 		rLen = 0;
-		rLoc = 2610;
+		rLoc = 2647;
 		rType = 0;
 		vrLen = 1377;
 		vrLoc = 2609;
 	};
 	C62D121E102190DD00469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 94";
 		rLen = 0;
-		rLoc = 2610;
+		rLoc = 2647;
 		rType = 0;
 		vrLen = 1377;
 		vrLoc = 2609;
@@ -2503,7 +2608,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 1120;
@@ -2513,7 +2618,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 1120;
@@ -2530,10 +2635,10 @@
 	};
 	C62D1223102193BF00469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 86";
 		rLen = 0;
-		rLoc = 2264;
+		rLoc = 2301;
 		rType = 0;
 		vrLen = 968;
 		vrLoc = 1631;
@@ -2543,17 +2648,17 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 1120;
 	};
 	C62D1225102193BF00469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 86";
 		rLen = 0;
-		rLoc = 2264;
+		rLoc = 2301;
 		rType = 0;
 		vrLen = 968;
 		vrLoc = 1631;
@@ -2570,30 +2675,30 @@
 	};
 	C62D1227102193BF00469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 66";
 		rLen = 0;
-		rLoc = 1741;
+		rLoc = 1775;
 		rType = 0;
 		vrLen = 1145;
 		vrLoc = 1070;
 	};
 	C62D1229102194FF00469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 135";
 		rLen = 0;
-		rLoc = 3615;
+		rLoc = 3762;
 		rType = 0;
 		vrLen = 1356;
 		vrLoc = 2883;
 	};
 	C62D122A1021961300469DF2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C62D120810218EDC00469DF2 /* meanshift.cpp */;
+		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 152";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1425;
 		vrLoc = 2885;
@@ -2601,15 +2706,14 @@
 	C62D122E102196BF00469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 	};
 	C62D1230102196BF00469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {833, 4363}}";
 			sepNavSelRange = "{1981, 6}";
@@ -2620,7 +2724,7 @@
 		isa = PBXTextBookmark;
 		fRef = C62D122E102196BF00469DF2 /* meanshift.cpp */;
 		rLen = 0;
-		rLoc = 182;
+		rLoc = 187;
 		rType = 1;
 	};
 	C62D1234102196DE00469DF2 /* PBXTextBookmark */ = {
@@ -2628,7 +2732,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 154";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1529;
 		vrLoc = 3512;
@@ -2638,7 +2742,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 165";
 		rLen = 0;
-		rLoc = 4961;
+		rLoc = 5108;
 		rType = 0;
 		vrLen = 1482;
 		vrLoc = 3512;
@@ -2648,7 +2752,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 164";
 		rLen = 0;
-		rLoc = 4959;
+		rLoc = 5106;
 		rType = 0;
 		vrLen = 1538;
 		vrLoc = 3512;
@@ -2658,7 +2762,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 164";
 		rLen = 0;
-		rLoc = 4959;
+		rLoc = 5106;
 		rType = 0;
 		vrLen = 1528;
 		vrLoc = 3447;
@@ -2668,7 +2772,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 174";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1314;
 		vrLoc = 4313;
@@ -2678,7 +2782,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 174";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 3892;
@@ -2688,7 +2792,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 172";
 		rLen = 0;
-		rLoc = 4878;
+		rLoc = 5025;
 		rType = 0;
 		vrLen = 1439;
 		vrLoc = 4007;
@@ -2698,7 +2802,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 151";
 		rLen = 0;
-		rLoc = 3741;
+		rLoc = 3888;
 		rType = 0;
 		vrLen = 1374;
 		vrLoc = 3444;
@@ -2708,7 +2812,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 162";
 		rLen = 0;
-		rLoc = 4334;
+		rLoc = 4481;
 		rType = 0;
 		vrLen = 1606;
 		vrLoc = 3697;
@@ -2718,7 +2822,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 172";
 		rLen = 0;
-		rLoc = 4878;
+		rLoc = 5025;
 		rType = 0;
 		vrLen = 1494;
 		vrLoc = 3672;
@@ -2728,7 +2832,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 172";
 		rLen = 0;
-		rLoc = 4878;
+		rLoc = 5025;
 		rType = 0;
 		vrLen = 1605;
 		vrLoc = 3697;
@@ -2737,15 +2841,14 @@
 		isa = PBXTextBookmark;
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		rLen = 6;
-		rLoc = 1755;
+		rLoc = 1789;
 		rType = 0;
 	};
 	C62D125010219AED00469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {636, 4091}}";
 			sepNavSelRange = "{3599, 0}";
@@ -2757,7 +2860,7 @@
 		fRef = C62D1230102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 80";
 		rLen = 6;
-		rLoc = 1755;
+		rLoc = 1789;
 		rType = 0;
 		vrLen = 1010;
 		vrLoc = 1510;
@@ -2767,7 +2870,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 171";
 		rLen = 0;
-		rLoc = 4804;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1608;
 		vrLoc = 3697;
@@ -2777,7 +2880,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 177";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1378;
 		vrLoc = 3804;
@@ -2787,7 +2890,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 177";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1349;
 		vrLoc = 3892;
@@ -2797,7 +2900,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 169";
 		rLen = 0;
-		rLoc = 4804;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1429;
 		vrLoc = 3675;
@@ -2807,7 +2910,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 175";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1427;
 		vrLoc = 3675;
@@ -2817,7 +2920,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 175";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1481;
 		vrLoc = 3697;
@@ -2827,7 +2930,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 170";
 		rLen = 0;
-		rLoc = 4804;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 4189;
@@ -2837,7 +2940,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 171";
 		rLen = 0;
-		rLoc = 4804;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 4220;
@@ -2847,7 +2950,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 171";
 		rLen = 0;
-		rLoc = 4877;
+		rLoc = 5024;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 4003;
@@ -2857,7 +2960,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 170";
 		rLen = 0;
-		rLoc = 4804;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 4282;
@@ -2867,7 +2970,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 171";
 		rLen = 0;
-		rLoc = 4877;
+		rLoc = 5024;
 		rType = 0;
 		vrLen = 1350;
 		vrLoc = 3492;
@@ -2877,7 +2980,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 171";
 		rLen = 0;
-		rLoc = 4877;
+		rLoc = 5024;
 		rType = 0;
 		vrLen = 1397;
 		vrLoc = 3804;
@@ -2887,7 +2990,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 190";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1366;
 		vrLoc = 3977;
@@ -2897,7 +3000,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 187";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1362;
 		vrLoc = 4065;
@@ -2907,7 +3010,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 184";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1446;
 		vrLoc = 3849;
@@ -2917,7 +3020,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 166";
 		rLen = 0;
-		rLoc = 4333;
+		rLoc = 4480;
 		rType = 0;
 		vrLen = 1428;
 		vrLoc = 3730;
@@ -2927,7 +3030,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 164";
 		rLen = 0;
-		rLoc = 4333;
+		rLoc = 4480;
 		rType = 0;
 		vrLen = 1399;
 		vrLoc = 3839;
@@ -2937,7 +3040,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 73";
 		rLen = 0;
-		rLoc = 1741;
+		rLoc = 1775;
 		rType = 0;
 		vrLen = 1135;
 		vrLoc = 948;
@@ -2947,7 +3050,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 150";
 		rLen = 0;
-		rLoc = 4804;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1529;
 		vrLoc = 3386;
@@ -2957,7 +3060,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 150";
 		rLen = 0;
-		rLoc = 4804;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1529;
 		vrLoc = 3386;
@@ -2967,7 +3070,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 142";
 		rLen = 0;
-		rLoc = 3821;
+		rLoc = 3968;
 		rType = 0;
 		vrLen = 1585;
 		vrLoc = 3288;
@@ -3007,10 +3110,9 @@
 	};
 	C62D129B1021A13F00469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {619, 3774}}";
 			sepNavSelRange = "{1753, 0}";
@@ -3059,7 +3161,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 89";
 		rLen = 42;
-		rLoc = 2238;
+		rLoc = 2275;
 		rType = 0;
 		vrLen = 1240;
 		vrLoc = 1497;
@@ -3076,7 +3178,7 @@
 		fRef = C62D125010219AED00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 142";
 		rLen = 0;
-		rLoc = 3821;
+		rLoc = 3968;
 		rType = 0;
 		vrLen = 1649;
 		vrLoc = 3175;
@@ -3116,7 +3218,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 89";
 		rLen = 42;
-		rLoc = 2238;
+		rLoc = 2275;
 		rType = 0;
 		vrLen = 1240;
 		vrLoc = 1497;
@@ -3136,7 +3238,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 85";
 		rLen = 0;
-		rLoc = 2234;
+		rLoc = 2271;
 		rType = 0;
 		vrLen = 928;
 		vrLoc = 2033;
@@ -3146,7 +3248,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 142";
 		rLen = 0;
-		rLoc = 3821;
+		rLoc = 3968;
 		rType = 0;
 		vrLen = 1712;
 		vrLoc = 2958;
@@ -3156,7 +3258,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 164";
 		rLen = 0;
-		rLoc = 4961;
+		rLoc = 5108;
 		rType = 0;
 		vrLen = 1542;
 		vrLoc = 3288;
@@ -3166,7 +3268,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 137";
 		rLen = 0;
-		rLoc = 3615;
+		rLoc = 3762;
 		rType = 0;
 		vrLen = 1305;
 		vrLoc = 2802;
@@ -3176,7 +3278,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 136";
 		rLen = 0;
-		rLoc = 3615;
+		rLoc = 3762;
 		rType = 0;
 		vrLen = 1306;
 		vrLoc = 2802;
@@ -3186,7 +3288,7 @@
 		fRef = C62D129B1021A13F00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 72";
 		rLen = 0;
-		rLoc = 1741;
+		rLoc = 1775;
 		rType = 0;
 		vrLen = 1162;
 		vrLoc = 1158;
@@ -3194,15 +3296,14 @@
 	C62D12BB1021A31400469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 	};
 	C62D12BD1021A31400469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {660, 4074}}";
 			sepNavSelRange = "{3957, 0}";
@@ -3213,7 +3314,7 @@
 		isa = PBXTextBookmark;
 		fRef = C62D12BB1021A31400469DF2 /* meanshift.cpp */;
 		rLen = 0;
-		rLoc = 72;
+		rLoc = 74;
 		rType = 1;
 	};
 	C62D12C21021A34600469DF2 /* PBXTextBookmark */ = {
@@ -3221,7 +3322,7 @@
 		fRef = C62D12BD1021A31400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 66";
 		rLen = 0;
-		rLoc = 1578;
+		rLoc = 1612;
 		rType = 0;
 		vrLen = 1001;
 		vrLoc = 1158;
@@ -3231,24 +3332,23 @@
 		fRef = C62D12BD1021A31400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 161";
 		rLen = 0;
-		rLoc = 3877;
+		rLoc = 4024;
 		rType = 0;
 		vrLen = 1359;
 		vrLoc = 3783;
 	};
 	C62D12C51021A40900469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<group>";
+		path = "GPU Computing/C/src/MeanShift/meanshiftfilter.cpp";
+		sourceTree = DEVELOPER_DIR;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {619, 3825}}";
 			sepNavSelRange = "{1493, 0}";
 			sepNavVisRange = "{663, 999}";
 		};
 	};
-	C62D12C71021A40900469DF2 /* meanshift.cpp:170 */ = {
+	C62D12C71021A40900469DF2 /* meanshift.cpp:175 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -3260,7 +3360,7 @@
 		functionName = "main( int argc, char** argv)";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 170;
+		lineNumber = 175;
 		modificationTime = 270640139.603549;
 		state = 2;
 	};
@@ -3269,7 +3369,7 @@
 		fRef = C62D12C51021A40900469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 78";
 		rLen = 0;
-		rLoc = 1738;
+		rLoc = 1772;
 		rType = 0;
 		vrLen = 1169;
 		vrLoc = 1894;
@@ -3279,7 +3379,7 @@
 		fRef = C62D12C51021A40900469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 159";
 		rLen = 0;
-		rLoc = 3820;
+		rLoc = 3967;
 		rType = 0;
 		vrLen = 1411;
 		vrLoc = 3286;
@@ -3289,7 +3389,7 @@
 		fRef = C62D12C51021A40900469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 70";
 		rLen = 0;
-		rLoc = 1481;
+		rLoc = 1515;
 		rType = 0;
 		vrLen = 1069;
 		vrLoc = 1159;
@@ -3299,7 +3399,7 @@
 		fRef = C62D12C51021A40900469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 62";
 		rLen = 0;
-		rLoc = 1419;
+		rLoc = 1453;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 663;
@@ -3307,15 +3407,14 @@
 	C62D12D11021A5B300469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 	};
 	C62D12D31021A5B300469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {660, 4267}}";
 			sepNavSelRange = "{2213, 0}";
@@ -3326,7 +3425,7 @@
 		isa = PBXTextBookmark;
 		fRef = C62D12D11021A5B300469DF2 /* meanshift.cpp */;
 		rLen = 1;
-		rLoc = 60;
+		rLoc = 62;
 		rType = 1;
 	};
 	C62D12D61021A5B900469DF2 /* PBXTextBookmark */ = {
@@ -3334,7 +3433,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 59";
 		rLen = 0;
-		rLoc = 1419;
+		rLoc = 1453;
 		rType = 0;
 		vrLen = 1054;
 		vrLoc = 910;
@@ -3344,7 +3443,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 58";
 		rLen = 0;
-		rLoc = 1367;
+		rLoc = 1401;
 		rType = 0;
 		vrLen = 1023;
 		vrLoc = 1718;
@@ -3354,7 +3453,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 140";
 		rLen = 0;
-		rLoc = 3739;
+		rLoc = 3886;
 		rType = 0;
 		vrLen = 1349;
 		vrLoc = 3217;
@@ -3364,7 +3463,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 147";
 		rLen = 0;
-		rLoc = 4333;
+		rLoc = 4480;
 		rType = 0;
 		vrLen = 1324;
 		vrLoc = 3217;
@@ -3374,7 +3473,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 160";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 3367;
@@ -3384,7 +3483,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 176";
 		rLen = 0;
-		rLoc = 4940;
+		rLoc = 5087;
 		rType = 0;
 		vrLen = 1541;
 		vrLoc = 3475;
@@ -3394,7 +3493,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 171";
 		rLen = 0;
-		rLoc = 4827;
+		rLoc = 4974;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 3562;
@@ -3404,7 +3503,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 146";
 		rLen = 0;
-		rLoc = 3659;
+		rLoc = 3806;
 		rType = 0;
 		vrLen = 1042;
 		vrLoc = 1843;
@@ -3414,7 +3513,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 196";
 		rLen = 0;
-		rLoc = 5378;
+		rLoc = 5525;
 		rType = 0;
 		vrLen = 1174;
 		vrLoc = 4932;
@@ -3424,7 +3523,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 189";
 		rLen = 0;
-		rLoc = 5175;
+		rLoc = 5322;
 		rType = 0;
 		vrLen = 1174;
 		vrLoc = 4932;
@@ -3434,7 +3533,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 189";
 		rLen = 0;
-		rLoc = 5175;
+		rLoc = 5322;
 		rType = 0;
 		vrLen = 1174;
 		vrLoc = 4932;
@@ -3444,23 +3543,23 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 1120;
 	};
 	C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {678, 7072}}";
-			sepNavSelRange = "{559, 0}";
-			sepNavVisRange = "{0, 2132}";
+			sepNavIntBoundsRect = "{{0, 0}, {678, 7378}}";
+			sepNavSelRange = "{13433, 0}";
+			sepNavVisRange = "{12947, 1083}";
 		};
 	};
 	C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {619, 5083}}";
-			sepNavSelRange = "{342, 0}";
-			sepNavVisRange = "{146, 909}";
+			sepNavIntBoundsRect = "{{0, 0}, {619, 4964}}";
+			sepNavSelRange = "{350, 0}";
+			sepNavVisRange = "{154, 712}";
 		};
 	};
 	C62D12EB1021AAF100469DF2 /* PBXTextBookmark */ = {
@@ -3468,7 +3567,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 1120;
@@ -3498,7 +3597,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 1120;
@@ -3528,7 +3627,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 148";
 		rLen = 0;
-		rLoc = 3739;
+		rLoc = 3886;
 		rType = 0;
 		vrLen = 1577;
 		vrLoc = 3331;
@@ -3538,7 +3637,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 148";
 		rLen = 0;
-		rLoc = 3739;
+		rLoc = 3886;
 		rType = 0;
 		vrLen = 1577;
 		vrLoc = 3331;
@@ -3568,7 +3667,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -3588,7 +3687,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 148";
 		rLen = 0;
-		rLoc = 3739;
+		rLoc = 3886;
 		rType = 0;
 		vrLen = 1577;
 		vrLoc = 3331;
@@ -3608,7 +3707,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 270";
 		rLen = 7;
-		rLoc = 8096;
+		rLoc = 8093;
 		rType = 0;
 		vrLen = 1163;
 		vrLoc = 7259;
@@ -3628,7 +3727,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -3648,7 +3747,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 1120;
@@ -3658,7 +3757,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -3668,7 +3767,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 1120;
@@ -3678,7 +3777,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 6";
 		rLen = 0;
-		rLoc = 209;
+		rLoc = 237;
 		rType = 0;
 		vrLen = 1002;
 		vrLoc = 396;
@@ -3718,7 +3817,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -3728,7 +3827,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 6";
 		rLen = 0;
-		rLoc = 209;
+		rLoc = 237;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 0;
@@ -3738,7 +3837,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 52";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 1120;
@@ -3758,7 +3857,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 6";
 		rLen = 0;
-		rLoc = 209;
+		rLoc = 237;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 4724;
@@ -3778,7 +3877,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 6";
 		rLen = 0;
-		rLoc = 209;
+		rLoc = 237;
 		rType = 0;
 		vrLen = 1002;
 		vrLoc = 396;
@@ -3828,7 +3927,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1233;
 		vrLoc = 1188;
@@ -3838,7 +3937,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1233;
 		vrLoc = 1188;
@@ -3858,7 +3957,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1233;
 		vrLoc = 1188;
@@ -3878,7 +3977,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 44";
 		rLen = 0;
-		rLoc = 1099;
+		rLoc = 1349;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 649;
@@ -3908,7 +4007,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 44";
 		rLen = 0;
-		rLoc = 1099;
+		rLoc = 1349;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 649;
@@ -3958,7 +4057,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1318;
 		vrLoc = 1120;
@@ -3988,7 +4087,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1250;
 		vrLoc = 1188;
@@ -4028,7 +4127,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1318;
 		vrLoc = 1120;
@@ -4058,7 +4157,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1267;
 		vrLoc = 1188;
@@ -4068,7 +4167,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1234;
 		vrLoc = 1188;
@@ -4078,7 +4177,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1249;
 		vrLoc = 1188;
@@ -4088,7 +4187,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 1120;
@@ -4098,7 +4197,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2366;
+		rLoc = 2337;
 		rType = 0;
 		vrLen = 1317;
 		vrLoc = 1120;
@@ -4118,7 +4217,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2366;
+		rLoc = 2337;
 		rType = 0;
 		vrLen = 1300;
 		vrLoc = 1120;
@@ -4128,7 +4227,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 64";
 		rLen = 0;
-		rLoc = 2366;
+		rLoc = 2337;
 		rType = 0;
 		vrLen = 1300;
 		vrLoc = 1120;
@@ -4148,7 +4247,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 57";
 		rLen = 0;
-		rLoc = 2135;
+		rLoc = 2106;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4158,7 +4257,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 57";
 		rLen = 0;
-		rLoc = 2135;
+		rLoc = 2106;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4178,7 +4277,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 57";
 		rLen = 0;
-		rLoc = 2135;
+		rLoc = 2106;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4258,7 +4357,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 6";
 		rLen = 0;
-		rLoc = 178;
+		rLoc = 206;
 		rType = 0;
 		vrLen = 1055;
 		vrLoc = 0;
@@ -4268,7 +4367,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 5";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1069;
 		vrLoc = 0;
@@ -4278,7 +4377,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1069;
 		vrLoc = 0;
@@ -4288,7 +4387,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 148";
 		rLen = 0;
-		rLoc = 3739;
+		rLoc = 3886;
 		rType = 0;
 		vrLen = 1577;
 		vrLoc = 3331;
@@ -4298,7 +4397,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1069;
 		vrLoc = 0;
@@ -4308,7 +4407,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 91";
 		rLen = 0;
-		rLoc = 2153;
+		rLoc = 2190;
 		rType = 0;
 		vrLen = 1142;
 		vrLoc = 1626;
@@ -4318,7 +4417,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 89";
 		rLen = 0;
-		rLoc = 2127;
+		rLoc = 2161;
 		rType = 0;
 		vrLen = 1122;
 		vrLoc = 1843;
@@ -4328,7 +4427,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1155;
 		vrLoc = 5111;
@@ -4338,7 +4437,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 0;
@@ -4348,7 +4447,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1152;
 		vrLoc = 5111;
@@ -4358,7 +4457,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1152;
 		vrLoc = 5111;
@@ -4368,7 +4467,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 0;
@@ -4378,7 +4477,7 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1158;
 		vrLoc = 5111;
@@ -4388,23 +4487,28 @@
 		fRef = C62D12D31021A5B300469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 90";
 		rLen = 0;
-		rLoc = 2152;
+		rLoc = 2189;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 5243;
 	};
 	C62D135F1021B27800469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {660, 4216}}";
+			sepNavSelRange = "{6056, 0}";
+			sepNavVisRange = "{5748, 1130}";
+		};
 	};
 	C62D13611021B27800469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {660, 4340}}";
 			sepNavSelRange = "{5704, 14}";
@@ -4415,7 +4519,7 @@
 		isa = PBXTextBookmark;
 		fRef = C62D135F1021B27800469DF2 /* meanshift.cpp */;
 		rLen = 0;
-		rLoc = 208;
+		rLoc = 213;
 		rType = 1;
 	};
 	C62D13651021B29500469DF2 /* PBXTextBookmark */ = {
@@ -4423,7 +4527,7 @@
 		fRef = C62D13611021B27800469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1189;
 		vrLoc = 5107;
@@ -4431,15 +4535,14 @@
 	C62D136D1021B30D00469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 	};
 	C62D136F1021B30D00469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {660, 4346}}";
 			sepNavSelRange = "{1404, 0}";
@@ -4451,7 +4554,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 0;
@@ -4460,7 +4563,7 @@
 		isa = PBXTextBookmark;
 		fRef = C62D136D1021B30D00469DF2 /* meanshift.cpp */;
 		rLen = 0;
-		rLoc = 208;
+		rLoc = 213;
 		rType = 1;
 	};
 	C62D13721021B31200469DF2 /* PBXTextBookmark */ = {
@@ -4468,7 +4571,7 @@
 		fRef = C62D13611021B27800469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1273;
 		vrLoc = 5180;
@@ -4478,7 +4581,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 0;
@@ -4488,7 +4591,7 @@
 		fRef = C62D136F1021B30D00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 210";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1222;
 		vrLoc = 5157;
@@ -4498,7 +4601,7 @@
 		fRef = C62D136F1021B30D00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 5157;
@@ -4508,7 +4611,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 0;
@@ -4518,7 +4621,7 @@
 		fRef = C62D136F1021B30D00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 5157;
@@ -4528,17 +4631,16 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 178;
+		rLoc = 206;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 0;
 	};
 	C62D13841021B53400469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {619, 4499}}";
 			sepNavSelRange = "{2186, 36}";
@@ -4550,7 +4652,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 276";
 		rLen = 0;
-		rLoc = 7016;
+		rLoc = 7371;
 		rType = 0;
 		vrLen = 942;
 		vrLoc = 6151;
@@ -4560,7 +4662,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5747;
 		rType = 0;
 		vrLen = 1219;
 		vrLoc = 5167;
@@ -4570,7 +4672,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 7";
 		rLen = 0;
-		rLoc = 178;
+		rLoc = 206;
 		rType = 0;
 		vrLen = 1060;
 		vrLoc = 0;
@@ -4580,7 +4682,7 @@
 		fRef = C62D136F1021B30D00469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 58";
 		rLen = 0;
-		rLoc = 1333;
+		rLoc = 1367;
 		rType = 0;
 		vrLen = 1063;
 		vrLoc = 911;
@@ -4590,7 +4692,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 6";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1070;
 		vrLoc = 0;
@@ -4600,7 +4702,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 209";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5747;
 		rType = 0;
 		vrLen = 1272;
 		vrLoc = 5167;
@@ -4610,7 +4712,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 276";
 		rLen = 0;
-		rLoc = 7016;
+		rLoc = 7371;
 		rType = 0;
 		vrLen = 942;
 		vrLoc = 6151;
@@ -4620,7 +4722,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 212";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1176;
 		vrLoc = 5167;
@@ -4630,7 +4732,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 210";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1184;
 		vrLoc = 5167;
@@ -4640,7 +4742,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 210";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1184;
 		vrLoc = 5167;
@@ -4650,7 +4752,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 276";
 		rLen = 0;
-		rLoc = 7016;
+		rLoc = 7371;
 		rType = 0;
 		vrLen = 942;
 		vrLoc = 6151;
@@ -4660,7 +4762,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 210";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1184;
 		vrLoc = 5167;
@@ -4670,7 +4772,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 10";
 		rLen = 0;
-		rLoc = 289;
+		rLoc = 317;
 		rType = 0;
 		vrLen = 1076;
 		vrLoc = 0;
@@ -4680,7 +4782,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 9";
 		rLen = 0;
-		rLoc = 193;
+		rLoc = 221;
 		rType = 0;
 		vrLen = 1064;
 		vrLoc = 0;
@@ -4710,7 +4812,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 9";
 		rLen = 0;
-		rLoc = 193;
+		rLoc = 221;
 		rType = 0;
 		vrLen = 1064;
 		vrLoc = 0;
@@ -4760,7 +4862,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 56";
 		rLen = 0;
-		rLoc = 2134;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4810,7 +4912,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 56";
 		rLen = 0;
-		rLoc = 2134;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4860,7 +4962,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 56";
 		rLen = 0;
-		rLoc = 2134;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4870,7 +4972,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 56";
 		rLen = 0;
-		rLoc = 2134;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4880,7 +4982,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 56";
 		rLen = 0;
-		rLoc = 2134;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4910,7 +5012,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 56";
 		rLen = 0;
-		rLoc = 2134;
+		rLoc = 2105;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1120;
@@ -4930,7 +5032,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 47";
 		rLen = 0;
-		rLoc = 2085;
+		rLoc = 2056;
 		rType = 0;
 		vrLen = 1438;
 		vrLoc = 974;
@@ -4940,7 +5042,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 48";
 		rLen = 0;
-		rLoc = 2086;
+		rLoc = 2057;
 		rType = 0;
 		vrLen = 1437;
 		vrLoc = 974;
@@ -4950,7 +5052,7 @@
 		fRef = C62D120710218EDC00469DF2 /* Makefile */;
 		name = "Makefile: 63";
 		rLen = 0;
-		rLoc = 2387;
+		rLoc = 2358;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 1050;
@@ -4987,7 +5089,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -4997,7 +5099,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 210";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1168;
 		vrLoc = 5167;
@@ -5017,7 +5119,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 281";
 		rLen = 0;
-		rLoc = 7016;
+		rLoc = 7371;
 		rType = 0;
 		vrLen = 983;
 		vrLoc = 6249;
@@ -5044,7 +5146,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -5054,7 +5156,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 274";
 		rLen = 0;
-		rLoc = 6834;
+		rLoc = 7189;
 		rType = 0;
 		vrLen = 901;
 		vrLoc = 6249;
@@ -5064,7 +5166,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 210";
 		rLen = 0;
-		rLoc = 5599;
+		rLoc = 5746;
 		rType = 0;
 		vrLen = 1168;
 		vrLoc = 5167;
@@ -5084,7 +5186,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 281";
 		rLen = 0;
-		rLoc = 7016;
+		rLoc = 7371;
 		rType = 0;
 		vrLen = 983;
 		vrLoc = 6249;
@@ -5147,7 +5249,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 24";
 		rLen = 0;
-		rLoc = 523;
+		rLoc = 557;
 		rType = 0;
 		vrLen = 961;
 		vrLoc = 0;
@@ -5157,7 +5259,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 281";
 		rLen = 0;
-		rLoc = 7016;
+		rLoc = 7371;
 		rType = 0;
 		vrLen = 983;
 		vrLoc = 6249;
@@ -5187,7 +5289,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 204";
 		rLen = 0;
-		rLoc = 5436;
+		rLoc = 5583;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 624;
@@ -5207,7 +5309,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 57";
 		rLen = 0;
-		rLoc = 1333;
+		rLoc = 1367;
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 971;
@@ -5227,7 +5329,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 24";
 		rLen = 0;
-		rLoc = 523;
+		rLoc = 557;
 		rType = 0;
 		vrLen = 961;
 		vrLoc = 0;
@@ -5257,7 +5359,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 9";
 		rLen = 0;
-		rLoc = 179;
+		rLoc = 207;
 		rType = 0;
 		vrLen = 1062;
 		vrLoc = 0;
@@ -5267,7 +5369,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 9";
 		rLen = 0;
-		rLoc = 179;
+		rLoc = 207;
 		rType = 0;
 		vrLen = 1062;
 		vrLoc = 0;
@@ -5277,7 +5379,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 58";
 		rLen = 0;
-		rLoc = 1332;
+		rLoc = 1366;
 		rType = 0;
 		vrLen = 1034;
 		vrLoc = 941;
@@ -5307,7 +5409,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 9";
 		rLen = 0;
-		rLoc = 179;
+		rLoc = 207;
 		rType = 0;
 		vrLen = 1111;
 		vrLoc = 141;
@@ -5317,7 +5419,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 55";
 		rLen = 0;
-		rLoc = 1332;
+		rLoc = 1366;
 		rType = 0;
 		vrLen = 989;
 		vrLoc = 523;
@@ -5327,7 +5429,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 15";
 		rLen = 0;
-		rLoc = 267;
+		rLoc = 301;
 		rType = 0;
 		vrLen = 1077;
 		vrLoc = 239;
@@ -5357,7 +5459,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 55";
 		rLen = 0;
-		rLoc = 1332;
+		rLoc = 1366;
 		rType = 0;
 		vrLen = 989;
 		vrLoc = 523;
@@ -5367,7 +5469,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 9";
 		rLen = 0;
-		rLoc = 179;
+		rLoc = 207;
 		rType = 0;
 		vrLen = 1111;
 		vrLoc = 141;
@@ -5377,17 +5479,16 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 88";
 		rLen = 0;
-		rLoc = 2126;
+		rLoc = 2160;
 		rType = 0;
 		vrLen = 1052;
 		vrLoc = 1857;
 	};
 	C62D13F91021BAB200469DF2 /* meanshift.cpp */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
 		name = meanshift.cpp;
-		path = "/Developer/GPU Computing/C/src/MeanShift/meanshift.cpp";
-		sourceTree = "<absolute>";
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {660, 4335}}";
 			sepNavSelRange = "{5865, 0}";
@@ -5407,9 +5508,9 @@
 		path = "/Developer/GPU Computing/C/src/MeanShift/meanshiftfilter_kernel.cu";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {619, 4743}}";
-			sepNavSelRange = "{6743, 0}";
-			sepNavVisRange = "{6156, 987}";
+			sepNavIntBoundsRect = "{{0, 0}, {619, 4981}}";
+			sepNavSelRange = "{5780, 0}";
+			sepNavVisRange = "{4901, 1071}";
 		};
 	};
 	C62D13FD1021BABA00469DF2 /* PBXTextBookmark */ = {
@@ -5417,7 +5518,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 104";
 		rLen = 42;
-		rLoc = 2238;
+		rLoc = 2275;
 		rType = 0;
 		vrLen = 966;
 		vrLoc = 1605;
@@ -5434,7 +5535,7 @@
 		fRef = C62D13841021B53400469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 92";
 		rLen = 0;
-		rLoc = 2127;
+		rLoc = 2161;
 		rType = 0;
 		vrLen = 1052;
 		vrLoc = 1857;
@@ -5444,7 +5545,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 8";
 		rLen = 0;
-		rLoc = 138;
+		rLoc = 166;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 0;
@@ -5454,7 +5555,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 104";
 		rLen = 42;
-		rLoc = 2238;
+		rLoc = 2275;
 		rType = 0;
 		vrLen = 966;
 		vrLoc = 1605;
@@ -5484,7 +5585,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 10";
 		rLen = 0;
-		rLoc = 139;
+		rLoc = 167;
 		rType = 0;
 		vrLen = 1063;
 		vrLoc = 0;
@@ -5494,7 +5595,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 10";
 		rLen = 0;
-		rLoc = 178;
+		rLoc = 206;
 		rType = 0;
 		vrLen = 1063;
 		vrLoc = 0;
@@ -5504,7 +5605,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 10";
 		rLen = 0;
-		rLoc = 176;
+		rLoc = 204;
 		rType = 0;
 		vrLen = 1056;
 		vrLoc = 0;
@@ -5512,7 +5613,7 @@
 	C62D140D1021BD5A00469DF2 /* meanshiftfilter_common.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {619, 702}}";
-			sepNavSelRange = "{193, 0}";
+			sepNavSelRange = "{209, 0}";
 			sepNavVisRange = "{0, 213}";
 		};
 	};
@@ -5521,7 +5622,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -5531,7 +5632,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 25";
 		rLen = 0;
-		rLoc = 580;
+		rLoc = 614;
 		rType = 0;
 		vrLen = 938;
 		vrLoc = 1675;
@@ -5551,7 +5652,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 8";
 		rLen = 0;
-		rLoc = 176;
+		rLoc = 204;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 0;
@@ -5581,7 +5682,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 8";
 		rLen = 0;
-		rLoc = 176;
+		rLoc = 204;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 0;
@@ -5591,7 +5692,7 @@
 		fRef = C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */;
 		name = "meanshiftfilter_gold.cpp: 261";
 		rLen = 0;
-		rLoc = 7757;
+		rLoc = 7754;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 7309;
@@ -5611,7 +5712,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 25";
 		rLen = 0;
-		rLoc = 580;
+		rLoc = 614;
 		rType = 0;
 		vrLen = 938;
 		vrLoc = 1675;
@@ -5631,7 +5732,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 12";
 		rLen = 0;
-		rLoc = 360;
+		rLoc = 388;
 		rType = 0;
 		vrLen = 1038;
 		vrLoc = 4087;
@@ -5641,7 +5742,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 268";
 		rLen = 0;
-		rLoc = 6827;
+		rLoc = 7182;
 		rType = 0;
 		vrLen = 961;
 		vrLoc = 6015;
@@ -5651,7 +5752,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 111";
 		rLen = 16;
-		rLoc = 2617;
+		rLoc = 2654;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 2100;
@@ -5661,7 +5762,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 266";
 		rLen = 0;
-		rLoc = 6703;
+		rLoc = 7058;
 		rType = 0;
 		vrLen = 1217;
 		vrLoc = 3442;
@@ -5671,7 +5772,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 266";
 		rLen = 0;
-		rLoc = 6703;
+		rLoc = 7058;
 		rType = 0;
 		vrLen = 1217;
 		vrLoc = 3442;
@@ -5681,7 +5782,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 111";
 		rLen = 16;
-		rLoc = 2617;
+		rLoc = 2654;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 2100;
@@ -5691,7 +5792,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 268";
 		rLen = 0;
-		rLoc = 6830;
+		rLoc = 7185;
 		rType = 0;
 		vrLen = 979;
 		vrLoc = 6153;
@@ -5701,7 +5802,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 219";
 		rLen = 0;
-		rLoc = 5865;
+		rLoc = 6023;
 		rType = 0;
 		vrLen = 1157;
 		vrLoc = 5236;
@@ -5711,7 +5812,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 266";
 		rLen = 0;
-		rLoc = 6743;
+		rLoc = 7098;
 		rType = 0;
 		vrLen = 987;
 		vrLoc = 6156;
@@ -5731,7 +5832,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 266";
 		rLen = 0;
-		rLoc = 6744;
+		rLoc = 7099;
 		rType = 0;
 		vrLen = 978;
 		vrLoc = 6153;
@@ -5741,7 +5842,7 @@
 		fRef = C62D13F91021BAB200469DF2 /* meanshift.cpp */;
 		name = "meanshift.cpp: 219";
 		rLen = 0;
-		rLoc = 5865;
+		rLoc = 6023;
 		rType = 0;
 		vrLen = 1157;
 		vrLoc = 5236;
@@ -5751,7 +5852,7 @@
 		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 266";
 		rLen = 0;
-		rLoc = 6743;
+		rLoc = 7098;
 		rType = 0;
 		vrLen = 987;
 		vrLoc = 6156;
@@ -5765,6 +5866,969 @@
 		rType = 0;
 		vrLen = 213;
 		vrLoc = 0;
+	};
+	C62D14331021BED100469DF2 /* meanshift.cpp */ = {
+		isa = PBXFileReference;
+		name = meanshift.cpp;
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
+	};
+	C62D14351021BED100469DF2 /* meanshiftfilter.cpp */ = {
+		isa = PBXFileReference;
+		path = meanshiftfilter.cpp;
+		sourceTree = SOURCE_ROOT;
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {660, 4216}}";
+			sepNavSelRange = "{6056, 0}";
+			sepNavVisRange = "{5748, 1131}";
+		};
+	};
+	C62D14371021BED900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 266";
+		rLen = 0;
+		rLoc = 7098;
+		rType = 0;
+		vrLen = 987;
+		vrLoc = 6156;
+	};
+	C62D14381021BED900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D140D1021BD5A00469DF2 /* meanshiftfilter_common.h */;
+		name = "meanshiftfilter_common.h: 12";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 213;
+		vrLoc = 0;
+	};
+	C62D14391021BED900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14331021BED100469DF2 /* meanshift.cpp */;
+		rLen = 1;
+		rLoc = 91;
+		rType = 1;
+	};
+	C62D143A1021BED900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D140D1021BD5A00469DF2 /* meanshiftfilter_common.h */;
+		name = "meanshiftfilter_common.h: 8";
+		rLen = 0;
+		rLoc = 158;
+		rType = 0;
+		vrLen = 213;
+		vrLoc = 0;
+	};
+	C62D143B1021BED900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 266";
+		rLen = 0;
+		rLoc = 7098;
+		rType = 0;
+		vrLen = 987;
+		vrLoc = 6156;
+	};
+	C62D143C1021BED900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D140D1021BD5A00469DF2 /* meanshiftfilter_common.h */;
+		name = "meanshiftfilter_common.h: 12";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 213;
+		vrLoc = 0;
+	};
+	C62D143D1021BED900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 90";
+		rLen = 0;
+		rLoc = 2184;
+		rType = 0;
+		vrLen = 988;
+		vrLoc = 1583;
+	};
+	C62D14411021BF2D00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 220";
+		rLen = 0;
+		rLoc = 6002;
+		rType = 0;
+		vrLen = 1148;
+		vrLoc = 5074;
+	};
+	C62D14431021BF5600469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 222";
+		rLen = 0;
+		rLoc = 6002;
+		rType = 0;
+		vrLen = 1116;
+		vrLoc = 5629;
+	};
+	C62D14451021BF9C00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 225";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1142;
+		vrLoc = 5546;
+	};
+	C62D14461021BF9C00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 266";
+		rLen = 0;
+		rLoc = 7098;
+		rType = 0;
+		vrLen = 987;
+		vrLoc = 6156;
+	};
+	C62D14471021BF9C00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 225";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1142;
+		vrLoc = 5546;
+	};
+	C62D14481021BF9C00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 37";
+		rLen = 0;
+		rLoc = 1051;
+		rType = 0;
+		vrLen = 998;
+		vrLoc = 505;
+	};
+	C62D144A1021BFD600469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 37";
+		rLen = 0;
+		rLoc = 877;
+		rType = 0;
+		vrLen = 1012;
+		vrLoc = 360;
+	};
+	C62D144C1021C04B00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 196";
+		rLen = 0;
+		rLoc = 5241;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 4560;
+	};
+	C62D144F1021C06F00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 195";
+		rLen = 0;
+		rLoc = 5241;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 4560;
+	};
+	C62D14501021C06F00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 195";
+		rLen = 0;
+		rLoc = 5241;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 4560;
+	};
+	C62D14511021C06F00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 38";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1411;
+		vrLoc = 976;
+	};
+	C62D14531021C07A00469DF2 /* meanshiftfilter_gold.cpp */ = {
+		isa = PBXFileReference;
+		name = meanshiftfilter_gold.cpp;
+		path = "/Developer/GPU Computing/C/src/MeanShift/meanshiftfilter_gold.cpp";
+		sourceTree = "<absolute>";
+	};
+	C62D14551021C07B00469DF2 /* meanshiftfilter_gold.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = meanshiftfilter_gold.cpp;
+		path = "/Developer/GPU Computing/C/src/MeanShift/meanshiftfilter_gold.cpp";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {619, 5303}}";
+			sepNavSelRange = "{6953, 0}";
+			sepNavVisRange = "{2058, 1459}";
+		};
+	};
+	C62D14561021C08700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 38";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1411;
+		vrLoc = 976;
+	};
+	C62D14571021C08700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14531021C07A00469DF2 /* meanshiftfilter_gold.cpp */;
+		rLen = 1;
+		rLoc = 226;
+		rType = 1;
+	};
+	C62D14581021C08700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 38";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1411;
+		vrLoc = 976;
+	};
+	C62D14591021C08700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14551021C07B00469DF2 /* meanshiftfilter_gold.cpp */;
+		name = "meanshiftfilter_gold.cpp: 227";
+		rLen = 0;
+		rLoc = 7017;
+		rType = 0;
+		vrLen = 1056;
+		vrLoc = 6433;
+	};
+	C62D145B1021C0BF00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14551021C07B00469DF2 /* meanshiftfilter_gold.cpp */;
+		name = "meanshiftfilter_gold.cpp: 223";
+		rLen = 0;
+		rLoc = 6953;
+		rType = 0;
+		vrLen = 1459;
+		vrLoc = 2058;
+	};
+	C62D145C1021C0BF00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 195";
+		rLen = 0;
+		rLoc = 5241;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 4560;
+	};
+	C62D145D1021C0BF00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14551021C07B00469DF2 /* meanshiftfilter_gold.cpp */;
+		name = "meanshiftfilter_gold.cpp: 223";
+		rLen = 0;
+		rLoc = 6953;
+		rType = 0;
+		vrLen = 1459;
+		vrLoc = 2058;
+	};
+	C62D145E1021C0BF00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 38";
+		rLen = 0;
+		rLoc = 1068;
+		rType = 0;
+		vrLen = 1072;
+		vrLoc = 361;
+	};
+	C62D145F1021C0DC00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 30";
+		rLen = 0;
+		rLoc = 877;
+		rType = 0;
+		vrLen = 1064;
+		vrLoc = 361;
+	};
+	C62D14601021C10000469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 194";
+		rLen = 0;
+		rLoc = 5241;
+		rType = 0;
+		vrLen = 1085;
+		vrLoc = 4731;
+	};
+	C62D14621021C16400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 274";
+		rLen = 0;
+		rLoc = 7089;
+		rType = 0;
+		vrLen = 987;
+		vrLoc = 6279;
+	};
+	C62D14631021C16400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 225";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1142;
+		vrLoc = 5546;
+	};
+	C62D14641021C16400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 274";
+		rLen = 0;
+		rLoc = 7089;
+		rType = 0;
+		vrLen = 987;
+		vrLoc = 6279;
+	};
+	C62D14651021C16400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 223";
+		rLen = 0;
+		rLoc = 6002;
+		rType = 0;
+		vrLen = 1095;
+		vrLoc = 5546;
+	};
+	C62D14671021C1AC00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 229";
+		rLen = 0;
+		rLoc = 6024;
+		rType = 0;
+		vrLen = 932;
+		vrLoc = 6092;
+	};
+	C62D14691021C1DD00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 236";
+		rLen = 0;
+		rLoc = 6214;
+		rType = 0;
+		vrLen = 1022;
+		vrLoc = 6002;
+	};
+	C62D146A1021C1DD00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 274";
+		rLen = 0;
+		rLoc = 7089;
+		rType = 0;
+		vrLen = 987;
+		vrLoc = 6279;
+	};
+	C62D146B1021C1DD00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 236";
+		rLen = 0;
+		rLoc = 6214;
+		rType = 0;
+		vrLen = 1022;
+		vrLoc = 6002;
+	};
+	C62D146C1021C1DD00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 31";
+		rLen = 0;
+		rLoc = 1067;
+		rType = 0;
+		vrLen = 1042;
+		vrLoc = 581;
+	};
+	C62D146E1021C1FB00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 34";
+		rLen = 0;
+		rLoc = 1207;
+		rType = 0;
+		vrLen = 1075;
+		vrLoc = 581;
+	};
+	C62D14711021CB9900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D140D1021BD5A00469DF2 /* meanshiftfilter_common.h */;
+		name = "meanshiftfilter_common.h: 12";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 213;
+		vrLoc = 0;
+	};
+	C62D14721021CB9900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 6";
+		rLen = 0;
+		rLoc = 137;
+		rType = 0;
+		vrLen = 1183;
+		vrLoc = 0;
+	};
+	C62D14731021CB9900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 6";
+		rLen = 0;
+		rLoc = 137;
+		rType = 0;
+		vrLen = 1183;
+		vrLoc = 0;
+	};
+	C62D14741021CB9900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D140D1021BD5A00469DF2 /* meanshiftfilter_common.h */;
+		name = "meanshiftfilter_common.h: 12";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 213;
+		vrLoc = 0;
+	};
+	C62D14751021CB9900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 39";
+		rLen = 0;
+		rLoc = 1023;
+		rType = 0;
+		vrLen = 1108;
+		vrLoc = 661;
+	};
+	C62D14791021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 416";
+		rLen = 0;
+		rLoc = 13433;
+		rType = 0;
+		vrLen = 1083;
+		vrLoc = 12947;
+	};
+	C62D147A1021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 27";
+		rLen = 0;
+		rLoc = 350;
+		rType = 0;
+		vrLen = 712;
+		vrLoc = 154;
+	};
+	C62D147B1021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 209";
+		rLen = 0;
+		rLoc = 5270;
+		rType = 0;
+		vrLen = 1039;
+		vrLoc = 4977;
+	};
+	C62D147C1021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 48";
+		rLen = 0;
+		rLoc = 2057;
+		rType = 0;
+		vrLen = 1413;
+		vrLoc = 974;
+	};
+	C62D147D1021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 286";
+		rLen = 0;
+		rLoc = 7057;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 0;
+	};
+	C62D147E1021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 48";
+		rLen = 0;
+		rLoc = 2057;
+		rType = 0;
+		vrLen = 1413;
+		vrLoc = 974;
+	};
+	C62D147F1021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 35";
+		rLen = 0;
+		rLoc = 457;
+		rType = 0;
+		vrLen = 712;
+		vrLoc = 154;
+	};
+	C62D14801021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 416";
+		rLen = 0;
+		rLoc = 13433;
+		rType = 0;
+		vrLen = 1083;
+		vrLoc = 12947;
+	};
+	C62D14811021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 27";
+		rLen = 0;
+		rLoc = 350;
+		rType = 0;
+		vrLen = 712;
+		vrLoc = 154;
+	};
+	C62D14821021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 209";
+		rLen = 0;
+		rLoc = 5270;
+		rType = 0;
+		vrLen = 1039;
+		vrLoc = 4977;
+	};
+	C62D14831021CDDE00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 48";
+		rLen = 0;
+		rLoc = 2057;
+		rType = 0;
+		vrLen = 1412;
+		vrLoc = 974;
+	};
+	C62D14841021CE5400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 48";
+		rLen = 0;
+		rLoc = 2057;
+		rType = 0;
+		vrLen = 1412;
+		vrLoc = 974;
+	};
+	C62D14851021CE5400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 209";
+		rLen = 0;
+		rLoc = 5270;
+		rType = 0;
+		vrLen = 1039;
+		vrLoc = 4977;
+	};
+	C62D14861021CE5400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 48";
+		rLen = 0;
+		rLoc = 2057;
+		rType = 0;
+		vrLen = 1412;
+		vrLoc = 974;
+	};
+	C62D14871021CE5400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 209";
+		rLen = 0;
+		rLoc = 5270;
+		rType = 0;
+		vrLen = 1057;
+		vrLoc = 4977;
+	};
+	C62D148A1021CEC600469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 209";
+		rLen = 0;
+		rLoc = 5270;
+		rType = 0;
+		vrLen = 968;
+		vrLoc = 4887;
+	};
+	C62D148B1021CF3F00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 10";
+		rLen = 0;
+		rLoc = 206;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 0;
+	};
+	C62D148C1021CF7700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1022;
+		vrLoc = 5857;
+	};
+	C62D148D1021CF7700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 13";
+		rLen = 0;
+		rLoc = 340;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 0;
+	};
+	C62D148E1021CF7700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 13";
+		rLen = 0;
+		rLoc = 340;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 0;
+	};
+	C62D148F1021CF7700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1022;
+		vrLoc = 5857;
+	};
+	C62D14901021CF7700469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 8";
+		rLen = 0;
+		rLoc = 139;
+		rType = 0;
+		vrLen = 1210;
+		vrLoc = 0;
+	};
+	C62D14921021CF9200469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 8";
+		rLen = 0;
+		rLoc = 139;
+		rType = 0;
+		vrLen = 1208;
+		vrLoc = 0;
+	};
+	C62D14941021CFBD00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 209";
+		rLen = 0;
+		rLoc = 5270;
+		rType = 0;
+		vrLen = 1059;
+		vrLoc = 5019;
+	};
+	C62D14961021CFCD00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 209";
+		rLen = 0;
+		rLoc = 5270;
+		rType = 0;
+		vrLen = 1059;
+		vrLoc = 5019;
+	};
+	C62D14981021D08D00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 206";
+		rLen = 0;
+		rLoc = 5243;
+		rType = 0;
+		vrLen = 1023;
+		vrLoc = 5019;
+	};
+	C62D14991021D0D800469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 179";
+		rLen = 0;
+		rLoc = 4745;
+		rType = 0;
+		vrLen = 982;
+		vrLoc = 4887;
+	};
+	C62D149A1021D14900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 221";
+		rLen = 0;
+		rLoc = 5780;
+		rType = 0;
+		vrLen = 1071;
+		vrLoc = 4901;
+	};
+	C62D149B1021D14900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 5779;
+	};
+	C62D149C1021D14900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D13FB1021BAB300469DF2 /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 221";
+		rLen = 0;
+		rLoc = 5780;
+		rType = 0;
+		vrLen = 1071;
+		vrLoc = 4901;
+	};
+	C62D149D1021D14900469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14351021BED100469DF2 /* meanshiftfilter.cpp */;
+		name = "meanshift.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1131;
+		vrLoc = 5748;
+	};
+	C62D14A21021D1B800469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D135F1021B27800469DF2 /* meanshift.cpp */;
+		name = "meanshiftfilter.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1130;
+		vrLoc = 5748;
+	};
+	C62D14A31021D1B800469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D135F1021B27800469DF2 /* meanshift.cpp */;
+		name = "meanshiftfilter.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1130;
+		vrLoc = 5748;
+	};
+	C62D14A41021D1B800469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 41";
+		rLen = 0;
+		rLoc = 1926;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 974;
+	};
+	C62D14A61021D1BD00469DF2 /* edison.cpp */ = {
+		isa = PBXFileReference;
+		name = edison.cpp;
+		path = "/Developer/GPU Computing/C/src/MeanShift/edison.cpp";
+		sourceTree = "<absolute>";
+	};
+	C62D14A81021D1BD00469DF2 /* edison.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = edison.cpp;
+		path = "/Developer/GPU Computing/C/src/MeanShift/edison.cpp";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {833, 20485}}";
+			sepNavSelRange = "{10174, 0}";
+			sepNavVisRange = "{10041, 665}";
+		};
+	};
+	C62D14AA1021D1C400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 41";
+		rLen = 0;
+		rLoc = 1926;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 974;
+	};
+	C62D14AB1021D1C400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14A61021D1BD00469DF2 /* edison.cpp */;
+		rLen = 1;
+		rLoc = 16;
+		rType = 1;
+	};
+	C62D14AC1021D1C400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 41";
+		rLen = 0;
+		rLoc = 1926;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 974;
+	};
+	C62D14AD1021D1C400469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14A81021D1BD00469DF2 /* edison.cpp */;
+		name = "edison.cpp: 17";
+		rLen = 0;
+		rLoc = 452;
+		rType = 0;
+		vrLen = 965;
+		vrLoc = 0;
+	};
+	C62D14B01021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14A81021D1BD00469DF2 /* edison.cpp */;
+		name = "edison.cpp: 34";
+		rLen = 0;
+		rLoc = 815;
+		rType = 0;
+		vrLen = 775;
+		vrLoc = 591;
+	};
+	C62D14B11021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120510218EDC00469DF2 /* filter.h */;
+		name = "filter.h: 28";
+		rLen = 0;
+		rLoc = 551;
+		rType = 0;
+		vrLen = 615;
+		vrLoc = 0;
+	};
+	C62D14B21021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120610218EDC00469DF2 /* main.cpp */;
+		name = "main.cpp: 11";
+		rLen = 0;
+		rLoc = 424;
+		rType = 0;
+		vrLen = 1551;
+		vrLoc = 15891;
+	};
+	C62D14B31021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D135F1021B27800469DF2 /* meanshift.cpp */;
+		name = "meanshiftfilter.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1130;
+		vrLoc = 5748;
+	};
+	C62D14B41021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120910218EDC00469DF2 /* rgbluv.cpp */;
+		name = "rgbluv.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1062;
+		vrLoc = 0;
+	};
+	C62D14B51021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D14A81021D1BD00469DF2 /* edison.cpp */;
+		name = "edison.cpp: 34";
+		rLen = 0;
+		rLoc = 815;
+		rType = 0;
+		vrLen = 775;
+		vrLoc = 591;
+	};
+	C62D14B61021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120510218EDC00469DF2 /* filter.h */;
+		name = "filter.h: 28";
+		rLen = 0;
+		rLoc = 551;
+		rType = 0;
+		vrLen = 615;
+		vrLoc = 0;
+	};
+	C62D14B71021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120610218EDC00469DF2 /* main.cpp */;
+		name = "main.cpp: 11";
+		rLen = 0;
+		rLoc = 424;
+		rType = 0;
+		vrLen = 1551;
+		vrLoc = 15891;
+	};
+	C62D14B81021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D135F1021B27800469DF2 /* meanshift.cpp */;
+		name = "meanshiftfilter.cpp: 226";
+		rLen = 0;
+		rLoc = 6056;
+		rType = 0;
+		vrLen = 1130;
+		vrLoc = 5748;
+	};
+	C62D14B91021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120910218EDC00469DF2 /* rgbluv.cpp */;
+		name = "rgbluv.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1062;
+		vrLoc = 0;
+	};
+	C62D14BA1021D26A00469DF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 41";
+		rLen = 0;
+		rLoc = 1988;
+		rType = 0;
+		vrLen = 1384;
+		vrLoc = 974;
 	};
 	C6779BB5100B9987000B8058 /* Source Control */ = {
 		isa = PBXSourceControlManager;

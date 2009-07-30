@@ -8,16 +8,14 @@
 
 /* Begin PBXFileReference section */
 		C62D120210218EDC00469DF2 /* edison.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = edison.cpp; path = "GPU Computing/C/src/MeanShift/edison.cpp"; sourceTree = DEVELOPER_DIR; };
-		C62D120310218EDC00469DF2 /* edison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = edison.h; path = "GPU Computing/C/src/MeanShift/edison.h"; sourceTree = DEVELOPER_DIR; };
 		C62D120510218EDC00469DF2 /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = filter.h; path = "GPU Computing/C/src/MeanShift/filter.h"; sourceTree = DEVELOPER_DIR; };
 		C62D120610218EDC00469DF2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "GPU Computing/C/src/MeanShift/main.cpp"; sourceTree = DEVELOPER_DIR; };
 		C62D120710218EDC00469DF2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = "GPU Computing/C/src/MeanShift/Makefile"; sourceTree = DEVELOPER_DIR; };
-		C62D120810218EDC00469DF2 /* meanshift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshift.cpp; path = "GPU Computing/C/src/MeanShift/meanshift.cpp"; sourceTree = DEVELOPER_DIR; };
+		C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshiftfilter.cpp; path = "GPU Computing/C/src/MeanShift/meanshiftfilter.cpp"; sourceTree = DEVELOPER_DIR; };
 		C62D120910218EDC00469DF2 /* rgbluv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rgbluv.cpp; path = "GPU Computing/C/src/MeanShift/rgbluv.cpp"; sourceTree = DEVELOPER_DIR; };
 		C62D120A10218EDC00469DF2 /* rgbluv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgbluv.h; path = "GPU Computing/C/src/MeanShift/rgbluv.h"; sourceTree = DEVELOPER_DIR; };
 		C62D120B10218EDC00469DF2 /* rlist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rlist.cpp; path = "GPU Computing/C/src/MeanShift/rlist.cpp"; sourceTree = DEVELOPER_DIR; };
 		C62D120C10218EDC00469DF2 /* rlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rlist.h; path = "GPU Computing/C/src/MeanShift/rlist.h"; sourceTree = DEVELOPER_DIR; };
-		C62D120D10218EDC00469DF2 /* setprecisionandrounding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = setprecisionandrounding.cpp; path = "GPU Computing/C/src/MeanShift/setprecisionandrounding.cpp"; sourceTree = DEVELOPER_DIR; };
 		C62D120E10218F1800469DF2 /* common.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = common.mk; path = "GPU Computing/C/common/common.mk"; sourceTree = DEVELOPER_DIR; };
 		C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = meanshiftfilter_gold.cpp; path = "GPU Computing/C/src/MeanShift/meanshiftfilter_gold.cpp"; sourceTree = DEVELOPER_DIR; };
 		C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cuda; name = meanshiftfilter_kernel.cu; path = "GPU Computing/C/src/MeanShift/meanshiftfilter_kernel.cu"; sourceTree = DEVELOPER_DIR; };
@@ -32,6 +30,7 @@
 			children = (
 				C62D120710218EDC00469DF2 /* Makefile */,
 				C6CBEBC0100BB2D600A70431 /* CUDA */,
+				C62D14AE1021D21D00469DF2 /* Tools */,
 				C6779BBD100B99F4000B8058 /* Source */,
 				C62D11F610207EA300469DF2 /* Intermediate Files */,
 			);
@@ -47,22 +46,27 @@
 			name = "Intermediate Files";
 			sourceTree = "<group>";
 		};
+		C62D14AE1021D21D00469DF2 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C62D120910218EDC00469DF2 /* rgbluv.cpp */,
+				C62D120A10218EDC00469DF2 /* rgbluv.h */,
+				C62D120B10218EDC00469DF2 /* rlist.cpp */,
+				C62D120C10218EDC00469DF2 /* rlist.h */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		C6779BBD100B99F4000B8058 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				C62D140D1021BD5A00469DF2 /* meanshiftfilter_common.h */,
 				C62D120F10218F4400469DF2 /* meanshiftfilter_gold.cpp */,
 				C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */,
+				C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */,
 				C62D120210218EDC00469DF2 /* edison.cpp */,
-				C62D120310218EDC00469DF2 /* edison.h */,
 				C62D120510218EDC00469DF2 /* filter.h */,
 				C62D120610218EDC00469DF2 /* main.cpp */,
-				C62D120810218EDC00469DF2 /* meanshift.cpp */,
-				C62D120910218EDC00469DF2 /* rgbluv.cpp */,
-				C62D120A10218EDC00469DF2 /* rgbluv.h */,
-				C62D120B10218EDC00469DF2 /* rlist.cpp */,
-				C62D120C10218EDC00469DF2 /* rlist.h */,
-				C62D120D10218EDC00469DF2 /* setprecisionandrounding.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
