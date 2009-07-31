@@ -17,7 +17,7 @@ extern "C"
 void setArgs(float*);
 extern "C" 
 void meanShiftFilter(dim3, dim3, float*, float*, unsigned int, unsigned int,
-					 unsigned int, unsigned int);
+					float, float);
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions
@@ -58,7 +58,7 @@ const unsigned int BNDY = 2;
 const unsigned int APPD = 3;
 
 std::string image = "source.ppm";
-std::string path = "../../../src/MeanShift/data/";
+std::string path = "../../../src/Meanshift/data/";
 
 std::string imgOutGOLD[] = {
     path + "filtimage_gold.ppm",
@@ -68,7 +68,7 @@ std::string imgOutGOLD[] = {
 };
 
 std::string imgOutCUDA[] = {
-	path + "filtimage_cuda.ppm",
+    path + "filtimage_cuda.ppm",
     path + "segmimage_cuda.ppm",
     path + "bndyimage_cuda.ppm",
     path + "appd_fsb_cuda.ppm"
@@ -153,10 +153,21 @@ int main( int argc, char** argv)
 		unsigned char * pix = (unsigned char *)&h_img[i];
 		RGBtoLUV(pix, &h_src[N * i]);
 	}
+
+	// use command-line specified CUDA device, otherwise use device with highest Gflops/s
+	if (cutCheckCmdLineFlag(argc, (const char**)argv, "device")) {
+		cutilDeviceInit(argc, argv);
+	} else {
+		cudaSetDevice(cutGetMaxGflopsDeviceId());
+	}
 	
 	std::string append = "convert +append ";
 	std::string compare = "compare ";
+#ifdef __linux__
+	std::string open = "eog " + imgDiff[APPD];
+#else	
 	std::string open = "open " + imgDiff[APPD];
+#endif	
 	
 	if (cutCheckCmdLineFlag(argc, (const char**)argv, "gold")) {
 		computeGold();
@@ -190,48 +201,51 @@ int main( int argc, char** argv)
 	exit(EXIT_SUCCESS);
 }
 
-#define GLOBAL_MEMORY 1       // use global memory of the GPU
+//#define _TEXTURE_MEMORY_ 
 
 void computeCUDA() 
 {
 	unsigned int thx = 32;
-	unsigned int thy = 4;
+	unsigned int thy = 8;
 	
 	unsigned int imgSize = height * width * sizeof(float) * 3;
-	
 	cutilSafeCall(cudaMalloc((void**) &d_src, imgSize));
 	cutilSafeCall(cudaMalloc((void**) &d_dst, imgSize));
 	
 	// convert to float array and then copy ... 
-	// if we use textures omit this step 
-	
-#ifdef GLOBAL_MEMORY
 	float * h_flt = new float[imgSize];
-	// we need here h_src the converted rgb data not h_img the plain rgb!!
+	// we need here h_src (luv) the converted rgb data not h_img the plain rgb!!
 	for (unsigned int i = 0; i < 3 * height * width; i++) {
 		h_flt[i] = h_src[i];
 	}
+	
+#ifdef _TEXTURE_MEMORY_
+	// allocate array and copy image data
+	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc(32, 0, 0, 0, cudaChannelFormatKindFloat);
+	cudaArray* cu_array;
+	cutilSafeCall( cudaMallocArray( &cu_array, &channelDesc, width, height )); 
+	cutilSafeCall( cudaMemcpyToArray( cu_array, 0, 0, h_flt, imgSize, cudaMemcpyHostToDevice));
 #endif
+
 	
 	// copy host memory to device
-    cutilSafeCall(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));
+	cutilSafeCall(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));
 	
-	// create and start timer
-    unsigned int timer = 0;
-    cutilCheckError(cutCreateTimer(&timer));
-    cutilCheckError(cutStartTimer(timer));
-
 	setArgs(h_options);
+	// create and start timer
+	unsigned int timer = 0;
+	cutilCheckError(cutCreateTimer(&timer));
+	cutilCheckError(cutStartTimer(timer));
 	
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
 	dim3 grid(width/thx, height/thy);
 	
 	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR);
+
 	
 	cutilCheckMsg("Kernel Execution failed");
-	
-	
+		
 	// copy result from device to host
 	//h_tmp = new float[imgSize];
 	cutilSafeCall(cudaMemcpy(h_dst, d_dst, imgSize, cudaMemcpyDeviceToHost));
@@ -245,14 +259,14 @@ void computeCUDA()
 	boundaries();
 		
 	// stop and destroy timer
-    cutilCheckError(cutStopTimer(timer));
-    printf("Processing time: %f (ms) \n", cutGetTimerValue(timer));
-    cutilCheckError(cutDeleteTimer(timer));
+	cutilCheckError(cutStopTimer(timer));
+	printf("Processing time: %f (ms) \n", cutGetTimerValue(timer));
+    	cutilCheckError(cutDeleteTimer(timer));
 
 	// clean up memory
-    cutilSafeCall(cudaFree(d_src));
-    cutilSafeCall(cudaFree(d_dst));
+	cutilSafeCall(cudaFree(d_src));
+	cutilSafeCall(cudaFree(d_dst));
 
-    cudaThreadExit();
+	cudaThreadExit();
 }
 

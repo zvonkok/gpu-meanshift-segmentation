@@ -5,7 +5,7 @@
 #include <cutil_inline.h>
 #include "meanshiftfilter_common.h"
 
-#define USE_CONST_MEMORY 1
+//#define USE_CONST_MEMORY 1
 
 __constant__ float d_options[MAX_OPTS];
 
@@ -15,7 +15,7 @@ __constant__ float LIMIT   = 100.0f;	// define max. # of iterations to find mode
 #ifndef USE_CONST_MEMORY
 __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, float* d_dst, 
 							  unsigned int width, unsigned int height,
-							  unsigned int sigmaS, unsigned int sigmaR)
+							  float sigmaS, float sigmaR)
 #else
 __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, float* d_dst, 
 							  unsigned int width, unsigned int height)
@@ -93,7 +93,7 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, f
 		diff0 += dy * dy;
 		
 #undef  BRANCH_FREE
-		//#define BRANCH_FREE 1
+//		#define BRANCH_FREE 1
 #ifdef  BRANCH_FREE
 		// Original statement: diff1 += 4 * dl * dl;
 		// Der Wertebereich der Helligkeit liegt im 
@@ -102,10 +102,11 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, f
 		diff1 += (int)(yk[2]/80) * 3.0f * dl * dl;
 #else
 		if((yk[2] > 80)) 
-		diff1 += 4.0f * dl * dl;
+			diff1 += 4.0f * dl * dl;
 		else
-		diff1 += dl * dl;
+			diff1 += dl * dl;
 #endif
+		
 		
 		diff1 += du * du;
 		diff1 += dv * dv;
@@ -149,7 +150,7 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, f
 #ifndef USE_CONST_MEMORY
 __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float* d_src, float* d_dst, 
 							  unsigned int width, unsigned int height,
-							  unsigned int sigmaS, unsigned int sigmaR)
+							  float sigmaS, float sigmaR)
 #else
 __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float* d_src, float* d_dst, 
 							  unsigned int width, unsigned int height)
@@ -171,6 +172,7 @@ __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float* d_src, float*
 	// all the points that lie within the search
 	// window defined using the kernel specified
 	// by uniformKernel
+
 #ifndef USE_CONST_MEMORY
 	uniformSearch(Mh_ptr, yk_ptr, &wsum, d_src, d_dst, width, height, sigmaS, sigmaR);
 #else
@@ -193,7 +195,7 @@ __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float* d_src, float*
 #ifndef USE_CONST_MEMORY
 __device__ void filter(float* d_src, float* d_dst, 
 					   unsigned int width, unsigned int height,
-					   unsigned int sigmaS, unsigned int sigmaR)
+					   float sigmaS, float sigmaR)
 #else
 __device__ void filter(float* d_src, float* d_dst, 
 					   unsigned int width, unsigned int height)
@@ -222,14 +224,14 @@ __device__ void filter(float* d_src, float* d_dst,
 	yk[2] = d_src[3 * i + 0]; // l
 	yk[3] = d_src[3 * i + 1]; // u
 	yk[4] = d_src[3 * i + 2]; // v
-	
+
 	// Calculate the mean shift vector using the lattice
 #ifndef USE_CONST_MEMORY
 	latticeVector(Mh, yk, d_src, d_dst, width, height, sigmaS, sigmaR);
 #else
 	latticeVector(Mh, yk, d_src, d_dst, width, height);
 #endif	
-	
+
 	// Calculate its magnitude squared
 	mvAbs = 0;
 	
@@ -275,7 +277,7 @@ __device__ void filter(float* d_src, float* d_dst,
 		// Increment iteration count
 		iterationCount++;
 	}
-	
+
 	
 	// Shift window location
 	yk[0] += Mh[0];
@@ -297,7 +299,7 @@ __device__ void filter(float* d_src, float* d_dst,
 #ifndef USE_CONST_MEMORY
 __global__ void mean_shift_filter(float* d_src, float* d_dst, 
 								  unsigned int width, unsigned int height,
-								  unsigned int sigmaS, unsigned int sigmaR)
+								  float sigmaS, float sigmaR)
 #else
 __global__ void mean_shift_filter(float* d_src, float* d_dst, 
 								  unsigned int width, unsigned int height)
@@ -319,7 +321,7 @@ extern "C" void setArgs(float* h_options)
 
 extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float* d_src, float* d_dst,
 					 unsigned int width, unsigned int height,
-					 unsigned int sigmaS, unsigned int sigmaR)
+					float sigmaS, float sigmaR)
 {
 #ifndef USE_CONST_MEMORY
 	mean_shift_filter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR);
