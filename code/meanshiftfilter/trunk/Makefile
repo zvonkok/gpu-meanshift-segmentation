@@ -34,28 +34,29 @@
 ################################################################################
 
 # Add source files here
-EXECUTABLE	:= MeanShift
+EXECUTABLE	:= Meanshift
 # Cuda source files (compiled with cudacc)
 CUFILES		:= meanshiftfilter_kernel.cu
 # C/C++ source files (compiled with gcc / c++)
-CCFILES		:= meanshiftfilter.cpp meanshiftfilter_gold.cpp edison.cpp rlist.cpp rgbluv.cpp 
+CCFILES		:= meanshiftfilter.cpp meanshiftfilter_gold.cpp  edison.cpp rlist.cpp rgbluv.cpp 
 
 USEGLLIB         := 1
 USEGLUT	         := 1
 USERENDERCHECKGL := 1
 
-emu=1
+#emu=1
 verbose=1
 keep=1
 #debug=1
-#maxregisters=12
+maxregisters=11
 
 ################################################################################
 # Rules and targets
 
 include ../../common/common.mk
 
-CFLAGS += -fasm-blocks 
-CXXFLAGS += -fasm-blocks 
+#CFLAGS += -fasm-blocks 
+#CXXFLAGS += -fasm-blocks 
+
 NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v 
 
