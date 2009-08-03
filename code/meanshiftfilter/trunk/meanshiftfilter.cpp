@@ -16,7 +16,7 @@
 extern "C" 
 void setArgs(float*);
 extern "C" 
-void meanShiftFilter(dim3, dim3, float*, float*, unsigned int, unsigned int,
+void meanShiftFilter(dim3, dim3, float4*, float4*, unsigned int, unsigned int,
 					float, float);
 
 // EDISON //////////////////////////////////////////////////////////////////
@@ -36,6 +36,10 @@ extern float sigmaS;
 extern float sigmaR;
 extern float minRegion;
 
+extern unsigned int N;
+extern unsigned int L;
+
+
 // EDISON //////////////////////////////////////////////////////////////////
 unsigned int width;
 unsigned int height;
@@ -45,12 +49,11 @@ unsigned int * h_filt = NULL;
 unsigned int * h_segm = NULL;
 unsigned char * h_bndy = NULL;
 
-float * h_src = NULL; // luv source data
-float * h_dst = NULL; // luv manipulated data
+float4 * h_src = NULL; // luv source data
+float4 * h_dst = NULL; // luv manipulated data
 
-float * d_src = NULL; // device source data
-float * d_dst = NULL; // device manipulated data
-float * h_tmp = NULL; // result from device 
+float4 * d_src = NULL; // device source data
+float4 * d_dst = NULL; // device manipulated data
 
 const unsigned int FILT = 0;
 const unsigned int SEGM = 1;
@@ -129,11 +132,8 @@ int main( int argc, char** argv)
 	minRegion = 20.0f;
 	
 	loadImageData(argc, argv);
-
-	extern unsigned int N;
-	extern unsigned int L;
 	
-	N = 3;
+	N = 4;
 	L = height * width;
 
 	// Set options which are transferred to the device
@@ -141,8 +141,8 @@ int main( int argc, char** argv)
 	h_options[SIGMAR] = sigmaR;
 	
 	//Allocate memory for h_dst (filtered image output)
-	h_dst = new float[3 /*N*/ * height * width];
-	h_src = new float[3 /*N*/ * height * width];
+	h_dst = new float4[height * width];
+	h_src = new float4[height * width];
 	
 	h_filt = new unsigned int [height * width * sizeof(GLubyte) * 4];
 	h_segm = new unsigned int [height * width * sizeof(GLubyte) * 4];
@@ -152,7 +152,7 @@ int main( int argc, char** argv)
 	for(unsigned int i = 0; i < L; i++) {
 		extern unsigned int * h_img;
 		unsigned char * pix = (unsigned char *)&h_img[i];
-		RGBtoLUV(pix, &h_src[N * i]);
+		RGBtoLUV(pix, (float*)&h_src[i]);
 	}
 
 	// use command-line specified CUDA device, otherwise use device with highest Gflops/s
@@ -209,25 +209,19 @@ void computeCUDA()
 	unsigned int thx = 32;
 	unsigned int thy = 8;
 	
-	unsigned int imgSize = height * width * sizeof(float) * 3;
+	unsigned int imgSize = height * width * sizeof(float4);
 	cutilSafeCall(cudaMalloc((void**) &d_src, imgSize));
 	cutilSafeCall(cudaMalloc((void**) &d_dst, imgSize));
 	
 	// convert to float array and then copy ... 
-	float * h_flt = new float[imgSize];
+	float4 * h_flt = new float4[height * width];
 	// we need here h_src (luv) the converted rgb data not h_img the plain rgb!!
-	for (unsigned int i = 0; i < 3 * height * width; i++) {
-		h_flt[i] = h_src[i];
+	for (unsigned int i = 0; i < height * width; i++) {
+		h_flt[i].x = h_src[i].x;
+		h_flt[i].y = h_src[i].y;
+		h_flt[i].z = h_src[i].z;
+		h_flt[i].w = 0;
 	}
-	
-#ifdef _TEXTURE_MEMORY_
-	// allocate array and copy image data
-	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc(32, 0, 0, 0, cudaChannelFormatKindFloat);
-	cudaArray* cu_array;
-	cutilSafeCall( cudaMallocArray( &cu_array, &channelDesc, width, height )); 
-	cutilSafeCall( cudaMemcpyToArray( cu_array, 0, 0, h_flt, imgSize, cudaMemcpyHostToDevice));
-#endif
-
 	
 	// copy host memory to device
 	cutilSafeCall(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));
@@ -251,9 +245,9 @@ void computeCUDA()
 	//h_tmp = new float[imgSize];
 	cutilSafeCall(cudaMemcpy(h_dst, d_dst, imgSize, cudaMemcpyDeviceToHost));
 	
-	for(unsigned int i = 0; i < width * height; i++) {
+	for(unsigned int i = 0; i < height * width; i++) {
 		unsigned char * pix = (unsigned char *)&h_filt[i];
-		LUVtoRGB(&h_dst[3 * i], pix);
+		LUVtoRGB((float*)&h_dst[i], pix);
 	} 
 	
 	connect();

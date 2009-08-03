@@ -2,9 +2,10 @@
 #include "rgbluv.h"
 
 #include <stdio.h>
+#include <cuda_runtime_api.h>
 
-extern float * h_src;
-extern float * h_dst;
+extern float4 * h_src;
+extern float4 * h_dst;
 
 extern void connect(void);
 extern void boundaries(void);
@@ -117,10 +118,10 @@ void uniformSearchGold(float *Mh, float *yk, float* wsum)
 			diff1 = 0;
 			
 			//get index into data array
-			dataPoint = N * (i * width + j);
-			data_l = h_src[dataPoint + 0];
-			data_u = h_src[dataPoint + 1];
-			data_v = h_src[dataPoint + 2];
+			dataPoint = (i * width + j);
+			data_l = h_src[dataPoint].x;
+			data_u = h_src[dataPoint].y;
+			data_v = h_src[dataPoint].z;
 			
 			//Determine if inside search window
 			//Calculate distance squared of sub-space s	
@@ -243,9 +244,9 @@ void filterGold()
 		yk[0] = (float)(i%width); // x
 		yk[1] = (float)(i/width); // y 
 		
-		yk[2] = h_src[N * i + 0]; // l
-		yk[3] = h_src[N * i + 1]; // u
-		yk[4] = h_src[N * i + 2]; // v
+		yk[2] = h_src[i].x; // l
+		yk[3] = h_src[i].y; // u
+		yk[4] = h_src[i].z; // v
 		
 		// Calculate the mean shift vector using the lattice
 		latticeVectorGold(Mh, yk);
@@ -300,15 +301,15 @@ void filterGold()
 		yk[4] += Mh[4];
 		
 		//store result into msRawData...
-		h_dst[N * i + 0] = (float)(yk[0 + 2]);
-		h_dst[N * i + 1] = (float)(yk[1 + 2]);
-		h_dst[N * i + 2] = (float)(yk[2 + 2]);
+		h_dst[i].x = (float)(yk[0 + 2]);
+		h_dst[i].y = (float)(yk[1 + 2]);
+		h_dst[i].z = (float)(yk[2 + 2]);
 	}
 	
 	
 	for(unsigned int i = 0; i < L; i++) {
 		unsigned char * pix = (unsigned char *)&h_filt[i];
-		LUVtoRGB(&h_dst[3 /*N*/ *i], pix);
+		LUVtoRGB((float*)&h_dst[i], pix);
 	}
 	
 	// done.

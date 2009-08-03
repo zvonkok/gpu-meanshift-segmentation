@@ -29,11 +29,19 @@
 #include <GL/glut.h>
 #endif
 
+#include <cuda_runtime_api.h>
+#include <cutil_inline.h>
+
 //////////////////////////////////////////////////////////////////////////////////////
 // cleaned up stuff 
 float sigmaS;
 float sigmaR;
+float rcpr_sigmaS;
+float rcpr_sigmaR;
+
 float minRegion;
+
+
 
 extern unsigned int height;
 extern unsigned int width;	
@@ -42,8 +50,8 @@ extern unsigned int * h_filt;
 extern unsigned int * h_segm;
 extern unsigned char * h_bndy;
 
-extern float * h_src;
-extern float * h_dst;
+extern float4 * h_src;
+extern float4 * h_dst;
 
 
 
@@ -112,7 +120,11 @@ void Fill(int regionLoc, int label)
 			{
 				for (k = 0; k < N; k++)
 				{
-					if (fabs(h_dst[(regionLoc*N)+k]-h_dst[(neighLoc*N)+k])>=LUV_treshold)
+					if (fabs(h_dst[regionLoc].x - h_dst[neighLoc].x) >= LUV_treshold)
+						break;
+					if (fabs(h_dst[regionLoc].y - h_dst[neighLoc].y) >= LUV_treshold)
+						break;
+					if (fabs(h_dst[regionLoc].z - h_dst[neighLoc].z) >= LUV_treshold)
 						break;
 				}
 				
@@ -184,9 +196,9 @@ void Connect( void )
 			labels[i] = ++label;
 			
 			//copy region color into modes
-			modes[(N*label)+0] = h_dst[(N*i)+0];
-			modes[(N*label)+1] = h_dst[(N*i)+1];
-			modes[(N*label)+2] = h_dst[(N*i)+2];
+			modes[(N*label)+0] = h_dst[i].x;
+			modes[(N*label)+1] = h_dst[i].y;
+			modes[(N*label)+2] = h_dst[i].z;
 			
 			//populate labels with label for this specified region
 			//calculating modePointCounts[label]...
@@ -1105,9 +1117,9 @@ void FuseRegions(float sigmaS, int minRegion)
 	for(unsigned int i = 0; i < L; i++)
 	{
 		label	= labels[i];
-		h_dst[N*i+0] = modes[N*label+0];
-		h_dst[N*i+1] = modes[N*label+1];
-		h_dst[N*i+2] = modes[N*label+2];
+		h_dst[i].x = modes[N*label+0];
+		h_dst[i].y = modes[N*label+1];
+		h_dst[i].z = modes[N*label+2];
 	}
 	
 	//done.
@@ -1130,7 +1142,7 @@ void connect()
 	
 	for(unsigned int i = 0; i < height * width; i++) {
 		unsigned char * pix = (unsigned char *)&h_segm[i];
-		LUVtoRGB(&h_dst[3 /*N*/ * i], pix);
+		LUVtoRGB((float*)&h_dst[i], pix);
 	}
 
 	
