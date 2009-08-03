@@ -100,7 +100,8 @@ extern void computeGold(void);
 
 
 
-void loadImageData(int argc, char **argv)
+void loadImageData(int argc __attribute__ ((unused)),
+				   char **argv)
 {
     // load image (needed so we can get the width and height before we create the window
     char* image_path = cutFindFilePath(image.c_str(), argv[0]);

@@ -82,7 +82,7 @@ void uniformSearchGold(float *Mh, float *yk, float* wsum)
 {
 	
 	//Declare variables
-	int	i, j;
+	int	i, j, h = height, w = width;
 	
 	int	dataPoint;
 	
@@ -103,10 +103,10 @@ void uniformSearchGold(float *Mh, float *yk, float* wsum)
 		LowerBoundX = 0;
 	if (LowerBoundY < 0)
 		LowerBoundY = 0;
-	if (UpperBoundX >= width)
-		UpperBoundX = width - 1;
-	if (UpperBoundY >= height)
-		UpperBoundY = height - 1;
+	if (UpperBoundX >= w)
+		UpperBoundX = w - 1;
+	if (UpperBoundY >= h)
+		UpperBoundY = h - 1;
 	
 	//Perform search using lattice
 	//Iterate once through a window of size sigmaS
