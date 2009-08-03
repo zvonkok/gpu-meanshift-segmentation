@@ -16,8 +16,9 @@
 extern "C" 
 void setArgs(float*);
 extern "C" 
-void meanShiftFilter(dim3, dim3, float4*, float4*, unsigned int, unsigned int,
-					float, float);
+void meanShiftFilter(dim3, dim3, float4*, float4*, 
+					 unsigned int, unsigned int,
+					 float, float);
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions
@@ -141,8 +142,8 @@ int main( int argc, char** argv)
 	h_dst = new float4[height * width];
 	h_src = new float4[height * width];
 	
-	h_filt = new unsigned int [height * width * sizeof(GLubyte) * 4];
-	h_segm = new unsigned int [height * width * sizeof(GLubyte) * 4];
+	h_filt = new unsigned int [height * width * sizeof(unsigned char) * 4];
+	h_segm = new unsigned int [height * width * sizeof(unsigned char) * 4];
 	h_bndy = new unsigned char [height * width];
 	
 	// Prepare the RGB data 
@@ -214,10 +215,7 @@ void computeCUDA()
 	float4 * h_flt = new float4[height * width];
 	// we need here h_src (luv) the converted rgb data not h_img the plain rgb!!
 	for (unsigned int i = 0; i < height * width; i++) {
-		h_flt[i].x = h_src[i].x;
-		h_flt[i].y = h_src[i].y;
-		h_flt[i].z = h_src[i].z;
-		h_flt[i].w = 0;
+		h_flt[i] = h_src[i];
 	}
 	
 	// copy host memory to device

@@ -155,14 +155,14 @@ __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float4* d_src, float
 
 	// Initialize mean shift vector
 	
-	Mh_ptr[0] = 0;
-	Mh_ptr[1] = 0;
-	Mh_ptr[2] = 0;
-	Mh_ptr[3] = 0;
-	Mh_ptr[4] = 0;
+	Mh_ptr[0] = 0.0f;
+	Mh_ptr[1] = 0.0f;
+	Mh_ptr[2] = 0.0f;
+	Mh_ptr[3] = 0.0f;
+	Mh_ptr[4] = 0.0f;
 	
 	// Initialize wsum
-	float wsum = 0;
+	float wsum = 0.0f;
 	
 	// Perform lattice search summing
 	// all the points that lie within the search
