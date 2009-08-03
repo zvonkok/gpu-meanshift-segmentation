@@ -27,16 +27,14 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 	//Declare variables
 	int	i, j;
 	
-	int	dataPoint;
-	
 	float diff0, diff1;
 	float dx, dy, dl, du, dv;
 	
-	float data_l, data_u, data_v;
+	float4 luv; 
 	//Define bounds of lattice...
-	
 	//the lattice is a 2dimensional subspace whose
 	//search window bandwidth is specified by sigmaS:
+	
 #ifndef USE_CONST_MEMORY
 	int LowerBoundX = yk[0] - sigmaS;
 	int LowerBoundY = yk[1] - sigmaS;
@@ -67,25 +65,22 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 		diff1 = 0;
 		
 		//get index into data array
-		dataPoint = (i * width + j);
-		data_l = d_src[dataPoint].x;
-		data_u = d_src[dataPoint].y;
-		data_v = d_src[dataPoint].z;
+		luv = d_src[i * width + j];
 		
 		//Determine if inside search window
 		//Calculate distance squared of sub-space s	
 #ifndef USE_CONST_MEMORY
 		dx = (j - yk[0]) / sigmaS;
 		dy = (i - yk[1]) / sigmaS;
-		dl = (data_l - yk[2]) / sigmaR;               
-		du = (data_u - yk[3]) / sigmaR;               
-		dv = (data_v - yk[4]) / sigmaR;               
+		dl = (luv.x - yk[2]) / sigmaR;               
+		du = (luv.y - yk[3]) / sigmaR;               
+		dv = (luv.z - yk[4]) / sigmaR;               
 #else
 		dx = (j - yk[0]) / d_options[SIGMAS];
 		dy = (i - yk[1]) / d_options[SIGMAS];
-		dl = (data_l - yk[2]) / d_options[SIGMAR];               
-		du = (data_u - yk[3]) / d_options[SIGMAR];               
-		dv = (data_v - yk[4]) / d_options[SIGMAR];               
+		dl = (luv.x - yk[2]) / d_options[SIGMAR];               
+		du = (luv.y - yk[3]) / d_options[SIGMAR];               
+		dv = (luv.z - yk[4]) / d_options[SIGMAR];               
 		
 #endif
 		
@@ -123,9 +118,9 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 		// considered point is within sphere => accumulate to mean
 		Mh[0] += j * mx;
 		Mh[1] += i * mx;
-		Mh[2] += data_l * mx;
-		Mh[3] += data_u * mx;
-		Mh[4] += data_v * mx;
+		Mh[2] += luv.x * mx;
+		Mh[3] += luv.y * mx;
+		Mh[4] += luv.z * mx;
 		(*wsum) += 1 * mx; //weight
 #else
 		
@@ -137,9 +132,9 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 			// considered point is within sphere => accumulate to mean
 			Mh[0] += j;
 			Mh[1] += i;
-			Mh[2] += data_l;
-			Mh[3] += data_u;
-			Mh[4] += data_v;
+			Mh[2] += luv.x;
+			Mh[3] += luv.y;
+			Mh[4] += luv.z;
 			(*wsum) += 1; //weight
 		}
 #endif			
@@ -222,9 +217,12 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	// data[i])	
 	yk[0] = iy;
 	yk[1] = ix;
-	yk[2] = d_src[i].x; // l
-	yk[3] = d_src[i].y; // u
-	yk[4] = d_src[i].z; // v
+	
+	float4 luv = d_src[i];
+	
+	yk[2] = luv.x; // l
+	yk[3] = luv.y; // u
+	yk[4] = luv.z; // v
 
 	// Calculate the mean shift vector using the lattice
 #ifndef USE_CONST_MEMORY
@@ -287,14 +285,11 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	yk[3] += Mh[3];
 	yk[4] += Mh[4];
 	
-	__syncthreads();
-	//store result into msRawData...
-	d_dst[i].x = (float)(yk[2]);
-	d_dst[i].y = (float)(yk[3]);
-	d_dst[i].z = (float)(yk[4]);
+	luv = make_float4(yk[2], yk[3], yk[4], 0.0f);
 
-	//}
-	// done.
+	__syncthreads();
+	// store result into global memory
+	d_dst[i] = luv;
 	return;
 }
 
