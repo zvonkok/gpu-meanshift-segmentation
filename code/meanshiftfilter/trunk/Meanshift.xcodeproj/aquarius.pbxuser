@@ -21,8 +21,8 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					394,
-					361,
+					416,
+					339,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -356,6 +356,66 @@
 			C612181E10271F590092C11D /* PBXTextBookmark */ = C612181E10271F590092C11D /* PBXTextBookmark */;
 			C612181F10271F590092C11D /* PBXTextBookmark */ = C612181F10271F590092C11D /* PBXTextBookmark */;
 			C612182010271F590092C11D /* PBXTextBookmark */ = C612182010271F590092C11D /* PBXTextBookmark */;
+			C6121822102720040092C11D /* PBXTextBookmark */ = C6121822102720040092C11D /* PBXTextBookmark */;
+			C6121823102720040092C11D /* PBXTextBookmark */ = C6121823102720040092C11D /* PBXTextBookmark */;
+			C6121824102720040092C11D /* PBXTextBookmark */ = C6121824102720040092C11D /* PBXTextBookmark */;
+			C6121825102720040092C11D /* PBXTextBookmark */ = C6121825102720040092C11D /* PBXTextBookmark */;
+			C6121826102720040092C11D /* PBXTextBookmark */ = C6121826102720040092C11D /* PBXTextBookmark */;
+			C6121827102720040092C11D /* PBXTextBookmark */ = C6121827102720040092C11D /* PBXTextBookmark */;
+			C6121828102720040092C11D /* PBXTextBookmark */ = C6121828102720040092C11D /* PBXTextBookmark */;
+			C6121829102720040092C11D /* PBXTextBookmark */ = C6121829102720040092C11D /* PBXTextBookmark */;
+			C612182A102720040092C11D /* PBXTextBookmark */ = C612182A102720040092C11D /* PBXTextBookmark */;
+			C612182B102722280092C11D /* PBXTextBookmark */ = C612182B102722280092C11D /* PBXTextBookmark */;
+			C612182C102722290092C11D /* PBXTextBookmark */ = C612182C102722290092C11D /* PBXTextBookmark */;
+			C612182D102722290092C11D /* PBXTextBookmark */ = C612182D102722290092C11D /* PBXTextBookmark */;
+			C612182E102722290092C11D /* PBXTextBookmark */ = C612182E102722290092C11D /* PBXTextBookmark */;
+			C612182F102722290092C11D /* PBXTextBookmark */ = C612182F102722290092C11D /* PBXTextBookmark */;
+			C6121830102722290092C11D /* PBXTextBookmark */ = C6121830102722290092C11D /* PBXTextBookmark */;
+			C6121834102722540092C11D /* PBXTextBookmark */ = C6121834102722540092C11D /* PBXTextBookmark */;
+			C6121835102722540092C11D /* PBXTextBookmark */ = C6121835102722540092C11D /* PBXTextBookmark */;
+			C6121836102722540092C11D /* PBXTextBookmark */ = C6121836102722540092C11D /* PBXTextBookmark */;
+			C6121837102722540092C11D /* PBXTextBookmark */ = C6121837102722540092C11D /* PBXTextBookmark */;
+			C6121838102722540092C11D /* PBXTextBookmark */ = C6121838102722540092C11D /* PBXTextBookmark */;
+			C6121839102722540092C11D /* PBXTextBookmark */ = C6121839102722540092C11D /* PBXTextBookmark */;
+			C612183A102722540092C11D /* PBXTextBookmark */ = C612183A102722540092C11D /* PBXTextBookmark */;
+			C612183B102722540092C11D /* PBXTextBookmark */ = C612183B102722540092C11D /* PBXTextBookmark */;
+			C612183C102722540092C11D /* PBXTextBookmark */ = C612183C102722540092C11D /* PBXTextBookmark */;
+			C612183D102722540092C11D /* PBXTextBookmark */ = C612183D102722540092C11D /* PBXTextBookmark */;
+			C612183E1027225F0092C11D /* PBXTextBookmark */ = C612183E1027225F0092C11D /* PBXTextBookmark */;
+			C6121849102723BF0092C11D /* PBXTextBookmark */ = C6121849102723BF0092C11D /* PBXTextBookmark */;
+			C612184A102723BF0092C11D /* PBXTextBookmark */ = C612184A102723BF0092C11D /* PBXTextBookmark */;
+			C612184B102723BF0092C11D /* PBXTextBookmark */ = C612184B102723BF0092C11D /* PBXTextBookmark */;
+			C612184C102723BF0092C11D /* PBXTextBookmark */ = C612184C102723BF0092C11D /* PBXTextBookmark */;
+			C612184D102723BF0092C11D /* PBXTextBookmark */ = C612184D102723BF0092C11D /* PBXTextBookmark */;
+			C612184E102723BF0092C11D /* PBXTextBookmark */ = C612184E102723BF0092C11D /* PBXTextBookmark */;
+			C612184F102723BF0092C11D /* PBXTextBookmark */ = C612184F102723BF0092C11D /* PBXTextBookmark */;
+			C6121850102723BF0092C11D /* PBXTextBookmark */ = C6121850102723BF0092C11D /* PBXTextBookmark */;
+			C6121851102723BF0092C11D /* PBXTextBookmark */ = C6121851102723BF0092C11D /* PBXTextBookmark */;
+			C6121852102723BF0092C11D /* PBXTextBookmark */ = C6121852102723BF0092C11D /* PBXTextBookmark */;
+			C6121853102723BF0092C11D /* PBXTextBookmark */ = C6121853102723BF0092C11D /* PBXTextBookmark */;
+			C6121854102723BF0092C11D /* PBXTextBookmark */ = C6121854102723BF0092C11D /* PBXTextBookmark */;
+			C6121855102723BF0092C11D /* PBXTextBookmark */ = C6121855102723BF0092C11D /* PBXTextBookmark */;
+			C6121857102724890092C11D /* PBXTextBookmark */ = C6121857102724890092C11D /* PBXTextBookmark */;
+			C6121858102724890092C11D /* PBXTextBookmark */ = C6121858102724890092C11D /* PBXTextBookmark */;
+			C6121859102724890092C11D /* PBXTextBookmark */ = C6121859102724890092C11D /* PBXTextBookmark */;
+			C612185A102724890092C11D /* PBXTextBookmark */ = C612185A102724890092C11D /* PBXTextBookmark */;
+			C6121864102725AB0092C11D /* PBXTextBookmark */ = C6121864102725AB0092C11D /* PBXTextBookmark */;
+			C6121872102726820092C11D /* PBXTextBookmark */ = C6121872102726820092C11D /* PBXTextBookmark */;
+			C6121873102726820092C11D /* PBXTextBookmark */ = C6121873102726820092C11D /* PBXTextBookmark */;
+			C6121874102726820092C11D /* PBXTextBookmark */ = C6121874102726820092C11D /* PBXTextBookmark */;
+			C6121875102726820092C11D /* PBXTextBookmark */ = C6121875102726820092C11D /* PBXTextBookmark */;
+			C6121876102726820092C11D /* PBXTextBookmark */ = C6121876102726820092C11D /* PBXTextBookmark */;
+			C6121877102726820092C11D /* PBXTextBookmark */ = C6121877102726820092C11D /* PBXTextBookmark */;
+			C6121878102726820092C11D /* PBXTextBookmark */ = C6121878102726820092C11D /* PBXTextBookmark */;
+			C6121879102726820092C11D /* PBXTextBookmark */ = C6121879102726820092C11D /* PBXTextBookmark */;
+			C612187C102726950092C11D /* PBXTextBookmark */ = C612187C102726950092C11D /* PBXTextBookmark */;
+			C612187D102726A90092C11D /* PBXTextBookmark */ = C612187D102726A90092C11D /* PBXTextBookmark */;
+			C612187E102726A90092C11D /* PBXTextBookmark */ = C612187E102726A90092C11D /* PBXTextBookmark */;
+			C612187F102726A90092C11D /* PBXTextBookmark */ = C612187F102726A90092C11D /* PBXTextBookmark */;
+			C6121880102726A90092C11D /* PBXTextBookmark */ = C6121880102726A90092C11D /* PBXTextBookmark */;
+			C61218811027273E0092C11D /* PBXTextBookmark */ = C61218811027273E0092C11D /* PBXTextBookmark */;
+			C61218821027273E0092C11D /* PBXTextBookmark */ = C61218821027273E0092C11D /* PBXTextBookmark */;
+			C61218831027273E0092C11D /* PBXTextBookmark */ = C61218831027273E0092C11D /* PBXTextBookmark */;
 			C62D12151021907800469DF2 = C62D12151021907800469DF2 /* PBXTextBookmark */;
 			C62D12161021907800469DF2 = C62D12161021907800469DF2 /* PBXTextBookmark */;
 			C62D121E102190DD00469DF2 = C62D121E102190DD00469DF2 /* PBXTextBookmark */;
@@ -452,7 +512,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 229";
 		rLen = 0;
-		rLoc = 5971;
+		rLoc = 5843;
 		rType = 0;
 		vrLen = 1110;
 		vrLoc = 5725;
@@ -502,7 +562,7 @@
 		fRef = C62D12C51021A40900469DF2 /* meanshift.cpp */;
 		name = "meanshiftfilter.cpp: 215";
 		rLen = 0;
-		rLoc = 5681;
+		rLoc = 5678;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 5391;
@@ -568,7 +628,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 229";
 		rLen = 0;
-		rLoc = 5971;
+		rLoc = 5843;
 		rType = 0;
 		vrLen = 1110;
 		vrLoc = 5725;
@@ -594,7 +654,7 @@
 		fRef = C62D12C51021A40900469DF2 /* meanshift.cpp */;
 		name = "meanshiftfilter.cpp: 99";
 		rLen = 11;
-		rLoc = 2250;
+		rLoc = 2248;
 		rType = 0;
 		vrLen = 1145;
 		vrLoc = 1790;
@@ -604,7 +664,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 229";
 		rLen = 0;
-		rLoc = 5971;
+		rLoc = 5843;
 		rType = 0;
 		vrLen = 1110;
 		vrLoc = 5725;
@@ -664,7 +724,7 @@
 		fRef = C62D12C51021A40900469DF2 /* meanshift.cpp */;
 		name = "meanshiftfilter.cpp: 212";
 		rLen = 0;
-		rLoc = 5569;
+		rLoc = 5566;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 5441;
@@ -731,7 +791,7 @@
 		fRef = C612169A10270A530092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 220";
 		rLen = 99;
-		rLoc = 5905;
+		rLoc = 5902;
 		rType = 0;
 		vrLen = 1042;
 		vrLoc = 5440;
@@ -751,7 +811,7 @@
 		fRef = C612169E10270A560092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 219";
 		rLen = 0;
-		rLoc = 5867;
+		rLoc = 5864;
 		rType = 0;
 		vrLen = 1166;
 		vrLoc = 5469;
@@ -760,7 +820,7 @@
 		isa = PBXTextBookmark;
 		fRef = C61216A810270B960092C11D /* meanshiftfilter.cpp */;
 		rLen = 5;
-		rLoc = 5662;
+		rLoc = 5659;
 		rType = 0;
 	};
 	C61216A810270B960092C11D /* meanshiftfilter.cpp */ = {
@@ -780,7 +840,7 @@
 		fRef = C612169E10270A560092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 215";
 		rLen = 5;
-		rLoc = 5662;
+		rLoc = 5659;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 5471;
@@ -835,7 +895,7 @@
 		isa = PBXTextBookmark;
 		fRef = C61216BE10270D650092C11D /* meanshiftfilter.cpp */;
 		rLen = 5;
-		rLoc = 3322;
+		rLoc = 3319;
 		rType = 0;
 	};
 	C61216BE10270D650092C11D /* meanshiftfilter.cpp */ = {
@@ -850,7 +910,7 @@
 		fRef = C61216A810270B960092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 215";
 		rLen = 5;
-		rLoc = 5662;
+		rLoc = 5659;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 5459;
@@ -870,7 +930,7 @@
 		fRef = C61216A810270B960092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 221";
 		rLen = 5;
-		rLoc = 5920;
+		rLoc = 5917;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 5458;
@@ -890,7 +950,7 @@
 		fRef = C61216B410270CDB0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 145";
 		rLen = 0;
-		rLoc = 3341;
+		rLoc = 3338;
 		rType = 0;
 		vrLen = 761;
 		vrLoc = 2937;
@@ -935,7 +995,7 @@
 		fRef = C61216A810270B960092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 156";
 		rLen = 0;
-		rLoc = 3695;
+		rLoc = 3692;
 		rType = 0;
 		vrLen = 1522;
 		vrLoc = 3211;
@@ -955,7 +1015,7 @@
 		fRef = C61216AF10270CC00092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 156";
 		rLen = 5;
-		rLoc = 3715;
+		rLoc = 3712;
 		rType = 0;
 		vrLen = 1103;
 		vrLoc = 3051;
@@ -975,7 +1035,7 @@
 		fRef = C61216B410270CDB0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 223";
 		rLen = 0;
-		rLoc = 6008;
+		rLoc = 6005;
 		rType = 0;
 		vrLen = 1215;
 		vrLoc = 5471;
@@ -995,7 +1055,7 @@
 		fRef = C61216CF10270DEA0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 246";
 		rLen = 0;
-		rLoc = 6778;
+		rLoc = 6775;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 5977;
@@ -1005,7 +1065,7 @@
 		fRef = C61216CF10270DEA0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 246";
 		rLen = 0;
-		rLoc = 6781;
+		rLoc = 6778;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 5977;
@@ -1035,7 +1095,7 @@
 		fRef = C61216CF10270DEA0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 246";
 		rLen = 0;
-		rLoc = 6781;
+		rLoc = 6778;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 5977;
@@ -1075,7 +1135,7 @@
 		fRef = C61216CF10270DEA0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 246";
 		rLen = 0;
-		rLoc = 6781;
+		rLoc = 6778;
 		rType = 0;
 		vrLen = 1103;
 		vrLoc = 5951;
@@ -1095,7 +1155,7 @@
 		fRef = C61216CF10270DEA0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 148";
 		rLen = 0;
-		rLoc = 3493;
+		rLoc = 3490;
 		rType = 0;
 		vrLen = 1203;
 		vrLoc = 3012;
@@ -1140,7 +1200,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 2;
-		rLoc = 6006;
+		rLoc = 6003;
 		rType = 0;
 		vrLen = 1352;
 		vrLoc = 5497;
@@ -1150,7 +1210,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 229";
 		rLen = 0;
-		rLoc = 5971;
+		rLoc = 5843;
 		rType = 0;
 		vrLen = 1092;
 		vrLoc = 5725;
@@ -1160,7 +1220,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 2;
-		rLoc = 6006;
+		rLoc = 6003;
 		rType = 0;
 		vrLen = 1352;
 		vrLoc = 5497;
@@ -1170,7 +1230,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 78";
 		rLen = 0;
-		rLoc = 2141;
+		rLoc = 2012;
 		rType = 0;
 		vrLen = 1114;
 		vrLoc = 1911;
@@ -1180,7 +1240,7 @@
 		fRef = C61216CF10270DEA0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 239";
 		rLen = 5;
-		rLoc = 6415;
+		rLoc = 6412;
 		rType = 0;
 		vrLen = 848;
 		vrLoc = 6057;
@@ -1189,7 +1249,7 @@
 		isa = PBXTextBookmark;
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		rLen = 5;
-		rLoc = 8528;
+		rLoc = 8361;
 		rType = 0;
 	};
 	C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */ = {
@@ -1209,7 +1269,7 @@
 		fRef = C61216CF10270DEA0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 239";
 		rLen = 5;
-		rLoc = 6415;
+		rLoc = 6412;
 		rType = 0;
 		vrLen = 848;
 		vrLoc = 6057;
@@ -1219,7 +1279,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 323";
 		rLen = 0;
-		rLoc = 8267;
+		rLoc = 8100;
 		rType = 0;
 		vrLen = 777;
 		vrLoc = 7655;
@@ -1229,7 +1289,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 78";
 		rLen = 0;
-		rLoc = 2141;
+		rLoc = 2012;
 		rType = 0;
 		vrLen = 1158;
 		vrLoc = 1495;
@@ -1239,7 +1299,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 2;
-		rLoc = 6006;
+		rLoc = 6003;
 		rType = 0;
 		vrLen = 1351;
 		vrLoc = 5498;
@@ -1249,7 +1309,7 @@
 		fRef = C62D121010218F4400469DF2 /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 78";
 		rLen = 0;
-		rLoc = 2141;
+		rLoc = 2012;
 		rType = 0;
 		vrLen = 1158;
 		vrLoc = 1495;
@@ -1279,7 +1339,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 78";
 		rLen = 0;
-		rLoc = 2141;
+		rLoc = 2012;
 		rType = 0;
 		vrLen = 1158;
 		vrLoc = 1495;
@@ -1309,7 +1369,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 137";
 		rLen = 0;
-		rLoc = 3095;
+		rLoc = 3092;
 		rType = 0;
 		vrLen = 1116;
 		vrLoc = 2567;
@@ -1339,7 +1399,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 137";
 		rLen = 0;
-		rLoc = 3095;
+		rLoc = 3092;
 		rType = 0;
 		vrLen = 1116;
 		vrLoc = 2567;
@@ -1369,7 +1429,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 137";
 		rLen = 0;
-		rLoc = 3095;
+		rLoc = 3092;
 		rType = 0;
 		vrLen = 1116;
 		vrLoc = 2567;
@@ -1389,7 +1449,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 213";
 		rLen = 0;
-		rLoc = 5570;
+		rLoc = 5567;
 		rType = 0;
 		vrLen = 1194;
 		vrLoc = 5273;
@@ -1399,7 +1459,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 220";
 		rLen = 0;
-		rLoc = 5882;
+		rLoc = 5879;
 		rType = 0;
 		vrLen = 1223;
 		vrLoc = 5378;
@@ -1409,7 +1469,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 220";
 		rLen = 0;
-		rLoc = 5904;
+		rLoc = 5901;
 		rType = 0;
 		vrLen = 1223;
 		vrLoc = 5378;
@@ -1429,7 +1489,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 220";
 		rLen = 0;
-		rLoc = 5904;
+		rLoc = 5901;
 		rType = 0;
 		vrLen = 1223;
 		vrLoc = 5378;
@@ -1439,7 +1499,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 294";
 		rLen = 0;
-		rLoc = 7566;
+		rLoc = 7437;
 		rType = 0;
 		vrLen = 1131;
 		vrLoc = 4857;
@@ -1449,7 +1509,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 294";
 		rLen = 0;
-		rLoc = 7566;
+		rLoc = 7437;
 		rType = 0;
 		vrLen = 1131;
 		vrLoc = 4857;
@@ -1469,7 +1529,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 294";
 		rLen = 0;
-		rLoc = 7566;
+		rLoc = 7437;
 		rType = 0;
 		vrLen = 1131;
 		vrLoc = 4857;
@@ -1499,7 +1559,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 220";
 		rLen = 0;
-		rLoc = 5904;
+		rLoc = 5901;
 		rType = 0;
 		vrLen = 1223;
 		vrLoc = 5378;
@@ -1519,7 +1579,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 257";
 		rLen = 0;
-		rLoc = 6794;
+		rLoc = 6791;
 		rType = 0;
 		vrLen = 1105;
 		vrLoc = 6336;
@@ -1529,7 +1589,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 256";
 		rLen = 0;
-		rLoc = 6758;
+		rLoc = 6755;
 		rType = 0;
 		vrLen = 1105;
 		vrLoc = 6336;
@@ -1539,7 +1599,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 256";
 		rLen = 0;
-		rLoc = 6758;
+		rLoc = 6755;
 		rType = 0;
 		vrLen = 1259;
 		vrLoc = 5453;
@@ -1549,7 +1609,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 294";
 		rLen = 0;
-		rLoc = 7566;
+		rLoc = 7437;
 		rType = 0;
 		vrLen = 1131;
 		vrLoc = 4857;
@@ -1559,7 +1619,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 256";
 		rLen = 0;
-		rLoc = 6758;
+		rLoc = 6755;
 		rType = 0;
 		vrLen = 1259;
 		vrLoc = 5453;
@@ -1569,7 +1629,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 294";
 		rLen = 0;
-		rLoc = 7566;
+		rLoc = 7437;
 		rType = 0;
 		vrLen = 1012;
 		vrLoc = 7624;
@@ -1599,7 +1659,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 256";
 		rLen = 0;
-		rLoc = 6758;
+		rLoc = 6755;
 		rType = 0;
 		vrLen = 1259;
 		vrLoc = 5453;
@@ -1619,7 +1679,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 213";
 		rLen = 0;
-		rLoc = 5570;
+		rLoc = 5567;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 5453;
@@ -1629,7 +1689,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 227";
 		rLen = 0;
-		rLoc = 5961;
+		rLoc = 5835;
 		rType = 0;
 		vrLen = 805;
 		vrLoc = 5399;
@@ -1649,7 +1709,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 148";
 		rLen = 6;
-		rLoc = 3361;
+		rLoc = 3358;
 		rType = 0;
 		vrLen = 950;
 		vrLoc = 3060;
@@ -1678,7 +1738,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 323";
 		rLen = 0;
-		rLoc = 8267;
+		rLoc = 8100;
 		rType = 0;
 		vrLen = 777;
 		vrLoc = 7655;
@@ -1698,7 +1758,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 227";
 		rLen = 0;
-		rLoc = 5961;
+		rLoc = 5835;
 		rType = 0;
 		vrLen = 805;
 		vrLoc = 5399;
@@ -1718,7 +1778,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 101";
 		rLen = 9;
-		rLoc = 2201;
+		rLoc = 2199;
 		rType = 0;
 		vrLen = 731;
 		vrLoc = 1809;
@@ -1748,7 +1808,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 148";
 		rLen = 6;
-		rLoc = 3361;
+		rLoc = 3358;
 		rType = 0;
 		vrLen = 950;
 		vrLoc = 3060;
@@ -1816,7 +1876,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 213";
 		rLen = 0;
-		rLoc = 5570;
+		rLoc = 5567;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 5453;
@@ -1826,7 +1886,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 214";
 		rLen = 0;
-		rLoc = 5594;
+		rLoc = 5591;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 5453;
@@ -1836,7 +1896,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 224";
 		rLen = 0;
-		rLoc = 5998;
+		rLoc = 5995;
 		rType = 0;
 		vrLen = 1322;
 		vrLoc = 5484;
@@ -1846,7 +1906,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 228";
 		rLen = 5;
-		rLoc = 6066;
+		rLoc = 6063;
 		rType = 0;
 		vrLen = 1227;
 		vrLoc = 5484;
@@ -1856,7 +1916,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 214";
 		rLen = 5;
-		rLoc = 5608;
+		rLoc = 5605;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 5484;
@@ -1876,7 +1936,7 @@
 		fRef = C61216ED102710A60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 214";
 		rLen = 5;
-		rLoc = 5608;
+		rLoc = 5605;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 5484;
@@ -1896,7 +1956,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 31";
 		rLen = 0;
-		rLoc = 847;
+		rLoc = 830;
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 390;
@@ -1916,7 +1976,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 324";
 		rLen = 0;
-		rLoc = 8267;
+		rLoc = 8100;
 		rType = 0;
 		vrLen = 810;
 		vrLoc = 7807;
@@ -1955,7 +2015,7 @@
 		fRef = C61216F8102711400092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 324";
 		rLen = 0;
-		rLoc = 8267;
+		rLoc = 8100;
 		rType = 0;
 		vrLen = 810;
 		vrLoc = 7807;
@@ -2069,7 +2129,7 @@
 		fRef = C6121781102719B30092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 331";
 		rLen = 5;
-		rLoc = 8535;
+		rLoc = 8368;
 		rType = 0;
 		vrLen = 863;
 		vrLoc = 7707;
@@ -2078,7 +2138,7 @@
 		isa = PBXTextBookmark;
 		fRef = C6121785102719D20092C11D /* meanshiftfilter.cpp */;
 		rLen = 5;
-		rLoc = 7085;
+		rLoc = 7082;
 		rType = 0;
 	};
 	C6121785102719D20092C11D /* meanshiftfilter.cpp */ = {
@@ -2103,7 +2163,7 @@
 		fRef = C6121781102719B30092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 331";
 		rLen = 5;
-		rLoc = 8535;
+		rLoc = 8368;
 		rType = 0;
 		vrLen = 812;
 		vrLoc = 7758;
@@ -2123,7 +2183,7 @@
 		fRef = C6121781102719B30092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 331";
 		rLen = 5;
-		rLoc = 8535;
+		rLoc = 8368;
 		rType = 0;
 		vrLen = 863;
 		vrLoc = 7707;
@@ -2133,7 +2193,7 @@
 		fRef = C612177D1027196B0092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 264";
 		rLen = 5;
-		rLoc = 7085;
+		rLoc = 7082;
 		rType = 0;
 		vrLen = 838;
 		vrLoc = 6334;
@@ -2155,7 +2215,7 @@
 		fRef = C612178F102719D60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 240";
 		rLen = 15;
-		rLoc = 6384;
+		rLoc = 6381;
 		rType = 0;
 		vrLen = 1248;
 		vrLoc = 5818;
@@ -2164,7 +2224,7 @@
 		isa = PBXTextBookmark;
 		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
 		rLen = 15;
-		rLoc = 8220;
+		rLoc = 8053;
 		rType = 0;
 	};
 	C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */ = {
@@ -2174,9 +2234,9 @@
 		path = "/Developer/GPU Computing/C/src/Meanshift/meanshiftfilter_kernel.cu";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {743, 5729}}";
-			sepNavSelRange = "{2947, 0}";
-			sepNavVisRange = "{0, 1156}";
+			sepNavIntBoundsRect = "{{0, 0}, {743, 5644}}";
+			sepNavSelRange = "{7437, 0}";
+			sepNavVisRange = "{7206, 1025}";
 		};
 	};
 	C6121794102719F20092C11D /* PBXTextBookmark */ = {
@@ -2184,7 +2244,7 @@
 		fRef = C612178F102719D60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 240";
 		rLen = 15;
-		rLoc = 6384;
+		rLoc = 6381;
 		rType = 0;
 		vrLen = 1248;
 		vrLoc = 5818;
@@ -2194,7 +2254,7 @@
 		fRef = C6121781102719B30092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 324";
 		rLen = 15;
-		rLoc = 8220;
+		rLoc = 8053;
 		rType = 0;
 		vrLen = 1018;
 		vrLoc = 7590;
@@ -2253,9 +2313,9 @@
 		path = "/Developer/GPU Computing/C/src/Meanshift/meanshiftfilter.cpp";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {743, 4556}}";
-			sepNavSelRange = "{5984, 0}";
-			sepNavVisRange = "{2085, 974}";
+			sepNavIntBoundsRect = "{{0, 0}, {743, 4505}}";
+			sepNavSelRange = "{2267, 0}";
+			sepNavVisRange = "{2085, 1009}";
 		};
 	};
 	C61217B910271CCC0092C11D /* meanshiftfilter_gold.cpp */ = {
@@ -2293,7 +2353,7 @@
 		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 106";
 		rLen = 0;
-		rLoc = 2947;
+		rLoc = 2812;
 		rType = 0;
 		vrLen = 1156;
 		vrLoc = 0;
@@ -2323,7 +2383,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 0;
-		rLoc = 5984;
+		rLoc = 5981;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 5235;
@@ -2360,7 +2420,7 @@
 		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 106";
 		rLen = 0;
-		rLoc = 2947;
+		rLoc = 2812;
 		rType = 0;
 		vrLen = 1156;
 		vrLoc = 0;
@@ -2390,7 +2450,7 @@
 		fRef = C612178F102719D60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 140";
 		rLen = 0;
-		rLoc = 3486;
+		rLoc = 3483;
 		rType = 0;
 		vrLen = 1176;
 		vrLoc = 2821;
@@ -2450,7 +2510,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 0;
-		rLoc = 5984;
+		rLoc = 5981;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 5235;
@@ -2565,7 +2625,7 @@
 		fRef = C6121781102719B30092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 324";
 		rLen = 15;
-		rLoc = 8220;
+		rLoc = 8053;
 		rType = 0;
 		vrLen = 862;
 		vrLoc = 7707;
@@ -2595,7 +2655,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 250";
 		rLen = 5;
-		rLoc = 6779;
+		rLoc = 6776;
 		rType = 0;
 		vrLen = 929;
 		vrLoc = 6165;
@@ -2614,9 +2674,9 @@
 		path = "/Developer/GPU Computing/C/src/Meanshift/edison.cpp";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {743, 21029}}";
-			sepNavSelRange = "{26168, 0}";
-			sepNavVisRange = "{25877, 1124}";
+			sepNavIntBoundsRect = "{{0, 0}, {833, 21233}}";
+			sepNavSelRange = "{30222, 0}";
+			sepNavVisRange = "{29934, 686}";
 		};
 	};
 	C612180610271F430092C11D /* PBXTextBookmark */ = {
@@ -2624,7 +2684,7 @@
 		fRef = C612178F102719D60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 264";
 		rLen = 5;
-		rLoc = 7085;
+		rLoc = 7082;
 		rType = 0;
 		vrLen = 819;
 		vrLoc = 6334;
@@ -2634,7 +2694,7 @@
 		fRef = C6121781102719B30092C11D /* meanshiftfilter_kernel.cu */;
 		name = "meanshiftfilter_kernel.cu: 324";
 		rLen = 15;
-		rLoc = 8220;
+		rLoc = 8053;
 		rType = 0;
 		vrLen = 862;
 		vrLoc = 7707;
@@ -2644,7 +2704,7 @@
 		fRef = C612178F102719D60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 5;
-		rLoc = 5974;
+		rLoc = 5971;
 		rType = 0;
 		vrLen = 1016;
 		vrLoc = 5464;
@@ -2684,7 +2744,7 @@
 		fRef = C612178F102719D60092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 155";
 		rLen = 0;
-		rLoc = 3725;
+		rLoc = 3722;
 		rType = 0;
 		vrLen = 1122;
 		vrLoc = 3229;
@@ -2704,7 +2764,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 5;
-		rLoc = 5974;
+		rLoc = 5971;
 		rType = 0;
 		vrLen = 827;
 		vrLoc = 5365;
@@ -2754,7 +2814,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 250";
 		rLen = 0;
-		rLoc = 6777;
+		rLoc = 6774;
 		rType = 0;
 		vrLen = 923;
 		vrLoc = 6138;
@@ -2814,7 +2874,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 143";
 		rLen = 5;
-		rLoc = 3254;
+		rLoc = 3251;
 		rType = 0;
 		vrLen = 1050;
 		vrLoc = 3119;
@@ -2834,7 +2894,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 250";
 		rLen = 5;
-		rLoc = 6779;
+		rLoc = 6776;
 		rType = 0;
 		vrLen = 929;
 		vrLoc = 6165;
@@ -2864,7 +2924,7 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 0;
-		rLoc = 5984;
+		rLoc = 5981;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 5310;
@@ -2884,10 +2944,610 @@
 		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
 		name = "meanshiftfilter.cpp: 222";
 		rLen = 0;
-		rLoc = 5984;
+		rLoc = 5981;
 		rType = 0;
 		vrLen = 974;
 		vrLoc = 2085;
+	};
+	C6121822102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
+		name = "meanshiftfilter.cpp: 101";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 1009;
+		vrLoc = 2085;
+	};
+	C6121823102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 47";
+		rLen = 0;
+		rLoc = 2058;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 860;
+	};
+	C6121824102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 408";
+		rLen = 0;
+		rLoc = 13528;
+		rType = 0;
+		vrLen = 1099;
+		vrLoc = 13012;
+	};
+	C6121825102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 106";
+		rLen = 0;
+		rLoc = 2812;
+		rType = 0;
+		vrLen = 922;
+		vrLoc = 6667;
+	};
+	C6121826102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C61217B310271C720092C11D /* meanshiftfilter.cpp */;
+		name = "meanshiftfilter.cpp: 101";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 1009;
+		vrLoc = 2085;
+	};
+	C6121827102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 106";
+		rLen = 0;
+		rLoc = 2812;
+		rType = 0;
+		vrLen = 922;
+		vrLoc = 6667;
+	};
+	C6121828102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 47";
+		rLen = 0;
+		rLoc = 2058;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 860;
+	};
+	C6121829102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 408";
+		rLen = 0;
+		rLoc = 13528;
+		rType = 0;
+		vrLen = 1099;
+		vrLoc = 13012;
+	};
+	C612182A102720040092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 129";
+		rLen = 4;
+		rLoc = 3314;
+		rType = 0;
+		vrLen = 865;
+		vrLoc = 6842;
+	};
+	C612182B102722280092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C612180510271F430092C11D /* edison.cpp */;
+		name = "edison.cpp: 1137";
+		rLen = 0;
+		rLoc = 30222;
+		rType = 0;
+		vrLen = 686;
+		vrLoc = 29934;
+	};
+	C612182C102722290092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 420";
+		rLen = 12;
+		rLoc = 13825;
+		rType = 0;
+		vrLen = 1158;
+		vrLoc = 12952;
+	};
+	C612182D102722290092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 129";
+		rLen = 4;
+		rLoc = 3314;
+		rType = 0;
+		vrLen = 865;
+		vrLoc = 6842;
+	};
+	C612182E102722290092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 129";
+		rLen = 4;
+		rLoc = 3314;
+		rType = 0;
+		vrLen = 865;
+		vrLoc = 6842;
+	};
+	C612182F102722290092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 420";
+		rLen = 12;
+		rLoc = 13825;
+		rType = 0;
+		vrLen = 1158;
+		vrLoc = 12952;
+	};
+	C6121830102722290092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 18";
+		rLen = 0;
+		rLoc = 589;
+		rType = 0;
+		vrLen = 1156;
+		vrLoc = 0;
+	};
+	C6121834102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 13";
+		rLen = 0;
+		rLoc = 357;
+		rType = 0;
+		vrLen = 1138;
+		vrLoc = 5632;
+	};
+	C6121835102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 51";
+		rLen = 0;
+		rLoc = 2091;
+		rType = 0;
+		vrLen = 1435;
+		vrLoc = 860;
+	};
+	C6121836102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 420";
+		rLen = 12;
+		rLoc = 13825;
+		rType = 0;
+		vrLen = 1158;
+		vrLoc = 12952;
+	};
+	C6121837102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 46";
+		rLen = 0;
+		rLoc = 586;
+		rType = 0;
+		vrLen = 1076;
+		vrLoc = 379;
+	};
+	C6121838102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 13";
+		rLen = 0;
+		rLoc = 357;
+		rType = 0;
+		vrLen = 1138;
+		vrLoc = 5632;
+	};
+	C6121839102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 233";
+		rLen = 0;
+		rLoc = 8978;
+		rType = 0;
+		vrLen = 1076;
+		vrLoc = 379;
+	};
+	C612183A102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 51";
+		rLen = 0;
+		rLoc = 2091;
+		rType = 0;
+		vrLen = 1435;
+		vrLoc = 860;
+	};
+	C612183B102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 46";
+		rLen = 0;
+		rLoc = 586;
+		rType = 0;
+		vrLen = 1076;
+		vrLoc = 379;
+	};
+	C612183C102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 420";
+		rLen = 12;
+		rLoc = 13825;
+		rType = 0;
+		vrLen = 1158;
+		vrLoc = 12952;
+	};
+	C612183D102722540092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 46";
+		rLen = 0;
+		rLoc = 586;
+		rType = 0;
+		vrLen = 1076;
+		vrLoc = 379;
+	};
+	C612183E1027225F0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 217";
+		rLen = 0;
+		rLoc = 8110;
+		rType = 0;
+		vrLen = 565;
+		vrLoc = 169;
+	};
+	C6121849102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 33";
+		rLen = 0;
+		rLoc = 397;
+		rType = 0;
+		vrLen = 565;
+		vrLoc = 169;
+	};
+	C612184A102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 159";
+		rLen = 8;
+		rLoc = 6095;
+		rType = 0;
+		vrLen = 1394;
+		vrLoc = 5374;
+	};
+	C612184B102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 126";
+		rLen = 0;
+		rLoc = 3136;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 3057;
+	};
+	C612184C102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 51";
+		rLen = 0;
+		rLoc = 2091;
+		rType = 0;
+		vrLen = 1435;
+		vrLoc = 860;
+	};
+	C612184D102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 33";
+		rLen = 0;
+		rLoc = 397;
+		rType = 0;
+		vrLen = 565;
+		vrLoc = 169;
+	};
+	C612184E102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 212";
+		rLen = 0;
+		rLoc = 5486;
+		rType = 0;
+		vrLen = 1156;
+		vrLoc = 5632;
+	};
+	C612184F102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 96";
+		rLen = 1;
+		rLoc = 4049;
+		rType = 0;
+		vrLen = 1446;
+		vrLoc = 3270;
+	};
+	C6121850102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 63";
+		rLen = 0;
+		rLoc = 1704;
+		rType = 0;
+		vrLen = 1209;
+		vrLoc = 1226;
+	};
+	C6121851102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 159";
+		rLen = 8;
+		rLoc = 6095;
+		rType = 0;
+		vrLen = 1416;
+		vrLoc = 5352;
+	};
+	C6121852102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 63";
+		rLen = 0;
+		rLoc = 1704;
+		rType = 0;
+		vrLen = 1195;
+		vrLoc = 1370;
+	};
+	C6121853102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 159";
+		rLen = 8;
+		rLoc = 6095;
+		rType = 0;
+		vrLen = 1394;
+		vrLoc = 5374;
+	};
+	C6121854102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 126";
+		rLen = 0;
+		rLoc = 3136;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 3057;
+	};
+	C6121855102723BF0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 47";
+		rLen = 0;
+		rLoc = 2058;
+		rType = 0;
+		vrLen = 1382;
+		vrLoc = 860;
+	};
+	C6121857102724890092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 32";
+		rLen = 0;
+		rLoc = 1638;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 860;
+	};
+	C6121858102724890092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 126";
+		rLen = 0;
+		rLoc = 3136;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 3057;
+	};
+	C6121859102724890092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D120710218EDC00469DF2 /* Makefile */;
+		name = "Makefile: 32";
+		rLen = 0;
+		rLoc = 1638;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 860;
+	};
+	C612185A102724890092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 216";
+		rLen = 0;
+		rLoc = 5486;
+		rType = 0;
+		vrLen = 845;
+		vrLoc = 5071;
+	};
+	C6121864102725AB0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 225";
+		rLen = 0;
+		rLoc = 5835;
+		rType = 0;
+		vrLen = 848;
+		vrLoc = 5309;
+	};
+	C6121872102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 33";
+		rLen = 0;
+		rLoc = 397;
+		rType = 0;
+		vrLen = 628;
+		vrLoc = 214;
+	};
+	C6121873102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 425";
+		rLen = 3;
+		rLoc = 13956;
+		rType = 0;
+		vrLen = 1165;
+		vrLoc = 13030;
+	};
+	C6121874102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 225";
+		rLen = 0;
+		rLoc = 5835;
+		rType = 0;
+		vrLen = 871;
+		vrLoc = 5309;
+	};
+	C6121875102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 225";
+		rLen = 0;
+		rLoc = 5835;
+		rType = 0;
+		vrLen = 871;
+		vrLoc = 5309;
+	};
+	C6121876102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 425";
+		rLen = 3;
+		rLoc = 13956;
+		rType = 0;
+		vrLen = 1132;
+		vrLoc = 13063;
+	};
+	C6121877102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */;
+		name = "meanshiftfilter_kernel.sm_10.cubin: 33";
+		rLen = 0;
+		rLoc = 397;
+		rType = 0;
+		vrLen = 628;
+		vrLoc = 214;
+	};
+	C6121878102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 425";
+		rLen = 3;
+		rLoc = 13956;
+		rType = 0;
+		vrLen = 1165;
+		vrLoc = 13030;
+	};
+	C6121879102726820092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 288";
+		rLen = 0;
+		rLoc = 7320;
+		rType = 0;
+		vrLen = 870;
+		vrLoc = 6901;
+	};
+	C612187C102726950092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 288";
+		rLen = 0;
+		rLoc = 7320;
+		rType = 0;
+		vrLen = 870;
+		vrLoc = 6901;
+	};
+	C612187D102726A90092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 288";
+		rLen = 0;
+		rLoc = 7320;
+		rType = 0;
+		vrLen = 895;
+		vrLoc = 6901;
+	};
+	C612187E102726A90092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 425";
+		rLen = 3;
+		rLoc = 13956;
+		rType = 0;
+		vrLen = 1181;
+		vrLoc = 13015;
+	};
+	C612187F102726A90092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 288";
+		rLen = 0;
+		rLoc = 7320;
+		rType = 0;
+		vrLen = 895;
+		vrLoc = 6901;
+	};
+	C6121880102726A90092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 425";
+		rLen = 8;
+		rLoc = 13947;
+		rType = 0;
+		vrLen = 1133;
+		vrLoc = 13063;
+	};
+	C61218811027273E0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 408";
+		rLen = 0;
+		rLoc = 13476;
+		rType = 0;
+		vrLen = 1166;
+		vrLoc = 13030;
+	};
+	C61218821027273E0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */;
+		name = "meanshiftfilter_kernel.ptx: 408";
+		rLen = 0;
+		rLoc = 13476;
+		rType = 0;
+		vrLen = 1166;
+		vrLoc = 13030;
+	};
+	C61218831027273E0092C11D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6121793102719F20092C11D /* meanshiftfilter_kernel.cu */;
+		name = "meanshiftfilter_kernel.cu: 292";
+		rLen = 0;
+		rLoc = 7437;
+		rType = 0;
+		vrLen = 1025;
+		vrLoc = 7206;
 	};
 	C62D120210218EDC00469DF2 /* edison.cpp */ = {
 		uiCtxt = {
@@ -2913,8 +3573,8 @@
 	C62D120710218EDC00469DF2 /* Makefile */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {743, 1071}}";
-			sepNavSelRange = "{2035, 0}";
-			sepNavVisRange = "{860, 1433}";
+			sepNavSelRange = "{1638, 0}";
+			sepNavVisRange = "{860, 1434}";
 		};
 	};
 	C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */ = {
@@ -2978,7 +3638,7 @@
 		fRef = C62D120810218EDC00469DF2 /* meanshiftfilter.cpp */;
 		name = "meanshift.cpp: 94";
 		rLen = 0;
-		rLoc = 2688;
+		rLoc = 2685;
 		rType = 0;
 		vrLen = 1377;
 		vrLoc = 2609;
@@ -3064,16 +3724,16 @@
 	};
 	C62D12E91021AABC00469DF2 /* meanshiftfilter_kernel.ptx */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {743, 7837}}";
-			sepNavSelRange = "{13528, 0}";
-			sepNavVisRange = "{13165, 1067}";
+			sepNavIntBoundsRect = "{{0, 0}, {743, 7242}}";
+			sepNavSelRange = "{13476, 0}";
+			sepNavVisRange = "{13030, 1166}";
 		};
 	};
 	C62D12EA1021AABC00469DF2 /* meanshiftfilter_kernel.sm_10.cubin */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {619, 4199}}";
-			sepNavSelRange = "{8978, 0}";
-			sepNavVisRange = "{286, 1142}";
+			sepNavIntBoundsRect = "{{0, 0}, {743, 4352}}";
+			sepNavSelRange = "{397, 0}";
+			sepNavVisRange = "{214, 628}";
 		};
 	};
 	C62D12FF1021ABAE00469DF2 /* PBXTextBookmark */ = {
@@ -3209,7 +3869,7 @@
 		fRef = C62D122E102196BF00469DF2 /* meanshift.cpp */;
 		name = "meanshiftfilter.cpp: 103";
 		rLen = 24;
-		rLoc = 2300;
+		rLoc = 2297;
 		rType = 0;
 		vrLen = 979;
 		vrLoc = 2179;

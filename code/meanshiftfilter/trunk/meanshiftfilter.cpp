@@ -95,12 +95,9 @@ std::string imgDiff[] = {
 float h_options[MAX_OPTS];
 
 
-
-
 extern void connect();
 extern void boundaries();
 extern void computeGold(void);
-
 
 
 void loadImageData(int argc __attribute__ ((unused)),
