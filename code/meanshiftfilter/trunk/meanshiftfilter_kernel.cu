@@ -11,13 +11,14 @@ __constant__ float d_options[MAX_OPTS];
 
 __constant__ float EPSILON = 0.01f;	// define threshold (approx. Value of Mh at a peak or plateau)
 __constant__ float LIMIT   = 100.0f;	// define max. # of iterations to find mode
+__constant__ unsigned int N = 4;
 
 #ifndef USE_CONST_MEMORY
-__device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, float* d_dst, 
+__device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height,
 							  float sigmaS, float sigmaR)
 #else
-__device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, float* d_dst, 
+__device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height)
 
 #endif
@@ -66,10 +67,10 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, f
 		diff1 = 0;
 		
 		//get index into data array
-		dataPoint = 3 * (i * width + j);
-		data_l = d_src[dataPoint + 0];
-		data_u = d_src[dataPoint + 1];
-		data_v = d_src[dataPoint + 2];
+		dataPoint = (i * width + j);
+		data_l = d_src[dataPoint].x;
+		data_u = d_src[dataPoint].y;
+		data_v = d_src[dataPoint].z;
 		
 		//Determine if inside search window
 		//Calculate distance squared of sub-space s	
@@ -148,11 +149,11 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float* d_src, f
 }
 
 #ifndef USE_CONST_MEMORY
-__device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float* d_src, float* d_dst, 
+__device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height,
 							  float sigmaS, float sigmaR)
 #else
-__device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float* d_src, float* d_dst, 
+__device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height)
 #endif							  
 {
@@ -193,11 +194,11 @@ __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float* d_src, float*
 }
 
 #ifndef USE_CONST_MEMORY
-__device__ void filter(float* d_src, float* d_dst, 
+__device__ void filter(float4* d_src, float4* d_dst, 
 					   unsigned int width, unsigned int height,
 					   float sigmaS, float sigmaR)
 #else
-__device__ void filter(float* d_src, float* d_dst, 
+__device__ void filter(float4* d_src, float4* d_dst, 
 					   unsigned int width, unsigned int height)
 #endif					   
 {
@@ -221,9 +222,9 @@ __device__ void filter(float* d_src, float* d_dst,
 	// data[i])	
 	yk[0] = iy;
 	yk[1] = ix;
-	yk[2] = d_src[3 * i + 0]; // l
-	yk[3] = d_src[3 * i + 1]; // u
-	yk[4] = d_src[3 * i + 2]; // v
+	yk[2] = d_src[i].x; // l
+	yk[3] = d_src[i].y; // u
+	yk[4] = d_src[i].z; // v
 
 	// Calculate the mean shift vector using the lattice
 #ifndef USE_CONST_MEMORY
@@ -286,10 +287,11 @@ __device__ void filter(float* d_src, float* d_dst,
 	yk[3] += Mh[3];
 	yk[4] += Mh[4];
 	
+	__syncthreads();
 	//store result into msRawData...
-	d_dst[3 * i + 0] = (float)(yk[2]);
-	d_dst[3 * i + 1] = (float)(yk[3]);
-	d_dst[3 * i + 2] = (float)(yk[4]);
+	d_dst[i].x = (float)(yk[2]);
+	d_dst[i].y = (float)(yk[3]);
+	d_dst[i].z = (float)(yk[4]);
 
 	//}
 	// done.
@@ -297,11 +299,11 @@ __device__ void filter(float* d_src, float* d_dst,
 }
 
 #ifndef USE_CONST_MEMORY
-__global__ void mean_shift_filter(float* d_src, float* d_dst, 
+__global__ void mean_shift_filter(float4* d_src, float4* d_dst, 
 								  unsigned int width, unsigned int height,
 								  float sigmaS, float sigmaR)
 #else
-__global__ void mean_shift_filter(float* d_src, float* d_dst, 
+__global__ void mean_shift_filter(float4* d_src, float4* d_dst, 
 								  unsigned int width, unsigned int height)
 #endif								  
 {
@@ -319,7 +321,7 @@ extern "C" void setArgs(float* h_options)
 	CUDA_SAFE_CALL(cudaMemcpyToSymbol(d_options, h_options, MAX_OPTS * sizeof(float)));
 }
 
-extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float* d_src, float* d_dst,
+extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_dst,
 					 unsigned int width, unsigned int height,
 					float sigmaS, float sigmaR)
 {
