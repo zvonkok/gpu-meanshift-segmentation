@@ -36,9 +36,6 @@
 // cleaned up stuff 
 float sigmaS;
 float sigmaR;
-float rcpr_sigmaS;
-float rcpr_sigmaR;
-
 float minRegion;
 
 

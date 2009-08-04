@@ -18,7 +18,7 @@ void setArgs(float*);
 extern "C" 
 void meanShiftFilter(dim3, dim3, float4*, float4*, 
 					 unsigned int, unsigned int,
-					 float, float);
+					 float, float, float, float);
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions
@@ -36,6 +36,7 @@ void meanShiftFilter(dim3, dim3, float4*, float4*,
 extern float sigmaS;
 extern float sigmaR;
 extern float minRegion;
+
 
 extern unsigned int N;
 extern unsigned int L;
@@ -231,7 +232,10 @@ void computeCUDA()
 	dim3 threads(thx, thy); // 128 threads 
 	dim3 grid(width/thx, height/thy);
 	
-	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR);
+	std::cout << "params: " << "sigmaS: " << sigmaS << " 1/sigmaS: " << 1.0f/sigmaS << std::endl;
+	std::cout << "params: " << "sigmaR: " << sigmaR << " 1/sigmaR: " << 1.0f/sigmaR << std::endl;
+	
+	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 
 	
 	cutilCheckMsg("Kernel Execution failed");
