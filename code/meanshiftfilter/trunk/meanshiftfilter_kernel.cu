@@ -16,7 +16,8 @@ __constant__ unsigned int N = 4;
 #ifndef USE_CONST_MEMORY
 __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height,
-							  float sigmaS, float sigmaR)
+							  float sigmaS, float sigmaR,
+							  float rsigmaS, float rsigmaR)
 #else
 __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height)
@@ -88,41 +89,16 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 		diff0 += dx * dx;
 		diff0 += dy * dy;
 		
-#undef  BRANCH_FREE
-//		#define BRANCH_FREE 1
-#ifdef  BRANCH_FREE
-		// Original statement: diff1 += 4 * dl * dl;
-		// Der Wertebereich der Helligkeit liegt im 
-		// Interval L* = 0 for black bis L* = 100 for white.
-		diff1 += dl * dl;
-		diff1 += (int)(yk[2]/80) * 3.0f * dl * dl;
-#else
+
 		if((yk[2] > 80)) 
 			diff1 += 4.0f * dl * dl;
 		else
 			diff1 += dl * dl;
-#endif
 		
 		
 		diff1 += du * du;
 		diff1 += dv * dv;
 		
-#ifdef  BRANCH_FREE
-		//if its inside search window perform sum and count
-		// For a uniform kernel weight == 1 for all feature points
-		//int res = !((int)diff0 - (int)diff1);
-		float mx = fmaxf(diff0, diff1);
-		mx = floorf(mx);
-		mx = !mx;
-		
-		// considered point is within sphere => accumulate to mean
-		Mh[0] += j * mx;
-		Mh[1] += i * mx;
-		Mh[2] += luv.x * mx;
-		Mh[3] += luv.y * mx;
-		Mh[4] += luv.z * mx;
-		(*wsum) += 1 * mx; //weight
-#else
 		
 		// If its inside search window perform sum and count
 		// For a uniform kernel weight == 1 for all feature points
@@ -137,16 +113,15 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 			Mh[4] += luv.z;
 			(*wsum) += 1; //weight
 		}
-#endif			
 	}
-	
 	return;
 }
 
 #ifndef USE_CONST_MEMORY
 __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height,
-							  float sigmaS, float sigmaR)
+							  float sigmaS, float sigmaR,
+							  float rsigmaS, float rsigmaR)
 #else
 __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height)
@@ -170,7 +145,7 @@ __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float4* d_src, float
 	// by uniformKernel
 
 #ifndef USE_CONST_MEMORY
-	uniformSearch(Mh_ptr, yk_ptr, &wsum, d_src, d_dst, width, height, sigmaS, sigmaR);
+	uniformSearch(Mh_ptr, yk_ptr, &wsum, d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 #else
 	uniformSearch(Mh_ptr, yk_ptr, &wsum, d_src, d_dst, width, height);
 #endif
@@ -191,7 +166,8 @@ __device__ void latticeVector(float *Mh_ptr, float *yk_ptr, float4* d_src, float
 #ifndef USE_CONST_MEMORY
 __device__ void filter(float4* d_src, float4* d_dst, 
 					   unsigned int width, unsigned int height,
-					   float sigmaS, float sigmaR)
+					   float sigmaS, float sigmaR,
+					   float rsigmaS, float rsigmaR)
 #else
 __device__ void filter(float4* d_src, float4* d_dst, 
 					   unsigned int width, unsigned int height)
@@ -226,7 +202,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 
 	// Calculate the mean shift vector using the lattice
 #ifndef USE_CONST_MEMORY
-	latticeVector(Mh, yk, d_src, d_dst, width, height, sigmaS, sigmaR);
+	latticeVector(Mh, yk, d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 #else
 	latticeVector(Mh, yk, d_src, d_dst, width, height);
 #endif	
@@ -260,7 +236,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 		// Calculate the mean shift vector at the new
 		// window location using lattice
 #ifndef USE_CONST_MEMORY
-		latticeVector(Mh, yk, d_src, d_dst, width, height, sigmaS, sigmaR);
+		latticeVector(Mh, yk, d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 #else
 		latticeVector(Mh, yk, d_src, d_dst, width, height);
 #endif	
@@ -296,14 +272,15 @@ __device__ void filter(float4* d_src, float4* d_dst,
 #ifndef USE_CONST_MEMORY
 __global__ void mean_shift_filter(float4* d_src, float4* d_dst, 
 								  unsigned int width, unsigned int height,
-								  float sigmaS, float sigmaR)
+								  float sigmaS, float sigmaR,
+								  float rsigmaS, float rsigmaR)
 #else
 __global__ void mean_shift_filter(float4* d_src, float4* d_dst, 
 								  unsigned int width, unsigned int height)
 #endif								  
 {
 #ifndef USE_CONST_MEMORY
-	filter(d_src, d_dst, width, height, sigmaS, sigmaR);
+	filter(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 #else
 	filter(d_src, d_dst, width, height);
 #endif
@@ -318,10 +295,11 @@ extern "C" void setArgs(float* h_options)
 
 extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_dst,
 					 unsigned int width, unsigned int height,
-					float sigmaS, float sigmaR)
+					float sigmaS, float sigmaR,
+					float rsigmaS, float rsigmaR)
 {
 #ifndef USE_CONST_MEMORY
-	mean_shift_filter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR);
+	mean_shift_filter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 #else
 	mean_shift_filter<<< grid, threads>>>(d_src, d_dst, width, height);	
 #endif
