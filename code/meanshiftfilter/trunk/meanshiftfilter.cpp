@@ -13,12 +13,12 @@
 #include <cuda_gl_interop.h>
 #include <rendercheck_gl.h>
 
-extern "C" 
-void setArgs(float*);
-extern "C" 
-void meanShiftFilter(dim3, dim3, float4*, float4*, 
-					 unsigned int, unsigned int,
-					 float, float, float, float);
+extern "C" void setArgs(float*);
+extern "C" void initTexture(int, int, void*);
+extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
+								unsigned int, unsigned int,
+								float, float, float, float);
+
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions
@@ -50,6 +50,8 @@ unsigned int * h_img = NULL;
 unsigned int * h_filt = NULL;
 unsigned int * h_segm = NULL;
 unsigned char * h_bndy = NULL;
+unsigned char * h_iter = NULL; // iterations per thread/pixel
+
 
 float4 * h_src = NULL; // luv source data
 float4 * h_dst = NULL; // luv manipulated data
@@ -142,10 +144,12 @@ int main( int argc, char** argv)
 	//Allocate memory for h_dst (filtered image output)
 	h_dst = new float4[height * width];
 	h_src = new float4[height * width];
+
 	
 	h_filt = new unsigned int [height * width * sizeof(unsigned char) * 4];
 	h_segm = new unsigned int [height * width * sizeof(unsigned char) * 4];
 	h_bndy = new unsigned char [height * width];
+	h_iter = new unsigned char [height * width];
 	
 	// Prepare the RGB data 
 	for(unsigned int i = 0; i < L; i++) {
@@ -180,6 +184,9 @@ int main( int argc, char** argv)
 		append += imgOutGOLD[APPD];
 		compare += imgOutGOLD[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
 		
+		// iteration count for runtime for each thread
+		cutilCheckError(cutSavePGMub((path + "itr.pgm").c_str(), (unsigned char *)h_iter, width, height));	
+		
 	} else {
 		computeCUDA();
 		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (unsigned char *)h_filt, width, height));	
@@ -193,9 +200,11 @@ int main( int argc, char** argv)
 		compare += imgOutCUDA[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
 	}
 	
-	system(append.c_str());
-	system(compare.c_str());
-	system(open.c_str());
+	if (cutCheckCmdLineFlag(argc, (const char**)argv, "ref")) { 
+		system(append.c_str());
+		system(compare.c_str());
+		system(open.c_str());
+	}
 
 			
 	exit(EXIT_SUCCESS);
@@ -218,6 +227,13 @@ void computeCUDA()
 	for (unsigned int i = 0; i < height * width; i++) {
 		h_flt[i] = h_src[i];
 	}
+
+	
+	// TEXTURE Begin: allocate array and copy image data
+	initTexture(width, height, h_flt);
+	// TEXTURE End
+
+	
 	
 	// copy host memory to device
 	cutilSafeCall(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));

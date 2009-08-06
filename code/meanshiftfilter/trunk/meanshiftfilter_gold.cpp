@@ -1,11 +1,12 @@
 #include "filter.h"
 #include "rgbluv.h"
 
-#include <stdio.h>
+#include <iostream>
 #include <cuda_runtime_api.h>
 
 extern float4 * h_src;
 extern float4 * h_dst;
+extern unsigned char * h_iter;
 
 extern void connect(void);
 extern void boundaries(void);
@@ -134,55 +135,28 @@ void uniformSearchGold(float *Mh, float *yk, float* wsum)
 			diff0 += dx * dx;
 			diff0 += dy * dy;
 			
-#undef  BRANCH_FREE
-			//#define BRANCH_FREE 1
-#ifdef  BRANCH_FREE
-			// Original statement: diff1 += 4 * dl * dl;
-			// Der Wertebereich der Helligkeit liegt im 
-			// Interval L* = 0 for black bis L* = 100 for white.
-			diff1 += dl * dl;
-			diff1 += (int)(yk[2]/80) * 3.0f * dl * dl;
-#else
 			if((yk[2] > 80)) 
 				diff1 += 4.0f * dl * dl;
 			else
 				diff1 += dl * dl;
-#endif
 			
 			diff1 += du * du;
 			diff1 += dv * dv;
 			
-#ifdef  BRANCH_FREE
-			//if its inside search window perform sum and count
-			// For a uniform kernel weight == 1 for all feature points
-			//int res = !((int)diff0 - (int)diff1);
-			float mx = fmaxf(diff0, diff1);
-			mx = floorf(mx);
-			mx = !mx;
-			
-			// considered point is within sphere => accumulate to mean
-			Mh[0] += j * mx;
-			Mh[1] += i * mx;
-			Mh[2] += data_l * mx;
-			Mh[3] += data_u * mx;
-			Mh[4] += data_v * mx;
-			(*wsum) += 1 * mx; //weight
-#else
-			
+		
 			// If its inside search window perform sum and count
 			// For a uniform kernel weight == 1 for all feature points
-			if((diff0 < 1.0 && diff1 < 1.0))
+			if((diff0 < 1.0f && diff1 < 1.0f))
 			{
-				
 				// considered point is within sphere => accumulate to mean
 				Mh[0] += j;
 				Mh[1] += i;
 				Mh[2] += data_l;
 				Mh[3] += data_u;
 				Mh[4] += data_v;
-				(*wsum) += 1; //weight
+				(*wsum) += 1.0f; //weight
 			}
-#endif			
+	
 		}
 	
 	return;
@@ -291,6 +265,18 @@ void filterGold()
 			
 			// Increment iteration count
 			iterationCount++;
+			
+			std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
+			/*
+			if (i == 26532) {
+				std::cout << yk[0] << " " 
+				<< yk[1] << " "
+				<< yk[2] << " "
+				<< yk[3] << " "
+				<< yk[4] << " "
+				<< "---" << mvAbs << std::endl;
+			}*/
+			
 		}
 		
 		// Shift window location
@@ -300,10 +286,24 @@ void filterGold()
 		yk[3] += Mh[3];
 		yk[4] += Mh[4];
 		
+		
 		//store result into msRawData...
 		h_dst[i].x = (float)(yk[0 + 2]);
 		h_dst[i].y = (float)(yk[1 + 2]);
 		h_dst[i].z = (float)(yk[2 + 2]);
+	
+		// store iteration count for each pixel
+		// 100 == 0,0,0
+		// 50 == 125, 125, 125
+		// 25 = 
+		// 0 == 255,255,255
+		// 255 / (LIMIT/iterationCount)
+		h_iter[i] = 255.0f / (LIMIT/iterationCount);
+		
+		
+		std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
+
+		//std::cout << "index: " << i << " iter: " << iterationCount << std::endl;
 	}
 	
 	

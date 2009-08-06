@@ -13,6 +13,9 @@ __constant__ float EPSILON = 0.01f;	// define threshold (approx. Value of Mh at 
 __constant__ float LIMIT   = 100.0f;	// define max. # of iterations to find mode
 __constant__ unsigned int N = 4;
 
+// declare texture reference for 2D float texture
+texture<float4, 2, cudaReadModeElementType> tex;
+
 #ifndef USE_CONST_MEMORY
 __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, float4* d_dst, 
 							  unsigned int width, unsigned int height,
@@ -66,7 +69,7 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 		diff1 = 0;
 		
 		//get index into data array
-		luv = d_src[i * width + j];
+		luv = tex2D(tex, j, i); //luv = d_src[i * width + j];
 		
 		//Determine if inside search window
 		//Calculate distance squared of sub-space s	
@@ -84,11 +87,8 @@ __device__ void uniformSearch(float *Mh, float *yk, float* wsum, float4* d_src, 
 		dv = (luv.z - yk[4]) / d_options[SIGMAR];               
 		
 #endif
-		
-		
 		diff0 += dx * dx;
 		diff0 += dy * dy;
-		
 
 		if((yk[2] > 80)) 
 			diff1 += 4.0f * dl * dl;
@@ -185,7 +185,6 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	
 	int ix = blockIdx.x * blockDim.x + threadIdx.x;
 	int iy = blockIdx.y * blockDim.y + threadIdx.y;
-	
 	int i = ix * width + iy;
 	
 	// Assign window center (window centers are
@@ -194,7 +193,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	yk[0] = iy;
 	yk[1] = ix;
 	
-	float4 luv = d_src[i];
+	float4 luv = tex2D(tex, iy, ix); 	// float4 luv = d_src[i];
 	
 	yk[2] = luv.x; // l
 	yk[3] = luv.y; // u
@@ -263,7 +262,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	
 	luv = make_float4(yk[2], yk[3], yk[4], 0.0f);
 
-	__syncthreads();
+	//__syncthreads();
 	// store result into global memory
 	d_dst[i] = luv;
 	return;
@@ -286,6 +285,27 @@ __global__ void mean_shift_filter(float4* d_src, float4* d_dst,
 #endif
 }
 
+
+extern "C" void initTexture(int width, int height, void *h_flt)
+{
+    cudaArray* d_array;
+    int size = width * height * sizeof(float4);
+
+	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc<float4> ();
+
+    cutilSafeCall(cudaMallocArray(&d_array, &channelDesc, width, height )); 
+    cutilSafeCall(cudaMemcpyToArray(d_array, 0, 0, h_flt, size, cudaMemcpyHostToDevice));
+	
+	// set texture parameters
+//    tex.addressMode[0] = cudaAddressModeWrap;
+//    tex.addressMode[1] = cudaAddressModeWrap;
+//    tex.filterMode = cudaFilterModeLinear;
+    tex.normalized = 0;	// access without normalized texture coordinates
+						// [0, width -1] [0, height - 1]
+	
+	// bind the array to the texture
+    cutilSafeCall(cudaBindTextureToArray(tex, d_array, channelDesc));
+}
 
 
 extern "C" void setArgs(float* h_options)
