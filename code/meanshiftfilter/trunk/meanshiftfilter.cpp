@@ -234,9 +234,12 @@ void computeCUDA()
 	// TEXTURE End
 
 	
-	
 	// copy host memory to device
 	cutilSafeCall(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));
+
+	// setup execution parameters
+	dim3 threads(thx, thy); // 128 threads 
+	dim3 grid(width/thx, height/thy);
 	
 	setArgs(h_options);
 	// create and start timer
@@ -244,9 +247,6 @@ void computeCUDA()
 	cutilCheckError(cutCreateTimer(&timer));
 	cutilCheckError(cutStartTimer(timer));
 	
-	// setup execution parameters
-	dim3 threads(thx, thy); // 128 threads 
-	dim3 grid(width/thx, height/thy);
 	
 	std::cout << "params: " << "sigmaS: " << sigmaS << " 1/sigmaS: " << 1.0f/sigmaS << std::endl;
 	std::cout << "params: " << "sigmaR: " << sigmaR << " 1/sigmaR: " << 1.0f/sigmaR << std::endl;
