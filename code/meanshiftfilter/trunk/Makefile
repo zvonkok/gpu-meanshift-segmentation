@@ -44,7 +44,7 @@ USEGLLIB         := 1
 USEGLUT	         := 1
 USERENDERCHECKGL := 1
 
-emu=1
+#emu=1
 verbose=1
 keep=1
 #debug=1
