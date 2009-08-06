@@ -266,7 +266,7 @@ void filterGold()
 			// Increment iteration count
 			iterationCount++;
 			
-			std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
+		//	std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
 			/*
 			if (i == 26532) {
 				std::cout << yk[0] << " " 
@@ -301,7 +301,7 @@ void filterGold()
 		h_iter[i] = 255.0f / (LIMIT/iterationCount);
 		
 		
-		std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
+//		std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
 
 		//std::cout << "index: " << i << " iter: " << iterationCount << std::endl;
 	}
