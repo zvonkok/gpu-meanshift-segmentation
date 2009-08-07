@@ -58,5 +58,5 @@ include ../../common/common.mk
 #CFLAGS += -fasm-blocks 
 #CXXFLAGS += -fasm-blocks 
 
-NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v 
+NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v -use_fast_math
 

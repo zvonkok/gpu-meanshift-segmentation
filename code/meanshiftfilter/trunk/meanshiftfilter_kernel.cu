@@ -13,7 +13,7 @@ __constant__ float LIMIT   = 100.0f;	// define max. # of iterations to find mode
 __constant__ unsigned int N = 4;
 
 // declare texture reference for 2D float texture
-texture<float4, 2, cudaReadModeElementType> tex;
+texture<uchar4, 2, cudaReadModeNormalizedFloat> tex;
 
 
 
@@ -23,8 +23,14 @@ __device__ void filter(float4* d_src, float4* d_dst,
 			float rsigmaS, float rsigmaR)
 			
 {
-	// Declare Variables
-	float iterationCount;
+	//Declare variables
+	int iterationCount;
+
+
+	float j, k;	
+	float diff0, diff1;
+	float dx, dy, dl, du, dv;
+
 	float mvAbs;
 	float wsum;
 	
@@ -95,30 +101,25 @@ __device__ void filter(float4* d_src, float4* d_dst,
 		// by uniformKernel
 
 		
-		//Declare variables
-		int	j, k;
-	
-		float diff0, diff1;
-		float dx, dy, dl, du, dv;
 	
 		//Define bounds of lattice...
 		//the lattice is a 2dimensional subspace whose
 		//search window bandwidth is specified by sigmaS:
 	
-		int LowerBoundX = yk[0] - sigmaS;
-		int LowerBoundY = yk[1] - sigmaS;
+		int LowerBoundX = rintf(yk[0] - sigmaS);
+		int LowerBoundY = rintf(yk[1] - sigmaS);
 		int UpperBoundX = yk[0] + sigmaS;
 		int UpperBoundY = yk[1] + sigmaS;
 	
-		if (LowerBoundX < 0)  LowerBoundX = 0;
-		if (LowerBoundY < 0)  LowerBoundY = 0;
+//		if (LowerBoundX < 0)  LowerBoundX = 0;
+//		if (LowerBoundY < 0)  LowerBoundY = 0;
 		if (UpperBoundX >= width)  UpperBoundX = width - 1;
 		if (UpperBoundY >= height) UpperBoundY = height - 1;
 	
 		//Perform search using lattice
 		//Iterate once through a window of size sigmaS
-		for(j = LowerBoundY; j <= UpperBoundY; j++)
-		for(k = LowerBoundX; k <= UpperBoundX; k++)
+		for(j = LowerBoundY; j <= UpperBoundY; j += 1)
+		for(k = LowerBoundX; k <= UpperBoundX; k += 1)
 		{
 			diff0 = 0;
 			diff1 = 0;
@@ -138,12 +139,11 @@ __device__ void filter(float4* d_src, float4* d_dst,
 			diff0 += dx * dx;
 			diff0 += dy * dy;
 
-			if((yk[2] > 80)) 
+			if((yk[2] > 80.0f)) 
 				diff1 += 4.0f * dl * dl;
 			else
 				diff1 += dl * dl;
-		
-		
+
 			diff1 += du * du;
 			diff1 += dv * dv;
 
@@ -168,11 +168,13 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	
 		// determine the new center and the magnitude of the meanshift vector
 		// meanshiftVector = newCenter - center;
-		Mh[0] = Mh[0]/wsum - yk[0];
-		Mh[1] = Mh[1]/wsum - yk[1];
-		Mh[2] = Mh[2]/wsum - yk[2];
-		Mh[3] = Mh[3]/wsum - yk[3];
-		Mh[4] = Mh[4]/wsum - yk[4];
+		wsum = 1.0f/wsum; 
+		
+		Mh[0] = Mh[0] * wsum - yk[0];
+		Mh[1] = Mh[1] * wsum - yk[1];
+		Mh[2] = Mh[2] * wsum - yk[2];
+		Mh[3] = Mh[3] * wsum - yk[3];
+		Mh[4] = Mh[4] * wsum - yk[4];
 
 
 		
@@ -215,21 +217,21 @@ __global__ void mean_shift_filter(float4* d_src, float4* d_dst,
 }
 
 
-extern "C" void initTexture(int width, int height, void *h_flt)
+extern "C" void initTexture(int width, int height, void *h_src)
 {
-    cudaArray* d_array;
-    int size = width * height * sizeof(float4);
+	cudaArray* d_array;
+	int size = width * height * sizeof(uchar4);
 
-	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc<float4> ();
+	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc<uchar4> ();
 
-    cutilSafeCall(cudaMallocArray(&d_array, &channelDesc, width, height )); 
-    cutilSafeCall(cudaMemcpyToArray(d_array, 0, 0, h_flt, size, cudaMemcpyHostToDevice));
+	cutilSafeCall(cudaMallocArray(&d_array, &channelDesc, width, height )); 
+	cutilSafeCall(cudaMemcpyToArray(d_array, 0, 0, h_src, size, cudaMemcpyHostToDevice));
 	
 	// set texture parameters
 //    tex.addressMode[0] = cudaAddressModeWrap;
 //    tex.addressMode[1] = cudaAddressModeWrap;
 //    tex.filterMode = cudaFilterModeLinear;
-    tex.normalized = 0;	// access without normalized texture coordinates
+	tex.normalized = 0;	// access without normalized texture coordinates
 			// [0, width -1] [0, height - 1]
 	
 	// bind the array to the texture
@@ -248,6 +250,7 @@ extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* 
 					float rsigmaS, float rsigmaR)
 {
 	mean_shift_filter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
+	
 }
 
 
