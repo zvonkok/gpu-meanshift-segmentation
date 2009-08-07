@@ -106,9 +106,10 @@ __device__ void filter(float4* d_src, float4* d_dst,
 		int LowerBoundY = rintf(yk[1] - sigmaS);
 		int UpperBoundX = yk[0] + sigmaS;
 		int UpperBoundY = yk[1] + sigmaS;
-	
-		if (UpperBoundX >= width)  UpperBoundX = width - 1;
-		if (UpperBoundY >= height) UpperBoundY = height - 1;
+
+		// TODO
+		//if (UpperBoundX >= width)  UpperBoundX = width - 1;
+		//if (UpperBoundY >= height) UpperBoundY = height - 1;
 	
 		//Perform search using lattice
 		//Iterate once through a window of size sigmaS
@@ -223,7 +224,7 @@ extern "C" void initTexture(int width, int height, void *h_src)
 	
 	// set texture parameters
 //    tex.addressMode[0] = cudaAddressModeWrap;
-//    tex.addressMode[1] = cudaAddressModeWrap;
+ // tex.addressMode[1] = cudaAddressModeWrap;
 //    tex.filterMode = cudaFilterModeLinear;
 	tex.normalized = 0;	// access without normalized texture coordinates
 			// [0, width -1] [0, height - 1]
