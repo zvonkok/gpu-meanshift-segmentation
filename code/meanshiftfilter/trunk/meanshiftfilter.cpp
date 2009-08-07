@@ -52,6 +52,9 @@ unsigned int * h_segm = NULL;
 unsigned char * h_bndy = NULL;
 unsigned char * h_iter = NULL; // iterations per thread/pixel
 
+int thx = 8;
+int thy = 32;
+
 
 float4 * h_src = NULL; // luv source data
 float4 * h_dst = NULL; // luv manipulated data
@@ -165,6 +168,14 @@ int main( int argc, char** argv)
 		cudaSetDevice(cutGetMaxGflopsDeviceId());
 	}
 	
+	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thx", &thx)) {
+		std::cout << "Setting thx: " << thx << std::endl;
+	}
+	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thy", &thy)) {
+		std::cout << "Setting thy: " << thy << std::endl;
+	}
+
+	
 	std::string append = "convert +append ";
 	std::string compare = "compare ";
 #ifdef __linux__
@@ -214,8 +225,6 @@ int main( int argc, char** argv)
 
 void computeCUDA() 
 {
-	unsigned int thx = 32;
-	unsigned int thy = 8;
 	
 	unsigned int imgSize = height * width * sizeof(float4);
 	cutilSafeCall(cudaMalloc((void**) &d_src, imgSize));
@@ -230,7 +239,7 @@ void computeCUDA()
 
 	
 	// TEXTURE Begin: allocate array and copy image data
-	initTexture(width, height, h_flt);
+	initTexture(width, height, h_img);
 	// TEXTURE End
 
 	
@@ -242,7 +251,10 @@ void computeCUDA()
 	dim3 grid(width/thx, height/thy);
 	
 	setArgs(h_options);
+	
+	
 	// create and start timer
+	
 	unsigned int timer = 0;
 	cutilCheckError(cutCreateTimer(&timer));
 	cutilCheckError(cutStartTimer(timer));
