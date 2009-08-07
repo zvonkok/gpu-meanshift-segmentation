@@ -67,6 +67,7 @@ const unsigned int SEGM = 1;
 const unsigned int BNDY = 2;
 const unsigned int APPD = 3;
 
+
 std::string image = "source.ppm";
 std::string path = "../../../src/Meanshift/data/";
 
@@ -221,7 +222,6 @@ int main( int argc, char** argv)
 	exit(EXIT_SUCCESS);
 }
 
-//#define _TEXTURE_MEMORY_ 
 
 void computeCUDA() 
 {
@@ -230,42 +230,25 @@ void computeCUDA()
 	cutilSafeCall(cudaMalloc((void**) &d_src, imgSize));
 	cutilSafeCall(cudaMalloc((void**) &d_dst, imgSize));
 	
-	// convert to float array and then copy ... 
-	float4 * h_flt = new float4[height * width];
-	// we need here h_src (luv) the converted rgb data not h_img the plain rgb!!
-	for (unsigned int i = 0; i < height * width; i++) {
-		h_flt[i] = h_src[i];
-	}
-
-	
-	// TEXTURE Begin: allocate array and copy image data
+	// TEXTURE Begin: allocate array and copy image data to device
 	initTexture(width, height, h_img);
-	// TEXTURE End
-
-	
-	// copy host memory to device
-	cutilSafeCall(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));
 
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
 	dim3 grid(width/thx, height/thy);
 	
 	setArgs(h_options);
-	
-	
+
+	// warmup 
+	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
+	cutilSafeCall(cudaThreadSynchronize());	
+		
 	// create and start timer
-	
 	unsigned int timer = 0;
 	cutilCheckError(cutCreateTimer(&timer));
 	cutilCheckError(cutStartTimer(timer));
 	
-	
-	std::cout << "params: " << "sigmaS: " << sigmaS << " 1/sigmaS: " << 1.0f/sigmaS << std::endl;
-	std::cout << "params: " << "sigmaR: " << sigmaR << " 1/sigmaR: " << 1.0f/sigmaR << std::endl;
-	
 	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
-
-	
 	cutilCheckMsg("Kernel Execution failed");
 		
 	// copy result from device to host
@@ -277,13 +260,23 @@ void computeCUDA()
 		LUVtoRGB((float*)&h_dst[i], pix);
 	} 
 	
-	connect();
-	boundaries();
-		
 	// stop and destroy timer
 	cutilCheckError(cutStopTimer(timer));
-	printf("Processing time: %f (ms) \n", cutGetTimerValue(timer));
+	
+	float timeGOLD = 10679.209000;
+	float timeCUDA = cutGetTimerValue(timer);
+
+	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
+	std::cout << "Processing time CUDA: " << timeCUDA << " (ms) " << std::endl;
+	std::cout << "Speedup CUDA vs. GOLD: " << timeGOLD/timeCUDA << std::endl;
+	
     	cutilCheckError(cutDeleteTimer(timer));
+    	
+ 	cutilSafeCall(cudaThreadSynchronize());	
+
+	connect();
+	boundaries();
+
 
 	// clean up memory
 	cutilSafeCall(cudaFree(d_src));

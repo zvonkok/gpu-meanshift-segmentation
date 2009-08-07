@@ -15,8 +15,6 @@ __constant__ unsigned int N = 4;
 // declare texture reference for 2D float texture
 texture<uchar4, 2, cudaReadModeNormalizedFloat> tex;
 
-
-
 __device__ void filter(float4* d_src, float4* d_dst, 
 			unsigned int width, unsigned int height,
 			float sigmaS, float sigmaR,
@@ -100,19 +98,15 @@ __device__ void filter(float4* d_src, float4* d_dst,
 		// window defined using the kernel specified
 		// by uniformKernel
 
-		
 	
 		//Define bounds of lattice...
 		//the lattice is a 2dimensional subspace whose
 		//search window bandwidth is specified by sigmaS:
-	
 		int LowerBoundX = rintf(yk[0] - sigmaS);
 		int LowerBoundY = rintf(yk[1] - sigmaS);
 		int UpperBoundX = yk[0] + sigmaS;
 		int UpperBoundY = yk[1] + sigmaS;
 	
-//		if (LowerBoundX < 0)  LowerBoundX = 0;
-//		if (LowerBoundY < 0)  LowerBoundY = 0;
 		if (UpperBoundX >= width)  UpperBoundX = width - 1;
 		if (UpperBoundY >= height) UpperBoundY = height - 1;
 	
@@ -250,7 +244,6 @@ extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* 
 					float rsigmaS, float rsigmaR)
 {
 	mean_shift_filter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
-	
 }
 
 

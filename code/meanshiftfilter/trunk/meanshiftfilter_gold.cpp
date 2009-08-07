@@ -4,6 +4,12 @@
 #include <iostream>
 #include <cuda_runtime_api.h>
 
+
+#include <sys/time.h>
+
+struct timeval start, finish;
+float msec;
+
 extern float4 * h_src;
 extern float4 * h_dst;
 extern unsigned char * h_iter;
@@ -75,7 +81,18 @@ void computeGold(void)
 	extern void set_FPU_Precision_Rounding(BYTE precision, BYTE rounding);
 	set_FPU_Precision_Rounding(53, 0);
 	*/
+#ifdef __linux__
+	gettimeofday(&start, NULL);
 	filterGold();
+	gettimeofday(&finish, NULL);
+	
+	msec = finish.tv_sec * 1000.0f + finish.tv_usec / 1000.0f;
+	msec -= start.tv_sec * 1000.0f + start.tv_usec / 1000.0f;
+	
+	printf("Processing time (GOLD): %f (ms) \n", msec);
+#else
+	filterGold();
+#endif	
 	connect();
 	boundaries();
 }
