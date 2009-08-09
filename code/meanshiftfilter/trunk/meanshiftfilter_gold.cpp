@@ -81,6 +81,7 @@ void computeGold(void)
 	extern void set_FPU_Precision_Rounding(BYTE precision, BYTE rounding);
 	set_FPU_Precision_Rounding(53, 0);
 	*/
+	
 #ifdef __linux__
 	gettimeofday(&start, NULL);
 	filterGold();
@@ -137,6 +138,7 @@ void uniformSearchGold(float *Mh, float *yk, float* wsum)
 			
 			//get index into data array
 			dataPoint = (i * width + j);
+			
 			data_l = h_src[dataPoint].x;
 			data_u = h_src[dataPoint].y;
 			data_v = h_src[dataPoint].z;

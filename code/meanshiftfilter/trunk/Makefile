@@ -57,6 +57,11 @@ include ../../common/common.mk
 
 #CFLAGS += -pg
 #CXXFLAGS += -pg
+NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v -use_fast_math -arch sm_11
 
-NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v -use_fast_math
+clean: clean_data
+.PHONY: clean_data
 
+clean_data:
+	-rm -f data/*_cuda*
+	-rm -f data/*_gold*
