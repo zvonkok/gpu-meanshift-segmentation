@@ -155,6 +155,7 @@ int main( int argc, char** argv)
 	h_bndy = new unsigned char [height * width];
 	h_iter = new unsigned char [height * width];
 	
+	
 	// Prepare the RGB data 
 	for(unsigned int i = 0; i < L; i++) {
 		extern unsigned int * h_img;
@@ -230,8 +231,16 @@ void computeCUDA()
 	cutilSafeCall(cudaMalloc((void**) &d_src, imgSize));
 	cutilSafeCall(cudaMalloc((void**) &d_dst, imgSize));
 	
+	
+	// convert to float array and then copy ... 
+	float4 * h_flt = new float4[height * width];
+	// we need here h_src (luv) the converted rgb data not h_img the plain rgb!!
+	for (unsigned int i = 0; i < height * width; i++) {
+		h_flt[i] = h_src[i];
+	}
 	// TEXTURE Begin: allocate array and copy image data to device
-	initTexture(width, height, h_img);
+	initTexture(width, height, h_src);
+	//initTexture(width, height, h_img);
 
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
