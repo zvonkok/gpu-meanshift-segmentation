@@ -13,7 +13,6 @@
 texture<float4, 2, cudaReadModeElementType> tex;
 
 
-
 __device__ void filter(float4* d_src, float4* d_dst, 
 			unsigned int width, unsigned int height,
 			float sigmaS, float sigmaR,
@@ -131,8 +130,8 @@ __device__ void filter(float4* d_src, float4* d_dst,
 			diff0 += dx * dx;
 			diff0 += dy * dy;
 		
-			if (diff0 >= 1.0f) continue;
-		
+			
+			if (diff0 >= 1.0f) continue;		
 		
 			//get index into data array
 			luv = tex2D(tex, k, j); //luv = d_src[i * width + j];
@@ -144,7 +143,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 			
 			diff1 += dl * dl;
 			
-//			if((yk[2] > 80)) 
+			if((yk[2] > 80.0f)) 
 				diff1 += 3.0f * dl * dl;
 
 				
@@ -153,6 +152,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 			diff1 += du * du;
 			diff1 += dv * dv;
 			
+
 			if (diff1 >= 1.0f) continue;
 			
 			
