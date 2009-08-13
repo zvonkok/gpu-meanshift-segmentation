@@ -16,8 +16,8 @@
 extern "C" void setArgs(float*);
 extern "C" void initTexture(int, int, void*);
 extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
-								unsigned int, unsigned int,
-								float, float, float, float);
+		unsigned int, unsigned int,
+		float, float, float, float);
 
 
 // EDISON //////////////////////////////////////////////////////////////////
@@ -52,8 +52,8 @@ unsigned int * h_segm = NULL;
 unsigned char * h_bndy = NULL;
 unsigned char * h_iter = NULL; // iterations per thread/pixel
 
-int thx = 8;
-int thy = 32;
+int thx = 4;
+int thy = 64;
 
 
 float4 * h_src = NULL; // luv source data
@@ -72,31 +72,31 @@ std::string image = "source.ppm";
 std::string path = "../../../src/Meanshift/data/";
 
 std::string imgOutGOLD[] = {
-    path + "filtimage_gold.ppm",
-    path + "segmimage_gold.ppm",
-    path + "bndyimage_gold.ppm",
-    path + "appd_fsb_gold.ppm"
+	path + "filtimage_gold.ppm",
+	path + "segmimage_gold.ppm",
+	path + "bndyimage_gold.ppm",
+	path + "appd_fsb_gold.ppm"
 };
 
 std::string imgOutCUDA[] = {
-    path + "filtimage_cuda.ppm",
-    path + "segmimage_cuda.ppm",
-    path + "bndyimage_cuda.ppm",
-    path + "appd_fsb_cuda.ppm"
+	path + "filtimage_cuda.ppm",
+	path + "segmimage_cuda.ppm",
+	path + "bndyimage_cuda.ppm",
+	path + "appd_fsb_cuda.ppm"
 };
 
 std::string imgRef[] = {
-    path + "filtimage_ref.ppm",
-    path + "segmimage_ref.ppm",
-    path + "bndyimage_ref.pgm",
-    path + "appd_fsb_ref.ppm"
+	path + "filtimage_ref.ppm",
+	path + "segmimage_ref.ppm",
+	path + "bndyimage_ref.pgm",
+	path + "appd_fsb_ref.ppm"
 };
 
 std::string imgDiff[] = {
-    path + "filtimage_diff.ppm",
-    path + "segmimage_diff.ppm",
-    path + "bndyimage_diff.pgm",
-    path + "appd_fsb_diff.ppm"
+	path + "filtimage_diff.ppm",
+	path + "segmimage_diff.ppm",
+	path + "bndyimage_diff.pgm",
+	path + "appd_fsb_diff.ppm"
 };
 // Used for constants needed by the kernel
 // e.g. sigmaS, sigmaR ...
@@ -109,23 +109,23 @@ extern void computeGold(void);
 
 
 void loadImageData(int argc __attribute__ ((unused)),
-				   char **argv)
+		char **argv)
 {
-    // load image (needed so we can get the width and height before we create the window
-    char* image_path = cutFindFilePath(image.c_str(), argv[0]);
-    if (image_path == 0) {
-        fprintf(stderr, "Error finding image file '%s'\n", image.c_str());
-        exit(EXIT_FAILURE);
-    }
+	// load image (needed so we can get the width and height before we create the window
+	char* image_path = cutFindFilePath(image.c_str(), argv[0]);
+	if (image_path == 0) {
+		fprintf(stderr, "Error finding image file '%s'\n", image.c_str());
+		exit(EXIT_FAILURE);
+	}
 	printf("Image path %s\n", image_path);
-	
-    cutilCheckError(cutLoadPPM4ub(image_path, (unsigned char **) &h_img, &width, &height));
-	
-    if (!h_img) {
-        printf("Error opening file '%s'\n", image_path);
-        exit(-1);
-    }
-    printf("Loaded '%s', %d x %d pixels\n", image_path, width, height);
+
+	cutilCheckError(cutLoadPPM4ub(image_path, (unsigned char **) &h_img, &width, &height));
+
+	if (!h_img) {
+		printf("Error opening file '%s'\n", image_path);
+		exit(-1);
+	}
+	printf("Loaded '%s', %d x %d pixels\n", image_path, width, height);
 }
 
 void computeCUDA();
@@ -135,27 +135,27 @@ int main( int argc, char** argv)
 	sigmaS = 7.0f;
 	sigmaR = 6.5f;
 	minRegion = 20.0f;
-	
+
 	loadImageData(argc, argv);
-	
+
 	N = 4;
 	L = height * width;
 
 	// Set options which are transferred to the device
 	h_options[SIGMAS] = sigmaS;
 	h_options[SIGMAR] = sigmaR;
-	
+
 	//Allocate memory for h_dst (filtered image output)
 	h_dst = new float4[height * width];
 	h_src = new float4[height * width];
 
-	
+
 	h_filt = new unsigned int [height * width * sizeof(unsigned char) * 4];
 	h_segm = new unsigned int [height * width * sizeof(unsigned char) * 4];
 	h_bndy = new unsigned char [height * width];
 	h_iter = new unsigned char [height * width];
-	
-	
+
+
 	// Prepare the RGB data 
 	for(unsigned int i = 0; i < L; i++) {
 		extern unsigned int * h_img;
@@ -169,15 +169,16 @@ int main( int argc, char** argv)
 	} else {
 		cudaSetDevice(cutGetMaxGflopsDeviceId());
 	}
-	
+
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thx", &thx)) {
 		std::cout << "Setting thx: " << thx << std::endl;
 	}
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thy", &thy)) {
 		std::cout << "Setting thy: " << thy << std::endl;
 	}
-
 	
+
+
 	std::string append = "convert +append ";
 	std::string compare = "compare ";
 #ifdef __linux__
@@ -185,7 +186,7 @@ int main( int argc, char** argv)
 #else	
 	std::string open = "open " + imgDiff[APPD];
 #endif	
-	
+
 	if (cutCheckCmdLineFlag(argc, (const char**)argv, "gold")) {
 		computeGold();
 		cutilCheckError(cutSavePPM4ub(imgOutGOLD[FILT].c_str(), (unsigned char *)h_filt, width, height));	
@@ -196,10 +197,10 @@ int main( int argc, char** argv)
 		append += imgOutGOLD[BNDY] + " ";
 		append += imgOutGOLD[APPD];
 		compare += imgOutGOLD[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
-		
+
 		// iteration count for runtime for each thread
 		cutilCheckError(cutSavePGMub((path + "itr.pgm").c_str(), (unsigned char *)h_iter, width, height));	
-		
+
 	} else {
 		computeCUDA();
 		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (unsigned char *)h_filt, width, height));	
@@ -212,26 +213,26 @@ int main( int argc, char** argv)
 
 		compare += imgOutCUDA[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
 	}
-	
+
 	if (cutCheckCmdLineFlag(argc, (const char**)argv, "ref")) { 
 		system(append.c_str());
 		system(compare.c_str());
 		system(open.c_str());
 	}
 
-			
+
 	exit(EXIT_SUCCESS);
 }
 
 
 void computeCUDA() 
 {
-	
+
 	unsigned int imgSize = height * width * sizeof(float4);
-	cutilSafeCall(cudaMalloc((void**) &d_src, imgSize));
+	//cutilSafeCall(cudaMallocPitch((void**) &d_src, (size_t*)&pitch, width * sizeof(float4), height));
 	cutilSafeCall(cudaMalloc((void**) &d_dst, imgSize));
-	
-	
+
+
 	// convert to float array and then copy ... 
 	float4 * h_flt = new float4[height * width];
 	// we need here h_src (luv) the converted rgb data not h_img the plain rgb!!
@@ -245,43 +246,43 @@ void computeCUDA()
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
 	dim3 grid(width/thx, height/thy);
-	
+
 	setArgs(h_options);
 
 	// warmup 
 	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilSafeCall(cudaThreadSynchronize());	
-		
+
 	// create and start timer
 	unsigned int timer = 0;
 	cutilCheckError(cutCreateTimer(&timer));
 	cutilCheckError(cutStartTimer(timer));
-	
+
 	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilCheckMsg("Kernel Execution failed");
-		
+
 	// copy result from device to host
 	//h_tmp = new float[imgSize];
 	cutilSafeCall(cudaMemcpy(h_dst, d_dst, imgSize, cudaMemcpyDeviceToHost));
-	
+
 	for(unsigned int i = 0; i < height * width; i++) {
 		unsigned char * pix = (unsigned char *)&h_filt[i];
 		LUVtoRGB((float*)&h_dst[i], pix);
 	} 
-	
+
 	// stop and destroy timer
 	cutilCheckError(cutStopTimer(timer));
-	
+
 	float timeGOLD = 10679.209000;
 	float timeCUDA = cutGetTimerValue(timer);
 
 	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
 	std::cout << "Processing time CUDA: " << timeCUDA << " (ms) " << std::endl;
 	std::cout << "Speedup CUDA vs. GOLD: " << timeGOLD/timeCUDA << std::endl;
-	
-    	cutilCheckError(cutDeleteTimer(timer));
-    	
- 	cutilSafeCall(cudaThreadSynchronize());	
+
+	cutilCheckError(cutDeleteTimer(timer));
+
+	cutilSafeCall(cudaThreadSynchronize());	
 
 	connect();
 	boundaries();
