@@ -14,7 +14,7 @@
 #include <rendercheck_gl.h>
 
 extern "C" void setArgs(float*);
-extern "C" void initTexture(int, int, void*);
+extern "C" void initTexture(int, int, void*, cudaArray*);
 extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
 		unsigned int, unsigned int,
 		float, float, float, float);
@@ -52,7 +52,7 @@ unsigned int * h_segm = NULL;
 unsigned char * h_bndy = NULL;
 unsigned char * h_iter = NULL; // iterations per thread/pixel
 
-int thx = 4;
+int thx = 2;
 int thy = 64;
 
 
@@ -61,6 +61,8 @@ float4 * h_dst = NULL; // luv manipulated data
 
 float4 * d_src = NULL; // device source data
 float4 * d_dst = NULL; // device manipulated data
+
+cudaArray* d_array = NULL;  // texture array for luv data
 
 const unsigned int FILT = 0;
 const unsigned int SEGM = 1;
@@ -134,6 +136,7 @@ int main( int argc, char** argv)
 {	
 	sigmaS = 7.0f;
 	sigmaR = 6.5f;
+
 	minRegion = 20.0f;
 
 	loadImageData(argc, argv);
@@ -240,13 +243,13 @@ void computeCUDA()
 		h_flt[i] = h_src[i];
 	}
 	// TEXTURE Begin: allocate array and copy image data to device
-	initTexture(width, height, h_src);
-	//initTexture(width, height, h_img);
+	initTexture(width, height, h_src, d_array);
+	
 
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
 	dim3 grid(width/thx, height/thy);
-
+	
 	setArgs(h_options);
 
 	// warmup 
@@ -260,6 +263,7 @@ void computeCUDA()
 
 	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilCheckMsg("Kernel Execution failed");
+	
 
 	// copy result from device to host
 	//h_tmp = new float[imgSize];
@@ -291,6 +295,7 @@ void computeCUDA()
 	// clean up memory
 	cutilSafeCall(cudaFree(d_src));
 	cutilSafeCall(cudaFree(d_dst));
+	cutilSafeCall(cudaFreeArray(d_array));
 
 	cudaThreadExit();
 }
