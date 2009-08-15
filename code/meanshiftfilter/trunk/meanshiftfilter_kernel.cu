@@ -49,9 +49,6 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	yk[3] = luv.y; // u
 	yk[4] = luv.z; // v
 
-
-	// Calculate its magnitude squared
-	mvAbs = 1.0f;
 	// Initialize mean shift vector
 	Mh[0] = 0.0f;
 	Mh[1] = 0.0f;
@@ -68,8 +65,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	//       does not have any theoretical importance
 	iterationCount = 1;
 
-	while((mvAbs >= EPSILON) && (iterationCount < LIMIT))
-	{
+	do {
 		// Shift window location
 		yk[0] += Mh[0];
 		yk[1] += Mh[1];
@@ -111,7 +107,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 		uX = fminf(uX, width - 1);
 		uY = fminf(uY, height - 1);
 
-
+		
 		//Perform search using lattice
 		//Iterate once through a window of size sigmaS
 		for(j = lY; j <= uY; j += 1) {
@@ -189,7 +185,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 
 		// Increment iteration count
 		iterationCount += 1;
-	}
+	} while((mvAbs >= EPSILON) && (iterationCount < LIMIT));
 
 
 	// Shift window location

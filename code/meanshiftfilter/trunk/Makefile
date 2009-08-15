@@ -63,5 +63,6 @@ clean: clean_data
 .PHONY: clean_data
 
 clean_data:
+	-rm -f data/*_diff*
 	-rm -f data/*_cuda*
 	-rm -f data/*_gold*
