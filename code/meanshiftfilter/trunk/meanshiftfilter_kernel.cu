@@ -22,7 +22,7 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	// Declare Variables
 	int iterationCount;
 
-	float j, k;	
+	float x, y;	
 	float diff0, diff1;
 	float dx, dy, dl, du, dv;
 
@@ -34,20 +34,25 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	float yk[5];
 	float Mh[5];
 
-
 	int ix = __mul24(blockIdx.x, blockDim.x) + threadIdx.x;
 	int iy = __mul24(blockIdx.y, blockDim.y) + threadIdx.y;
 
+	
+	int lbX = blockIdx.x * blockDim.x;
+	int lbY = blockIdx.y * blockDim.y;
+	int ubX = lbX + 8;
+	int ubY = lbY + 8;
+	
 	// Assign window center (window centers are
 	// initialized by createLattice to be the point
 	// data[i])	
 	float4 luv = tex2D(tex, ix, iy); 	// float4 luv = d_src[i];
-
+	
 	yk[0] = ix;
 	yk[1] = iy;
-	yk[2] = luv.x; // l
-	yk[3] = luv.y; // u
-	yk[4] = luv.z; // v
+	yk[2] = luv.x;
+	yk[3] = luv.y;
+	yk[4] = luv.z;
 
 	// Initialize mean shift vector
 	Mh[0] = 0.0f;
@@ -56,6 +61,8 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	Mh[3] = 0.0f;
 	Mh[4] = 0.0f;
 
+	
+	
 
 	// Keep shifting window center until the magnitude squared of the
 	// mean shift vector calculated at the window center location is
@@ -110,34 +117,33 @@ __device__ void filter(float4* d_src, float4* d_dst,
 		
 		//Perform search using lattice
 		//Iterate once through a window of size sigmaS
-		for(j = lY; j <= uY; j += 1) {
-			for(k = lX; k <= uX; k += 1) {
+		for(y = lY; y <= uY; y += 1) {
+			for(x = lX; x <= uX; x += 1) {
 			
 				diff0 = 0.0f;
 
 				//Determine if inside search window
 				//Calculate distance squared of sub-space s	
 
-				dx = (k - yk[0]) * rsigmaS;
-				dy = (j - yk[1]) * rsigmaS;
+				dx = (x - yk[0]) * rsigmaS;
+				dy = (y - yk[1]) * rsigmaS;
 
-				diff0 += dx * dx;
+				diff0 = dx * dx;
 				diff0 += dy * dy;
 
 
-				if (diff0 >= 1.0f) continue;		
-
-
+				if (diff0 >= 1.0f) continue;	
+				
+				luv = tex2D(tex, x, y); 
+				
 				diff1 = 0.0f;
-				//get index into data array
-				luv = tex2D(tex, k, j); //luv = d_src[i * width + j];
-
+				
 				dl = (luv.x - yk[2]) * rsigmaR;               
 				du = (luv.y - yk[3]) * rsigmaR;               
 				dv = (luv.z - yk[4]) * rsigmaR;               
 
 
-				diff1 += dl * dl;
+				diff1 = dl * dl;
 
 				if((yk[2] > 80.0f)) 
 					diff1 += 3.0f * dl * dl;
@@ -152,8 +158,8 @@ __device__ void filter(float4* d_src, float4* d_dst,
 				// If its inside search window perform sum and count
 				// For a uniform kernel weight == 1 for all feature points
 				// considered point is within sphere => accumulate to mean
-				Mh[0] += k;
-				Mh[1] += j;
+				Mh[0] += x;
+				Mh[1] += y;
 				Mh[2] += luv.x;
 				Mh[3] += luv.y;
 				Mh[4] += luv.z;
