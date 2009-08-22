@@ -7,6 +7,8 @@
 
 #include <sys/time.h>
 
+#include <math.h>
+
 struct timeval start, finish;
 float msec;
 
@@ -14,11 +16,15 @@ extern float4 * h_src;
 extern float4 * h_dst;
 extern unsigned char * h_iter;
 
+extern int lim;
+
 extern void connect(void);
 extern void boundaries(void);
 
 void filterGold();
 void uniformLSearch(float, float, float*);
+
+
 /* 
  CUDA Emulator Output
  
@@ -215,11 +221,13 @@ void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
 	
 }
 
+volatile float sum = 0;
+
 void filterGold()
 {
 	// Declare Variables
-	int   iterationCount;
-	float mvAbs;
+	int   iter;
+	volatile float mvAbs;
 	
 	// Traverse each data point applying mean shift
 	// to each data point
@@ -259,9 +267,21 @@ void filterGold()
 		
 		// NOTE: iteration count is for speed up purposes only - it
 		//       does not have any theoretical importance
-		iterationCount = 1;
+		iter = 1;
 		
-		while((mvAbs >= EPSILON) && (iterationCount < LIMIT))
+		volatile float limitcycle[8] = 
+		{ 
+			12345678.0f,
+			12345678.0f, 
+			12345678.0f, 
+			12345678.0f, 
+			12345678.0f, 
+			12345678.0f, 
+			12345678.0f, 
+			12345678.0f 
+		}; // Period-4 limit cycle detection
+
+		while((mvAbs >= EPSILON) && (iter < lim))
 		{
 			// Shift window location
 			yk[0] += Mh[0];
@@ -281,20 +301,33 @@ void filterGold()
 			mvAbs += Mh[2] * Mh[2];
 			mvAbs += Mh[3] * Mh[3];
 			mvAbs += Mh[4] * Mh[4];
+			/*
+			
+			if (mvAbs == limitcycle[0] || 
+			    mvAbs == limitcycle[1] || 
+			    mvAbs == limitcycle[2] || 
+			    mvAbs == limitcycle[3] ||
+			    mvAbs == limitcycle[4] ||
+			    mvAbs == limitcycle[5] ||
+			    mvAbs == limitcycle[6] ||
+			    mvAbs == limitcycle[7]) 
+			{
+				break;
+				
+			}
+			
+			limitcycle[0] = limitcycle[1];
+			limitcycle[1] = limitcycle[2];
+			limitcycle[2] = limitcycle[3];
+			limitcycle[3] = limitcycle[4];
+			limitcycle[4] = limitcycle[5];
+			limitcycle[5] = limitcycle[6];
+			limitcycle[6] = limitcycle[7];
+			limitcycle[7] = mvAbs;
+			*/
 			
 			// Increment iteration count
-			iterationCount++;
-			
-		//	std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
-			/*
-			if (i == 26532) {
-				std::cout << yk[0] << " " 
-				<< yk[1] << " "
-				<< yk[2] << " "
-				<< yk[3] << " "
-				<< yk[4] << " "
-				<< "---" << mvAbs << std::endl;
-			}*/
+			iter++;
 			
 		}
 		
@@ -317,12 +350,7 @@ void filterGold()
 		// 25 = 
 		// 0 == 255,255,255
 		// 255 / (LIMIT/iterationCount)
-		h_iter[i] = 255.0f / (LIMIT/iterationCount);
-		
-		
-//		std::cout << i << " - " << mvAbs << " - " << iterationCount << std::endl;
-
-		//std::cout << "index: " << i << " iter: " << iterationCount << std::endl;
+		h_iter[i] = 255.0f / (lim/iter);
 	}
 	
 	

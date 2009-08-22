@@ -13,20 +13,21 @@
 texture<float4, 2, cudaReadModeElementType> tex;
 
 
-__device__ void filter(float4* d_src, float4* d_dst, 
+__global__ void meanshiftfilter(float4* d_src, float4* d_dst, 
 		unsigned int width, unsigned int height,
 		float sigmaS, float sigmaR,
-		float rsigmaS, float rsigmaR)
+		float rsigmaS, float rsigmaR, unsigned int limit)
 
 {
-	// Declare Variables
-	int iterationCount;
+	// NOTE: iteration count is for speed up purposes only - it
+	//       does not have any theoretical importance
+	int iter = 0;
 
 	float x, y;	
 	float diff0, diff1;
 	float dx, dy, dl, du, dv;
 
-	float mvAbs;
+	volatile float mvAbs;
 	float wsum;
 
 	// Traverse each data point applying mean shift
@@ -37,12 +38,6 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	int ix = __mul24(blockIdx.x, blockDim.x) + threadIdx.x;
 	int iy = __mul24(blockIdx.y, blockDim.y) + threadIdx.y;
 
-	
-	int lbX = blockIdx.x * blockDim.x;
-	int lbY = blockIdx.y * blockDim.y;
-	int ubX = lbX + 8;
-	int ubY = lbY + 8;
-	
 	// Assign window center (window centers are
 	// initialized by createLattice to be the point
 	// data[i])	
@@ -61,16 +56,22 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	Mh[3] = 0.0f;
 	Mh[4] = 0.0f;
 
-	
-	
 
 	// Keep shifting window center until the magnitude squared of the
 	// mean shift vector calculated at the window center location is
 	// under a specified threshold (Epsilon)
 
-	// NOTE: iteration count is for speed up purposes only - it
-	//       does not have any theoretical importance
-	iterationCount = 1;
+	volatile float limitcycle[8] = 
+	{ 
+		12345678.0f,
+		12345678.0f, 
+		12345678.0f, 
+		12345678.0f, 
+		12345678.0f, 
+		12345678.0f, 
+		12345678.0f, 
+		12345678.0f 
+	}; // Period-4 limit cycle detection
 
 	do {
 		// Shift window location
@@ -173,11 +174,13 @@ __device__ void filter(float4* d_src, float4* d_dst,
 
 		// determine the new center and the magnitude of the meanshift vector
 		// meanshiftVector = newCenter - center;
-		Mh[0] = Mh[0]/wsum - yk[0];
-		Mh[1] = Mh[1]/wsum - yk[1];
-		Mh[2] = Mh[2]/wsum - yk[2];
-		Mh[3] = Mh[3]/wsum - yk[3];
-		Mh[4] = Mh[4]/wsum - yk[4];
+		wsum = 1.0f/wsum; 
+		
+		Mh[0] = Mh[0] * wsum - yk[0];
+		Mh[1] = Mh[1] * wsum - yk[1];
+		Mh[2] = Mh[2] * wsum - yk[2];
+		Mh[3] = Mh[3] * wsum - yk[3];
+		Mh[4] = Mh[4] * wsum - yk[4];
 
 
 
@@ -189,9 +192,37 @@ __device__ void filter(float4* d_src, float4* d_dst,
 		mvAbs += Mh[3] * Mh[3];
 		mvAbs += Mh[4] * Mh[4];
 
+		
+		
+		if (mvAbs == limitcycle[0] || 
+		    mvAbs == limitcycle[1] || 
+		    mvAbs == limitcycle[2] || 
+		    mvAbs == limitcycle[3] ||
+		    mvAbs == limitcycle[4] ||
+		    mvAbs == limitcycle[5] ||
+		    mvAbs == limitcycle[6] ||
+		    mvAbs == limitcycle[7]) 
+		{
+			break;
+				
+		}
+
+		limitcycle[0] = limitcycle[1];
+		limitcycle[1] = limitcycle[2];
+		limitcycle[2] = limitcycle[3];
+		limitcycle[3] = limitcycle[4];
+		limitcycle[4] = limitcycle[5];
+		limitcycle[5] = limitcycle[6];
+		limitcycle[6] = limitcycle[7];
+		limitcycle[7] = mvAbs;
+		
+		
+		
 		// Increment iteration count
-		iterationCount += 1;
-	} while((mvAbs >= EPSILON) && (iterationCount < LIMIT));
+		iter++;
+		
+			
+	} while((mvAbs >= EPSILON) && (iter < limit));
 
 
 	// Shift window location
@@ -207,21 +238,14 @@ __device__ void filter(float4* d_src, float4* d_dst,
 	// store result into global memory
 	int i = ix + iy * width;
 	
-	//printf("%f %f %d %p\n", ix, iy, i, &d_dst[i]);
+	//printf("%d %d \n", i , iter);
+	
 	//__syncthreads();
 	d_dst[i] = luv;
 
 	return;
 }
 
-
-__global__ void mean_shift_filter(float4* d_src, float4* d_dst, 
-		unsigned int width, unsigned int height,
-		float sigmaS, float sigmaR,
-		float rsigmaS, float rsigmaR)
-{
-	filter(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
-}
 
 
 extern "C" void initTexture(int width, int height, void *h_flt)
@@ -239,24 +263,18 @@ extern "C" void initTexture(int width, int height, void *h_flt)
 	//    tex.addressMode[1] = cudaAddressModeWrap;
 	//    tex.filterMode = cudaFilterModeLinear;
 	tex.normalized = 0;	// access without normalized texture coordinates
-	// [0, width -1] [0, height - 1]
-
+				// [0, width -1] [0, height - 1]
 	// bind the array to the texture
 	cutilSafeCall(cudaBindTextureToArray(tex, d_array, channelDesc));
 }
 
 
-extern "C" void setArgs(float* h_options)
-{
-	//CUDA_SAFE_CALL(cudaMemcpyToSymbol(d_options, h_options, MAX_OPTS * sizeof(float)));
-}
-
 extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_dst,
 		unsigned int width, unsigned int height,
 		float sigmaS, float sigmaR,
-		float rsigmaS, float rsigmaR)
+		float rsigmaS, float rsigmaR, unsigned int limit)
 {
-	mean_shift_filter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
+	meanshiftfilter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR, limit);
 }
 
 
