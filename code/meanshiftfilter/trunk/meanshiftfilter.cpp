@@ -13,11 +13,10 @@
 #include <cuda_gl_interop.h>
 #include <rendercheck_gl.h>
 
-extern "C" void setArgs(float*);
 extern "C" void initTexture(int, int, void*, cudaArray*);
 extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
 		unsigned int, unsigned int,
-		float, float, float, float);
+		float, float, float, float, unsigned int);
 
 
 // EDISON //////////////////////////////////////////////////////////////////
@@ -54,6 +53,7 @@ unsigned char * h_iter = NULL; // iterations per thread/pixel
 
 int thx = 2;
 int thy = 64;
+int lim = 100;
 
 
 float4 * h_src = NULL; // luv source data
@@ -179,7 +179,9 @@ int main( int argc, char** argv)
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thy", &thy)) {
 		std::cout << "Setting thy: " << thy << std::endl;
 	}
-	
+	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "lim", &lim)) {
+		std::cout << "Setting lim: " << lim << std::endl;
+	}
 
 
 	std::string append = "convert +append ";
@@ -250,10 +252,10 @@ void computeCUDA()
 	dim3 threads(thx, thy); // 128 threads 
 	dim3 grid(width/thx, height/thy);
 	
-	setArgs(h_options);
 
 	// warmup 
-	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
+	meanShiftFilter(grid, threads, d_src, d_dst, width, height, 
+		sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR, lim);
 	cutilSafeCall(cudaThreadSynchronize());	
 
 	// create and start timer
@@ -261,7 +263,8 @@ void computeCUDA()
 	cutilCheckError(cutCreateTimer(&timer));
 	cutilCheckError(cutStartTimer(timer));
 
-	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
+	meanShiftFilter(grid, threads, d_src, d_dst, width, height,
+		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR, lim);
 	cutilCheckMsg("Kernel Execution failed");
 	
 
@@ -277,7 +280,8 @@ void computeCUDA()
 	// stop and destroy timer
 	cutilCheckError(cutStopTimer(timer));
 
-	float timeGOLD = 10679.209000;
+	// Without limit cycle float timeGOLD = 10679.209000;
+	float timeGOLD = 10296.036000f;
 	float timeCUDA = cutGetTimerValue(timer);
 
 	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
