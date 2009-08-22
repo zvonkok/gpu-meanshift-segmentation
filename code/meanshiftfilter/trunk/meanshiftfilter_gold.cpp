@@ -221,8 +221,6 @@ void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
 	
 }
 
-volatile float sum = 0;
-
 void filterGold()
 {
 	// Declare Variables
@@ -301,7 +299,7 @@ void filterGold()
 			mvAbs += Mh[2] * Mh[2];
 			mvAbs += Mh[3] * Mh[3];
 			mvAbs += Mh[4] * Mh[4];
-			/*
+			
 			
 			if (mvAbs == limitcycle[0] || 
 			    mvAbs == limitcycle[1] || 
@@ -312,6 +310,17 @@ void filterGold()
 			    mvAbs == limitcycle[6] ||
 			    mvAbs == limitcycle[7]) 
 			{
+				/*
+				printf("%d %d %d %d %d %d %d %d\n",
+					(mvAbs == limitcycle[0]),
+					(mvAbs == limitcycle[1]),
+					(mvAbs == limitcycle[2]),
+					(mvAbs == limitcycle[3]),
+					(mvAbs == limitcycle[4]),
+					(mvAbs == limitcycle[5]),
+					(mvAbs == limitcycle[6]),
+					(mvAbs == limitcycle[7]));
+					*/
 				break;
 				
 			}
@@ -324,7 +333,7 @@ void filterGold()
 			limitcycle[5] = limitcycle[6];
 			limitcycle[6] = limitcycle[7];
 			limitcycle[7] = mvAbs;
-			*/
+			
 			
 			// Increment iteration count
 			iter++;
@@ -350,7 +359,10 @@ void filterGold()
 		// 25 = 
 		// 0 == 255,255,255
 		// 255 / (LIMIT/iterationCount)
-		h_iter[i] = 255.0f / (lim/iter);
+		//if (iter == 100) printf("%d\n", i);
+		//h_iter[i] = 255.0f / (lim/iter);
+		
+		//std::cout << i << " " << iter << std::endl;
 	}
 	
 	
