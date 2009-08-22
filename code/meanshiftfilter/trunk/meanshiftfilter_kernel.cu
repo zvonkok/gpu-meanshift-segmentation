@@ -12,6 +12,7 @@
 // declare texture reference for 2D float texture
 texture<float4, 2, cudaReadModeElementType> tex;
 
+double flops = 0;
 
 __global__ void meanshiftfilter(float4* d_src, float4* d_dst, 
 		unsigned int width, unsigned int height,
@@ -115,7 +116,7 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 		uX = fminf(uX, width - 1);
 		uY = fminf(uY, height - 1);
 
-		
+		flops += 13;
 		//Perform search using lattice
 		//Iterate once through a window of size sigmaS
 		for(y = lY; y <= uY; y += 1) {
@@ -133,7 +134,7 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 				diff0 += dy * dy;
 
 
-				if (diff0 >= 1.0f) continue;	
+				if (diff0 >= 1.0f) { flops+= 7; continue; }	
 				
 				luv = tex2D(tex, x, y); 
 				
@@ -153,7 +154,7 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 				diff1 += dv * dv;
 
 
-				if (diff1 >= 1.0f) continue;
+				if (diff1 >= 1.0f) { flops += 14; continue; }
 
 
 				// If its inside search window perform sum and count
@@ -165,6 +166,8 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 				Mh[3] += luv.y;
 				Mh[4] += luv.z;
 				wsum += 1.0f; //weight
+				
+				flops += 6;
 
 			}
 
@@ -192,8 +195,10 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 		mvAbs += Mh[3] * Mh[3];
 		mvAbs += Mh[4] * Mh[4];
 
-		
-		
+		flops += 21;
+		// Usually you don't do float == float but in this case
+		// it is completely safe as we have limit cycles where the 
+		// values after some iterations are equal
 		if (mvAbs == limitcycle[0] || 
 		    mvAbs == limitcycle[1] || 
 		    mvAbs == limitcycle[2] || 
@@ -216,8 +221,7 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 		limitcycle[6] = limitcycle[7];
 		limitcycle[7] = mvAbs;
 		
-		
-		
+				
 		// Increment iteration count
 		iter++;
 		
@@ -232,13 +236,14 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 	yk[3] += Mh[3];
 	yk[4] += Mh[4];
 
-
+	flops += 5;
+	
 	luv = make_float4(yk[2], yk[3], yk[4], 0.0f);
 
 	// store result into global memory
 	int i = ix + iy * width;
 	
-	//printf("%d %d \n", i , iter);
+	printf("%lf+", flops);
 	
 	//__syncthreads();
 	d_dst[i] = luv;
