@@ -10,3 +10,7 @@
 #define SIGMAS 0
 #define SIGMAR 1
 #define MAX_OPTS 2
+
+#define EPSILON 0.01f
+#define LIMIT 100.0f
+

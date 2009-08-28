@@ -6,39 +6,47 @@
 #include "meanshiftfilter_common.h"
 
 
-#define EPSILON 0.01f
-#define LIMIT 100.0f
 
 // declare texture reference for 2D float texture
 texture<float4, 2, cudaReadModeElementType> tex;
 
-double flops = 0;
+#ifdef __DEVICE_EMULATION__
+unsigned int id = 0;
+unsigned int flops[256*256];
+#endif
 
-__global__ void meanshiftfilter(float4* d_src, float4* d_dst, 
-		unsigned int width, unsigned int height,
-		float sigmaS, float sigmaR,
-		float rsigmaS, float rsigmaR, unsigned int limit)
+
+__global__ void meanshiftfilter(
+	float4* d_src, float4* d_dst, 
+	float width, float height,
+	float sigmaS, float sigmaR,
+	float rsigmaS, float rsigmaR)
 
 {
+
+
+
 	// NOTE: iteration count is for speed up purposes only - it
 	//       does not have any theoretical importance
-	int iter = 0;
-
-	float x, y;	
-	float diff0, diff1;
-	float dx, dy, dl, du, dv;
-
-	volatile float mvAbs;
+	float iter = 0;
 	float wsum;
 
+	volatile float mvAbs;
+	
 	// Traverse each data point applying mean shift
 	// to each data point
 	float yk[5];
 	float Mh[5];
 
-	int ix = __mul24(blockIdx.x, blockDim.x) + threadIdx.x;
-	int iy = __mul24(blockIdx.y, blockDim.y) + threadIdx.y;
-
+	float ix = __mul24(blockIdx.x, blockDim.x) + threadIdx.x;
+	float iy = __mul24(blockIdx.y, blockDim.y) + threadIdx.y;
+	
+#ifdef __DEVICE_EMULATION__	
+	id = ix + iy * width;
+	flops[id] = 0;
+#endif
+	
+	
 	// Assign window center (window centers are
 	// initialized by createLattice to be the point
 	// data[i])	
@@ -72,7 +80,7 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 		12345678.0f, 
 		12345678.0f, 
 		12345678.0f 
-	}; // Period-4 limit cycle detection
+	}; // Period-8 limit cycle detection
 
 	do {
 		// Shift window location
@@ -81,6 +89,10 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 		yk[2] += Mh[2];
 		yk[3] += Mh[3];
 		yk[4] += Mh[4];
+
+#ifdef __DEVICE_EMULATION__	
+		flops[id] += 5;
+#endif
 
 		// Calculate the mean shift vector at the new
 		// window location using lattice
@@ -107,16 +119,21 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 
 		int lX = yk[0] - sigmaS;
 		int lY = yk[1] - sigmaS;
-		int uX = yk[0] + sigmaS;
-		int uY = yk[1] + sigmaS;
-
+		float uX = yk[0] + sigmaS;
+		float uY = yk[1] + sigmaS;
 
 		lX = fmaxf(0.0f, lX);
 		lY = fmaxf(0.0f, lY);
-		uX = fminf(uX, width - 1);
-		uY = fminf(uY, height - 1);
+		uX = fminf(uX, width - 1.0f);
+		uY = fminf(uY, height - 1.0f);
 
-		flops += 13;
+#ifdef __DEVICE_EMULATION__	
+		flops[id] += 4;
+#endif
+				
+		float x, y;	
+		float diff0, diff1;
+		float dx, dy, dl, du, dv;
 		//Perform search using lattice
 		//Iterate once through a window of size sigmaS
 		for(y = lY; y <= uY; y += 1) {
@@ -130,11 +147,19 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 				dx = (x - yk[0]) * rsigmaS;
 				dy = (y - yk[1]) * rsigmaS;
 
-				diff0 = dx * dx;
+				diff0 += dx * dx;
 				diff0 += dy * dy;
 
+			#ifdef __DEVICE_EMULATION__	
+				if (diff0 >= 1.0f) {
+					flops[id] += 8;
+				continue;}
+			#else
+				if (diff0 >= 1.0f) continue;
+			#endif
 
-				if (diff0 >= 1.0f) { flops+= 7; continue; }	
+				
+					
 				
 				luv = tex2D(tex, x, y); 
 				
@@ -145,17 +170,33 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 				dv = (luv.z - yk[4]) * rsigmaR;               
 
 
-				diff1 = dl * dl;
-
-				if((yk[2] > 80.0f)) 
-					diff1 += 3.0f * dl * dl;
-
+				diff1 += dl * dl;
 				diff1 += du * du;
 				diff1 += dv * dv;
 
+							
+			
+			#ifdef __DEVICE_EMULATION__	
+				if((yk[2] > 80.0f)) { 
+					diff1 += 3.0f * dl * dl;
+					flops[id] += 3;	
+				}
+	
+			
+				if (diff1 >= 1.0f) {
+					flops[id] += 12;
+					continue;
+				}
+			#else
+			
+				if((yk[2] > 80.0f)) 
+					diff1 += 3.0f * dl * dl;
+			
+			
+				if (diff1 >= 1.0f) continue;
+			#endif
 
-				if (diff1 >= 1.0f) { flops += 14; continue; }
-
+				
 
 				// If its inside search window perform sum and count
 				// For a uniform kernel weight == 1 for all feature points
@@ -166,15 +207,17 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 				Mh[3] += luv.y;
 				Mh[4] += luv.z;
 				wsum += 1.0f; //weight
-				
-				flops += 6;
+			#ifdef __DEVICE_EMULATION__		
+				flops[id] += 6;
+				//flops[id] += uX * uY;
+			#endif
+
 
 			}
 
 		}
-		// When using uniformKernel wsum is always > 0 .. since weight == 1 and 
-		// wsum += weight. @see uniformLSearch for details ...
-
+		// When using uniform kernel wsum is always > 0 .. since weight == 1 and 
+		// wsum += weight. 
 		// determine the new center and the magnitude of the meanshift vector
 		// meanshiftVector = newCenter - center;
 		wsum = 1.0f/wsum; 
@@ -195,10 +238,10 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 		mvAbs += Mh[3] * Mh[3];
 		mvAbs += Mh[4] * Mh[4];
 
-		flops += 21;
+		
 		// Usually you don't do float == float but in this case
 		// it is completely safe as we have limit cycles where the 
-		// values after some iterations are equal
+		// values after some iterations are equal, the same
 		if (mvAbs == limitcycle[0] || 
 		    mvAbs == limitcycle[1] || 
 		    mvAbs == limitcycle[2] || 
@@ -223,10 +266,14 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 		
 				
 		// Increment iteration count
-		iter++;
+		iter += 1;
 		
+	#ifdef __DEVICE_EMULATION__		
+		flops[id] += 21;
+	#endif
+
 			
-	} while((mvAbs >= EPSILON) && (iter < limit));
+	} while((mvAbs >= EPSILON) && (iter < LIMIT));
 
 
 	// Shift window location
@@ -236,18 +283,23 @@ __global__ void meanshiftfilter(float4* d_src, float4* d_dst,
 	yk[3] += Mh[3];
 	yk[4] += Mh[4];
 
-	flops += 5;
-	
+
 	luv = make_float4(yk[2], yk[3], yk[4], 0.0f);
 
 	// store result into global memory
-	int i = ix + iy * width;
+	float i = ix + iy * width;
 	
-	printf("%lf+", flops);
+	//printf("%d %d \n", i , iter);
 	
 	//__syncthreads();
-	d_dst[i] = luv;
+	d_dst[(int)i] = luv;
 
+	#ifdef __DEVICE_EMULATION__		
+		flops[id] += 7;
+		printf("%d;%d\n", id, flops[id] );
+	#endif
+
+	
 	return;
 }
 
@@ -275,11 +327,11 @@ extern "C" void initTexture(int width, int height, void *h_flt)
 
 
 extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_dst,
-		unsigned int width, unsigned int height,
+		float width, float height,
 		float sigmaS, float sigmaR,
-		float rsigmaS, float rsigmaR, unsigned int limit)
+		float rsigmaS, float rsigmaR)
 {
-	meanshiftfilter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR, limit);
+	meanshiftfilter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 }
 
 

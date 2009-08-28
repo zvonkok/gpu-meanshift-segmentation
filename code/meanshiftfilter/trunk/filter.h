@@ -12,10 +12,6 @@
 
 #include <cuda_runtime_api.h>
 
-const float	EPSILON	= 0.01f;	// define threshold (approx. Value of Mh at a peak or plateau)
-const float	LIMIT   = 100.0f;	// define max. # of iterations to find mode
-
-
 extern "C" void Filter();
 
 extern unsigned int * h_filt;
