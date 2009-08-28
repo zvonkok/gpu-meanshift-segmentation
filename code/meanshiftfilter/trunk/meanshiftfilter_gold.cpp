@@ -9,14 +9,15 @@
 
 #include <math.h>
 
+#include "meanshiftfilter_common.h" 
+
 struct timeval start, finish;
 float msec;
 
 extern float4 * h_src;
 extern float4 * h_dst;
-extern unsigned char * h_iter;
+extern unsigned int * h_iter;
 
-extern int lim;
 
 extern void connect(void);
 extern void boundaries(void);
@@ -87,6 +88,8 @@ void computeGold(void)
 	extern void set_FPU_Precision_Rounding(BYTE precision, BYTE rounding);
 	set_FPU_Precision_Rounding(53, 0);
 	*/
+	
+	
 	
 #ifdef __linux__
 	gettimeofday(&start, NULL);
@@ -221,6 +224,68 @@ void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
 	
 }
 
+void getColor( int iter, unsigned char* pix) 
+{
+	if (iter >= 0 && iter < 10) {
+		pix[0] = 29;
+		pix[1] = 29;
+		pix[2] = 29;
+		return;
+	}
+	if (iter >= 10 && iter < 20) {
+		pix[0] = 58;
+		pix[1] = 58;
+		pix[2] = 58;
+
+		return;
+		
+	}
+	if (iter >= 20 && iter < 30) {
+		pix[0] = 130;
+		pix[1] = 106;
+		pix[2] = 129;
+		return;
+	}
+	if (iter >= 30 && iter < 40) {
+		pix[0] = 92;
+		pix[1] = 110;
+		pix[2] = 137;
+		return;
+	}
+	
+	if (iter >= 40 && iter < 50) {
+		pix[0] = 136;
+		pix[1] = 156;
+		pix[2] = 176;
+		return;
+	}
+	if (iter >= 50 && iter < 60) {
+		pix[0] = 152;
+		pix[1] = 157;
+		pix[2] = 118;
+		return;
+	}
+	if (iter >= 60 && iter < 70) {
+		pix[0] = 117;
+		pix[1] = 128;
+		pix[2] = 88;
+		return;
+	}
+	if (iter >= 70 && iter < 80) {
+		pix[0] = 201;
+		pix[1] = 193;
+		pix[2] = 114;
+		return;
+	}
+	if (iter >= 80) {
+		pix[0] = 181;
+		pix[1] = 80;
+		pix[2] = 54;
+		return;
+	}
+
+}
+
 void filterGold()
 {
 	// Declare Variables
@@ -236,7 +301,7 @@ void filterGold()
 	
 	for(unsigned int i = 0; i < L; i++)
 	{
-		
+			
 		// Assign window center (window centers are
 		// initialized by createLattice to be the point
 		// data[i])
@@ -259,6 +324,8 @@ void filterGold()
 		mvAbs += Mh[3]*Mh[3];
 		mvAbs += Mh[4]*Mh[4];
 		
+		
+		
 		// Keep shifting window center until the magnitude squared of the
 		// mean shift vector calculated at the window center location is
 		// under a specified threshold (Epsilon)
@@ -279,7 +346,7 @@ void filterGold()
 			12345678.0f 
 		}; // Period-4 limit cycle detection
 
-		while((mvAbs >= EPSILON) && (iter < lim))
+		while((mvAbs >= EPSILON) && (iter < LIMIT))
 		{
 			// Shift window location
 			yk[0] += Mh[0];
@@ -287,6 +354,8 @@ void filterGold()
 			yk[2] += Mh[2];
 			yk[3] += Mh[3];
 			yk[4] += Mh[4];
+			
+			
 			
 			// Calculate the mean shift vector at the new
 			// window location using lattice
@@ -299,6 +368,7 @@ void filterGold()
 			mvAbs += Mh[2] * Mh[2];
 			mvAbs += Mh[3] * Mh[3];
 			mvAbs += Mh[4] * Mh[4];
+	
 			
 			
 			if (mvAbs == limitcycle[0] || 
@@ -310,17 +380,6 @@ void filterGold()
 			    mvAbs == limitcycle[6] ||
 			    mvAbs == limitcycle[7]) 
 			{
-				/*
-				printf("%d %d %d %d %d %d %d %d\n",
-					(mvAbs == limitcycle[0]),
-					(mvAbs == limitcycle[1]),
-					(mvAbs == limitcycle[2]),
-					(mvAbs == limitcycle[3]),
-					(mvAbs == limitcycle[4]),
-					(mvAbs == limitcycle[5]),
-					(mvAbs == limitcycle[6]),
-					(mvAbs == limitcycle[7]));
-					*/
 				break;
 				
 			}
@@ -333,7 +392,6 @@ void filterGold()
 			limitcycle[5] = limitcycle[6];
 			limitcycle[6] = limitcycle[7];
 			limitcycle[7] = mvAbs;
-			
 			
 			// Increment iteration count
 			iter++;
@@ -353,16 +411,14 @@ void filterGold()
 		h_dst[i].y = (float)(yk[1 + 2]);
 		h_dst[i].z = (float)(yk[2 + 2]);
 	
-		// store iteration count for each pixel
-		// 100 == 0,0,0
-		// 50 == 125, 125, 125
-		// 25 = 
-		// 0 == 255,255,255
-		// 255 / (LIMIT/iterationCount)
-		//if (iter == 100) printf("%d\n", i);
-		//h_iter[i] = 255.0f / (lim/iter);
 		
-		//std::cout << i << " " << iter << std::endl;
+		
+#if 0	
+		// store iteration count for each pixel
+		unsigned char* pix = (unsigned char *)&h_iter[i];
+		getColor(iter, pix);
+#endif		
+	
 	}
 	
 	

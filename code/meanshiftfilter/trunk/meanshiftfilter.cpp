@@ -15,7 +15,7 @@
 
 extern "C" void initTexture(int, int, void*, cudaArray*);
 extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
-		unsigned int, unsigned int,
+		float, float,
 		float, float, float, float, unsigned int);
 
 
@@ -48,8 +48,10 @@ unsigned int height;
 unsigned int * h_img = NULL; 
 unsigned int * h_filt = NULL;
 unsigned int * h_segm = NULL;
+unsigned int * h_iter = NULL; // iterations per thread/pixel
 unsigned char * h_bndy = NULL;
-unsigned char * h_iter = NULL; // iterations per thread/pixel
+
+
 
 int thx = 2;
 int thy = 64;
@@ -61,6 +63,7 @@ float4 * h_dst = NULL; // luv manipulated data
 
 float4 * d_src = NULL; // device source data
 float4 * d_dst = NULL; // device manipulated data
+
 
 cudaArray* d_array = NULL;  // texture array for luv data
 
@@ -151,12 +154,15 @@ int main( int argc, char** argv)
 	//Allocate memory for h_dst (filtered image output)
 	h_dst = new float4[height * width];
 	h_src = new float4[height * width];
-
+	
+	
 
 	h_filt = new unsigned int [height * width * sizeof(unsigned char) * 4];
 	h_segm = new unsigned int [height * width * sizeof(unsigned char) * 4];
+	h_iter = new unsigned int [height * width * sizeof(unsigned char) * 4];
+	
 	h_bndy = new unsigned char [height * width];
-	h_iter = new unsigned char [height * width];
+	
 
 
 	// Prepare the RGB data 
@@ -172,6 +178,8 @@ int main( int argc, char** argv)
 	} else {
 		cudaSetDevice(cutGetMaxGflopsDeviceId());
 	}
+	
+	
 
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thx", &thx)) {
 		std::cout << "Setting thx: " << thx << std::endl;
@@ -204,7 +212,7 @@ int main( int argc, char** argv)
 		compare += imgOutGOLD[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
 
 		// iteration count for runtime for each thread
-		cutilCheckError(cutSavePGMub((path + "itr.pgm").c_str(), (unsigned char *)h_iter, width, height));	
+		cutilCheckError(cutSavePPM4ub((path + "itr.ppm").c_str(), (unsigned char *)h_iter, width, height));	
 
 	} else {
 		computeCUDA();
@@ -254,7 +262,7 @@ void computeCUDA()
 	
 
 	// warmup 
-	meanShiftFilter(grid, threads, d_src, d_dst, width, height, 
+	meanShiftFilter(grid, threads, d_src, d_dst, width, (float)height, 
 		sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR, lim);
 	cutilSafeCall(cudaThreadSynchronize());	
 
@@ -263,7 +271,14 @@ void computeCUDA()
 	cutilCheckError(cutCreateTimer(&timer));
 	cutilCheckError(cutStartTimer(timer));
 
-	meanShiftFilter(grid, threads, d_src, d_dst, width, height,
+	
+	float w = (float) width;
+	float h = (float) height;
+	
+	
+	printf("%s %f %f\n", __FUNCTION__, w, h);
+	
+	meanShiftFilter(grid, threads, d_src, d_dst, w, h,
 		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR, lim);
 	cutilCheckMsg("Kernel Execution failed");
 	
@@ -281,7 +296,7 @@ void computeCUDA()
 	cutilCheckError(cutStopTimer(timer));
 
 	// Without limit cycle float timeGOLD = 10679.209000;
-	float timeGOLD = 10296.036000f;
+	float timeGOLD = 10260.19f;
 	float timeCUDA = cutGetTimerValue(timer);
 
 	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
