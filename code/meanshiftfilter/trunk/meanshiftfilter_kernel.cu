@@ -296,7 +296,7 @@ __global__ void meanshiftfilter(
 
 	#ifdef __DEVICE_EMULATION__		
 		flops[id] += 7;
-		printf("%d;%d\n", id, flops[id] );
+		printf("%d+",flops[id] );
 	#endif
 
 	
