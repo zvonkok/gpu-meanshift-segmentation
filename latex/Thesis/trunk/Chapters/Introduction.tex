@@ -1,0 +1,81 @@
+%************************************************
+\myChapter{Introduction}\label{ch:introduction}
+%************************************************
+
+%Technology trends, streaming computation, future
+%Industrietendenzen
+
+
+%\begin{aenumerate}
+%	\item general intro into the project
+%	\item description of goal
+%	\item motivation
+%	\item overview of report
+%\end{aenumerate}
+
+%A reader of the introduction should be able to answer the following questions, although not in any depth.
+
+%    * What is the thesis about?
+%    * Why is it relevant or important?
+%    * What are the issues or problems?
+%    * What is the proposed solution or approach?
+%    * What can one expect in the rest of the thesis?
+
+%State what the thesis is about early. Don't keep the reader guessing until the end of the introduction, or worse, the end of the thesis (don't laugh, I have read draft theses that left me wondering after reading the entire document). You should provide a brief and gentle overview of the thesis topic (or problem) to give the reader enough context  to understand the rest of the introduction. Don't overwhelm the reader with detail at the start. You will provide the details later elsewhere in the thesis. Target the level of writing at one of your peers, but not necessarily somebody working in the same area.
+
+%State why the topic is important. Address the "so what?" criteria. Why are you working on the topic? Why should somebody else be interested? Your motivation should be obvious after the introduction, but not necessarily provably so at this point.
+
+%State what the major issues are in solving your problem. Coherently overview the issues in enough detail to be able to understand they exist, but don't go into details yet or attempt to prove they exist. The overview should be in just enough depth to understand why you might propose the your particular solution or approach you are taking.
+
+%Describe your proposed solution or position your taking. Again, you should not go into minute details, nor should you attempt to prove your solution at this point; the remainder of the thesis will describe and substantiate your solution in detail, that what a thesis is :-)
+
+%At this point the reader will know what your working on, why, what are the major issues, and what your proposed solution is, but usually only if he takes your word for it. You should outline what the reader should expect in the rest of the thesis. This is not just the table of contents in sentence form, it is an overview of the remainder of the thesis so the reader knows what to expect.
+
+% section introduction (end)
+%This section should briefly overview the provided topic.
+In recent years \glspl{GPU} have moved from fixed pipeline  processors to a fully programmable processor. This evolvment
+has attracted many developers to do general purpose computing on GPUs.
+\glspl{GPU} have devoted there sillicon (transistors) for computing engines
+rather than for control engines like caches, branch prediction, coherency
+protocols and more. This incredible computing power made algorithms with an high
+arithemtic density run by an order of magnitude faster than on central
+processing units (CPUs). Speedups of 100x faster than the CPU were stunning but
+only a few people understand why such speedups are possible and why only a
+couple of algorithm can attain such speedups.
+
+This thesis will cover all the topics to understand the architecture,
+programming model, software eco system, drawback and pittfalls when doing
+general purpose computing on GPUs. The \gls{GPU} is a highly parallel processor with
+thousands of threads and a peak performance of ~600 GFlops (G92
+core\footnote{http://www.nvidia.com/page/geforce\_8800.html}).
+
+Many developers in these days are faced with multicore processors and have to
+implement or extend existing algorithms to take full advantage of the
+processing power of such cores. CPU manufacturer are facing fundamental problems
+when increasing performance only by frequency. In former times higher frequency
+meant higher performance but a paradigm shift took place now the new stigma is
+more cores means higher performance. Moore's law says that for every 2 years the
+amount of cores on a chip will double. What does it mean to developers? They
+have to think in parallel, not only for two or four cores but rather for 16 or
+32 cores. They have to assure that there code is scaling over many cores over
+many generations of CPU chips. There are several parallel programming languages
+and middleware to help developers to programm in parallel but a quasi standard
+has not been established.
+
+By the means of an application which will be ported to the \gls{GPU} the general
+workflow will be shown and various procedure models examined. It will be
+presented that often traditional software engineering principles do not
+apply to high performance, parallel computing. For this work a Nvidia \gls{GPU} will
+be used togehter with CUDA (Common Unified Device Architecture) that is a
+extension to C for parallel programming of GPUs. 
+
+The remainder of the thesis will give some in depth background to the topic and
+expose with programming models and the architecture of GPUs. Furthermore the
+development of a parallel implementation of an algorithm will be examined step
+by step. In this context software analysis and design principles will be shown
+that fit to parallel programming. A feasibility study will cover major obstacles
+and show how to avoid them.
+
+Finnaly an application for segmenting an image will be implemented and presented
+in all aspects to the reader.
+% section introduction_ir (end)

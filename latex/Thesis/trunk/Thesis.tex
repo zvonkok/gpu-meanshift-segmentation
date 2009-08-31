@@ -1,0 +1,263 @@
+% **************************************************************************************************************
+% A Classic Thesis Style
+% An Homage to The Elements of Typographic Style
+%
+% Copyright (C) 2009 Andr￩ Miede http://www.miede.de
+%
+% If you like the style then I would appreciate a postcard. My address 
+% can be found in the file ClassicThesis.pdf. A collection of the 
+% postcards I received so far is available online at 
+% http://postcards.miede.de
+%
+% License:
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program; see the file COPYING.  If not, write to
+% the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+%
+% **************************************************************************************************************
+% Note:
+%    * You must not use "u etc. in strings/commands that will be spaced out (use \"u or real umlauts instead)
+%    * Chapters must be marked with the \myChapter{Foo} command (sorry for the inconvenience at this point)
+%    * New enumeration (small caps): \begin{aenumerate} \end{aenumerate}
+%    * For margin notes: \graffito{}
+%    * Do not use bold fonts in this style, it is designed around them
+%    * Use tables as in the examples
+%    * See classicthesis-ldpkg.sty for useful commands
+%*******************************************************************************
+% To Do:
+%    * fix space at beginning of List of Listings 
+%    * mathbb in section-titles/chapter-titles => disappears somehow in headlines!!!
+%    * think about processing a4paper, a5paper, 10pt, 11pt, 12pt etc. options for typearea layout
+%      (store values in internal variables and handle by \AtEndOfPackage{\areaset...})
+%*******************************************************************************
+
+
+
+% Dagegen ist die Deﬁnition einer Eingangskodierung (inputenc) überﬂüssig, da 
+% XeTex von UTF-8 ausgeht. Dafür beginnen manche XeTex-Dokumente mit diesen 
+% META-Informationen: 
+
+%!TEX TS-program = xetex 
+%!TEX encoding = UTF-8 Unicode 
+
+
+
+\documentclass[twoside,open=right,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
+fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
+  ]{scrreprt}
+% ********************************************************************
+% KOMA-Script setup http://www.komascript.de/betaKOMAoptions
+% ********************************************************************
+%\KOMAoptions{%
+%    paper=a4,%
+%    fontsize=10pt,%
+%    cleardoublepage=empty,%
+%    footinclude=true,%
+%    %abstract=false%
+%}
+% ********************************************************************
+% Development Stuff
+% ********************************************************************
+\listfiles
+%\usepackage[l2tabu, orthodox, abort]{nag}
+%\usepackage[warning, all]{onlyamsmath}
+
+% Sync between editor and viewer
+\synctex=1
+
+
+
+% ********************************************************************
+% Re-usable information
+% ********************************************************************
+\newcommand{\myTitle}{High Performance Computing on GPUs\xspace}
+\newcommand{\myDegree}{An Homage to The Elements of Typographic Style\xspace}
+\newcommand{\myName}{Zvonko Krnjajic\xspace}
+\newcommand{\myProf}{Dr. Abbes Amira\xspace}
+\newcommand{\myOtherProf}{Put name here\xspace}
+\newcommand{\mySupervisor}{Dr. Abbes Amira\xspace}
+\newcommand{\myFaculty}{Put data here\xspace}
+\newcommand{\myDepartment}{Put data here\xspace}
+\newcommand{\myUni}{\protect{Brunel University}\xspace}
+\newcommand{\myLocation}{Gerlingen\xspace}
+\newcommand{\myTime}{May/2009\xspace}
+\newcommand{\myVersion}{Version 2.5\xspace}
+
+
+
+%*******************************************************
+% Packages with options that might require adjustments
+%*******************************************************
+
+%%%% XeLatex n/a  \usepackage[latin1]{inputenc} 
+\usepackage[ngerman,american]{babel}           
+\usepackage[square,numbers]{natbib} 
+\usepackage[fleqn]{amsmath} % math environments and more by the AMS 
+
+%*******************************************************
+\usepackage[xetex]{classicthesis-ldpkg} 
+%*******************************************************
+% Options for classicthesis.sty:
+% tocaligned eulerchapternumbers drafting linedheaders listsseparated
+% subfig nochapters beramono eulermath parts minionpro pdfspacing
+%\usepackage[eulerchapternumbers,drafting,pdfspacing,
+
+%%%\usepackage[eulerchapternumbers,drafting,xetex,
+%%%            subfig,eulermath,parts]{classicthesis}
+\usepackage[drafting,xetex,listings,
+            subfig]{classicthesis}
+
+%*******************************************************            
+%\usepackage[section,below]{placeins} <--- not everybody wants this
+%\usepackage[all]{hypcap} <--- does not work with MiKTeX 2.6
+\usepackage[fraktur,mdugm]{mathdesign}
+
+% ********************************************************************
+% Language/strings for backrefs (change here, thanks, Lorenzo)
+%*******************************************************
+%\renewcommand{\backrefnotcitedstring}{\relax}%(Not cited.)
+%\renewcommand{\backrefcitedsinglestring}[1]{(Citato a pagina~#1.)}
+%\renewcommand{\backrefcitedmultistring}[1]{(Citato alle pagine~#1.)}
+%\renewcommand{\backreftwosep}{ e~}
+%\renewcommand{\backreflastsep}{ e~}
+% ********************************************************************
+% Setup and Finetuning
+%*******************************************************
+\newlength{\abcd} % for ab..z string length calculation
+\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
+\setlength{\extrarowheight}{3pt} % increase table row height
+% ********************************************************************
+% Captions look and feel
+%*******************************************************
+\captionsetup{format=hang,font=small}
+% ********************************************************************
+% Listings setup
+% ********************************************************************
+%\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
+% ********************************************************************
+\lstset{language=C++,
+    keywordstyle=\color{RoyalBlue},
+    basicstyle=\small\lstfont,	
+	tabsize=4,
+    %identifierstyle=\color{NavyBlue},
+    commentstyle=\color{Green},%\ttfamily,
+    %stringstyle=\rmfamily,
+    numbers=left,
+    numberstyle=\scriptsize,%\tiny
+    %stepnumber=1,
+    numbersep=4pt,
+    showstringspaces=false,
+    breaklines=true,
+    backgroundcolor=\color{lstgreybg},
+	rulecolor=\color{grey10},
+	captionpos=b,
+	framerule=1pt,
+    %frameround=ftff,
+    frame=tb
+    %frame=L
+} 
+
+
+% ********************************************************************
+% Where to look for graphics
+%*******************************************************
+%\graphicspath{{gfx/}{misc/}} % considered harmful according to l2tabu
+% ********************************************************************
+% Hyperreferences
+%*******************************************************
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}%
+}
+%********************************************************************
+% Hyphenation
+%*******************************************************
+%\hyphenation{put special hyphenation here}
+% ********************************************************************
+% GO!GO!GO! MOVE IT!
+%*******************************************************
+\usepackage{layouts}
+\begin{document}
+	
+\frenchspacing
+\raggedbottom
+\selectlanguage{american} % american ngerman
+%\renewcommand*{\bibname}{new name}
+%\setbibpreamble{}
+\pagenumbering{roman}
+\pagestyle{plain}
+%********************************************************************
+% Frontmatter
+%*******************************************************
+\include{FrontBackMatter/Glossary}
+\include{FrontBackmatter/DirtyTitlepage}
+\include{FrontBackmatter/DirtyTitleback}
+\include{FrontBackmatter/Titlepage}
+%\include{FrontBackmatter/Titleback}
+\include{FrontBackmatter/Declaration}
+%\cleardoublepage\include{FrontBackmatter/Dedication}
+\cleardoublepage\include{FrontBackmatter/Abstract}
+\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\pagestyle{scrheadings}
+\cleardoublepage\include{FrontBackmatter/Contents}
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\pagenumbering{arabic}
+% use \cleardoublepage here to avoid problems with pdfbookmark
+%\cleardoublepage\myPart{The Graphical Processing Unit}
+
+%\include{Chapters/Typearea}
+
+\include{Chapters/Introduction}
+\include{Chapters/FeasibilityStudy}
+%\cleardoublepage\myPart{The GPU Showcase}
+\include{Chapters/Chapter02}
+\include{Chapters/MeanShift}
+
+%\addtocontents{toc}{\protect\clearpage} % TEST
+
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\cleardoublepage\include{FrontBackmatter/Managment}
+\cleardoublepage\include{FrontBackmatter/Listof}
+\cleardoublepage\include{FrontBackmatter/Bibliography}
+
+\appendix
+%\cleardoublepage\myPart{Appendix}
+\include{Chapters/InterimReport}
+\include{Chapters/ProjectPlanning}
+
+%********************************************************************
+% Other Stuff in the Back
+%*******************************************************
+\cleardoublepage\include{FrontBackmatter/Colophon}
+
+% ********************************************************************
+% Game Over: Restart, Restore or Quit?
+%*******************************************************
+\end{document}
+% ********************************************************************
