@@ -1,0 +1,218 @@
+%************************************************
+\myChapter{Mean Shift}\label{ch:mean_shift}
+%************************************************
+
+\section{Introduction} % (fold)
+\label{sec:introduction}
+
+% section introduction (end)
+\section{Theory} % (fold)
+\label{sec:theory}
+
+% Basis: Adaptive Mean Shift-Based Clustering 
+
+
+\subsubsection{Kernel Density Estimation} % (fold)
+\label{ssub:the_kernel_density_estimator}
+
+
+The basic idea of a kernel density estimator is a mathematical principle, 
+implemented by procedure 1 in \ref{ssub:the_mean_shift_procedure}. To prepare
+for this, we recall some definitions [30]. We consider the kernel estimator in
+$\mathbb{R}^1$. Let $X$ be a random variable. Let $X_i$ where $i=1,2,\ldots,n$ be
+% estimate	= schätzen
+% density	= dichte
+$n$ observations of $X$. We want to estimate the density  of $X$. Let $f$ be the
+density of $X$, and $\hat{f}$ an estimator of $f$. A \emph{bin} is an interval
+$[a,b)$. $b-a$ is called the width of bin $[a,b)$. Let $O=(0,0)$ be the origin, 
+and $[mh, (m+1)h)$ are some bins of constant width $h$, for integers $m$. The
+histogram is defined as follows,
+\begin{equation}\label{eq:histogram}
+	\hat{f}(x)=\frac{1}{nh} \times n_i
+\end{equation}
+where $n_i$ is the number of $X_i s$ in the same bin as $x$.
+
+The histogram is the oldest and most frequently used density estimator. But it 
+comes with drawbacks. For example, the histogram is not continuous (thus, it 
+does not have derivatives); it depends on the position of the origin; and a 
+% multivariate	= involving two or more variable quantities.
+technique based on histograms is difficuld to generalize to the multivariate 
+case. The \emph{native estimator} is a generalization of the histogram 
+technique. Since $f$ is the density function of $X$, we have
+\begin{equation}\label{eq:naive_estimator}
+	f(x) = \lim\limits_{h \rightarrow 0} \frac{1}{2h} \times P(X \in (x-h,x+h))
+\end{equation}
+
+where $P(X \in (x-h,x+h))$ is the probability of $X$ falling into $(x-h,x+h)$.
+The naive estimator is defined as follows:
+\begin{equation}\label{eq:naive_estimator2}
+	\hat{f}(x) = \frac{1}{2nh} \times n_i^{\prime}
+\end{equation}
+where $n_i^{\prime}$ is the number of $X_i s$ falling into $(x-h,x+h)$. 
+
+If $x$ is the center of a bin of the current histogram, then Equation 
+\eqref{naive_estimator2} will be equal to Equation \eqref{naive_estimator}. 
+Therefore, the naive estimator is a generalization of the histogram technique.
+Equation \eqref{naive_estimator2} can also be written as
+\begin{equation}\label{eq:naive_estimator3}
+	\hat{f}(x) = \frac{1}{nh}\sum_{i=1}^n w\left( \frac{x - X_i}{h} \right)
+\end{equation}
+where $w$ is defined as 
+\begin{equation}\label{naive_estimator3}
+	w(x) = \begin{cases}
+				1/2 & \text{if } x \in (-1,1) \\
+				0 & \text{otherwise }
+		\end{cases}
+\end{equation}
+
+The naive estimator "inherits" some drawbacks of the histogram technique.
+For example, it is not continuous: it "jumps" at points $X_i \pm h$ and has a 
+zero derivative for each $x \neq X_i \pm h$.
+
+The naive estimator can be further generalized to a \emph{kernel estimator}. 
+Replace function $w$ in Equation \eqref{eq:naive_estimator3} by a function $K$;
+we obtain
+\begin{equation}\label{eq:kernel_estimator}
+	\hat{f}(x) = \frac{1}{nh} \sum_{i=1}^n K\left( \frac{x - X_i}{h} \right)
+\end{equation}
+
+where $K$ is requested to satisfy the following condition
+
+\begin{equation}\label{eq:kernel_condition}
+	\int_{-\infty}^{\infty} K(x)dx = 1
+\end{equation}
+because $K(x)$ is a density function.
+
+If $K$ has a derivative, for each $x \in (-\infty, +\infty)$, then by Equation
+\eqref{eq:kernel_estimator} so does the kernel estimator. For example, let $K$
+be the normal density function, to construct a kernel estimator which has a 
+derivative for each $x \in (-\infty, +\infty)$. In Equation \eqref{eq:kernel_estimator}, $h$ is called the \emph{window width (smoothing parameter, or bandwidth); K is called the kernel} function. 
+Analogously, we can define the kernel estimator in $\mathbb{R}^d$:
+\begin{equation}\label{eq:kernel_estimator_rd}
+	\hat{f}(x) = \frac{1}{nh^d} \sum_{i_1}^n K\left( \frac{x-X_i}{h} \right)
+\end{equation} 
+where $K$ satisfies the following condition
+\begin{equation}\label{eq:kernel_rd_condition}
+	\int_{R^d} K(x)dx = 1
+\end{equation}
+
+In summary, the kernel estimator is an estimator of the density function of a 
+random variable, represented by a sum of some simple kernel functions such that
+the estimator has "good" mathematical properties such as being differentiable,
+symmetric, and so forth.
+% subsubsection the_kernel_density_estimator (end)
+
+
+
+\subsubsection{The Mean Shift Procedure} % (fold)
+\label{ssub:the_mean_shift_procedure}
+This subsection explains the principle of \textbf{adaptive?!?} mean shift-based
+clustering, meaning that the data points always move to local density maxima.
+
+We review some results of [8]. Let $k(x)$ be a symmetric univariate kernel 
+function, where $x \in (-\infty, +\infty)$. We can construct a $dD$ kernel 
+function from $k(x)$ as follows:
+\begin{equation}\label{eq:dd_kernel}
+	K(x)=c_{k,d}k(\lVert x \rVert^2)
+\end{equation}
+where
+\begin{equation}\label{eq:kernel_constant}
+	c_{k,d} = \frac{\int_{R^d} K(x) dx} {\int_{R^d} k(\lVert x \rVert^2) dx} = \frac{1}{\int_{R^d} k(\lVert x \rVert^2) dx} > 0
+\end{equation}
+Function $k(x)$, where $x \in [0, +\infty)$, is called the \emph{profile} of the
+kernel $K(x)$. 
+
+By Equation \eqref{eq:dd_kernel}, the kernel density estimator [see Equation \eqref{eq:kernel_estimator_rd}] can be rewritten as follows:
+
+\begin{equation}\label{eq:label}
+	\hat{f}_{h,K}(x) = \frac{c_{k,d}}{nh^d}\sum_{i_=1}^n k(\lVert \frac{x-X_i}{h} \rVert^2)
+\end{equation}
+
+Suppose that $k(x)$ is differentiable in $[0, +\infty)$, except for a finite 
+number of points.
+\begin{equation*}\label{eq:shadow_kernel}
+	g(x) = -k\prime(x)
+\end{equation*}
+
+where $x\in [0, +\infty)$, except for a finite number of points. Construct a 
+kernel function from $g(x)$ as follows:
+\begin{equation*}\label{eq:shadow_kernel1}
+	G(x) = c_{g,d}g(\lVert x \rVert^2)
+\end{equation*}
+
+where
+\begin{equation}\label{eq:shadow_constant}
+	c_{g,d} = \frac{\int_{R^d} G(x) dx} {\int_{R^d} g(\lVert x \rVert^2) dx} = \frac{1}{\int_{R^d} g(\lVert x \rVert^2) dx} > 0
+\end{equation}
+
+Denote the gradient of the density estimator of $\hat{f}_{h,K}(x) \text{by} \nabla \hat{f}_{h,K}(x)$. Furthermore (see [8] for the details), let 
+\begin{equation}\label{eq:mean_shift0}
+	m_{h,G}(x) = \frac{1}{2}h^2 \frac{c_{g,d}}{c_{k,d}} \times \frac{\nabla \hat{f}_{h,K}(x)}{cd_{h,G}(x)}
+\end{equation}
+where
+\begin{equation}\label{eq:mean_shift1}
+	m_{h,G}(x) = \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)} -x
+\end{equation}
+
+Equation \eqref{eq:mean_shift1} is the difference between the weighted mean and
+$x$, known as \emph{mean shift vector}. Since the gradient of the density estimator always points towards that direction in which the density rises most quickliy, by Equation \eqref{eq:mean_shift1}, the mean shift vector always points towards the direction in which the density rises most quickly. This is the main principle of the mean shift based clustering. 
+% subsubsection the_mean_shift_procedure (end)
+
+
+% section theory (end)
+
+The mean shift algorithm is a nonparametric clustering technique which does not
+require prior knowledge of the number of clusters, and does not constrain the
+shape of the clusters. 
+
+Given $n$ data points $x_i, i = 1, ... , n$ on a
+$d$-dimensional space $R^d$, the multivariate kernel density estimate obtained
+with kernel $K(x)$ and window radius $h$ is
+\begin{equation}\label{density_estimator}
+	f(x)=\frac{1}{nh^d}\sum_{i=1}^n K(\frac{x-x_i}{h}).
+\end{equation}
+
+For radially symmetric kernels, it suffices to define the profile of the kernel
+$k(x)$ satisfying
+\begin{equation}
+	K(x)=c_{k,d}k(\lVert x \rVert^2)
+\end{equation}
+where $c_{k,d}$ is a normalization constant which assures $K(x)$ integrates to 
+$1$. The modes of the density function are located at the zeros of the gradient
+function  $\nabla f(x) = 0$.
+
+The gradient of the density estimator \eqref{density_estimator} is 
+\begin{equation}
+	\begin{split}
+		\nabla f(x) & = \frac{2c_{k,d}}{nh^{d+2}}\sum_{i=1}^n \left(x_i - x\right)g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right) \\
+		& = \frac{2c_{k,d}}{nh^{d+2}} \left[ \sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right) \right]
+		\left[ \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)} -x \right].
+	\end{split}
+\end{equation}
+where $g(s) = -k'(s)$. The first term is proportional to the density estimate at
+$x$ computed with kernel $G(x) = c_{g,d}g(\lvert x \rvert^2)$ and the second 
+term
+\begin{equation}
+	m_h(x) = \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)} -x
+\end{equation}
+is the \emph{mean shift}. The mean shift vector always points towards the direction of the maximum increase in the density. The mean shift procedure, obtained by successive
+\begin{itemize}
+	\item computation of the mean shift vector $m_h(x^t)$,
+	\item translation of the window $x^{t+1} = x^t + m_h(x^t)$
+\end{itemize}
+is guaranteed to converge to a point where the gradient of density function is
+zero. Mean shift mode finding process is illustrated in \ref{mean_shift0}.
+
+The mean shift clustering algorithm is a practical application of the mode
+finding procedure:
+\begin{itemize}
+	\item starting on the data points, run mean shift procedure to find the 
+	stationary points of the density function,
+	\item prune these points by retaining only the local maxima.
+\end{itemize}
+
+The set of all locations that converge to the same mode defines the \emph{basin of attraction} of that mode. The points which are in the same basin of 
+attraction is associated with the same cluster. \ref{mean_shift1} shows two examples of mean shift clustering on three dimensional data.
+
+TEST \gls{Pi} TEST
+
