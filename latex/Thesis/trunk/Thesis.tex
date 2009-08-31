@@ -54,7 +54,7 @@
 
 
 \documentclass[twoside,open=right,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
-fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
+fontsize=12pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
   ]{scrreprt}
 % ********************************************************************
 % KOMA-Script setup http://www.komascript.de/betaKOMAoptions
@@ -105,23 +105,29 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 \usepackage[square,numbers]{natbib} 
 \usepackage[fleqn]{amsmath} % math environments and more by the AMS 
 
+
 %*******************************************************
-\usepackage[xetex]{classicthesis-ldpkg} 
+\usepackage{classicthesis-ldpkg} 
 %*******************************************************
 % Options for classicthesis.sty:
 % tocaligned eulerchapternumbers drafting linedheaders listsseparated
 % subfig nochapters beramono eulermath parts minionpro pdfspacing
 %\usepackage[eulerchapternumbers,drafting,pdfspacing,
+%%%\usepackage[drafting,listings,
+%%%%            subfig]{classicthesis}
 
-%%%\usepackage[eulerchapternumbers,drafting,xetex,
-%%%            subfig,eulermath,parts]{classicthesis}
-\usepackage[drafting,xetex,listings,
-            subfig]{classicthesis}
+
+\usepackage[eulerchapternumbers,drafting,listings,%pdfspacing,%
+            subfig,beramono,eulermath,parts]{classicthesis}
+
+\usepackage{dissertation}
 
 %*******************************************************            
 %\usepackage[section,below]{placeins} <--- not everybody wants this
 %\usepackage[all]{hypcap} <--- does not work with MiKTeX 2.6
-\usepackage[fraktur,mdugm]{mathdesign}
+
+
+%\usepackage[fraktur,mdugm]{mathdesign}
 
 % ********************************************************************
 % Language/strings for backrefs (change here, thanks, Lorenzo)
@@ -148,7 +154,8 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 % ********************************************************************
 \lstset{language=C++,
     keywordstyle=\color{RoyalBlue},
-    basicstyle=\small\lstfont,	
+    basicstyle=\scriptsize\lstfont,	
+%	basicstyle=\small,	
 	tabsize=4,
     %identifierstyle=\color{NavyBlue},
     commentstyle=\color{Green},%\ttfamily,
@@ -208,6 +215,8 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %\setbibpreamble{}
 \pagenumbering{roman}
 \pagestyle{plain}
+
+
 %********************************************************************
 % Frontmatter
 %*******************************************************

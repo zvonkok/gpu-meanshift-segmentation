@@ -1,0 +1,122 @@
+% ******************************************************************************
+% dissertation.sty
+%
+% Copyright (C) 2009 Zvonko Kosic-Krnjajic
+% ******************************************************************************
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dissertation}[2009/08/31 v0.1 Typographic Style for a classic looking dissertation]
+\RequirePackage{ifthen}
+
+
+% ******************************************************************************
+% XeTeX
+% ******************************************************************************
+\RequirePackage[toc]{tabfigures}
+% MinionPro loads MnSymbol
+\RequirePackage[minionint, openg, mathlf, footnotefigures]{MinionPro}% 
+\RequirePackage[cm-default, no-math]{fontspec}
+\RequirePackage{xunicode}
+\RequirePackage{xltxtra}
+\RequirePackage[xetex, 
+				hyperfootnotes=false, 
+				pdfpagelabels, 
+				pagebackref]{hyperref}
+
+\renewcommand{\figureautorefname}{Figure}
+\renewcommand{\tableautorefname}{Table}
+\renewcommand{\partautorefname}{Part}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+
+\newcommand{\mainfont}{Minion Pro Cond}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{\mainfont}
+%\setsansfont{Verdana}
+%\setmonofont{Pragmata}
+\newfontfamily\lstfont[]{Pragmata}
+
+%\setkomafont{section}{\fontspec{Verdana Fett}\huge\textbf}
+%\setkomafont{subsection}{\fontspec{Verdana Fett}\Large}
+
+%\newfontfamily\abbr[LetterSpace=5.0,Letters=SmallCaps]{Constantia}
+%\newfontfamily\fulc[Letters=Uppercase,Numbers=Uppercase]{Constantia}
+%\DeclareRobustCommand{\abbracr}[1]{{\abbr\MakeTextLowercase{#1}}}
+%\DeclareRobustCommand{\fullcaps}[1]{{\fulc\MakeTextUppercase{#1}}}
+
+%\RequirePackage{soul} % for letterspacing 
+%	\sodef\allcapsspacing{\upshape}{0.15em}{0.65em}{0.6em}%
+%    \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}%   
+%    \DeclareRobustCommand{\spacedallcaps}[1]{\MakeTextUppercase{\allcapsspacing{#1}}}%   
+%    \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
+
+% redefining the chapterNumber command
+\newfontfamily\rechapterNumber[Scale=7.0]{\mainfont}
+\renewcommand{\chapterNumber}{\rechapterNumber}%
+
+
+% TODO: spacing for toc-entry
+% redefining the chapter command
+\newfontfamily\chaptersc[LetterSpace=14.0, Letters=SmallCaps]{\mainfont}
+\newcommand{\tocsc}[1]{\chaptersc{\lowercase{{#1}}}}
+
+\renewcommand{\myChapter}[2][]{% for chapters
+	\ifthenelse{\equal{#1}{}}{%  
+    	\chapter[\tocsc{{#2}}]{#2}%
+  	}{%
+    	\chapter[\tocsc{{#1}}]{#2}%
+}}%
+
+
+
+% ******************************************************************************
+% glossaries
+% ******************************************************************************
+\RequirePackage[section=chapter,toc,acronym=true]{glossaries}
+\RequirePackage{glossary-longragged}
+\makeglossary
+
+% ******************************************************************************
+% glossaries newstyle longraggedleft
+\renewcommand{\glossaryname}{\spacedlowsmallcaps}
+\newglossarystyle{longraggedleft}{%
+  \renewenvironment{theglossary}%
+     {\setlength\LTpost{0pt}%
+		\setlength\LTpre{0pt}%
+		\setlength\LTleft{0pt}%
+	  	\setlength\LTright{0pt}% 
+	  	\begin{longtable}{@{}l@{}p{\glsdescwidth}}}%
+     {\end{longtable}}%
+  \renewcommand*{\glossaryheader}{}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+
+  \renewcommand*{\glossaryentryfield}[5]{%
+    \spacedlowsmallcaps{\glstarget{##1}{##2}} \hspace{2.5em} 
+    & ##3\glspostdescription\space \hspace{1.0em} ##5 \tabularnewline}%
+
+  \renewcommand*{\glossarysubentryfield}[6]{%
+     & \glstarget{##2}{\strut}##4\glspostdescription\space ##6%
+    \tabularnewline}%
+  \renewcommand*{\glsgroupskip}{ & \tabularnewline}%
+}
+
+
+% ********************************************************************                
+% Colors
+% ********************************************************************
+\RequirePackage[dvipsnames]{xcolor} % [dvipsnames] 
+\definecolor{halfgray}{gray}{0.55} % chapter numbers will be semi transparent .5 .55 .6 .0
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{lstgreybg}{rgb}{0.95, 0.95, 0.95}
+\definecolor{grey10}{rgb}{0.9,0.9,0.9}
+\definecolor{grey90}{rgb}{0.1,0.1,0.1}
+%\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
+%\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
+%\definecolor{Black}{cmyk}{0, 0, 0, 0}
+
+
+
+\endinput
