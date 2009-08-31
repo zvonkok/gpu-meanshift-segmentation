@@ -8,7 +8,6 @@
 \ProvidesPackage{dissertation}[2009/08/31 v0.1 Typographic Style for a classic looking dissertation]
 \RequirePackage{ifthen}
 
-
 % ******************************************************************************
 % XeTeX
 % ******************************************************************************
@@ -41,25 +40,17 @@
 %\setkomafont{section}{\fontspec{Verdana Fett}\huge\textbf}
 %\setkomafont{subsection}{\fontspec{Verdana Fett}\Large}
 
-%\newfontfamily\abbr[LetterSpace=5.0,Letters=SmallCaps]{Constantia}
-%\newfontfamily\fulc[Letters=Uppercase,Numbers=Uppercase]{Constantia}
-%\DeclareRobustCommand{\abbracr}[1]{{\abbr\MakeTextLowercase{#1}}}
-%\DeclareRobustCommand{\fullcaps}[1]{{\fulc\MakeTextUppercase{#1}}}
 
 %\RequirePackage{soul} % for letterspacing 
 %	\sodef\allcapsspacing{\upshape}{0.15em}{0.65em}{0.6em}%
 %    \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}%   
-%    \DeclareRobustCommand{\spacedallcaps}[1]{\MakeTextUppercase{\allcapsspacing{#1}}}%   
-%    \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
 
 % redefining the chapterNumber command
 \newfontfamily\rechapterNumber[Scale=7.0]{\mainfont}
 \renewcommand{\chapterNumber}{\rechapterNumber}%
 
-
-% TODO: spacing for toc-entry
 % redefining the chapter command
-\newfontfamily\chaptersc[LetterSpace=14.0, Letters=SmallCaps]{\mainfont}
+\newfontfamily\chaptersc[LetterSpace=13.0, Letters=SmallCaps]{\mainfont}
 \newcommand{\tocsc}[1]{\chaptersc{\lowercase{{#1}}}}
 
 \renewcommand{\myChapter}[2][]{% for chapters
