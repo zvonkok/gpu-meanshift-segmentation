@@ -5,33 +5,21 @@
 #include <cutil_inline.h>
 #include "meanshiftfilter_common.h"
 
-
-
 // declare texture reference for 2D float texture
 texture<float4, 2, cudaReadModeElementType> tex;
-
-#ifdef __DEVICE_EMULATION__
-unsigned int id = 0;
-unsigned int flops[256*256];
-#endif
-
 
 __global__ void meanshiftfilter(
 	float4* d_src, float4* d_dst, 
 	float width, float height,
 	float sigmaS, float sigmaR,
 	float rsigmaS, float rsigmaR)
-
 {
-
-
 
 	// NOTE: iteration count is for speed up purposes only - it
 	//       does not have any theoretical importance
 	float iter = 0;
 	float wsum;
 
-	volatile float mvAbs;
 	
 	// Traverse each data point applying mean shift
 	// to each data point
@@ -40,12 +28,6 @@ __global__ void meanshiftfilter(
 
 	float ix = __mul24(blockIdx.x, blockDim.x) + threadIdx.x;
 	float iy = __mul24(blockIdx.y, blockDim.y) + threadIdx.y;
-	
-#ifdef __DEVICE_EMULATION__	
-	id = ix + iy * width;
-	flops[id] = 0;
-#endif
-	
 	
 	// Assign window center (window centers are
 	// initialized by createLattice to be the point
@@ -70,7 +52,7 @@ __global__ void meanshiftfilter(
 	// mean shift vector calculated at the window center location is
 	// under a specified threshold (Epsilon)
 
-	volatile float limitcycle[8] = 
+	float limitcycle[8] = 
 	{ 
 		12345678.0f,
 		12345678.0f, 
@@ -82,6 +64,9 @@ __global__ void meanshiftfilter(
 		12345678.0f 
 	}; // Period-8 limit cycle detection
 
+	
+	float mag;  // magnitude squared
+	
 	do {
 		// Shift window location
 		yk[0] += Mh[0];
@@ -90,9 +75,6 @@ __global__ void meanshiftfilter(
 		yk[3] += Mh[3];
 		yk[4] += Mh[4];
 
-#ifdef __DEVICE_EMULATION__	
-		flops[id] += 5;
-#endif
 
 		// Calculate the mean shift vector at the new
 		// window location using lattice
@@ -117,8 +99,8 @@ __global__ void meanshiftfilter(
 		//the lattice is a 2dimensional subspace whose
 		//search window bandwidth is specified by sigmaS:
 
-		int lX = yk[0] - sigmaS;
-		int lY = yk[1] - sigmaS;
+		float lX = (int)yk[0] - sigmaS;
+		float lY = (int)yk[1] - sigmaS;
 		float uX = yk[0] + sigmaS;
 		float uY = yk[1] + sigmaS;
 
@@ -127,75 +109,61 @@ __global__ void meanshiftfilter(
 		uX = fminf(uX, width - 1.0f);
 		uY = fminf(uY, height - 1.0f);
 
-#ifdef __DEVICE_EMULATION__	
-		flops[id] += 4;
-#endif
 				
 		float x, y;	
-		float diff0, diff1;
-		float dx, dy, dl, du, dv;
+		
 		//Perform search using lattice
 		//Iterate once through a window of size sigmaS
 		for(y = lY; y <= uY; y += 1) {
 			for(x = lX; x <= uX; x += 1) {
-			
-				diff0 = 0.0f;
 
 				//Determine if inside search window
 				//Calculate distance squared of sub-space s	
+				float diff0 = 0.0f;
 
-				dx = (x - yk[0]) * rsigmaS;
-				dy = (y - yk[1]) * rsigmaS;
-
-				diff0 += dx * dx;
-				diff0 += dy * dy;
-
-			#ifdef __DEVICE_EMULATION__	
-				if (diff0 >= 1.0f) {
-					flops[id] += 8;
-				continue;}
-			#else
-				if (diff0 >= 1.0f) continue;
-			#endif
-
+				//dx = (x - yk[0]) * rsigmaS;
+				//dy = (y - yk[1]) * rsigmaS;
 				
-					
+				float dx_0 = x - yk[0];
+				float dy_0 = y - yk[1];
+				
+				float dx = dx_0 * rsigmaS;
+				float dy = dy_0 * rsigmaS;
+
+				float diff0_0 = dx * dx;
+				float diff0_1 = dy * dy;
+				
+				diff0 = diff0_0 + diff0_1;
+
+				if (diff0 >= 1.0f) continue;
 				
 				luv = tex2D(tex, x, y); 
 				
-				diff1 = 0.0f;
+				float diff1 = 0.0f;
 				
-				dl = (luv.x - yk[2]) * rsigmaR;               
-				du = (luv.y - yk[3]) * rsigmaR;               
-				dv = (luv.z - yk[4]) * rsigmaR;               
-
-
-				diff1 += dl * dl;
-				diff1 += du * du;
-				diff1 += dv * dv;
-
-							
+				//dl = (luv.x - yk[2]) * rsigmaR;               
+				//du = (luv.y - yk[3]) * rsigmaR;               
+				//dv = (luv.z - yk[4]) * rsigmaR;               
+				float dl_0 = luv.x - yk[2];               
+				float du_0 = luv.y - yk[3];               
+				float dv_0 = luv.z - yk[4];
+				
+				float dl = dl_0 * rsigmaR; 
+				float du = du_0 * rsigmaR;
+				float dv = dv_0 * rsigmaR;
+				
+					
+				float diff1_0 = dl * dl;
+				float diff1_1 = du * du;
+				float diff1_2 = dv * dv;
+				diff1 = diff1_0 + diff1_1 + diff1_2;
 			
-			#ifdef __DEVICE_EMULATION__	
+				
 				if((yk[2] > 80.0f)) { 
 					diff1 += 3.0f * dl * dl;
-					flops[id] += 3;	
 				}
-	
-			
-				if (diff1 >= 1.0f) {
-					flops[id] += 12;
-					continue;
-				}
-			#else
-			
-				if((yk[2] > 80.0f)) 
-					diff1 += 3.0f * dl * dl;
-			
 			
 				if (diff1 >= 1.0f) continue;
-			#endif
-
 				
 
 				// If its inside search window perform sum and count
@@ -207,11 +175,6 @@ __global__ void meanshiftfilter(
 				Mh[3] += luv.y;
 				Mh[4] += luv.z;
 				wsum += 1.0f; //weight
-			#ifdef __DEVICE_EMULATION__		
-				flops[id] += 6;
-				//flops[id] += uX * uY;
-			#endif
-
 
 			}
 
@@ -222,34 +185,49 @@ __global__ void meanshiftfilter(
 		// meanshiftVector = newCenter - center;
 		wsum = 1.0f/wsum; 
 		
-		Mh[0] = Mh[0] * wsum - yk[0];
-		Mh[1] = Mh[1] * wsum - yk[1];
-		Mh[2] = Mh[2] * wsum - yk[2];
-		Mh[3] = Mh[3] * wsum - yk[3];
-		Mh[4] = Mh[4] * wsum - yk[4];
+		//Mh[0] = Mh[0] * wsum - yk[0];
+		//Mh[1] = Mh[1] * wsum - yk[1];
+		//Mh[2] = Mh[2] * wsum - yk[2];
+		//Mh[3] = Mh[3] * wsum - yk[3];
+		//Mh[4] = Mh[4] * wsum - yk[4];
+		
+		float ms_0 = Mh[0] * wsum;
+		float ms_1 = Mh[1] * wsum;
+		float ms_2 = Mh[2] * wsum;
+		float ms_3 = Mh[3] * wsum;
+		float ms_4 = Mh[4] * wsum;
+		
+		Mh[0] = ms_0 - yk[0];
+		Mh[1] = ms_1 - yk[1];
+		Mh[2] = ms_2 - yk[2];
+		Mh[3] = ms_3 - yk[3];
+		Mh[4] = ms_4 - yk[4];
+		
 
 
 
 		// Calculate its magnitude squared
-		mvAbs = 0;
-		mvAbs += Mh[0] * Mh[0];
-		mvAbs += Mh[1] * Mh[1];
-		mvAbs += Mh[2] * Mh[2];
-		mvAbs += Mh[3] * Mh[3];
-		mvAbs += Mh[4] * Mh[4];
+		mag = 0;
+		
+		float mag_0 = Mh[0] * Mh[0];
+		float mag_1 = Mh[1] * Mh[1];
+		float mag_2 = Mh[2] * Mh[2];
+		float mag_3 = Mh[3] * Mh[3];
+		float mag_4 = Mh[4] * Mh[4];
+		mag = mag_0 + mag_1 + mag_2 + mag_3 + mag_4; 
 
 		
 		// Usually you don't do float == float but in this case
 		// it is completely safe as we have limit cycles where the 
 		// values after some iterations are equal, the same
-		if (mvAbs == limitcycle[0] || 
-		    mvAbs == limitcycle[1] || 
-		    mvAbs == limitcycle[2] || 
-		    mvAbs == limitcycle[3] ||
-		    mvAbs == limitcycle[4] ||
-		    mvAbs == limitcycle[5] ||
-		    mvAbs == limitcycle[6] ||
-		    mvAbs == limitcycle[7]) 
+		if (mag == limitcycle[0] || 
+		    mag == limitcycle[1] || 
+		    mag == limitcycle[2] || 
+		    mag == limitcycle[3] ||
+		    mag == limitcycle[4] ||
+		    mag == limitcycle[5] ||
+		    mag == limitcycle[6] ||
+		    mag == limitcycle[7]) 
 		{
 			break;
 				
@@ -262,18 +240,13 @@ __global__ void meanshiftfilter(
 		limitcycle[4] = limitcycle[5];
 		limitcycle[5] = limitcycle[6];
 		limitcycle[6] = limitcycle[7];
-		limitcycle[7] = mvAbs;
+		limitcycle[7] = mag;
 		
 				
 		// Increment iteration count
 		iter += 1;
-		
-	#ifdef __DEVICE_EMULATION__		
-		flops[id] += 21;
-	#endif
-
 			
-	} while((mvAbs >= EPSILON) && (iter < LIMIT));
+	} while((mag >= EPSILON) && (iter < LIMIT));
 
 
 	// Shift window location
@@ -288,16 +261,7 @@ __global__ void meanshiftfilter(
 
 	// store result into global memory
 	float i = ix + iy * width;
-	
-	//printf("%d %d \n", i , iter);
-	
-	//__syncthreads();
 	d_dst[(int)i] = luv;
-
-	#ifdef __DEVICE_EMULATION__		
-		flops[id] += 7;
-		printf("%d+",flops[id] );
-	#endif
 
 	
 	return;
