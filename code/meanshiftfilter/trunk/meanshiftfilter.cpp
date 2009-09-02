@@ -16,7 +16,7 @@
 extern "C" void initTexture(int, int, void*, cudaArray*);
 extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
 		float, float,
-		float, float, float, float, unsigned int);
+		float, float, float, float);
 
 
 // EDISON //////////////////////////////////////////////////////////////////
@@ -52,10 +52,9 @@ unsigned int * h_iter = NULL; // iterations per thread/pixel
 unsigned char * h_bndy = NULL;
 
 
-
+int gpu = 1;
 int thx = 2;
 int thy = 64;
-int lim = 100;
 
 
 float4 * h_src = NULL; // luv source data
@@ -113,24 +112,25 @@ extern void boundaries();
 extern void computeGold(void);
 
 
-void loadImageData(int argc __attribute__ ((unused)),
-		char **argv)
+void loadImageData(int argc __attribute__ ((unused)), char **argv)
 {
 	// load image (needed so we can get the width and height before we create the window
 	char* image_path = cutFindFilePath(image.c_str(), argv[0]);
+	
 	if (image_path == 0) {
-		fprintf(stderr, "Error finding image file '%s'\n", image.c_str());
+		std::cout << "Error finding image file " << image << std::endl;
 		exit(EXIT_FAILURE);
 	}
-	printf("Image path %s\n", image_path);
+	std::cout << "Image path " << image_path << std::endl;
 
 	cutilCheckError(cutLoadPPM4ub(image_path, (unsigned char **) &h_img, &width, &height));
 
 	if (!h_img) {
-		printf("Error opening file '%s'\n", image_path);
+		std::cout << "Error opening file  " << image_path << std::endl;
 		exit(-1);
 	}
-	printf("Loaded '%s', %d x %d pixels\n", image_path, width, height);
+	std::cout<< "Loaded " << image_path << " " 
+		<< width << " x " << height << " pixels" << std::endl;
 }
 
 void computeCUDA();
@@ -179,7 +179,9 @@ int main( int argc, char** argv)
 		cudaSetDevice(cutGetMaxGflopsDeviceId());
 	}
 	
-	
+	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "gpu", &gpu)) {
+		std::cout << "Setting gpu: " << gpu << std::endl;
+	}
 
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thx", &thx)) {
 		std::cout << "Setting thx: " << thx << std::endl;
@@ -187,10 +189,8 @@ int main( int argc, char** argv)
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thy", &thy)) {
 		std::cout << "Setting thy: " << thy << std::endl;
 	}
-	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "lim", &lim)) {
-		std::cout << "Setting lim: " << lim << std::endl;
-	}
-
+	
+	
 
 	std::string append = "convert +append ";
 	std::string compare = "compare ";
@@ -263,7 +263,7 @@ void computeCUDA()
 
 	// warmup 
 	meanShiftFilter(grid, threads, d_src, d_dst, width, (float)height, 
-		sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR, lim);
+		sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilSafeCall(cudaThreadSynchronize());	
 
 	// create and start timer
@@ -272,14 +272,8 @@ void computeCUDA()
 	cutilCheckError(cutStartTimer(timer));
 
 	
-	float w = (float) width;
-	float h = (float) height;
-	
-	
-	printf("%s %f %f\n", __FUNCTION__, w, h);
-	
-	meanShiftFilter(grid, threads, d_src, d_dst, w, h,
-		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR, lim);
+	meanShiftFilter(grid, threads, d_src, d_dst, width, height,
+		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilCheckMsg("Kernel Execution failed");
 	
 
