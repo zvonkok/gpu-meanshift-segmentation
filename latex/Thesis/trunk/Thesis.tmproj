@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>classicthesis.sty</string>
+	<string>dissertation.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -38,7 +38,7 @@
 			<key>filename</key>
 			<string>Thesis.tex</string>
 			<key>lastUsed</key>
-			<date>2009-08-26T18:35:00Z</date>
+			<date>2009-09-02T19:21:16Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -48,34 +48,54 @@
 			<key>filename</key>
 			<string>classicthesis.sty</string>
 			<key>lastUsed</key>
-			<date>2009-08-26T18:35:00Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2009-08-31T13:46:24Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>classicthesis-ldpkg.sty</string>
 			<key>lastUsed</key>
-			<date>2009-07-09T07:19:09Z</date>
+			<date>2009-08-31T13:53:34Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>dissertation.sty</string>
+			<key>lastUsed</key>
+			<date>2009-09-02T19:21:16Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Chapters/InterimReport.tex</key>
+		<key>Chapters/FeasibilityStudy.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>109</integer>
+				<integer>110</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>131</integer>
+			<integer>84</integer>
+		</dict>
+		<key>Chapters/InterimReport.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>68</integer>
+				<key>line</key>
+				<integer>298</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>292</integer>
 		</dict>
 		<key>Chapters/Introduction.tex</key>
 		<dict>
@@ -84,12 +104,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>81</integer>
+				<integer>26</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>76</integer>
+			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>31</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Chapters/LiteratureReview.tex</key>
 		<dict>
@@ -105,20 +125,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Chapters/Performance.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>79</integer>
-				<key>line</key>
-				<integer>25</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>19</integer>
-		</dict>
 		<key>Chapters/Typearea.tex</key>
 		<dict>
 			<key>caret</key>
@@ -132,6 +138,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>228</integer>
+		</dict>
+		<key>FrontBackmatter/Acknowledgments.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>FrontBackmatter/Colophon.tex</key>
 		<dict>
@@ -161,14 +181,44 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>FrontBackmatter/DirtyTitleback.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
 		<key>FrontBackmatter/DirtyTitlepage.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>43</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -189,7 +239,7 @@
 			<key>firstVisibleLine</key>
 			<integer>10</integer>
 		</dict>
-		<key>FrontBackmatter/Managment.tex</key>
+		<key>FrontBackmatter/Titleback.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -198,35 +248,33 @@
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-			<key>selectTo</key>
+		</dict>
+		<key>FrontBackmatter/Titlepage.aux</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>FrontBackmatter/Titlepage.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>52</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>19</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -238,70 +286,72 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>48</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>88</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>34</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>29</integer>
-				<key>line</key>
-				<integer>15</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>37</integer>
-				<key>line</key>
-				<integer>15</integer>
-			</dict>
+			<integer>94</integer>
 		</dict>
 		<key>classicthesis-ldpkg.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
+				<integer>56</integer>
 				<key>line</key>
-				<integer>154</integer>
+				<integer>129</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>88</integer>
+			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>131</integer>
+			<integer>112</integer>
 		</dict>
 		<key>classicthesis.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>62</integer>
+				<integer>73</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>547</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>521</integer>
+		</dict>
+		<key>dissertation.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>FrontBackmatter/Managment.tex</string>
 		<string>Thesis.tex</string>
-		<string>classicthesis.sty</string>
-		<string>Chapters/Performance.tex</string>
-		<string>FrontBackmatter/Titlepage.tex</string>
-		<string>FrontBackmatter/DirtyTitlepage.tex</string>
 		<string>classicthesis-ldpkg.sty</string>
+		<string>classicthesis.sty</string>
+		<string>dissertation.sty</string>
+		<string>FrontBackmatter/Acknowledgments.tex</string>
 		<string>Chapters/Introduction.tex</string>
+		<string>Chapters/FeasibilityStudy.tex</string>
+		<string>FrontBackmatter/Titlepage.tex</string>
+		<string>FrontBackmatter/Titleback.tex</string>
+		<string>FrontBackmatter/DirtyTitlepage.tex</string>
+		<string>FrontBackmatter/DirtyTitleback.tex</string>
+		<string>FrontBackmatter/Titlepage.aux</string>
 		<string>Chapters/LiteratureReview.tex</string>
 		<string>FrontBackmatter/Colophon.tex</string>
 		<string>Chapters/InterimReport.tex</string>
@@ -315,7 +365,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>value</key>
-			<string>/Users/aquarius/Masterthesis/latex/Thesis/trunk/Thesis.tex</string>
+			<string>/Users/aquarius/zvonkok-masterthesis/latex/Thesis/trunk/Thesis.tex</string>
 			<key>variable</key>
 			<string>TM_LATEX_MASTER</string>
 		</dict>
@@ -323,7 +373,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>value</key>
-			<string>/Users/aquarius/Masterthesis/latex/Thesis/trunk/Bibliography.bib</string>
+			<string>/Users/aquarius/zvonkok-masterthesis/latex/Thesis/trunk/Bibliography.bib</string>
 			<key>variable</key>
 			<string>TM_LATEX_BIB</string>
 		</dict>
@@ -331,6 +381,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{156, 51}, {677, 977}}</string>
+	<string>{{70, 51}, {677, 977}}</string>
 </dict>
 </plist>

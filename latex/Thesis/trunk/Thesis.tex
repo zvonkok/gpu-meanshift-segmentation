@@ -51,8 +51,6 @@
 %!TEX TS-program = xetex 
 %!TEX encoding = UTF-8 Unicode 
 
-
-
 \documentclass[twoside,open=right,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
 fontsize=12pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
   ]{scrreprt}
@@ -83,7 +81,7 @@ fontsize=12pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 % ********************************************************************
 \newcommand{\myTitle}{High Performance Computing on GPUs\xspace}
 \newcommand{\myDegree}{An Homage to The Elements of Typographic Style\xspace}
-\newcommand{\myName}{Zvonko Krnjajic\xspace}
+\newcommand{\myName}{Zvonko Krnjaji\'c\xspace}
 \newcommand{\myProf}{Dr. Abbes Amira\xspace}
 \newcommand{\myOtherProf}{Put name here\xspace}
 \newcommand{\mySupervisor}{Dr. Abbes Amira\xspace}
@@ -154,7 +152,7 @@ fontsize=12pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 % ********************************************************************
 \lstset{language=C++,
     keywordstyle=\color{RoyalBlue},
-    basicstyle=\scriptsize\lstfont,	
+    basicstyle=\lstfont,	
 %	basicstyle=\small,	
 	tabsize=4,
     %identifierstyle=\color{NavyBlue},
@@ -205,9 +203,12 @@ fontsize=12pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
 %*******************************************************
-\usepackage{layouts}
+
+\usepackage{pdfpages}
 \begin{document}
-	
+
+\includepdf{frontcover.pdf}
+
 \frenchspacing
 \raggedbottom
 \selectlanguage{american} % american ngerman

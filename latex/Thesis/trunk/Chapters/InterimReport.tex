@@ -295,15 +295,15 @@ to host memory and check, visualize or store the calculated values. Listing
 The previous listings showed the host code and how to launch a kernel on the
 device. The listing \ref{lst:device} shows the device code portion. There are
 several qualifiers that define which function is compiled for which processing
-unit. The \textsc{\_\_global\_\_} qualifier specifies that this function is run
-on the device and hence compiled for the \gls{GPU} where the \textsc{\_\_host\_\_}
+unit. The \textit{\_\_global\_\_} qualifier specifies that this function is run
+on the device and hence compiled for the \gls{GPU} where the \textit{\_\_host\_\_}
 qualifier specifies that this function is only run on the host and not on the
 device. There are more function specifiers that can be looked up in
 \cite{citeulike:3325943}.
 
 For data there are as well qualifiers where one can specify where the data is
 located, either in constant, global or shared memory. In listing
-\ref{lst:device} the \textsc{\_\_shared\_\_} qualifier is used. The device will
+\ref{lst:device} the \textit{\_\_shared\_\_} qualifier is used. The device will
 use the shared memory to preload the data for faster access.
 
 
