@@ -11,9 +11,13 @@
 % ******************************************************************************
 % XeTeX
 % ******************************************************************************
-\RequirePackage[toc]{tabfigures}
+\RequirePackage[toc,eqno,enum,bib,lineno]{tabfigures}
 % MinionPro loads MnSymbol
-\RequirePackage[minionint, openg, mathlf, footnotefigures]{MinionPro}% 
+% ******************************************************************************
+% Math Package
+% ******************************************************************************
+%\RequirePackage[minionint, openg, mathosf, onlymath, footnotefigures]{MinionPro}% 
+%\RequirePackage[fraktur,mdugm]{mathdesign}
 \RequirePackage[cm-default, no-math]{fontspec}
 \RequirePackage{xunicode}
 \RequirePackage{xltxtra}
@@ -30,12 +34,13 @@
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
 
-\newcommand{\mainfont}{Minion Pro Cond}
+\newcommand{\mainfont}{Minion Pro Medium Cond}
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{\mainfont}
 %\setsansfont{Verdana}
 %\setmonofont{Pragmata}
-\newfontfamily\lstfont[]{Pragmata}
+\newfontfamily\lstfont[Scale=0.8]{Pragmata}
+\newfontfamily\titlefont[Scale=0.8]{Minion Pro}
 
 %\setkomafont{section}{\fontspec{Verdana Fett}\huge\textbf}
 %\setkomafont{subsection}{\fontspec{Verdana Fett}\Large}
@@ -108,6 +113,9 @@
 %\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
 %\definecolor{Black}{cmyk}{0, 0, 0, 0}
 
+% ********************************************************************                
+% Titlepage environment
+% ********************************************************************
 
 
 \endinput
