@@ -9,7 +9,7 @@
 texture<float4, 2, cudaReadModeElementType> tex;
 
 __global__ void meanshiftfilter(
-	float4* d_src, float4* d_dst, 
+	float4* d_src, float4* d_luv, 
 	float width, float height,
 	float sigmaS, float sigmaR,
 	float rsigmaS, float rsigmaR)
@@ -247,7 +247,7 @@ __global__ void meanshiftfilter(
 
 	// store result into global memory
 	int i = ix + iy * width;
-	d_dst[i] = luv;
+	d_luv[i] = luv;
 
 	
 	return;
@@ -276,12 +276,12 @@ extern "C" void initTexture(int width, int height, void *h_flt)
 }
 
 
-extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_dst,
+extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_luv,
 		float width, float height,
 		float sigmaS, float sigmaR,
 		float rsigmaS, float rsigmaR)
 {
-	meanshiftfilter<<< grid, threads>>>(d_src, d_dst, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
+	meanshiftfilter<<< grid, threads>>>(d_src, d_luv, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 }
 
 

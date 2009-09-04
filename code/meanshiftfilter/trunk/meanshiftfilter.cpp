@@ -17,7 +17,7 @@ extern "C" void initTexture(int, int, void*);
 extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
 		float, float,
 		float, float, float, float);
-
+extern "C" void luvToRgb(dim3, dim3, float4*, unsigned int*, unsigned int);
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions
@@ -60,8 +60,9 @@ int thy = 64;
 float4 * h_src = NULL; // luv source data
 float4 * h_dst = NULL; // luv manipulated data
 
-float4 * d_src = NULL; // device source data
-float4 * d_dst = NULL; // device manipulated data
+float4 * d_src = NULL; // device luv source data
+float4 * d_luv = NULL; // device luv manipulated data
+unsigned int * d_rgb = NULL; // device rgb converted data
 
 
 cudaArray* d_array = NULL;  // texture array for luv data
@@ -191,7 +192,7 @@ int main( int argc, char** argv)
 	h_options[SIGMAS] = sigmaS;
 	h_options[SIGMAR] = sigmaR;
 
-	//! Allocate memory for h_dst (filtered image output)
+	//! Allocate memory for h_dst 
 	// The memory returned by this call will be considered as 
 	// pinned memory by all CUDA contexts, not just the one 
 	// that performed the allocation.
@@ -267,9 +268,11 @@ int main( int argc, char** argv)
 void computeCUDA() 
 {
 
-	unsigned int imgSize = height * width * sizeof(float4);
+	unsigned int imgSizeFloat4 = height * width * sizeof(float4);
+	unsigned int imgSizeUint = height * width * sizeof(unsigned int);
 	//cutilSafeCall(cudaMallocPitch((void**) &d_src, (size_t*)&pitch, width * sizeof(float4), height));
-	cutilSafeCall(cudaMalloc((void**) &d_dst, imgSize));
+	cutilSafeCall(cudaMalloc((void**) &d_luv, imgSizeFloat4));
+	cutilSafeCall(cudaMalloc((void**) &d_rgb, imgSizeUint));
 
 
 	// convert to float array and then copy ... 
@@ -288,7 +291,7 @@ void computeCUDA()
 	
 
 	// warmup 
-	meanShiftFilter(grid, threads, d_src, d_dst, width, (float)height, 
+	meanShiftFilter(grid, threads, d_src, d_luv, width, (float)height, 
 		sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilSafeCall(cudaThreadSynchronize());	
 
@@ -298,19 +301,19 @@ void computeCUDA()
 	cutilCheckError(cutStartTimer(timer));
 
 	
-	meanShiftFilter(grid, threads, d_src, d_dst, width, height,
+	meanShiftFilter(grid, threads, d_src, d_luv, width, height,
 		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
-	cutilCheckMsg("Kernel Execution failed");
+	cutilCheckMsg("meanShiftFilter Kernel Execution failed");
 	
+	luvToRgb(grid, threads, d_luv, d_rgb, width);
+	cutilCheckMsg("luvToRgb Kernel Execution failed");
 	
 	// copy result from device to host
-	cutilSafeCall(cudaMemcpy(h_dst, d_dst, imgSize, cudaMemcpyDeviceToHost));
+	cutilSafeCall(cudaMemcpy(h_dst, d_luv, imgSizeFloat4, cudaMemcpyDeviceToHost));
+	cutilSafeCall(cudaMemcpy(h_filt, d_rgb, imgSizeUint, cudaMemcpyDeviceToHost));
 
-	for(unsigned int i = 0; i < height * width; i++) {
-		unsigned char * pix = (unsigned char *)&h_filt[i];
-		LUVtoRGB((float*)&h_dst[i], pix);
-	} 
 
+	
 	// stop and destroy timer
 	cutilCheckError(cutStopTimer(timer));
 
@@ -332,7 +335,7 @@ void computeCUDA()
 
 	// clean up memory
 	cutilSafeCall(cudaFree(d_src));
-	cutilSafeCall(cudaFree(d_dst));
+	cutilSafeCall(cudaFree(d_luv));
 	cutilSafeCall(cudaFreeArray(d_array));
 
 	cudaThreadExit();
