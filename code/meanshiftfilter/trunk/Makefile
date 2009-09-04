@@ -36,7 +36,7 @@
 # Add source files here
 EXECUTABLE	:= Meanshift
 # Cuda source files (compiled with cudacc)
-CUFILES		:= meanshiftfilter_kernel.cu
+CUFILES		:= meanshiftfilter_kernel.cu luvrgb_kernel.cu
 # C/C++ source files (compiled with gcc / c++)
 CCFILES		:= meanshiftfilter.cpp meanshiftfilter_gold.cpp  edison.cpp rlist.cpp rgbluv.cpp 
 
@@ -58,6 +58,7 @@ include ../../common/common.mk
 #CFLAGS += -pg
 #CXXFLAGS += -pg
 NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v -use_fast_math -arch sm_11
+
 
 clean: clean_data
 .PHONY: clean_data
