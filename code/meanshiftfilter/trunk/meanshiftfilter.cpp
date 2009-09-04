@@ -13,7 +13,7 @@
 #include <cuda_gl_interop.h>
 #include <rendercheck_gl.h>
 
-extern "C" void initTexture(int, int, void*, cudaArray*);
+extern "C" void initTexture(int, int, void*);
 extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
 		float, float,
 		float, float, float, float);
@@ -135,44 +135,30 @@ void loadImageData(int argc __attribute__ ((unused)), char **argv)
 
 void computeCUDA();
 
+void checkCUDAError(const char *msg) { 
+	cudaError_t err = cudaGetLastError(); 
+	if (cudaSuccess != err) { 
+		fprintf(stderr, "Cuda error: %s: %s.\n", msg, cudaGetErrorString(err)); 
+		exit(EXIT_FAILURE); 
+	}
+}
+
+
 int main( int argc, char** argv) 
 {	
-	sigmaS = 7.0f;
-	sigmaR = 6.5f;
+#if CUDART_VERSION < 2020
+#error "This CUDART version does not support mapped memory!\n"
+#endif
+	cudaDeviceProp deviceProp;
+	// Get properties and verify device 0 supports mapped memory
+	cudaGetDeviceProperties(&deviceProp, 0);
+	checkCUDAError("cudaGetDeviceProperties");
 
-	minRegion = 20.0f;
-
-	loadImageData(argc, argv);
-
-	N = 4;
-	L = height * width;
-
-	// Set options which are transferred to the device
-	h_options[SIGMAS] = sigmaS;
-	h_options[SIGMAR] = sigmaR;
-
-	//Allocate memory for h_dst (filtered image output)
-	h_dst = new float4[height * width];
-	h_src = new float4[height * width];
-	
-	
-
-	h_filt = new unsigned int [height * width * sizeof(unsigned char) * 4];
-	h_segm = new unsigned int [height * width * sizeof(unsigned char) * 4];
-	h_iter = new unsigned int [height * width * sizeof(unsigned char) * 4];
-	
-	h_bndy = new unsigned char [height * width];
-	
-
-
-	// Prepare the RGB data 
-	for(unsigned int i = 0; i < L; i++) {
-		extern unsigned int * h_img;
-		unsigned char * pix = (unsigned char *)&h_img[i];
-		RGBtoLUV(pix, (float*)&h_src[i]);
+	if(!deviceProp.canMapHostMemory) {
+		fprintf(stderr, "Device %d cannot map host memory!\n", 0);
 	}
 
-	// use command-line specified CUDA device, otherwise use device with highest Gflops/s
+		// use command-line specified CUDA device, otherwise use device with highest Gflops/s
 	if (cutCheckCmdLineFlag(argc, (const char**)argv, "device")) {
 		cutilDeviceInit(argc, argv);
 	} else {
@@ -189,6 +175,46 @@ int main( int argc, char** argv)
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "thy", &thy)) {
 		std::cout << "Setting thy: " << thy << std::endl;
 	}
+
+
+	sigmaS = 7.0f;
+	sigmaR = 6.5f;
+
+	minRegion = 20.0f;
+
+	loadImageData(argc, argv);
+
+	N = 4;
+	L = height * width;
+
+	// Set options which are transferred to the device
+	h_options[SIGMAS] = sigmaS;
+	h_options[SIGMAR] = sigmaR;
+
+	//! Allocate memory for h_dst (filtered image output)
+	// The memory returned by this call will be considered as 
+	// pinned memory by all CUDA contexts, not just the one 
+	// that performed the allocation.
+	cudaHostAlloc((void**)&h_dst, sizeof(float4) * height * width, cudaHostAllocPortable);
+	checkCUDAError("cudaHostAlloc");
+	h_src = new float4[height * width];
+	
+	
+	h_filt = new unsigned int [height * width * sizeof(unsigned char) * 4];
+	h_segm = new unsigned int [height * width * sizeof(unsigned char) * 4];
+	h_iter = new unsigned int [height * width * sizeof(unsigned char) * 4];
+	
+	h_bndy = new unsigned char [height * width];
+	
+
+
+	// Prepare the RGB data 
+	for(unsigned int i = 0; i < L; i++) {
+		extern unsigned int * h_img;
+		unsigned char * pix = (unsigned char *)&h_img[i];
+		RGBtoLUV(pix, (float*)&h_src[i]);
+	}
+
 	
 	
 
@@ -233,7 +259,7 @@ int main( int argc, char** argv)
 		system(open.c_str());
 	}
 
-
+	cudaFreeHost(h_dst);
 	exit(EXIT_SUCCESS);
 }
 
@@ -253,7 +279,7 @@ void computeCUDA()
 		h_flt[i] = h_src[i];
 	}
 	// TEXTURE Begin: allocate array and copy image data to device
-	initTexture(width, height, h_src, d_array);
+	initTexture(width, height, h_src);
 	
 
 	// setup execution parameters
@@ -276,9 +302,8 @@ void computeCUDA()
 		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilCheckMsg("Kernel Execution failed");
 	
-
+	
 	// copy result from device to host
-	//h_tmp = new float[imgSize];
 	cutilSafeCall(cudaMemcpy(h_dst, d_dst, imgSize, cudaMemcpyDeviceToHost));
 
 	for(unsigned int i = 0; i < height * width; i++) {
