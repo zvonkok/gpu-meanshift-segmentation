@@ -294,7 +294,7 @@ void computeCUDA()
 	cutilCheckMsg("rgbToLuv Kernel Execution failed");
 	
 	
-	// TEXTURE Begin: allocate array and copy image data to device
+	// TEXTURE Begin: allocate array and copy image data device to device
 	initTexture(width, height, d_src);
 	
 	meanShiftFilter(grid, threads, d_luv, width, height,
