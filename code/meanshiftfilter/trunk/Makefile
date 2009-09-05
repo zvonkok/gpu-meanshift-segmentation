@@ -36,7 +36,9 @@
 # Add source files here
 EXECUTABLE	:= Meanshift
 # Cuda source files (compiled with cudacc)
-CUFILES		:= meanshiftfilter_kernel.cu luvrgb_kernel.cu
+CUFILES		:= meanshiftfilter_kernel.cu 	\
+			luvrgb_kernel.cu 	\
+			rgbluv_kernel.cu
 # C/C++ source files (compiled with gcc / c++)
 CCFILES		:= meanshiftfilter.cpp meanshiftfilter_gold.cpp  edison.cpp rlist.cpp rgbluv.cpp 
 

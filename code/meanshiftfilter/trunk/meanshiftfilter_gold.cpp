@@ -89,6 +89,13 @@ void computeGold(void)
 	set_FPU_Precision_Rounding(53, 0);
 	*/
 	
+	// Prepare the RGB data 
+	for(unsigned int i = 0; i < L; i++) {
+		extern unsigned int * h_img;
+		unsigned char * pix = (unsigned char *)&h_img[i];
+		RGBtoLUV(pix, (float*)&h_src[i]);
+	}
+
 	
 	
 #ifdef __linux__

@@ -14,10 +14,11 @@
 #include <rendercheck_gl.h>
 
 extern "C" void initTexture(int, int, void*);
-extern "C" void meanShiftFilter(dim3, dim3, float4*, float4*, 
+extern "C" void meanShiftFilter(dim3, dim3, float4*, 
 		float, float,
 		float, float, float, float);
 extern "C" void luvToRgb(dim3, dim3, float4*, unsigned int*, unsigned int);
+extern "C" void rgbToLuv(dim3, dim3, float4*, unsigned int*, unsigned int);
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions
@@ -60,7 +61,7 @@ int thy = 64;
 float4 * h_src = NULL; // luv source data
 float4 * h_dst = NULL; // luv manipulated data
 
-float4 * d_src = NULL; // device luv source data
+
 float4 * d_luv = NULL; // device luv manipulated data
 unsigned int * d_rgb = NULL; // device rgb converted data
 
@@ -207,16 +208,6 @@ int main( int argc, char** argv)
 	
 	h_bndy = new unsigned char [height * width];
 	
-
-
-	// Prepare the RGB data 
-	for(unsigned int i = 0; i < L; i++) {
-		extern unsigned int * h_img;
-		unsigned char * pix = (unsigned char *)&h_img[i];
-		RGBtoLUV(pix, (float*)&h_src[i]);
-	}
-
-	
 	
 
 	std::string append = "convert +append ";
@@ -264,61 +255,65 @@ int main( int argc, char** argv)
 	exit(EXIT_SUCCESS);
 }
 
+#define START_TIMER 				\
+  unsigned int timer = 0;				\
+  cutilCheckError(cutCreateTimer(&timer));		\
+  cutilCheckError(cutStartTimer(timer));		\
+  
+#define STOP_TIMER				\
+  cutilCheckError(cutStopTimer(timer));
+
 
 void computeCUDA() 
 {
-
 	unsigned int imgSizeFloat4 = height * width * sizeof(float4);
 	unsigned int imgSizeUint = height * width * sizeof(unsigned int);
-	//cutilSafeCall(cudaMallocPitch((void**) &d_src, (size_t*)&pitch, width * sizeof(float4), height));
-	cutilSafeCall(cudaMalloc((void**) &d_luv, imgSizeFloat4));
-	cutilSafeCall(cudaMalloc((void**) &d_rgb, imgSizeUint));
-
-
-	// convert to float array and then copy ... 
-	float4 * h_flt = new float4[height * width];
-	// we need here h_src (luv) the converted rgb data not h_img the plain rgb!!
-	for (unsigned int i = 0; i < height * width; i++) {
-		h_flt[i] = h_src[i];
-	}
-	// TEXTURE Begin: allocate array and copy image data to device
-	initTexture(width, height, h_src);
-	
 
 	// setup execution parameters
-	dim3 threads(thx, thy); // 128 threads 
+	dim3 threads(thx, thy); // 128 threads
+	dim3 threads0(16, 16);
 	dim3 grid(width/thx, height/thy);
+
+	cutilSafeCall(cudaMalloc((void**) &d_luv, imgSizeFloat4));
+	cutilSafeCall(cudaMalloc((void**) &d_rgb, imgSizeUint));
 	
-
-	// warmup 
-	meanShiftFilter(grid, threads, d_src, d_luv, width, (float)height, 
-		sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
-	cutilSafeCall(cudaThreadSynchronize());	
-
-	// create and start timer
-	unsigned int timer = 0;
-	cutilCheckError(cutCreateTimer(&timer));
-	cutilCheckError(cutStartTimer(timer));
-
+	// First we need to convert the RGB data to LUV data 
+	// we have an extra kernel here because after much optimizing
+	// the less time consuming function become major consumer
+	// e.g. LUVtoRGB before 0.1% now 30% ...
+	float4 * d_src = NULL; 		// device luv source data
+	unsigned int * d_img = NULL;	// device rgb source data
+	cutilSafeCall(cudaMalloc((void**) &d_img, imgSizeUint));
+	cutilSafeCall(cudaMalloc((void**) &d_src, imgSizeFloat4));
 	
-	meanShiftFilter(grid, threads, d_src, d_luv, width, height,
+	START_TIMER //**********************************************************
+	
+	cutilSafeCall(cudaMemcpy(d_img, h_img, imgSizeUint, cudaMemcpyHostToDevice));
+	
+	rgbToLuv(grid, threads0, d_src, d_img, width);
+	cutilCheckMsg("rgbToLuv Kernel Execution failed");
+	
+	
+	// TEXTURE Begin: allocate array and copy image data to device
+	initTexture(width, height, d_src);
+	
+	meanShiftFilter(grid, threads, d_luv, width, height,
 		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilCheckMsg("meanShiftFilter Kernel Execution failed");
 	
-	luvToRgb(grid, threads, d_luv, d_rgb, width);
+	luvToRgb(grid, threads0, d_luv, d_rgb, width);
 	cutilCheckMsg("luvToRgb Kernel Execution failed");
+	
 	
 	// copy result from device to host
 	cutilSafeCall(cudaMemcpy(h_dst, d_luv, imgSizeFloat4, cudaMemcpyDeviceToHost));
 	cutilSafeCall(cudaMemcpy(h_filt, d_rgb, imgSizeUint, cudaMemcpyDeviceToHost));
 
-
 	
-	// stop and destroy timer
-	cutilCheckError(cutStopTimer(timer));
+	STOP_TIMER //**********************************************************
 
 	// Without limit cycle float timeGOLD = 10679.209000;
-	float timeGOLD = 10260.19f;
+	float timeGOLD = 10284.756f;
 	float timeCUDA = cutGetTimerValue(timer);
 
 	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
@@ -326,7 +321,6 @@ void computeCUDA()
 	std::cout << "Speedup CUDA vs. GOLD: " << timeGOLD/timeCUDA << std::endl;
 
 	cutilCheckError(cutDeleteTimer(timer));
-
 	cutilSafeCall(cudaThreadSynchronize());	
 
 	connect();

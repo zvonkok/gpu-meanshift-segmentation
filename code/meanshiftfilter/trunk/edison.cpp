@@ -1142,8 +1142,6 @@ void connect()
 		LUVtoRGB((float*)&h_dst[i], pix);
 	}
 
-	
-	
 }
 
 void boundaries()

@@ -1,10 +1,8 @@
 
 
-const float Yn = 1.00000f;
-const double Un_prime	= 0.19784977571475;
-const double Vn_prime	= 0.46834507665248;
-
-
+#define Yn 1.00000f
+#define Un_prime	 0.19784977571475f
+#define Vn_prime	 0.46834507665248f
 
 //define inline rounding function...
 __device__ int my_round(float in_x)
@@ -18,11 +16,8 @@ __device__ int my_round(float in_x)
 // convert floating point rgba color to 32-bit integer
 __device__ uint rgbaFloatToInt(float4 rgba)
 {
-    rgba.x = __saturatef(rgba.x);   // clamp to [0.0, 1.0]
-    rgba.y = __saturatef(rgba.y);
-    rgba.z = __saturatef(rgba.z);
-    rgba.w = __saturatef(rgba.w);
-    return (uint(rgba.w*255)<<24) | (uint(rgba.z*255)<<16) | (uint(rgba.y*255)<<8) | uint(rgba.x*255);
+   
+    return (uint(rgba.w)<<24) | (uint(rgba.z)<<16) | (uint(rgba.y)<<8) | uint(rgba.x);
 }
 
 
@@ -43,8 +38,9 @@ __global__ void luvtorgb(float4 *d_luv, unsigned int *d_rgb, unsigned int width)
 	};
 
 	//declare variables...
-	int	  r, g, b;
-	float x, y, z, u_prime, v_prime;
+	float r, g, b;
+	float x, y, z;
+	float u_prime, v_prime;
 	
 	//perform conversion
 	if(luv.x < 0.1)
@@ -79,21 +75,9 @@ __global__ void luvtorgb(float4 *d_luv, unsigned int *d_rgb, unsigned int width)
 		
 	}
 	
-	//assign rgb values to rgb vector rgb
-	//rgb[0] = r;
-	//rgb[1] = g;
-	//rgb[2] = b;
 	
-	//float4 rgba = { rgb[0], rgb[1], rgb[2], 0.0f };
-	
-	//d_rgb[i] = rgbaFloatToInt(rgba);
-	//done.
-	
-	((unsigned char*)&d_rgb[i])[0] = r;
-	((unsigned char*)&d_rgb[i])[1] = g;
-	((unsigned char*)&d_rgb[i])[2] = b;
-	((unsigned char*)&d_rgb[i])[3] = 0;
-	
+	float4 rgba = { r, g, b, 0.0f };
+	d_rgb[i] = rgbaFloatToInt(rgba);
 	return;
 	
 }
