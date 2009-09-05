@@ -9,7 +9,7 @@
 texture<float4, 2, cudaReadModeElementType> tex;
 
 __global__ void meanshiftfilter(
-	float4* d_src, float4* d_luv, 
+	float4* d_luv, 
 	float width, float height,
 	float sigmaS, float sigmaR,
 	float rsigmaS, float rsigmaR)
@@ -255,7 +255,7 @@ __global__ void meanshiftfilter(
 
 
 
-extern "C" void initTexture(int width, int height, void *h_flt)
+extern "C" void initTexture(int width, int height, void *d_src)
 {
 	cudaArray* d_array;
 	int size = width * height * sizeof(float4);
@@ -263,7 +263,7 @@ extern "C" void initTexture(int width, int height, void *h_flt)
 	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc<float4> ();
 
 	cutilSafeCall(cudaMallocArray(&d_array, &channelDesc, width, height )); 
-	cutilSafeCall(cudaMemcpyToArray(d_array, 0, 0, h_flt, size, cudaMemcpyHostToDevice));
+	cutilSafeCall(cudaMemcpyToArray(d_array, 0, 0, d_src, size, cudaMemcpyDeviceToDevice));
 
 	// set texture parameters
 	//    tex.addressMode[0] = cudaAddressModeWrap;
@@ -276,12 +276,12 @@ extern "C" void initTexture(int width, int height, void *h_flt)
 }
 
 
-extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_luv,
+extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_luv,
 		float width, float height,
 		float sigmaS, float sigmaR,
 		float rsigmaS, float rsigmaR)
 {
-	meanshiftfilter<<< grid, threads>>>(d_src, d_luv, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
+	meanshiftfilter<<< grid, threads>>>(d_luv, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 }
 
 
