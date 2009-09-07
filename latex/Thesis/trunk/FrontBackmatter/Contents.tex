@@ -4,12 +4,18 @@
 %\phantomsection
 \refstepcounter{dummy}
 \pdfbookmark[1]{\contentsname}{tableofcontents}
-\setcounter{tocdepth}{2}
-\tableofcontents 
+
 \begingroup 
     \let\clearpage\relax
     \let\cleardoublepage\relax
     \let\cleardoublepage\relax
+
+	\renewcommand{\contentsname}{Content Overview}
+	\toctitleformat
+	
+	\setcounter{tocdepth}{2}
+	\tableofcontents 
+
 \endgroup
 
 \cleardoublepage

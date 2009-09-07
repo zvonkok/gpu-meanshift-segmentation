@@ -1,6 +1,17 @@
 %************************************************
 \myChapter{Mean Shift}\label{ch:mean_shift}
 %************************************************
+The basic idea of a kernel density estimator is a mathematical principle, 
+implemented by procedure 1 in \ref{ssub:the_mean_shift_procedure}. To prepare
+for this, we recall some definitions [30]. We consider the kernel estimator in
+$\mathbb{R}^1$. Let $X$ be a random variable. Let $X_i$ where $i=1,2,\ldots,n$ be
+% estimate	= schätzen
+% density	= dichte
+$n$ observations of $X$. We want to estimate the density  of $X$. Let $f$ be the
+density of $X$, and $\hat{f}$ an estimator of $f$. A \emph{bin} is an interval
+$[a,b)$. $b-a$ is called the width of bin $[a,b)$. Let $O=(0,0)$ be the origin, 
+and $[mh, (m+1)h)$ are some bins of constant width $h$, for integers $m$. The
+histogram is defined as follows,
 
 \section{Introduction} % (fold)
 \label{sec:introduction}
@@ -15,6 +26,10 @@
 \subsubsection{Kernel Density Estimation} % (fold)
 \label{ssub:the_kernel_density_estimator}
 
+\paragraph{Mean Shift Kernel Estimation} % (fold)
+\label{par:mean_shift_kernel_estimation}
+
+% paragraph mean_shift_kernel_estimation (end)
 
 The basic idea of a kernel density estimator is a mathematical principle, 
 implemented by procedure 1 in \ref{ssub:the_mean_shift_procedure}. To prepare
