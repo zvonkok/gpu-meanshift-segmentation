@@ -51,9 +51,9 @@
 %!TEX TS-program = xetex 
 %!TEX encoding = UTF-8 Unicode 
 
-\documentclass[twoside,open=right,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
-fontsize=12pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
-  ]{scrreprt}
+\documentclass[twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
+fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
+ ]{scrreprt}
 % ********************************************************************
 % KOMA-Script setup http://www.komascript.de/betaKOMAoptions
 % ********************************************************************
@@ -215,37 +215,28 @@ fontsize=12pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
 \pagenumbering{roman}
-\pagestyle{plain}
-
+\pagestyle{empty}
 
 %********************************************************************
 % Frontmatter
 %*******************************************************
 \include{FrontBackMatter/Glossary}
-
-%\include{FrontBackmatter/DirtyTitlepage}
-%\include{FrontBackmatter/DirtyTitleback}
 \include{FrontBackmatter/Titlepage}
-%\include{FrontBackmatter/Titleback}
+\include{FrontBackmatter/Titleback}
 \include{FrontBackmatter/Declaration}
 %\cleardoublepage\include{FrontBackmatter/Dedication}
 \cleardoublepage\include{FrontBackmatter/Abstract}
 \cleardoublepage\include{FrontBackmatter/Acknowledgments}
-\pagestyle{scrheadings}
 \cleardoublepage\include{FrontBackmatter/Contents}
+
+
+\pagenumbering{arabic}
+\pagestyle{scrheadings}
 %********************************************************************
 % Mainmatter
 %*******************************************************
-\pagenumbering{arabic}
-% use \cleardoublepage here to avoid problems with pdfbookmark
-%\cleardoublepage\myPart{The Graphical Processing Unit}
-
-%\include{Chapters/Typearea}
-
 \include{Chapters/Introduction}
 \include{Chapters/FeasibilityStudy}
-%\cleardoublepage\myPart{The GPU Showcase}
-\include{Chapters/Chapter02}
 \include{Chapters/MeanShift}
 
 %\addtocontents{toc}{\protect\clearpage} % TEST
