@@ -1,34 +1,8 @@
-% ********************************************************************
-% classicthesis.sty
-%
-% Copyright (C) 2009 André Miede http://www.miede.de
-%
-% If you like the style then I would appreciate a postcard. My address 
-% can be found in the file ClassicThesis.pdf. A collection of the 
-% postcards I received so far is available online at 
-% http://postcards.miede.de
-%
-% License:
-% This program is free software; you can redistribute it and/or modify
-% it under the terms of the GNU General Public License as published by
-% the Free Software Foundation; either version 2 of the License, or
-% (at your option) any later version.
-%
-% This program is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of
-% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-% GNU General Public License for more details.
-%
-% You should have received a copy of the GNU General Public License
-% along with this program; see the file COPYING.  If not, write to
-% the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-% Boston, MA 02111-1307, USA.
-%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{classicthesis}[2009/08/01 v2.6 Typographic Style for a classic-looking thesis]
 	\RequirePackage{ifthen}
 	\newboolean{@tocaligned} % the left column of the toc will be aligned (no indention)
-\newboolean{@eulerchapternumbers} % use AMS Euler for chapter font (otherwise Palatino)
+	\newboolean{@eulerchapternumbers} % use AMS Euler for chapter font (otherwise Palatino)
 	\newboolean{@drafting} % print version information on pages
 	\newboolean{@linedheaders} % chaper headers will have line above and beneath
 	\newboolean{@listsseparated} % toggles the vertical space between lof/lot entries of different chapters
@@ -38,7 +12,7 @@
 	\newboolean{@parts} % use part division for the text
 	\newboolean{@minionpro} % setup for minion pro font
 	\newboolean{@minionprospacing} % use minion pro's textssc for letter spacing
-\newboolean{@pdfspacing} % use pdftex for letterspacing (via microtype)
+	\newboolean{@pdfspacing} % use pdftex for letterspacing (via microtype)
 	\newboolean{@subfig} % setup for preloaded @subfig package
 	\newboolean{@a5paper} % use those tiny DIN A5 pages
 	\newboolean{@dottedtoc} % page numbers in ToC flushed right
@@ -84,115 +58,61 @@
 }{\relax}%
 
 % listings-related stuff
-\ifthenelse{\boolean{@listings}}%
-{\@ifpackageloaded{listings}%
-	{\relax}{\RequirePackage{listings}}%
-}{\relax}%
-
-% fine-tuning if we use minionprospacing
-\ifthenelse{\boolean{@minionprospacing}}%
-{%
-	\PackageInfo{classicthesis}{Using option "minionprospacing". %
-		This activates "minionpro" in general and turns off %
-			the option "pdfspacing".}%
-			% is the user trying to use pdfspacing at the same time?    
-			\ifthenelse{\boolean{@pdfspacing}}%
-			{% both minionprospacing and pdfspacing are active
-				\PackageWarningNoLine{classicthesis}{You cannot use "pdfspacing" at the same time %
-					as "minionprospacing"!}%
-			}{\relax}%
-	\setboolean{@minionpro}{true}%
-		\setboolean{@pdfspacing}{false}%
-}{\relax}
-
-% fine-tuning if we do not use chapters
-\ifthenelse{\boolean{@nochapters}}%
-{%
-	% is the user trying to use parts at the same time?
-		\ifthenelse{\boolean{@parts}}%
-		{% both parts and nochapters are active
-			\PackageWarningNoLine{classicthesis}{You cannot use "parts" at the same time %
-				as "nochapters"!}%
-		}{\relax}%
-	% turn off some things if we do not use chapters
-		\PackageInfo{classicthesis}{Using option "nochapters" (probably for an article). %
-			This turns off the options "linedheaders",%
-				"listsseparated", "eulerchapternumbers", and "parts". Please be aware of that.}
-	\setboolean{@linedheaders}{false}%
-		\setboolean{@listsseparated}{false}%
-		\setboolean{@eulerchapternumbers}{false}%
-		\setboolean{@parts}{false}
-}{\relax}%
-
-% ********************************************************************                
-% PDF Stuff
-% ********************************************************************
+\RequirePackage{listings}%
 \RequirePackage{ifpdf}
-%\ifpdf\RequirePackage{hyperref}\fi % for texorpdfstring command below
-
 
 % ********************************************************************
 % Font Stuff
 % ********************************************************************   
-\ifthenelse{\boolean{@minionpro}}%
-{%
-	% specialists: MinionPro
-		\RequirePackage[opticals,mathlf]{MinionPro} %  opticals, fullfamily, osf
-}{%
-	% default: Palatino
-		\RequirePackage[osf,sc]{mathpazo} % Palatino with real small caps and old style figures
-		\linespread{1.05} % a bit more for Palatino
-		% just some font experiments (ignore)
-		%\RequirePackage{lmodern}
-	%\RequirePackage[urw-garamond]{mathdesign}
-	%\RequirePackage[light,condensed,math]{iwona}
-	%\renewcommand{\sfdefault}{iwona}
-}
+% default: Palatino
+\RequirePackage[osf,sc]{mathpazo} % Palatino with real small caps and old style figures
 
-\ifthenelse{\boolean{@eulermath}}%
-{\RequirePackage[euler-digits]{eulervm}} % Euler math fonts
-{\relax}
+% just some font experiments (ignore)
+%\RequirePackage{lmodern}
+%\RequirePackage[urw-garamond]{mathdesign}
+%\RequirePackage[light,condensed,math]{iwona}
+%\renewcommand{\sfdefault}{iwona}
+\RequirePackage[euler-digits]{eulervm} % Euler math fonts
 
 % ********************************************************************
 % Textblock size
 %*******************************************************
 \PackageInfo{classicthesis}{A4 paper, Palatino or other}
 \areaset[5mm]{390pt}{650pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
-
 % Randnotiz stuff ...
 %\setlength{\marginparwidth}{7em}%
 %\setlength{\marginparsep}{2em}%
+% Here are some suggestions for the text widths and heights:
 
-
-	% Here are some suggestions for the text widths and heights:
-	% Palatino 	10pt: 288--312pt | 609--657pt
-	% Palatino 	11pt: 312--336pt | 657--705pt
-	% Palatino 	12pt: 
-	% Minion 	  10pt: 264--288pt | 561--609pt
-	% Minion 	  11pt: 288--312pt | 609--657pt
-	% Minion 	  12pt: 
+% Palatino 	10pt: 288--312pt | 609--657pt
+% Palatino 	11pt: 312--336pt | 657--705pt
+% Palatino 	12pt: 
+% Minion 	  10pt: 264--288pt | 561--609pt
+% Minion 	  11pt: 288--312pt | 609--657pt
+% Minion 	  12pt: 
 
 	% ********************************************************************
 	% Own Stuff
 	% ********************************************************************
 % Disable single lines at the start of a paragraph (Schusterjungen)
-	\clubpenalty = 10000
+\clubpenalty = 10000
 % Disable single lines at the end of a paragraph (Hurenkinder)
-	\widowpenalty = 10000 
-	\displaywidowpenalty = 10000 % formulas
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000 % formulas
 
-	% Graffiti as in GKP's book "Concrete Mathematics"
-	\DeclareRobustCommand{\graffito}[1]{\marginpar{%
-		\slshape\footnotesize%\small%
-			\ifodd\thepage\raggedright\else\raggedleft\fi%
-			\parindent=0pt\lineskip=0pt\lineskiplimit=0pt%\baselineskip=10pt
-			\tolerance=2000\hyphenpenalty=300\exhyphenpenalty=300%
-			\doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
-			%\raggedright%
-			\hspace{0pt}#1}}
 
-			% Enumeration environment with small caps
-			\newenvironment{aenumerate}
+% Graffiti as in GKP's book "Concrete Mathematics"
+\DeclareRobustCommand{\graffito}[1]{\marginpar{%
+	\slshape\footnotesize%\small%
+		\ifodd\thepage\raggedright\else\raggedleft\fi%
+		\parindent=0pt\lineskip=0pt\lineskiplimit=0pt%\baselineskip=10pt
+		\tolerance=2000\hyphenpenalty=300\exhyphenpenalty=300%
+		\doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
+		%\raggedright%
+		\hspace{0pt}#1}}
+		% Enumeration environment with small caps
+
+\newenvironment{aenumerate}
 {\def\theenumi{\textsc{\alph{enumi}}}%
 	\enumerate}
 {\endenumerate}
@@ -230,7 +150,7 @@
 % figures are placed only within section they were declared in
 % provides command \FloatBarrier
 % ********************************************************************
-%\RequirePackage[section,below]{placeins}    
+\RequirePackage[section,below]{placeins}    
 
 % ********************************************************************
 % layout of the chapter-, section-, subsection-, subsubsection-,
@@ -247,7 +167,6 @@
 }
 {\relax}
 
-\usepackage[overload]{textcase}
 
 % chapters
 \titleformat{\chapter}[display]%
@@ -339,7 +258,7 @@
 \ifthenelse{\boolean{@dottedtoc}}{\relax}%
 {%        
 	\renewcommand{\cftsecleader}{\hspace{1.5em}}% 
-		\renewcommand{\cftsecafterpnum}{\cftparfillskip}%
+	\renewcommand{\cftsecafterpnum}{\cftparfillskip}%
 }
 \ifthenelse{\boolean{@tocaligned}}{\renewcommand{\cftsecindent}{0em}}{\relax}
 
@@ -477,6 +396,7 @@
 				       }%
 } 
 
+
 % ********************************************************************
 % footnotes setup   
 % ********************************************************************
@@ -489,6 +409,141 @@
 
 
 
+% ********************************************************************                
+% Colors
+% ********************************************************************
+\RequirePackage[dvipsnames]{xcolor} % [dvipsnames] 
+\definecolor{halfgray}{gray}{0.55} % chapter numbers will be semi transparent .5 .55 .6 .0
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{lstgreybg}{rgb}{0.95, 0.95, 0.95}
+\definecolor{grey10}{rgb}{0.9,0.9,0.9}
+\definecolor{grey90}{rgb}{0.1,0.1,0.1}
+
+%\definecolor{darkblue}{rgb}{0.37,0.43,0.53}
+
+% zu maroon passendes blau
+\definecolor{maroonBlue}{HTML}{352F76}
+\definecolor{maroonGreen}{HTML}{40762F}
+\definecolor{maroonYellow}{HTML}{7F6D25}
+
+
+
+% ******************************************************************************
+% XeTeX
+% ******************************************************************************
+\RequirePackage[toc,eqno,enum,bib,lineno]{tabfigures}
+% MinionPro loads MnSymbol
+% ******************************************************************************
+% Math Package
+% ******************************************************************************
+%\RequirePackage[minionint, openg, mathosf, onlymath, footnotefigures]{MinionPro}% 
+%\RequirePackage[fraktur,mdugm]{mathdesign}
+\RequirePackage[cm-default, no-math]{fontspec}
+\RequirePackage{xunicode}
+\RequirePackage{xltxtra}
+\RequirePackage[xetex, colorlinks=true,
+				hyperfootnotes=false, 
+				pdfpagelabels, 
+				frenchlinks=true,
+				pagebackref]{hyperref}
+				
+% ********************************************************************
+% setup the style of the backrefs from the bibliography
+% ********************************************************************
+\newcommand{\backrefnotcitedstring}{\relax}%(Not cited.)
+\newcommand{\backrefcitedsinglestring}[1]{(Cited on page~#1.)}
+\newcommand{\backrefcitedmultistring}[1]{(Cited on pages~#1.)}
+
+\RequirePackage[hyperpageref]{backref} % to be loaded after hyperref package 
+\renewcommand{\backreftwosep}{ and~} % seperate 2 pages
+\renewcommand{\backreflastsep}{, and~} % seperate last of longer list
+\renewcommand*{\backref}[1]{}  % Disable standard
+\renewcommand*{\backrefalt}[4]{% Detailed backref
+\ifcase #1 %
+	\backrefnotcitedstring%
+\or
+	\backrefcitedsinglestring{#2}%
+\else
+	\backrefcitedmultistring{#2}%
+\fi}
+				
+
+\renewcommand{\figureautorefname}{Figure}
+\renewcommand{\tableautorefname}{Table}
+\renewcommand{\partautorefname}{Part}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+
+
+% ********************************************************************
+% Hyperreferences
+%*******************************************************
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O, frenchlinks, %hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=maroonGreen, linkcolor=maroonGreen, citecolor=maroonGreen, %pagecolor=RoyalBlue,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}%
+}
+
+\newcommand{\mainfont}{Charter OS ITC TT}
+\newfontfamily\scshape{Charter SC ITC TT}
+\renewcommand{\textsc}[1]{\scshape{#1}}
+%\newcommand{\mainfont}{LeMonde Livre Classic Normal}
+%\newcommand{\mainfont}{Minion Pro}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{\mainfont}
+%\setsansfont{Verdana}
+%\setmonofont{Pragmata}
+%\newfontfamily\lstfont[Scale=0.8]{Pragmata}
+\newfontfamily\lstfont[Scale=0.8]{Luxi Mono}
+\newfontfamily\secfont[Color=FF5F6E87]{Minion Pro}
+
+% redefining the chapter command
+%\newfontfamily\chaptersc[LetterSpace=12.0, Letters=SmallCaps]{\mainfont}
+\newfontfamily\chaptersc[LetterSpace=6.0]{Charter SC ITC TT}
+
+\newcommand{\tocsc}[1]{\chaptersc{\lowercase{{#1}}}}
+
+\renewcommand{\myChapter}[2][]{% for chapters
+	\ifthenelse{\equal{#1}{}}{%  
+    	\chapter[\tocsc{{#2}}]{#2}%
+  	}{%
+    	\chapter[\tocsc{{#1}}]{#2}%
+}}%
+
+
+% ******************************************************************************
+% caption format
+% ******************************************************************************
+\RequirePackage{caption}
+\renewcommand{\captionlabelfont}{\color{Maroon}\scshape}
+
+\newcommand{\toctitleformat}{%
+\titleformat{\chapter}[display]%
+{\relax}{{\chaptersc{\thechapter}} \hspace*{0.5em} \MakeTextUppercase\thechapter}{0.3em}%
+{\color{Maroon}\huge\raggedright\chaptersc\MakeTextLowercase}%
+\titlespacing* {\chapter}{0pt}{1\baselineskip}{2\baselineskip} } 
+
+\newcommand{\listoftitleformat}{%
+\titleformat{\chapter}[display]%
+{\relax}{{\chaptersc{\thechapter}} \hspace*{0.5em} \MakeTextUppercase\thechapter}{0.3em}%
+{\color{Maroon}\huge\raggedright\chaptersc\MakeTextLowercase}%
+\titlespacing* {\chapter}{0pt}{1\baselineskip}{2\baselineskip} } 
+
+
+\endinput
 
 
 

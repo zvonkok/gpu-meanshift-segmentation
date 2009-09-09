@@ -128,7 +128,7 @@ global memory which has a high latency (200-400 cycles) and registers often
 referenced have a big impact on performance. The application can become memory
 bound.
 
-The Table \ref{tab:runconfig} shows the run configuration used for the sample runs. 
+The Table \autoref{tab:runconfig} shows the run configuration used for the sample runs. 
 
 \begin{table}[ht]
     \myfloatalign
@@ -144,7 +144,7 @@ The Table \ref{tab:runconfig} shows the run configuration used for the sample ru
 
 To summarize just by compiling the application and fiddling with the run
 parameters one can achieve, in this case, a speedup of about 8 times. See Table
-\ref{tab:comp} for several runs varying object count and image size.
+\autoref{tab:comp} for several runs varying object count and image size.
 
 \begin{table}[ht]
    \myfloatalign
@@ -169,10 +169,10 @@ parameters one can achieve, in this case, a speedup of about 8 times. See Table
   \label{tab:comp}
 \end{table}
 
-As it can be seen in Table \ref{tab:comp} the application runs 8 times faster but when looking at the \glspl{GFLOP} values there are far beyond that what a \gls{GPU} could achieve\footnote{The used \gls{GPU} is a G90 chip with peak 620 \glspl{GFLOP}}. The application is only using 0.5\% of the peak performance!\graffito{All performance values are gathered with the NVIDIA Performance Profiler availabe as well with the \gls{SDK}}  
+As it can be seen in Table \autoref{tab:comp} the application runs 8 times faster but when looking at the \glspl{GFLOP} values there are far beyond that what a \gls{GPU} could achieve\footnote{The used \gls{GPU} is a G90 chip with peak 620 \glspl{GFLOP}}. The application is only using 0.5\% of the peak performance!\graffito{All performance values are gathered with the NVIDIA Performance Profiler availabe as well with the \gls{SDK}}  
 
 
-The reasons for this uneffective usage of processing power can be seen in Table \ref{tab:localmem} and Table \ref{tab:globalmem}. The application is heavily memory bound. The consequence of reducing the register usage is heavy access to local memory, e.g. there are over 328000000 stores issued to the memory. Furthermore the code is using many branches which actually reflected by the value 22578032. 
+The reasons for this uneffective usage of processing power can be seen in Table \autoref{tab:localmem} and Table \autoref{tab:globalmem}. The application is heavily memory bound. The consequence of reducing the register usage is heavy access to local memory, e.g. there are over 328000000 stores issued to the memory. Furthermore the code is using many branches which actually reflected by the value 22578032. 
 
 \begin{table}[ht]
     \myfloatalign
@@ -188,7 +188,7 @@ The reasons for this uneffective usage of processing power can be seen in Table 
 \end{table}
 
 Another point is the access to global memory. The \gls{GPU} is able to do coalesced reads and writes when possible otherwise the access is serialized. 
-The application was not ported with coalesced memory reads and writes in mind and hence the application is loading almost everything incoherent. See Table \ref{tab:globalmem} for the values. 
+The application was not ported with coalesced memory reads and writes in mind and hence the application is loading almost everything incoherent. See Table \autoref{tab:globalmem} for the values. 
 
 \begin{table}[ht]
     \myfloatalign
@@ -207,14 +207,14 @@ The ray tracer could be extended or optimized in many ways but it will be leaved
 
 \section{Demystifing the Myths} % (fold)
 \label{sec:demystifing_the_myths}
-There were several myths about \gls{GPGPU} see \ref{chap:feas} that are simply wrong or need to be proven. Beginning with \ref{enum:api} this statement is 
+There were several myths about \gls{GPGPU} see \autoref{chap:feas} that are simply wrong or need to be proven. Beginning with \autoref{enum:api} this statement is 
 simply wrong. Using \gls{CUDA} or the ATI \gls{SDK} \emph{Close To Metal}
-no developer is anymore forced to use graphics \glspl{API}. Furthermore the abandoned graphics \gls{API} for \glspl{GPGPU} makes it possible to gather and scatter to the memory, which resolves myth \ref{enum:gather}. 
+no developer is anymore forced to use graphics \glspl{API}. Furthermore the abandoned graphics \gls{API} for \glspl{GPGPU} makes it possible to gather and scatter to the memory, which resolves myth \autoref{enum:gather}. 
 
-The \glspl{GPU} are able to do real floating point math. The myth \ref{enum:float} comes from a time where floats were only 16 or 24 bit and had no support for \emph{NaN}, \emph{Rounding to zero} and so on. The situation changed completely with the recent development and the switch to the \emph{Unified Device Architecture} where \gls{SIMD} processing was discarded in 
+The \glspl{GPU} are able to do real floating point math. The myth \autoref{enum:float} comes from a time where floats were only 16 or 24 bit and had no support for \emph{NaN}, \emph{Rounding to zero} and so on. The situation changed completely with the recent development and the switch to the \emph{Unified Device Architecture} where \gls{SIMD} processing was discarded in 
 favour of more single independent threads. 
 
-The last to myths \ref{enum:ineff} and \ref{enum:exploit} are hard to demystify.
+The last to myths \autoref{enum:ineff} and \autoref{enum:exploit} are hard to demystify.
 If one has a algorithm which fits excellently to the \gls{GPU} the full power of
 the \gls{GPU} can be exploited and hence it is power efficient. It depends
 heavily on the algorithm. The feasibility study has shown that one can achieve

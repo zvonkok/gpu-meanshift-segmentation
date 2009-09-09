@@ -52,18 +52,9 @@
 %!TEX encoding = UTF-8 Unicode 
 
 \documentclass[twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
-fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
+fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
  ]{scrreprt}
-% ********************************************************************
-% KOMA-Script setup http://www.komascript.de/betaKOMAoptions
-% ********************************************************************
-%\KOMAoptions{%
-%    paper=a4,%
-%    fontsize=10pt,%
-%    cleardoublepage=empty,%
-%    footinclude=true,%
-%    %abstract=false%
-%}
+
 % ********************************************************************
 % Development Stuff
 % ********************************************************************
@@ -73,8 +64,6 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 
 % Sync between editor and viewer
 \synctex=1
-
-
 
 % ********************************************************************
 % Re-usable information
@@ -98,14 +87,13 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 % Packages with options that might require adjustments
 %*******************************************************
 
-%%%% XeLatex n/a  \usepackage[latin1]{inputenc} 
 \usepackage[ngerman,american]{babel}           
 \usepackage[square,numbers]{natbib} 
 \usepackage[fleqn]{amsmath} % math environments and more by the AMS 
 
 
 %*******************************************************
-\usepackage{classicthesis-ldpkg} 
+%\usepackage{classicthesis-ldpkg} 
 %*******************************************************
 % Options for classicthesis.sty:
 % tocaligned eulerchapternumbers drafting linedheaders listsseparated
@@ -115,16 +103,11 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %%%%            subfig]{classicthesis}
 
 
-\usepackage[eulerchapternumbers,drafting,listings,%pdfspacing,%
-            subfig,beramono,eulermath,parts]{classicthesis}
-
-\usepackage{dissertation}
+%\usepackage[eulerchapternumbers,drafting,listings,%pdfspacing,%
+%            subfig,beramono,eulermath,parts,dottedtoc]{classicthesis}
 
 %*******************************************************            
-%\usepackage[section,below]{placeins} <--- not everybody wants this
 %\usepackage[all]{hypcap} <--- does not work with MiKTeX 2.6
-
-
 %\usepackage[fraktur,mdugm]{mathdesign}
 
 % ********************************************************************
@@ -136,78 +119,92 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %\renewcommand{\backreftwosep}{ e~}
 %\renewcommand{\backreflastsep}{ e~}
 % ********************************************************************
+
 % Setup and Finetuning
 %*******************************************************
-\newlength{\abcd} % for ab..z string length calculation
-\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
-\setlength{\extrarowheight}{3pt} % increase table row height
+%\newlength{\abcd} % for ab..z string length calculation
+%\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
+%\setlength{\extrarowheight}{3pt} % increase table row height
+
 % ********************************************************************
 % Captions look and feel
 %*******************************************************
-\captionsetup{format=hang,font=small}
+%\captionsetup{format=hang,font=small}
+
 % ********************************************************************
 % Listings setup
 % ********************************************************************
 %\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
 % ********************************************************************
-\lstset{language=C++,
-    keywordstyle=\color{RoyalBlue},
-    basicstyle=\lstfont,	
+%\lstset{language=C++,
+%    keywordstyle=\color{RoyalBlue},
+%    basicstyle=\lstfont,	
 %	basicstyle=\small,	
-	tabsize=4,
+%	tabsize=4,
     %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{Green},%\ttfamily,
+%   commentstyle=\color{Green},%\ttfamily,
     %stringstyle=\rmfamily,
-    numbers=left,
-    numberstyle=\scriptsize,%\tiny
+%    numbers=left,
+%    numberstyle=\scriptsize,%\tiny
     %stepnumber=1,
-    numbersep=4pt,
-    showstringspaces=false,
-    breaklines=true,
-    backgroundcolor=\color{lstgreybg},
-	rulecolor=\color{grey10},
-	captionpos=b,
-	framerule=1pt,
+%    numbersep=4pt,
+%    showstringspaces=false,
+%    breaklines=true,
+%    backgroundcolor=\color{lstgreybg},
+%	rulecolor=\color{grey10},
+%	captionpos=b,
+%	framerule=1pt,
     %frameround=ftff,
-    frame=tb
+ %   frame=tb
     %frame=L
-} 
+%} 
 
 
 % ********************************************************************
 % Where to look for graphics
 %*******************************************************
 %\graphicspath{{gfx/}{misc/}} % considered harmful according to l2tabu
-% ********************************************************************
-% Hyperreferences
-%*******************************************************
-\hypersetup{%
-    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
-    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
-    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-    hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
-    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
-    % uncomment the following line if you want to have black links (e.g., for printing)
-    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
-    pdftitle={\myTitle},%
-    pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
-    pdfsubject={},%
-    pdfkeywords={},%
-    pdfcreator={pdfLaTeX},%
-    pdfproducer={LaTeX with hyperref and classicthesis}%
-}
 %********************************************************************
 % Hyphenation
 %*******************************************************
 %\hyphenation{put special hyphenation here}
-% ********************************************************************
-% GO!GO!GO! MOVE IT!
-%*******************************************************
 
-\usepackage{pdfpages}
+% Move to .sty ....!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\usepackage[acronym, toc, section]{glossaries}
+\include{FrontBackMatter/Glossary}
+\makeglossaries
+
+
+% ******************************************************************************
+% glossaries newstyle longraggedleft
+%\renewcommand{\glossaryname}{\spacedlowsmallcaps}
+%\newglossarystyle{longraggedleft}{%
+%  \renewenvironment{theglossary}%
+%     {\setlength\LTpost{0pt}%%
+%		\setlength\LTpre{0pt}%
+%		\setlength\LTleft{0pt}%
+%	  	\setlength\LTright{0pt}% 
+%	  	\begin{longtable}{@{}l@{}p{\glsdescwidth}}}%
+%     {\end{longtable}}%
+%  \renewcommand*{\glossaryheader}{}%
+%  \renewcommand*{\glsgroupheading}[1]{}%
+
+%  \renewcommand*{\glossaryentryfield}[5]{%
+%    \spacedlowsmallcaps{\glstarget{##1}{##2}} \hspace{2.5em} 
+%    & ##3\glspostdescription\space \hspace{1.0em} ##5 \tabularnewline}%
+
+%  \renewcommand*{\glossarysubentryfield}[6]{%
+%     & \glstarget{##2}{\strut}##4\glspostdescription\space ##6%
+%    \tabularnewline}%
+%  \renewcommand*{\glsgroupskip}{ & \tabularnewline}%
+%}
+% Move to .sty ....!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 \begin{document}
 
-\includepdf{Frontcover.pdf}
+%\includepdf{Frontcover.pdf}
+
 
 \frenchspacing
 \raggedbottom
@@ -220,43 +217,43 @@ fontsize=11pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %********************************************************************
 % Frontmatter
 %*******************************************************
-\include{FrontBackMatter/Glossary}
-\include{FrontBackmatter/Titlepage}
-\include{FrontBackmatter/Titleback}
-\include{FrontBackmatter/Declaration}
-%\cleardoublepage\include{FrontBackmatter/Dedication}
-\cleardoublepage\include{FrontBackmatter/Abstract}
-\cleardoublepage\include{FrontBackmatter/Acknowledgments}
-\cleardoublepage\include{FrontBackmatter/Contents}
+
+%\include{FrontBackmatter/Titlepage}
+%\include{FrontBackmatter/Titleback}
+%\include{FrontBackmatter/Declaration}
+%%%%%%%%5%\cleardoublepage\include{FrontBackmatter/Dedication}
+%\cleardoublepage\include{FrontBackmatter/Abstract}
+%\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+%\cleardoublepage\include{FrontBackmatter/Contents}
 
 
-\pagenumbering{arabic}
-\pagestyle{scrheadings}
+%\pagenumbering{arabic}
+%\pagestyle{scrheadings}
 %********************************************************************
 % Mainmatter
 %*******************************************************
-\include{Chapters/Introduction}
-\include{Chapters/FeasibilityStudy}
-\include{Chapters/MeanShift}
+%\include{Chapters/Introduction}
+%\include{Chapters/FeasibilityStudy}
+%\include{Chapters/MeanShift}
 
 %\addtocontents{toc}{\protect\clearpage} % TEST
 
 % ********************************************************************
 % Backmatter
 %*******************************************************
-\cleardoublepage\include{FrontBackmatter/Managment}
+%\cleardoublepage\include{FrontBackmatter/Managment}
 \cleardoublepage\include{FrontBackmatter/Listof}
-\cleardoublepage\include{FrontBackmatter/Bibliography}
+%\cleardoublepage\include{FrontBackmatter/Bibliography}
 
 \appendix
 %\cleardoublepage\myPart{Appendix}
-\include{Chapters/InterimReport}
-\include{Chapters/ProjectPlanning}
+%\include{Chapters/InterimReport}
+%\include{Chapters/ProjectPlanning}
 
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************
-\cleardoublepage\include{FrontBackmatter/Colophon}
+%\cleardoublepage\include{FrontBackmatter/Colophon}
 
 % ********************************************************************
 % Game Over: Restart, Restore or Quit?

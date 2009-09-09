@@ -92,7 +92,7 @@ balancing the load among vertex, fragment and geometry functionality
 \label{fig:tesla_architecture}
 \end{figure}
 
-The figure \ref{fig:tesla_architecture} shows the Tesla architectures. As
+The figure \autoref{fig:tesla_architecture} shows the Tesla architectures. As
 mentioned above the new \gls{GPU} architectures are a radical departure
 from traditional \gls{GPU} design (USM). The Tesla 8 Series has 16 multiprocessors. 
 Each multiprocessor is composed of 8 streaming processors, 128 processors in 
@@ -216,7 +216,7 @@ shared memory  and write back the results to the global memory.
 
 A CUDA program has a specific structure where the major parts are described in
 this paragraph. The first thing to do is to initialize the device and some
-auxiliary variables. Listing \ref{lst:init} shows the initalization.
+auxiliary variables. Listing \autoref{lst:init} shows the initalization.
 
 %
 \begin{lstlisting}[caption=Hardware initalization, label=lst:init]
@@ -235,7 +235,7 @@ the global, constant and texture memory and has to transfer the data back
 and forth with the DMA engine of the device. This is accomplished through the 
 CUDA api calls that initiate the transfer. Before any transfer can be done
 one has to allocate memory on the host and on the device for input and output
-data. This is shown in listing \ref{lst:datatransfer}.
+data. This is shown in listing \autoref{lst:datatransfer}.
 
 
 \begin{lstlisting}[caption=Data transfer of data, label=lst:datatransfer]
@@ -257,7 +257,7 @@ are used to startup the kernel. The $grid(1, 1, 1)$ statement defines a
 multi-dimensional array of grids $x=1, y=1, z=1$ whereas the
 $threads(num\_threads, 1, 1)$ defines a multi-dimensional array of threads
 $x=num\_threads, y=1, z=1$ which are actually $1D$ arrays. Listing
-\ref{lst:execution} shows the call of the kernel with its input and output data.
+\autoref{lst:execution} shows the call of the kernel with its input and output data.
 
 
 \begin{lstlisting}[caption=Execution of the Kernel, label=lst:execution]
@@ -274,7 +274,7 @@ $x=num\_threads, y=1, z=1$ which are actually $1D$ arrays. Listing
 
 If everything went well the host can copy the data from device memory
 to host memory and check, visualize or store the calculated values. Listing
-\ref{lst:result} shows the last steps before exiting the program.
+\autoref{lst:result} shows the last steps before exiting the program.
 
 
 \begin{lstlisting}[caption=Retrieving of the Results, label=lst:result]
@@ -293,7 +293,7 @@ to host memory and check, visualize or store the calculated values. Listing
 
 
 The previous listings showed the host code and how to launch a kernel on the
-device. The listing \ref{lst:device} shows the device code portion. There are
+device. The listing \autoref{lst:device} shows the device code portion. There are
 several qualifiers that define which function is compiled for which processing
 unit. The \textit{\_\_global\_\_} qualifier specifies that this function is run
 on the device and hence compiled for the \gls{GPU} where the \textit{\_\_host\_\_}
@@ -303,7 +303,7 @@ device. There are more function specifiers that can be looked up in
 
 For data there are as well qualifiers where one can specify where the data is
 located, either in constant, global or shared memory. In listing
-\ref{lst:device} the \textit{\_\_shared\_\_} qualifier is used. The device will
+\autoref{lst:device} the \textit{\_\_shared\_\_} qualifier is used. The device will
 use the shared memory to preload the data for faster access.
 
 

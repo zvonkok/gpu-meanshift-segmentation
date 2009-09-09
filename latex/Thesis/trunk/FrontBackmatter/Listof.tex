@@ -15,22 +15,24 @@
     \let\cleardoublepage\relax
     \let\cleardoublepage\relax
 
-	\listoftitleformat
+%	\listoftitleformat
 	
     %*******************************************************
     % Glossary
     %*******************************************************   
-    \refstepcounter{dummy}
-    \pdfbookmark[1]{\glossaryname}{glo}
-	\printglossary[style=longraggedleft]
+%    \refstepcounter{dummy}
+%    \pdfbookmark[1]{\glossaryname}{glo}
+%	\printglossary[style=longraggedleft]
+	\printglossary
     \vspace*{8ex}
 
     %*******************************************************
     % Acronyms
     %*******************************************************   
-    \refstepcounter{dummy}
-    \pdfbookmark[1]{\acronymname}{acr}
-	\printglossary[type=\acronymtype,style=longraggedleft]		
+%    \refstepcounter{dummy}
+%    \pdfbookmark[1]{\acronymname}{acr}
+%	\printglossary[type=\acronymtype,style=longraggedleft]		
+	\printglossary[type=\acronymtype]		
     \vspace*{8ex}
 		   
     
@@ -38,9 +40,9 @@
     % List of Figures
     %*******************************************************    
     %\phantomsection 
-    \refstepcounter{dummy}
+%    \refstepcounter{dummy}
     %\addcontentsline{toc}{chapter}{\listfigurename}
-    \pdfbookmark[1]{\listfigurename}{lof}
+%    \pdfbookmark[1]{\listfigurename}{lof}
     \listoffigures
 
     \vspace*{8ex}
@@ -49,9 +51,9 @@
     % List of Tables
     %*******************************************************
     %\phantomsection 
-    \refstepcounter{dummy}
+%    \refstepcounter{dummy}
     %\addcontentsline{toc}{chapter}{\listtablename}
-    \pdfbookmark[1]{\listtablename}{lot}
+%    \pdfbookmark[1]{\listtablename}{lot}
     \listoftables
         
     \vspace*{8ex}
@@ -60,23 +62,12 @@
     % List of Listings
     %*******************************************************      
 	%\phantomsection 
-   	\refstepcounter{dummy}
+%   	\refstepcounter{dummy}
    	%\addcontentsline{toc}{chapter}{\lstlistlistingname}
-   	\pdfbookmark[1]{\lstlistlistingname}{lol}
-   	\lstlistoflistings 
+%   	\pdfbookmark[1]{\lstlistlistingname}{lol}
+%   	\lstlistoflistings 
     
 	\vspace*{8ex}   
-    %*******************************************************
-    % Acronyms
-    %*******************************************************
-    %\phantomsection 
-    %\refstepcounter{dummy}
-    %\pdfbookmark[1]{Acronyms}{acronyms}
-    %\markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
-    %\chapter*{Acronyms}
-    %\begin{acronym}[UML]
-     %   \acro{DRY}{Don't Repeat Yourself}
-      %  \acro{API}{Application Programming Interface}
-      %  \acro{UML}{Unified Modeling Language}
-    %\end{acronym}                     
+
+
 \endgroup
