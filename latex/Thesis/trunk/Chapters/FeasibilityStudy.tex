@@ -1,4 +1,4 @@
-\myChapter{Feasibility Study}
+\chapter{Feasibility Study}
 \label{chap:feas}
 There are several myths about \gls{GPGPU} which will be examined and solved 
 with a feasibility study. Listed below some myths in no particular order.
@@ -133,7 +133,7 @@ The Table \autoref{tab:runconfig} shows the run configuration used for the sampl
 \begin{table}[ht]
     \myfloatalign
   \begin{tabularx}{\textwidth}{ccccc} \toprule
-	\multicolumn{5}{c}{\spacedlowsmallcaps{Run Configuration}} \\ \midrule
+	\multicolumn{5}{c}{\slcsmallcaps{Run Configuration}} \\ \midrule
 	blockSize.x & blockSize.y & gridSize.x & gridSize.y & Regs. per Thread\\ 
   	8 & 8 & 96 & 96 & 14\\
     \bottomrule
@@ -177,8 +177,8 @@ The reasons for this uneffective usage of processing power can be seen in Table 
 \begin{table}[ht]
     \myfloatalign
   \begin{tabularx}{\textwidth}{cccc} \toprule
-	\multicolumn{2}{c}{\spacedlowsmallcaps{Local Memory}} &
-	\multicolumn{2}{c}{\spacedlowsmallcaps{Branches}} \\ \midrule
+	\multicolumn{2}{c}{\slcsmallcaps{Local Memory}} &
+	\multicolumn{2}{c}{\slcsmallcaps{Branches}} \\ \midrule
     Load & Store & Sum & Divergent\\
 	63294179 & 328180560 & 22578032 & 26834\\
     \bottomrule
@@ -193,7 +193,7 @@ The application was not ported with coalesced memory reads and writes in mind an
 \begin{table}[ht]
     \myfloatalign
   \begin{tabularx}{\textwidth}{cccc} \toprule
-	\multicolumn{4}{c}{\spacedlowsmallcaps{Global Memory}} \\ \midrule
+	\multicolumn{4}{c}{\slcsmallcaps{Global Memory}} \\ \midrule
     Load Incoherent & Load Coherent & Store Incoherent & Store Coherent \\
 	1115657863 & 67961 & 2506752 & 0 \\
     \bottomrule
