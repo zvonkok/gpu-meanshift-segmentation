@@ -4,7 +4,6 @@
 \documentclass[twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
 fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
  ]{scrreprt}
-
 % ********************************************************************
 % Development Stuff
 % ********************************************************************
@@ -46,26 +45,49 @@ fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %\usepackage{classicthesis-ldpkg} 
 %*******************************************************
 
-%*******************************************************            
-%\usepackage[all]{hypcap} <--- does not work with MiKTeX 2.6
 % ********************************************************************
+% caption numbering now w/o chapter number
+\RequirePackage{remreset}
+\makeatletter
+\@removefromreset{table}{chapter}  % requires remreset package
+\renewcommand{\thetable}{\arabic{table}}
+\makeatother
+\makeatletter
+\@removefromreset{figure}{chapter}  % requires remreset package
+\renewcommand{\thefigure}{\arabic{figure}}  
+\makeatother
+	\makeatletter
+	    \@ifpackageloaded{listings}{%
+		        \@removefromreset{lstlisting}{chapter}% requires remreset package
+		    \AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
+		  }{\relax}
+	\makeatother
 
+\usepackage{dissertation}
+
+%*******************************************************            
+%\usepackage[section,below]{placeins} <--- not everybody wants this
+%\usepackage[all]{hypcap} <--- does not work with MiKTeX 2.6
+
+
+% ********************************************************************
 % Setup and Finetuning
 %*******************************************************
-%\newlength{\abcd} % for ab..z string length calculation
-%\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
-%\setlength{\extrarowheight}{3pt} % increase table row height
-
+\newlength{\abcd} % for ab..z string length calculation
+\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
+\setlength{\extrarowheight}{3pt} % increase table row height
 
 %********************************************************************
 % Hyphenation
 %*******************************************************
 %\hyphenation{put special hyphenation here}
+% ********************************************************************
+% GO!GO!GO! MOVE IT!
+%*******************************************************
 
 \begin{document}
 
-%\includepdf{Frontcover.pdf}
-
+\includepdf{Frontcover.pdf}
 
 \frenchspacing
 \raggedbottom
@@ -78,43 +100,43 @@ fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %********************************************************************
 % Frontmatter
 %*******************************************************
+\include{FrontBackMatter/Glossary}
+\include{FrontBackmatter/Titlepage}
+\include{FrontBackmatter/Titleback}
+\include{FrontBackmatter/Declaration}
+%\cleardoublepage\include{FrontBackmatter/Dedication}
+\cleardoublepage\include{FrontBackmatter/Abstract}
+\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\cleardoublepage\include{FrontBackmatter/Contents}
 
-%\include{FrontBackmatter/Titlepage}
-%\include{FrontBackmatter/Titleback}
-%\include{FrontBackmatter/Declaration}
-%%%%%%%%5%\cleardoublepage\include{FrontBackmatter/Dedication}
-%\cleardoublepage\include{FrontBackmatter/Abstract}
-%\cleardoublepage\include{FrontBackmatter/Acknowledgments}
-%\cleardoublepage\include{FrontBackmatter/Contents}
 
-
-%\pagenumbering{arabic}
-%\pagestyle{scrheadings}
+\pagenumbering{arabic}
+\pagestyle{scrheadings}
 %********************************************************************
 % Mainmatter
 %*******************************************************
-%\include{Chapters/Introduction}
-%\include{Chapters/FeasibilityStudy}
-%\include{Chapters/MeanShift}
+\include{Chapters/Introduction}
+\include{Chapters/FeasibilityStudy}
+\include{Chapters/MeanShift}
 
 %\addtocontents{toc}{\protect\clearpage} % TEST
 
 % ********************************************************************
 % Backmatter
 %*******************************************************
-%\cleardoublepage\include{FrontBackmatter/Managment}
+\cleardoublepage\include{FrontBackmatter/Managment}
 \cleardoublepage\include{FrontBackmatter/Listof}
-%\cleardoublepage\include{FrontBackmatter/Bibliography}
+\cleardoublepage\include{FrontBackmatter/Bibliography}
 
 \appendix
 %\cleardoublepage\myPart{Appendix}
-%\include{Chapters/InterimReport}
-%\include{Chapters/ProjectPlanning}
+\include{Chapters/InterimReport}
+\include{Chapters/ProjectPlanning}
 
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************
-%\cleardoublepage\include{FrontBackmatter/Colophon}
+\cleardoublepage\include{FrontBackmatter/Colophon}
 
 % ********************************************************************
 % Game Over: Restart, Restore or Quit?

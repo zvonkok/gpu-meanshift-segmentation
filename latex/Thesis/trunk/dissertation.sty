@@ -3,7 +3,6 @@
 %
 % Copyright (C) 2009 Zvonko Kosic-Krnjajic
 % ******************************************************************************
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{dissertation}%
 	[2009/08/31 v0.1 Typographic Style for a classic looking dissertation]
@@ -11,22 +10,42 @@
 \newboolean{@tocaligned} % the left column of the toc will be aligned (no indention)
 \newboolean{@dottedtoc} % page numbers in ToC flushed right
 \newboolean{@listsseparated} % toggles the vertical space between lof/lot entries of different chapters
-
-% ********************************************************************
+% ******************************************************************************
 % Options
-% ******************************************************************** 
+% ******************************************************************************
 \DeclareOption{tocaligned}{\setboolean{@tocaligned}{false}}
 \DeclareOption{dottedtoc}{\setboolean{@dottedtoc}{false}} 
 \DeclareOption{listsseparated}{\setboolean{@listsseparated}{false}}
 \ProcessOptions\relax
-% ********************************************************************                
+
+% ******************************************************************************
 % Load needed Packages
-% ********************************************************************
+% ******************************************************************************
+\RequirePackage{subfig}  
+\RequirePackage{listings}  
+\RequirePackage{textcomp}
+\RequirePackage[dvipsnames]{xcolor} 
+\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
+\RequirePackage{xspace} % to get the spacing after macros right
+\RequirePackage{tabularx} % better tables
+\RequirePackage{mparhack} % get marginpar right
+\RequirePackage{fixltx2e} % fixes some LaTeX stuff
+\RequirePackage{relsize} % scale font up or down
+% ******************************************************************************
+% Commands
+% ******************************************************************************
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+% ******************************************************************** 
+\newcommand{\person}[1]{#1}
+\newcommand{\cauthor}[1]{\relax}
+\@ifpackageloaded{natbib}%
+    {\renewcommand{\cauthor}[1]{\person{\citeauthor{#1}}}%
+    }{\PackageWarningNoLine{classicthesis-ldpk}{Package "natbib" not loaded, %
+        command "cauthor" will not work.}}
 
-
-% ********************************************************************                
+% ******************************************************************************
 % Colors
-% ********************************************************************
+% ******************************************************************************
 \RequirePackage[dvipsnames]{xcolor} % [dvipsnames] 
 \definecolor{halfgray}{gray}{0.55}  
 \definecolor{webgreen}{rgb}{0,.5,0}
@@ -36,16 +55,13 @@
 \definecolor{grey90}{rgb}{0.1,0.1,0.1}
 
 \definecolor{darkblue}{rgb}{0.37,0.43,0.53}
-
 % zu maroon passendes blau
 \definecolor{maroonBlue}{HTML}{352F76}
 \definecolor{maroonGreen}{HTML}{40762F}
 \definecolor{maroonYellow}{HTML}{7F6D25}
-
-
-% ********************************************************************
+% ******************************************************************************
 % Penalties
-% ********************************************************************
+% ******************************************************************************
 % Disable single lines at the start of a paragraph (Schusterjungen)
 \clubpenalty = 10000
 % Disable single lines at the end of a paragraph (Hurenkinder)
@@ -139,7 +155,18 @@
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
-
+% ******************************************************************************
+% Hypcap (get the links to the figures and tables right)
+% ******************************************************************************
+\RequirePackage[all]{hypcap} % to be loaded after hyperref package
+%   \hspace*{\fill}{\scriptsize\itshape\mbox{%
+%   \ifnum#1=1 %
+%     (Cited on page~%
+%   \else
+%     (Cited on pages~%
+%   \fi
+%   #2)}
+%}
 % ******************************************************************************
 % PDFpages
 % ******************************************************************************
