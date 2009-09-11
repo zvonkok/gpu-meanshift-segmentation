@@ -1,114 +1,19 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{classicthesis-ldpkg}[2009/08/01 v2.6 Package Loader for Classic Thesis Style]
- 
-\@ifpackageloaded{classicthesis}%
-    {\PackageWarningNoLine{classicthesis-ldpkg}{Package "classicthesis" should be loaded AFTER "classicthesis-ldpkg".}}%
-    {\relax}%    
- 
+
 % ********************************************************************
 % Options
 % ******************************************************************** 
 \RequirePackage{ifthen}
-    \newboolean{cld@nochapters} % disable all chapter-specific commands
-\DeclareOption{nochapters}{\setboolean{cld@nochapters}{true}}
-\ProcessOptions\relax
 
 % ******************************************************************** 
 % Packages
 % ******************************************************************** 
 %\RequirePackage[T1]{fontenc}                
-\RequirePackage{textcomp}
-\RequirePackage[dvipsnames]{xcolor} 
-\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
-\RequirePackage{xspace} % to get the spacing after macros right
-\RequirePackage{tabularx} % better tables
-\RequirePackage{mparhack} % get marginpar right
-\RequirePackage{fixltx2e} % fixes some LaTeX stuff
-\RequirePackage{relsize} % scale font up or down  
+
 %\RequirePackage{natbib}
 
-% ********************************************************************
-% Commands
-% ********************************************************************                
-\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
-\newcommand{\longpage}{\enlargethispage{3\baselineskip}}
-\newcommand{\medpage}{\enlargethispage{2\baselineskip}}
-\newcommand{\shortpage}{\enlargethispage{\baselineskip}}
-\newcommand{\concskip}{\medskip}
-\newcommand{\myPrimRef}[1]{\textit{#1}} % how primary index entries will be marked 
-% ******************************************************************** 
-\newcommand{\ie}{i.\,e.}
-\newcommand{\Ie}{I.\,e.}
-\newcommand{\eg}{e.\,g.}
-\newcommand{\Eg}{E.\,g.}
-\newcommand{\etAl}{et al.\xspace}
-\newcommand{\twod}{2\textsc{d}\xspace}
-\newcommand{\threed}{3\textsc{d}\xspace}
-% ******************************************************************** 
-\newcommand{\system}[1]{\emph{#1}}
-\newcommand{\person}[1]{#1}
-\newcommand{\term}[1]{\emph{#1}}
-\newcommand{\cauthor}[1]{\relax}
-\@ifpackageloaded{natbib}%
-    {\renewcommand{\cauthor}[1]{\person{\citeauthor{#1}}}%
-    }{\PackageWarningNoLine{classicthesis-ldpk}{Package "natbib" not loaded, %
-        command "cauthor" will not work.}}
-% ******************************************************************** 
-\newcommand{\RA}{\ensuremath{\Rightarrow}}
-\newcommand{\ra}{\ensuremath{\rightarrow}}
-\newcommand{\lra}{\ensuremath{\leftrightarrow}}
-\newcommand{\On}{\ensuremath{O(n)}\xspace}
-\newcommand{\Ologn}{\ensuremath{O(\log n)}\xspace}
-\newcommand{\Oone}{\ensuremath{O(1)}\xspace}
 
-% ********************************************************************
-% take care of the caption fonts and sizes (tables and figures)
-\RequirePackage{caption}
-
-% ********************************************************************
-% fine typesetting of code listings
-\RequirePackage{listings} 
     
-% ********************************************************************
-% caption numbering now w/o chapter number
-\RequirePackage{remreset}
-    \makeatletter
-        \ifthenelse{\boolean{cld@nochapters}}%
-        {\relax}{%
-            \@removefromreset{table}{chapter}  % requires remreset package
-        }
-        \renewcommand{\thetable}{\arabic{table}}
-    \makeatother
-    \makeatletter
-        \ifthenelse{\boolean{cld@nochapters}}%
-        {\relax}{%
-            \@removefromreset{figure}{chapter}  % requires remreset package
-        }
-        \renewcommand{\thefigure}{\arabic{figure}}  
-    \makeatother
-		\makeatletter
-		    \@ifpackageloaded{listings}{%
-			    \ifthenelse{\boolean{cld@nochapters}}%
-			    {\relax}{%
-			        \@removefromreset{lstlisting}{chapter}% requires remreset package
-			    }
-			    \AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
-			  }{\relax}
-		\makeatother
+   
 
-% ********************************************************************
-% enable subfigures in figures
-\RequirePackage{subfig}     
-
-% ********************************************************************
-% get the links to the figures and tables right
-%\RequirePackage[all]{hypcap} % to be loaded after hyperref package
-
-%   \hspace*{\fill}{\scriptsize\itshape\mbox{%
-%   \ifnum#1=1 %
-%     (Cited on page~%
-%   \else
-%     (Cited on pages~%
-%   \fi
-%   #2)}
-%}       
