@@ -273,6 +273,7 @@ void computeCUDA()
 	dim3 threads(thx, thy); // 128 threads
 	dim3 threads0(16, 16);
 	dim3 grid(width/thx, height/thy);
+	dim3 grid0(width/16, height/16);
 
 	cutilSafeCall(cudaMalloc((void**) &d_luv, imgSizeFloat4));
 	cutilSafeCall(cudaMalloc((void**) &d_rgb, imgSizeUint));
@@ -289,10 +290,8 @@ void computeCUDA()
 	START_TIMER //**********************************************************
 	
 	cutilSafeCall(cudaMemcpy(d_img, h_img, imgSizeUint, cudaMemcpyHostToDevice));
-	
-	rgbToLuv(grid, threads0, d_src, d_img, width);
+	rgbToLuv(grid0, threads0, d_src, d_img, width);
 	cutilCheckMsg("rgbToLuv Kernel Execution failed");
-	
 	
 	// TEXTURE Begin: allocate array and copy image data device to device
 	initTexture(width, height, d_src);
@@ -301,15 +300,13 @@ void computeCUDA()
 		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	cutilCheckMsg("meanShiftFilter Kernel Execution failed");
 	
-	luvToRgb(grid, threads0, d_luv, d_rgb, width);
+	luvToRgb(grid0, threads0, d_luv, d_rgb, width);
 	cutilCheckMsg("luvToRgb Kernel Execution failed");
-	
 	
 	// copy result from device to host
 	cutilSafeCall(cudaMemcpy(h_dst, d_luv, imgSizeFloat4, cudaMemcpyDeviceToHost));
 	cutilSafeCall(cudaMemcpy(h_filt, d_rgb, imgSizeUint, cudaMemcpyDeviceToHost));
 
-	
 	STOP_TIMER //**********************************************************
 
 	// Without limit cycle float timeGOLD = 10679.209000;

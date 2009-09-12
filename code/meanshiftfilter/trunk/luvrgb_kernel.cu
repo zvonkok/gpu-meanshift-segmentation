@@ -87,7 +87,7 @@ __global__ void luvtorgb(float4 *d_luv, unsigned int *d_rgb, unsigned int width)
 	float4 rgba = { r, g, b, 0.0f };
 	d_rgb[i] = rgbaFloatToInt(rgba);
 	return;
-	
+
 }
 
 extern "C" void luvToRgb(dim3 grid, dim3 threads, float4* d_luv, 

@@ -44,17 +44,15 @@ __global__ void meanshiftfilter(
 	float ms_4 = 0.0f;
 
 	// Period-8 limit cycle detection
-	float limitcycle[8] = 
-	{ 
-		12345678.0f,
-		12345678.0f, 
-		12345678.0f, 
-		12345678.0f, 
-		12345678.0f, 
-		12345678.0f, 
-		12345678.0f, 
-		12345678.0f 
-	}; 
+	float lc_0 = 12345678.0f;
+	float lc_1 = 12345678.0f;
+	float lc_2 = 12345678.0f;
+	float lc_3 = 12345678.0f;
+	float lc_4 = 12345678.0f;
+	float lc_5 = 12345678.0f;
+	float lc_6 = 12345678.0f;
+	float lc_7 = 12345678.0f;
+	 
 
 	// Keep shifting window center until the magnitude squared of the
 	// mean shift vector calculated at the window center location is
@@ -134,10 +132,7 @@ __global__ void meanshiftfilter(
 				luv = tex2D(tex, x, y); 
 				
 				float diff1 = 0.0f;
-				
-				//dl = (luv.x - yj_2) * rsigmaR;               
-				//du = (luv.y - yj_3) * rsigmaR;               
-				//dv = (luv.z - yj_4) * rsigmaR;               
+	
 				float dl_0 = luv.x - yj_2;               
 				float du_0 = luv.y - yj_3;               
 				float dv_0 = luv.z - yj_4;
@@ -152,13 +147,11 @@ __global__ void meanshiftfilter(
 				float diff1_2 = dv * dv;
 				diff1 = diff1_0 + diff1_1 + diff1_2;
 			
-				
 				if((yj_2 > 80.0f)) { 
 					diff1 += 3.0f * dl * dl;
 				}
 			
 				if (diff1 >= 1.0f) continue;
-				
 
 				// If its inside search window perform sum and count
 				// For a uniform kernel weight == 1 for all feature points
@@ -204,29 +197,22 @@ __global__ void meanshiftfilter(
 		// Usually you don't do float == float but in this case
 		// it is completely safe as we have limit cycles where the 
 		// values after some iterations are equal, the same
-	
-	
-		if (mag == limitcycle[0] || 
-		    mag == limitcycle[1] || 
-		    mag == limitcycle[2] || 
-		    mag == limitcycle[3] ||
-		    mag == limitcycle[4] ||
-		    mag == limitcycle[5] ||
-		    mag == limitcycle[6] ||
-		    mag == limitcycle[7]) 
+		if (mag == lc_0 || mag == lc_1 ||
+		    mag == lc_2 || mag == lc_3 ||
+		    mag == lc_4 || mag == lc_5 || 
+		    mag == lc_6 || mag == lc_7) 
 		{
 			break;			
 		}
-		
-		
-		limitcycle[0] = limitcycle[1];
-		limitcycle[1] = limitcycle[2];
-		limitcycle[2] = limitcycle[3];
-		limitcycle[3] = limitcycle[4];
-		limitcycle[4] = limitcycle[5];
-		limitcycle[5] = limitcycle[6];
-		limitcycle[6] = limitcycle[7];
-		limitcycle[7] = mag;
+				
+		lc_0 = lc_1;
+		lc_1 = lc_2;
+		lc_2 = lc_3;
+		lc_3 = lc_4;
+		lc_4 = lc_5;
+		lc_5 = lc_6;
+		lc_6 = lc_7;
+		lc_7 = mag;
 		
 				
 		// Increment iteration count
@@ -264,11 +250,6 @@ extern "C" void initTexture(int width, int height, void *d_src)
 
 	cutilSafeCall(cudaMallocArray(&d_array, &channelDesc, width, height )); 
 	cutilSafeCall(cudaMemcpyToArray(d_array, 0, 0, d_src, size, cudaMemcpyDeviceToDevice));
-
-	// set texture parameters
-	//    tex.addressMode[0] = cudaAddressModeWrap;
-	//    tex.addressMode[1] = cudaAddressModeWrap;
-	//    tex.filterMode = cudaFilterModeLinear;
 	tex.normalized = 0;	// access without normalized texture coordinates
 				// [0, width -1] [0, height - 1]
 	// bind the array to the texture

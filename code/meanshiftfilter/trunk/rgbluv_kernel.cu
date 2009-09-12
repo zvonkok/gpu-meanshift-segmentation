@@ -16,7 +16,7 @@ __device__ float4 rgbaIntToFloat(uint c)
     return rgba;
 }
 
-
+#if 0
 __global__ void rgbtoluv(float4 *d_luv, unsigned int *d_img, unsigned int width)
 {
 	int ix = blockIdx.x * blockDim.x + threadIdx.x;
@@ -91,6 +91,60 @@ __global__ void rgbtoluv(float4 *d_luv, unsigned int *d_img, unsigned int width)
 	
 	return;
 	
+}
+#endif
+__global__ void rgbtoluv(float4 *d_luv, unsigned int *d_img, unsigned int width)
+{
+	float XYZ[3][3] = {
+		{  0.4125f,  0.3576f,  0.1804f },
+		{  0.2125f,  0.7154f,  0.0721f },
+		{  0.0193f,  0.1192f,  0.9502f }	
+	};
+	
+	int ix = blockIdx.x * blockDim.x + threadIdx.x;
+	int iy = blockIdx.y * blockDim.y + threadIdx.y;
+	int i = ix + iy * width;
+	
+	unsigned int rgb = d_img[i];
+	
+	float4 rgba = rgbaIntToFloat(rgb);
+	float4 luv;
+	
+	
+	//convert RGB to XYZ...
+	float x = XYZ[0][0]*rgba.x + XYZ[0][1]*rgba.y + XYZ[0][2]*rgba.z;
+	float y = XYZ[1][0]*rgba.x + XYZ[1][1]*rgba.y + XYZ[1][2]*rgba.z;
+	float z = XYZ[2][0]*rgba.x + XYZ[2][1]*rgba.y + XYZ[2][2]*rgba.z;
+	//convert XYZ to LUV...
+	
+	//compute L*
+	float L0 = y / (255.0 * Yn);
+	if(L0 > Lt)
+		luv.x	= (float)(116.0 * (pow(L0, 1.0f/3.0f)) - 16.0);
+	else
+		luv.x	= (float)(903.3 * L0);
+	
+	//compute u_prime and v_prime
+	float u_prime;
+	float v_prime;
+	float constant	= x + 15 * y + 3 * z;
+	if(constant != 0)
+	{
+		u_prime	= (4 * x) / constant;
+		v_prime = (9 * y) / constant;
+	}
+	else
+	{
+		u_prime	= 4.0;
+		v_prime	= 9.0/15.0;
+	}
+	
+	//compute u* and v*
+	luv.y = (float) (13 * luv.x * (u_prime - Un_prime));
+	luv.z = (float) (13 * luv.x * (v_prime - Vn_prime));
+	
+	
+	d_luv[i] = luv;
 }
 
 extern "C" void rgbToLuv(dim3 grid, dim3 threads, float4* d_luv, 
