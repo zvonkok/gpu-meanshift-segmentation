@@ -89,6 +89,11 @@ void computeGold(void)
 	set_FPU_Precision_Rounding(53, 0);
 	*/
 	
+
+	
+	
+#ifdef __linux__
+	gettimeofday(&start, NULL);
 	// Prepare the RGB data 
 	for(unsigned int i = 0; i < L; i++) {
 		extern unsigned int * h_img;
@@ -96,10 +101,6 @@ void computeGold(void)
 		RGBtoLUV(pix, (float*)&h_src[i]);
 	}
 
-	
-	
-#ifdef __linux__
-	gettimeofday(&start, NULL);
 	filterGold();
 	gettimeofday(&finish, NULL);
 	
