@@ -287,7 +287,7 @@ void computeCUDA()
 	cutilSafeCall(cudaMalloc((void**) &d_img, imgSizeUint));
 	cutilSafeCall(cudaMalloc((void**) &d_src, imgSizeFloat4));
 	
-	START_TIMER //**********************************************************
+	
 	
 	cutilSafeCall(cudaMemcpy(d_img, h_img, imgSizeUint, cudaMemcpyHostToDevice));
 	rgbToLuv(grid0, threads0, d_src, d_img, width);
@@ -296,9 +296,15 @@ void computeCUDA()
 	// TEXTURE Begin: allocate array and copy image data device to device
 	initTexture(width, height, d_src);
 	
+	START_TIMER //**********************************************************
+	for (int i = 0; i < 100; i++)
 	meanShiftFilter(grid, threads, d_luv, width, height,
 		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
+	
 	cutilCheckMsg("meanShiftFilter Kernel Execution failed");
+	cutilSafeCall(cudaThreadSynchronize());
+	
+	STOP_TIMER //**********************************************************
 	
 	luvToRgb(grid0, threads0, d_luv, d_rgb, width);
 	cutilCheckMsg("luvToRgb Kernel Execution failed");
@@ -307,11 +313,10 @@ void computeCUDA()
 	cutilSafeCall(cudaMemcpy(h_dst, d_luv, imgSizeFloat4, cudaMemcpyDeviceToHost));
 	cutilSafeCall(cudaMemcpy(h_filt, d_rgb, imgSizeUint, cudaMemcpyDeviceToHost));
 
-	STOP_TIMER //**********************************************************
 
 	// Without limit cycle float timeGOLD = 10679.209000;
 	float timeGOLD = 10284.756f;
-	float timeCUDA = cutGetTimerValue(timer);
+	float timeCUDA = cutGetTimerValue(timer) / 100.0f;
 
 	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
 	std::cout << "Processing time CUDA: " << timeCUDA << " (ms) " << std::endl;
