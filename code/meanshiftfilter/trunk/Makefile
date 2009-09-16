@@ -61,8 +61,8 @@ keep=1
 
 include ../../common/common.mk
 
-#CFLAGS += -pg
-#CXXFLAGS += -pg
+CFLAGS += -g
+CXXFLAGS += $(CFLAGS)
 NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v -use_fast_math -arch sm_11
 
 

@@ -89,11 +89,15 @@ void computeGold(void)
 	set_FPU_Precision_Rounding(53, 0);
 	*/
 	
+	start.tv_sec = 0;
+	start.tv_usec = 0;
+	
+	finish.tv_sec = 0;
+	finish.tv_usec = 0;
 
 	
 	
 #ifdef __linux__
-	gettimeofday(&start, NULL);
 	// Prepare the RGB data 
 	for(unsigned int i = 0; i < L; i++) {
 		extern unsigned int * h_img;
@@ -101,8 +105,10 @@ void computeGold(void)
 		RGBtoLUV(pix, (float*)&h_src[i]);
 	}
 
+	gettimeofday(&start, NULL);
 	filterGold();
 	gettimeofday(&finish, NULL);
+
 	
 	msec = finish.tv_sec * 1000.0f + finish.tv_usec / 1000.0f;
 	msec -= start.tv_sec * 1000.0f + start.tv_usec / 1000.0f;
@@ -111,6 +117,12 @@ void computeGold(void)
 #else
 	filterGold();
 #endif	
+	
+	for(unsigned int i = 0; i < L; i++) {
+		unsigned char * pix = (unsigned char *)&h_filt[i];
+		LUVtoRGB((float*)&h_dst[i], pix);
+	}
+
 	connect();
 	boundaries();
 }
@@ -428,13 +440,7 @@ void filterGold()
 #endif		
 	
 	}
-	
-	
-	for(unsigned int i = 0; i < L; i++) {
-		unsigned char * pix = (unsigned char *)&h_filt[i];
-		LUVtoRGB((float*)&h_dst[i], pix);
-	}
-	
+		
 	// done.
 	return;
 }

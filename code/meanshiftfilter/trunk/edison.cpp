@@ -1088,6 +1088,7 @@ void FuseRegions(float sigmaS, int minRegion)
 	//by the RAM updating labels and modes until the color of each neighboring
 	//region is within sqrt(rR2) of one another.
 	rR2 = (float)(sigmaS*sigmaS*0.25);
+	
 	TransitiveClosure();
 	int oldRC = regionCount;
 	int deltaRC, counter = 0;
