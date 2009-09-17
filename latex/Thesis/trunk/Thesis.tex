@@ -1,6 +1,6 @@
 %!TEX TS-program = xetex 
 %!TEX encoding = UTF-8 Unicode 
-\documentclass[DIV=7, twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
+\documentclass[DIV=7, bibtotoc, twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
 fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
  ]{scrreprt}
 % ********************************************************************
@@ -53,8 +53,6 @@ fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 
 \includepdf{Frontcover.pdf}
 
-\frenchspacing
-\raggedbottom
 \selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
@@ -79,9 +77,13 @@ fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 % Mainmatter
 %*******************************************************
 \include{Chapters/Introduction}
+\include{Chapters/Parallel}
 \include{Chapters/FeasibilityStudy}
 \include{Chapters/MeanShift}
+\include{Chapters/Analysis}
+\include{Chapters/Design}
 \include{Chapters/Optimization}
+\include{Chapters/Performance}
 
 %\addtocontents{toc}{\protect\clearpage} % TEST
 

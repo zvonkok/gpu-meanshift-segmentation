@@ -199,9 +199,13 @@ function  $\nabla f(x) = 0$.
 The gradient of the density estimator \eqref{density_estimator} is 
 \begin{equation}
 	\begin{split}
-		\nabla f(x) & = \frac{2c_{k,d}}{nh^{d+2}}\sum_{i=1}^n \left(x_i - x\right)g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right) \\
-		& = \frac{2c_{k,d}}{nh^{d+2}} \left[ \sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right) \right]
-		\left[ \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)} -x \right].
+		\nabla f(x) & = \frac{2c_{k,d}}{nh^{d+2}}\sum_{i=1}^n \left(x_i -
+        x\right)g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right) \\ &
+        = \frac{2c_{k,d}}{nh^{d+2}} \left[ \sum_{i=1}^n g\left(\left\lVert
+        \frac{x - x_i}{h} \right\rVert^2\right) \right] \left[
+        \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h}
+        \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h}
+        \right\rVert^2\right)} -x \right].
 	\end{split}
 \end{equation}
 where $g(s) = -k'(s)$. The first term is proportional to the density estimate at

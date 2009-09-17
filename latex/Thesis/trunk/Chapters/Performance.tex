@@ -1,11 +1,12 @@
 %************************************************
-\chapter{Performance}
+\chapter{Performance \& Scalability}
 \label{ch:performance}
 %************************************************
-Cutil.cpp (cuda_sdk/common/src/cutil.cpp) explains how the PPM image is read in
+explains how the PPM image is read in
 and written back to. cutLoadPPM4ub() function reads the PPM file which is in RGB
 (0-255) format and pads a zero to the fourth byte, thereby making the data to be
 four bytes in total. This padding is very helpful because memory coalescence and
 better performance is achieved by accessing 1/2/4 consecutive memory locations
 at a time.
+
 
