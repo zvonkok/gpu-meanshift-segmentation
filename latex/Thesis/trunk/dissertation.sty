@@ -25,7 +25,6 @@
 \RequirePackage{fltpoint}
 \RequirePackage{listings}  
 \RequirePackage{textcomp}
-\RequirePackage[dvipsnames]{xcolor} 
 \RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
 \RequirePackage{xspace} % to get the spacing after macros right
 \RequirePackage{tabularx} % better tables
@@ -40,11 +39,12 @@
 % ******************************************************************************
 % Math Package
 % ******************************************************************************
-%\RequirePackage[minionint, openg, mathosf, onlymath, footnotefigures]{MinionPro}% 
 \RequirePackage[retainmissing,abx]{MnSymbol}
 %\RequirePackage[fraktur,mdugm]{mathdesign}
-%\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
 %\RequirePackage[euler-digits]{eulervm} % Euler math fonts
+%\RequirePackage[minionint, openg, mathosf, onlymath]{MinionPro}% 
+%\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
+
 
 % ******************************************************************************
 % Commands
@@ -61,19 +61,37 @@
 % ******************************************************************************
 % Colors
 % ******************************************************************************
-\RequirePackage[dvipsnames]{xcolor} % [dvipsnames] 
+\RequirePackage[dvipsnames, x11names, hyperref, table]{xcolor} 
 \definecolor{halfgray}{gray}{0.55}  
 \definecolor{webgreen}{rgb}{0,.5,0}
 \definecolor{webbrown}{rgb}{.6,0,0}
 \definecolor{lstgreybg}{rgb}{0.95, 0.95, 0.95}
 \definecolor{grey10}{rgb}{0.9,0.9,0.9}
+\definecolor{grey20}{rgb}{0.8,0.8,0.8}
+\definecolor{grey30}{rgb}{0.7,0.7,0.7}
+\definecolor{grey40}{rgb}{0.6,0.6,0.6}
+\definecolor{grey50}{rgb}{0.5,0.5,0.5}
+\definecolor{grey60}{rgb}{0.4,0.4,0.4}
 \definecolor{grey90}{rgb}{0.1,0.1,0.1}
 
-\definecolor{darkblue}{rgb}{0.37,0.43,0.53}
-% zu maroon passendes blau
-\definecolor{maroonBlue}{HTML}{352F76}
-\definecolor{maroonGreen}{HTML}{40762F}
-\definecolor{maroonYellow}{HTML}{7F6D25}
+
+\definecolor{iBlue}{HTML}{0055A2}
+\definecolor{iRed}{HTML}{A2002A}
+\definecolor{iGreen}{HTML}{689909}
+\definecolor{iBrown}{HTML}{A25800}
+\definecolor{iPurple}{HTML}{490999}
+
+\definecolor{iLightGray}{HTML}{F2F1F0}
+\definecolor{iDarkGray}{HTML}{B4B5B4}
+
+
+\colorlet{seccolor}{iRed}
+\colorlet{lcolor}{iBlue}
+\colorlet{ccolor}{iGreen}
+\colorlet{ucolor}{iBrown}
+\colorlet{lstbgcolor}{iLightGray}
+\colorlet{lstrlcolor}{iDarkGray}
+
 % ******************************************************************************
 % Penalties
 % ******************************************************************************
@@ -82,6 +100,8 @@
 % Disable single lines at the end of a paragraph (Hurenkinder)
 \widowpenalty = 10000 
 \displaywidowpenalty = 10000 % formulas
+\frenchspacing
+\raggedbottom
 
 
 % ******************************************************************************
@@ -91,27 +111,18 @@
 \RequirePackage[cm-default, no-math]{fontspec}
 \RequirePackage{xunicode}
 \RequirePackage{xltxtra}
-\RequirePackage[xetex, colorlinks=true,
-				hyperfootnotes=false, 
-				pdfpagelabels, 
-				urlcolor=maroonGreen,
-				citecolor=maroonGreen,
-				linkcolor=maroonGreen,
-				pagecolor=maroonGreen,
-				filecolor=maroonGreen,
-				pagebackref]{hyperref}
 
-\defaultfontfeatures{Mapping=tex-text}
+\defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
 %\newcommand{\mainfont}{Charter OS ITC TT}
 %\newcommand{\scfont}{Charter SC ITC TT}
 \newcommand{\mainfont}{Minion Pro}
 \newcommand{\scfont}{Minion Pro}
 
-\setmainfont[Ligatures=NoCommon]{\mainfont}
+\setmainfont{\mainfont}
 %\setsansfont{Verdana}
 %\setmonofont{Pragmata}
 
-\newfontfamily\lstfont[Scale=0.8]{Menlo}
+\newfontfamily\lstfont[Scale=0.8]{Luxi Mono}
 \newfontfamily\scshape[LetterSpace=6.0, Letters=SmallCaps]{\scfont}
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
@@ -143,12 +154,13 @@
 % ******************************************************************************
 % Hyperreferences
 % ******************************************************************************
+\RequirePackage[xetex, pdfpagelabels, pagebackref]{hyperref}
 \hypersetup{%
 	colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
 	breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
 	plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-	hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
-	urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+	hypertexnames=true, pdfhighlight=/O, hyperfootnotes=false, frenchlinks,%nesting=true, %
+	urlcolor=lcolor, linkcolor=lcolor, citecolor=ccolor, %pagecolor=RoyalBlue,%
 	% uncomment the following line if you want to have black links (e.g., for printing)
 	%urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
 	pdftitle={\myTitle},%
@@ -244,25 +256,25 @@
 % parts
 \titleformat{\part}[display]{\normalfont\centering\large}%
 {\thispagestyle{empty}\partname~\MakeTextUppercase{\thepart}}{1em}%
-{\color{Maroon}\spacedallcaps}%
+{\color{seccolor}\spacedallcaps}%
 % chapters
 \titleformat{\chapter}[display]{\relax}%
 {\ssmallcaps{\chaptertitlename}\hspace*{0.5em}\sucsmallcaps{\thechapter}}{0.3em}%
-{\color{Maroon}\huge\raggedright\sucsmallcaps}% 
+{\color{seccolor}\huge\raggedright\sucsmallcaps}% 
 % sections
-\titleformat{\section}{\color{Maroon}}%
+\titleformat{\section}{\color{seccolor}}%
 {\slcsmallcaps{\thesection}}{1em}%
 {\ssmallcaps}%
 % subsections
-\titleformat{\subsection}{\color{Maroon}}%
+\titleformat{\subsection}{\color{seccolor}}%
 {\slcsmallcaps{\thesubsection}}{1em}%
 {\normalsize\itshape}
 % subsubsections
-\titleformat{\subsubsection}{\color{Maroon}}%
+\titleformat{\subsubsection}{\color{seccolor}}%
 {\slcsmallcaps{\thesubsubsection}}{1em}%
 {\normalsize\itshape}        
 % paragraphs
-\titleformat{\paragraph}[runin]{\color{Maroon}\normalfont\normalsize}%
+\titleformat{\paragraph}[runin]{\color{seccolor}\normalfont\normalsize}%
 {\theparagraph}{0pt}%
 {\slcsmallcaps}    
 % descriptionlabels
@@ -293,7 +305,7 @@
 %\renewcommand{\cftpartaftersnum}{\cftchapaftersnum}%
 %\renewcommand{\cftpartaftersnumb}{\quad}%
 %\setlength{\cftpartnumwidth}{\cftpartnumwidth}
-\renewcommand{\cftpartfont}{\color{Maroon}\normalfont}%
+\renewcommand{\cftpartfont}{\color{seccolor}\normalfont}%
 \renewcommand{\cftpartpagefont}{\normalfont}%
 \ifthenelse{\boolean{@dottedtoc}}{\relax}%
 {%
@@ -306,7 +318,7 @@
 
 % chapters
 \renewcommand{\cftchappresnum}{\slcsmallcaps}%
-\renewcommand{\cftchapfont}{\ssmallcaps}%
+\renewcommand{\cftchapfont}{\color{seccolor}\ssmallcaps}%
 \renewcommand{\cftchappagefont}{\ssmallcaps}%
 \ifthenelse{\boolean{@dottedtoc}}{\relax}%
 {%
@@ -414,14 +426,12 @@
 % Listings
 % ******************************************************************************  
 \RequirePackage{listings}%
-
 \lstset{language=C++,
-    keywordstyle=\color{RoyalBlue},
+    keywordstyle=\color{iBlue},
     basicstyle=\lstfont,	
-%	basicstyle=\small,	
 	tabsize=4,
     %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{Green},%\ttfamily,
+    commentstyle=\color{iGreen},%\ttfamily,
     %stringstyle=\rmfamily,
     numbers=left,
     numberstyle=\scriptsize,%\tiny
@@ -429,14 +439,17 @@
     numbersep=4pt,
     showstringspaces=false,
     breaklines=true,
-    backgroundcolor=\color{lstgreybg},
-	rulecolor=\color{grey10},
+    backgroundcolor=\color{lstbgcolor},
+	rulecolor=\color{lstrlcolor},
 	captionpos=b,
 	framerule=1pt,
     %frameround=ftff,
-    frame=tb
+    frame=tb,
     %frame=L
+	moredelim=[is][\bfseries\color{iRed}]{§}{§}
 } 
+
+
 % ******************************************************************************
 % Enumeration small caps
 % ******************************************************************************
