@@ -1,7 +1,6 @@
 %!TEX TS-program = xetex 
 %!TEX encoding = UTF-8 Unicode 
-
-\documentclass[twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
+\documentclass[DIV=7, twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
 fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, remove (todo)
  ]{scrreprt}
 % ********************************************************************
@@ -31,44 +30,7 @@ fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 \newcommand{\myVersion}{Version 2.5\xspace}
 
 
-
-%*******************************************************
-% Packages with options that might require adjustments
-%*******************************************************
-
-\usepackage[ngerman,american]{babel}           
-\usepackage[square,numbers]{natbib} 
-\usepackage[fleqn]{amsmath} % math environments and more by the AMS 
-
-
-%*******************************************************
-%\usepackage{classicthesis-ldpkg} 
-%*******************************************************
-
-% ********************************************************************
-% caption numbering now w/o chapter number
-\RequirePackage{remreset}
-\makeatletter
-\@removefromreset{table}{chapter}  % requires remreset package
-\renewcommand{\thetable}{\arabic{table}}
-\makeatother
-\makeatletter
-\@removefromreset{figure}{chapter}  % requires remreset package
-\renewcommand{\thefigure}{\arabic{figure}}  
-\makeatother
-	\makeatletter
-	    \@ifpackageloaded{listings}{%
-		        \@removefromreset{lstlisting}{chapter}% requires remreset package
-		    \AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
-		  }{\relax}
-	\makeatother
-
 \usepackage{dissertation}
-
-%*******************************************************            
-%\usepackage[section,below]{placeins} <--- not everybody wants this
-%\usepackage[all]{hypcap} <--- does not work with MiKTeX 2.6
-
 
 % ********************************************************************
 % Setup and Finetuning
@@ -77,15 +39,17 @@ fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 \newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
 \setlength{\extrarowheight}{3pt} % increase table row height
 
+
 %********************************************************************
 % Hyphenation
 %*******************************************************
 %\hyphenation{put special hyphenation here}
-% ********************************************************************
-% GO!GO!GO! MOVE IT!
-%*******************************************************
+%\usepackage{layout}
+%\usepackage[colorgrid, draft]{showframe}
 
 \begin{document}
+%\layout*
+%\printparam
 
 \includepdf{Frontcover.pdf}
 
@@ -107,17 +71,17 @@ fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false % <--- obsolete, 
 %\cleardoublepage\include{FrontBackmatter/Dedication}
 \cleardoublepage\include{FrontBackmatter/Abstract}
 \cleardoublepage\include{FrontBackmatter/Acknowledgments}
-\cleardoublepage\include{FrontBackmatter/Contents}
-
 
 \pagenumbering{arabic}
 \pagestyle{scrheadings}
+\cleardoublepage\include{FrontBackmatter/Contents}
 %********************************************************************
 % Mainmatter
 %*******************************************************
 \include{Chapters/Introduction}
 \include{Chapters/FeasibilityStudy}
 \include{Chapters/MeanShift}
+\include{Chapters/Optimization}
 
 %\addtocontents{toc}{\protect\clearpage} % TEST
 

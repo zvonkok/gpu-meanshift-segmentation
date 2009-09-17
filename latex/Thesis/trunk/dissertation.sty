@@ -22,6 +22,7 @@
 % Load needed Packages
 % ******************************************************************************
 \RequirePackage{subfig}  
+\RequirePackage{fltpoint}
 \RequirePackage{listings}  
 \RequirePackage{textcomp}
 \RequirePackage[dvipsnames]{xcolor} 
@@ -31,6 +32,20 @@
 \RequirePackage{mparhack} % get marginpar right
 \RequirePackage{fixltx2e} % fixes some LaTeX stuff
 \RequirePackage{relsize} % scale font up or down
+\RequirePackage[ngerman,american]{babel}           
+\RequirePackage[square,numbers]{natbib} 
+\RequirePackage[fleqn]{amsmath} % math environments and more by the AMS 
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+% ******************************************************************************
+% Math Package
+% ******************************************************************************
+%\RequirePackage[minionint, openg, mathosf, onlymath, footnotefigures]{MinionPro}% 
+\RequirePackage[retainmissing,abx]{MnSymbol}
+%\RequirePackage[fraktur,mdugm]{mathdesign}
+%\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
+%\RequirePackage[euler-digits]{eulervm} % Euler math fonts
+
 % ******************************************************************************
 % Commands
 % ******************************************************************************
@@ -68,13 +83,6 @@
 \widowpenalty = 10000 
 \displaywidowpenalty = 10000 % formulas
 
-% ******************************************************************************
-% Math Package
-% ******************************************************************************
-%\RequirePackage[minionint, openg, mathosf, onlymath, footnotefigures]{MinionPro}% 
-%\RequirePackage[fraktur,mdugm]{mathdesign}
-\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
-\RequirePackage[euler-digits]{eulervm} % Euler math fonts
 
 % ******************************************************************************
 % XeTeX
@@ -94,15 +102,17 @@
 				pagebackref]{hyperref}
 
 \defaultfontfeatures{Mapping=tex-text}
-\newcommand{\mainfont}{Charter OS ITC TT}
-\newcommand{\scfont}{Charter SC ITC TT}
+%\newcommand{\mainfont}{Charter OS ITC TT}
+%\newcommand{\scfont}{Charter SC ITC TT}
+\newcommand{\mainfont}{Minion Pro}
+\newcommand{\scfont}{Minion Pro}
 
-\setmainfont{\mainfont}
+\setmainfont[Ligatures=NoCommon]{\mainfont}
 %\setsansfont{Verdana}
 %\setmonofont{Pragmata}
 
-\newfontfamily\lstfont[Scale=0.8]{Luxi Mono}
-\newfontfamily\scshape[LetterSpace=6.0]{\scfont}
+\newfontfamily\lstfont[Scale=0.8]{Menlo}
+\newfontfamily\scshape[LetterSpace=6.0, Letters=SmallCaps]{\scfont}
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
 % ******************************************************************************
@@ -116,7 +126,7 @@
 % Textblock size
 % ******************************************************************************
 %\PackageInfo{classicthesis}{A4 paper, Palatino or other}
-%\areaset[5mm]{390pt}{650pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
+\areaset[5mm]{390pt}{650pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
 % ******************************************************************************
 % Randnotiz stuff ...
 % ******************************************************************************
@@ -259,7 +269,7 @@
 \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}\slcsmallcaps{#1}}%   
 
 % spacing
-\titlespacing*{\chapter}{0pt}{1\baselineskip}{6\baselineskip}
+\titlespacing*{\chapter}{0pt}{0pt}{2\baselineskip}
 \titlespacing*{\section}{0pt}{1.25\baselineskip}{0.5\baselineskip} 
 \titlespacing*{\subsection}{0pt}{1.25\baselineskip}{0.5\baselineskip}
 \titlespacing*{\paragraph}{0pt}{1\baselineskip}{0.5\baselineskip}
@@ -464,7 +474,24 @@
 		\doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
 		%\raggedright%
 		\hspace{0pt}#1}}
+% ******************************************************************************
+% Remreset (caption numbering now w/o chapter number)
+% ******************************************************************************
+\RequirePackage{remreset}
+\makeatletter
+\@removefromreset{table}{chapter}  % requires remreset package
+\renewcommand{\thetable}{\arabic{table}}
+\makeatother
 
+\makeatletter
+\@removefromreset{figure}{chapter}  % requires remreset package
+\renewcommand{\thefigure}{\arabic{figure}}  
+\makeatother
+
+\makeatletter
+\@removefromreset{lstlisting}{chapter}% requires remreset package
+\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
+\makeatother
 
 
 \endinput
