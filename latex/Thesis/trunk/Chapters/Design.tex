@@ -2,3 +2,49 @@
 \label{cha:algorithm_design}
 
 % chapter algorithm_design (end)
+
+CUDA Emulator Output
+
+As many people have noticed the same code executed in Emulator mode gives
+different floating point results from the kernels run in Debug or Release mode.
+Although I know what causes this I have never bothered to investigate the actual
+differences as most of the stuff I write runs entirely on the GPU. Recently I
+have had to compare results on the CPU<->GPU and wrote some code to change the
+FPU settings. Firstly a quick explanation: By default the CPU (FPU) is set to
+use 80 bit floating point internally. This means that when you load in an
+integer (fild) or a single / double float (fld) it gets converted to a 80 bit
+number inside the FPU stack. All operations are performed internally at 80 bits
+and when storing the result it converts back to the correct floating point width
+(single / double) (fst / fstp). This method of operation is desirable as it
+reduces the effect of rounding / truncating on the intermediate results. Of
+course while very useful for computing on the CPU this is not how the CUDA
+devices operate.
+
+ In CUDA all operations on a float occur at 32 bits (64 bits for a double) which
+means your intermediate operations will sometimes lose precision. In CUDA
+Emulator mode your code is actually run on the CPU and it uses the FPU’s default
+precision and rounding settings. This causes the difference in output.
+
+ For my testing I modified the Matrix Mul sample in the CUDA SDK to include code
+to change the CPU settings before running the Gold Kernel. (Code link follows
+below)
+
+ I turned down the CPU internal precision to 32 bits in order to match the 32bit
+floats the CUDA kernel uses. For emulator mode I made sure the CPU was turned
+down to the same precision before running the Kernel. As expected the Gold and
+CUDA kernels outputs match perfectly.
+
+ Next I ran in Debug mode (the kernel will now execute on the GPU). As both the
+Gold kernel and Cuda kernel are now at 32 bits I expected the results to be the
+same. Rather interestingly it turned out that they are slightly different. I
+then tried changing the CPU rounding settings hoping to get the results to match
+up.
+
+ After trying all the rounding settings I discovered that the default setting
+(round to nearest or even) gave the closest results to the Gold kernel BUT they
+are still slightly out. I suspect this is down to differences in the internal
+workings of the FPU units on the GPU.
+
+ So in summary: If you are trying to compare kernel results between Emulator and
+Release mode you will never get exactly the same results but the differences can
+be mitigated somewhat by changing the CPU/FPU’s internal precision settings.
