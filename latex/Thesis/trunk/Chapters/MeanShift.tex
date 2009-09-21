@@ -1,39 +1,142 @@
-%************************************************
+%*******************************************************************************
 \chapter{Mean Shift}\label{ch:mean_shift}
-%************************************************
-The basic idea of a kernel density estimator is a mathematical principle, 
-implemented by procedure 1 in \autoref{ssub:the_mean_shift_procedure}. To prepare
-for this, we recall some definitions [30]. We consider the kernel estimator in
-$\mathbb{R}^1$. Let $X$ be a random variable. Let $X_i$ where $i=1,2,\ldots,n$ be
-% estimate	= schätzen
-% density	= dichte
-$n$ observations of $X$. We want to estimate the density  of $X$. Let $f$ be the
-density of $X$, and $\hat{f}$ an estimator of $f$. A \emph{bin} is an interval
-$[a,b)$. $b-a$ is called the width of bin $[a,b)$. Let $O=(0,0)$ be the origin, 
-and $[mh, (m+1)h)$ are some bins of constant width $h$, for integers $m$. The
-histogram is defined as follows,
+%*******************************************************************************
+In low level computer vision tasks like segmentation, edge detection or smoothing
+the analysis of data is often not done on the original images. Features like 
+colors are rather projected into a feature space where they can be more easily
+analyzed. The analysis of the feature space can find interesting attributes of 
+the image like edges or segments.
 
-\section{Introduction} % (fold)
-\label{sec:introduction}
+The feature space has to be smoothed before analysis. Feature spaces originate
+from real images therefore they are composed of several components from
+different distributions. The basic approach of a mixture model, a mixture model
+is a probabilistic model for density estimation using a mixture distribution, is
+not efficient enough to estimate the density satisfactorily of such complex,
+arbitrarily comprised densities. The discontinuity preserving smoothing is therefore
+accomplished with kernel based density estimators. Kernel based density estimators
+are making no assumptions about densities and hence can be estimate aribtrary 
+densities.
 
-% section introduction (end)
-\section{Theory} % (fold)
-\label{sec:theory}
+The maxima of a feature space correspond to the searched components like edges
+of an image. Gradient based methods of feature space analysis are using gradients
+of the probability density function to find the maxima. Such methods are complex
+because they need among other things a estimation of the probability density.
 
-% Basis: Adaptive Mean Shift-Based Clustering 
+Mean shift is an alternative to the gradient based methods as it is easier to 
+calculate then to estimate the probability density and then to calculate the 
+gradient. The mean shift vector points to the same direction as the gradient of
+gradient based methods. Furthermore the mean shift vector has a adaptive size and
+is non parametric. There is no need to supply a step size compared to the other
+methods. Mean shift a robust approach toward feature space analysiswas
+originally introduced by \citeauthor{citeulike:462300} \citep{citeulike:462300}.
+
+\section{Density Estimation} % (fold)
+\label{sec:density_estimation}
+In probability and statistics it is known that for different tasks there exist 
+more or less suitable features. In 
+\citep{citeulike:167581} \citeauthor{citeulike:167581}  are giving an example of 
+a classification of two different fish types. 
 
 
-\subsubsection{Kernel Density Estimation} % (fold)
-\label{ssub:the_kernel_density_estimator}
+\section{Kernel Density Estimation} % (fold)
+\label{sec:kernel_density_estimation}
+Kernel density estimation is a method to estimate an unkown density
+distribution with finite observations of a point in the sample space. 
+The result of such a procedure is a probability density function that describes 
+the density of probability at each point in the sample space. To estimate the 
+density of a point $x = { x_1, ... , x_d, ... , x_D} \in \mathbb{R}^D$ in a 
+$D$ dimensionl feature space, $N$ observations $x_1^N$ with
+ $x_N \in \mathbb{R}^D$ within a search window that is centered around point $x$
+have to be observed. The search window with radius $h$ is the bandwidth of the
+used kernel. The density of probability in point $x$ is the mean of density of
+{\color{iRed}probabilities falling into the search window.}
 
-\paragraph{Mean Shift Kernel Estimation} % (fold)
-\label{par:mean_shift_kernel_estimation}
+The effect of different bandwith parameters $h$ (search window radius) is shown in 
+\autoref{fig:window_radius}. The example shows a kernel density estimation with
+five observations $x = 4, 1, -1, -3, -3.5$ and a normal kernel. The total density
+estimation is the sum of each kernel at a observation, here shown for three 
+bandwidths. With bigger bandwidth $h$ the density estimation becomes smoother.  
 
-% paragraph mean_shift_kernel_estimation (end)
+\begin{figure}[ht]
+\centering
+%\includegraphics[width=0.6\textwidth]{gfx/itr_limitcycle0.pdf}
+\caption{Effect of bandwidth selection}
+\label{fig:window_radius}
+\end{figure}
 
-The basic idea of a kernel density estimator is a mathematical principle, 
-implemented by procedure 1 in \autoref{ssub:the_mean_shift_procedure}. To prepare
-for this, we recall some definitions [30]. We consider the kernel estimator in
+
+Kernel density estimation is a non parametric method, although some parameters
+exists like the search window radius. Non parametric methods are making no 
+assumptions about the density of probabilities. The strenght of such methods is
+that they are not limited to just on probability but can deal with arbitrary
+coupled/joined probabilities. With an unfinite number of observations the non
+parametric methods can reconstruct the density of the original
+probabilities.
+
+To derive the kernel density estimator in point $x \in \mathbb{R}^D$ first of
+all some definitions have to be made. Let $x$ be a random variable and $N$
+observations $x_1^N$ with $x_n \in \mathbb{R}^D$ given. The kernel density
+estimator $\hat(f)(x)$ in a point $x \in \mathbb{R}^D$, with a kernel $K(x)$ and a
+$DxD$ bandwith matrix $\mathbf{H}$ is 
+\begin{equation}\label{eq:kernel0}
+	\hat{f}(x) = \frac{1}{N} \sum_{n = 1}^N K_{\mathbf{H}}\left( x-x_n \right)
+\end{equation} 
+where
+\begin{equation}\label{eq:kernel1}
+	K_{\mathbf{H}}(x) = \frac{1}{\sqrt{|\mathbf{H}|}}K \left( \frac{x - x_n}{h} \right)
+\end{equation} 
+
+Since a full parametrized matrix $\mathbf{H}$ would lead to very complex estimates
+only a single bandwidth parameter, the window radius will be regarded. With the
+simplification $\mathbf{H} = h^2 \mathbf{I}$ the \autoref{eq:kernel0} can be 
+written as
+\begin{equation}\label{eq:kernel2}
+	\hat{f}(x) = \frac{1}{Nh^D}\sum_{n=1}^N K\left( \frac{x - x_i}{h} \right).
+\end{equation}
+
+The kernel density estimator is valid for several kernels and successive
+considerations will deal with several kernel the \autoref{eq:kernel2} will be
+formated into a more generic form. For this transformation the definition of a
+kernel and profile of the kernel is needed. The following definition of a kernel
+and its profile is from \citeauthor{citeulike:2522867}
+\citep{citeulike:2522867}. The norm $\lVert x \rVert$ of $x$ is a non negative number 
+so that $\lVert x \rVert^2 = \sum_{d = 1}^D|x_d|^2$.
+A $K:\mathbb{R}^D \rightarrow \mathbb{R}$ is
+a known as a kernel, when there is a function $k:[0, \infty] \rightarrow \mathbb{R}$ the profile
+of the kernel, so that
+\begin{equation}\label{eq:kernel3}
+	K(x)=c_{k,d}k(\lVert x \rVert^2)
+\end{equation}
+where $K$ is radial symmetric, $k$ is non negativ {\color{iRed} nicht zunehmend
+und stückweise stetig ist} with $\int_0^{\infty} k(r) dr < \infty$. $c_{k,D}$ is
+a positive normalization constant so that $K(x)$ integrates to $1$. 
+
+Now the kernel density estimator from \autoref{eq:kernel2} can be transformed into
+a new equation. The two indices $K$ and $h$ are representing which kernel and 
+which radius are used for the density estimator. With the profile notation $k$, where
+\autoref{eq:kernel2} is inserted into \autoref{eq:kernel1}, the \autoref{eq:kernel2}
+is transformed to
+\begin{equation}\label{eq:kernel4}
+	\hat{f}_{h,K}(x) = \frac{c_{k,D}}{Nh^d}\sum_{n = 1}^N k(\lVert \frac{x-x_n}{h} \rVert^2)
+\end{equation}
+
+
+
+\section{Kernel Properties} % (fold)
+\label{sec:kernel_properties}
+
+
+
+
+
+
+
+
+\section{OLD STUFF} % (fold)
+\label{sec:old_stuff}
+
+We consider the kernel
+estimator in
 $\mathbb{R}^1$. Let $X$ be a random variable. Let $X_i$ where $i=1,2,\ldots,n$ be
 % estimate	= schätzen
 % density	= dichte

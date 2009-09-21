@@ -50,13 +50,6 @@
 % Commands
 % ******************************************************************************
 \newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
-% ******************************************************************** 
-\newcommand{\person}[1]{#1}
-\newcommand{\cauthor}[1]{\relax}
-\@ifpackageloaded{natbib}%
-    {\renewcommand{\cauthor}[1]{\person{\citeauthor{#1}}}%
-    }{\PackageWarningNoLine{classicthesis-ldpk}{Package "natbib" not loaded, %
-        command "cauthor" will not work.}}
 
 % ******************************************************************************
 % Colors
