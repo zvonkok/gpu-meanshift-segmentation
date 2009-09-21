@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>FrontBackmatter/Contents.tex</string>
+	<string>Chapters/MeanShift.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -30,7 +30,7 @@
 			<key>name</key>
 			<string>Chapters</string>
 			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle|.aux))$</string>
 			<key>sourceDirectory</key>
 			<string>Chapters</string>
 		</dict>
@@ -44,7 +44,7 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2009-09-12T11:39:17Z</date>
+			<date>2009-09-21T07:06:34Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -105,6 +105,36 @@
 			<key>firstVisibleLine</key>
 			<integer>64</integer>
 		</dict>
+		<key>Chapters/MeanShift.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>37</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+		</dict>
 		<key>Chapters/ProjectPlanning.tex</key>
 		<dict>
 			<key>caret</key>
@@ -126,8 +156,6 @@
 				<key>column</key>
 				<integer>10</integer>
 				<key>line</key>
-				<integer>270</integer>
-				<key>line</key>
 				<integer>17</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
@@ -144,6 +172,10 @@
 				<key>line</key>
 				<integer>270</integer>
 			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
@@ -151,17 +183,13 @@
 				<key>line</key>
 				<integer>270</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
 		<key>FrontBackmatter/Contents.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>0</integer>
 				<key>line</key>
 				<integer>16</integer>
 			</dict>
@@ -212,6 +240,20 @@
 			<key>firstVisibleLine</key>
 			<integer>6</integer>
 		</dict>
+		<key>FrontBackmatter/Titleback.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>19</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>FrontBackmatter/Titlepage.tex</key>
 		<dict>
 			<key>caret</key>
@@ -245,20 +287,21 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>46</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>161</integer>
+				<integer>126</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>165</integer>
+			<integer>100</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>Thesis.tex</string>
 		<string>dissertation.sty</string>
+		<string>Chapters/MeanShift.tex</string>
 		<string>FrontBackmatter/Titleback.tex</string>
 		<string>Bibliography.bib</string>
 		<string>Chapters/FeasibilityStudy.tex</string>
