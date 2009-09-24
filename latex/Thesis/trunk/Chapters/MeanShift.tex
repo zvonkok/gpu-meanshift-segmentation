@@ -35,7 +35,30 @@ originally introduced by \citeauthor{citeulike:462300} \citep{citeulike:462300}.
 In probability and statistics it is known that for different tasks there exist 
 more or less suitable features. In 
 \citep{citeulike:167581} \citeauthor{citeulike:167581}  are giving an example of 
-a classification of two different fish types. 
+a classification of two different fish types. Features like the length and 
+brightness are there observed that fit for the task. It is of course possible 
+to find more descriptive features for fish like the amount of finns but in 
+image processing it would be very expensive and difficult to count. In image
+analysis specially in real time applications it is important to find suitable
+features for the task, but also features which are easily visually identified. 
+Color observations are because of their simplicity and for the eye easily to 
+gather important features. The color features can have components from the 
+\gls{RGB} or gray value color space. Furthermore there are several other color
+spaces that could be observed like the \gls{HSV} or the \gls{Luv} color space
+with one luminance and two chromatic components. The \gls{Luv} color space is
+often used in computer graphics because of its attribute to be a perceptually
+uniform color space.
+
+With a finite set of observations follows a finite feature space. The main point
+of \emph{mean shift} is to find the maxima in the feature space. The maxima of a
+feature space are all important for the \emph{mean shift} applications
+(filtering, segmentation, ...) as the distributions or discontinuities map to
+clusters or edges of the image.
+
+The \emph{mean shift} method is based on the gradient method. For the gradient
+estimation a function is upon estimations of discrete observations in the
+feature space. For this kernel density estimators are used also known as 
+\emph{Parzen Window} method.
 
 
 \section{Kernel Density Estimation} % (fold)
@@ -102,8 +125,8 @@ and its profile is from \citeauthor{citeulike:2522867}
 \citep{citeulike:2522867}. The norm $\lVert x \rVert$ of $x$ is a non negative number 
 so that $\lVert x \rVert^2 = \sum_{d = 1}^D|x_d|^2$.
 A $K:\mathbb{R}^D \rightarrow \mathbb{R}$ is
-a known as a kernel, when there is a function $k:[0, \infty] \rightarrow \mathbb{R}$ the profile
-of the kernel, so that
+a known as a kernel, when there is a function $k:[0, \infty] \rightarrow
+\mathbb{R}$ the profile of the kernel, so that
 \begin{equation}\label{eq:kernel3}
 	K(x)=c_{k,d}k(\lVert x \rVert^2)
 \end{equation}
@@ -117,15 +140,316 @@ which radius are used for the density estimator. With the profile notation $k$, 
 \autoref{eq:kernel2} is inserted into \autoref{eq:kernel1}, the \autoref{eq:kernel2}
 is transformed to
 \begin{equation}\label{eq:kernel4}
-	\hat{f}_{h,K}(x) = \frac{c_{k,D}}{Nh^d}\sum_{n = 1}^N k(\lVert \frac{x-x_n}{h} \rVert^2)
+	\hat{f}_{h,K}(x) = \frac{c_{k,D}}{Nh^d}
+	\sum_{n = 1}^N k\left(\left\lVert \frac{x-x_n}{h} \right\rVert^2\right)
 \end{equation}
 
 
 
-\section{Kernel Properties} % (fold)
+\section{Kernel and their Properties} % (fold)
 \label{sec:kernel_properties}
+The following section will introduce three univariate profiles and their associated
+multivariate radial symmetric kernels. 
+
+From the Epanechnikov profile
+\begin{equation}\label{eq:epa}
+	k_E{x} = \begin{cases}
+				1 - x &  0 \leq x \leq 1\\
+				0 & x > 1
+		\end{cases}, x \in \mathbb{R}
+\end{equation}
+follows a radial symmetric kernel
+\begin{equation}\label{eq:epak}
+	K_E(x) = \begin{cases}
+				\frac{1}{2}c_D^{-1}(D+2)(1-\lVert x \rVert^2) &  \lVert x \rVert \leq 1 \\
+				0 & \mathit{otherwise}
+		\end{cases}, x \in \mathbb{R}^D
+\end{equation}
+ 
+where $c_D$ is the Volume of the $D$ dimensional globe. The epanechnikov kernel
+is used often as it minimizes the \gls{MISE} \citep{citeulike:5813637}. The
+\autoref{fig:kernels} (a) shows the epanechnikov kernel. The dervative of the 
+kernel is a uniform profile.
 
 
+
+\begin{figure}[ht]
+\centering
+%\includegraphics[width=0.6\textwidth]{gfx/itr_limitcycle0.pdf}
+\caption{Kernel density estimators}
+\label{fig:kernels}
+\end{figure}
+
+From the normal profile
+\begin{equation}\label{eq:nml}
+	k_N(x) = exp \left( - \frac{1}{2} x \right) \textrm{ where } x \geq 0, x \in \mathbb{R}
+\end{equation}
+follows the normal kernel
+\begin{equation}\label{eq:nmlk}
+	K_N(x) = (2\pi)^{-D/2}exp\left( -\frac{1}{2} \lVert x \rVert^2 \right), x \in \mathbb{R}.
+\end{equation}
+The normal distribution as every other kernel with infinite support, is often
+capped for finite support. Finite support is important for the convergence. Capping
+the normal kernel can be accomplished by multipyling it by a uniform kernel where
+the inner part of the normal kernel is cut out and weighted with $1$ and the 
+outer part is set to $0$. The derivative of the normal profile is again a 
+normal profile.
+
+From the uniform profile 
+\begin{equation}\label{eq:unf}
+	k_U(x) = \begin{cases}
+				1 &  0 \leq x \leq 1\\
+				0 & \mathit{otherwise}
+		\end{cases}, x \in \mathbb{R}
+\end{equation}
+follows the uniform kernel
+\begin{equation}\label{eq:unfk}
+	K_U(x) = \begin{cases}
+				1 &  \lVert x \rVert  \leq 1\\
+				0 & \mathit{otherwise}
+		\end{cases}, x \in \mathbb{R}^D
+\end{equation}
+
+which is a {\color{iRed}hyper uniform globe} in the origin. 
+
+Asuming that a derivative of a profile $k(x)$ exists for all $x \in [0, \infty)$, 
+follows a new profile $g(x)$. Now a new kernel $G(x)$ can be defined as 
+\begin{equation}\label{eq:shadowk}
+	G(x) = c_{g,D}g(\lVert x \rVert^2)
+\end{equation}
+where $c_{g,D}$ a normalizing constant and $K(x)$ the \emph{shadow kernel} of 
+$G(x)$. The term \emph{shadow kernel} was introduced in the context of mean 
+shift in \citep{citeulike:2522867}. The mean shift vector of a kernel points to 
+the same direction as the gradient of the shadow kernel (See \autoref{sub:gradient_estimator}). 
+
+
+\section{Mean Shift} % (fold)
+\label{sec:mean_shift}
+In gradient based methods first the gradient s calculated and then the kernel is
+shifted by a vector with a specific length in direction of a maxium of the 
+probability. The magnitude/length that is the step size of the vector has to be
+chosen. The problem of such gradient based methods is the choice of a suitable
+step size. The run time of such algorithms depends heavily on the right choice
+of the step size. If the step size is too large the algorithm diverges and 
+choosing a too small step size the algorithm becomes very slow. Convergence is
+only guaranteed for infinitesimal step sizes. There are several complex 
+procedures for finding the right step size, see \citeauthor{citeulike:462300} 
+\citep{citeulike:462300}.
+
+In the case of mean shift there are no additional procedures needed to choose
+the step size. The magnitude/lenght of the mean shift vector is the step size 
+which is adaptive regarding the local gradient of the density of probability. 
+Because of this adaptive nature the mean shift algorithm converges (Proof see 
+\citeauthor{citeulike:462300} \citep{citeulike:462300}).
+
+The advantage of the mean shift method contrary to gradient based methods is
+that the step size has not to be chosen by hand and the gradient has not to be
+calculated. It can be shown that the mean shift vector is pointing to the same
+direction as the gradient and that it moves along the gradient to the maxima 
+that can be seen in \autoref{eq:ms7}. Hence it is sufficient to calculate the
+more efficient mean shift vector rather than the gradient. 
+
+Given are $N$ $D$-dimensional observer feature vectors $x_1^N$ with $x_n \in
+\mathbb{R}^D$ and a kernel $G$ at the point
+$x = {x_1, ... , x_d, ... , x_D} \in \mathbb{R}^D$ in the feature space with 
+search window radius $h$ is 
+\begin{equation}\label{eq:ms0}
+	m_{h,G}(x) = \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)} -x
+\end{equation}
+the $D$-dimensional \textit{mean shift} vector. The $N$ observations are
+weighted by the means of kernel $G$, summed and normalized with the total sum.
+The \emph{shift} is the difference between the weighted \emph{mean} and $x$, thus
+the name \emph{mean shift}. 
+
+As pointed out in \autoref{sec:kernel_density_estimation} the main objective of
+density estimation is to efficiently find the maxima of a distribution in
+feature space. The maxima of a function $f$ are located at the positions where
+the gradient $\nabla f(x) = 0$. With the above stated attribute that the \emph{mean shift} vector
+always moves along the direction of the gradient, it is a elegant solution for 
+finding the maxima of a distribution without estimating the density.
+
+\subsection{Density Gradient Estimation} % (fold)
+\label{sub:gradient_estimation}
+The usage of a differentiable kernel alllows one to write the density gradient 
+estimator as the gradient of the density estimator
+
+\begin{equation}\label{eq:gradest}
+	\hat{\nabla} f_{h,K}(x) \equiv \nabla \hat{f}_{h,K}(x) = 
+	\frac{2_{C_{k,D}}}{Nh^{D+2}}%
+	\sum_{n = 1}^N (x - x_n)k' 
+	\left( \left\lVert \frac{x - x_n}{h} \right\rVert^2 \right)
+\end{equation}
+
+where the inner part and a part of the prefactor originate from the differentiation
+of $k\left( \left\lVert \frac{x - x_n}{h} \right\rVert \right)$
+
+\begin{equation}\label{eq:kerndiff}
+	\begin{split}
+		\frac{\delta}{\delta x}
+		k\left( \left\lVert \frac{x - x_n}{h} \right\rVert^2 \right) & = 
+		\left( \left\lVert \frac{x - x_n}{h} \right\rVert \right)'
+		k'\left( \left\lVert \frac{x - x_n}{h} \right\rVert^2 \right) \\ & =
+		2 \left( x - x_n \right) \left( \frac{1}{h} \right) 
+		k'\left( \left\lVert \frac{x - x_n}{h} \right\rVert^2 \right) \\ & =
+		\frac{2}{h^2}(x - x_n)
+		k'\left( \left\lVert \frac{x - x_n}{h} \right\rVert^2 \right).
+	\end{split}
+\end{equation}
+
+Using $g(x) = -k'(x)$ and with \autoref{eq:shadowk} a new kernel $G(x)$ with
+profile $g(x)$ can be defined. Transforming \autoref{eq:gradest} with the new
+profile $g(x)$ the gradient of the density estimator becomes
+\begin{subequations}
+	\begin{align}
+	\hat{\nabla} f_{h,K}(x) & = \frac{2c_{k,D}}{Nh^{D+2}}\sum_{i=1}^N \left(x_n -
+    x\right)g\left(\left\lVert \frac{x - x_n}{h} \right\rVert^2\right) \label{eq:gradest1}\\ & 
+	= \frac{2c_{k,D}}{Nh^{D+2}} \left[ \sum_{n=1}^N g\left(\left\lVert
+	\frac{x - x_n}{h} \right\rVert^2\right) \right] \left[
+	\frac{\sum_{i=1}^N x_i g\left(\left\lVert \frac{x - x_n}{h}
+	\right\rVert^2\right)}{\sum_{n=1}^N g\left(\left\lVert \frac{x - x_n}{h}
+	\right\rVert^2\right)} - x \right].
+	\label{eq:gradest2}
+	\end{align}
+\end{subequations}
+
+The first term of \autoref{eq:gradest2} conforms with the density estimator
+$\hat(f)_{h,G}(x)$ for kernel $G$ (compare with \autoref{eq:kernel4} for kernel
+$K$) except for a factor whereas the second term is the difference between the
+center of the, with kernel $G$ weighted center of observation and the center $x$
+of the kernel window which conforms to the \emph{mean shift} vector from 
+\autoref{eq:ms0}.
+To localize the maxima with \emph{mean shift}, the maxima are the roots of the gradient,
+it firstly has to be shown that the \emph{mean shift} vektor is moving along the 
+direction of the gradient. Inserting $\hat(f)_{h,G}(x)$ and $m_{h,G}(x)$ into
+\autoref{eq:gradest2} follows
+\begin{equation}\label{eq:ms1}
+	\hat{\nabla} f_{h,K}(x) = \frac{2c_{k,D}}{h^2c_{g,D}} 
+	\hat{f}_{h,G}(x)m_{h,G}(x)
+\end{equation}
+transformed to $m_{h,G}(x)$ follows
+\begin{equation}\label{eq:ms2}
+	m_{h,G}(x) = \frac{1}{2}h^2 c 
+	\frac{\hat{\nabla} f_{h,K}(x)}{\hat{f}_h,G(x)}, \textrm{ whereas } 
+	c = \frac{c_{g,D}}{c_{k,D}}.
+\end{equation}
+
+The denominator of \autoref{eq:ms2} is the normalizing factor that originates 
+from the density estimator with kernel $G$ in $x$ and the numerator is the 
+gradient density estimator with kernel $K$. In fact the \emph{mean shift} vector
+is proportional to the gradient which means it is adaptive. Kernel $K$ is the 
+shadow kernel of kernel $G$. The term shadow kernel was firstly introduced by
+\citeauthor{citeulike:2522867} \citep{citeulike:2522867}.
+
+Let be
+\begin{equation}\label{eq:msi}
+	mi_{h,K}(x) = \frac{\sum_{i=1}^n x_i k\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)}{\sum_{i=1}^n k\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)} -x
+\end{equation}
+the $D$-dimensional mean of the observations $x_1^N$ from $\mathbb{R}^D$ 
+weighted with kernel $K$ and a window radius $h$. Then is $K$ the 
+shadow kernel to kernel $G$ if the \emph{mean shift} vector with kernel $G$
+\begin{equation}\label{eq:msi2}	
+	m_{h,G}(x) = mi_{h,G}(x) - x = 
+	\frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)} -x
+\end{equation}
+lies in the gradient density estimator direction with kernel $K$
+\begin{equation}\label{eq:msi3}
+	\hat{f}_{h,K}(x) = \frac{c_{k,D}}{Nh^d}
+	\sum_{n = 1}^N k\left(\left\lVert \frac{x-x_n}{h} \right\rVert^2\right)
+\end{equation}
+
+In the following sections gradients will not more be considered as it was shown
+in \autoref{eq:ms2} that the \emph{mean shift} vector moves along the same
+direction as the gradient. Instead of estimating a density with a kernel 
+density estimator with kernel $K$ and then calculating the gradient now one can
+achieve the same solution with the \emph{mean shift} and the differentiation
+$K'$ of kernel $K$. The next section will continue with the actual \emph{mean shift}
+method.
+
+\section{Mean Shift Method} 
+\label{sec:mean_shift_method}
+
+The \emph{mean shift} vector moves in direction of the maximal slope of the
+density, it defines a path to the maximum (Abbildung 4). The \emph{mean shift}
+method is described by the iterations in \autoref{lst:ms0}. \\
+
+\begin{lstlisting}[caption=Generic mean shift method, label=lst:ms0, mathescape, numbers=none, escapechar=@, keywordstyle=\color{black}]
+  1. Choose a window radius $h_n$ for the kernel density estimator @\autoref{eq:kernel4}@
+  2. Choose a start position $y_1 \in \mathbb{R}^D$ for the kernel window
+  3. Calculate the @\emph{mean shift}@ vector $m_{h,G}(y_j)$ and shift the kernel window $G$
+  4. Repeat 3. until convergence
+\end{lstlisting}
+
+
+
+\section{Filtering {\upshape\&} Segmentation} % (fold)
+\label{sec:filtering_segmentation}
+The primary use of \emph{mean shift} is filtering (smoothing) and segmentation. 
+A color image can be seen as a 2-dimensional matrix $I \times J$ with $N$ 
+3-dimensional vectors. The pixels in the image $x_n, n = 1, ... , N$ consist of
+a spatial part $x_n^r = (i,j) \in I \times J$ and a part with a color range
+$x_n^f = (r,g,b)$ so $x_n = (x_n^r, x_n^f) \in \mathbb{N}^5$ for $n = 1, ... , N$.
+Other color spaces like the \gls{Luv} color space could be used as well. The 
+euclidean metric is assumed for both spaces. 
+
+When applying \emph{mean shift} for filtering and segmentaition applications
+like in \citeauthor{citeulike:462300} \citep{citeulike:462300} a joined feature
+space is used for the spatial and range compoenents of a pixel. The color space
+used in filtering and segmentation is the \gls{Luv} color space because of its
+feature of linear mapping. In a joint $D$-dimensional feature space ($D=5$ color
+images, $D=3$, graytone images) the different attributes of each space have to be
+equalized by normalization. Therefore is the joint kernel written as a product of
+two kernels with window radius $h_r$ for the spatial part and $h_f$ for the 
+color range part
+\begin{equation}\label{eq:jokernel}
+	K_{h_r, h_f}(x) = \frac{C}{h_r^2h_f^p}
+	k \left( \left\lVert \frac{x^r}{h_r} \right\rVert^2\right) 
+	k \left( \left\lVert \frac{x^f}{h_f} \right\rVert^2\right) 
+\end{equation}
+where $p$ is the color dimension of the image, $p=1$ gray tone and $p=3$ color. 
+An example of an gray tone image with its feature space is shown in 
+\autoref{fig:feature_space}. With the parameter $h = (h_r, h_f)$ the window
+radius one can specify the size of the kernel and thereby specifiy the resolution
+of the maximum search.
+
+\subsection{Mean Shift Filtering} % (fold)
+\label{sub:mean_shift_filtering}
+Smoothing or filtering with mean shift or bilateral filters have the advantage
+that discontinuity like edges are preserved. Appliying a simple smoothing a 
+weighted average of the neighbors in both space and in color range are considered
+which systematically excludes pixels across the discontinuity from consideration.
+
+The pixels $x_n, n = 1, ..., N$ of the image converge toward their local density
+maximum applying the filtering algorithm \autoref{lst:filtalgo}. \\
+
+\begin{lstlisting}[caption=Mean shift filtering, label=lst:filtalgo, mathescape, numbers=none, escapechar=@, keywordstyle=\color{black}]
+  $x_n = (x_n^r, x_n^f), n = 1, ... , N$ are the $D$-dimensional pixels of the
+  original image and $z_n, n = 1 , .... , N$ are the $D$-dimensional filtered pixels.
+
+  For each pixel $n = 1, ... , N$
+    1. Initialize $k = 1$ and $y_k = x_n$
+    2. Calculate $y_{k+1}$ according to @\autoref{eq:msi3}@, repeat until convergence
+    3. Set $z_n = (x_n^r, y_{conv}^f)$ 
+\end{lstlisting}
+
+All pixels that converge to the same um are lying in the basin of attraction
+of this maxium. The filtered image points $z_n, n = 1 , ... , N$ keep there
+spatial coordinates but obtain the color values off the convergence point. The
+convergence points are found by moving the kernel window with \emph{mean shift} 
+in direction of maximum slope of the spatial range feature space. The sample
+\autoref{fig:filtsample} was smoothed with the algorithm of \autoref{lst:filtalgo}. 
+A uniform kernel with $h = (6.5, 7)$ was used and the method needed ?????
+\emph{mean shift} iterations per pixel in the middle. The run time of the filtering
+was ??? on a 2.33 \gls{GHz} \gls{CPU}
+
+
+\subsection{Mean Shift Segmentation} % (fold)
+\label{sub:mean_shift_segmentation}
 
 
 
@@ -135,7 +459,7 @@ is transformed to
 \section{OLD STUFF} % (fold)
 \label{sec:old_stuff}
 
-We consider the kernel
+We consider the kernel 
 estimator in
 $\mathbb{R}^1$. Let $X$ be a random variable. Let $X_i$ where $i=1,2,\ldots,n$ be
 % estimate	= schätzen
