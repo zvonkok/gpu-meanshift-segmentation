@@ -1,0 +1,175 @@
+<!DOCTYPE cpj>
+<cpj version="1.2" >
+ <session>
+  <name>Session1</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 18:56:58</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session2</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 18:58:57</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session3</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 19:13:37</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session4</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 19:15:42</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session5</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 19:16:17</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session6</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 19:49:37</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session7</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 19:50:56</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session8</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 20:18:53</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session9</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 20:19:11</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session10</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 20:19:25</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session11</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 20:43:24</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session12</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 20:59:14</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session13</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 21:38:14</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session14</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 21:42:23</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session15</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 21:42:38</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+ <session>
+  <name>Session16</name>
+  <progpath>"/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/Meanshift"</progpath>
+  <cmdlineargs>--thx=4 --thy=64</cmdlineargs>
+  <workdirpath>/home/zvonko/NVIDIA_GPU_Computing_SDK/C/bin/linux/release</workdirpath>
+  <datetime>12 Aug 2009 21:43:03</datetime>
+  <normalizedcounter>false</normalizedcounter>
+  <device id="0" label="Device_0" >
+   <context totalcountercount="0" invalidcountercount="0" id="0" label="Context_0" truncatedcountercount="0" />
+  </device>
+ </session>
+</cpj>
+
