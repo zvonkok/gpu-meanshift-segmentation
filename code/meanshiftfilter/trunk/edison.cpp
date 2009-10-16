@@ -1164,10 +1164,11 @@ void boundaries()
 		boundaries_[i] = regionIndeces[i];
 	}
 	
-	memset(h_bndy, 0, height * width * sizeof(unsigned char));
+	memset(h_bndy, 255, height * width * sizeof(unsigned char));
+
 
 	for(int i = 0; i < numBoundaries_; i++) {
-		h_bndy[boundaries_[i]] = 255;
+		h_bndy[boundaries_[i]] = 0;
 	}	
 }
 

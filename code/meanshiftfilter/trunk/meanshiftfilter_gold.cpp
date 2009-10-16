@@ -247,60 +247,60 @@ void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
 void getColor( int iter, unsigned char* pix) 
 {
 	if (iter >= 0 && iter < 10) {
-		pix[0] = 29;
-		pix[1] = 29;
-		pix[2] = 29;
+		pix[0] = 242;
+		pix[1] = 241;
+		pix[2] = 240;
 		return;
 	}
 	if (iter >= 10 && iter < 20) {
-		pix[0] = 58;
-		pix[1] = 58;
-		pix[2] = 58;
+		pix[0] = 232;
+		pix[1] = 231;
+		pix[2] = 230;
 
 		return;
 		
 	}
 	if (iter >= 20 && iter < 30) {
-		pix[0] = 130;
-		pix[1] = 106;
-		pix[2] = 129;
+		pix[0] = 222;
+		pix[1] = 221;
+		pix[2] = 220;
 		return;
 	}
 	if (iter >= 30 && iter < 40) {
-		pix[0] = 92;
-		pix[1] = 110;
-		pix[2] = 137;
+		pix[0] = 212;
+		pix[1] = 211;
+		pix[2] = 210;
 		return;
 	}
 	
 	if (iter >= 40 && iter < 50) {
-		pix[0] = 136;
-		pix[1] = 156;
-		pix[2] = 176;
+		pix[0] = 202;
+		pix[1] = 201;
+		pix[2] = 200;
 		return;
 	}
 	if (iter >= 50 && iter < 60) {
-		pix[0] = 152;
-		pix[1] = 157;
-		pix[2] = 118;
+		pix[0] = 192;
+		pix[1] = 191;
+		pix[2] = 190;
 		return;
 	}
 	if (iter >= 60 && iter < 70) {
-		pix[0] = 117;
-		pix[1] = 128;
-		pix[2] = 88;
+		pix[0] = 182;
+		pix[1] = 181;
+		pix[2] = 180;
 		return;
 	}
 	if (iter >= 70 && iter < 80) {
-		pix[0] = 201;
-		pix[1] = 193;
-		pix[2] = 114;
+		pix[0] = 172;
+		pix[1] = 171;
+		pix[2] = 170;
 		return;
 	}
 	if (iter >= 80) {
-		pix[0] = 181;
-		pix[1] = 80;
-		pix[2] = 54;
+		pix[0] = 162;
+		pix[1] = 49;
+		pix[2] = 0;
 		return;
 	}
 
@@ -389,7 +389,7 @@ void filterGold()
 			mvAbs += Mh[3] * Mh[3];
 			mvAbs += Mh[4] * Mh[4];
 	
-			
+		
 			
 			if (mvAbs == limitcycle[0] || 
 			    mvAbs == limitcycle[1] || 
@@ -412,7 +412,7 @@ void filterGold()
 			limitcycle[5] = limitcycle[6];
 			limitcycle[6] = limitcycle[7];
 			limitcycle[7] = mvAbs;
-			
+
 			// Increment iteration count
 			iter++;
 			
@@ -433,7 +433,7 @@ void filterGold()
 	
 		
 		
-#if 0	
+#if 1
 		// store iteration count for each pixel
 		unsigned char* pix = (unsigned char *)&h_iter[i];
 		getColor(iter, pix);
