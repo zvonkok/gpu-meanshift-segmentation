@@ -157,7 +157,7 @@ int main( int argc, char** argv)
 	checkCUDAError("cudaGetDeviceProperties");
 
 	if(!deviceProp.canMapHostMemory) {
-		fprintf(stderr, "Device %d cannot map host memory!\n", 0);
+		printf("Device %d cannot map host memory!\n", 0);
 	}
 
 		// use command-line specified CUDA device, otherwise use device with highest Gflops/s
@@ -296,8 +296,9 @@ void computeCUDA()
 	// TEXTURE Begin: allocate array and copy image data device to device
 	initTexture(width, height, d_src);
 	
+#define ITER 1.0f
 	START_TIMER //**********************************************************
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < ITER; i++)
 	meanShiftFilter(grid, threads, d_luv, width, height,
 		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
 	
@@ -316,7 +317,7 @@ void computeCUDA()
 
 	// Without limit cycle float timeGOLD = 10679.209000;
 	float timeGOLD = 10284.756f;
-	float timeCUDA = cutGetTimerValue(timer) / 100.0f;
+	float timeCUDA = cutGetTimerValue(timer) / ITER;
 
 	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
 	std::cout << "Processing time CUDA: " << timeCUDA << " (ms) " << std::endl;
