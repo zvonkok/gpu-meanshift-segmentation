@@ -46,9 +46,9 @@ CCFILES		:= meanshiftfilter.cpp		\
 			rlist.cpp 		\
 			rgbluv.cpp 
 
-USEGLLIB         := 1
-USEGLUT	         := 1
-USERENDERCHECKGL := 1
+#USEGLLIB         := 1
+#USEGLUT	         := 1
+#USERENDERCHECKGL := 1
 
 #emu=1
 verbose=1
@@ -61,8 +61,8 @@ keep=1
 
 include ../../common/common.mk
 
-CFLAGS += -g
-CXXFLAGS += $(CFLAGS)
+#CFLAGS += -g
+#CXXFLAGS += $(CFLAGS)
 NVCCFLAGS += --opencc-options -LIST:source=on --ptxas-options=-v -use_fast_math -arch sm_11
 
 
