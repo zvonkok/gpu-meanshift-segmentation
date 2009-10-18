@@ -9,7 +9,7 @@
 texture<float4, 2, cudaReadModeElementType> tex;
 
 __global__ void meanshiftfilter(
-	float4* d_luv, 
+	float4* d_luv, float offset,
 	float width, float height,
 	float sigmaS, float sigmaR,
 	float rsigmaS, float rsigmaR)
@@ -24,14 +24,11 @@ __global__ void meanshiftfilter(
 	float ix = blockIdx.x * blockDim.x + threadIdx.x;
 	float iy = blockIdx.y * blockDim.y + threadIdx.y;
 	
-	// Assign window center (window centers are
-	// initialized by createLattice to be the point
-	// data[i])	
-	float4 luv = tex2D(tex, ix, iy); 	// float4 luv = d_src[i];
+	float4 luv = tex2D(tex, ix, iy + offset); 
 	
 	// Initialize spatial/range vector (coordinates + color values)
 	float yj_0 = ix;
-	float yj_1 = iy;
+	float yj_1 = iy + offset;
 	float yj_2 = luv.x;
 	float yj_3 = luv.y;
 	float yj_4 = luv.z;
@@ -130,7 +127,7 @@ __global__ void meanshiftfilter(
 				if (diff0 >= 1.0f) continue;
 				
 				luv = tex2D(tex, x, y); 
-				
+				 
 				float diff1 = 0.0f;
 	
 				float dl_0 = luv.x - yj_2;               
@@ -257,12 +254,13 @@ extern "C" void initTexture(int width, int height, void *d_src)
 }
 
 
-extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_luv,
+extern "C" void meanShiftFilter(dim3 grid, dim3 threads, 
+		float4* d_luv, float offset,
 		float width, float height,
 		float sigmaS, float sigmaR,
 		float rsigmaS, float rsigmaR)
 {
-	meanshiftfilter<<< grid, threads>>>(d_luv, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
+	meanshiftfilter<<< grid, threads>>>(d_luv, offset, width, height, sigmaS, sigmaR, rsigmaS, rsigmaR);
 }
 
 
