@@ -2,28 +2,26 @@
 #include "rgbluv.h"
 
 #include <iostream>
-#include <cuda_runtime_api.h>
-
-
-#include <sys/time.h>
-
 #include <math.h>
+
+#include <CL/cl.h>
 
 #include "meanshiftfilter_common.h" 
 
-struct timeval start, finish;
-float msec;
+//struct timeval start, finish;
 
-extern float4 * h_src;
-extern float4 * h_dst;
-extern unsigned int * h_iter;
+cl_float msec;
+
+extern cl_float4 * h_src;
+extern cl_float4 * h_dst;
+extern cl_uint * h_iter;
 
 
 extern void connect(void);
 extern void boundaries(void);
 
 void filterGold();
-void uniformLSearch(float, float, float*);
+void uniformLSearch(cl_float, cl_float, cl_float*);
 
 
 /* 
@@ -36,7 +34,7 @@ void uniformLSearch(float, float, float*);
  have had to compare results on the CPU<->GPU and wrote some code to change the
  FPU settings. Firstly a quick explanation: By default the CPU (FPU) is set to
  use 80 bit floating point internally. This means that when you load in an
- integer (fild) or a single / double float (fld) it gets converted to a 80 bit
+ integer (fild) or a single / double cl_float (fld) it gets converted to a 80 bit
  number inside the FPU stack. All operations are performed internally at 80 bits
  and when storing the result it converts back to the correct floating point width
  (single / double) (fst / fstp). This method of operation is desirable as it
@@ -44,7 +42,7 @@ void uniformLSearch(float, float, float*);
  course while very useful for computing on the CPU this is not how the CUDA
  devices operate.
  
- In CUDA all operations on a float occur at 32 bits (64 bits for a double) which
+ In CUDA all operations on a cl_float occur at 32 bits (64 bits for a double) which
  means your intermediate operations will sometimes lose precision. In CUDA
  Emulator mode your code is actually run on the CPU and it uses the FPU’s default
  precision and rounding settings. This causes the difference in output.
@@ -83,26 +81,27 @@ void computeGold(void)
 	//    2 : round up
 	//    3 : round down
 	/*
-	typedef unsigned char BYTE;
+	typedef cl_uchar BYTE;
 	typedef unsigned short WORD;
 	extern void set_FPU_Precision_Rounding(BYTE precision, BYTE rounding);
 	set_FPU_Precision_Rounding(53, 0);
 	*/
 	
+	/*
 	start.tv_sec = 0;
 	start.tv_usec = 0;
 	
 	finish.tv_sec = 0;
 	finish.tv_usec = 0;
-
+*/
 	
 	
 #ifdef __linux__
 	// Prepare the RGB data 
-	for(unsigned int i = 0; i < L; i++) {
-		extern unsigned int * h_img;
-		unsigned char * pix = (unsigned char *)&h_img[i];
-		RGBtoLUV(pix, (float*)&h_src[i]);
+	for(cl_uint i = 0; i < L; i++) {
+		extern cl_uint * h_img;
+		cl_uchar * pix = (cl_uchar *)&h_img[i];
+		RGBtoLUV(pix, (cl_float*)&h_src[i]);
 	}
 
 	gettimeofday(&start, NULL);
@@ -118,35 +117,35 @@ void computeGold(void)
 	filterGold();
 #endif	
 	
-	for(unsigned int i = 0; i < L; i++) {
-		unsigned char * pix = (unsigned char *)&h_filt[i];
-		LUVtoRGB((float*)&h_dst[i], pix);
+	for(cl_uint i = 0; i < L; i++) {
+		cl_uchar * pix = (cl_uchar *)&h_filt[i];
+		LUVtoRGB((cl_float*)&h_dst[i], pix);
 	}
 
 	connect();
 	boundaries();
 }
 
-void uniformSearchGold(float *Mh, float *yk, float* wsum)
+void uniformSearchGold(cl_float *Mh, cl_float *yk, cl_float* wsum)
 {
 	
 	//Declare variables
-	int	i, j, h = height, w = width;
+	cl_int	i, j, h = height, w = width;
 	
-	int	dataPoint;
+	cl_int	dataPoint;
 	
-	float diff0, diff1;
-	float dx, dy, dl, du, dv;
+	cl_float diff0, diff1;
+	cl_float dx, dy, dl, du, dv;
 	
-	float data_l, data_u, data_v;
+	cl_float data_l, data_u, data_v;
 	//Define bounds of lattice...
 	
 	//the lattice is a 2dimensional subspace whose
 	//search window bandwidth is specified by sigmaS:
-	int LowerBoundX = yk[0] - sigmaS;
-	int LowerBoundY = yk[1] - sigmaS;
-	int UpperBoundX = yk[0] + sigmaS;
-	int UpperBoundY = yk[1] + sigmaS;
+	cl_int LowerBoundX = yk[0] - sigmaS;
+	cl_int LowerBoundY = yk[1] - sigmaS;
+	cl_int UpperBoundX = yk[0] + sigmaS;
+	cl_int UpperBoundY = yk[1] + sigmaS;
 	
 	if (LowerBoundX < 0)
 		LowerBoundX = 0;
@@ -168,9 +167,9 @@ void uniformSearchGold(float *Mh, float *yk, float* wsum)
 			//get index into data array
 			dataPoint = (i * width + j);
 			
-			data_l = h_src[dataPoint].x;
-			data_u = h_src[dataPoint].y;
-			data_v = h_src[dataPoint].z;
+			data_l = h_src[dataPoint][0];
+			data_u = h_src[dataPoint][1];
+			data_v = h_src[dataPoint][2];
 			
 			//Determine if inside search window
 			//Calculate distance squared of sub-space s	
@@ -211,7 +210,7 @@ void uniformSearchGold(float *Mh, float *yk, float* wsum)
 }
 
 
-void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
+void latticeVectorGold(cl_float *Mh_ptr, cl_float *yk_ptr)
 {
 	
 	// Initialize mean shift vector
@@ -223,7 +222,7 @@ void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
 	Mh_ptr[4] = 0;
 	
 	// Initialize wsum
-	float wsum = 0;
+	cl_float wsum = 0;
 	
 	// Perform lattice search summing
 	// all the points that lie within the search
@@ -244,7 +243,7 @@ void latticeVectorGold(float *Mh_ptr, float *yk_ptr)
 	
 }
 
-void getColor( int iter, unsigned char* pix) 
+void getColor( cl_int iter, cl_uchar* pix) 
 {
 	if (iter >= 0 && iter < 10) {
 		pix[0] = 242;
@@ -309,28 +308,28 @@ void getColor( int iter, unsigned char* pix)
 void filterGold()
 {
 	// Declare Variables
-	int   iter;
-	volatile float mvAbs;
+	cl_int   iter;
+	volatile cl_float mvAbs;
 	
 	// Traverse each data point applying mean shift
 	// to each data point
 	
 	// Allcocate memory for yk
-	float	yk[5];
-	float	Mh[5];
+	cl_float	yk[5];
+	cl_float	Mh[5];
 	
-	for(unsigned int i = 0; i < L; i++)
+	for(cl_uint i = 0; i < L; i++)
 	{
 			
 		// Assign window center (window centers are
 		// initialized by createLattice to be the point
 		// data[i])
-		yk[0] = (float)(i%width); // x
-		yk[1] = (float)(i/width); // y 
+		yk[0] = (cl_float)(i%width); // x
+		yk[1] = (cl_float)(i/width); // y 
 		
-		yk[2] = h_src[i].x; // l
-		yk[3] = h_src[i].y; // u
-		yk[4] = h_src[i].z; // v
+		yk[2] = h_src[i][0]; // l
+		yk[3] = h_src[i][1]; // u
+		yk[4] = h_src[i][2]; // v
 		
 		// Calculate the mean shift vector using the lattice
 		latticeVectorGold(Mh, yk);
@@ -354,7 +353,7 @@ void filterGold()
 		//       does not have any theoretical importance
 		iter = 1;
 		
-		volatile float limitcycle[8] = 
+		volatile cl_float limitcycle[8] = 
 		{ 
 			12345678.0f,
 			12345678.0f, 
@@ -427,15 +426,15 @@ void filterGold()
 		
 		
 		//store result into msRawData...
-		h_dst[i].x = (float)(yk[0 + 2]);
-		h_dst[i].y = (float)(yk[1 + 2]);
-		h_dst[i].z = (float)(yk[2 + 2]);
+		h_dst[i][0] = (cl_float)(yk[0 + 2]);
+		h_dst[i][1] = (cl_float)(yk[1 + 2]);
+		h_dst[i][2] = (cl_float)(yk[2 + 2]);
 	
 		
 		
 #if 1
 		// store iteration count for each pixel
-		unsigned char* pix = (unsigned char *)&h_iter[i];
+		cl_uchar* pix = (cl_uchar *)&h_iter[i];
 		getColor(iter, pix);
 #endif		
 	

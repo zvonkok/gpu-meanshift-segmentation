@@ -3,7 +3,7 @@
 #include	<stdlib.h>
 
 
-RegionList::RegionList(int maxRegions_, int L_, int N_)
+RegionList::RegionList(cl_int maxRegions_, cl_int L_, cl_int N_)
 {
 	if((maxRegions = maxRegions_) <= 0)
 		ErrorHandler("RegionList", "Maximum number of regions is zero or negative.", FATAL);
@@ -11,7 +11,7 @@ RegionList::RegionList(int maxRegions_, int L_, int N_)
 		ErrorHandler("RegionList", "Dimension is zero or negative.", FATAL);
 	if((L = L_) <= 0)
 		ErrorHandler("RegionList", "Length of data set is zero or negative.", FATAL);
-	if(!(indexTable = new int [L]))
+	if(!(indexTable = new cl_int [L]))
 		ErrorHandler("RegionList", "Not enough memory.", FATAL);
 	if(!(regionList = new REGION [maxRegions]))
 		ErrorHandler("RegionList", "Not enough memory.", FATAL);
@@ -25,7 +25,7 @@ RegionList::~RegionList( void )
 	delete [] indexTable;
 }
 
-void RegionList::AddRegion(int label, int pointCount, int *indeces)
+void RegionList::AddRegion(cl_int label, cl_int pointCount, cl_int *indeces)
 {
 
 	//make sure that there is enough room for this new region 
@@ -49,7 +49,7 @@ void RegionList::AddRegion(int label, int pointCount, int *indeces)
 	regionList[freeRegion].region		= freeBlockLoc;
 
 	//copy indeces into indexTable using freeBlock...
-	int i;
+	cl_int i;
 	for(i = 0; i < pointCount; i++)
 		indexTable[freeBlockLoc+i] = indeces[i];
 
@@ -70,24 +70,24 @@ void RegionList::Reset( void )
 	freeRegion = numRegions = freeBlockLoc = 0;
 }
 
-int RegionList::GetNumRegions( void )
+cl_int RegionList::GetNumRegions( void )
 {
 	return numRegions;
 }
 
-int RegionList::GetLabel(int regionNum)
+cl_int RegionList::GetLabel(cl_int regionNum)
 {
 	return regionList[regionNum].label;
 }
 
 
-int RegionList::GetRegionCount(int regionNum)
+cl_int RegionList::GetRegionCount(cl_int regionNum)
 {
 	return regionList[regionNum].pointCount;
 }
 
 
-int *RegionList::GetRegionIndeces(int regionNum)
+cl_int *RegionList::GetRegionIndeces(cl_int regionNum)
 {
 	return &indexTable[regionList[regionNum].region];
 }

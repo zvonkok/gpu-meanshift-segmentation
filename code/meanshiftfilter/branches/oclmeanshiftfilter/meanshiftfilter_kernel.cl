@@ -6,10 +6,10 @@
 #include "meanshiftfilter_common.h"
 
 // declare texture reference for 2D float texture
-texture<float4, 2, cudaReadModeElementType> tex;
+texture<cl_float4, 2, cudaReadModeElementType> tex;
 
 __global__ void meanshiftfilter(
-	float4* d_luv, float offset,
+	cl_float4* d_luv, float offset,
 	float width, float height,
 	float sigmaS, float sigmaR,
 	float rsigmaS, float rsigmaR)
@@ -21,17 +21,17 @@ __global__ void meanshiftfilter(
 	float wsum;
 	
 
-	float ix = blockIdx.x * blockDim.x + threadIdx.x;
+	float ix = blockIdx[0] * blockDim[0] + threadIdx[0];
 	float iy = blockIdx.y * blockDim.y + threadIdx.y;
 	
-	float4 luv = tex2D(tex, ix, iy + offset); 
+	cl_float4 luv = tex2D(tex, ix, iy + offset); 
 	
 	// Initialize spatial/range vector (coordinates + color values)
 	float yj_0 = ix;
 	float yj_1 = iy + offset;
-	float yj_2 = luv.x;
-	float yj_3 = luv.y;
-	float yj_4 = luv.z;
+	float yj_2 = luv[0];
+	float yj_3 = luv[1];
+	float yj_4 = luv[2];
 
 	// Initialize mean shift vector
 	float ms_0 = 0.0f;
@@ -130,9 +130,9 @@ __global__ void meanshiftfilter(
 				 
 				float diff1 = 0.0f;
 	
-				float dl_0 = luv.x - yj_2;               
-				float du_0 = luv.y - yj_3;               
-				float dv_0 = luv.z - yj_4;
+				float dl_0 = luv[0] - yj_2;               
+				float du_0 = luv[1] - yj_3;               
+				float dv_0 = luv[2] - yj_4;
 				
 				float dl = dl_0 * rsigmaR; 
 				float du = du_0 * rsigmaR;
@@ -155,9 +155,9 @@ __global__ void meanshiftfilter(
 				// considered point is within sphere => accumulate to mean
 				ms_0 += x;
 				ms_1 += y;
-				ms_2 += luv.x;
-				ms_3 += luv.y;
-				ms_4 += luv.z;
+				ms_2 += luv[0];
+				ms_3 += luv[1];
+				ms_4 += luv[2];
 				wsum += 1.0f; //weight
 
 			}
@@ -241,9 +241,9 @@ __global__ void meanshiftfilter(
 extern "C" void initTexture(int width, int height, void *d_src)
 {
 	cudaArray* d_array;
-	int size = width * height * sizeof(float4);
+	int size = width * height * sizeof(cl_float4);
 
-	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc<float4> ();
+	cudaChannelFormatDesc channelDesc = cudaCreateChannelDesc<cl_float4> ();
 
 	cutilSafeCall(cudaMallocArray(&d_array, &channelDesc, width, height )); 
 	cutilSafeCall(cudaMemcpyToArray(d_array, 0, 0, d_src, size, cudaMemcpyDeviceToDevice));
@@ -255,7 +255,7 @@ extern "C" void initTexture(int width, int height, void *d_src)
 
 
 extern "C" void meanShiftFilter(dim3 grid, dim3 threads, 
-		float4* d_luv, float offset,
+		cl_float4* d_luv, float offset,
 		float width, float height,
 		float sigmaS, float sigmaR,
 		float rsigmaS, float rsigmaR)
