@@ -140,9 +140,10 @@ void checkCUDAError(const char *msg) {
 */
 
 
-cl_int main( cl_int argc, char** argv) 
+int main(int argc, char** argv) 
 {	
-
+	cl_int err;
+	cl_context context = clCreateContextFromType(0, CL_DEVICE_TYPE_GPU, NULL, NULL, &err);
 	
 
 	/*
