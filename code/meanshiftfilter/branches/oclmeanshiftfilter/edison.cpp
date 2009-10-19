@@ -14,86 +14,71 @@
 #include "rgbluv.h"
 #include "filter.h"
 
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-#include <math.h>
-#include <assert.h>
-#include <stdlib.h>
 
-#include <GL/glew.h>
-
-#if defined(__APPLE__) || defined(__MACOSX)
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
-
-#include <cuda_runtime_api.h>
-#include <cutil_inline.h>
+#include <oclUtils.h>
 
 //////////////////////////////////////////////////////////////////////////////////////
 // cleaned up stuff 
-float sigmaS;
-float sigmaR;
-float minRegion;
+cl_float sigmaS;
+cl_float sigmaR;
+cl_float minRegion;
 
 
 
-extern unsigned int height;
-extern unsigned int width;	
+extern cl_uint height;
+extern cl_uint width;	
 
-extern unsigned int * h_filt;
-extern unsigned int * h_segm;
-extern unsigned char * h_bndy;
+extern cl_uint * h_filt;
+extern cl_uint * h_segm;
+extern cl_uchar * h_bndy;
 
-extern float4 * h_src;
-extern float4 * h_dst;
-
-
-
-int *boundaries_;
-int numBoundaries_;
-
-unsigned int L;
-unsigned int N;
+extern cl_float4 * h_src;
+extern cl_float4 * h_dst;
 
 
-int neigh[8];			// Connect
-int *labels;			// Connect
-int	*modePointCounts;	// Connect
-float *modes;			// Connect
 
-int	*indexTable;			// Fill
-float LUV_treshold = 1.0f;	// Fill
-unsigned int regionCount;	// Fill
+cl_int *boundaries_;
+cl_int numBoundaries_;
+
+cl_uint L;
+cl_uint N;
+
+
+cl_int neigh[8];			// Connect
+cl_int *labels;			// Connect
+cl_int	*modePointCounts;	// Connect
+cl_float *modes;			// Connect
+
+cl_int	*indexTable;			// Fill
+cl_float LUV_treshold = 1.0f;	// Fill
+cl_uint regionCount;	// Fill
 
 RegionList *regionList;		// DefineBoundaries
 
-unsigned char *visitTable;	// FuseRegions
-float rR2;					// FuseRegions	
+cl_uchar *visitTable;	// FuseRegions
+cl_float rR2;					// FuseRegions	
 
 
 RAList *raList;				// BuildRam
 RAList *freeRAList;			// BuildRam
 RAList *raPool;				// BuildRam	
 
-float *weightMap;			// TransitiveClosure
-float epsilon = 1.0f;		// TransitiveClosure
+cl_float *weightMap;			// TransitiveClosure
+cl_float epsilon = 1.0f;		// TransitiveClosure
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-void Fill(int regionLoc, int label)
+void Fill(cl_int regionLoc, cl_int label)
 {
 	//declare variables
-	unsigned int k;
-	int neighLoc, neighborsFound, imageSize	= width*height;
+	cl_uint k;
+	cl_int neighLoc, neighborsFound, imageSize	= width*height;
 	
 	//Fill region starting at region location
 	//using labels...
 	
 	//initialzie indexTable
-	int	index		= 0;
+	cl_int	index		= 0;
 	indexTable[0]	= regionLoc;
 	
 	//increment mode point counts for this region to
@@ -109,7 +94,7 @@ void Fill(int regionLoc, int label)
 		//check the eight connected neighbors at regionLoc -
 		//if a pixel has similar color to that located at 
 		//regionLoc then declare it as part of this region
-		for (unsigned int i = 0; i < 8; i++)
+		for (cl_uint i = 0; i < 8; i++)
 		{
 			//check bounds and if neighbor has been already labeled
 			neighLoc			= regionLoc + neigh[i];
@@ -117,11 +102,11 @@ void Fill(int regionLoc, int label)
 			{
 				for (k = 0; k < N; k++)
 				{
-					if (fabs(h_dst[regionLoc].x - h_dst[neighLoc].x) >= LUV_treshold)
+					if (fabs(h_dst[regionLoc][0] - h_dst[neighLoc][0]) >= LUV_treshold)
 						break;
-					if (fabs(h_dst[regionLoc].y - h_dst[neighLoc].y) >= LUV_treshold)
+					if (fabs(h_dst[regionLoc][1] - h_dst[neighLoc][1]) >= LUV_treshold)
 						break;
-					if (fabs(h_dst[regionLoc].z - h_dst[neighLoc].z) >= LUV_treshold)
+					if (fabs(h_dst[regionLoc][2] - h_dst[neighLoc][2]) >= LUV_treshold)
 						break;
 				}
 				
@@ -175,7 +160,7 @@ void Connect( void )
 	neigh[7]	= width+1;
 	
 	//initialize labels and modePointCounts
-	unsigned int i;
+	cl_uint i;
 	for(i = 0; i < width*height; i++)
 	{
 		labels[i]			= -1;
@@ -183,7 +168,7 @@ void Connect( void )
 	}
 	
 	//Traverse the image labeling each new region encountered
-	unsigned int label = -1;
+	cl_uint label = -1;
 	for(i = 0; i < height*width; i++)
 	{
 		//if this region has not yet been labeled - label it
@@ -193,9 +178,9 @@ void Connect( void )
 			labels[i] = ++label;
 			
 			//copy region color into modes
-			modes[(N*label)+0] = h_dst[i].x;
-			modes[(N*label)+1] = h_dst[i].y;
-			modes[(N*label)+2] = h_dst[i].z;
+			modes[(N*label)+0] = h_dst[i][0];
+			modes[(N*label)+1] = h_dst[i][1];
+			modes[(N*label)+2] = h_dst[i][2];
 			
 			//populate labels with label for this specified region
 			//calculating modePointCounts[label]...
@@ -213,11 +198,11 @@ void Connect( void )
 void DefineBoundaries( void )
 {
 	//declare and allocate memory for boundary map and count
-	int	*boundaryMap,	*boundaryCount = NULL;
-	if((!(boundaryMap = new int [L]))||(!(boundaryCount = new int [regionCount])));
+	cl_int	*boundaryMap,	*boundaryCount = NULL;
+	if((!(boundaryMap = new cl_int [L]))||(!(boundaryCount = new cl_int [regionCount])));
 	
 	//initialize boundary map and count
-	unsigned int i;
+	cl_uint i;
 	for(i = 0; i < L; i++)
 		boundaryMap[i]		= -1;
 	for(i = 0; i < regionCount; i++)
@@ -226,7 +211,7 @@ void DefineBoundaries( void )
 	//initialize and declare total boundary count -
 	//the total number of boundary pixels present in
 	//the segmented image
-	int	totalBoundaryCount	= 0;
+	cl_int	totalBoundaryCount	= 0;
 	
 	//traverse the image checking the right and bottom
 	//four connected neighbors of each pixel marking
@@ -236,7 +221,7 @@ void DefineBoundaries( void )
 	//***********************************************************************
 	//***********************************************************************
 	
-	int	label, dataPoint;
+	cl_int	label, dataPoint;
 	
 	//first row (every pixel is a boundary pixel)
 	for(i = 0; i < width; i++)
@@ -256,7 +241,7 @@ void DefineBoundaries( void )
 		boundaryCount[label]++;
 		totalBoundaryCount++;
 		
-		for(unsigned int j = 1; j < width - 1; j++)
+		for(cl_uint j = 1; j < width - 1; j++)
 		{
 			//define datapoint and its right and bottom
 			//four connected neighbors
@@ -283,7 +268,7 @@ void DefineBoundaries( void )
 	}
 	
 	//last row (every pixel is a boundary pixel) (i = height-1)
-	unsigned int start	= (height-1)*width, stop = height*width;
+	cl_uint start	= (height-1)*width, stop = height*width;
 	for(i = start; i < stop; i++)
 	{
 		boundaryMap[i]		= label	= labels[i];
@@ -300,10 +285,10 @@ void DefineBoundaries( void )
 	//***********************************************************************
 	//***********************************************************************
 	
-	int	*boundaryBuffer	= new int [totalBoundaryCount], *boundaryIndex	= new int [regionCount];
+	cl_int	*boundaryBuffer	= new cl_int [totalBoundaryCount], *boundaryIndex	= new cl_int [regionCount];
 	
 	//use boundary count to initialize boundary index...
-	int counter = 0;
+	cl_int counter = 0;
 	for(i = 0; i < regionCount; i++)
 	{
 		boundaryIndex[i]	= counter;
@@ -366,10 +351,10 @@ RegionList *GetBoundaries( void )
 	DefineBoundaries();
 	return regionList;
 }
-bool InWindow(int mode1, int mode2)
+bool InWindow(cl_int mode1, cl_int mode2)
 {
 	// ISRUN
-	int		k		= 1, s	= 0, p;
+	cl_int		k		= 1, s	= 0, p;
 	double	diff	= 0, el;
 	while((diff < 0.25)&&(k != 2)) // Partial Distortion Search
 	{
@@ -391,12 +376,12 @@ bool InWindow(int mode1, int mode2)
 	return (bool)(diff < 0.25);
 }
 
-float SqDistance(int mode1, int mode2)
+cl_float SqDistance(cl_int mode1, cl_int mode2)
 {
 	
 	// ISRUN
-	int		k		= 1, s	= 0, p;
-	float	dist	= 0, el;
+	cl_int		k		= 1, s	= 0, p;
+	cl_float	dist	= 0, el;
 	for(k = 1; k < 2; k++)
 	{
 		//Calculate distance squared of sub-space s	
@@ -429,7 +414,7 @@ void BuildRAM( void )
 	}
 	
 	//initialize the region adjacency list
-	unsigned int i;
+	cl_uint i;
 	for(i = 0; i < regionCount; i++)
 	{
 		raList[i].edgeStrength		= 0;
@@ -453,8 +438,8 @@ void BuildRAM( void )
 	//and below the current pixel location thus
 	//determining if a given region is adjacent
 	//to another
-	unsigned int j;
-	int	curLabel, rightLabel, bottomLabel, exists;
+	cl_uint j;
+	cl_int	curLabel, rightLabel, bottomLabel, exists;
 	RAList	*raNode1, *raNode2, *oldRAFreeList;
 	for(i = 0; i < height - 1; i++)
 	{
@@ -639,18 +624,18 @@ void BuildRAM( void )
 }
 
 
-void Prune(int minRegion)
+void Prune(cl_int minRegion)
 {
 	
 	//allocate memory for mode and point count temporary buffers...
-	float	*modes_buffer	= new float	[N*regionCount];
-	int		*MPC_buffer		= new int	[regionCount];
+	cl_float	*modes_buffer	= new cl_float	[N*regionCount];
+	cl_int		*MPC_buffer		= new cl_int	[regionCount];
 	
 	//allocate memory for label buffer
-	int	*label_buffer		= new int	[regionCount];
+	cl_int	*label_buffer		= new cl_int	[regionCount];
 	
 	//Declare variables
-	int candidate, iCanEl, neighCanEl, iMPC, label, oldRegionCount, minRegionCount;
+	cl_int candidate, iCanEl, neighCanEl, iMPC, label, oldRegionCount, minRegionCount;
 	double	minSqDistance, neighborDistance;
 	RAList	*neighbor;
 	
@@ -680,7 +665,7 @@ void Prune(int minRegion)
 		//    such that or it is the only adjacent region having an area greater than
 		//    minRegion
 		
-		for(unsigned int i = 0; i < regionCount; i++)
+		for(cl_uint i = 0; i < regionCount; i++)
 		{
 			//if the area of the ith region is less than minRegion
 			//join it with its candidate region...
@@ -766,7 +751,7 @@ void Prune(int minRegion)
 		// Step (3):
 		
 		// Level binary trees formed by canonical elements
-		for(unsigned int i = 0; i < regionCount; i++)
+		for(cl_uint i = 0; i < regionCount; i++)
 		{
 			iCanEl	= i;
 			while(raList[iCanEl].label != iCanEl)
@@ -782,14 +767,14 @@ void Prune(int minRegion)
 		// elements generated by step 2.
 		
 		//initialize buffers to zero
-		for(unsigned int i = 0; i < regionCount; i++)
+		for(cl_uint i = 0; i < regionCount; i++)
 			MPC_buffer[i]	= 0;
-		for(unsigned int i = 0; i < N*regionCount; i++)
+		for(cl_uint i = 0; i < N*regionCount; i++)
 			modes_buffer[i]	= 0;
 		
 		//traverse raList accumulating modes and point counts
 		//using canoncial element information...
-		for(unsigned int i = 0; i < regionCount; i++)
+		for(cl_uint i = 0; i < regionCount; i++)
 		{
 			
 			//obtain canonical element of region i
@@ -799,7 +784,7 @@ void Prune(int minRegion)
 			iMPC	= modePointCounts[i];
 			
 			//accumulate modes_buffer[iCanEl]
-			for(unsigned int k = 0; k < N; k++)
+			for(cl_uint k = 0; k < N; k++)
 				modes_buffer[(N*iCanEl)+k] += iMPC*modes[(N*i)+k];
 			
 			//accumulate MPC_buffer[iCanEl]
@@ -817,12 +802,12 @@ void Prune(int minRegion)
 		// a consecute manner to the modePointCounts array
 		
 		//initialize label buffer to -1
-		for(unsigned int i = 0; i < regionCount; i++)
+		for(cl_uint i = 0; i < regionCount; i++)
 			label_buffer[i]	= -1;
 		
 		//traverse raList re-labeling the regions
 		label = -1;
-		for(unsigned int i = 0; i < regionCount; i++)
+		for(cl_uint i = 0; i < regionCount; i++)
 		{
 			//obtain canonical element of region i
 			iCanEl	= raList[i].label;
@@ -834,7 +819,7 @@ void Prune(int minRegion)
 				
 				//recompute mode storing the result in modes[label]...
 				iMPC	= MPC_buffer[iCanEl];
-				for(unsigned int k = 0; k < N; k++)
+				for(cl_uint k = 0; k < N; k++)
 					modes[(N*label)+k]	= (modes_buffer[(N*iCanEl)+k])/(iMPC);
 				
 				//assign a corresponding mode point count for this region into
@@ -852,7 +837,7 @@ void Prune(int minRegion)
 		// Use the label buffer to reconstruct the label map, which specified
 		// the new image given its new regions calculated above
 		
-		for(unsigned int i = 0; i < height*width; i++)
+		for(cl_uint i = 0; i < height*width; i++)
 			labels[i]	= label_buffer[raList[labels[i]].label];
 		
 		
@@ -893,10 +878,10 @@ void TransitiveClosure(void)
 	//   namely each region is initialized to have itself as its canonical element).
 	
 	//Traverse RAM attempting to join raList[i] with its neighbors...
-	int	iCanEl, neighCanEl;
-	float	threshold;
+	cl_int	iCanEl, neighCanEl;
+	cl_float	threshold;
 	RAList	*neighbor;
-	for(unsigned int i = 0; i < regionCount; i++)
+	for(cl_uint i = 0; i < regionCount; i++)
 	{
 		//aquire first neighbor in region adjacency list pointed to
 		//by raList[i]
@@ -955,7 +940,7 @@ void TransitiveClosure(void)
 	// Step (3):
 	
 	// Level binary trees formed by canonical elements
-	for(unsigned int i = 0; i < regionCount; i++)
+	for(cl_uint i = 0; i < regionCount; i++)
 	{
 		iCanEl	= i;
 		while(raList[iCanEl].label != iCanEl)
@@ -973,19 +958,19 @@ void TransitiveClosure(void)
 	// elements generated by step 2.
 	
 	//allocate memory for mode and point count temporary buffers...
-	float	*modes_buffer	= new float	[N*regionCount];
-	int		*MPC_buffer		= new int	[regionCount];
+	cl_float	*modes_buffer	= new cl_float	[N*regionCount];
+	cl_int		*MPC_buffer		= new cl_int	[regionCount];
 	
 	//initialize buffers to zero
-	for(unsigned int i = 0; i < regionCount; i++)
+	for(cl_uint i = 0; i < regionCount; i++)
 		MPC_buffer[i]	= 0;
-	for(unsigned int i = 0; i < N*regionCount; i++)
+	for(cl_uint i = 0; i < N*regionCount; i++)
 		modes_buffer[i]	= 0;
 	
 	//traverse raList accumulating modes and point counts
 	//using canoncial element information...
-	int iMPC;
-	for(unsigned int i = 0; i < regionCount; i++) {
+	cl_int iMPC;
+	for(cl_uint i = 0; i < regionCount; i++) {
 		//obtain canonical element of region i
 		iCanEl	= raList[i].label;
 		
@@ -993,7 +978,7 @@ void TransitiveClosure(void)
 		iMPC	= modePointCounts[i];
 		
 		//accumulate modes_buffer[iCanEl]
-		for(unsigned int k = 0; k < N; k++)
+		for(cl_uint k = 0; k < N; k++)
 			modes_buffer[(N*iCanEl)+k] += iMPC*modes[(N*i)+k];
 		
 		//accumulate MPC_buffer[iCanEl]
@@ -1011,15 +996,15 @@ void TransitiveClosure(void)
 	// a consecute manner to the modePointCounts array
 	
 	//allocate memory for label buffer
-	int	*label_buffer	= new int [regionCount];
+	cl_int	*label_buffer	= new cl_int [regionCount];
 	
 	//initialize label buffer to -1
-	for(unsigned int i = 0; i < regionCount; i++)
+	for(cl_uint i = 0; i < regionCount; i++)
 		label_buffer[i]	= -1;
 	
 	//traverse raList re-labeling the regions
-	int	label = -1;
-	for(unsigned int i = 0; i < regionCount; i++)
+	cl_int	label = -1;
+	for(cl_uint i = 0; i < regionCount; i++)
 	{
 		//obtain canonical element of region i
 		iCanEl	= raList[i].label;
@@ -1031,7 +1016,7 @@ void TransitiveClosure(void)
 			
 			//recompute mode storing the result in modes[label]...
 			iMPC	= MPC_buffer[iCanEl];
-			for(unsigned int k = 0; k < N; k++)
+			for(cl_uint k = 0; k < N; k++)
 				modes[(N*label)+k]	= (modes_buffer[(N*iCanEl)+k])/(iMPC);
 			
 			//assign a corresponding mode point count for this region into
@@ -1041,7 +1026,7 @@ void TransitiveClosure(void)
 	}
 	
 	//re-assign region count using label counter
-	// int	oldRegionCount	= regionCount;
+	// cl_int	oldRegionCount	= regionCount;
 	regionCount	= label+1;
 	
 	// (c)
@@ -1049,7 +1034,7 @@ void TransitiveClosure(void)
 	// Use the label buffer to reconstruct the label map, which specified
 	// the new image given its new regions calculated above
 	
-	for(unsigned int i = 0; i < height*width; i++)
+	for(cl_uint i = 0; i < height*width; i++)
 		labels[i]	= label_buffer[raList[labels[i]].label];
 	
 	//de-allocate memory
@@ -1079,19 +1064,19 @@ void DestroyRAM( void )
 }
 
 
-void FuseRegions(float sigmaS, int minRegion)
+void FuseRegions(cl_float sigmaS, cl_int minRegion)
 {
 	//allocate memory visit table
-	visitTable = new unsigned char [L];
+	visitTable = new cl_uchar [L];
 	
 	//Apply transitive closure iteratively to the regions classified
 	//by the RAM updating labels and modes until the color of each neighboring
 	//region is within sqrt(rR2) of one another.
-	rR2 = (float)(sigmaS*sigmaS*0.25);
+	rR2 = (cl_float)(sigmaS*sigmaS*0.25);
 	
 	TransitiveClosure();
-	int oldRC = regionCount;
-	int deltaRC, counter = 0;
+	cl_int oldRC = regionCount;
+	cl_int deltaRC, counter = 0;
 	do {
 		TransitiveClosure();
 		deltaRC = oldRC-regionCount;
@@ -1111,13 +1096,13 @@ void FuseRegions(float sigmaS, int minRegion)
 	DestroyRAM();
 	
 	//output to h_dst
-	int label;
-	for(unsigned int i = 0; i < L; i++)
+	cl_int label;
+	for(cl_uint i = 0; i < L; i++)
 	{
 		label	= labels[i];
-		h_dst[i].x = modes[N*label+0];
-		h_dst[i].y = modes[N*label+1];
-		h_dst[i].z = modes[N*label+2];
+		h_dst[i][0] = modes[N*label+0];
+		h_dst[i][1] = modes[N*label+1];
+		h_dst[i][2] = modes[N*label+2];
 	}
 	
 	//done.
@@ -1128,19 +1113,19 @@ void FuseRegions(float sigmaS, int minRegion)
 void connect() 
 {
 	//Allocate memory used to store image modes and their corresponding regions...
-	modes = new float [L*(N+2)];
-	labels = new int [L];
-	modePointCounts = new int [L];
-	indexTable = new int [L];
+	modes = new cl_float [L*(N+2)];
+	labels = new cl_int [L];
+	modePointCounts = new cl_int [L];
+	indexTable = new cl_int [L];
 	//Label image regions, also if segmentation is not to be
 	//performed use the resulting classification structure to
 	//calculate the image boundaries...
 	Connect();
 	FuseRegions(sigmaR, minRegion);
 	
-	for(unsigned int i = 0; i < height * width; i++) {
-		unsigned char * pix = (unsigned char *)&h_segm[i];
-		LUVtoRGB((float*)&h_dst[i], pix);
+	for(cl_uint i = 0; i < height * width; i++) {
+		cl_uchar * pix = (cl_uchar *)&h_segm[i];
+		LUVtoRGB((cl_float*)&h_dst[i], pix);
 	}
 
 }
@@ -1149,25 +1134,25 @@ void boundaries()
 {
 	//define the boundaries
 	RegionList *regionList        = GetBoundaries();
-	int        *regionIndeces     = regionList->GetRegionIndeces(0);
-	int        numRegions         = regionList->GetNumRegions();
+	cl_int        *regionIndeces     = regionList->GetRegionIndeces(0);
+	cl_int        numRegions         = regionList->GetNumRegions();
 	
 	numBoundaries_ = 0;
 	
 	
-	for(int i = 0; i < numRegions; i++) {
+	for(cl_int i = 0; i < numRegions; i++) {
 		numBoundaries_ += regionList->GetRegionCount(i);
 	}
 	
-	boundaries_ = new int [numBoundaries_];
-	for(int i = 0; i < numBoundaries_; i++) {
+	boundaries_ = new cl_int [numBoundaries_];
+	for(cl_int i = 0; i < numBoundaries_; i++) {
 		boundaries_[i] = regionIndeces[i];
 	}
 	
-	memset(h_bndy, 255, height * width * sizeof(unsigned char));
+	memset(h_bndy, 255, height * width * sizeof(cl_uchar));
 
 
-	for(int i = 0; i < numBoundaries_; i++) {
+	for(cl_int i = 0; i < numBoundaries_; i++) {
 		h_bndy[boundaries_[i]] = 0;
 	}	
 }

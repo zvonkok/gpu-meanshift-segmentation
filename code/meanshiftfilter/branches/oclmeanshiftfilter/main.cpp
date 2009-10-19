@@ -33,23 +33,9 @@
  * the above Disclaimer and U.S. Government End Users Notice.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <GL/glew.h>
-#if defined(__APPLE__) || defined(MACOSX)
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
+#include <oclUtils.h>
 
-#include <cuda_runtime.h>
-#include <cutil_inline.h>
-#include <cutil_gl_inline.h>
-#include <cuda_gl_interop.h>
-
-#include <rendercheck_gl.h>
-#include "meanshift_kernels.h"
+#include "meanshift_kernel.h"
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions

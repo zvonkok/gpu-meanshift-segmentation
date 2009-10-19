@@ -2,6 +2,8 @@
 #include	<assert.h>
 #include	<stdlib.h>
 
+#include <CL/cl.h>
+
 #ifndef RLIST_H
 #define RLIST_H
 
@@ -12,12 +14,12 @@ class RAList
 {
 public:
 	
-	int	label;
-	float	edgeStrength;
-	int	edgePixelCount;
+	cl_int	label;
+	cl_float	edgeStrength;
+	cl_int	edgePixelCount;
 	RAList	*next;
 	
-	int Insert(RAList *entry)
+	cl_int Insert(RAList *entry)
 	{
 		if(!next)  {
 			next		= entry;
@@ -45,21 +47,21 @@ public:
 			}
 			cur = cur->next;
 		}
-		return (int)(exists);
+		return (cl_int)(exists);
 	}
 
 	
 private:
 	RAList	*cur, *prev;
-	unsigned char exists;
+	cl_uchar exists;
 };
 
 
 //define region structure
 struct REGION {
-	int label;
-	int pointCount;
-	int region;
+	cl_int label;
+	cl_int pointCount;
+	cl_int region;
 };
 
 //region class prototype...
@@ -67,35 +69,35 @@ class RegionList {
 
 public:
 
-	RegionList(int, int, int);
+	RegionList(cl_int, cl_int, cl_int);
 	~RegionList( void );
-	void AddRegion(int, int, int*);
+	void AddRegion(cl_int, cl_int, cl_int*);
 	void Reset( void );	
-	int	GetNumRegions ( void );
-	int	GetLabel(int);
-	int GetRegionCount(int);
-	int*GetRegionIndeces(int);
+	cl_int	GetNumRegions ( void );
+	cl_int	GetLabel(cl_int);
+	cl_int GetRegionCount(cl_int);
+	cl_int*GetRegionIndeces(cl_int);
 
 private:
 
 	void ErrorHandler(char*, char*, ErrorType);
 	REGION	*regionList;			//array of maxRegions regions
-	int minRegion;
-	int maxRegions;				//defines the number maximum number of regions
+	cl_int minRegion;
+	cl_int maxRegions;				//defines the number maximum number of regions
 						//allowed (determined by user during class construction)
-	int numRegions;				//the number of regions currently stored by the
+	cl_int numRegions;				//the number of regions currently stored by the
 						//region list
-	int freeRegion;				//an index into the regionList pointing to the next
+	cl_int freeRegion;				//an index into the regionList pointing to the next
 						//available region in the regionList
 
-	int *indexTable;			//an array of indexes that point into an external structure
+	cl_int *indexTable;			//an array of indexes that point into an external structure
 						//specifying which points belong to a region
-	int freeBlockLoc;			//points to the next free block of memory in the indexTable
+	cl_int freeBlockLoc;			//points to the next free block of memory in the indexTable
 	//Dimension of data set
-	int N;					//dimension of data set being classified by region list
+	cl_int N;					//dimension of data set being classified by region list
 						//class
 	//Length of the data set
-	int L;					//number of points contained by the data set being classified by
+	cl_int L;					//number of points contained by the data set being classified by
 						//region list class
 
 };

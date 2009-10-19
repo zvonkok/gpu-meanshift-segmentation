@@ -17,20 +17,20 @@ __device__ int my_round(float in_x)
 }
 
 // convert floating point rgba color to 32-bit integer
-__device__ uint rgbaFloatToInt(float4 rgba)
+__device__ uint rgbaFloatToInt(cl_float4 rgba)
 {
    
-    return (uint(rgba.w)<<24) | (uint(rgba.z)<<16) | (uint(rgba.y)<<8) | uint(rgba.x);
+    return (uint(rgba[3])<<24) | (uint(rgba[2])<<16) | (uint(rgba.y)<<8) | uint(rgba.x);
 }
 
 
-__global__ void luvtorgb(float4 *d_luv, unsigned int *d_rgb, unsigned int width)
+__global__ void luvtorgb(cl_float4 *d_luv, unsigned int *d_rgb, unsigned int width)
 {
-	int ix = blockIdx.x * blockDim.x + threadIdx.x;
+	int ix = blockIdx[0] * blockDim[0] + threadIdx[0];
 	int iy = blockIdx.y * blockDim.y + threadIdx.y;
 	int i = ix + iy * width;
 	
-	float4 luv = d_luv[i];
+	cl_float4 luv = d_luv[i];
 	
 	float RGB[3][3] = {
 		{  3.2405f, -1.5371f, -0.4985f },
@@ -45,16 +45,16 @@ __global__ void luvtorgb(float4 *d_luv, unsigned int *d_rgb, unsigned int width)
 	
 	
 	//convert luv to xyz...
-	if(luv.x < 8.0)
-		y = Yn * luv.x * r903;
+	if(luv[0] < 8.0)
+		y = Yn * luv[0] * r903;
 	else
 	{
-		y = (luv.x + 16.0f) * r116;
+		y = (luv[0] + 16.0f) * r116;
 		y *= Yn * y * y;
 	}
 	
-	u_prime	= luv.y / (13.0f * luv.x) + Un_prime;
-	v_prime	= luv.z / (13.0f * luv.x) + Vn_prime;
+	u_prime	= luv[1] / (13.0f * luv[0]) + Un_prime;
+	v_prime	= luv[2] / (13.0f * luv[0]) + Vn_prime;
 	
 	x = 9.0f * u_prime * y / (4.0f * v_prime);
 	z = (12.0f - 3.0f * u_prime - 20.0f * v_prime) * y / (4.0f * v_prime);
@@ -84,13 +84,13 @@ __global__ void luvtorgb(float4 *d_luv, unsigned int *d_rgb, unsigned int width)
 	
 	
 	
-	float4 rgba = { r, g, b, 0.0f };
+	cl_float4 rgba = { r, g, b, 0.0f };
 	d_rgb[i] = rgbaFloatToInt(rgba);
 	return;
 
 }
 
-extern "C" void luvToRgb(dim3 grid, dim3 threads, float4* d_luv, 
+extern "C" void luvToRgb(dim3 grid, dim3 threads, cl_float4* d_luv, 
 	unsigned int* d_rgb, unsigned int width)
 {
 	luvtorgb<<< grid, threads >>>(d_luv, d_rgb, width);

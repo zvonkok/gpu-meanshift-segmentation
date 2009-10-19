@@ -10,22 +10,22 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-#include <cuda_runtime_api.h>
+#include <CL/cl.h>
 
 extern "C" void Filter();
 
-extern unsigned int * h_filt;
-extern float4 * h_src;
-extern float4 * h_dst;
+extern cl_uint * h_filt;
+extern cl_float4 * h_src;
+extern cl_float4 * h_dst;
 
-extern unsigned int height;
-extern unsigned int width;
+extern cl_uint height;
+extern cl_uint width;
 
-extern unsigned int N;
-extern unsigned int L;
+extern cl_uint N;
+extern cl_uint L;
 
-extern float sigmaS;
-extern float sigmaR;
+extern cl_float sigmaS;
+extern cl_float sigmaR;
 
 #endif // FILTER_H
 

@@ -10,8 +10,10 @@
 #ifndef RGBLUV_H
 #define RGBLUV_H
 
-extern "C" void RGBtoLUV(unsigned char *rgb, float *luv);
-extern "C" inline int my_round(float in_x);
-extern "C" void LUVtoRGB(float *luv, unsigned char *rgb);
+#include <CL/cl.h>
+
+extern "C" void RGBtoLUV(cl_uchar *rgb, cl_float *luv);
+extern "C" inline cl_int my_round(cl_float in_x);
+extern "C" void LUVtoRGB(cl_float *luv, cl_uchar *rgb);
 
 #endif // RGBLUV_H
