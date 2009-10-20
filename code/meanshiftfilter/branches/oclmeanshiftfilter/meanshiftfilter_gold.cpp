@@ -8,7 +8,10 @@
 
 #include "meanshiftfilter_common.h" 
 
-//struct timeval start, finish;
+#ifdef __linux__
+#include <sys/time.h>
+struct timeval start, finish;
+#endif
 
 cl_float msec;
 
@@ -87,13 +90,13 @@ void computeGold(void)
 	set_FPU_Precision_Rounding(53, 0);
 	*/
 	
-	/*
+#ifdef __linux__
 	start.tv_sec = 0;
 	start.tv_usec = 0;
 	
 	finish.tv_sec = 0;
 	finish.tv_usec = 0;
-*/
+#endif
 	
 	
 #ifdef __linux__
