@@ -3,10 +3,10 @@
 
 /*
 extern "C" void initTexture(cl_int, cl_int, void*);
-extern "C" void meanShiftFilter(dim3, dim3, 
-		cl_float4*, cl_float, 
+extern "C" void meanShiftFilter(dim3, dim3,
+		cl_float4*, cl_float,
 		cl_float, cl_float,
-		cl_float, cl_float, 
+		cl_float, cl_float,
 		cl_float, cl_float);
 extern "C" void luvToRgb(dim3, dim3, cl_float4*, cl_uint*, cl_uint);
 extern "C" void rgbToLuv(dim3, dim3, cl_float4*, cl_uint*, cl_uint);
@@ -26,75 +26,8 @@ extern "C" void rgbToLuv(dim3, dim3, cl_float4*, cl_uint*, cl_uint);
 #include <iostream>
 
 
-extern cl_float sigmaS;
-extern cl_float sigmaR;
-extern cl_float minRegion;
 
-
-extern cl_uint N;
-extern cl_uint L;
-
-
-// EDISON //////////////////////////////////////////////////////////////////
-cl_uint width;
-cl_uint height;
-
-cl_uint * h_img = NULL; 
-cl_uint * h_filt = NULL;
-cl_uint * h_segm = NULL;
-cl_uint * h_iter = NULL; // iterations per thread/pixel
-cl_uchar * h_bndy = NULL;
-
-
-
-cl_int thx = 2;
-cl_int thy = 64;
-cl_int gpus = 1;
-
-
-cl_float4 * h_src = NULL; // luv source data
-cl_float4 * h_dst = NULL; // luv manipulated data
-
-
-cl_float4 * d_luv = NULL; // device luv manipulated data
-cl_uint * d_rgb = NULL; // device rgb converted data
-
-const cl_uint FILT = 0;
-const cl_uint SEGM = 1;
-const cl_uint BNDY = 2;
-const cl_uint APPD = 3;
-
-
-std::string image = "source.ppm";
-std::string path = "../../../src/Meanshift/data/";
-
-std::string imgOutGOLD[] = {
-	path + "filtimage_gold.ppm",
-	path + "segmimage_gold.ppm",
-	path + "bndyimage_gold.ppm",
-	path + "appd_fsb_gold.ppm"
-};
-
-std::string imgOutCUDA[] = {
-	path + "filtimage_cuda.ppm",
-	path + "segmimage_cuda.ppm",
-	path + "bndyimage_cuda.ppm",
-	path + "appd_fsb_cuda.ppm"
-};
-
-std::string imgRef[] = {
-	path + "filtimage_ref.ppm",
-	path + "segmimage_ref.ppm",
-	path + "bndyimage_ref.pgm",
-	path + "appd_fsb_ref.ppm"
-};
-
-std::string imgDiff[] = {
-	path + "filtimage_diff.ppm",
-	path + "segmimage_diff.ppm",
-	path + "bndyimage_diff.pgm",
-	path + "appd_fsb_diff.ppm"
-};
+/*
 // Used for constants needed by the kernel
 // e.g. sigmaS, sigmaR ...
 cl_float h_options[MAX_OPTS];
@@ -103,14 +36,26 @@ cl_float h_options[MAX_OPTS];
 extern void connect();
 extern void boundaries();
 extern void computeGold(void);
-
+*/
 /*
-void loadImageData(cl_int argc, char **argv)
+void computeCUDA();
+void computeCUDAx();
+
+void checkCUDAError(const char *msg) {
+	cudaError_t err = cudaGetLastError();
+	if (cudaSuccess != err) {
+		fprintf(stderr, "Cuda error: %s: %s.\n", msg, cudaGetErrorString(err));
+		exit(EXIT_FAILURE);
+	}
+}
+*/
+/*
+void load_image_data(int argc, char **argv)
 {
 
 	// load image (needed so we can get the width and height before we create the window
 	char* image_path = cutFindFilePath(image.c_str(), argv[0]);
-	
+
 	if (image_path == 0) {
 		std::cout << "Error finding image file " << image << std::endl;
 		exit(EXIT_FAILURE);
@@ -123,34 +68,130 @@ void loadImageData(cl_int argc, char **argv)
 		std::cout << "Error opening file  " << image_path << std::endl;
 		exit(-1);
 	}
-	std::cout<< "Loaded " << image_path << " " 
+	std::cout<< "Loaded " << image_path << " "
 		<< width << " x " << height << " pixels" << std::endl;
-}
-
-void computeCUDA();
-void computeCUDAx();
-
-void checkCUDAError(const char *msg) { 
-	cudaError_t err = cudaGetLastError(); 
-	if (cudaSuccess != err) { 
-		fprintf(stderr, "Cuda error: %s: %s.\n", msg, cudaGetErrorString(err)); 
-		exit(EXIT_FAILURE); 
-	}
 }
 */
 
+const cl_uint FILT = 0;
+const cl_uint SEGM = 1;
+const cl_uint BNDY = 2;
+const cl_uint APPD = 3;
 
-int main(int argc, char** argv) 
-{	
-	cl_int err;
-	cl_context context = clCreateContextFromType(0, CL_DEVICE_TYPE_GPU, NULL, NULL, &err);
-	
+std::string image = "source.ppm";
+std::string path = "../../../src/oclmeanshiftfilter/data/";
+
+std::string img_out_host[] = {
+	path + "filtimage_host.ppm",
+	path + "segmimage_host.ppm",
+	path + "bndyimage_host.ppm",
+	path + "appd_fsb_host.ppm"
+};
+
+std::string img_out_ocl[] = {
+	path + "filtimage_ocl.ppm",
+	path + "segmimage_ocl.ppm",
+	path + "bndyimage_ocl.ppm",
+	path + "appd_fsb_ocl.ppm"
+};
+
+std::string img_ref[] = {
+	path + "filtimage_ref.ppm",
+	path + "segmimage_ref.ppm",
+	path + "bndyimage_ref.pgm",
+	path + "appd_fsb_ref.ppm"
+};
+
+std::string img_diff[] = {
+	path + "filtimage_diff.ppm",
+	path + "segmimage_diff.ppm",
+	path + "bndyimage_diff.pgm",
+	path + "appd_fsb_diff.ppm"
+};
+
+
+void cleanup(cl_int exit_code) {
+	std::cout << "exit(" << exit_code << ")" << std::endl;
+	exit(exit_code);
+}
+
+extern cl_float sigmaS;
+extern cl_float sigmaR;
+extern cl_float minRegion;
+
+
+extern cl_uint N;
+extern cl_uint L;
+
+
+cl_int thx = 2;
+cl_int thy = 64;
+cl_int gpus = 1;
+
+cl_uint * h_img = NULL;
+cl_uint * h_filt = NULL;
+cl_uint * h_segm = NULL;
+cl_uint * h_iter = NULL;	// iterations per thread/pixel
+cl_uchar * h_bndy = NULL;
+
+
+cl_float4 * d_luv = NULL;	// device luv manipulated data
+cl_uint * d_rgb = NULL;		// device rgb converted data
+
+cl_float4 * h_src = NULL;	// luv source data
+cl_float4 * h_dst = NULL;	// luv manipulated data
+
+
+cl_uint width = 0;		// image width
+cl_uint height = 0;		// image height
+
+
+
+
+int main(int argc, char** argv)
+{
+	cl_int err_code;
+
+	cl_float sigma_s = 7.0f;
+	cl_float sigma_r = 6.5f;
+	cl_float min_region = 20.0f;
+
+	// load image data
+	char* image_path = shrFindFilePath(image.c_str(), argv[0]);
+	shrCheckErrorEX(image_path != NULL, shrTRUE, &cleanup);
+	err_code = shrLoadPPM4ub(image_path, (cl_uchar **)&h_img, &width, &height);
+	shrCheckErrorEX(err_code, shrTRUE, &cleanup);
+
+	// create OpenCL contect on a GPU device
+	cl_context context = clCreateContextFromType(0, CL_DEVICE_TYPE_GPU, NULL, NULL, &err_code);
+	shrCheckErrorEX(err_code, CL_SUCCESS, &cleanup);
+
+	// get the list of GPU devices accociated with context
+	size_t parm_data_bytes;
+	cl_device_id* cp_devices;
+	err_code = clGetContextInfo(context, CL_CONTEXT_DEVICES, 0, NULL, &parm_data_bytes);
+	cp_devices = (cl_device_id *)malloc(parm_data_bytes);
+	err_code |= clGetContextInfo(context, CL_CONTEXT_DEVICES, parm_data_bytes, cp_devices, NULL);
+	shrCheckErrorEX(err_code, CL_SUCCESS, &cleanup);
+	cl_uint num_devs = (cl_uint)parm_data_bytes/sizeof(cl_device_id);
+	shrLog(LOGCONSOLE, 0, "GPU Devices being used: %d\n", num_devs);
+
+	oclPrintDevInfo(LOGCONSOLE, cp_devices[0]);
+	oclPrintDevInfo(LOGCONSOLE, cp_devices[1]);
+
+	// create a command queue
+	cl_command_queue = clCreateCommandQueue(context, cp_devices[0], 0, &err_code);
+	shrCheckErrorEx(err_code, CL_SUCCESS, &cleanup);
+
+	// alloc the OpenCL source, intermediate and result buffer
+	// memory objects on the device graphics memory
+
 
 	/*
 #if CUDART_VERSION < 2020
 #error "This CUDART version does not support mapped memory!\n"
 #endif
-	
+
 	cudaDeviceProp deviceProp;
 	// Get properties and verify device 0 supports mapped memory
 	cudaGetDeviceProperties(&deviceProp, 0);
@@ -166,7 +207,7 @@ int main(int argc, char** argv)
 	} else {
 		cudaSetDevice(cutGetMaxGflopsDeviceId());
 	}
-	
+
 	if (cutGetCmdLineArgumenti(argc, (const char**)argv, "gpus", &gpus)) {
 		std::cout << "Setting gpus: " << gpus << std::endl;
 	}
@@ -193,34 +234,34 @@ int main(int argc, char** argv)
 	h_options[SIGMAS] = sigmaS;
 	h_options[SIGMAR] = sigmaR;
 
-	//! Allocate memory for h_dst 
-	// The memory returned by this call will be considered as 
-	// pinned memory by all CUDA contexts, not just the one 
+	//! Allocate memory for h_dst
+	// The memory returned by this call will be considered as
+	// pinned memory by all CUDA contexts, not just the one
 	// that performed the allocation.
 	cudaHostAlloc((void**)&h_dst, sizeof(cl_float4) * height * width, cudaHostAllocPortable);
 	checkCUDAError("cudaHostAlloc");
 	h_src = new cl_float4[height * width];
-	
-	
+
+
 	h_filt = new cl_uint [height * width * sizeof(cl_uchar) * 4];
 	h_segm = new cl_uint [height * width * sizeof(cl_uchar) * 4];
 	h_iter = new cl_uint [height * width * sizeof(cl_uchar) * 4];
-	
+
 	h_bndy = new cl_uchar [height * width];
-	
-	
+
+
 
 	std::string append = "convert +append ";
 	std::string compare = "compare ";
 #ifdef __linux__
 	std::string open = "eog " + imgDiff[APPD];
-#else	
+#else
 	std::string open = "open " + imgDiff[APPD];
-#endif	
+#endif
 
 	if (cutCheckCmdLineFlag(argc, (const char**)argv, "gold")) {
 		computeGold();
-		cutilCheckError(cutSavePPM4ub(imgOutGOLD[FILT].c_str(), (cl_uchar *)h_filt, width, height));	
+		cutilCheckError(cutSavePPM4ub(imgOutGOLD[FILT].c_str(), (cl_uchar *)h_filt, width, height));
 		cutilCheckError(cutSavePPM4ub(imgOutGOLD[SEGM].c_str(), (cl_uchar *)h_segm, width, height));
 		cutilCheckError(cutSavePGMub( imgOutGOLD[BNDY].c_str(), (cl_uchar *)h_bndy, width, height));
 		append += imgOutGOLD[FILT] + " ";
@@ -230,39 +271,39 @@ int main(int argc, char** argv)
 		compare += imgOutGOLD[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
 
 		// iteration count for runtime for each thread
-		cutilCheckError(cutSavePPM4ub((path + "itr.ppm").c_str(), (cl_uchar *)h_iter, width, height));	
+		cutilCheckError(cutSavePPM4ub((path + "itr.ppm").c_str(), (cl_uchar *)h_iter, width, height));
 
 	} else if (gpus == 1) {
 		std::cout << "Using " << gpus << " GPU(s) for segmentation." << std::endl;
 		computeCUDA();
-		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (cl_uchar *)h_filt, width, height));	
+		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (cl_uchar *)h_filt, width, height));
 		cutilCheckError(cutSavePPM4ub(imgOutCUDA[SEGM].c_str(), (cl_uchar *)h_segm, width, height));
 		cutilCheckError(cutSavePGMub( imgOutCUDA[BNDY].c_str(), (cl_uchar *)h_bndy, width, height));
 		append += imgOutCUDA[FILT] + " ";
 		append += imgOutCUDA[SEGM] + " ";
 		append += imgOutCUDA[BNDY] + " ";
 		append += imgOutCUDA[APPD];
-		
+
 		compare += imgOutCUDA[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
-		
+
 	} else if (gpus == 2) {
 		std::cout << "Using " << gpus << " GPU(s) for segmentation." << std::endl;
 		computeCUDAx();
-		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (cl_uchar *)h_filt, width, height));	
+		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (cl_uchar *)h_filt, width, height));
 		cutilCheckError(cutSavePPM4ub(imgOutCUDA[SEGM].c_str(), (cl_uchar *)h_segm, width, height));
 		cutilCheckError(cutSavePGMub( imgOutCUDA[BNDY].c_str(), (cl_uchar *)h_bndy, width, height));
 		append += imgOutCUDA[FILT] + " ";
 		append += imgOutCUDA[SEGM] + " ";
 		append += imgOutCUDA[BNDY] + " ";
 		append += imgOutCUDA[APPD];
-		
+
 		compare += imgOutCUDA[APPD] + " " + imgRef[APPD] + " " + imgDiff[APPD];
 	} else {
 		std::cout << "Too many GPU(s) for segmentation." << std::endl;
 	}
-	
 
-	if (cutCheckCmdLineFlag(argc, (const char**)argv, "ref")) { 
+
+	if (cutCheckCmdLineFlag(argc, (const char**)argv, "ref")) {
 		system(append.c_str());
 		system(compare.c_str());
 		system(open.c_str());
@@ -278,14 +319,14 @@ int main(int argc, char** argv)
   cl_uint timer = 0;				\
   cutilCheckError(cutCreateTimer(&timer));		\
   cutilCheckError(cutStartTimer(timer));		\
-  
+
 #define STOP_TIMER					\
   cutilCheckError(cutStopTimer(timer));
 
 
 //! computeCUDA uses one GPU for doing mean shift segmentation
-//! @see computeCUDAx for a GPU parallel version 
-void computeCUDA() 
+//! @see computeCUDAx for a GPU parallel version
+void computeCUDA()
 {
 	cl_uint imgSizeFloat4 = height * width * sizeof(cl_float4);
 	cl_uint imgSizeUint = height * width * sizeof(cl_uint);
@@ -298,8 +339,8 @@ void computeCUDA()
 
 	cutilSafeCall(cudaMalloc((void**) &d_luv, imgSizeFloat4));
 	cutilSafeCall(cudaMalloc((void**) &d_rgb, imgSizeUint));
-	
-	// First we need to convert the RGB data to LUV data 
+
+	// First we need to convert the RGB data to LUV data
 	// we have an extra kernel here because after much optimizing
 	// the less time consuming function become major consumer
 	// e.g. LUVtoRGB before 0.1% now 30% ...
@@ -307,29 +348,29 @@ void computeCUDA()
 	cl_uint * d_img = NULL;	// device rgb source data
 	cutilSafeCall(cudaMalloc((void**) &d_img, imgSizeUint));
 	cutilSafeCall(cudaMalloc((void**) &d_src, imgSizeFloat4));
-		
-	
+
+
 	cutilSafeCall(cudaMemcpy(d_img, h_img, imgSizeUint, cudaMemcpyHostToDevice));
 	rgbToLuv(grid0, threads0, d_src, d_img, width);
 	cutilCheckMsg("rgbToLuv Kernel Execution failed");
-	
+
 	// TEXTURE Begin: allocate array and copy image data device to device
 	initTexture(width, height, d_src);
-	
+
 #define ITER 10.0f
 	START_TIMER //**********************************************************
 	for (cl_int i = 0; i < ITER; i++)
 	meanShiftFilter(grid, threads, d_luv, 0, width, height,
-		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
-	
+			sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
+
 	cutilCheckMsg("meanShiftFilter Kernel Execution failed");
 	cutilSafeCall(cudaThreadSynchronize());
-	
+
 	STOP_TIMER //**********************************************************
-	
+
 	luvToRgb(grid0, threads0, d_luv, d_rgb, width);
 	cutilCheckMsg("luvToRgb Kernel Execution failed");
-	
+
 	// copy result from device to host
 	cutilSafeCall(cudaMemcpy(h_dst, d_luv, imgSizeFloat4, cudaMemcpyDeviceToHost));
 	cutilSafeCall(cudaMemcpy(h_filt, d_rgb, imgSizeUint, cudaMemcpyDeviceToHost));
@@ -339,12 +380,12 @@ void computeCUDA()
 	cl_float timeGOLD = 10284.756f;
 	cl_float timeCUDA = cutGetTimerValue(timer) / ITER;
 
-	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
+	std::cout << "Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;
 	std::cout << "Processing time CUDA: " << timeCUDA << " (ms) " << std::endl;
 	std::cout << "Speedup CUDA vs. GOLD: " << timeGOLD/timeCUDA << std::endl;
 
 	cutilCheckError(cutDeleteTimer(timer));
-	cutilSafeCall(cudaThreadSynchronize());	
+	cutilSafeCall(cudaThreadSynchronize());
 
 	connect();
 	boundaries();
@@ -363,8 +404,8 @@ void computeCUDA()
 
 const cl_uint GPU_COUNT = 2;
 
-  
-//! struct for passing the arguments to each GPU thread 
+
+//! struct for passing the arguments to each GPU thread
 typedef struct {
 	cl_int gpus;
 	cl_int device;		// device id
@@ -375,29 +416,29 @@ typedef struct {
 	cl_uint fraction; 	// used to calc the right fractio for each gpu
 	cl_uint img_size_float4; // each gpu gets a fraction of the image
 	cl_uint img_size_uint;   // each gpu gets a fraction of the image
-	
+
 } GPUplan;
 
 //! Each gpu is executing the following procedure
 static CUT_THREADPROC gpuThread(GPUplan *p) {
-	
-		
+
+
 	cutilSafeCall(cudaSetDevice(p->device));
-		
+
 	// setup execution parameters
 	cl_uint gx = width/thx;
 	cl_uint gy = height/thy;
 
 	cl_uint thx0 = 16;	// best configuration for rgb & luv kernel
 	cl_uint thy0 = 16;	// best configuration for rgb & luv kernel
-	
+
 	cl_float4 * d_luv = NULL;
 	cl_uint * d_rgb = NULL;
-	
+
 	cutilSafeCall(cudaMalloc((void**) &d_luv, p->img_size_float4));
 	cutilSafeCall(cudaMalloc((void**) &d_rgb, p->img_size_uint));
-	
-	// First we need to convert the RGB data to LUV data 
+
+	// First we need to convert the RGB data to LUV data
 	// we have an extra kernel here because after much optimizing
 	// the less time consuming function become major consumer
 	// e.g. LUVtoRGB before 0.1% now 30% ...
@@ -410,24 +451,24 @@ static CUT_THREADPROC gpuThread(GPUplan *p) {
 	gy = height/thy0;
 	dim3 rgbGrid(gx, gy);
 	dim3 rgbThrd(thx0, thy0);
-	
-	// since we do not know where the ms vector is moving each gpus gets 
-	// a complete image in luv color space. 
+
+	// since we do not know where the ms vector is moving each gpus gets
+	// a complete image in luv color space.
 	cutilSafeCall(cudaMemcpy(d_img, h_img, p->img_size_uint, cudaMemcpyHostToDevice));
 	rgbToLuv(rgbGrid, rgbThrd, d_src, d_img, width);
 	cutilCheckMsg("rgbToLuv Kernel Execution failed");
-	
+
 	//  allocate array and copy image data device to device
 	initTexture(width, height, d_src);
-	
-	// now we have the complete image in luv color space 
+
+	// now we have the complete image in luv color space
 	// the ms filter can now move on the complete image
-	
+
 	// but for a multiple gpu configuration each gpu gets its
 	// own segment to operate on , therefore move the d_luv pointer.
-	cl_float4 		* d_luv0 = d_luv + p->fraction * p->device; 
+	cl_float4 		* d_luv0 = d_luv + p->fraction * p->device;
 	cl_uint 	* d_rgb0 = d_rgb + p->fraction * p->device;
-	
+
 	// the ms filter will only filter half of an image
 	gx = width/thx;
 	gy = height/thy/p->gpus;
@@ -436,30 +477,30 @@ static CUT_THREADPROC gpuThread(GPUplan *p) {
 
 	// offset needed for texture access cl_float4 texture element
 	cl_float offset = height/p->gpus * p->device;
-		
+
 #define ITER 1.0f
 	START_TIMER //**********************************************************
 
 	for (cl_int i = 0; i < ITER; i++)
 	meanShiftFilter(msGrid, msThrd, d_luv0, offset, width, height,
-		        sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
-	
+			sigmaS, sigmaR, 1.0f/sigmaS, 1.0f/sigmaR);
+
 	cutilCheckMsg("meanShiftFilter Kernel Execution failed");
 	cutilSafeCall(cudaThreadSynchronize());
-	
+
 	STOP_TIMER //**********************************************************
 
-		
+
 	// the luv kernel needs only the half fo the image for 2 gpus
 	gx = width/thx0;
 	gy = height/thy0/p->gpus;
 	dim3 luvGrid(gx, gy);
 	dim3 luvThrd(thx0, thy0);
-	
+
 
 	luvToRgb(luvGrid, luvThrd, d_luv0, d_rgb0, width);
 	cutilCheckMsg("luvToRgb Kernel Execution failed");
-		
+
 	// copy result from device to host
 	cutilSafeCall(cudaMemcpy(p->h_dst, d_luv0, p->img_size_float4/p->gpus, cudaMemcpyDeviceToHost));
 	cutilSafeCall(cudaMemcpy(p->h_filt, d_rgb0, p->img_size_uint/p->gpus, cudaMemcpyDeviceToHost));
@@ -468,47 +509,47 @@ static CUT_THREADPROC gpuThread(GPUplan *p) {
 	p->time = cutGetTimerValue(timer) / ITER;
 
 	cutilCheckError(cutDeleteTimer(timer));
-	cutilSafeCall(cudaThreadSynchronize());	
+	cutilSafeCall(cudaThreadSynchronize());
 
 	// clean up memory
 	cutilSafeCall(cudaFree(d_img));
 	cutilSafeCall(cudaFree(d_src));
 	cutilSafeCall(cudaFree(d_luv));
 	cutilSafeCall(cudaFree(d_rgb));
-		
+
 	CUT_THREADEND;
 }
 
-//! parallel GPU version of mean shift filter. Here we're using two 
+//! parallel GPU version of mean shift filter. Here we're using two
 //! Geforce 8800 GTS GPUs
-void computeCUDAx() 
+void computeCUDAx()
 {
-	
+
 	GPUplan plan[GPU_COUNT];
 	CUTThread threadID[GPU_COUNT];
 
 	cutilSafeCall(cudaGetDeviceCount(&gpus));
 	std::cout << "CUDA capable device count: " << gpus << std::endl;
 
-	
+
 	for (cl_uint i = 0; i < gpus; i++) {
 		plan[i].gpus = gpus;
 		plan[i].device = i;
-		
-		plan[i].fraction = height * width / gpus; 
-		
+
+		plan[i].fraction = height * width / gpus;
+
 		plan[i].h_dst = h_dst + plan[i].fraction * i;
 		plan[i].h_filt = h_filt + plan[i].fraction * i;
-		
+
 		plan[i].img_size_float4 = height * width * sizeof(cl_float4);
 		plan[i].img_size_uint = height * width * sizeof(cl_uint);
 	}
-	
+
 	for (cl_uint i = 0; i < gpus; i++) {
 		threadID[i] = cutStartThread((CUT_THREADROUTINE)gpuThread, (void *)(plan + i));
 	}
 	cutWaitForThreads(threadID, gpus);
-	
+
 	// Without limit cycle cl_float timeGOLD = 10679.209000;
 	cl_float timeGOLD = 10284.756f;
 	cl_float timeCUDA = 0.0f;
@@ -517,12 +558,12 @@ void computeCUDAx()
 		std::cout << "GPU" << plan[i].device << " self time: " << plan[i].time << std::endl;
 	}
 	timeCUDA /= gpus;
-	
-	std::cout << "CPU" << 0 << ": Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;	
+
+	std::cout << "CPU" << 0 << ": Processing time GOLD: " << timeGOLD << " (ms) " << std::endl;
 	std::cout << "GPU0+1" << ": Processing time CUDA: " << timeCUDA << " (ms) " << std::endl;
 	std::cout << "GPU0+1" << ": Speedup CUDA vs. GOLD: " << timeGOLD/timeCUDA << std::endl;
 
-		
+
 	connect();
 	boundaries();
 

@@ -1,0 +1,11 @@
+filter.h
+meanshiftfilter.cpp
+meanshiftfilter_common.h
+meanshiftfilter_gold.cpp
+meanshiftfilter_kernel.h
+rgbluv.cpp
+rgbluv.h
+rlist.cpp
+rlist.h
+Makefile
+edison.cpp
