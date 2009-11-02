@@ -20,17 +20,17 @@ reduces the effect of rounding / truncating on the intermediate results. Of
 course while very useful for computing on the CPU this is not how the CUDA
 devices operate.
 
- In CUDA all operations on a float occur at 32 bits (64 bits for a double) which
+ In\gls{CUDA}all operations on a float occur at 32 bits (64 bits for a double) which
 means your intermediate operations will sometimes lose precision. In CUDA
 Emulator mode your code is actually run on the CPU and it uses the FPU’s default
 precision and rounding settings. This causes the difference in output.
 
- For my testing I modified the Matrix Mul sample in the CUDA SDK to include code
+ For my testing I modified the Matrix Mul sample in the\gls{CUDA}SDK to include code
 to change the CPU settings before running the Gold Kernel. (Code link follows
 below)
 
  I turned down the CPU internal precision to 32 bits in order to match the 32bit
-floats the CUDA kernel uses. For emulator mode I made sure the CPU was turned
+floats the\gls{CUDA}kernel uses. For emulator mode I made sure the CPU was turned
 down to the same precision before running the Kernel. As expected the Gold and
 CUDA kernels outputs match perfectly.
 
