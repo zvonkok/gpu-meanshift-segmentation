@@ -176,6 +176,20 @@ Setting the $lim = 50$ and executing the \gls{CPU} and \gls{GPU} version we get
 
 \begin{figure}[ht]
 \centering
+\subfloat[Period-0 Limitcycle]{%
+\includegraphics[width=0.33\textwidth]{gfx/itr_limitcycle0}\label{fig:lc0}}%
+\subfloat[Period-4 Limitcycle]{%
+\includegraphics[width=0.33\textwidth]{gfx/itr_limitcycle4}\label{fig:lc4}}%
+\subfloat[Period-8 Limitcycle]{%
+\includegraphics[width=0.33\textwidth]{gfx/itr_limitcycle8}\label{fig:lc8}}%
+
+\caption{Effect of limitcycle detection on iteration count}
+\label{fig:limitcycle}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
 \includegraphics[width=0.6\textwidth]{gfx/itr_limitcycle0.pdf}
 \caption{Visualization of Iteration Count}
 \label{fig:vis_iteration_count}

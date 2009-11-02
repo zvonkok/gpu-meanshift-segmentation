@@ -56,7 +56,7 @@ developed some techniques for a shading machine for rendering of solids.
 
 First of all it is important to understand the concept of rays. A ray is the
 path of a particle of light (photon) extending from the eye into the
-scene \cite{Glassner289}. The path is a thin, straight line used to model a beam
+scene \citep{Glassner289}. The path is a thin, straight line used to model a beam
 of light. Each ray can be seen as a \textit{feeler}\graffito{The ray scans or 
 rasters the scene that is why a ray is often called a feeler} that reaches the 
 scene and finds out which objects are visible and what color the object has at a 
@@ -66,10 +66,10 @@ The representation of light on the screen is organized in so called pixels.
 A pixel is a point sample not a little geometric square. This misconception
 is widespread and it is an issue that strikes right at the root of correct
 image computing and the ability to correctly integrate the discrete and the
-continuous \cite{AlvyRaySmith95}.
+continuous \citep{AlvyRaySmith95}.
 
 The color of a given pixel is the color of the light that passes from the
-object, through the associated pixel into the eye \cite{Hearn94}.
+object, through the associated pixel into the eye \citep{Hearn94}.
 
 For each pixel on the screen a ray is cast from the eye through the pixel into
 the virtual world. Then for each object it is checked if the ray intersects any
@@ -110,7 +110,7 @@ how good/bad the existing resources are exploited.
 
 The examination of the ray traced showed that the initial port used 48
 registers, 28 bytes shared memory and 96 byte constant memory per thread. As
-shown in \textbf{REF. to CUDA Application Stuff} the number of launched threads,
+shown in \textbf{REF. to\gls{CUDA}Application Stuff} the number of launched threads,
 blocks and grids is dependent on the three factors mentioned above.
 
 Each \gls{SM} has 8192 registers which means we could have 8192/48 = 170 threads

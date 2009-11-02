@@ -2,11 +2,18 @@
 \label{cha:algorithm_analysis}
 
 
-\section{Porting Strategies for GPUs} % (fold)
-\label{sec:porting_strategies_for_gpu}
 
-\section{Run Time Analysis of the Original Code} % (fold)
+\section{Profiling of the Original Code} % (fold)
 \label{sec:run_time_analysis_of_the_original_code}
+The first step before any porting to the \gls{GPU} is undertaken one has to
+identify the portions of code that can be optimized. The procedure is called
+profiling. In this case a statistical profiler is used which operates by
+sampling. The samples are taken from the hardware performance counters which
+every modern \gls{CPU} has builtin. OProfile a system wide profiler for Linux
+was used to examine the run time of the \gls{EDISON} program.
+
+The \autoref{tab:comp} shows the run time analysis of \gls{EDISON}. 
+
 
 \begin{table}[ht]
    \myfloatalign
@@ -45,7 +52,10 @@
 	0,0\% & 	0,0\% & 	msImageProcessor::DefineBoundaries() &			1,41KB & edison \\ 
     \bottomrule
   \end{tabularx}
-  \caption[EDISON run time profile]{EDISON run time profile}
+  \caption[EDISON run time profile]{\gls{EDISON} run time analysis}
   \label{tab:comp}
 \end{table}
+
+
+
 

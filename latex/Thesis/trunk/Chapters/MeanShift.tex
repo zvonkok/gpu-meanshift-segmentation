@@ -1,11 +1,11 @@
 %*******************************************************************************
 \chapter{Mean Shift}\label{ch:mean_shift}
 %*******************************************************************************
-In low level computer vision tasks like segmentation, edge detection or smoothing
-the analysis of data is often not done on the original images. Features like 
-colors are rather projected into a feature space where they can be more easily
-analyzed. The analysis of the feature space can find interesting attributes of 
-the image like edges or segments.
+In low level computer vision tasks like segmentation, edge detection or
+smoothing, the analysis of data is often not done on the original images.
+Features like colors are rather projected into a feature space where they can be
+more easily analyzed. The analysis of the feature space can find interesting
+attributes of the image like edges or segments.
 
 The feature space has to be smoothed before analysis. Feature spaces originate
 from real images therefore they are composed of several components from
@@ -14,45 +14,47 @@ is a probabilistic model for density estimation using a mixture distribution, is
 not efficient enough to estimate the density satisfactorily of such complex,
 arbitrarily comprised densities. The discontinuity preserving smoothing is therefore
 accomplished with kernel based density estimators. Kernel based density estimators
-are making no assumptions about densities and hence can be estimate aribtrary 
+are making no assumptions about densities and hence can estimate aribtrary 
 densities.
 
-The maxima of a feature space correspond to the searched components like edges
-of an image. Gradient based methods of feature space analysis are using gradients
-of the probability density function to find the maxima. Such methods are complex
-because they need among other things a estimation of the probability density.
+The maxima of a feature space correspond to the searched components like the
+edges of an image. Gradient based methods of feature space analysis are using
+gradients of the probability density function to find the maxima. Such methods
+are complex because they need among other things a estimation of the probability
+of density.
 
-Mean shift is an alternative to the gradient based methods as it is easier to 
-calculate then to estimate the probability density and then to calculate the 
+Mean shift is an alternative to the gradient based methods as it is easier to
+calculate then to estimate the probability of density and then to calculate the
 gradient. The mean shift vector points to the same direction as the gradient of
-gradient based methods. Furthermore the mean shift vector has a adaptive size and
-is non parametric. There is no need to supply a step size compared to the other
-methods. Mean shift a robust approach toward feature space analysiswas
-originally introduced by \citeauthor{citeulike:462300} \citep{citeulike:462300}.
+gradient based methods. Furthermore the \emph{mean shift} vector has a adaptive
+size and is non parametric. There is no need to supply a step size compared to
+the other methods. Mean shift a robust approach toward feature space analysis
+was originally introduced by \citeauthor{citeulike:462300}
+\citep{citeulike:462300}.
 
 \section{Density Estimation} % (fold)
 \label{sec:density_estimation}
-In probability and statistics it is known that for different tasks there exist 
-more or less suitable features. In 
-\citep{citeulike:167581} \citeauthor{citeulike:167581}  are giving an example of 
-a classification of two different fish types. Features like the length and 
-brightness are there observed that fit for the task. It is of course possible 
-to find more descriptive features for fish like the amount of finns but in 
-image processing it would be very expensive and difficult to count. In image
-analysis specially in real time applications it is important to find suitable
-features for the task, but also features which are easily visually identified. 
-Color observations are because of their simplicity and for the eye easily to 
-gather important features. The color features can have components from the 
-\gls{RGB} or gray value color space. Furthermore there are several other color
-spaces that could be observed like the \gls{HSV} or the \gls{Luv} color space
-with one luminance and two chromatic components. The \gls{Luv} color space is
-often used in computer graphics because of its attribute to be a perceptually
-uniform color space.
+In probability and statistics it is known that for different tasks there exist
+more or less suitable features. In \citeauthor{citeulike:167581}
+\citep{citeulike:167581} are giving an example of a classification of two
+different fish types. Features like the length and brightness are there observed
+that fit for the task. It is of course possible to find more descriptive
+features for the fish like the amount of finns but in image processing it would
+be very expensive and difficult to count such feature. In image analysis
+specially in real time applications it is important to find suitable features
+for the task, but also features which are easily visually identified. Color
+observations are because of their simplicity and for the eye easily to gather
+important features. The color features can have components from the \gls{RGB} or
+gray value color space. Furthermore there are several other color spaces that
+could be observed like the \gls{HSV} or the \gls{Luv} color space with one
+luminance and two chromatic components. The \gls{Luv} color space is often used
+in computer graphics because of its attribute to be a perceptually uniform color
+space.
 
 With a finite set of observations follows a finite feature space. The main point
 of \emph{mean shift} is to find the maxima in the feature space. The maxima of a
-feature space are all important for the \emph{mean shift} applications
-(filtering, segmentation, ...) as the distributions or discontinuities map to
+feature space are all important for \emph{mean shift} applications
+(filtering, segmentation, \ldots) as the distributions or discontinuities map to
 clusters or edges of the image.
 
 The \emph{mean shift} method is based on the gradient method. For the gradient
@@ -67,7 +69,7 @@ Kernel density estimation is a method to estimate an unkown density
 distribution with finite observations of a point in the sample space. 
 The result of such a procedure is a probability density function that describes 
 the density of probability at each point in the sample space. To estimate the 
-density of a point $x = { x_1, ... , x_d, ... , x_D} \in \mathbb{R}^D$ in a 
+density of a point $x = { x_1, \ldots , x_d, \ldots , x_D} \in \mathbb{R}^D$ in a 
 $D$ dimensionl feature space, $N$ observations $x_1^N$ with
  $x_N \in \mathbb{R}^D$ within a search window that is centered around point $x$
 have to be observed. The search window with radius $h$ is the bandwidth of the
@@ -76,24 +78,26 @@ used kernel. The density of probability in point $x$ is the mean of density of
 
 The effect of different bandwith parameters $h$ (search window radius) is shown in 
 \autoref{fig:window_radius}. The example shows a kernel density estimation with
-five observations $x = 4, 1, -1, -3, -3.5$ and a normal kernel. The total density
-estimation is the sum of each kernel at a observation, here shown for three 
-bandwidths. With bigger bandwidth $h$ the density estimation becomes smoother.  
+five observations $x = {5, 1, -1, -4, -5}$ and a gaussian kernel. The total
+density estimation is the sum of each kernel at a observation, here shown for
+three bandwidths. With bigger bandwidth $h$ the density estimation becomes
+smoother.
 
 \begin{figure}[ht]
 \centering
-%\includegraphics[width=0.6\textwidth]{gfx/itr_limitcycle0.pdf}
+\subfloat[$h=0.7$]{\includegraphics[width=0.33\textwidth]{gfx/gauss_h07}\label{fig:h07}}%
+\subfloat[$h=1.0$]{\includegraphics[width=0.33\textwidth]{gfx/gauss_h10}\label{fig:h10}}%
+\subfloat[$h=2.0$]{\includegraphics[width=0.33\textwidth]{gfx/gauss_h20}\label{fig:h20}}%
 \caption{Effect of bandwidth selection}
 \label{fig:window_radius}
 \end{figure}
 
-
 Kernel density estimation is a non parametric method, although some parameters
-exists like the search window radius. Non parametric methods are making no 
+exists like the search window radius. Non parametric methods are making no
 assumptions about the density of probabilities. The strenght of such methods is
-that they are not limited to just on probability but can deal with arbitrary
-coupled/joined probabilities. With an unfinite number of observations the non
-parametric methods can reconstruct the density of the original
+that they are not limited to just one probability but they can deal with
+arbitrary coupled/joined probabilities. With an unfinite number of observations
+the non parametric methods can reconstruct the density of the original
 probabilities.
 
 To derive the kernel density estimator in point $x \in \mathbb{R}^D$ first of
@@ -134,11 +138,11 @@ where $K$ is radial symmetric, $k$ is non negativ {\color{iRed} nicht zunehmend
 und stückweise stetig ist} with $\int_0^{\infty} k(r) dr < \infty$. $c_{k,D}$ is
 a positive normalization constant so that $K(x)$ integrates to $1$. 
 
-Now the kernel density estimator from \autoref{eq:kernel2} can be transformed into
-a new equation. The two indices $K$ and $h$ are representing which kernel and 
-which radius are used for the density estimator. With the profile notation $k$, where
-\autoref{eq:kernel2} is inserted into \autoref{eq:kernel1}, the \autoref{eq:kernel2}
-is transformed to
+Now the kernel density estimator from \autoref{eq:kernel2} can be transformed
+into a new equation. The two indices $K$ and $h$ are representing which kernel
+and which radius are used for the density estimator. With the profile notation
+$k$, where \autoref{eq:kernel2} is inserted into \autoref{eq:kernel1}, the
+\autoref{eq:kernel2} is transformed to
 \begin{equation}\label{eq:kernel4}
 	\hat{f}_{h,K}(x) = \frac{c_{k,D}}{Nh^d}
 	\sum_{n = 1}^N k\left(\left\lVert \frac{x-x_n}{h} \right\rVert^2\right)
@@ -168,14 +172,16 @@ follows a radial symmetric kernel
  
 where $c_D$ is the Volume of the $D$ dimensional globe. The epanechnikov kernel
 is used often as it minimizes the \gls{MISE} \citep{citeulike:5813637}. The
-\autoref{fig:kernels} (a) shows the epanechnikov kernel. The dervative of the 
+\autoref{fig:epan} (a) shows the epanechnikov kernel. The dervative of the 
 kernel is a uniform profile.
 
 
 
 \begin{figure}[ht]
 \centering
-%\includegraphics[width=0.6\textwidth]{gfx/itr_limitcycle0.pdf}
+\subfloat[Epanechnikov]{\includegraphics[width=0.33\textwidth]{gfx/epanechnikov_kernel}\label{fig:epan}}%
+\subfloat[Gaussian]{\includegraphics[width=0.33\textwidth]{gfx/gaussian_kernel}\label{fig:gaus}}%
+\subfloat[Uniform]{\includegraphics[width=0.33\textwidth]{gfx/uniform_kernel}\label{fig:uni}}%
 \caption{Kernel density estimators}
 \label{fig:kernels}
 \end{figure}
@@ -223,6 +229,7 @@ shift in \citep{citeulike:2522867}. The mean shift vector of a kernel points to
 the same direction as the gradient of the shadow kernel (See \autoref{sub:gradient_estimator}). 
 
 
+
 \section{Mean Shift} % (fold)
 \label{sec:mean_shift}
 In gradient based methods first the gradient s calculated and then the kernel is
@@ -251,7 +258,7 @@ more efficient mean shift vector rather than the gradient.
 
 Given are $N$ $D$-dimensional observer feature vectors $x_1^N$ with $x_n \in
 \mathbb{R}^D$ and a kernel $G$ at the point
-$x = {x_1, ... , x_d, ... , x_D} \in \mathbb{R}^D$ in the feature space with 
+$x = {x_1, \ldots , x_d, \ldots , x_D} \in \mathbb{R}^D$ in the feature space with 
 search window radius $h$ is 
 \begin{equation}\label{eq:ms0}
 	m_{h,G}(x) = \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h}
@@ -266,9 +273,10 @@ the name \emph{mean shift}.
 As pointed out in \autoref{sec:kernel_density_estimation} the main objective of
 density estimation is to efficiently find the maxima of a distribution in
 feature space. The maxima of a function $f$ are located at the positions where
-the gradient $\nabla f(x) = 0$. With the above stated attribute that the \emph{mean shift} vector
-always moves along the direction of the gradient, it is a elegant solution for 
-finding the maxima of a distribution without estimating the density.
+the gradient $\nabla f(x) = 0$. With the above stated attribute that the
+\emph{mean shift} vector always moves along the direction of the gradient, it is
+a elegant solution for finding the maxima of a distribution without estimating
+the density.
 
 \subsection{Density Gradient Estimation} % (fold)
 \label{sub:gradient_estimation}
@@ -371,19 +379,23 @@ achieve the same solution with the \emph{mean shift} and the differentiation
 $K'$ of kernel $K$. The next section will continue with the actual \emph{mean shift}
 method.
 
-\section{Mean Shift Method} 
+\subsection{Mean Shift Method} 
 \label{sec:mean_shift_method}
 
 The \emph{mean shift} vector moves in direction of the maximal slope of the
 density, it defines a path to the maximum (Abbildung 4). The \emph{mean shift}
-method is described by the iterations in \autoref{lst:ms0}. \\
+method is described by the following iterations:
 
-\begin{lstlisting}[caption=Generic mean shift method, label=lst:ms0, mathescape, numbers=none, escapechar=@, keywordstyle=\color{black}]
-  1. Choose a window radius $h_n$ for the kernel density estimator @\autoref{eq:kernel4}@
-  2. Choose a start position $y_1 \in \mathbb{R}^D$ for the kernel window
-  3. Calculate the @\emph{mean shift}@ vector $m_{h,G}(y_j)$ and shift the kernel window $G$
-  4. Repeat 3. until convergence
-\end{lstlisting}
+\begin{aenumerate}
+  \label{enum:ms0}
+	\item Choose a window radius $h_n$ for the kernel density estimator @\autoref{eq:kernel4}@
+  	\item Choose a start position $y_1 \in \mathbb{R}^D$ for the kernel window
+   	\item Calculate the @\emph{mean shift}@ vector $m_{h,G}(y_j)$ and shift the kernel window $G$
+	\item Repeat 3. until convergence
+\end{aenumerate}
+
+
+The first step of the algorithm is to choose 
 
 
 
@@ -391,9 +403,9 @@ method is described by the iterations in \autoref{lst:ms0}. \\
 \label{sec:filtering_segmentation}
 The primary use of \emph{mean shift} is filtering (smoothing) and segmentation. 
 A color image can be seen as a 2-dimensional matrix $I \times J$ with $N$ 
-3-dimensional vectors. The pixels in the image $x_n, n = 1, ... , N$ consist of
+3-dimensional vectors. The pixels in the image $x_n, n = 1, \ldots , N$ consist of
 a spatial part $x_n^r = (i,j) \in I \times J$ and a part with a color range
-$x_n^f = (r,g,b)$ so $x_n = (x_n^r, x_n^f) \in \mathbb{N}^5$ for $n = 1, ... , N$.
+$x_n^f = (r,g,b)$ so $x_n = (x_n^r, x_n^f) \in \mathbb{N}^5$ for $n = 1, \ldots , N$.
 Other color spaces like the \gls{Luv} color space could be used as well. The 
 euclidean metric is assumed for both spaces. 
 
@@ -424,243 +436,75 @@ that discontinuity like edges are preserved. Appliying a simple smoothing a
 weighted average of the neighbors in both space and in color range are considered
 which systematically excludes pixels across the discontinuity from consideration.
 
-The pixels $x_n, n = 1, ..., N$ of the image converge toward their local density
+\begin{figure}[ht]
+\centering
+\subfloat[Original]{\includegraphics[width=0.33\textwidth]{gfx/source}\label{fig:orig0}}%
+\subfloat[Filtered]{\includegraphics[width=0.33\textwidth]{gfx/filtimage_ref}\label{fig:filt}}%
+\caption{Mean shift filtering with parameters $(h_r, h_f) = (6.5, 7)$ applied to a color image}
+\label{fig:filtsample}
+\end{figure}
+
+The pixels $x_n, n = 1, \ldots, N$ of the image converge toward their local density
 maximum applying the filtering algorithm \autoref{lst:filtalgo}. \\
 
 \begin{lstlisting}[caption=Mean shift filtering, label=lst:filtalgo, mathescape, numbers=none, escapechar=@, keywordstyle=\color{black}]
-  $x_n = (x_n^r, x_n^f), n = 1, ... , N$ are the $D$-dimensional pixels of the
-  original image and $z_n, n = 1 , .... , N$ are the $D$-dimensional filtered pixels.
+  $x_n = (x_n^r, x_n^f), n = 1, \ldots , N$ are the $D$-dimensional pixels of the
+  original image and $z_n, n = 1 , \ldots. , N$ are the $D$-dimensional filtered pixels.
 
-  For each pixel $n = 1, ... , N$
+  For each pixel $n = 1, \ldots , N$
     1. Initialize $k = 1$ and $y_k = x_n$
     2. Calculate $y_{k+1}$ according to @\autoref{eq:msi3}@, repeat until convergence
     3. Set $z_n = (x_n^r, y_{conv}^f)$ 
 \end{lstlisting}
 
 All pixels that converge to the same um are lying in the basin of attraction
-of this maxium. The filtered image points $z_n, n = 1 , ... , N$ keep there
+of this maxium. The filtered image points $z_n, n = 1 , \ldots , N$ keep there
 spatial coordinates but obtain the color values off the convergence point. The
 convergence points are found by moving the kernel window with \emph{mean shift} 
 in direction of maximum slope of the spatial range feature space. The sample
 \autoref{fig:filtsample} was smoothed with the algorithm of \autoref{lst:filtalgo}. 
-A uniform kernel with $h = (6.5, 7)$ was used and the method needed ?????
-\emph{mean shift} iterations per pixel in the middle. The run time of the filtering
-was ??? on a 2.33 \gls{GHz} \gls{CPU}
-
+A uniform kernel with $h = (6.5, 7)$ was used.
 
 \subsection{Mean Shift Segmentation} % (fold)
 \label{sub:mean_shift_segmentation}
+Image segmentation is a method to partition an image into homogeneous regions. 
+Searched are regions with similar colors like a wall, lawn and clothes. 
+The found areas are associated with the same color values. The segmentation 
+can be seen as a strong smoothing where the edges are preserved. 
+
+The segmentation algorithm is a extension of the \emph{mean shift } filtering
+algorithm. After applying the filter and all convergence points are found,
+clusters are build out of them. All convergence points that are closer then
+$h_r$ in the spatial domain and that are closer then $h_f$ in the range domain
+are grouped together. In the end all points are labeled after their cluster
+assignment.
+
+\begin{figure}[ht]
+\centering
+\subfloat[Original]{%
+\includegraphics[width=0.33\textwidth]{gfx/source}\label{fig:orig}}%
+\subfloat[Segmented]{%
+\includegraphics[width=0.33\textwidth]{gfx/segmimage_ref}\label{fig:segm}}%
+\subfloat[Region boundaries]{%
+\includegraphics[width=0.33\textwidth]{gfx/bndyimage_ref}\label{fig:bndy}}%
+
+\caption{Mean shift segmentation with parameters $(h_r, h_f, M) = (6.5, 7, 20)$
+		 applied to a color image}
+\label{fig:mssegm}
+\end{figure}
 
 
+The Algorithm was applied on the image \autoref{fig:orig}. A uniform kernel with
+a kernel radius of $h_r = 6.5$ and $h_f = 7$ was used. $M$ is a parameter for
+the last step of the algorithm where regions where the pixel count is smaller
+than $M$ are purged. $M$ defines the smallest significant feature size.
+\autoref{fig:mssegm} shows the result of a segmentation. After the image
+segmentation follows a edge detection by examining the cluster regions
+\autoref{fig:bndy}.
 
-
-
-
-\section{OLD STUFF} % (fold)
-\label{sec:old_stuff}
-
-We consider the kernel 
-estimator in
-$\mathbb{R}^1$. Let $X$ be a random variable. Let $X_i$ where $i=1,2,\ldots,n$ be
-% estimate	= schätzen
-% density	= dichte
-$n$ observations of $X$. We want to estimate the density  of $X$. Let $f$ be the
-density of $X$, and $\hat{f}$ an estimator of $f$. A \emph{bin} is an interval
-$[a,b)$. $b-a$ is called the width of bin $[a,b)$. Let $O=(0,0)$ be the origin, 
-and $[mh, (m+1)h)$ are some bins of constant width $h$, for integers $m$. The
-histogram is defined as follows,
-\begin{equation}\label{eq:histogram}
-	\hat{f}(x)=\frac{1}{nh} \times n_i
-\end{equation}
-where $n_i$ is the number of $X_i s$ in the same bin as $x$.
-
-The histogram is the oldest and most frequently used density estimator. But it 
-comes with drawbacks. For example, the histogram is not continuous (thus, it 
-does not have derivatives); it depends on the position of the origin; and a 
-% multivariate	= involving two or more variable quantities.
-technique based on histograms is difficuld to generalize to the multivariate 
-case. The \emph{native estimator} is a generalization of the histogram 
-technique. Since $f$ is the density function of $X$, we have
-\begin{equation}\label{eq:naive_estimator}
-	f(x) = \lim\limits_{h \rightarrow 0} \frac{1}{2h} \times P(X \in (x-h,x+h))
-\end{equation}
-
-where $P(X \in (x-h,x+h))$ is the probability of $X$ falling into $(x-h,x+h)$.
-The naive estimator is defined as follows:
-\begin{equation}\label{eq:naive_estimator2}
-	\hat{f}(x) = \frac{1}{2nh} \times n_i^{\prime}
-\end{equation}
-where $n_i^{\prime}$ is the number of $X_i s$ falling into $(x-h,x+h)$. 
-
-If $x$ is the center of a bin of the current histogram, then Equation 
-\eqref{naive_estimator2} will be equal to Equation \eqref{naive_estimator}. 
-Therefore, the naive estimator is a generalization of the histogram technique.
-Equation \eqref{naive_estimator2} can also be written as
-\begin{equation}\label{eq:naive_estimator3}
-	\hat{f}(x) = \frac{1}{nh}\sum_{i=1}^n w\left( \frac{x - X_i}{h} \right)
-\end{equation}
-where $w$ is defined as 
-\begin{equation}\label{naive_estimator3}
-	w(x) = \begin{cases}
-				1/2 & \text{if } x \in (-1,1) \\
-				0 & \text{otherwise }
-		\end{cases}
-\end{equation}
-
-The naive estimator "inherits" some drawbacks of the histogram technique.
-For example, it is not continuous: it "jumps" at points $X_i \pm h$ and has a 
-zero derivative for each $x \neq X_i \pm h$.
-
-The naive estimator can be further generalized to a \emph{kernel estimator}. 
-Replace function $w$ in Equation \eqref{eq:naive_estimator3} by a function $K$;
-we obtain
-\begin{equation}\label{eq:kernel_estimator}
-	\hat{f}(x) = \frac{1}{nh} \sum_{i=1}^n K\left( \frac{x - X_i}{h} \right)
-\end{equation}
-
-where $K$ is requested to satisfy the following condition
-
-\begin{equation}\label{eq:kernel_condition}
-	\int_{-\infty}^{\infty} K(x)dx = 1
-\end{equation}
-because $K(x)$ is a density function.
-
-If $K$ has a derivative, for each $x \in (-\infty, +\infty)$, then by Equation
-\eqref{eq:kernel_estimator} so does the kernel estimator. For example, let $K$
-be the normal density function, to construct a kernel estimator which has a 
-derivative for each $x \in (-\infty, +\infty)$. In Equation \eqref{eq:kernel_estimator}, $h$ is called the \emph{window width (smoothing parameter, or bandwidth); K is called the kernel} function. 
-Analogously, we can define the kernel estimator in $\mathbb{R}^d$:
-\begin{equation}\label{eq:kernel_estimator_rd}
-	\hat{f}(x) = \frac{1}{nh^d} \sum_{i_1}^n K\left( \frac{x-X_i}{h} \right)
-\end{equation} 
-where $K$ satisfies the following condition
-\begin{equation}\label{eq:kernel_rd_condition}
-	\int_{R^d} K(x)dx = 1
-\end{equation}
-
-In summary, the kernel estimator is an estimator of the density function of a 
-random variable, represented by a sum of some simple kernel functions such that
-the estimator has "good" mathematical properties such as being differentiable,
-symmetric, and so forth.
-% subsubsection the_kernel_density_estimator (end)
-
-
-
-\subsubsection{The Mean Shift Procedure} % (fold)
-\label{ssub:the_mean_shift_procedure}
-This subsection explains the principle of \textbf{adaptive?!?} mean shift-based
-clustering, meaning that the data points always move to local density maxima.
-
-We review some results of [8]. Let $k(x)$ be a symmetric univariate kernel 
-function, where $x \in (-\infty, +\infty)$. We can construct a $dD$ kernel 
-function from $k(x)$ as follows:
-\begin{equation}\label{eq:dd_kernel}
-	K(x)=c_{k,d}k(\lVert x \rVert^2)
-\end{equation}
-where
-\begin{equation}\label{eq:kernel_constant}
-	c_{k,d} = \frac{\int_{R^d} K(x) dx} {\int_{R^d} k(\lVert x \rVert^2) dx} = \frac{1}{\int_{R^d} k(\lVert x \rVert^2) dx} > 0
-\end{equation}
-Function $k(x)$, where $x \in [0, +\infty)$, is called the \emph{profile} of the
-kernel $K(x)$. 
-
-By Equation \eqref{eq:dd_kernel}, the kernel density estimator [see Equation \eqref{eq:kernel_estimator_rd}] can be rewritten as follows:
-
-\begin{equation}\label{eq:label}
-	\hat{f}_{h,K}(x) = \frac{c_{k,d}}{nh^d}\sum_{i_=1}^n k(\lVert \frac{x-X_i}{h} \rVert^2)
-\end{equation}
-
-Suppose that $k(x)$ is differentiable in $[0, +\infty)$, except for a finite 
-number of points.
-\begin{equation*}\label{eq:shadow_kernel}
-	g(x) = -k\prime(x)
-\end{equation*}
-
-where $x\in [0, +\infty)$, except for a finite number of points. Construct a 
-kernel function from $g(x)$ as follows:
-\begin{equation*}\label{eq:shadow_kernel1}
-	G(x) = c_{g,d}g(\lVert x \rVert^2)
-\end{equation*}
-
-where
-\begin{equation}\label{eq:shadow_constant}
-	c_{g,d} = \frac{\int_{R^d} G(x) dx} {\int_{R^d} g(\lVert x \rVert^2) dx} = \frac{1}{\int_{R^d} g(\lVert x \rVert^2) dx} > 0
-\end{equation}
-
-Denote the gradient of the density estimator of $\hat{f}_{h,K}(x) \text{by} \nabla \hat{f}_{h,K}(x)$. Furthermore (see [8] for the details), let 
-\begin{equation}\label{eq:mean_shift0}
-	m_{h,G}(x) = \frac{1}{2}h^2 \frac{c_{g,d}}{c_{k,d}} \times \frac{\nabla \hat{f}_{h,K}(x)}{cd_{h,G}(x)}
-\end{equation}
-where
-\begin{equation}\label{eq:mean_shift1}
-	m_{h,G}(x) = \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)} -x
-\end{equation}
-
-Equation \eqref{eq:mean_shift1} is the difference between the weighted mean and
-$x$, known as \emph{mean shift vector}. Since the gradient of the density estimator always points towards that direction in which the density rises most quickliy, by Equation \eqref{eq:mean_shift1}, the mean shift vector always points towards the direction in which the density rises most quickly. This is the main principle of the mean shift based clustering. 
-% subsubsection the_mean_shift_procedure (end)
-
-
-% section theory (end)
-
-The mean shift algorithm is a nonparametric clustering technique which does not
-require prior knowledge of the number of clusters, and does not constrain the
-shape of the clusters. 
-
-Given $n$ data points $x_i, i = 1, ... , n$ on a
-$d$-dimensional space $R^d$, the multivariate kernel density estimate obtained
-with kernel $K(x)$ and window radius $h$ is
-\begin{equation}\label{density_estimator}
-	f(x)=\frac{1}{nh^d}\sum_{i=1}^n K(\frac{x-x_i}{h}).
-\end{equation}
-
-For radially symmetric kernels, it suffices to define the profile of the kernel
-$k(x)$ satisfying
-\begin{equation}
-	K(x)=c_{k,d}k(\lVert x \rVert^2)
-\end{equation}
-where $c_{k,d}$ is a normalization constant which assures $K(x)$ integrates to 
-$1$. The modes of the density function are located at the zeros of the gradient
-function  $\nabla f(x) = 0$.
-
-The gradient of the density estimator \eqref{density_estimator} is 
-\begin{equation}
-	\begin{split}
-		\nabla f(x) & = \frac{2c_{k,d}}{nh^{d+2}}\sum_{i=1}^n \left(x_i -
-        x\right)g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right) \\ &
-        = \frac{2c_{k,d}}{nh^{d+2}} \left[ \sum_{i=1}^n g\left(\left\lVert
-        \frac{x - x_i}{h} \right\rVert^2\right) \right] \left[
-        \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h}
-        \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h}
-        \right\rVert^2\right)} -x \right].
-	\end{split}
-\end{equation}
-where $g(s) = -k'(s)$. The first term is proportional to the density estimate at
-$x$ computed with kernel $G(x) = c_{g,d}g(\lvert x \rvert^2)$ and the second 
-term
-\begin{equation}
-	m_h(x) = \frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h} \right\rVert^2\right)} -x
-\end{equation}
-is the \emph{mean shift}. The mean shift vector always points towards the direction of the maximum increase in the density. The mean shift procedure, obtained by successive
-\begin{itemize}
-	\item computation of the mean shift vector $m_h(x^t)$,
-	\item translation of the window $x^{t+1} = x^t + m_h(x^t)$
-\end{itemize}
-is guaranteed to converge to a point where the gradient of density function is
-zero. Mean shift mode finding process is illustrated in \autoref{mean_shift0}.
-
-The mean shift clustering algorithm is a practical application of the mode
-finding procedure:
-\begin{itemize}
-	\item starting on the data points, run mean shift procedure to find the 
-	stationary points of the density function,
-	\item prune these points by retaining only the local maxima.
-\end{itemize}
-
-The set of all locations that converge to the same mode defines the \emph{basin of attraction} of that mode. The points which are in the same basin of 
-attraction is associated with the same cluster. \autoref{mean_shift1} shows two examples of mean shift clustering on three dimensional data.
-
-
-
-
-
+In filtering as well as in segmentation algorithm a fixed sized window size is 
+used. In \citeauthor{citeulike:462300} \citep{citeulike:462300} ist is noted
+that for segmenation the algorithm is not heavily dependent on the choice of the
+kernel parameters where as there are application where the window size matters. 
+The segmentation part of the algorithm ??? has no significant impact on the 
+run time. 
