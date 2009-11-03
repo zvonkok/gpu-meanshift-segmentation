@@ -1,40 +1,40 @@
-\chapter{Parallel Processing with GPUs} % (fold)
-\label{cha:parallel_processing_with_gpu}
+\chapter{Parallel Processing with GPUs}% (fold)
+\label{cha:parallel_processing_with_gpu} 
 
-\section{Parallel Architectures} 
-\label{sec:parallel_architectures}
+\section{Parallel Architectures}
+\label{sec:parallel_architectures} 
 
-\subsubsection{Single Program Multiple Data (SPMD) } 
-\label{ssub:single_program_multiple_data_spmd}
+\subsubsection{Single Program Multiple Data (SPMD)}
+\label{ssub:single_program_multiple_data_spmd} 
 
 
 
-\section{The Tesla Architecture} % (fold)
-\label{sub:the_tesla_architecture}
+\section{The Tesla Architecture}.% (fold)
+\label{sub:the_tesla_architecture} 
 The Tesla architecture announced 1999 and developed by NVIDIA is the first
 GPU highly specialized for raster operations and more important
-for general purpose computing. Formerly\glspl{GPU}had fixed-function
+for general purpose computing. Formerly \glspl{GPU}.ad fixed-function
 pipelines and separate processing units with no ability for programmability to
 the vertex and fragment stages of the pipeline. In recent years manufacturers of
 GPUs added more and more programmability to the different stages
 of the pipeline and at the same time general purpose computing capabilities
-\citep{citeulike:3844545}. Furthermore manufacturers introduced the \gls{USM}
+\citep{citeulike:3844545}. Furthermore manufacturers introduced the  \gls{USM} 
 that unifies the processing units allowing for better
-utilization of \gls{GPU} resources. The resources needed by different
+utilization of  \gls{GPU}.resources. The resources needed by different
 shaders varies greatly and the unified design can overcome this issue by
 balancing the load among vertex, fragment and geometry functionality
 \citep{citeulike:3145468}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{gfx/tesla_architecture}
-\caption{Tesla Architecture}
-\label{fig:tesla_architecture}
-\end{figure}
+\includegraphics[width=\textwidth]{gfx/tesla_architecture} 
+\caption{Tesla Architecture} 
+\label{fig:tesla_architecture} 
+\end{figure} 
 
-The figure \autoref{fig:tesla_architecture} shows the Tesla architectures. As
-mentioned above the new \gls{GPU} architectures are a radical departure
-from traditional \gls{GPU} design (USM). The Tesla 8 Series has 16 multiprocessors. 
+The figure \autoref{fig:tesla_architecture}.shows the Tesla architectures. As
+mentioned above the new  \gls{GPU}.architectures are a radical departure
+from traditional  \gls{GPU}.design (USM). The Tesla 8 Series has 16 multiprocessors. 
 Each multiprocessor is composed of 8 streaming processors, 128 processors in 
 total. Each streaming multiprocessor has 16 KB of shared memory
 and a L1 cache attached and has access to a texture unit. A streaming processor
@@ -43,29 +43,29 @@ processor build up a SIMD unit (warp) in that one instruction is executed.
 The 8800 GTX has 768 MB of graphics memory, 620 GFlops of peak performance and
 86 GB/s peak memory bandwidth. Many massively data-parallel algorithms can be
 run sufficiently on this specialized architecture \citep{citeulike:3145468}.
-Programming for this architecture is done with\gls{CUDA}(Common Unified Device
+Programming for this architecture is done with \gls{CUDA}.Common Unified Device
 Architecture) the C language extension which will be covered in the next
 section.
 % section the_tesla_architecture (end)
 
 
-\section{Common Unified Device Architecture (CUDA)} % (fold)
-\label{sub:common_unified_device_architecture_cuda_}
+\section{Common Unified Device Architecture (CUDA)}.% (fold)
+\label{sub:common_unified_device_architecture_cuda_} 
 In 2007, NVIDIA introduced an extended ANSI C programming model and software
 environment the Compute Unified Device Architecture (CUDA). The reason why CUDA
 was is born is that parallelism is increasing rapidly with Moore's
-law\footnote{Processor count is doubling every 18 - 24 months} and the challenge
+law\footnote{Processor count is doubling every 18 - 24 months}.and the challenge
 is to develop parallel application software that scales transparently with the
-number of processor cores. The main goals when\gls{CUDA}was developed were that it
-scales to 100s of cores, 1000s of parallel threads and it allows heterogeneous
-computing (CPU + GPU). All this considerations led to the result that\gls{CUDA}runs
-on any number of processors without recompiling an the parallelism applies to
-both\glspl{CPU}and\glspl{GPU}\citep{citeulike:3839013}.
+number of processor cores. The main goals when \gls{CUDA}.as developed were that
+it scales to 100s of cores, 1000s of parallel threads and it allows
+heterogeneous computing (CPU + GPU). All this considerations led to the result
+that \gls{CUDA} runs on any number of processors without recompiling an the
+parallelism applies to both \glspl{CPU}.nd \glspl{GPU}.citep{citeulike:3839013}.
 
 CUDA is C with minimal extensions and defines a programming and memory model.
 There are three key abstractions in CUDA, a hierarchy of thread groups, shared
-memories and barrier synchronization \citep{citeulike:3325943} that are exposed
-to the developer.\gls{CUDA}uses extensive multithreading where threads express
+memories and barrier synchronization \citep{citeulike:3325943}.that are exposed
+to the developer. \gls{CUDA}.ses extensive multithreading where threads express
 fine-grained instruction, data and thread parallelism that are grouped into
 thread blocks which express coarse grained data and task parallelism. The
 developer has to rethink about his algorithms to be aggresively parallel.
@@ -74,10 +74,10 @@ level into fine-grained sub-problems that can be solved cooperatively
 \citep{citeulike:3325943}.
 
 CUDA has been accepted be many developers which can be seen by the huge amount
-of already developed software and contributions to the\gls{CUDA}Zone:
-\emph{www.nvidia.com/cuda}. A brief look shows the\gls{CUDA}computing sweet 
-spots\citep{citeulike:3839013}: 
-\begin{itemize} 
+of already developed software and contributions to the \gls{CUDA}.one:
+\emph{www.nvidia.com/cuda}. A brief look shows the \gls{CUDA}.omputing sweet 
+spots\citep{citeulike:3839013}. 
+\begin{itemize}
 	\item High arithmetic intensity (Dense linera algebra, PDEs, n-body, 
 			finite difference, ...) 
 	\item High bandwidth (Sequencing (virus scanning, genomics), sorting, 			
@@ -85,41 +85,41 @@ spots\citep{citeulike:3839013}:
 	\item Visual computing: (Graphics, image processing, tomography, 
 			machine vision, ... ) 
 	\item Computational modeling, science, engineering, finance, ... 			
-\end{itemize}
+\end{itemize} 
 
-This is just a small snapshot of algorithms that can be used with\gls{CUDA}on GPUs.
+This is just a small snapshot of algorithms that can be used with  \gls{CUDA}.n GPUs.
 For a more extensive list and speedups compared to high end CPUS see 
-\emph{www.nvidia.com/cuda} and \emph{www.gpGPU.org}.
+\emph{www.nvidia.com/cuda}.and \emph{www.gpGPU.org}.
  % section common_unified_device_architecture_cuda_ (end)
 
-\section{CUDA Programming Model} % (fold)
-\label{sub:cuda_programming_model}
-The\gls{CUDA}programming model exposes the graphics processor as a highly
+\section{CUDA Programming Model}.% (fold)
+\label{sub:cuda_programming_model} 
+The \gls{CUDA}.rogramming model exposes the graphics processor as a highly
 multithreaded coprocessor. The graphics processor is viewed as a compute device
 that is a coprocessor to the host that has its own device memory and runs many
 threads in parallel.
 
 Applications are accelerated by executing data parallel portions of the
-algorithm on the \gls{GPU} as \emph{kernels} which run in parallel on
-many threads. There are some major differences between CPU and \gls{GPU} threads. 
-A \gls{GPU} needs thousands of threads for full efficience where\glspl{CPU}only need a few of
-them. \gls{GPU} threads have a very little creation overhead and are extremely
+algorithm on the  \gls{GPU}.as \emph{kernels}.which run in parallel on
+many threads. There are some major differences between CPU and  \gls{GPU}.threads. 
+A  \gls{GPU}.needs thousands of threads for full efficience where \glspl{CPU}.nly need a few of
+them.  \gls{GPU}.threads have a very little creation overhead and are extremely
 lightweight compared to CPU threads.
 
-\paragraph{Thread Batching} % (fold)
-\label{par:thread_batching}
+\paragraph{Thread Batching}.% (fold)
+\label{par:thread_batching} 
 A kernel is executed as a grid of thread blocks where data memory space is
 shared by all threads. A thread block is a batch of threads that can cooperate
 with each other by synchronizing there execution\footnote{For hazard free shared
-memory access} and efficiently sharing data through the low latency shared
+memory access}.and efficiently sharing data through the low latency shared
 memory. Two threads from two different blocks can cooperate with atomic 
 functions through the global memory. The identification of a thread is 
 accomplished through block and thread ids which are assigned to each thread at 
 creation time. 
 % paragraph thread_batching (end)
 
-\paragraph{Block and Thread IDs} % (fold)
-\label{par:block_and_thread_ids}
+\paragraph{Block and Thread IDs}.% (fold)
+\label{par:block_and_thread_ids} 
 Every thread and block have a unique id. As a result of this each thread can
 decide whata data to work on. For every block there is a assigned id in 1D or 2D
 layout. Thread ids can be accessed either with 1D, 2D or 3D coordinates similar
@@ -129,8 +129,8 @@ solving partial differential equations on volumes and so on. The data can reside
 in several levels of the device memory. 
 % paragraph block_and_thread_ids (end)
 
-\paragraph{Device Memory Space} % (fold)
-\label{par:device_memory_space}
+\paragraph{Device Memory Space}.% (fold)
+\label{par:device_memory_space} 
 The memory space is a hierarchy of several memory types that can be accessed per
 thread, block, grid and the host. The threads have access to all memory levels
 beginning with the read/write (rw) registers, local, shared, global, read only
@@ -139,8 +139,8 @@ and texture memory. Whereas the CPU (host) can (rw) global, constant and texture
 memories.
 
 Global, constant and texture memory have long latency accesses. They reside off
-chip where registers local\footnote{Not true for older\glspl{GPU}chips where local
-data is spilled out to global memory} and shared memory reside on-chip. The
+chip where registers local\footnote{Not true for older \glspl{GPU}.hips where local
+data is spilled out to global memory}.and shared memory reside on-chip. The
 global, constant and texture memory are mainly used for communication of (rw)
 data between host and device where the contents is visible to all threads. As
 mentioned above texture and constant memory can be written by the host where
@@ -148,18 +148,18 @@ constants and textures are initialized.
 % paragraph device_memory_space (end)
 
 
-\section{A Simple Example} % (fold)
-\label{sub:a_simple_example}
-This simple example will show the structure of an\gls{CUDA}program. The executing
+\section{A Simple Example}.% (fold)
+\label{sub:a_simple_example} 
+This simple example will show the structure of an \gls{CUDA}.rogram. The executing
 kernel will do some easy calculations on the data provided, load the data into
 shared memory  and write back the results to the global memory. 
 
-A\gls{CUDA}program has a specific structure where the major parts are described in
+A \gls{CUDA}.rogram has a specific structure where the major parts are described in
 this paragraph. The first thing to do is to initialize the device and some
-auxiliary variables. Listing \autoref{lst:init} shows the initalization.
+auxiliary variables. Listing \autoref{lst:init}.shows the initalization.
 
 %
-\begin{lstlisting}[caption=Hardware initalization, label=lst:init]
+\begin{lstlisting}.caption=Hardware initalization, label=lst:init]
 int main( int argc, char** argv) {
 	CUT_DEVICE_INIT(argc, argv);
 
@@ -167,10 +167,10 @@ int main( int argc, char** argv) {
 	uint32_t mem_size = sizeof(float) * num_threads;
 	    							
                   ...
-\end{lstlisting}
+\end{lstlisting} 
 %
 
-Since the \gls{GPU} is attached to the PCIe bus the host has no direct access to 
+Since the  \gls{GPU}.is attached to the PCIe bus the host has no direct access to 
 the global, constant and texture memory and has to transfer the data back
 and forth with the DMA engine of the device. This is accomplished through the 
 CUDA api calls that initiate the transfer. Before any transfer can be done
@@ -178,7 +178,7 @@ one has to allocate memory on the host and on the device for input and output
 data. This is shown in listing \autoref{lst:datatransfer}.
 
 
-\begin{lstlisting}[caption=Data transfer of data, label=lst:datatransfer]
+\begin{lstlisting}.caption=Data transfer of data, label=lst:datatransfer]
 	// allocate host memory 
 	float* h_idata = (float*) malloc(mem_size);
 	// allocate device memory 
@@ -189,7 +189,7 @@ data. This is shown in listing \autoref{lst:datatransfer}.
 	float* h_odata = (float*) malloc( mem_size);
 	// copy host memory to device 
 	cudaMemcpy(d_idata, h_idata, mem_size, cudaMemcpyHostToDevice);
-\end{lstlisting}
+\end{lstlisting} 
 
 
 After setting up the input data the setup execution parameters are defined that
@@ -197,10 +197,10 @@ are used to startup the kernel. The $grid(1, 1, 1)$ statement defines a
 multi-dimensional array of grids $x=1, y=1, z=1$ whereas the
 $threads(num\_threads, 1, 1)$ defines a multi-dimensional array of threads
 $x=num\_threads, y=1, z=1$ which are actually $1D$ arrays. Listing
-\autoref{lst:execution} shows the call of the kernel with its input and output data.
+\autoref{lst:execution}.shows the call of the kernel with its input and output data.
 
 
-\begin{lstlisting}[caption=Execution of the Kernel, label=lst:execution]
+\begin{lstlisting}.caption=Execution of the Kernel, label=lst:execution]
 	    // setup execution parameters
 	    dim3  grid( 1, 1, 1);
 	    dim3  threads(num_threads, 1, 1);
@@ -208,16 +208,16 @@ $x=num\_threads, y=1, z=1$ which are actually $1D$ arrays. Listing
 	    // execute the kernel
 	    kernel<<< grid, threads, mem_size >>>(d_idata, d_odata);
 
-\end{lstlisting}
+\end{lstlisting} 
 
 
 
 If everything went well the host can copy the data from device memory
 to host memory and check, visualize or store the calculated values. Listing
-\autoref{lst:result} shows the last steps before exiting the program.
+\autoref{lst:result}.shows the last steps before exiting the program.
 
 
-\begin{lstlisting}[caption=Retrieving of the Results, label=lst:result]
+\begin{lstlisting}.caption=Retrieving of the Results, label=lst:result]
 	    // check if kernel execution generated and error
 	    CUT_CHECK_ERROR("Kernel execution failed");
  
@@ -227,27 +227,27 @@ to host memory and check, visualize or store the calculated values. Listing
 
 	    // cleanup memory free(x), free(y), free(z) ...
 		CUT_EXIT(argc, argv);
-	}
-\end{lstlisting}
+	} 
+\end{lstlisting} 
 
 
 
 The previous listings showed the host code and how to launch a kernel on the
-device. The listing \autoref{lst:device} shows the device code portion. There are
+device. The listing \autoref{lst:device}.shows the device code portion. There are
 several qualifiers that define which function is compiled for which processing
-unit. The \textit{\_\_global\_\_} qualifier specifies that this function is run
-on the device and hence compiled for the \gls{GPU} where the \textit{\_\_host\_\_}
+unit. The \textit{\_\_global\_\_}.qualifier specifies that this function is run
+on the device and hence compiled for the  \gls{GPU}.where the \textit{\_\_host\_\_} 
 qualifier specifies that this function is only run on the host and not on the
 device. There are more function specifiers that can be looked up in
 \citep{citeulike:3325943}.
 
 For data there are as well qualifiers where one can specify where the data is
 located, either in constant, global or shared memory. In listing
-\autoref{lst:device} the \textit{\_\_shared\_\_} qualifier is used. The device will
+\autoref{lst:device}.the \textit{\_\_shared\_\_}.qualifier is used. The device will
 use the shared memory to preload the data for faster access.
 
 
-\begin{lstlisting}[caption=CUDA device code, label=lst:device]
+\begin{lstlisting}.caption=CUDA device code, label=lst:device]
 	#include <stdio.h>
 
 	#define SDATA(index) CUT_BANK_CHECKER(sdata, index)
@@ -275,9 +275,9 @@ use the shared memory to preload the data for faster access.
 
 	  // write data to global memory
 	  g_odata[tid] = SDATA(tid);
-	}
+	} 
 
-\end{lstlisting}
+\end{lstlisting} 
 
 
 After loading the data the kernel just multiplies the thread-id with the number
@@ -288,5 +288,5 @@ the result.
 % section background_to_the_project (end)
 
 
-\section{Porting Strategies for GPUs} % (fold)
-\label{sec:porting_strategies_for_gpu}
+\section{Porting Strategies for GPUs}.% (fold)
+\label{sec:porting_strategies_for_gpu} 

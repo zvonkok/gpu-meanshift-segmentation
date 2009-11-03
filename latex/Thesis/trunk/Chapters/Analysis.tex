@@ -1,9 +1,44 @@
 \chapter{Mean Shift Algorithm Analysis} % (fold)
 \label{cha:algorithm_analysis}
+Before any porting can be started the developer has to find out if there are 
+multiple activities or tasks which run simultaenously to expose exploitable 
+concurrency. The developer has to find concurrency either by decomposing the  
+data or tasks. By this decomposition one wants to solve bigger problems in less 
+time as several processing units can solve different parts of the problem. 
+
+But before any analysis is started one has to know if the problem is large enough
+and if the resulting speedup justifies all the effort that is expended on making
+a parallel version out of it. In case of mean shift which is used for several 
+things like filtering, segmentation, pattern recognition and real time tracking
+one can deduce that for bigger images or many images the computation time climbs
+fast as the size or the number of images rises. To have a clue how the mean 
+shift algorithm behaves with big pictures several run times where recorded.
+For the analysis of the mean shift algorithm a ready to use \gls{EDISON} 
+was used that was profiled and modified and parallelized for the purpose of this 
+thesis.
+
+The
+\gls{EDISON}\footnote{http://www.caip.rutgers.edu/riul/research/code/EDISON/index.html}
+system which was developed by the authors  \citeauthor{citeulike:462300} of
+\citep{citeulike:462300} offers functionality to filter, segment and detect
+edges in images. 
+
+The \autoref{fig:cpu_run_time}
+shows results of \gls{CPU} run times of the \gls{EDISON} application dependant
+on image size. The vertical axis shows the run time in seconds and the
+horizontal axis shows the side length in pixels of the quadratic \autoref{fig:orig0}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=390pt]{gfx/cpu_run_time}
+\caption{CPU run time depending on the image size}
+\label{fig:cpu_run_time}
+\end{figure}
 
 
 
-\section{Profiling of the Original Code} % (fold)
+
+\section{Profiling the Original Code} % (fold)
 \label{sec:run_time_analysis_of_the_original_code}
 The first step before any porting to the \gls{GPU} is undertaken one has to
 identify the portions of code that can be optimized. The procedure is called
