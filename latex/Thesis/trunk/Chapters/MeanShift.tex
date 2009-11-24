@@ -46,8 +46,8 @@ for the task, but also features which are easily visually identified. Color
 observations are because of their simplicity and for the eye easily to gather
 important features. The color features can have components from the \gls{RGB} or
 gray value color space. Furthermore there are several other color spaces that
-could be observed like the \gls{HSV} or the \gls{Luv} color space with one
-luminance and two chromatic components. The \gls{Luv} color space is often used
+could be observed like the \gls{HSV} or the \gls{LUV} color space with one
+luminance and two chromatic components. The \gls{LUV} color space is often used
 in computer graphics because of its attribute to be a perceptually uniform color
 space.
 
@@ -103,8 +103,8 @@ probabilities.
 To derive the kernel density estimator in point $x \in \mathbb{R}^D$ first of
 all some definitions have to be made. Let $x$ be a random variable and $N$
 observations $x_1^N$ with $x_n \in \mathbb{R}^D$ given. The kernel density
-estimator $\hat(f)(x)$ in a point $x \in \mathbb{R}^D$, with a kernel $K(x)$ and a
-$DxD$ bandwith matrix $\mathbf{H}$ is 
+estimator $\hat{f}(x)$ in a point $x \in \mathbb{R}^D$, with a kernel $K(x)$ and a
+$D \times D$ bandwith matrix $\mathbf{H}$ is 
 \begin{equation}\label{eq:kernel0}
 	\hat{f}(x) = \frac{1}{N} \sum_{n = 1}^N K_{\mathbf{H}}\left( x-x_n \right)
 \end{equation} 
@@ -134,9 +134,9 @@ a known as a kernel, when there is a function $k:[0, \infty] \rightarrow
 \begin{equation}\label{eq:kernel3}
 	K(x)=c_{k,d}k(\lVert x \rVert^2)
 \end{equation}
-where $K$ is radial symmetric, $k$ is non negativ {\color{iRed} nicht zunehmend
-und stückweise stetig ist} with $\int_0^{\infty} k(r) dr < \infty$. $c_{k,D}$ is
-a positive normalization constant so that $K(x)$ integrates to $1$. 
+where $K$ is radial symmetric, where $k$ is non negativ, not increasingly and
+piecewise continuous with $\int_0^{\infty} k(r) dr < \infty$. $c_{k,D}$ is a
+positive normalization constant so that $K(x)$ integrates to $1$.
 
 Now the kernel density estimator from \autoref{eq:kernel2} can be transformed
 into a new equation. The two indices $K$ and $h$ are representing which kernel
@@ -172,7 +172,7 @@ follows a radial symmetric kernel
  
 where $c_D$ is the Volume of the $D$ dimensional globe. The epanechnikov kernel
 is used often as it minimizes the \gls{MISE} \citep{citeulike:5813637}. The
-\autoref{fig:epan} (a) shows the epanechnikov kernel. The dervative of the 
+\autoref{fig:epan} shows the epanechnikov kernel. The dervative of the 
 kernel is a uniform profile.
 
 
@@ -233,7 +233,7 @@ the same direction as the gradient of the shadow kernel (See \autoref{sub:gradie
 \section{Mean Shift} % (fold)
 \label{sec:mean_shift}
 In gradient based methods first the gradient s calculated and then the kernel is
-shifted by a vector with a specific length in direction of a maxium of the 
+shifted by a vector with a specific length in direction of a maximum of the 
 probability. The magnitude/length that is the step size of the vector has to be
 chosen. The problem of such gradient based methods is the choice of a suitable
 step size. The run time of such algorithms depends heavily on the right choice
@@ -244,7 +244,7 @@ procedures for finding the right step size, see \citeauthor{citeulike:462300}
 \citep{citeulike:462300}.
 
 In the case of mean shift there are no additional procedures needed to choose
-the step size. The magnitude/lenght of the mean shift vector is the step size 
+the step size. The magnitude/length of the mean shift vector is the step size 
 which is adaptive regarding the local gradient of the density of probability. 
 Because of this adaptive nature the mean shift algorithm converges (Proof see 
 \citeauthor{citeulike:462300} \citep{citeulike:462300}).
@@ -280,7 +280,7 @@ the density.
 
 \subsection{Density Gradient Estimation} % (fold)
 \label{sub:gradient_estimation}
-The usage of a differentiable kernel alllows one to write the density gradient 
+The usage of a differentiable kernel allows one to write the density gradient 
 estimator as the gradient of the density estimator
 
 \begin{equation}\label{eq:gradest}
@@ -323,14 +323,14 @@ profile $g(x)$ the gradient of the density estimator becomes
 \end{subequations}
 
 The first term of \autoref{eq:gradest2} conforms with the density estimator
-$\hat(f)_{h,G}(x)$ for kernel $G$ (compare with \autoref{eq:kernel4} for kernel
+$\hat{f}_{h,G}(x)$ for kernel $G$ (compare with \autoref{eq:kernel4} for kernel
 $K$) except for a factor whereas the second term is the difference between the
 center of the, with kernel $G$ weighted center of observation and the center $x$
 of the kernel window which conforms to the \emph{mean shift} vector from 
 \autoref{eq:ms0}.
 To localize the maxima with \emph{mean shift}, the maxima are the roots of the gradient,
 it firstly has to be shown that the \emph{mean shift} vektor is moving along the 
-direction of the gradient. Inserting $\hat(f)_{h,G}(x)$ and $m_{h,G}(x)$ into
+direction of the gradient. Inserting $\hat{f}_{h,G}(x)$ and $m_{h,G}(x)$ into
 \autoref{eq:gradest2} follows
 \begin{equation}\label{eq:ms1}
 	\hat{\nabla} f_{h,K}(x) = \frac{2c_{k,D}}{h^2c_{g,D}} 
@@ -406,13 +406,13 @@ A color image can be seen as a 2-dimensional matrix $I \times J$ with $N$
 3-dimensional vectors. The pixels in the image $x_n, n = 1, \ldots , N$ consist of
 a spatial part $x_n^r = (i,j) \in I \times J$ and a part with a color range
 $x_n^f = (r,g,b)$ so $x_n = (x_n^r, x_n^f) \in \mathbb{N}^5$ for $n = 1, \ldots , N$.
-Other color spaces like the \gls{Luv} color space could be used as well. The 
+Other color spaces like the \gls{LUV} color space could be used as well. The 
 euclidean metric is assumed for both spaces. 
 
 When applying \emph{mean shift} for filtering and segmentaition applications
 like in \citeauthor{citeulike:462300} \citep{citeulike:462300} a joined feature
 space is used for the spatial and range compoenents of a pixel. The color space
-used in filtering and segmentation is the \gls{Luv} color space because of its
+used in filtering and segmentation is the \gls{LUV} color space because of its
 feature of linear mapping. In a joint $D$-dimensional feature space ($D=5$ color
 images, $D=3$, graytone images) the different attributes of each space have to be
 equalized by normalization. Therefore is the joint kernel written as a product of
@@ -508,3 +508,17 @@ that for segmenation the algorithm is not heavily dependent on the choice of the
 kernel parameters where as there are application where the window size matters. 
 The segmentation part of the algorithm ??? has no significant impact on the 
 run time. 
+
+
+
+\begin{lstlisting}[caption=Mean shift Segmentation, label=lst:segmalgo, mathescape, numbers=none, escapechar=@, keywordstyle=\color{black}]
+  $x_n = (x_n^r, x_n^f), n = 1, \ldots , N$ are the $D$-dimensional pixels of the
+  original image and $z_n, n = 1 , \ldots. , N$ are the $D$-dimensional filtered pixels.
+
+  For each pixel $n = 1, \ldots , N$
+    1. Initialize $k = 1$ and $y_k = x_n$
+    2. Calculate $y_{k+1}$ according to @\autoref{eq:msi3}@, repeat until convergence
+    3. Set $z_n = (x_n^r, y_{conv}^f)$ 
+\end{lstlisting}
+
+
