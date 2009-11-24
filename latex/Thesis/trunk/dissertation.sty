@@ -35,7 +35,10 @@
 \RequirePackage{relsize} % scale font up or down
 \RequirePackage[ngerman,american]{babel}           
 \RequirePackage[square,numbers]{natbib} 
+
 \RequirePackage[fleqn]{amsmath} % math environments and more by the AMS 
+%\numberwithin{equation}{section} % Make sure equations are numbered by section
+
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 % ******************************************************************************
@@ -79,12 +82,17 @@
 \definecolor{iLightGray}{HTML}{F2F1F0}
 \definecolor{iDarkGray}{HTML}{B4B5B4}
 
-\definecolor{Brown0}{HTML}{4E3823}
+\definecolor{Brown0}{HTML}{4E3823} % Sectioninig
+\definecolor{Brown1}{HTML}{6C4E2F}
+\definecolor{Brown2}{HTML}{C0A266}
+\definecolor{Brown3}{HTML}{D3C699}
+\definecolor{Brown4}{HTML}{884F23} % Highlighting ...
+
 
 \colorlet{seccolor}{Brown0}
-\colorlet{lcolor}{iBlue}
-\colorlet{ccolor}{iGreen}
-\colorlet{ucolor}{iBrown}
+\colorlet{lcolor}{Brown1}
+\colorlet{ccolor}{Brown1}
+\colorlet{ucolor}{Brown1}
 \colorlet{lstbgcolor}{lstgreybg}
 \colorlet{lstrlcolor}{iDarkGray}
 
@@ -107,6 +115,7 @@
 \RequirePackage[cm-default, no-math]{fontspec}
 \RequirePackage{xunicode}
 \RequirePackage{xltxtra}
+%\RequirePackage{polyglossia}
 
 \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
 %\newcommand{\mainfont}{Charter OS ITC TT}
@@ -115,7 +124,7 @@
 \newcommand{\scfont}{Minion Pro}
 %\newcommand{\mainfont}{Berndal LT Std}
 %\newcommand{\scfont}{Berndal LT Std SC}
-
+%\setdefaultlanguage{UKenglish} % polyglossia
 
 
 \setmainfont{\mainfont}
@@ -176,6 +185,19 @@
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
+
+
+% ******************************************************************************
+% cleverref
+% ******************************************************************************
+%\RequirePackage{cleveref}
+%\crefname{chapter}{Chapter}{Chapters}
+%\crefname{section}{Section}{Sections}
+%\crefname{subsection}{Section}{Sections}
+%\crefname{subsubsection}{Section}{Sections}
+%\crefname{figure}{Figure}{Figures}
+%\crefname{table}{Table}{Tables}
+
 % ******************************************************************************
 % Hypcap (get the links to the figures and tables right)
 % ******************************************************************************
@@ -188,6 +210,18 @@
 %   \fi
 %   #2)}
 %}
+
+% ******************************************************************************
+% paralist  (Allow for smarter labeling of enumerations)
+% ******************************************************************************
+% and itemizations (consider using enumitem instead)
+\RequirePackage{paralist}
+
+% ******************************************************************************
+% varioref (Provides \labelformat, which changes how \ref references look
+% ******************************************************************************
+\RequirePackage{varioref}
+
 % ******************************************************************************
 % PDFpages
 % ******************************************************************************
