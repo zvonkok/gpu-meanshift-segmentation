@@ -457,6 +457,26 @@ maximum applying the filtering algorithm \autoref{lst:filtalgo}. \\
     3. Set $z_n = (x_n^r, y_{conv}^f)$ 
 \end{lstlisting}
 
+
+\begin{algorithm2e}[H]
+%\dontprintsemicolon
+Given $x_n = (x_n^r, x_n^f), n = 1, \ldots , N$ are the
+$D$-dimensional pixels of the
+original image and $z_n, n = 1 , \ldots. , N$ are the $D$-dimensional
+filtered pixels.
+For each pixel $n = 1, \ldots , N$
+\begin{enumerate}%[{\textsc{step}} 1]
+ \item Initialize $k = 1$ and $y_k = x_n$
+ \item Calculate $y_{k+1}$ according to \autoref{eq:msi3}, repeat
+until convergence
+ \item Set $z_n = (x_n^r, y_{conv}^f)$
+\end{enumerate}
+
+\caption{Mean Shift Filtering}
+\label{alg:msf}
+\end{algorithm2e}
+
+
 All pixels that converge to the same um are lying in the basin of attraction
 of this maxium. The filtered image points $z_n, n = 1 , \ldots , N$ keep there
 spatial coordinates but obtain the color values off the convergence point. The
