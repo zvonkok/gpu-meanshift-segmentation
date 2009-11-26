@@ -55,6 +55,10 @@
 % Commands
 % ******************************************************************************
 \newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+%\numberwithin{lstlisting}{section} % Make sure listings are numbered by section
+%\numberwithin{equation}{section} % Make sure equations are numbered by section
+%\numberwithin{figure}{section} % Make sure equations are numbered by section
+%\numberwithin{table}{section} % Make sure equations are numbered by section
 
 % ******************************************************************************
 % Colors
@@ -188,20 +192,9 @@
 
 
 % ******************************************************************************
-% cleverref
-% ******************************************************************************
-%\RequirePackage{cleveref}
-%\crefname{chapter}{Chapter}{Chapters}
-%\crefname{section}{Section}{Sections}
-%\crefname{subsection}{Section}{Sections}
-%\crefname{subsubsection}{Section}{Sections}
-%\crefname{figure}{Figure}{Figures}
-%\crefname{table}{Table}{Tables}
-
-% ******************************************************************************
 % Hypcap (get the links to the figures and tables right)
 % ******************************************************************************
-\RequirePackage[all]{hypcap} % to be loaded after hyperref package
+%\RequirePackage[all]{hypcap} % to be loaded after hyperref package
 %   \hspace*{\fill}{\scriptsize\itshape\mbox{%
 %   \ifnum#1=1 %
 %     (Cited on page~%
@@ -212,15 +205,40 @@
 %}
 
 % ******************************************************************************
+% algorithm2e
+% ******************************************************************************
+\RequirePackage[algochapter, algo2e, boxed]{algorithm2e}
+\SetAlgorithmName{Algorithm}{Algorithm}
+
+
+% In Fact caption is printed as follow :
+% \AlCapSty{\AlCapFnt Algorithm 1:} \AlCapNameSty{\AlCapNameFnt my algorithm}
+
+%\renewcommand{\AlCapSty}[1]{\textnormal{\small{#1}}\unskip}% default definition
+%\SetAlCapSty{\scshape\small}%
+%\SetAlCapNameSty{\small}%
+\SetAlCapSkip{1.5ex}%
+
+% ******************************************************************************
 % paralist  (Allow for smarter labeling of enumerations)
 % ******************************************************************************
 % and itemizations (consider using enumitem instead)
-\RequirePackage{paralist}
+\RequirePackage[newitem, newenum]{paralist}
+
 
 % ******************************************************************************
 % varioref (Provides \labelformat, which changes how \ref references look
 % ******************************************************************************
-\RequirePackage{varioref}
+%\RequirePackage{varioref}
+% Make sure \autoref puts parentheses around 
+% equations and enumeration items (similar to \eqref)
+% NOTE: This allows us to use \ref instead of \eqref
+%\labelformat{equation}{\textup{(#1)}}
+%\labelformat{enumi}{\textup{(#1)}}
+
+
+
+
 
 % ******************************************************************************
 % PDFpages
@@ -481,8 +499,6 @@
     %frame=L
 	moredelim=[is][\bfseries\color{iRed}]{§}{§}
 } 
-
-
 % ******************************************************************************
 % Enumeration small caps
 % ******************************************************************************
@@ -523,21 +539,34 @@
 % ******************************************************************************
 % Remreset (caption numbering now w/o chapter number)
 % ******************************************************************************
-\RequirePackage{remreset}
-\makeatletter
-\@removefromreset{table}{chapter}  % requires remreset package
-\renewcommand{\thetable}{\arabic{table}}
-\makeatother
+%\RequirePackage{remreset}
+%\makeatletter
+%\@removefromreset{table}{chapter}  % requires remreset package
+%\renewcommand{\thetable}{\arabic{table}}
+%\makeatother
 
-\makeatletter
-\@removefromreset{figure}{chapter}  % requires remreset package
-\renewcommand{\thefigure}{\arabic{figure}}  
-\makeatother
+%\makeatletter
+%\@removefromreset{figure}{chapter}  % requires remreset package
+%\renewcommand{\thefigure}{\arabic{figure}}  
+%\makeatother
 
-\makeatletter
-\@removefromreset{lstlisting}{chapter}% requires remreset package
-\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
-\makeatother
+%\makeatletter
+%\@removefromreset{lstlisting}{chapter}% requires remreset package
+%\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
+%\makeatother
+
+
+% ******************************************************************************
+% cleverref
+% ******************************************************************************
+%\RequirePackage{cleveref}
+%\crefname{chapter}{Chapter}{Chapters}
+%\crefname{section}{Section}{Sections}
+%\crefname{subsection}{Section}{Sections}
+%\crefname{subsubsection}{Section}{Sections}
+%\crefname{figure}{Figure}{Figures}
+%\crefname{table}{Table}{Tables}
+
 
 
 \endinput
