@@ -9,7 +9,7 @@
 %This section should briefly overview the provided topic.
 In recent years graphic processing units (GPUs) have moved from fixed pipeline
 graphics processors to a fully programmable processor. This evolvment has
-attracted many developers to do general purpose computing on GPUs.\glspl{GPU}have
+attracted many developers to do general purpose computing on GPUs. \glspl{GPU}have
 devoted there sillicon (transistors) for computing engines rather than for
 control engines like caches, branch prediction, coherency protocols and more.
 This incredible computing power made algorithms with an high arithemtic density
@@ -41,7 +41,7 @@ By the means of an application which will be ported to the \gls{GPU} the general
 workflow will be shown and various procedure models examined. It will be
 presented that often traditional software engineering principles do not
 apply to high performance, parallel computing. For this work a Nvidia \gls{GPU} will
-be used togehter with\gls{CUDA}(Common Unified Device Architecture) that is a
+be used togehter with \gls{CUDA} (Common Unified Device Architecture) that is a
 extension to C for parallel programming of GPUs. 
 
 The remainder of the thesis will give some in depth background to the topic and
@@ -66,14 +66,14 @@ identify parallelism, avoid race conditions and tune for performance.
 Additionally a modern programming method will be introduced that makes
 programming graphics processors easy. The following sections will cover some
 major topics which are the basic modules of this thesis. Beginning with the
-architecture of modern graphics processors it will be shown how these\glspl{GPU}can
+architecture of modern graphics processors it will be shown how these \glspl{GPU}can
 be programmed and at last a simple example implemented in CUDA. 
 
 \subsection*{The Tesla Architecture} % (fold)
 \label{sub:the_tesla_architecture}
 The Tesla architecture announced 1999 and developed by NVIDIA is the first
 GPU highly specialized for raster operations and more important
-for general purpose computing. Formerly\glspl{GPU}had fixed-function
+for general purpose computing. Formerly \glspl{GPU}had fixed-function
 pipelines and separate processing units with no ability for programmability to
 the vertex and fragment stages of the pipeline. In recent years manufacturers of
 GPUs added more and more programmability to the different stages
@@ -103,7 +103,7 @@ processor build up a SIMD unit (warp) in that one instruction is executed.
 The 8800 GTX has 768 MB of graphics memory, 620 GFlops of peak performance and
 86 GB/s peak memory bandwidth. Many massively data-parallel algorithms can be
 run sufficiently on this specialized architecture \citep{citeulike:3145468}.
-Programming for this architecture is done with\gls{CUDA}(Common Unified Device
+Programming for this architecture is done with \gls{CUDA} (Common Unified Device
 Architecture) the C language extension which will be covered in the next
 section.
 % section the_tesla_architecture (end)
@@ -116,16 +116,16 @@ environment the Compute Unified Device Architecture (CUDA). The reason why CUDA
 was is born is that parallelism is increasing rapidly with Moore's
 law\footnote{Processor count is doubling every 18 - 24 months} and the challenge
 is to develop parallel application software that scales transparently with the
-number of processor cores. The main goals when\gls{CUDA}was developed were that it
+number of processor cores. The main goals when \gls{CUDA} was developed were that it
 scales to 100s of cores, 1000s of parallel threads and it allows heterogeneous
-computing (CPU + GPU). All this considerations led to the result that\gls{CUDA}runs
+computing (CPU + GPU). All this considerations led to the result that \gls{CUDA} runs
 on any number of processors without recompiling an the parallelism applies to
-both\glspl{CPU}and\glspl{GPU}\citep{citeulike:3839013}.
+both \glspl{CPU}and \glspl{GPU}\citep{citeulike:3839013}.
 
 CUDA is C with minimal extensions and defines a programming and memory model.
 There are three key abstractions in CUDA, a hierarchy of thread groups, shared
 memories and barrier synchronization \citep{citeulike:3325943} that are exposed
-to the developer.\gls{CUDA}uses extensive multithreading where threads express
+to the developer. \gls{CUDA} uses extensive multithreading where threads express
 fine-grained instruction, data and thread parallelism that are grouped into
 thread blocks which express coarse grained data and task parallelism. The
 developer has to rethink about his algorithms to be aggresively parallel.
@@ -134,8 +134,8 @@ level into fine-grained sub-problems that can be solved cooperatively
 \citep{citeulike:3325943}.
 
 CUDA has been accepted be many developers which can be seen by the huge amount
-of already developed software and contributions to the\gls{CUDA}Zone:
-\emph{www.nvidia.com/cuda}. A brief look shows the\gls{CUDA}computing sweet 
+of already developed software and contributions to the \gls{CUDA} Zone:
+\emph{www.nvidia.com/cuda}. A brief look shows the \gls{CUDA} computing sweet 
 spots\citep{citeulike:3839013}: 
 \begin{itemize} 
 	\item High arithmetic intensity (Dense linera algebra, PDEs, n-body, 
@@ -147,14 +147,14 @@ spots\citep{citeulike:3839013}:
 	\item Computational modeling, science, engineering, finance, ... 			
 \end{itemize}
 
-This is just a small snapshot of algorithms that can be used with\gls{CUDA}on GPUs.
-For a more extensive list and speedups compared to high end CPUS see 
+This is just a small snapshot of algorithms that can be used with \gls{CUDA} on
+GPUs. For a more extensive list and speedups compared to high end CPUS see
 \emph{www.nvidia.com/cuda} and \emph{www.gpGPU.org}.
  % section common_unified_device_architecture_cuda_ (end)
 
 \subsection*{CUDA Programming Model} % (fold)
 \label{sub:cuda_programming_model}
-The\gls{CUDA}programming model exposes the graphics processor as a highly
+The \gls{CUDA} programming model exposes the graphics processor as a highly
 multithreaded coprocessor. The graphics processor is viewed as a compute device
 that is a coprocessor to the host that has its own device memory and runs many
 threads in parallel.
@@ -162,7 +162,7 @@ threads in parallel.
 Applications are accelerated by executing data parallel portions of the
 algorithm on the \gls{GPU} as \emph{kernels} which run in parallel on
 many threads. There are some major differences between CPU and \gls{GPU} threads. 
-A \gls{GPU} needs thousands of threads for full efficience where\glspl{CPU}only need a few of
+A \gls{GPU} needs thousands of threads for full efficience where \glspl{CPU} only need a few of
 them. \gls{GPU} threads have a very little creation overhead and are extremely
 lightweight compared to CPU threads.
 
@@ -199,7 +199,7 @@ and texture memory. Whereas the CPU (host) can (rw) global, constant and texture
 memories.
 
 Global, constant and texture memory have long latency accesses. They reside off
-chip where registers local\footnote{Not true for older\glspl{GPU}chips where local
+chip where registers local\footnote{Not true for older \glspl{GPU}chips where local
 data is spilled out to global memory} and shared memory reside on-chip. The
 global, constant and texture memory are mainly used for communication of (rw)
 data between host and device where the contents is visible to all threads. As
@@ -210,11 +210,11 @@ constants and textures are initialized.
 
 \subsection*{A Simple Example} % (fold)
 \label{sub:a_simple_example}
-This simple example will show the structure of an\gls{CUDA}program. The executing
+This simple example will show the structure of an \gls{CUDA} program. The executing
 kernel will do some easy calculations on the data provided, load the data into
 shared memory  and write back the results to the global memory. 
 
-A\gls{CUDA}program has a specific structure where the major parts are described in
+A \gls{CUDA} program has a specific structure where the major parts are described in
 this paragraph. The first thing to do is to initialize the device and some
 auxiliary variables. Listing \autoref{lst:init} shows the initalization.
 
@@ -355,7 +355,7 @@ the result.
 % abstracts, journals, books, series of reports, and so on. Key technical issues 
 % will be summarised.
 The first thing to answer is why should someone do general purpose computing on
-GPUs (GPGPU) anyway. For the most people\glspl{CPU}are just enough. They do not
+GPUs (GPGPU) anyway. For the most people \glspl{CPU}are just enough. They do not
 demand on high computational power and on a high bandwidth. Still there is
 paradigm shift taking place and this can not be neglected. As stated in
 \citep{citeulike:1187394} and in \citep{citeulike:3421647} CPU manufacturers are
@@ -370,8 +370,8 @@ chip \citep{citeulike:1243173}. SUN developed the \emph{Niagara} CPU a multi-cor
 general purpose processor. It has eight in-order cores, each of them capable of
 executing four simultaneous threads \citep{citeulike:3743958}.
 
-Compared to\glspl{CPU}GPUs went years ago to multicore and multithreading.\glspl{GPU}are
-maybe the kind of processor where\glspl{CPU}are heading to in terms of multithreading
+Compared to \glspl{CPU}GPUs went years ago to multicore and multithreading. \glspl{GPU}are
+maybe the kind of processor where \glspl{CPU}are heading to in terms of multithreading
 and raw performance. Forecasts project that every two years the amount of cores
 can double. The multicore approach may be the answer to the problems stated
 above but this yields to another thing the \emph{parallel programming problem}
@@ -391,10 +391,10 @@ data-parallel code. There are several fine-grained or data-parallel programming
 environments that leverage the \gls{GPU} for general purpose computing (Brook, Sh,
 RapidMind, ...). 
 
-The focus of this work will be CUDA\footnote{www.nvidia.com}.\gls{CUDA}is the only
+The focus of this work will be CUDA\footnote{www.nvidia.com}. \gls{CUDA} is the only
 environment which is not based on a graphics library and officialy released by
-NVIDIA for their GPUs.\gls{CUDA}is a minimal extension to C and C++ programming
-languages. The technique employed by\gls{CUDA}is single process, multiple data
+NVIDIA for their GPUs. \gls{CUDA} is a minimal extension to C and C++ programming
+languages. The technique employed by \gls{CUDA} is single process, multiple data
 (SPMD). Tasks are split up and run simultaneously on multiple threads (cores)
 with different input \citep{citeulike:3072519}.
 
@@ -402,17 +402,17 @@ with different input \citep{citeulike:3072519}.
 \label{ssub:choosing_a_fast_algorithm}
 Before even digging into the wide field of algorithms and difficult problems in
 high performance computing one has to understand the hardware architecture of
-the\glspl{GPU}to make a decision if an algorithm can be mapped on GPUs. A pretty good
-overview over the NVIDIA \gls{GPU} gives the \emph{NVIDIA\gls{CUDA}Programming Guide}
+the \glspl{GPU}to make a decision if an algorithm can be mapped on GPUs. A pretty good
+overview over the NVIDIA \gls{GPU} gives the \emph{NVIDIA \gls{CUDA} Programming Guide}
 \citep{citeulike:3325943}. A little bit outdatet but still of interest is
 \emph{The GeForce 6 Series \gls{GPU} Architecture}\citep{citeulike:3757915} which gives
 an overview how the \gls{GPU} fits into the whole system, what a fragment processor,
-vertex processor or what textures are. To have a even deeper look into\glspl{GPU}the
+vertex processor or what textures are. To have a even deeper look into \glspl{GPU}the
 article \citep{citeulike:2790995} is highly recommended.
 
 \paragraph{Computations which Map Well to GPUs} % (fold)
 \label{par:computations_which_map_well_to_GPUs}
-It is important to understand that\glspl{GPU}are good at running computer graphics
+It is important to understand that \glspl{GPU}are good at running computer graphics
 and algorithms which \emph{mimic} or have the attributes of computer graphics in
 terms of data parallelism and data independence. Not only that similar
 computations are applied to streams of many data elements (vertices, fragments,
@@ -430,7 +430,7 @@ This fact is important because the increase of computational throughput is
 faster than the memory throughput which leads to the problem known as \emph{The
 Memory Wall}. \gls{GPU} memory systems are architected to deliver high bandwidth,
 rather than low-latency, data access. As such computations that benefit most of
-the\glspl{GPU}have a high arithmetic intensity \citep{citeulike:3733428}. The next 
+the \glspl{GPU}have a high arithmetic intensity \citep{citeulike:3733428}. The next 
 sections will represent some algorithms which could fit to GPUs. 
 % paragraph computations_which_map_well_to_GPUs (end)
 
@@ -499,12 +499,12 @@ candidate to the list of the possible algorithms for porting.
 Parallel genetic algorithms are usually implemented on parallel machines but
 fine-grained parallel genetic algorithms can be mapped to GPUs
 \citep{citeulike:3801879}. In \citep{citeulike:3801866} its shown what kind of
-genetic algorithm map well to\glspl{GPU}and how the work and communication is
+genetic algorithm map well to \glspl{GPU}and how the work and communication is
 handled. It is \emph{pretty} easy to implement simple genetic algorithms on the
 GPUs but with increasing complexity one has to consider many more things: load
 balancing, communication pattern, dynamic memory allocation, resolving of
 recursion ... . Another paper \citep{citeulike:3801883} compares genetic
-algorithms implemented on\glspl{CPU}and\glspl{GPU}and shows that the latter is much more
+algorithms implemented on \glspl{CPU}and \glspl{GPU}and shows that the latter is much more
 effective than the former. All genetic algorithms have one thing in common the
 core algorithm. Once effectively implemented on the \gls{GPU} the core algorithm is
 extended with definitions like the population, selection, recombination and
@@ -567,7 +567,7 @@ CPU the process of porting to a \gls{GPU} is examined. As a result, the algorith
 will be running by a magnitude faster on the GPU. 
 
 Another aim is to understand the architecture and programming models of GPUs.
-Therefore the algorithmic view to\glspl{GPU}will be presented and computational
+Therefore the algorithmic view to \glspl{GPU}will be presented and computational
 concepts and efficient data structures explained. Understanding these key
 concepts makes one understand the architecture of GPUs.
 
@@ -581,7 +581,7 @@ concepts makes one understand the architecture of GPUs.
 % supervision. The objectives 
 Dissasociation from sequential algorithms and thinking in parallel will be one
 major discipline after working through this thesis. On will be able identify
-algorithms that are well suited for\glspl{GPU}and design efficient data flow and high
+algorithms that are well suited for \glspl{GPU}and design efficient data flow and high
 performing code.
 
 Assessment of algorithms, knowledge about \gls{GPU} architecture, program flow and
@@ -596,21 +596,21 @@ purpose computing.
 % project), or the investigative techniques to be adopted (in the case of, say, 
 % a critical survey).
 To estimate if an algorithm is suitable for running on the \gls{GPU} first of all the
-hardware architecture has to be understood. Since\glspl{GPU}are \emph{completely}
-different than\glspl{CPU}one has to understand how simple things like loops,
+hardware architecture has to be understood. Since \glspl{GPU}are \emph{completely}
+different than \glspl{CPU}one has to understand how simple things like loops,
 arithmetic, data access and program flow are managed on such hardware. The most
-interesting part here is the fact that\glspl{GPU}are able to hold up to approx. 12000
+interesting part here is the fact that \glspl{GPU}are able to hold up to approx. 12000
 threads in flight. Understanding the hardware is the key for high performance 
 computing on GPUs.
 
-To get an impression how one can/should write code for\glspl{GPU}a feasibility study
+To get an impression how one can/should write code for \glspl{GPU}a feasibility study
 will be done that will show answers to statements stated above and further 
 questions. 
 
 Further questions arise when reading scientific papers about general purpose
 computing on graphics hardware. Often there are statements which are not
 applicable to current hardware generation. These limitation arise from the fact
-that the\glspl{GPU}are implementing a graphics pipeline that is \emph{normally} used
+that the \glspl{GPU}are implementing a graphics pipeline that is \emph{normally} used
 for rasterization and rendering. The developers where confronted with an
 graphics API and a graphics pipeline which thinks of triangles and pixel rather
 than floats and integers. As a result the developers had to think about how to
@@ -619,7 +619,7 @@ There are several myths and truths about general purpose computing on graphics
 hardware which will be answered with the evolvment of the feasibility study. 
 
 Since general purpose computing on graphics hardware is not more or less 'C'
-programming with some extension, the best way to learn programming for\glspl{GPU}ist
+programming with some extension, the best way to learn programming for \glspl{GPU}ist
 learning by doing. Therefore several algorithms (Box Filter, Gaussian Blur, HDR,
 ... ) and further more will be studied.
 This way one will get enough experience to structure a initial code and have
@@ -640,7 +640,7 @@ performant an application will run on the GPU.
 
 The steps above will lead to a pretty good understanding of the hardware which
 leads to the next step the searching and identifying a suitable algorithm to
-port to the GPU. A critical survey of algorithms that are ported to\glspl{GPU}and
+port to the GPU. A critical survey of algorithms that are ported to \glspl{GPU}and
 that are not ported will be done. There are many high performance algorithms out
 there which take \emph{forever} to complete. If its chemistry, physics, biology,
 astronomie and mathematics all of them can be ported to a \gls{GPU} to some extent. It
@@ -731,18 +731,18 @@ well. % paragraph master_thesis_edited (end)
 \section*{Deliverables or specific outcomes} 
 \label{sub:deliverables_or_specific_outcomes} 
 % A clear statement of the expected outcome(s).
-The main outcome of this work is to show how\glspl{GPU}can be utilized for general
+The main outcome of this work is to show how \glspl{GPU}can be utilized for general
 purpose computing. There is a high demand on performance and computational power
 for scientific algorithms. Developers search for new architectures to solve
 problems in shorter time. One promising new architecture or hardware is the GPU.
-Since years\glspl{GPU}were only used for rendering. The switch from fixed pipelines
-to programmable pipelines let developers think about using\glspl{GPU}for general
+Since years \glspl{GPU}were only used for rendering. The switch from fixed pipelines
+to programmable pipelines let developers think about using \glspl{GPU}for general
 purpose computing. Accidently thery were forced to use 3D apis
 (OpenGL\footnote{http://www.opengl.org},
 DirectX\footnote{http://www.microsoft.com}) to accomplish task like matrix
-multiplication or fast fourier transformation. Nowadays developer use\gls{CUDA}or
+multiplication or fast fourier transformation. Nowadays developer use \gls{CUDA}or
 middleware like RapidMind to develop software for (NVIDIA) GPUs. It will be
-shown that\gls{CUDA}is highly efficient and easy to program which makes general
+shown that \gls{CUDA}is highly efficient and easy to program which makes general
 purpose computing more feasible.
 
 By the means of a application that is computationally intensive it will be shown
@@ -775,7 +775,7 @@ models. The problem with new hardware architectures is they have to be accepted
 by the developers to succeed in industry. One way to achieve this is to have an
 easy programming model which adapts easily to common apis and existing systems.
 There are rarely branches of industry which want to, or are able to rewrite
-their code for bleeding edge architectures like the cell or\glspl{GPU}if the outcome
+their code for bleeding edge architectures like the cell or \glspl{GPU}if the outcome
 is only 2x faster code. In this case many just extend their cluster with another
 bunch of \emph{cheap} systems. A factor of 10 is an undocumented limit when to
 invest in other, faster hardware.

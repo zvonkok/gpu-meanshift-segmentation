@@ -24,7 +24,7 @@ The most interesting myth here is that in average one can only exploit about
 10\% of the peak performance for general purpose computing, which in turn would 
 lead to that \glspl{GPU} are power-inefficient in average. Another thing to 
 keep an eye on is the statement that \glspl{GPU} do not do real floating point
-math which would exclude many communities (\gls{HPC}, Physics, Astronomy, ..)
+math which would exclude many communities ( \gls{HPC}, Physics, Astronomy, ..)
 \graffito{Many \gls{HPC}, Physics, Astronomy,... benchmarks and algorithms rely 
 on floating point math} from spending time in doing \gls{GPGPU}. 
 
@@ -110,12 +110,14 @@ how good/bad the existing resources are exploited.
 
 The examination of the ray traced showed that the initial port used 48
 registers, 28 bytes shared memory and 96 byte constant memory per thread. As
-shown in \textbf{REF. to\gls{CUDA}Application Stuff} the number of launched threads,
+shown in \textbf{REF. to \gls{CUDA} Application Stuff} the number of launched threads,
 blocks and grids is dependent on the three factors mentioned above.
 
 Each \gls{SM} has 8192 registers which means we could have 8192/48 = 170 threads
-to fully exploit the resources 8 blocks should be launched so 170/8 = 21 threads per block which is by far too low. It is easily spotted that the application is
-limited by registers / \gls{SM}. These calculations can easily be done with the \emph{CUDA occupancy calculator} supplied with the SDK. 
+to fully exploit the resources 8 blocks should be launched so 170/8 = 21 threads
+per block which is by far too low. It is easily spotted that the application is
+limited by registers \gls{SM}. These calculations can easily be done with the
+\emph{CUDA occupancy calculator} supplied with the SDK.
 
 After fiddling around with compiler switches especially \emph{-maxrregcount=x}
 the application used only 14 register which meant we could have a blocksize of
