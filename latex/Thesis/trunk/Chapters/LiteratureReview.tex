@@ -38,10 +38,10 @@ data-parallel code. There are several fine-grained or data-parallel programming
 environments that leverage the \gls{GPU} for general purpose computing (Brook, Sh,
 RapidMind, ...). 
 
-The focus of this work will be CUDA\footnote{www.nvidia.com}.\gls{CUDA}is the only
+The focus of this work will be CUDA\footnote{www.nvidia.com}. \gls{CUDA}is the only
 environment which is not based on a graphics library and officialy released by
-NVIDIA for their GPUs.\gls{CUDA}is a minimal extension to C and C++ programming
-languages. The technique employed by\gls{CUDA}is single process, multiple data
+NVIDIA for their GPUs. \gls{CUDA}is a minimal extension to C and C++ programming
+languages. The technique employed by \gls{CUDA}is single process, multiple data
 (SPMD). Tasks are split up and run simultaneously on multiple threads (cores)
 with different input \citep{citeulike:3072519}.
 
@@ -50,7 +50,7 @@ with different input \citep{citeulike:3072519}.
 Before even digging into the wide field of algorithms and difficult problems in
 high performance computing one has to understand the hardware architecture of
 the\glspl{GPU}to make a decision if an algorithm can be mapped on GPUs. A pretty good
-overview over the NVIDIA \gls{GPU} gives the \emph{NVIDIA\gls{CUDA}Programming Guide}
+overview over the NVIDIA \gls{GPU} gives the \emph{NVIDIA \gls{CUDA}Programming Guide}
 \citep{citeulike:3325943}. A little bit outdatet but still of interest is
 \emph{The GeForce 6 Series \gls{GPU} Architecture}\citep{citeulike:3757915} which gives
 an overview how the \gls{GPU} fits into the whole system, what a fragment processor,
@@ -235,9 +235,9 @@ http://www.cag.csail.mit.edu/ps3/lectures/6.189-lecture5-parallelism.pdf
 	\item Experimental partitioning and mapping of the algorithm and program 
 		structure to the architecture
 	\item Develop CPU Control, CPU scalar/multicore code
-	\item Develop CPU Control, partitioned\gls{GPU}scalar code (Communication, 
+	\item Develop CPU Control, partitioned \gls{GPU}scalar code (Communication, 
 		synchronization, latency handling)
-	\item Transform\gls{GPU}scalar code to\gls{GPU}threaded code, multi\gls{GPU}code
+	\item Transform \gls{GPU}scalar code to \gls{GPU}threaded code, multi \gls{GPU}code
 	\item Re-balance the computation / data movement
 	\item Other optimization considerations (load balancing, bottlenecks...)
 \end{itemize}
@@ -256,7 +256,7 @@ SDK's, CTM, Anbieter, verschieden Programiersprachen
 
 \subsection{Stream Computing in Field Use} % (fold)
 \label{sub:stream_computing_in_use}
-Einsetzbarkeit, Leistung und Effizienz von\gls{GPU}Applikationen im nichtgrafischen Applikationsbreich Kontext, Referenzen (wo wird eingesetzt im nicht-grafik
+Einsetzbarkeit, Leistung und Effizienz von \gls{GPU}Applikationen im nichtgrafischen Applikationsbreich Kontext, Referenzen (wo wird eingesetzt im nicht-grafik
 Bereich)
 % subsection stream_computing_in_use (end)
 

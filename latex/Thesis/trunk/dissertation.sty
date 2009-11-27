@@ -18,52 +18,11 @@
 \DeclareOption{listsseparated}{\setboolean{@listsseparated}{false}}
 \ProcessOptions\relax
 
-% ******************************************************************************
-% Load needed Packages
-% ******************************************************************************
-\RequirePackage{subfig}  
-\newcommand{\subfigureautorefname}{\figureautorefname}
-
-\RequirePackage{fltpoint}
-\RequirePackage{listings}  
-\RequirePackage{textcomp}
-\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
-\RequirePackage{xspace} % to get the spacing after macros right
-\RequirePackage{tabularx} % better tables
-\RequirePackage{mparhack} % get marginpar right
-\RequirePackage{fixltx2e} % fixes some LaTeX stuff
-\RequirePackage{relsize} % scale font up or down
-\RequirePackage[ngerman,american]{babel}           
-\RequirePackage[square,numbers]{natbib} 
-
-\RequirePackage[fleqn]{amsmath} % math environments and more by the AMS 
-%\numberwithin{equation}{section} % Make sure equations are numbered by section
-
-\RequirePackage{amssymb}
-\RequirePackage{amsfonts}
-% ******************************************************************************
-% Math Package
-% ******************************************************************************
-\RequirePackage[retainmissing,abx]{MnSymbol}
-%\RequirePackage[fraktur,mdugm]{mathdesign}
-%\RequirePackage[euler-digits]{eulervm} % Euler math fonts
-%\RequirePackage[minionint, openg, mathosf, onlymath]{MinionPro}% 
-%\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
-
 
 % ******************************************************************************
-% Commands
+% Colors (need to load it first ... some package is loading it dont know which)
 % ******************************************************************************
-\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
-%\numberwithin{lstlisting}{section} % Make sure listings are numbered by section
-%\numberwithin{equation}{section} % Make sure equations are numbered by section
-%\numberwithin{figure}{section} % Make sure equations are numbered by section
-%\numberwithin{table}{section} % Make sure equations are numbered by section
-
-% ******************************************************************************
-% Colors
-% ******************************************************************************
-\RequirePackage[dvipsnames, x11names, hyperref, table]{xcolor} 
+\RequirePackage[xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
 \definecolor{halfgray}{gray}{0.55}  
 \definecolor{webgreen}{rgb}{0,.5,0}
 \definecolor{webbrown}{rgb}{.6,0,0}
@@ -86,6 +45,8 @@
 \definecolor{iLightGray}{HTML}{F2F1F0}
 \definecolor{iDarkGray}{HTML}{B4B5B4}
 
+
+\definecolor{Brown}{HTML}{4E3823}
 \definecolor{Brown0}{HTML}{4E3823} % Sectioninig
 \definecolor{Brown1}{HTML}{6C4E2F}
 \definecolor{Brown2}{HTML}{C0A266}
@@ -99,6 +60,58 @@
 \colorlet{ucolor}{Brown1}
 \colorlet{lstbgcolor}{lstgreybg}
 \colorlet{lstrlcolor}{iDarkGray}
+
+
+% ******************************************************************************
+% Load needed Packages
+% ******************************************************************************
+\RequirePackage{subfig}  
+\newcommand{\subfigureautorefname}{\figureautorefname}
+
+\RequirePackage{fltpoint}
+\RequirePackage{listings}  
+\RequirePackage{textcomp}
+\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
+\RequirePackage{xspace} % to get the spacing after macros right
+\RequirePackage{tabularx} % better tables
+\RequirePackage{mparhack} % get marginpar right
+\RequirePackage{fixltx2e} % fixes some LaTeX stuff
+\RequirePackage{relsize} % scale font up or down
+\RequirePackage[ngerman,american]{babel}           
+\RequirePackage[square,numbers]{natbib} 
+\RequirePackage[fleqn]{amsmath} % math environments and more by the AMS 
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+
+% ******************************************************************************
+% pgfplots (very nice graph plots)
+% ******************************************************************************
+\RequirePackage{pgfplots}
+\pgfplotsset{
+	every tick label/.append style={font=\plotfont\scriptsize},
+	every axis/.append style={font=\footnotesize\plotfont},
+	every axis x label/.style={at={(0.5,0)}, below, yshift=-20pt}
+}
+
+% ******************************************************************************
+% Math Package
+% ******************************************************************************
+\RequirePackage[retainmissing,abx]{MnSymbol}
+%\RequirePackage[fraktur,mdugm]{mathdesign}
+%\RequirePackage[euler-digits]{eulervm} % Euler math fonts
+%\RequirePackage[minionint, openg, mathosf, onlymath]{MinionPro}% 
+%\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
+
+
+% ******************************************************************************
+% Commands
+% ******************************************************************************
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+%\numberwithin{lstlisting}{section} % Make sure listings are numbered by section
+%\numberwithin{equation}{section} % Make sure equations are numbered by section
+%\numberwithin{figure}{section} % Make sure equations are numbered by section
+%\numberwithin{table}{section} % Make sure equations are numbered by section
+
 
 % ******************************************************************************
 % Penalties
@@ -134,7 +147,7 @@
 \setmainfont{\mainfont}
 %\setsansfont{Verdana}
 %\setmonofont{Pragmata}
-
+\newfontfamily\plotfont[Numbers=OldStyle]{\mainfont}
 \newfontfamily\lstfont[Scale=0.8]{Luxi Mono}
 \newfontfamily\scshape[LetterSpace=6.0, Letters=SmallCaps]{\scfont}
 \renewcommand{\textsc}[1]{\scshape{#1}}
@@ -205,20 +218,28 @@
 %}
 
 % ******************************************************************************
+% Captions look and feel
+% ******************************************************************************
+\captionsetup{format=hang,font=small}
+
+\renewcommand{\captionfont}{\small}
+\renewcommand{\captionlabelfont}{\scshape}
+
+
+% ******************************************************************************
 % algorithm2e
 % ******************************************************************************
 \RequirePackage[algochapter, algo2e, boxed]{algorithm2e}
 \SetAlgorithmName{Algorithm}{Algorithm}
 
-
 % In Fact caption is printed as follow :
 % \AlCapSty{\AlCapFnt Algorithm 1:} \AlCapNameSty{\AlCapNameFnt my algorithm}
-
-\renewcommand{\AlCapSty}[1]{\textnormal{\small{#1}}\unskip}% default definition
-
-%\SetAlCapSty{\scshape\small}%
-%\SetAlCapNameSty{\small}%
-\SetAlCapSkip{1.5ex}%
+\renewcommand{\AlCapSty}{\captionfont}%
+\renewcommand{\AlCapFnt}{\captionlabelfont}%
+\renewcommand{\AlCapNameSty}{\captionfont}% 
+\SetAlCapSkip{\abovecaptionskip}%
+\renewcommand{\@algoskip}{\medskip\bigskip}%\SetAlgoSkip{bigskip}%
+%\setlength{\algomargin}{2em}% margin in the box
 
 % ******************************************************************************
 % paralist  (Allow for smarter labeling of enumerations)
@@ -266,11 +287,11 @@
   \renewcommand*{\glsgroupheading}[1]{}%
 
   \renewcommand*{\glossaryentryfield}[5]{%
-    \ssmallcaps{\glstarget{##1}{##2}} \hspace{2.5em} 
-    & ##3\glspostdescription\space \hspace{1.0em} ##5 \tabularnewline}%
+    \ssmallcaps{ \glstarget{##1}{##2}} \hspace{2.5em} 
+    & ##3 \glspostdescription\space \hspace{1.0em} ##5 \tabularnewline}%
 
   \renewcommand*{\glossarysubentryfield}[6]{%
-     & \glstarget{##2}{\strut}##4\glspostdescription\space ##6%
+     & \glstarget{##2}{\strut}##4 \glspostdescription\space ##6%
     \tabularnewline}%
   \renewcommand*{\glsgroupskip}{ & \tabularnewline}%
 }
@@ -521,11 +542,7 @@
 \deffootnote[1em]{1em}{0em}{\ssmallcaps\thefootnotemark\hspace*{.5em}}      
 \setfnsymbol{bringhurst}   % use symbols recommended by guru Robert Bringhurst 
 \setlength{\footnotemargin}{-1em}     
-% ******************************************************************************
-% Captions look and feel
-% ******************************************************************************
-\captionsetup{format=hang,font=small}
-\renewcommand{\captionlabelfont}{\scshape}
+
 % ******************************************************************************
 % Graffiti as in GKP's book "Concrete Mathematics"
 % ******************************************************************************
