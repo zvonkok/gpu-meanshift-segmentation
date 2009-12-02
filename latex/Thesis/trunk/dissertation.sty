@@ -23,43 +23,27 @@
 % Colors (need to load it first ... some package is loading it dont know which)
 % ******************************************************************************
 \RequirePackage[xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
-\definecolor{halfgray}{gray}{0.55}  
-\definecolor{webgreen}{rgb}{0,.5,0}
-\definecolor{webbrown}{rgb}{.6,0,0}
-\definecolor{lstgreybg}{rgb}{0.95, 0.95, 0.95}
-\definecolor{grey10}{rgb}{0.9,0.9,0.9}
-\definecolor{grey20}{rgb}{0.8,0.8,0.8}
-\definecolor{grey30}{rgb}{0.7,0.7,0.7}
-\definecolor{grey40}{rgb}{0.6,0.6,0.6}
-\definecolor{grey50}{rgb}{0.5,0.5,0.5}
-\definecolor{grey60}{rgb}{0.4,0.4,0.4}
-\definecolor{grey90}{rgb}{0.1,0.1,0.1}
 
 
-\definecolor{iBlue}{HTML}{0055A2}
-\definecolor{iRed}{HTML}{A2002A}
-\definecolor{iGreen}{HTML}{689909}
-\definecolor{iBrown}{HTML}{A25800}
-\definecolor{iPurple}{HTML}{490999}
+\definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
+\definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
 
-\definecolor{iLightGray}{HTML}{F2F1F0}
-\definecolor{iDarkGray}{HTML}{B4B5B4}
+\definecolor{Brown0}{cmyk}{0.33, 0.31, 0.32, 0.01}
 
+\definecolor{plotcolor0}{HTML}{CEAD7E}
 
-\definecolor{Brown}{HTML}{4E3823}
-\definecolor{Brown0}{HTML}{4E3823} % Sectioninig
-\definecolor{Brown1}{HTML}{6C4E2F}
-\definecolor{Brown2}{HTML}{C0A266}
-\definecolor{Brown3}{HTML}{D3C699}
-\definecolor{Brown4}{HTML}{884F23} % Highlighting ...
+\definecolor{listingbgcolor}{cmyk}{0.04, 0.02, 0.03, 0.0}
 
+\colorlet{listingbgcolor}{listingbgcolor!90!white}
+\colorlet{listingfgcolor}{listingbgcolor!95!black}
 
-\colorlet{seccolor}{Brown0}
-\colorlet{lcolor}{Brown1}
-\colorlet{ccolor}{Brown1}
-\colorlet{ucolor}{Brown1}
-\colorlet{lstbgcolor}{lstgreybg}
-\colorlet{lstrlcolor}{iDarkGray}
+%\colorlet{seccolor}{headings}
+\colorlet{lcolor}{seccolor}
+\colorlet{ccolor}{seccolor}
+\colorlet{ucolor}{seccolor}
+\colorlet{lstbgcolor}{listingbgcolor}
+\colorlet{lstrlcolor}{listingfgcolor}
+
 
 
 % ******************************************************************************
@@ -222,8 +206,8 @@
 % ******************************************************************************
 \captionsetup{format=hang,font=small}
 
-\renewcommand{\captionfont}{\small}
-\renewcommand{\captionlabelfont}{\scshape}
+\renewcommand{\captionfont}{\small\color{textcolor}}
+\renewcommand{\captionlabelfont}{\scshape\color{textcolor}}
 
 
 % ******************************************************************************
@@ -310,10 +294,10 @@
 \renewcommand{\chaptermark}[1]{\markboth{\slcsmallcaps{#1}}{\slcsmallcaps{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\slcsmallcaps{#1}}} 
 
-\lehead{\slcsmallcaps{\small\headmark}} 	
-\rehead{\slcsmallcaps{\small\thepage}}
-\lohead{\slcsmallcaps{\small\thepage}} 	
-\rohead{\slcsmallcaps{\small\headmark}}
+\lehead{\slcsmallcaps{\color{seccolor}\small\headmark}} 	
+\rehead{\slcsmallcaps{\color{seccolor}\small\thepage}}
+\lohead{\slcsmallcaps{\color{seccolor}\small\thepage}} 	
+\rohead{\slcsmallcaps{\color{seccolor}\small\headmark}}
 % ******************************************************************************                
 % Tables
 % ******************************************************************************  
@@ -500,11 +484,11 @@
 % ******************************************************************************  
 \RequirePackage{listings}%
 \lstset{language=C++,
-    keywordstyle=\color{iBlue},
+%    keywordstyle=\color{iBlue},
     basicstyle=\lstfont,	
 	tabsize=4,
     %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{iGreen},%\ttfamily,
+%    commentstyle=\color{iGreen},%\ttfamily,
     %stringstyle=\rmfamily,
     numbers=left,
     numberstyle=\scriptsize,%\tiny
@@ -519,7 +503,7 @@
     %frameround=ftff,
     frame=tb,
     %frame=L
-	moredelim=[is][\bfseries\color{iRed}]{§}{§}
+%	moredelim=[is][\bfseries\color{iRed}]{§}{§}
 } 
 % ******************************************************************************
 % Enumeration small caps
@@ -541,7 +525,8 @@
 \RequirePackage{footmisc} % footnotemark not superscripted at the bottom
 \deffootnote[1em]{1em}{0em}{\ssmallcaps\thefootnotemark\hspace*{.5em}}      
 \setfnsymbol{bringhurst}   % use symbols recommended by guru Robert Bringhurst 
-\setlength{\footnotemargin}{-1em}     
+\setlength{\footnotemargin}{-1em}   
+\addtokomafont{footnote}{\color{seccolor}}
 
 % ******************************************************************************
 % Graffiti as in GKP's book "Concrete Mathematics"
