@@ -78,6 +78,21 @@
 }
 
 % ******************************************************************************
+% pgfplotstable (very nice tables)
+% ******************************************************************************
+\RequirePackage{pgfplotstable}
+\pgfplotstableset{
+	every head row/.style={before row={\toprule},after row=\midrule},
+	every last row/.style={after row=\bottomrule},
+	font=\color{textcolor}%\scshape
+}
+% recommendations...
+\RequirePackage{booktabs}
+\RequirePackage{array} 
+\RequirePackage{colortbl}
+
+
+% ******************************************************************************
 % Math Package
 % ******************************************************************************
 \RequirePackage[retainmissing,abx]{MnSymbol}
@@ -127,12 +142,13 @@
 %\newcommand{\scfont}{Berndal LT Std SC}
 %\setdefaultlanguage{UKenglish} % polyglossia
 
+%5–10% of the size of the type.
 
 \setmainfont{\mainfont}
 %\setsansfont{Verdana}
 %\setmonofont{Pragmata}
 \newfontfamily\plotfont[Numbers=OldStyle]{\mainfont}
-\newfontfamily\lstfont[Scale=0.8]{Luxi Mono}
+\newfontfamily\lstfont[Scale=0.7]{Anonymous Pro}
 \newfontfamily\scshape[LetterSpace=6.0, Letters=SmallCaps]{\scfont}
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
@@ -204,10 +220,16 @@
 % ******************************************************************************
 % Captions look and feel
 % ******************************************************************************
-\captionsetup{format=hang,font=small}
+\RequirePackage{caption}[2008/04/01]
+\DeclareCaptionFont{seccolor}{\color{seccolor}}
+\DeclareCaptionFont{textcolor}{\color{textcolor}}
+\DeclareCaptionLabelSeparator{zspace}{ }
 
-\renewcommand{\captionfont}{\small\color{textcolor}}
-\renewcommand{\captionlabelfont}{\scshape\color{textcolor}}
+\captionsetup{font=small, format=hang, labelfont={sc, seccolor}, textfont=textcolor}
+\captionsetup[subtable]{labelsep=quad}
+
+%\renewcommand{\captionfont}{\small\color{textcolor}}
+%\renewcommand{\captionlabelfont}{\scshape\color{seccolor}}
 
 
 % ******************************************************************************
@@ -501,7 +523,9 @@
 	captionpos=b,
 	framerule=1pt,
     %frameround=ftff,
-    frame=tb,
+    %frame=tb,
+	frame=single,
+	%framexleftmargin=1em,
     %frame=L
 %	moredelim=[is][\bfseries\color{iRed}]{§}{§}
 } 
@@ -527,6 +551,9 @@
 \setfnsymbol{bringhurst}   % use symbols recommended by guru Robert Bringhurst 
 \setlength{\footnotemargin}{-1em}   
 \addtokomafont{footnote}{\color{seccolor}}
+
+\renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
+	\hrule width 0.4\columnwidth \vspace*{2.6pt}}}
 
 % ******************************************************************************
 % Graffiti as in GKP's book "Concrete Mathematics"

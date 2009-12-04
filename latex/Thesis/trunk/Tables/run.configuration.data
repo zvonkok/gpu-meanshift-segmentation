@@ -1,0 +1,2 @@
+blockSize.x  blockSize.y  gridSize.x  gridSize.y  {Regs. per Thread} 
+8  8  96  96  14
