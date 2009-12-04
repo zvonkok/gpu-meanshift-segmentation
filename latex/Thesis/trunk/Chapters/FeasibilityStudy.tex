@@ -130,78 +130,71 @@ global memory which has a high latency (200-400 cycles) and registers often
 referenced have a big impact on performance. The application can become memory
 bound.
 
-The Table \autoref{tab:runconfig} shows the run configuration used for the sample runs. 
+The \autoref{tab:runconfig} shows the run configuration used for the sample runs. 
 
 \begin{table}[ht]
-    \myfloatalign
-  \begin{tabularx}{\textwidth}{ccccc} \toprule
-	\multicolumn{5}{c}{\slcsmallcaps{Run Configuration}} \\ \midrule
-	blockSize.x & blockSize.y & gridSize.x & gridSize.y & Regs. per Thread\\ 
-  	8 & 8 & 96 & 96 & 14\\
-    \bottomrule
-  \end{tabularx}
-  \caption[Run configuration]{Run configuration.}
-  \label{tab:runconfig}
+	\myfloatalign
+	\pgfplotstabletypeset{Tables/run.configuration.data}
+  	\caption[Run configuration]{Run configuration.}	
+	\label{tab:runconfig}
 \end{table}
+
+
 
 To summarize just by compiling the application and fiddling with the run
 parameters one can achieve, in this case, a speedup of about 8 times. See Table
 \autoref{tab:comp} for several runs varying object count and image size.
 
 \begin{table}[ht]
-   \myfloatalign
-  \begin{tabularx}{\textwidth}{ccccc} \toprule
-    \tableheadline{Image} & 
-	\tableheadline{Objects} & 
-	\tableheadline{CPU Gflops} &
-	\tableheadline{GPU Gflops} &
-	\tableheadline{Speedup}\\ \midrule
-    768 & 338 &  0.37 & 3.17 & 8.54 \\
- 	768 & 450 &  0.37 & 3.22 & 8.6\\
- 	768 & 840 &  0.37 & 3.23 & 8.74\\ 
- 	512 & 338 &  0.37 & 3.19 & 8.53\\
- 	512 & 450 &  0.37 & 3.18 & 8.5\\
- 	512 & 840 &  0.37 & 3.18 & 8.64\\ 
- 	256 & 338 &  0.37 & 3.03 & 8.09\\
- 	256 & 450 &  0.37 & 3.03 & 8.44\\
- 	256 & 840 &  0.37 & 2.95 & 7.96\\
-    \bottomrule
-  \end{tabularx}
-  \caption[Comparison between CPU and GPU]{Comparison between CPU and GPU.}
-  \label{tab:comp}
+	\myfloatalign
+	\pgfplotstabletypeset{Tables/comp.cpu.gpu.data}
+	\caption[Comparison between CPU and GPU]{Comparison between CPU and GPU.}
+	\label{tab:comp}
+\end{table}
+	
+	
+As it can be seen in \autoref{tab:comp} the application runs 8 times faster but
+when looking at the \glspl{GFLOP} values there are far beyond that what a
+\gls{GPU} could achieve\footnote{The used \gls{GPU} is a G90 chip with peak 620
+\glspl{GFLOP}}. The application is only using 0.5\% of the peak
+performance!\graffito{All performance values are gathered with the NVIDIA
+Performance Profiler availabe as well with the \gls{SDK}}
+
+
+The reasons for this uneffective usage of processing power can be seen in Table
+\autoref{tab:localmem} and Table \autoref{tab:globalmem}. The application is
+heavily memory bound. The consequence of reducing the register usage is heavy
+access to local memory, e.g. there are over 328000000 stores issued to the
+memory. Furthermore the code is using many branches which actually reflected by
+the value 22578032.
+
+
+\begin{table}[ht]
+	\myfloatalign
+	\pgfkeys{/pgf/number format/.cd,fixed,precision=2}
+	\subfloat[Local memory]{
+	\pgfplotstabletypeset{Tables/local.memory.data}
+	\label{tab:localmem}}
+	\qquad
+	\subfloat[Branches]{
+	\pgfplotstabletypeset{Tables/branches.data}
+	\label{tab:branches}}
+	
+	\caption{Local memory and branches}
 \end{table}
 
-As it can be seen in Table \autoref{tab:comp} the application runs 8 times faster but when looking at the \glspl{GFLOP} values there are far beyond that what a \gls{GPU} could achieve\footnote{The used \gls{GPU} is a G90 chip with peak 620 \glspl{GFLOP}}. The application is only using 0.5\% of the peak performance!\graffito{All performance values are gathered with the NVIDIA Performance Profiler availabe as well with the \gls{SDK}}  
-
-
-The reasons for this uneffective usage of processing power can be seen in Table \autoref{tab:localmem} and Table \autoref{tab:globalmem}. The application is heavily memory bound. The consequence of reducing the register usage is heavy access to local memory, e.g. there are over 328000000 stores issued to the memory. Furthermore the code is using many branches which actually reflected by the value 22578032. 
+Another point is the access to global memory. The \gls{GPU} is able to do
+coalesced reads and writes when possible otherwise the access is serialized. The
+application was not ported with coalesced memory reads and writes in mind and
+hence the application is loading almost everything incoherent. See Table
+\autoref{tab:globalmem} for the values.
 
 \begin{table}[ht]
     \myfloatalign
-  \begin{tabularx}{\textwidth}{cccc} \toprule
-	\multicolumn{2}{c}{\slcsmallcaps{Local Memory}} &
-	\multicolumn{2}{c}{\slcsmallcaps{Branches}} \\ \midrule
-    Load & Store & Sum & Divergent\\
-	63294179 & 328180560 & 22578032 & 26834\\
-    \bottomrule
-  \end{tabularx}
-  \caption[Local memory and branches]{Local memory and branches.}
-  \label{tab:localmem}
-\end{table}
-
-Another point is the access to global memory. The \gls{GPU} is able to do coalesced reads and writes when possible otherwise the access is serialized. 
-The application was not ported with coalesced memory reads and writes in mind and hence the application is loading almost everything incoherent. See Table \autoref{tab:globalmem} for the values. 
-
-\begin{table}[ht]
-    \myfloatalign
-  \begin{tabularx}{\textwidth}{cccc} \toprule
-	\multicolumn{4}{c}{\slcsmallcaps{Global Memory}} \\ \midrule
-    Load Incoherent & Load Coherent & Store Incoherent & Store Coherent \\
-	1115657863 & 67961 & 2506752 & 0 \\
-    \bottomrule
-  \end{tabularx}
-  \caption[Global memory loads and stores]{Global memory loads and stores.}
-  \label{tab:globalmem}
+	\pgfkeys{/pgf/number format/.cd,fixed,precision=2}
+	\pgfplotstabletypeset{Tables/global.memory.data}
+  	\caption[Global memory loads and stores]{Global memory loads and stores.}
+  	\label{tab:globalmem}
 \end{table}
 
 The ray tracer could be extended or optimized in many ways but it will be leaved as is. The main point of the feasibility study was to get a \emph{feeling} for developing on \glspl{GPU} and to spot major drawbacks and obstacles. Keeping the lessons learned here in mind the development of the main application will be easier. The following section will demystify some but not all myths stated in the beginning.

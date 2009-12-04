@@ -89,7 +89,23 @@ profiler is used which operates by sampling. The samples are taken from the
 hardware performance counters which every modern \gls{CPU} has builtin.
 OProfile\footnote{http://oprofile.sourceforge.net/news/} a system wide profiler
 for Linux was used to examine the run time of the \gls{EDISON} program. The
-\autoref{tab:comp} shows the run time analysis of \gls{EDISON}.
+\autoref{tab:comped} shows the run time analysis of \gls{EDISON}.
+
+
+\begin{table}[ht]
+	\myfloatalign
+	\pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
+	\pgfplotstabletypeset[
+%		column type=r,
+		columns/Self/.style={column name=\slcsmallcaps{Self (\%)}},
+		columns/Total/.style={column name=\slcsmallcaps{Total (\%)}},
+		columns/Symbol/.style={string type, column type=l, column name=\slcsmallcaps{Symbol}},
+		columns/{Size (KB)}/.style={column name=\slcsmallcaps{Size (KB)}},
+	]{Tables/run.time.edison.data}
+  	\caption[EDISON run time profile]{ \gls{EDISON} run time analysis}
+  	\label{tab:comped}
+\end{table}
+
 
 \begin{table}[ht]
    \myfloatalign

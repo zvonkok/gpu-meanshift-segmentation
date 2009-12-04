@@ -1,6 +1,6 @@
 %!TEX TS-program = xetex 
 %!TEX encoding = UTF-8 Unicode 
-\documentclass[DIV=7, bibtotoc, twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
+\documentclass[DIV=7, bibliography=totoc,version=first, twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
 fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
 draft=on]{scrreprt}
 % ********************************************************************
@@ -62,9 +62,9 @@ draft=on]{scrreprt}
 \pagenumbering{roman}
 \pagestyle{empty}
 
-%********************************************************************
-% Frontmatter
-%*******************************************************
+%*******************************************************************************
+%\frontmatter
+%*******************************************************************************
 \include{FrontBackMatter/Glossary}
 \include{FrontBackmatter/Titlepage}
 \include{FrontBackmatter/Titleback}
@@ -76,9 +76,11 @@ draft=on]{scrreprt}
 \pagenumbering{arabic}
 \pagestyle{scrheadings}
 \cleardoublepage\include{FrontBackmatter/Contents}
-%********************************************************************
-% Mainmatter
-%*******************************************************
+
+
+%*******************************************************************************
+%\mainmatter
+%*******************************************************************************
 \include{Chapters/Introduction}
 \include{Chapters/LiteratureReview}
 \include{Chapters/Parallel}
@@ -91,17 +93,17 @@ draft=on]{scrreprt}
 
 %\addtocontents{toc}{\protect\clearpage} % TEST
 
-% ********************************************************************
-% Backmatter
-%*******************************************************
+%*******************************************************************************
+%\backmatter
+%*******************************************************************************
 \cleardoublepage\include{FrontBackmatter/Managment}
 \cleardoublepage\include{FrontBackmatter/Listof}
 \cleardoublepage\include{FrontBackmatter/Bibliography}
 
 \appendix
 %\cleardoublepage\myPart{Appendix}
-\include{Chapters/InterimReport}
-\include{Chapters/ProjectPlanning}
+%\include{Chapters/InterimReport}
+%\include{Chapters/ProjectPlanning}
 
 %********************************************************************
 % Other Stuff in the Back
