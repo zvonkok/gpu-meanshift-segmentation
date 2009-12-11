@@ -1,9 +1,0 @@
-\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
-\begin{theglossary}\glossaryheader
-\glsgroupheading{glssymbols}\relax \glsresetentrylist %
-\glossaryentryfield{Pi}{\glsnamefont{$\pi $}}{Die Kreiszahl}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{14}}}\glsgroupskip
-\glsgroupheading{P}\relax \glsresetentrylist %
-\glossaryentryfield{Performance}{\glsnamefont{Performance}}{Laufzeitanalyse}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{2}}}%
-\end{theglossary}\glossarypostamble
