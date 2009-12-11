@@ -14,7 +14,7 @@ is a probabilistic model for density estimation using a mixture distribution, is
 not efficient enough to estimate the density satisfactorily of such complex,
 arbitrarily comprised densities. The discontinuity preserving smoothing is therefore
 accomplished with kernel based density estimators. Kernel based density estimators
-are making no assumptions about densities and hence can estimate aribtrary 
+are making no assumptions about densities and hence can estimate arbitrary 
 densities.
 
 The maxima of a feature space correspond to the searched components like the
@@ -72,10 +72,10 @@ density of a point $x = { x_1, \ldots , x_d, \ldots , x_D} \in \mathbb{R}^D$ in 
 $D$ dimensionl feature space, $N$ observations $x_1^N$ with
  $x_N \in \mathbb{R}^D$ within a search window that is centered around point $x$
 have to be observed. The search window with radius $h$ is the bandwidth of the
-used kernel. The density of probability in point $x$ is the mean of density of
-{\color{Maroon}probabilities falling into the search window.}
+used kernel. The probability density in point $x$ is the mean of probability 
+densities that are centered in the $N$ observations $x_1^N$.
 
-The effect of different bandwith parameters $h$ (search window radius) is shown in 
+The effect of different bandwidth parameters $h$ (search window radius) is shown in 
 \autoref{fig:window_radius}. The example shows a kernel density estimation with
 five observations $x = {5, 1, -1, -4, -5}$ and a gaussian kernel. The total
 density estimation is the sum of each kernel at a observation, here shown for
@@ -100,7 +100,7 @@ smoother.
 		%stack plots=y,
 		%area style,
 %		ybar, bar width=10pt,
-%		line width=0.5pt, %default
+%		line width=0.7pt, %0.5pt default
 		width=0.32\textwidth,
 		height=3.5cm,
 %		xtick={128,384,...,2688},
@@ -320,7 +320,8 @@ kernel is a uniform profile.
 	\end{axis}
 \end{tikzpicture}
 \label{fig:epan}
-}%
+}
+\qquad
 \subfloat[Gaussian]{
 
 \begin{tikzpicture} 
@@ -348,8 +349,8 @@ kernel is a uniform profile.
 
 	\end{axis}
 \end{tikzpicture}
-\label{fig:gaus}}%
-
+\label{fig:gaus}}
+\qquad
 \subfloat[Uniform]{
 
 
@@ -394,7 +395,7 @@ follows the normal kernel
 \end{equation}
 The normal distribution as every other kernel with infinite support, is often
 capped for finite support. Finite support is important for the convergence. Capping
-the normal kernel can be accomplished by multipyling it by a uniform kernel where
+the normal kernel can be accomplished by multiplying it by a uniform kernel where
 the inner part of the normal kernel is cut out and weighted with $1$ and the 
 outer part is set to $0$. The derivative of the normal profile is again a 
 normal profile.
@@ -414,9 +415,9 @@ follows the uniform kernel
 		\end{cases}, x \in \mathbb{R}^D
 \end{equation}
 
-which is a {\color{Maroon}hyper uniform globe} in the origin. 
+which is a hyper unit ball in the origin. 
 
-Asuming that a derivative of a profile $k(x)$ exists for all $x \in [0, \infty)$, 
+Assuming that a derivative of a profile $k(x)$ exists for all $x \in [0, \infty)$, 
 follows a new profile $g(x)$. Now a new kernel $G(x)$ can be defined as 
 \begin{equation}\label{eq:shadowk}
 	G(x) = c_{g,D}g(\lVert x \rVert^2)
@@ -581,20 +582,51 @@ method.
 \label{sec:mean_shift_method}
 
 The \emph{mean shift} vector moves in direction of the maximal slope of the
-density, it defines a path to the maximum (Abbildung 4). The \emph{mean shift}
+density, it defines a path to the maximum. The \emph{mean shift}
 method is described by the following iterations:
 
-\begin{aenumerate}
-  \label{enum:ms0}
-	\item Choose a window radius $h_n$ for the kernel density estimator @\autoref{eq:kernel4}@
+\begin{algorithm2e}[H]
+%\dontprintsemicolon
+
+\begin{enumerate}%[{\textsc{step}} 1]
+	\item Choose a window radius $h_n$ for the kernel density estimator in \autoref{eq:kernel4}
   	\item Choose a start position $y_1 \in \mathbb{R}^D$ for the kernel window
-   	\item Calculate the @\emph{mean shift}@ vector $m_{h,G}(y_j)$ and shift the kernel window $G$
+   	\item Calculate the \emph{mean shift} vector $m_{h,G}(y_j)$ and shift the kernel window $G$
 	\item Repeat 3. until convergence
-\end{aenumerate}
+\end{enumerate}
+
+\caption{Mean Shift}
+\label{alg:ms}
+\end{algorithm2e}
+
+The first step of the algorithm is to choose the window radius or the bandwidth
+$h_n$ of the kernel in the observation $x_n$. The bandwidth can be chosen 
+adaptively or can be fixed. With a fixed bandwidth the density estimator in \label{eq:kernel4} 
+works with identical scaled kernels in every observation or is adapted in every
+observation. In literature there are several ways described to perform a
+adaptive Mean Shift (see e.g. \citeauthor{citeulike:4910570}
+\citep{citeulike:4910570}). 
+
+The second step is to choose a start position $y_1 \in \mathbb{R}^D$ in the 
+feature space where to start the mean shift algorithm.
+
+The third step involves shifting the kernel window with the mean shift vector 
+$m_{h,G}(y_j)$. The new position $y_{j+1} \in \mathbb{R}^D$ of the search window 
+in the feature space is calculated with:
+\begin{equation}\label{eq:msproc}
+ 	y_{j+1} = 
+	\frac{\sum_{i=1}^n x_i g\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)}{\sum_{i=1}^n g\left(\left\lVert \frac{x - x_i}{h}
+	\right\rVert^2\right)} \quad j = 1,2,...
+\end{equation}
 
 
-The first step of the algorithm is to choose 
-
+where $y_j \in \mathbb{R}^D$ the old position of the kernel window is. The 
+algorithm is convergent and if a stationary point is also a convergence point,
+the point is moved by a small random vector and the algorithm is applied again
+to the shifted point. This way one can guarantee that the found point is really
+a convergence point. The convergence attribute and the small trick stated above
+are described by \citeauthor{citeulike:462300} in \citep{citeulike:462300}.
 
 
 \section{Filtering {\upshape\&} Segmentation} % (fold)
@@ -607,12 +639,12 @@ $x_n^f = (r,g,b)$ so $x_n = (x_n^r, x_n^f) \in \mathbb{N}^5$ for $n = 1, \ldots 
 Other color spaces like the \gls{LUV} color space could be used as well. The 
 euclidean metric is assumed for both spaces. 
 
-When applying \emph{mean shift} for filtering and segmentaition applications
+When applying \emph{mean shift} for filtering and segmentation applications
 like in \citeauthor{citeulike:462300} \citep{citeulike:462300} a joined feature
-space is used for the spatial and range compoenents of a pixel. The color space
+space is used for the spatial and range components of a pixel. The color space
 used in filtering and segmentation is the \gls{LUV} color space because of its
 feature of linear mapping. In a joint $D$-dimensional feature space ($D=5$ color
-images, $D=3$, graytone images) the different attributes of each space have to be
+images, $D=3$, gray tone images) the different attributes of each space have to be
 equalized by normalization. Therefore is the joint kernel written as a product of
 two kernels with window radius $h_r$ for the spatial part and $h_f$ for the 
 color range part
@@ -630,7 +662,7 @@ of the maximum search.
 \subsection{Mean Shift Filtering} % (fold)
 \label{sub:mean_shift_filtering}
 Smoothing or filtering with mean shift or bilateral filters have the advantage
-that discontinuity like edges are preserved. Appliying a simple smoothing a 
+that discontinuity like edges are preserved. Applying a simple smoothing a 
 weighted average of the neighbors in both space and in color range are considered
 which systematically excludes pixels across the discontinuity from consideration.
 
@@ -665,7 +697,7 @@ until convergence
 
 
 All pixels that converge to the same um are lying in the basin of attraction
-of this maxium. The filtered image points $z_n, n = 1 , \ldots , N$ keep there
+of this maximum. The filtered image points $z_n, n = 1 , \ldots , N$ keep there
 spatial coordinates but obtain the color values off the convergence point. The
 convergence points are found by moving the kernel window with \emph{mean shift} 
 in direction of maximum slope of the spatial range feature space. The sample
@@ -713,19 +745,20 @@ In filtering as well as in segmentation algorithm a fixed sized window size is
 used. In \citeauthor{citeulike:462300} \citep{citeulike:462300} ist is noted
 that for segmenation the algorithm is not heavily dependent on the choice of the
 kernel parameters where as there are application where the window size matters. 
-The segmentation part of the algorithm ??? has no significant impact on the 
+The segmentation part of the \autoref{alg:segmalgo} has no significant impact on the 
 run time. 
 
-
-
-\begin{lstlisting}[caption=Mean shift Segmentation, label=lst:segmalgo, mathescape, numbers=none, escapechar=@, keywordstyle=\color{black}]
+\begin{algorithm2e}[H]
   $x_n = (x_n^r, x_n^f), n = 1, \ldots , N$ are the $D$-dimensional pixels of the
   original image and $z_n, n = 1 , \ldots. , N$ are the $D$-dimensional filtered pixels.
 
   For each pixel $n = 1, \ldots , N$
-    1. Initialize $k = 1$ and $y_k = x_n$
-    2. Calculate $y_{k+1}$ according to @\autoref{eq:msi3}@, repeat until convergence
-    3. Set $z_n = (x_n^r, y_{conv}^f)$ 
-\end{lstlisting}
-
+\begin{enumerate}%[{\textsc{step}} 1]
+    \item Initialize $k = 1$ and $y_k = x_n$
+    \item Calculate $y_{k+1}$ according to \autoref{eq:msi3}, repeat until convergence
+    \item Set $z_n = (x_n^r, y_{conv}^f)$ 
+\end{enumerate}
+\label{alg:segmalgo}
+\caption{Mean shift segmentation}
+\end{algorithm2e}
 

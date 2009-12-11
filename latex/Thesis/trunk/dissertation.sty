@@ -37,7 +37,6 @@
 \colorlet{listingbgcolor}{listingbgcolor!90!white}
 \colorlet{listingfgcolor}{listingbgcolor!95!black}
 
-%\colorlet{seccolor}{headings}
 \colorlet{lcolor}{seccolor}
 \colorlet{ccolor}{seccolor}
 \colorlet{ucolor}{seccolor}
@@ -227,6 +226,7 @@
 
 \captionsetup{font=small, format=hang, labelfont={sc, seccolor}, textfont=textcolor}
 \captionsetup[subtable]{labelsep=quad}
+\captionsetup[subfigure]{labelsep=quad}
 
 %\renewcommand{\captionfont}{\small\color{textcolor}}
 %\renewcommand{\captionlabelfont}{\scshape\color{seccolor}}
@@ -510,10 +510,13 @@
     basicstyle=\lstfont,	
 	tabsize=4,
     %identifierstyle=\color{NavyBlue},
-%    commentstyle=\color{iGreen},%\ttfamily,
+    commentstyle=\color{seccolor},%\ttfamily,
     %stringstyle=\rmfamily,
-    numbers=left,
+%    numbers=left,
     numberstyle=\scriptsize,%\tiny
+	framexleftmargin=4em,
+	xleftmargin=4em,
+	aboveskip=\bigskipamount,
     %stepnumber=1,
     numbersep=4pt,
     showstringspaces=false,

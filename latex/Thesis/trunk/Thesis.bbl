@@ -1,0 +1,392 @@
+\begin{thebibliography}{49}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Appel(1968{\natexlab{a}})]{Appel68}
+Arthur Appel.
+\newblock Some techniques for shading machine rendering of solids.
+\newblock 1968{\natexlab{a}}.
+
+\bibitem[Appel(1968{\natexlab{b}})]{citeulike:841961}
+Arthur Appel.
+\newblock Some techniques for shading machine renderings of solids.
+\newblock In \emph{AFIPS 1968 Spring Joint Computer Conference Proceedings},
+  volume~32, pages 37--45, 1968{\natexlab{b}}.
+
+\bibitem[Bernstein(1966)]{citeulike:6113408}
+A.~J. Bernstein.
+\newblock Program analysis for parallel processing.
+\newblock \emph{IEEE Trans. on Electronic Computers}, EC-15:\penalty0 757--762,
+  October 1966.
+
+\bibitem[Bringhurst(2002)]{bringhurst:2002}
+Robert Bringhurst.
+\newblock \emph{The Elements of Typographic Style}.
+\newblock Version 2.5. Hartley \& Marks, Publishers, Point Roberts, WA, USA,
+  2002.
+
+\bibitem[Buck et~al.()Buck, Micikevicius, Morton, Stone, Phillips, and
+  Legresley]{citeulike:3839013}
+Ian Buck, Paulius Micikevicius, Scott Morton, John Stone, Jim Phillips, and
+  Patrick Legresley.
+\newblock Supercomputing 2008 tutorial intro.
+\newblock URL \url{http://www.gpgpu.org/sc2008/M02-01\_Intro.pdf}.
+
+\bibitem[Chas(2008)]{citeulike:3750565}
+Chas.
+\newblock Data-parallel computing.
+\newblock \emph{Queue}, 6\penalty0 (2):\penalty0 30--39, 2008.
+\newblock ISSN 1542-7730.
+\newblock \doi{http://dx.doi.org/10.1145/1365490.1365499}.
+\newblock URL \url{http://dx.doi.org/10.1145/1365490.1365499}.
+
+\bibitem[Che et~al.()Che, Boyer, Meng, Tarjan, Sheaffer, and
+  Skadron]{citeulike:3145468}
+Shuai Che, Michael Boyer, Jiayuan Meng, David Tarjan, Jeremy~W. Sheaffer, and
+  Kevin Skadron.
+\newblock A performance study of general-purpose applications on graphics
+  processors using cuda.
+\newblock \emph{Journal of Parallel and Distributed Computing}, In Press,
+  Corrected Proof.
+\newblock \doi{http://dx.doi.org/10.1016/j.jpdc.2008.05.014}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.jpdc.2008.05.014}.
+
+\bibitem[Cheng(2002)]{citeulike:2522867}
+Yizong Cheng.
+\newblock Mean shift, mode seeking, and clustering.
+\newblock \emph{Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, 17\penalty0 (8):\penalty0 790--799, August 2002.
+\newblock \doi{10.1109/34.400568}.
+\newblock URL \url{http://dx.doi.org/10.1109/34.400568}.
+
+\bibitem[Comaniciu and Meer(2002)]{citeulike:462300}
+D.~Comaniciu and P.~Meer.
+\newblock Mean shift: a robust approach toward feature space analysis.
+\newblock \emph{Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, 24\penalty0 (5):\penalty0 603--619, 2002.
+\newblock \doi{10.1109/34.1000236}.
+\newblock URL \url{http://dx.doi.org/10.1109/34.1000236}.
+
+\bibitem[Comaniciu and Meer(1998)]{citeulike:5813637}
+Dorin Comaniciu and Peter Meer.
+\newblock Distribution free decomposition of multivariate data.
+\newblock In \emph{SSPR '98/SPR '98: Proceedings of the Joint IAPR
+  International Workshops on Advances in Pattern Recognition}, pages 602--610,
+  London, UK, 1998. Springer-Verlag.
+\newblock ISBN 3-540-64858-5.
+\newblock URL \url{http://portal.acm.org/citation.cfm?id=673222}.
+
+\bibitem[Draves and Reckase(2008)]{citeulike:3801950}
+Scott Draves and Erik Reckase.
+\newblock The fractal flame algorithm.
+\newblock Technical report, November 2008.
+
+\bibitem[Duda et~al.(2000)Duda, Hart, and Stork]{citeulike:167581}
+Richard~O. Duda, Peter~E. Hart, and David~G. Stork.
+\newblock \emph{Pattern Classification (2nd Edition)}.
+\newblock Wiley-Interscience, November 2000.
+\newblock ISBN 0471056693.
+\newblock URL
+  \url{http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20&path=ASIN%
+/0471056693}.
+
+\bibitem[Durand and Dorsey(2002)]{citeulike:789299}
+Fr\&\#233;do Durand and Julie Dorsey.
+\newblock Fast bilateral filtering for the display of high-dynamic-range
+  images.
+\newblock In \emph{SIGGRAPH '02: Proceedings of the 29th annual conference on
+  Computer graphics and interactive techniques}, pages 257--266, New York, NY,
+  USA, 2002. ACM Press.
+\newblock \doi{http://dx.doi.org/10.1145/566570.566574}.
+\newblock URL \url{http://dx.doi.org/10.1145/566570.566574}.
+
+\bibitem[Fatahalian and Houston(2008)]{citeulike:2790995}
+Kayvon Fatahalian and Mike Houston.
+\newblock Gpus: a closer look.
+\newblock \emph{Queue}, 6\penalty0 (2):\penalty0 18--28, 2008.
+\newblock ISSN 1542-7730.
+\newblock \doi{http://dx.doi.org/10.1145/1365490.1365498}.
+\newblock URL \url{http://dx.doi.org/10.1145/1365490.1365498}.
+
+\bibitem[Fattal et~al.(2002)Fattal, Lischinski, and Werman]{citeulike:3783313}
+Raanan Fattal, Dani Lischinski, and Michael Werman.
+\newblock Gradient domain high dynamic range compression.
+\newblock In \emph{SIGGRAPH '02: Proceedings of the 29th annual conference on
+  Computer graphics and interactive techniques}, pages 249--256, New York, NY,
+  USA, 2002. ACM.
+\newblock ISBN 1-58113-521-1.
+\newblock \doi{http://dx.doi.org/10.1145/566570.566573}.
+\newblock URL \url{http://dx.doi.org/10.1145/566570.566573}.
+
+\bibitem[Glassner(1989)]{Glassner289}
+Andrew~S. Glassner.
+\newblock \emph{An introduction to Ray Tracing}.
+\newblock Academic Press, 1989.
+
+\bibitem[Gustafson(1988)]{citeulike:3732921}
+John~L. Gustafson.
+\newblock Reevaluating amdahl's law.
+\newblock \emph{Commun. ACM}, 31\penalty0 (5):\penalty0 532--533, 1988.
+\newblock ISSN 0001-0782.
+\newblock \doi{10.1145/42411.42415}.
+\newblock URL \url{http://dx.doi.org/10.1145/42411.42415}.
+
+\bibitem[Harris(2005)]{citeulike:3733428}
+Mark Harris.
+\newblock Mapping computational concepts to gpus.
+\newblock In \emph{SIGGRAPH '05: ACM SIGGRAPH 2005 Courses}, New York, NY, USA,
+  2005. ACM.
+\newblock \doi{http://dx.doi.org/10.1145/1198555.1198768}.
+\newblock URL \url{http://dx.doi.org/10.1145/1198555.1198768}.
+
+\bibitem[Hearn and Baker(1994)]{Hearn94}
+Donald Hearn and M.~Pauline Baker.
+\newblock \emph{Computer Graphics}.
+\newblock Prentice Hall, 1994.
+
+\bibitem[Jensen(2001)]{citeulike:635695}
+Henrik~W. Jensen.
+\newblock \emph{Realistic Image Synthesis Using Photon Mapping}.
+\newblock AK Peters, Ltd., July 2001.
+\newblock ISBN 1568811470.
+\newblock URL
+  \url{http://www.amazon.ca/exec/obidos/redirect?tag=citeulike09-20\&amp;path=%
+ASIN/1568811470}.
+
+\bibitem[Kilgariff and Fernando(2005)]{citeulike:3757915}
+Emmett Kilgariff and Randima Fernando.
+\newblock The geforce 6 series \gls{GPU}architecture.
+\newblock In \emph{SIGGRAPH '05: ACM SIGGRAPH 2005 Courses}, New York, NY, USA,
+  2005. ACM.
+\newblock \doi{http://dx.doi.org/10.1145/1198555.1198767}.
+\newblock URL \url{http://dx.doi.org/10.1145/1198555.1198767}.
+
+\bibitem[Knuth(1974)]{knuth:1974}
+Donald~E. Knuth.
+\newblock {C}omputer {P}rogramming as an {A}rt.
+\newblock \emph{Communications of the ACM}, 17\penalty0 (12):\penalty0
+  667--673, December 1974.
+
+\bibitem[Kongetira et~al.(2005)Kongetira, Aingaran, and
+  Olukotun]{citeulike:3743958}
+P.~Kongetira, K.~Aingaran, and K.~Olukotun.
+\newblock Niagara: a 32-way multithreaded sparc processor.
+\newblock \emph{Micro, IEEE}, 25\penalty0 (2):\penalty0 21--29, 2005.
+\newblock \doi{http://dx.doi.org/10.1109/MM.2005.35}.
+\newblock URL \url{http://dx.doi.org/10.1109/MM.2005.35}.
+
+\bibitem[Krnjajic(2005)]{citeulike:3783254}
+Zvonko Krnjajic.
+\newblock Untersuchung und implementierung von algorithmen zur zerlegung
+  gro{\ss}er zahlen.
+\newblock Technical report, University of applied sciences esslingen, June
+  2005.
+
+\bibitem[Krnjajic(2006)]{citeulike:80546}
+Zvonko Krnjajic.
+\newblock A raytracer implementation as an example for a cell broadband engine
+  optimized application architecture.
+\newblock Master's thesis, University of Applied Sciences Esslingen, July 2006.
+\newblock URL \url{\#}.
+
+\bibitem[Li et~al.(2007)Li, Wang, He, and Chi]{citeulike:3801866}
+Jian-Ming Li, Xiao-Jing Wang, Rong-Sheng He, and Zhong-Xian Chi.
+\newblock An efficient fine-grained parallel genetic algorithm based on
+  gpu-accelerated.
+\newblock In \emph{Network and Parallel Computing Workshops, 2007. NPC
+  Workshops. IFIP International Conference on}, pages 855--862, 2007.
+\newblock \doi{http://dx.doi.org/10.1109/NPC.2007.108}.
+\newblock URL \url{http://dx.doi.org/10.1109/NPC.2007.108}.
+
+\bibitem[Li1 and Klette()]{citeulike:4910570}
+Fajie Li1 and Reinhard Klette.
+\newblock Adaptive mean shift-based clustering.
+\newblock Technical report.
+\newblock URL \url{http://www.mi.auckland.ac.nz/tech-reports/MItech-TR-20.pdf}.
+
+\bibitem[Maciol and Banas(2008)]{citeulike:3844545}
+Pawel Maciol and Krzysztof Banas.
+\newblock Testing tesla architecture for scienti?c computing: the performance
+  of matrix-vector product.
+\newblock volume~3, 2008.
+
+\bibitem[Mantiuk et~al.(2006)Mantiuk, Myszkowski, and
+  Seidel]{citeulike:3783315}
+Rafal Mantiuk, Karol Myszkowski, and Hans~P. Seidel.
+\newblock A perceptual framework for contrast processing of high dynamic range
+  images.
+\newblock \emph{ACM Trans. Appl. Percept.}, 3\penalty0 (3):\penalty0 286--308,
+  2006.
+\newblock ISSN 1544-3558.
+\newblock \doi{http://dx.doi.org/10.1145/1166087.1166095}.
+\newblock URL \url{http://dx.doi.org/10.1145/1166087.1166095}.
+
+\bibitem[Mantiuk et~al.(2007)Mantiuk, Krawczyk, Mantiuk, and
+  Seidel]{citeulike:3783303}
+Rafal Mantiuk, Grzegorz Krawczyk, Radoslaw Mantiuk, and Hans~P. Seidel.
+\newblock High dynamic range imaging pipeline: perception-motivated
+  representation of visual content.
+\newblock volume 6492. SPIE, 2007.
+\newblock URL
+  \url{http://scitation.aip.org/getabs/servlet/GetabsServlet?prog=normal\&id=P%
+SISDG006492000001649212000001\&idtype=cvips\&gifs=yes}.
+
+\bibitem[Mckee(2004)]{citeulike:457955}
+Sally~A. Mckee.
+\newblock Reflections on the memory wall.
+\newblock In \emph{CF '04: Proceedings of the 1st conference on Computing
+  frontiers}, New York, NY, USA, 2004. ACM Press.
+\newblock ISBN 1581137419.
+\newblock \doi{http://dx.doi.org/10.1145/977091.977115}.
+\newblock URL \url{http://dx.doi.org/10.1145/977091.977115}.
+
+\bibitem[Nickolls et~al.(2008)Nickolls, Buck, Garland, and
+  Skadron]{citeulike:3072519}
+John Nickolls, Ian Buck, Michael Garland, and Kevin Skadron.
+\newblock Scalable parallel programming with cuda.
+\newblock \emph{Queue}, 6\penalty0 (2):\penalty0 40--53, 2008.
+\newblock ISSN 1542-7730.
+\newblock \doi{http://dx.doi.org/10.1145/1365490.1365500}.
+\newblock URL \url{http://dx.doi.org/10.1145/1365490.1365500}.
+
+\bibitem[{NVIDIA}(2008)]{citeulike:3325943}
+{NVIDIA}.
+\newblock \emph{NVIDIA \gls{CUDA}Programming Guide 2.0}.
+\newblock 2008.
+
+\bibitem[Owens et~al.(2007)Owens, John, Luebke, David, Govindaraju, Naga,
+  Harris, Mark, Kruger, Jens, Lefohn, Aaron, Purcell, and
+  Timothy]{citeulike:1187394}
+Owens, D.~John, Luebke, David, Govindaraju, Naga, Harris, Mark, Kruger, Jens,
+  Lefohn, E.~Aaron, Purcell, and J.~Timothy.
+\newblock A survey of general-purpose computation on graphics hardware.
+\newblock \emph{Computer Graphics Forum}, 26\penalty0 (1):\penalty0 80--113,
+  March 2007.
+\newblock ISSN 0167-7055.
+\newblock \doi{http://dx.doi.org/10.1111/j.1467-8659.2007.01012.x}.
+\newblock URL \url{http://dx.doi.org/10.1111/j.1467-8659.2007.01012.x}.
+
+\bibitem[Owens(2005)]{citeulike:3421647}
+John Owens.
+\newblock Streaming architectures and technology trends.
+\newblock In \emph{SIGGRAPH '05: ACM SIGGRAPH 2005 Courses}, New York, NY, USA,
+  2005. ACM.
+\newblock \doi{http://dx.doi.org/10.1145/1198555.1198766}.
+\newblock URL \url{http://dx.doi.org/10.1145/1198555.1198766}.
+
+\bibitem[Patterson et~al.(2007)Patterson, Asanovic, Keutzer, and
+  And]{citeulike:3750573}
+David Patterson, Krste Asanovic, Kurt Keutzer, and And.
+\newblock Computer architecture is back - the berkeley view on the parallel
+  computing landscape.
+\newblock Technical report, January 2007.
+
+\bibitem[Pham et~al.(2005)Pham, Asano, Bolliger, Day, Hofstee, Johns, Kahle,
+  Kameyama, Keaty, Masubuchi, Riley, Shippy, Stasiak, Suzuoki, Wang, Warnock,
+  Weitzel, Wendel, Yamazaki, and Yazawa]{citeulike:1243173}
+D.~Pham, S.~Asano, M.~Bolliger, M.~N. Day, H.~P. Hofstee, C.~Johns, J.~Kahle,
+  A.~Kameyama, J.~Keaty, Y.~Masubuchi, M.~Riley, D.~Shippy, D.~Stasiak,
+  M.~Suzuoki, M.~Wang, J.~Warnock, S.~Weitzel, D.~Wendel, T.~Yamazaki, and
+  K.~Yazawa.
+\newblock The design and implementation of a first-generation cell processor.
+\newblock pages 184--592 Vol. 1, 2005.
+\newblock URL
+  \url{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1493930}.
+
+\bibitem[Pickover(2001)]{citeulike:3812233}
+Clifford~A. Pickover.
+\newblock \emph{Computers, Pattern, Chaos, and Beauty: Graphics from an Unseen
+  World}.
+\newblock Dover Publications, Incorporated, 2001.
+\newblock ISBN 0486417093.
+\newblock URL \url{http://portal.acm.org/citation.cfm?id=516853}.
+
+\bibitem[Purcell et~al.(2003)Purcell, Donner, Cammarano, Jensen, and
+  Hanrahan]{Purcell:2003:PMO}
+Timothy~J. Purcell, Craig Donner, Mike Cammarano, Henrik~Wann Jensen, and Pat
+  Hanrahan.
+\newblock Photon mapping on programmable graphics hardware.
+\newblock In \emph{Proceedings of the ACM SIGGRAPH/EUROGRAPHICS Conference on
+  Graphics Hardware}, pages 41--50. Eurographics Association, 2003.
+\newblock ISBN 1-58113-739-7.
+
+\bibitem[Reinhard et~al.(2002)Reinhard, Stark, Shirley, and
+  Ferwerda]{citeulike:3783311}
+Erik Reinhard, Michael Stark, Peter Shirley, and James Ferwerda.
+\newblock Photographic tone reproduction for digital images.
+\newblock \emph{ACM Trans. Graph.}, 21\penalty0 (3):\penalty0 267--276, 2002.
+\newblock ISSN 0730-0301.
+\newblock \doi{http://dx.doi.org/10.1145/566654.566575}.
+\newblock URL \url{http://dx.doi.org/10.1145/566654.566575}.
+
+\bibitem[Seiler et~al.(2008)Seiler, Carmean, Sprangle, Forsyth, Abrash, Dubey,
+  Junkins, Lake, Sugerman, Cavin, Espasa, Grochowski, Juan, and
+  Hanrahan]{citeulike:3153758}
+Larry Seiler, Doug Carmean, Eric Sprangle, Tom Forsyth, Michael Abrash, Pradeep
+  Dubey, Stephen Junkins, Adam Lake, Jeremy Sugerman, Robert Cavin, Roger
+  Espasa, Ed~Grochowski, Toni Juan, and Pat Hanrahan.
+\newblock Larrabee: a many-core x86 architecture for visual computing.
+\newblock In \emph{SIGGRAPH '08: ACM SIGGRAPH 2008 papers}, pages 1--15, New
+  York, NY, USA, 2008. ACM.
+\newblock \doi{http://dx.doi.org/10.1145/1399504.1360617}.
+\newblock URL \url{http://dx.doi.org/10.1145/1399504.1360617}.
+
+\bibitem[Shi(1996)]{citeulike:3838998}
+Yuan Shi.
+\newblock Reevaluating amdahl's law and gustafson's law, October 1996.
+\newblock URL \url{http://www.cis.temple.edu/~shi/docs/amdahl/amdahl.html}.
+
+\bibitem[Smith(1995)]{AlvyRaySmith95}
+Alvy~Ray Smith.
+\newblock A pixell is not a little square.
+\newblock \emph{Microsoft Technical Memo 6}, 1995.
+
+\bibitem[Sprott()]{citeulike:3745535}
+Julien~C. Sprott.
+\newblock \emph{Strange Attractors: Creating Patterns in Chaos}.
+\newblock M \& T Books, har/dsk edition.
+\newblock ISBN 1558512985.
+\newblock URL
+  \url{http://www.amazon.ca/exec/obidos/redirect?tag=citeulike09-20\&amp;path=%
+ASIN/1558512985}.
+
+\bibitem[Thall(2006)]{citeulike:3783244}
+Andrew Thall.
+\newblock Extended-precision floating-point numbers for \gls{GPU}computation.
+\newblock In \emph{SIGGRAPH '06: ACM SIGGRAPH 2006 Research posters}, New York,
+  NY, USA, 2006. ACM.
+\newblock ISBN 1-59593-364-6.
+\newblock \doi{http://dx.doi.org/10.1145/1179622.1179682}.
+\newblock URL \url{http://dx.doi.org/10.1145/1179622.1179682}.
+
+\bibitem[Whitted(1980)]{Whitted80}
+Turner Whitted.
+\newblock An improved illumination model for shaded display.
+\newblock 1980.
+
+\bibitem[Whitted(2005)]{citeulike:3770900}
+Turner Whitted.
+\newblock An improved illumination model for shaded display.
+\newblock In \emph{SIGGRAPH '05: ACM SIGGRAPH 2005 Courses}, New York, NY, USA,
+  2005. ACM.
+\newblock \doi{http://dx.doi.org/10.1145/1198555.1198743}.
+\newblock URL \url{http://dx.doi.org/10.1145/1198555.1198743}.
+
+\bibitem[Wong et~al.(2005)Wong, Wong, and Fok]{citeulike:3801883}
+Man-Leung Wong, Tien-Tsin Wong, and Ka-Ling Fok.
+\newblock Parallel evolutionary algorithms on graphics processing unit.
+\newblock In \emph{Evolutionary Computation, 2005. The 2005 IEEE Congress on},
+  volume~3, pages 2286--2293 Vol. 3, 2005.
+\newblock \doi{http://dx.doi.org/10.1109/CEC.2005.1554979}.
+\newblock URL \url{http://dx.doi.org/10.1109/CEC.2005.1554979}.
+
+\bibitem[Yu et~al.(2005)Yu, Chen, and Pan]{citeulike:3801879}
+Qizhi Yu, Chongcheng Chen, and Zhigeng Pan.
+\newblock \emph{Parallel Genetic Algorithms on Programmable Graphics Hardware},
+  volume 3612, pages 1051--1059.
+\newblock July 2005.
+
+\end{thebibliography}

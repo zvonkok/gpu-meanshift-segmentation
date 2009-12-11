@@ -1,0 +1,59 @@
+mktextfm at10
+mktextfm at8
+mktextfm at10
+mktextfm at8
+mktextfm at6
+mktextfm at6
+mktextfm at10
+mktextfm at8
+mktextfm at6
+mktextfm at6
+mktextfm at10
+mktextfm at8
+mktextfm at6
+mktextfm at6
+mktextfm at10
+mktextfm at8
+mktextfm at6
+mktextfm at6
+mktextfm at10
+mktextfm at8
+mktextfm at6
+mktextfm at6
+mktextfm at10
+mktextfm at8
+mktextfm at6
+mktextfm at6
+mktextfm at10
+mktextfm 
+mktextfm 
+mktextfm 
+mktextfm 
+mktextfm 
+mktextfm 
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 MinionPro-ItLCDFJ.pfb
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 MinionPro-ItLCDFJ.pfb
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It--lcdfj
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It--lcdfj
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+491/600 --dpi 491 MinionPro-It-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ugmri8a.pfb
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ugmri8a.pfb
+mktexpk --mfmode / --bdpi 600 --mag 0+382/600 --dpi 382 MinionPro-Regular-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+382/600 --dpi 382 MinionPro-Regular-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+382/600 --dpi 382 MinionPro-Regular-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ugmr8a.pfb
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ugmr8a.pfb
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ugmr8a.pfb
+mktextfm Palation
+mktextfm Palation
+mktextfm Palation
+mktextfm Palation
+mktexpk --mfmode / --bdpi 600 --mag 0+382/600 --dpi 382 MinionPro-Regular-Base-aa
+mktexpk --mfmode / --bdpi 600 --mag 0+382/600 --dpi 382 MinionPro-Regular-Base-aa

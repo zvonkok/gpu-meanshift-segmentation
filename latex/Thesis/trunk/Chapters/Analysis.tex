@@ -97,6 +97,9 @@ for Linux was used to examine the run time of the \gls{EDISON} program. The
 	\pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
 	\pgfplotstabletypeset[
 %		column type=r,
+		every row no 8/.style={
+			before row={\rowcolor{lstbgcolor}}
+		},
 		columns/Self/.style={column name=\slcsmallcaps{Self (\%)}},
 		columns/Total/.style={column name=\slcsmallcaps{Total (\%)}},
 		columns/Symbol/.style={string type, column type=l, column name=\slcsmallcaps{Symbol}},
@@ -104,47 +107,6 @@ for Linux was used to examine the run time of the \gls{EDISON} program. The
 	]{Tables/run.time.edison.data}
   	\caption[EDISON run time profile]{ \gls{EDISON} run time analysis}
   	\label{tab:comped}
-\end{table}
-
-
-\begin{table}[ht]
-   \myfloatalign
-	\rowcolors{2}{gray!10}{}
-  \begin{tabularx}{\textwidth}{cclcc} \toprule
-    \tableheadline{Self} & 
-	\tableheadline{Total} & 
-	\tableheadline{Symbol} &
-	\tableheadline{Size} &
-	\tableheadline{Module}\\ \midrule
-	0,0\% &	100,0\% &	main &											589B & edison \\  
-	0,0\% & 	100,0\% & 	Run(CmCParser*) &								576B & 	edison \\ 
-	0,0\% & 	100,0\% & 	EXECUTE(int, CmCParser*, void**) &				1,24KB &	edison \\ 
-	0,0\% & 	100,0\% & 	EDISON::Segment() &								27B & 	edison \\
-	0,0\% & 	100,0\% & 	EDISON::meanShift(int) &							2,75KB & edison \\ 
-	0,0\% & 	99,3\% &    msImageProcessor::Filter(...) &  676B & edison \\
-	0,4\% & 	99,1\% & 	msImageProcessor::NonOptimizedFilter(...) &		1.007B & edison \\ 
-	0,6\% & 	98,8\% & 	MeanShift::LatticeMSVector(double*, double*) &	250B & 	edison \\ 
-	\color{Brown4}98,2\% & 	\color{Brown4}98,2\% & 	
-	\color{Brown4}MeanShift::uniformLSearch(double*, double*) & 	\color{Brown4}1,01KB & \color{Brown4}edison \\ 
-	0,0\% & 	0,4\% & 	msImageProcessor::FuseRegions(float, int) &		1,17KB & edison \\ 
-	0,1\% & 	0,3\% & 	msImageProcessor::BuildRAM() &					2,29KB & edison \\ 
-	0,0\% &	0,2\% & 	msImageProcessor::TransitiveClosure() &			1,63KB & edison \\
-	0,0\% & 	0,2\% & 	msImageProcessor::Prune(int) &					1,56KB & edison \\ 
-	0,0\% & 	0,2\% & 	msImageProcessor::GetResults(unsigned char*) & 	340B & 	edison \\
-	0,1\% & 	0,2\% & 	msImageProcessor::LUVtoRGB(...) &				542B & 	edison \\
-	0,2\% & 	0,2\% & 	RAList::Insert(RAList*) &						249B & 	edison \\
-	0,0\% & 	0,1\% & 	msImageProcessor::DefineImage(...) &				356B & 	edison \\
-	0,1\% & 	0,1\% & 	msImageProcessor::RGBtoLUV(...) &				556B & 	edison \\
-	0,0\% & 	0,1\% & 	msImageProcessor::Connect() &					455B & 	edison \\
-	0,1\% & 	0,1\% & 	msImageProcessor::Fill(int, int) & 				440B & 	edison \\
-	0,1\% & 	0,1\% & 	msImageProcessor::InWindow(int, int) & 			372B &	edison \\
-	0,0\% & 	0,0\% &	msImageProcessor::GetBoundaries() &				39B & 	edison \\
-	0,0\% & 	0,0\% & 	msImageProcessor::SqDistance(int, int) & 			256B & 	edison \\ 
-	0,0\% & 	0,0\% & 	msImageProcessor::DefineBoundaries() &			1,41KB & edison \\ 
-    \bottomrule
-  \end{tabularx}
-  \caption[EDISON run time profile]{ \gls{EDISON} run time analysis}
-  \label{tab:comp}
 \end{table}
 
 Before taking a closer look at the table, the columns have to be explained. The
@@ -263,7 +225,6 @@ Let $P_i$ and $P_j$ be two tasks of a program $P$. For $P_i$ let $I_i$ be the
 input and $O_i$ the output data and for $P_j$ let $I_j$ be the input and $O_j$ 
 be the output data, then $P_i$ and $P_j$ are independent if they satisfy the
 following conditions \citep{citeulike:3838998}:  
-
 \begin{subequations}\label{eq:bern_cond}
 	\begin{align}
 		I_j \cap O_i & = \emptyset \label{eq:bern0}\\ 
@@ -285,7 +246,7 @@ described in \autoref{lst:segmalgo}. The longest path of dependent calculations
 is the critical path. For the mean shift algorithm there exist no shorter path. 
 
 Having a look again at \autoref{tab:comp} where the most computationally 
-intesive parts are identified, one could think of having different tasks for the
+intensive parts are identified, one could think of having different tasks for the
 filtering step. But again here the same situation each calculation is inherently 
 dependent on each other. 
 
@@ -306,32 +267,55 @@ tasks.
 Focusing on data and having a look at the most computational intensive part, 
 the filtering step one can see that each pixel of an image can be calculated 
 independently. The input and output pixels are independent and furthermore it
-doesnt matter at which pixel one starts, the filtering step is deterministic, 
+doesn't matter at which pixel one starts, the filtering step is deterministic, 
 starting from the same input will lead to the same output. 
 
 Another important aspect is how often the subtasks (where each subtask is
 calculating one pixel) have to synchronize or communicate. An algorithm exhibits
 fine-grained parallelism if the subtasks have to communicate many times,
 coarse-grained parallelism if the subtasks do not communicate many times. In
-this case the algorithm even exhibits embarrasingly parallel parallelism. The
+this case the algorithm even exhibits embarrassingly parallel parallelism. The
 subtasks never have to communicate or synchronize. Each subtask takes one or a
-chunk of pixels applys the filtering steps and writes back the result. The
+chunk of pixels applies the filtering steps and writes back the result. The
 intermediate steps where the mean shift vector is moved over the spatial space
 are also independent for each pixel.
 
-The approach in parallelising the mean shift algorithm is to use a data
+The approach in parallelizing the mean shift algorithm is to use a data
 decomposition where each subtask is filtering a chunk of the image. Depending on
-the number of processing units one can choose an apropriate chunk size to
+the number of processing units one can choose an appropriate chunk size to
 exploit every unit.
 
 If the algorithm would only exhibit fine-grained parallelism the next steps would
 be to identify groups to simplify the job of managing dependencies and have a 
-look at the ordering to satisfy contraints among tasks. Luckily here one has only
-to deal with a embarrasingly parallel algorithm and can move to the next step, 
+look at the ordering to satisfy constraints among tasks. Luckily here one has only
+to deal with a embarrassingly parallel algorithm and can move to the next step, 
 identify how data is accessed and shared among subtasks. 
 
 \subsubsection{Data Flow} % (fold)
 \label{ssub:data_flow}
+
+It is important to understand that inefficient data access can lead to very poor
+performance on every processing unit especially on a \gls{GPU}. Inefficient data
+access leads to an algorithm that is memory bound which means it doesn't matter
+how much computational power the processing unit has it will be bound to the
+memory performance (See \autoref{ch:literature_review} for \emph{arithmetic
+intensity}). Therefore its crucial to understand the data and optimize it for
+access. If done incorrectly tasks may get invalid data or it could lead to
+excessive synchronization overhead. 
+
+In \autoref{sub:task_parallelism} it was shown that the filtering step is
+dependent on the color conversion step where the output data of the color
+conversion step becomes the input data of the filtering step. Since this is done
+sequentially there is no need to take of some synchronization. This scheme
+is the same for the filtering and segmentation step. Since the filtering step is
+done in parallel and the segmentation needs the output data form the filtering
+step a barrier after the filtering step is needed. 
+
+Now to the interesting part the parallel filtering step. In
+\autoref{sub:data_parallelism} it was said that each processing unit gets a chunk
+of the image for processing. The mean shift algorithm takes 
+
+
 
 
 

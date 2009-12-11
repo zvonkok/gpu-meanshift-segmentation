@@ -1,0 +1,36 @@
+\select@language {american}
+\deactivateaddvspace 
+\select@language {american}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Tesla Architecture}}{14}{figure.4.1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Effect of bandwidth selection}}{27}{figure.6.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$h=0.7$}}}{27}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$h=1.0$}}}{27}{subfigure.1.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$h=2.0$}}}{27}{subfigure.1.3}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Kernel density estimators}}{29}{figure.6.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Epanechnikov}}}{29}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Gaussian}}}{29}{subfigure.2.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Uniform}}}{29}{subfigure.2.3}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Mean shift filtering with parameters $(h_r, h_f) = (6.5, 7)$ applied to a color image}}{33}{figure.6.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original}}}{33}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Filtered}}}{33}{subfigure.3.2}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Mean shift segmentation with parameters $(h_r, h_f, M) = (6.5, 7, 20)$ applied to a color image}}{34}{figure.6.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original}}}{34}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Segmented}}}{34}{subfigure.4.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Region boundaries}}}{34}{subfigure.4.3}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces CPU run time depending on the image size}}{36}{figure.7.1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Effect of limitcycle detection on iteration count}}{46}{figure.9.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Period-0 Limitcycle}}}{46}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Period-4 Limitcycle}}}{46}{subfigure.1.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Period-8 Limitcycle}}}{46}{subfigure.1.3}
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Visualization of Iteration Count}}{47}{figure.9.2}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
