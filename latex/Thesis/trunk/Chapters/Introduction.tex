@@ -35,44 +35,44 @@
 %This section should briefly overview the provided topic.
 
 In recent years \glspl{GPU} have moved from fixed pipeline  processors to a 
-fully programmable processor. This evolvment
+fully programmable processor. This evolvement
 has attracted many developers to do general purpose computing on GPUs.
- \glspl{GPU} have devoted there sillicon (transistors) for computing engines
+ \glspl{GPU} have devoted there silicon (transistors) for computing engines
 rather than for control engines like caches, branch prediction, coherency
 protocols and more. This incredible computing power made algorithms with an high
-arithemtic density run by an order of magnitude faster than on central
+arithmetic density run by an order of magnitude faster than on central
 processing units (CPUs). Speedups of 100x faster than the CPU were stunning but
 only a few people understand why such speedups are possible and why only a
 couple of algorithm can attain such speedups.
 
 This thesis will cover all the topics to understand the architecture,
-programming model, software eco system, drawback and pittfalls when doing
+programming model, software eco system, drawback and pitfalls when doing
 general purpose computing on GPUs. The \gls{GPU} is a highly parallel processor with
-thousands of threads and a peak performance of ~600 GFlops (G92
+thousands of threads and a peak performance of ~600 \glspl{GFLOP} (G92
 core\footnote{http://www.nvidia.com/page/geforce\_8800.html}).
 
 Many developers in these days are faced with multicore processors and have to
-implement or extend existing algorithms to take full advantage of the
-processing power of such cores. CPU manufacturer are facing fundamental problems
-when increasing performance only by frequency. In former times higher frequency
-meant higher performance but a paradigm shift took place now the new stigma is
-more cores means higher performance. Moore's law says that for every 2 years the
+implement or extend existing algorithms to take full advantage of the processing
+power of such cores. \gls{CPU} manufacturer are facing fundamental problems when
+increasing performance only by frequency. In former times higher frequency meant
+higher performance but a paradigm shift took place now the new stigma is more
+cores means higher performance. Moore's law says that for every 2 years the
 amount of cores on a chip will double. What does it mean to developers? They
 have to think in parallel, not only for two or four cores but rather for 16 or
 32 cores. They have to assure that there code is scaling over many cores over
-many generations of CPU chips. There are several parallel programming languages
-and middleware to help developers to programm in parallel but a quasi standard
+many generations of \gls{CPU} chips. There are several parallel programming languages
+and middleware to help developers to program in parallel but a quasi standard
 has not been established.
 
 By the means of an application which will be ported to the \gls{GPU} the general
 workflow will be shown and various procedure models examined. It will be
 presented that often traditional software engineering principles do not
 apply to high performance, parallel computing. For this work a Nvidia \gls{GPU} will
-be used togehter with \gls{CUDA}(Common Unified Device Architecture) that is a
-extension to C for parallel programming of GPUs. 
+be used together with \gls{CUDA} that is a
+extension to C for parallel programming of \glspl{GPU}. 
 
 The remainder of the thesis will give some in depth background to the topic and
-expose with programming models and the architecture of GPUs. Furthermore the
+expose with programming models and the architecture of \glspl{GPU}. Furthermore the
 development of a parallel implementation of an algorithm will be examined step
 by step. In this context software analysis and design principles will be shown
 that fit to parallel programming. A feasibility study will cover major obstacles

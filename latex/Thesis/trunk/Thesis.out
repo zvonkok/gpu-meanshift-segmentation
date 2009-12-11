@@ -1,0 +1,79 @@
+\BOOKMARK [0][]{declaration.0}{Declaration}{}% 1
+\BOOKMARK [1][-]{Abstract.1}{Abstract}{declaration.0}% 2
+\BOOKMARK [1][-]{acknowledgments.1}{Acknowledgments}{declaration.0}% 3
+\BOOKMARK [1][-]{tableofcontents.1}{Contents}{declaration.0}% 4
+\BOOKMARK [0][]{chapter.1}{1 Introduction}{}% 5
+\BOOKMARK [0][]{chapter.2}{2 Literature Review}{}% 6
+\BOOKMARK [1][-]{section.2.1}{2.1 Embarrassingly Parallel Algorithms}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Computations which Map Well to GPUs}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Ray Tracing}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Photon Mapping}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.4}{2.1.4 Multiple Precision Arithmetic}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.5}{2.1.5 High Dynamic Range}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.6}{2.1.6 Genetic Algorithms}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.7}{2.1.7 Chaos Theory}{section.2.1}% 14
+\BOOKMARK [2][-]{subsection.2.1.8}{2.1.8 Image Processing}{section.2.1}% 15
+\BOOKMARK [1][-]{section.2.2}{2.2 OLD STUFF}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 An Overview of Stream Computation}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 General Programming of Streaming Processors}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Stream Computing in Field Use}{section.2.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 NVIDIA CUDA}{section.2.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 The Classic GPU Pipeline}{section.2.2}% 21
+\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 The GeForce 8 Series Architecture}{section.2.2}% 22
+\BOOKMARK [1][-]{section.2.3}{2.3 Algorithmic point of view to GPUs}{chapter.2}% 23
+\BOOKMARK [0][]{chapter.3}{3 Examples}{}% 24
+\BOOKMARK [1][-]{section.3.1}{3.1 Proposed Solution}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{3.2 Experimental Results}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.3}{3.3 ... on the GPU}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.4}{3.4 Methodology and Discussion}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.5}{3.5 Conclusion, Questions, Perspective}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.6}{3.6 Summary}{chapter.3}% 30
+\BOOKMARK [0][]{chapter.4}{4 Parallel Processing with GPUs}{}% 31
+\BOOKMARK [1][-]{section.4.1}{4.1 Parallel Architectures}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.2}{4.2 The Tesla Architecture}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.3}{4.3 Common Unified Device Architecture \(CUDA\)}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.4}{4.4 CUDA Programming Model}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.5}{4.5 A Simple Example}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.6}{4.6 Porting Strategies for GPUs}{chapter.4}% 37
+\BOOKMARK [0][]{chapter.5}{5 Feasibility Study}{}% 38
+\BOOKMARK [1][-]{section.5.1}{5.1 An Overview of Ray Tracing}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.2}{5.2 Ray Casting}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.3}{5.3 Performance tuning}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.4}{5.4 Demystifing the Myths}{chapter.5}% 42
+\BOOKMARK [0][]{chapter.6}{6 Mean Shift}{}% 43
+\BOOKMARK [1][-]{section.6.1}{6.1 Density Estimation}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.2}{6.2 Kernel Density Estimation}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.3}{6.3 Kernel and their Properties}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.4}{6.4 Mean Shift}{chapter.6}% 47
+\BOOKMARK [2][-]{subsection.6.4.1}{6.4.1 Density Gradient Estimation}{section.6.4}% 48
+\BOOKMARK [2][-]{subsection.6.4.2}{6.4.2 Mean Shift Method}{section.6.4}% 49
+\BOOKMARK [1][-]{section.6.5}{6.5 Filtering \046 Segmentation}{chapter.6}% 50
+\BOOKMARK [2][-]{subsection.6.5.1}{6.5.1 Mean Shift Filtering}{section.6.5}% 51
+\BOOKMARK [2][-]{subsection.6.5.2}{6.5.2 Mean Shift Segmentation}{section.6.5}% 52
+\BOOKMARK [0][]{chapter.7}{7 Mean Shift Algorithm Analysis}{}% 53
+\BOOKMARK [1][-]{section.7.1}{7.1 Profiling the Original Code}{chapter.7}% 54
+\BOOKMARK [1][-]{section.7.2}{7.2 Amdahl's law}{chapter.7}% 55
+\BOOKMARK [1][-]{section.7.3}{7.3 Data and Task Parallelism}{chapter.7}% 56
+\BOOKMARK [2][-]{subsection.7.3.1}{7.3.1 Task Parallelism}{section.7.3}% 57
+\BOOKMARK [2][-]{subsection.7.3.2}{7.3.2 Data Parallelism}{section.7.3}% 58
+\BOOKMARK [0][]{chapter.8}{8 Mean Shift Algorithm Design}{}% 59
+\BOOKMARK [0][]{chapter.9}{9 Optimization Strategies}{}% 60
+\BOOKMARK [1][-]{section.9.1}{9.1 Offload Compute Intensive Parts}{chapter.9}% 61
+\BOOKMARK [1][-]{section.9.2}{9.2 Run Configurations}{chapter.9}% 62
+\BOOKMARK [1][-]{section.9.3}{9.3 Use the Float Data Type where Ever Possible}{chapter.9}% 63
+\BOOKMARK [1][-]{section.9.4}{9.4 Avoid Branch Divergence}{chapter.9}% 64
+\BOOKMARK [1][-]{section.9.5}{9.5 Shared Memory}{chapter.9}% 65
+\BOOKMARK [1][-]{section.9.6}{9.6 Know the Algorithm}{chapter.9}% 66
+\BOOKMARK [1][-]{section.9.7}{9.7 Unrolling Loops and Multiplications}{chapter.9}% 67
+\BOOKMARK [1][-]{section.9.8}{9.8 Extra luv to rgb Kernel}{chapter.9}% 68
+\BOOKMARK [0][]{chapter.10}{10 Performance \046 Scalability}{}% 69
+\BOOKMARK [0][]{chapter.11}{11 Managment of the Project}{}% 70
+\BOOKMARK [1][-]{glo.1}{Glossary}{chapter.11}% 71
+\BOOKMARK [0][]{section*.2}{Glossary}{}% 72
+\BOOKMARK [1][-]{acr.1}{Acronyms}{section*.2}% 73
+\BOOKMARK [0][]{section*.4}{Acronyms}{}% 74
+\BOOKMARK [1][-]{lof.1}{List of Figures}{section*.4}% 75
+\BOOKMARK [1][-]{lot.1}{List of Tables}{section*.4}% 76
+\BOOKMARK [1][-]{lol.1}{List of Listings}{section*.4}% 77
+\BOOKMARK [0][]{chapter*.9}{Bibliography}{}% 78
+\BOOKMARK [0][]{colophon.0}{Colophon}{}% 79
