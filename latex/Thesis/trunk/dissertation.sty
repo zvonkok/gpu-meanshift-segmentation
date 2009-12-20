@@ -172,22 +172,31 @@
 
 
 % ******************************************************************************
-% Textblock size
+% Typesetting... typeares
 % ******************************************************************************
 
-\areaset[0mm]{360pt}{576pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
+%\areaset[0mm]{360pt}{576pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
+\RequirePackage[colorgrid, draft]{showframe}
+
+\RequirePackage[twoside,includeheadfoot]{geometry}
+\geometry{textwidth=360pt}
+\geometry{textheight=583.2pt} % 384 * 1.62
+% golden section .. 
+\geometry{hmarginratio=100:162}
+\geometry{vmarginratio=100:162}
+
+\geometry{headheight=12pt}
+
+
+% left = (one inch) 72 + (oddsidemargin) 18 = 90pt
+% 90 + 360 = 450 ; 597 - 450 = 147  ... 
+% \marginparwidth 84pt 
+
 % ******************************************************************************
 % Randnotiz stuff ...
 % ******************************************************************************
-\setlength{\marginparwidth}{7em}%
-\setlength{\marginparsep}{2em}%
-%%%%%% Here are some suggestions for the text widths and heights:
-%%%%%% Palatino 	10pt: 288--312pt | 609--657pt
-%%%%%% Palatino 	11pt: 312--336pt | 657--705pt
-%%%%%% Palatino 	12pt: 
-%%%%%% Minion 	  10pt: 264--288pt | 561--609pt
-%%%%%% Minion 	  11pt: 288--312pt | 609--657pt
-%%%%%% Minion 	  12pt: 
+\setlength{\marginparwidth}{7em}% == 12*7 = 84pt
+\setlength{\marginparsep}{2em}% 24:40 .. 1:1.62
 
 % ******************************************************************************
 % Hyperreferences
