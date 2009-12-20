@@ -1,8 +1,8 @@
 %*******************************************************************************
 \chapter{Mean Shift}\label{ch:mean_shift}
 %*******************************************************************************
-In low level computer vision tasks like segmentation, edge detection or
-smoothing, the analysis of data is often not done on the original images.
+In low level computer vision tasks like filtering, segmentation or edge
+detection, the analysis of data is often not done on the original images.
 Features like colors are rather projected into a feature space where they can be
 more easily analyzed. The analysis of the feature space can find interesting
 attributes of the image like edges or segments.
@@ -595,17 +595,17 @@ method is described by the following iterations:
 	\item Repeat 3. until convergence
 \end{enumerate}
 
-\caption{Mean Shift}
+\caption{Mean Shift Method}
 \label{alg:ms}
 \end{algorithm2e}
 
 The first step of the algorithm is to choose the window radius or the bandwidth
-$h_n$ of the kernel in the observation $x_n$. The bandwidth can be chosen 
-adaptively or can be fixed. With a fixed bandwidth the density estimator in \label{eq:kernel4} 
-works with identical scaled kernels in every observation or is adapted in every
-observation. In literature there are several ways described to perform a
-adaptive Mean Shift (see e.g. \citeauthor{citeulike:4910570}
-\citep{citeulike:4910570}). 
+$h_n$ of the kernel in the observation $x_n$. The bandwidth can be chosen
+adaptively or can be fixed. With a fixed bandwidth the density estimator in
+\autoref{eq:kernel4} works with identical scaled kernels in every observation or
+is adapted in every observation. In literature there are several ways described
+to perform a adaptive Mean Shift (see e.g. \citeauthor{citeulike:4910570}
+\citep{citeulike:4910570}).
 
 The second step is to choose a start position $y_1 \in \mathbb{R}^D$ in the 
 feature space where to start the mean shift algorithm.
@@ -686,8 +686,8 @@ filtered pixels.
 For each pixel $n = 1, \ldots , N$
 \begin{enumerate}%[{\textsc{step}} 1]
  \item Initialize $k = 1$ and $y_k = x_n$
- \item Calculate $y_{k+1}$ according to \autoref{eq:msi3}, repeat
-until convergence
+ \item Calculate $y_{k+1}$ according to \autoref{eq:msi3}, repeat until 
+	convergence
  \item Set $z_n = (x_n^r, y_{conv}^f)$
 \end{enumerate}
 
@@ -701,7 +701,7 @@ of this maximum. The filtered image points $z_n, n = 1 , \ldots , N$ keep there
 spatial coordinates but obtain the color values off the convergence point. The
 convergence points are found by moving the kernel window with \emph{mean shift} 
 in direction of maximum slope of the spatial range feature space. The sample
-\autoref{fig:filtsample} was smoothed with the algorithm of \autoref{lst:filtalgo}. 
+\autoref{fig:filtsample} was smoothed with the algorithm of \autoref{alg:msf}. 
 A uniform kernel with $h = (6.5, 7)$ was used.
 
 \subsection{Mean Shift Segmentation} % (fold)
@@ -745,7 +745,7 @@ In filtering as well as in segmentation algorithm a fixed sized window size is
 used. In \citeauthor{citeulike:462300} \citep{citeulike:462300} ist is noted
 that for segmenation the algorithm is not heavily dependent on the choice of the
 kernel parameters where as there are application where the window size matters. 
-The segmentation part of the \autoref{alg:segmalgo} has no significant impact on the 
+The segmentation part of the \autoref{alg:mss} has no significant impact on the 
 run time. 
 
 \begin{algorithm2e}[H]
@@ -754,11 +754,12 @@ run time.
 
   For each pixel $n = 1, \ldots , N$
 \begin{enumerate}%[{\textsc{step}} 1]
+	\item Convert feature vector $x_n^f$ to \gls{LUV} color space
     \item Initialize $k = 1$ and $y_k = x_n$
     \item Calculate $y_{k+1}$ according to \autoref{eq:msi3}, repeat until convergence
     \item Set $z_n = (x_n^r, y_{conv}^f)$ 
 \end{enumerate}
-\label{alg:segmalgo}
+\label{alg:mss}
 \caption{Mean shift segmentation}
 \end{algorithm2e}
 

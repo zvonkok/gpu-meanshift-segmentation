@@ -314,7 +314,7 @@
 %                      * FIX: - line number is now correctly vertically aligned with math display.
 %                      * FIX: - references with hyperref. No more same identifier or missing name error. BUT now
 %                               you must NOT use naturalnames option of hyperref packages if you do PdfLaTeX
-%                      * FIX: - autoref with hyperref package (thanks to Jörg Sommer who notices the problem).
+%                      * FIX: - autoref with hyperref package (thanks to JÃ¶rg Sommer who notices the problem).
 %                      * FIX: - titlenumbered was not working! fixed.
 %                      * FIX: - Else(){} acted like uElse. Corrected.
 %                      * FIX: - noend management: when a block was inside another and end of block was following
@@ -770,9 +770,9 @@
 \renewcommand{\algorithmautorefname}{algorithme}%
 \renewcommand{\algorithmcflinename}{ligne}%
 \renewcommand{\algocf@typo}{\ }%
-\renewcommand{\@algocf@procname}{Procédure}%
+\renewcommand{\@algocf@procname}{ProcÃ©dure}%
 \renewcommand{\@algocf@funcname}{Fonction}%
-\renewcommand{\procedureautorefname}{procédure}%
+\renewcommand{\procedureautorefname}{procÃ©dure}%
 \renewcommand{\functionautorefname}{fonction}%
 \renewcommand{\algocf@languagechoosen}{french}%
 }%
@@ -2388,7 +2388,7 @@
 \SetKwIF{Si}{SinonSi}{Sinon}{si}{alors}{sinon si}{sinon}{fin si}%
 \SetKwSwitch{Suivant}{Cas}{Autre}{suivant}{faire}{cas o\`u}{autres cas}{fin d'alternative}%
 \SetKwFor{Pour}{pour}{faire}{fin pour}%
-\SetKwFor{PourPar}{pour}{faire en parallèle}{fin pour}%
+\SetKwFor{PourPar}{pour}{faire en parallÃ¨le}{fin pour}%
 \SetKwFor{PourCh}{pour chaque}{faire}{fin pour chaque}%
 \SetKwFor{PourTous}{pour tous les}{faire}{fin pour tous}%
 \SetKwFor{Tq}{tant que}{faire}{fin tq}%
@@ -2469,7 +2469,7 @@
 \SetKw{KwRitorna}{ritorna}%
 \SetKw{Ritorna}{ritorna}%
 \SetKwBlock{Inizio}{inizio}{fine}%
-\SetKwRepeat{Ripeti}{ripeti}{finché}%
+\SetKwRepeat{Ripeti}{ripeti}{finchÃ©}%
 %
 \SetKwIF{Sea}{AltSe}{Altrimenti}{se}{allora}{altrimenti se}{allora}{fine se}%
 \SetKwSwitch{Switch}{Case}{Other}{switch}{do}{case}{otherwise}{endsw}%
@@ -2477,7 +2477,7 @@
 \SetKwFor{PerPar}{per}{fai in parallelo}{fine per}%
 \SetKwFor{PerCiascun}{per ciascun}{fai}{fine per ciascun}%
 \SetKwFor{PerTutti}{per tutti i}{fai}{fine per tutti}%
-\SetKwFor{Finche}{finché}{fai}{fine finché}%
+\SetKwFor{Finche}{finchÃ©}{fai}{fine finchÃ©}%
 %
 % --- End 
 %}
@@ -2500,7 +2500,7 @@
 \SetKwIF{If}{ElseIf}{Else}{si}{alors}{sinon si}{sinon}{fin si}%
 \SetKwSwitch{Switch}{Case}{Other}{suivant}{faire}{cas o\`u}{autres cas}{fin d'alternative}%
 \SetKwFor{For}{pour}{faire}{fin pour}%
-\SetKwFor{ForPar}{pour}{faire en parallèle}{fin pour}%
+\SetKwFor{ForPar}{pour}{faire en parallÃ¨le}{fin pour}%
 \SetKwFor{ForEach}{pour chaque}{faire}{fin pour chaque}%
 \SetKwFor{ForAll}{pour tous les}{faire}{fin pour tous}%
 \SetKwFor{While}{tant que}{faire}{fin tq}%
@@ -2552,7 +2552,7 @@
 \SetKw{KwRet}{ritorna}%
 \SetKw{Return}{ritorna}%
 \SetKwBlock{Begin}{inizio}{fine}%
-\SetKwRepeat{Repeat}{ripeti}{finché}%
+\SetKwRepeat{Repeat}{ripeti}{finchÃ©}%
 %
 \SetKwIF{If}{ElseIf}{Else}{se}{allora}{altrimenti se}{allora}{fine se}%
 \SetKwSwitch{Switch}{Case}{Other}{switch}{do}{case}{otherwise}{endsw}%
@@ -2560,7 +2560,7 @@
 \SetKwFor{ForPar}{per}{fai in parallelo}{fine per}%
 \SetKwFor{ForEach}{per ciascun}{fai}{fine per ciascun}%
 \SetKwFor{ForAll}{per tutti i}{fai}{fine per tutti}%
-\SetKwFor{While}{finché}{fai}{fine finché}%
+\SetKwFor{While}{finchÃ©}{fai}{fine finchÃ©}%
 }{}%
 %
 %%%% old commands compatibility

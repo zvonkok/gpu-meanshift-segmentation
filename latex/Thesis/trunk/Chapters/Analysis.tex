@@ -27,12 +27,8 @@ The \autoref{fig:cpu_run_time}
 shows results of \gls{CPU} run times of the \gls{EDISON} application dependant
 on image size. The vertical axis shows the run time in seconds and the
 horizontal axis shows the side length in pixels of the quadratic \autoref{fig:orig0}.
-
-
-
 \begin{figure}[ht]
 \centering
-
 \begin{tikzpicture} 
 	\begin{axis}[
 		%smooth,
@@ -51,19 +47,12 @@ horizontal axis shows the side length in pixels of the quadratic \autoref{fig:or
 		enlargelimits=0.03,
 		ymajorgrids
 		]
-		 
-		\addplot[color=plotcolor0!50!black,fill=plotcolor0] table[x=PIX,y=CPU] {Plots/cpu_gpu_runtime.data}
+		\addplot[color=plotcolor0!50!black,fill=plotcolor0] table[x=PIX,y=CPU] {Plots/cpu_gpu_runtime.data}%
 		\closedcycle;
 	\end{axis}
-\end{tikzpicture}
-
-
-\caption{CPU run time depending on the image size}
-\label{fig:cpu_run_time}
+\end{tikzpicture}%
+\caption{CPU run time depending on the image size}\label{fig:cpu_run_time}%
 \end{figure}
-
-
-
 Considering the numbers in the result one can see that the run times grow 
 linear to the image sizes. The mean shift algorithm has linear complexity, 
 hence its complexity can be written as $O(n)$. Doubling the side length of 
@@ -91,19 +80,17 @@ OProfile\footnote{http://oprofile.sourceforge.net/news/} a system wide profiler
 for Linux was used to examine the run time of the \gls{EDISON} program. The
 \autoref{tab:comped} shows the run time analysis of \gls{EDISON}.
 
-
 \begin{table}[ht]
-	\myfloatalign
+	\centering
 	\pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
 	\pgfplotstabletypeset[
 %		column type=r,
-		every row no 8/.style={
+		every row no 5/.style={
 			before row={\rowcolor{lstbgcolor}}
 		},
-		columns/Self/.style={column name=\slcsmallcaps{Self (\%)}},
-		columns/Total/.style={column name=\slcsmallcaps{Total (\%)}},
-		columns/Symbol/.style={string type, column type=l, column name=\slcsmallcaps{Symbol}},
-		columns/{Size (KB)}/.style={column name=\slcsmallcaps{Size (KB)}},
+		columns/Self/.style={column type=r, column name={Self (\%)}},
+		columns/Total/.style={column type=r, column name={Total (\%)}},
+		columns/Symbol/.style={string type, column type=l, column name={Symbol}}
 	]{Tables/run.time.edison.data}
   	\caption[EDISON run time profile]{ \gls{EDISON} run time analysis}
   	\label{tab:comped}
@@ -216,7 +203,7 @@ multiple processors.
 
 There are two ways to decompose an algorithm to take advantage of parallelism.
 The first way is to decompose the algorithm into several tasks that can run
-independently. Each task is performing indepently different calculation on the
+independently. Each task is performing independently different calculation on the
 data. This characteristic is known as task parallelism. To know if two task can
 run independent one can take \citeauthor{citeulike:6113408} conditions and
 evaluate them.
@@ -234,7 +221,7 @@ following conditions \citep{citeulike:3838998}:
 \end{subequations}
 
 Equipped with the knowledge how to identify independent parallel tasks, the 
-mean shift segmentation algorithm \autoref{lst:segmalgo} can now be examined. 
+mean shift segmentation algorithm \autoref{alg:mss} can now be examined. 
 Having a look at the algorithm steps one can easily see that every task is 
 violating every condition stated above. The filtering step input data is 
 dependent on the \gls{RGB} to \gls{LUV} conversion output data. The segmentation
@@ -242,7 +229,7 @@ step input data is dependent on the filtering output data and the output data
 of each step is written to the same location for each pixel. So it does not matter
 how big an image is or if it is a color or grayscale image the mean shift segmentation
 algorithm will always perform all from each other dependent calculations as
-described in \autoref{lst:segmalgo}. The longest path of dependent calculations
+described in \autoref{alg:mss}. The longest path of dependent calculations
 is the critical path. For the mean shift algorithm there exist no shorter path. 
 
 Having a look again at \autoref{tab:comp} where the most computationally 
@@ -313,7 +300,7 @@ step a barrier after the filtering step is needed.
 
 Now to the interesting part the parallel filtering step. In
 \autoref{sub:data_parallelism} it was said that each processing unit gets a chunk
-of the image for processing. The mean shift algorithm takes 
+of the image for processing. The mean shift method takes 
 
 
 

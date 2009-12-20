@@ -36,18 +36,18 @@
 
 In recent years \glspl{GPU} have moved from fixed pipeline  processors to a 
 fully programmable processor. This evolvement
-has attracted many developers to do general purpose computing on GPUs.
- \glspl{GPU} have devoted there silicon (transistors) for computing engines
+has attracted many developers to do general purpose computing on \glspl{GPU}.
+\glspl{GPU} have devoted there silicon (transistors) for computing engines
 rather than for control engines like caches, branch prediction, coherency
 protocols and more. This incredible computing power made algorithms with an high
-arithmetic density run by an order of magnitude faster than on central
-processing units (CPUs). Speedups of 100x faster than the CPU were stunning but
+arithmetic density run by an order of magnitude faster than on \glspl{CPU}.
+Speedups of 100$\times$ faster than the \gls{CPU} were stunning but
 only a few people understand why such speedups are possible and why only a
 couple of algorithm can attain such speedups.
 
 This thesis will cover all the topics to understand the architecture,
 programming model, software eco system, drawback and pitfalls when doing
-general purpose computing on GPUs. The \gls{GPU} is a highly parallel processor with
+\gls{GPGPU}. The \gls{GPU} is a highly parallel processor with
 thousands of threads and a peak performance of ~600 \glspl{GFLOP} (G92
 core\footnote{http://www.nvidia.com/page/geforce\_8800.html}).
 
@@ -78,6 +78,6 @@ by step. In this context software analysis and design principles will be shown
 that fit to parallel programming. A feasibility study will cover major obstacles
 and show how to avoid them.
 
-Finnaly an application for segmenting an image will be implemented and presented
+Finally an application for segmenting an image will be implemented and presented
 in all aspects to the reader.
 % section introduction_ir (end)

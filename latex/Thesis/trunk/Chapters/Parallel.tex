@@ -243,11 +243,11 @@ device. There are more function specifiers that can be looked up in
 
 For data there are as well qualifiers where one can specify where the data is
 located, either in constant, global or shared memory. In listing
-\autoref{lst:device}.the \textit{\_\_shared\_\_}.qualifier is used. The device will
+\autoref{lst:device} the \textit{\_\_shared\_\_}.qualifier is used. The device will
 use the shared memory to preload the data for faster access.
 
 
-\begin{lstlisting}.caption=CUDA device code, label=lst:device]
+\begin{lstlisting} caption=CUDA device code, label=lst:device]
 	#include <stdio.h>
 
 	#define SDATA(index) CUT_BANK_CHECKER(sdata, index)

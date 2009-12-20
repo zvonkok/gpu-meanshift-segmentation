@@ -1,13 +1,7 @@
 %*******************************************************
 % Abstract
 %*******************************************************
-%\renewcommand{\abstractname}{Abstract}
-\begingroup
-\let\clearpage\relax
-\let\cleardoublepage\relax
-\let\cleardoublepage\relax
-\pdfbookmark[1]{Abstract}{Abstract}
-\section*{Abstract}
+\chapter*{Abstract}
 % Motivation: Why do we care about the problem and the results? If the 
 % isn't obviously "interesting" it might be better to put motivation first; 
 % but if your work is incremental progress on a problem that is widely 
@@ -27,11 +21,11 @@ developers to exploit the computational power of the hardware for general
 purpose computing.
 
 %* Problem statement: What problem are you trying to solve? What is the scope of your work (a generalized approach, or for a specific situation)? Be careful not to use too much jargon. In some cases it is appropriate to put the problem statement before the motivation, but usually this only works if most readers already understand why the problem is important.
-Several \gls{GPU} programming interfaces represent a graphics centric
-programming model to developers that is exported by a device driver and tuned
-for real time graphics and games. Porting non-graphics applications to graphics
-hardware means developing against the graphics programming model. Not only the
-difficulties of the unusual graphics centric programming model but also
+Several \gls{GPU} programming interfaces and \glspl{API} represent a graphics
+centric programming model to developers that is exported by a device driver and
+tuned for real time graphics and games. Porting non-graphics applications to
+graphics hardware means developing against the graphics programming model. Not
+only the difficulties of the unusual graphics centric programming model but also
 limitations of the hardware makes development of non-graphics applications a
 tedious task.
 
@@ -40,22 +34,21 @@ tedious task.
 %field data for an actual product? What was the extent of your work (did you look
 %at one application program or a hundred programs in twenty different programming
 %languages?) What important variables did you control, ignore, or measure?
-Therefore NVIDIA developed \gls{CUDA} that is a fundamentally new computing
-architecture that simplifies software development by using the standard C
-language. Using \gls{CUDA} this thesis will show on the basis of an massively
-parallel application in which extent \glspl{GPU} are suitable for general
-purpose computation. Special attention is paid to performance, computational
-concepts, efficient data structures and program optimization.
+Therefore NVIDIA Corporation developed the \gls{CUDA} that is a fundamentally new
+computing architecture that simplifies software development by using the
+standard C language. Using \gls{CUDA} this thesis will show on the basis of an
+massively parallel application in which extent \glspl{GPU} are suitable for
+general purpose computation. Special attention is paid to performance,
+computational concepts, efficient data structures and program optimization.
 
 %* Results: What's the answer? Specifically, most good computer architecture papers conclude that something is so many percent faster, cheaper, smaller, or otherwise better than something else. Put the result there, in numbers. Avoid vague, hand-waving results such as "very", "small", or "significant." If you must be vague, you are only given license to do so when you can talk about orders-of-magnitude improvement. There is a tension here in that you should not provide numbers that can be easily misinterpreted, but on the other hand you don't have room for all the caveats.
-The result of this work is the demonstration of feasibility of \glspl{GPU} for
-general purpose computing. It will show that \glspl{GPU} are capable of
-accelerating specific applications by an order of magnitude.
+The result of this work is the demonstration of feasibility of \gls{GPGPU}. It
+will show that \glspl{GPU} are capable of accelerating specific applications by
+an order of magnitude.
 
 %* Conclusions: What are the implications of your answer? Is it going to change the world (unlikely), be a significant "win", be a nice hack, or simply serve as a road sign indicating that this path is a waste of time (all of the previous results are useful). Are your results general, potentially generalizable, or specific to a particular case?
 This work will represent a general guideline for suggestions and hints as 
-well as drawbacks and obstacles when porting applications to GPUs.
+well as drawbacks and obstacles when porting applications to \glspl{GPU}.
 
-\endgroup			
 
 \vfill
