@@ -1,7 +1,10 @@
 %!TEX TS-program = xetex 
 %!TEX encoding = UTF-8 Unicode 
-\documentclass[DIV=7, bibliography=totoc,version=first, twoside,open=left,titlepage,fleqn,numbers=noenddot,headinclude,%1headlines,%    
-fontsize=10pt,footinclude,cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
+\documentclass[bibliography=totoc, version=first, twoside, open=right,%
+titlepage, fleqn, numbers=noenddot, fontsize=12pt,%
+cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
+headinclude=false,footinclude=false,%
+headlines=1, % default is 1.25 rows ... we want 1
 draft=on]{scrreprt}
 % ********************************************************************
 % Development Stuff
@@ -35,22 +38,36 @@ draft=on]{scrreprt}
 % ********************************************************************
 % Setup and Finetuning
 %*******************************************************
-\newlength{\abcd} % for ab..z string length calculation
-\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
-\setlength{\extrarowheight}{3pt} % increase table row height
+\setlength{\extrarowheight}{3pt} % increase table row height	
+\setcounter{errorcontextlines}{999}
 
 
 %********************************************************************
 % Hyphenation
 %*******************************************************
-%\hyphenation{put special hyphenation here}
+\hyphenation{pro-gram-ma-bil-i-ty pro-gram-ming ma-chines}
+
 \usepackage{layout}
-%\usepackage[colorgrid, draft]{showframe}
+\usepackage{layouts}
+\usepackage[colorgrid, draft]{showframe}
 
 
 \begin{document}
+
 \layout*
+
+\drawpage
+\setlayoutscale{0.9}
+\drawfloat
 %\printparam
+\newlength{\abcd} % for ab..z string length calculation
+\settowidth{\abcd}{abcdefghijklmnopqrstuvwxyz} 	
+\the\abcd
+%\prntlen{\abcd} 
+
+
+
+
 
 \color{textcolor}
 

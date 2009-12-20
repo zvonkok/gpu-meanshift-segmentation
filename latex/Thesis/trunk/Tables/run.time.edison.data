@@ -1,0 +1,25 @@
+{Self} {Total}  {Symbol} 
+#0.0 	100.0 	{main} 										     
+#0.0  	100.0  	{Run(CmCParser*)} 							
+#0.0  	100.0  	{EXECUTE(int, CmCParser*, void**)} 			
+0.0  	100.0  	{Segment()} 						
+0.0  	100.0  	{meanShift(int)} 					
+0.0  	99.3    {Filter(...)}				   
+0.4  	99.1  	{NonOptimizedFilter(...)}	
+0.6  	98.8  	{LatticeMSVector(double*, double*)} 
+98.2  	98.2 	{uniformLSearch(double*, double*)}  
+0.0  	0.4  	{FuseRegions(float, int)} 
+0.1  	0.3  	{BuildRAM()} 			
+0.0 	0.2  	{TransitiveClosure()} 	
+#0.0  	0.2  	{Prune(int)} 			
+#0.0  	0.2  	{GetResults(unsigned char*)}
+#0.1  	0.2  	{LUVtoRGB(...)} 			
+#0.2  	0.2  	{RAList::Insert(RAList*)} 	
+#0.0  	0.1  	{DefineImage(...)} 		
+#0.1  	0.1  	{RGBtoLUV(...)} 		
+#0.0  	0.1  	{Connect()} 			
+#0.1  	0.1  	{Fill(int, int)}  		
+#0.1  	0.1  	{InWindow(int, int)}  	
+#0.0  	0.0 	{GetBoundaries()} 		
+#0.0  	0.0  	{SqDistance(int, int)}  
+#0.0  	0.0  	{DefineBoundaries()} 	

@@ -66,6 +66,9 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 
+\RequirePackage{leading}
+\leading{15pt}
+
 % ******************************************************************************
 % pgfplots (very nice graph plots)
 % ******************************************************************************
@@ -94,8 +97,9 @@
 % ******************************************************************************
 % Math Package
 % ******************************************************************************
-\RequirePackage[retainmissing,abx]{MnSymbol}
+%\RequirePackage[retainmissing,abx]{MnSymbol}
 %\RequirePackage[fraktur,mdugm]{mathdesign}
+\RequirePackage[bitstream-charter]{mathdesign}
 %\RequirePackage[euler-digits]{eulervm} % Euler math fonts
 %\RequirePackage[minionint, openg, mathosf, onlymath]{MinionPro}% 
 %\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
@@ -123,6 +127,7 @@
 \raggedbottom
 
 
+
 % ******************************************************************************
 % XeTeX
 % ******************************************************************************
@@ -133,12 +138,13 @@
 %\RequirePackage{polyglossia}
 
 \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
-%\newcommand{\mainfont}{Charter OS ITC TT}
-%\newcommand{\scfont}{Charter SC ITC TT}
-\newcommand{\mainfont}{Minion Pro}
-\newcommand{\scfont}{Minion Pro}
-%\newcommand{\mainfont}{Berndal LT Std}
-%\newcommand{\scfont}{Berndal LT Std SC}
+\newcommand{\mainfont}{Charter OS ITC TT}
+\newcommand{\scfont}{Charter SC ITC TT}
+%\newcommand{\mainfont}{LeMonde Livre OsF}
+%\newcommand{\scfont}{LeMonde Livre SC}
+%\newcommand{\mainfont}{Minion Pro}
+%\newcommand{\scfont}{Minion Pro}
+
 %\setdefaultlanguage{UKenglish} % polyglossia
 
 %5–10% of the size of the type.
@@ -147,21 +153,29 @@
 %\setsansfont{Verdana}
 %\setmonofont{Pragmata}
 \newfontfamily\plotfont[Numbers=OldStyle]{\mainfont}
-\newfontfamily\lstfont[Scale=0.7]{Anonymous Pro}
-\newfontfamily\scshape[LetterSpace=6.0, Letters=SmallCaps]{\scfont}
+\newfontfamily\lstfont[Scale=0.8]{Luxi Mono}
+\newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
+\newfontfamily\spaceduppercase[LetterSpace=20.0]{Charter ITC TT} % uc 20 - 25 %
+\newfontfamily\chnumfont[Scale=6, Numbers=Lining]{Charter ITC TT}
+
 % ******************************************************************************
-% SmallCaps stuff
+% Spacing & SmallCaps stuff
 % ******************************************************************************
 \RequirePackage[overload]{textcase} % for \MakeTextUppercase
 \DeclareRobustCommand{\sucsmallcaps}[1]{\textsc{\MakeTextUppercase{#1}}}%   
 \DeclareRobustCommand{\slcsmallcaps}[1]{\textsc{\MakeTextLowercase{#1}}}%
 \DeclareRobustCommand{\ssmallcaps}[1]{\textsc{#1}}%
+
+\DeclareRobustCommand{\suppercase}[1]{\spaceduppercase{\MakeTextUppercase{#1}}}%   
+
+
 % ******************************************************************************
 % Textblock size
 % ******************************************************************************
-\areaset[5mm]{390pt}{650pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
+
+\areaset[0mm]{360pt}{576pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
 % ******************************************************************************
 % Randnotiz stuff ...
 % ******************************************************************************
@@ -192,7 +206,7 @@
 	pdfsubject={},%
 	pdfkeywords={},%
 	pdfcreator={XeLaTeX},%
-	pdfproducer={LaTeX with hyperref and classicthesis}%
+	pdfproducer={XeLateX ... }%
 }
 \renewcommand{\figureautorefname}{Figure}
 \renewcommand{\tableautorefname}{Table}
@@ -202,34 +216,24 @@
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
 
-
-% ******************************************************************************
-% Hypcap (get the links to the figures and tables right)
-% ******************************************************************************
-%\RequirePackage[all]{hypcap} % to be loaded after hyperref package
-%   \hspace*{\fill}{\scriptsize\itshape\mbox{%
-%   \ifnum#1=1 %
-%     (Cited on page~%
-%   \else
-%     (Cited on pages~%
-%   \fi
-%   #2)}
-%}
-
 % ******************************************************************************
 % Captions look and feel
 % ******************************************************************************
 \RequirePackage{caption}[2008/04/01]
+%\RequirePackage{subcaption}
 \DeclareCaptionFont{seccolor}{\color{seccolor}}
 \DeclareCaptionFont{textcolor}{\color{textcolor}}
 \DeclareCaptionLabelSeparator{zspace}{ }
 
-\captionsetup{font=small, format=hang, labelfont={sc, seccolor}, textfont=textcolor}
+\captionsetup{skip=\baselineskip, font=small, format=hang,%
+ 			  labelfont={sc, seccolor}, textfont=textcolor}
 \captionsetup[subtable]{labelsep=quad}
-\captionsetup[subfigure]{labelsep=quad}
+\captionsetup[subfigureautorefname]{labelsep=quad}
 
 %\renewcommand{\captionfont}{\small\color{textcolor}}
 %\renewcommand{\captionlabelfont}{\scshape\color{seccolor}}
+%\setlength{\intextsep}{14.5pt}
+%\setlength{\intextsep}{10pt plus 4pt minus 4pt}
 
 
 % ******************************************************************************
@@ -243,8 +247,11 @@
 \renewcommand{\AlCapSty}{\captionfont}%
 \renewcommand{\AlCapFnt}{\captionlabelfont}%
 \renewcommand{\AlCapNameSty}{\captionfont}% 
-\SetAlCapSkip{\abovecaptionskip}%
-\renewcommand{\@algoskip}{\medskip\bigskip}%\SetAlgoSkip{bigskip}%
+
+\SetAlCapSkip{\baselineskip}%
+%\SetAlgoSkip{medskip}
+% space before box & after box
+\renewcommand{\@algoskip}{\vspace{\baselineskip}}%\SetAlgoSkip{bigskip}%
 %\setlength{\algomargin}{2em}% margin in the box
 
 % ******************************************************************************
@@ -255,23 +262,10 @@
 
 
 % ******************************************************************************
-% varioref (Provides \labelformat, which changes how \ref references look
-% ******************************************************************************
-%\RequirePackage{varioref}
-% Make sure \autoref puts parentheses around 
-% equations and enumeration items (similar to \eqref)
-% NOTE: This allows us to use \ref instead of \eqref
-%\labelformat{equation}{\textup{(#1)}}
-%\labelformat{enumi}{\textup{(#1)}}
-
-
-
-
-
-% ******************************************************************************
 % PDFpages
 % ******************************************************************************
 \RequirePackage{pdfpages} % for including a frontcover 
+
 % ******************************************************************************
 % glossaries
 % ******************************************************************************
@@ -320,12 +314,14 @@
 \rehead{\slcsmallcaps{\color{seccolor}\small\thepage}}
 \lohead{\slcsmallcaps{\color{seccolor}\small\thepage}} 	
 \rohead{\slcsmallcaps{\color{seccolor}\small\headmark}}
+
 % ******************************************************************************                
 % Tables
 % ******************************************************************************  
 \newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\slcsmallcaps{#1}}}
+
 % ******************************************************************************
-% layout of the chapter-, section-, subsection-, subsubsection-,
+% Layout of the chapter-, section-, subsection-, subsubsection-,
 % paragraph and description-headings
 % ******************************************************************************             
 \RequirePackage{titlesec}
@@ -337,11 +333,16 @@
 {\thispagestyle{empty}\partname~\MakeTextUppercase{\thepart}}{1em}%
 {\color{seccolor}\spacedallcaps}%
 % chapters
-\titleformat{\chapter}[display]{\relax}%
-{\ssmallcaps{\chaptertitlename}\hspace*{0.5em}\sucsmallcaps{\thechapter}}{0.3em}%
-{\color{seccolor}\huge\raggedright\sucsmallcaps}% 
+
+%\titleformat{\chapter}[display]{\relax}%
+%{\ssmallcaps{\chaptertitlename}\hspace*{0.5em}\sucsmallcaps{\thechapter}}{0.3em}%
+%{\color{seccolor}\raggedright\suppercase}% 
+\titleformat{\chapter}[display]%
+{\relax}{\mbox{}\marginpar{\vspace*{-1\baselineskip}\color{textcolor!30!white}\chnumfont\thechapter}}{0pt}%
+{\raggedright\suppercase}[\normalsize\vspace*{\baselineskip}\titlerule]%
+
 % sections
-\titleformat{\section}{\color{seccolor}}%
+\titleformat{\section}{\color{seccolor}}
 {\slcsmallcaps{\thesection}}{1em}%
 {\ssmallcaps}%
 % subsections
@@ -360,10 +361,10 @@
 \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}\slcsmallcaps{#1}}%   
 
 % spacing
-\titlespacing*{\chapter}{0pt}{0pt}{2\baselineskip}
-\titlespacing*{\section}{0pt}{1.25\baselineskip}{0.5\baselineskip} 
-\titlespacing*{\subsection}{0pt}{1.25\baselineskip}{0.5\baselineskip}
-\titlespacing*{\paragraph}{0pt}{1\baselineskip}{0.5\baselineskip}
+\titlespacing*{\chapter}{0pt}{0pt}{1.25\baselineskip}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} 
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+\titlespacing*{\paragraph}{0pt}{\baselineskip}{\baselineskip}
 
 % ********************************************************************                
 % layout of the TOC, LOF and LOT (LOL-workaround see next section)
@@ -516,7 +517,10 @@
     numberstyle=\scriptsize,%\tiny
 	framexleftmargin=4em,
 	xleftmargin=4em,
-	aboveskip=\bigskipamount,
+	aboveskip=\baselineskip,
+	belowskip=\baselineskip,
+	abovecaptionskip=\abovecaptionskip,
+	belowcaptionskip=\belowcaptionskip,
     %stepnumber=1,
     numbersep=4pt,
     showstringspaces=false,
@@ -541,20 +545,13 @@
 % Booktabs
 % ******************************************************************************
 \RequirePackage{booktabs} % for better rules in tables
-% ******************************************************************************
-% Figures are placed only within section they were declared in
-% provides command \FloatBarrier
-% ******************************************************************************
-\RequirePackage[section,below]{placeins}    
+
 % ******************************************************************************
 % Footnotes setup   
 % ******************************************************************************
-\RequirePackage{footmisc} % footnotemark not superscripted at the bottom
-\deffootnote[1em]{1em}{0em}{\ssmallcaps\thefootnotemark\hspace*{.5em}}      
-\setfnsymbol{bringhurst}   % use symbols recommended by guru Robert Bringhurst 
-\setlength{\footnotemargin}{-1em}   
+\deffootnote{0em}{0em}{\thefootnotemark\hspace*{.5em}}      
+%\setlength{\footnotemargin}{-1em}   
 \addtokomafont{footnote}{\color{seccolor}}
-
 \renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
 	\hrule width 0.4\columnwidth \vspace*{2.6pt}}}
 
@@ -569,24 +566,6 @@
 		\doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
 		%\raggedright%
 		\hspace{0pt}#1}}
-% ******************************************************************************
-% Remreset (caption numbering now w/o chapter number)
-% ******************************************************************************
-%\RequirePackage{remreset}
-%\makeatletter
-%\@removefromreset{table}{chapter}  % requires remreset package
-%\renewcommand{\thetable}{\arabic{table}}
-%\makeatother
-
-%\makeatletter
-%\@removefromreset{figure}{chapter}  % requires remreset package
-%\renewcommand{\thefigure}{\arabic{figure}}  
-%\makeatother
-
-%\makeatletter
-%\@removefromreset{lstlisting}{chapter}% requires remreset package
-%\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
-%\makeatother
 
 
 % ******************************************************************************

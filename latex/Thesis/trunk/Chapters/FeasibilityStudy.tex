@@ -24,7 +24,7 @@ The most interesting myth here is that in average one can only exploit about
 10\% of the peak performance for general purpose computing, which in turn would 
 lead to that \glspl{GPU} are power-inefficient in average. Another thing to 
 keep an eye on is the statement that \glspl{GPU} do not do real floating point
-math which would exclude many communities ( \gls{HPC}, Physics, Astronomy, ..)
+math which would exclude many communities ( \gls{HPC}, Physics, Astronomy, \ldots)
 \graffito{Many \gls{HPC}, Physics, Astronomy,... benchmarks and algorithms rely 
 on floating point math} from spending time in doing \gls{GPGPU}. 
 
@@ -133,7 +133,7 @@ bound.
 The \autoref{tab:runconfig} shows the run configuration used for the sample runs. 
 
 \begin{table}[ht]
-	\myfloatalign
+	\centering
 	\pgfplotstabletypeset{Tables/run.configuration.data}
   	\caption[Run configuration]{Run configuration.}	
 	\label{tab:runconfig}
@@ -146,7 +146,7 @@ parameters one can achieve, in this case, a speedup of about 8 times. See Table
 \autoref{tab:comp} for several runs varying object count and image size.
 
 \begin{table}[ht]
-	\myfloatalign
+	\centering
 	\pgfplotstabletypeset{Tables/comp.cpu.gpu.data}
 	\caption[Comparison between CPU and GPU]{Comparison between CPU and GPU.}
 	\label{tab:comp}
@@ -170,7 +170,7 @@ the value 22578032.
 
 
 \begin{table}[ht]
-	\myfloatalign
+	\centering
 	\pgfkeys{/pgf/number format/.cd,fixed,precision=2}
 	\subfloat[Local memory]{
 	\pgfplotstabletypeset{Tables/local.memory.data}
@@ -190,7 +190,7 @@ hence the application is loading almost everything incoherent. See Table
 \autoref{tab:globalmem} for the values.
 
 \begin{table}[ht]
-    \myfloatalign
+    \centering
 	\pgfkeys{/pgf/number format/.cd,fixed,precision=2}
 	\pgfplotstabletypeset{Tables/global.memory.data}
   	\caption[Global memory loads and stores]{Global memory loads and stores.}
