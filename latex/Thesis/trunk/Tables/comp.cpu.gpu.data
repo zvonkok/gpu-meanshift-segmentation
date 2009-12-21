@@ -1,4 +1,4 @@
-image objects {cpu gflops} {gpu gflops} speedup
+Image Objects {CPU GFlops} {GPU GFlops} Speedup
 768  338   0.37  3.17  8.54 
 768  450   0.37  3.22  8.6
 768  840   0.37  3.23  8.74 

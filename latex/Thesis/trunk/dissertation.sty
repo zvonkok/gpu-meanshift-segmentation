@@ -163,7 +163,7 @@
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
 \newfontfamily\spaceduppercase[LetterSpace=20.0]{Charter ITC TT} % uc 20 - 25 %
-\newfontfamily\chnumfont[Scale=6, Numbers=Lining]{Charter ITC TT}
+\newfontfamily\chnumfont[Scale=7, Numbers=Lining]{Charter ITC TT}
 
 % ******************************************************************************
 % Spacing & SmallCaps stuff
@@ -181,16 +181,30 @@
 % ******************************************************************************
 
 %\areaset[0mm]{360pt}{576pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
-\RequirePackage[colorgrid, draft]{showframe}
+%\RequirePackage[colorgrid, draft]{showframe}
 
-\RequirePackage[twoside,includeheadfoot]{geometry}
-\geometry{textwidth=360pt}
-\geometry{textheight=583.2pt} % 384 * 1.62
+\RequirePackage[twoside, includeheadfoot]{geometry}
+
+\newlength{\linelength}
+\setlength{\linelength}{28pc}
+
+\newlength{\gstextheight}
+\setlength{\gstextheight}{1.62\linelength}
+
+\geometry{textwidth=\linelength}
+\geometry{textheight=\gstextheight} % 384 * 1.62
 % golden section .. 
 \geometry{hmarginratio=100:162}
 \geometry{vmarginratio=100:162}
 % KOMA - default 1.25\baselineskip
-\geometry{headheight=12pt}
+\geometry{headheight=1em}
+\geometry{headsep=\baselineskip}
+
+%\newlength{\gsfootskip}
+%\setlength{\gsfootskip}{1.62\headsep}
+%\addtolength{\gsfootskip}{1em}
+
+\geometry{footskip=0pt}
 
 
 % left = (one inch) 72 + (oddsidemargin) 18 = 90pt
@@ -324,10 +338,13 @@
 \renewcommand{\chaptermark}[1]{\markboth{\slcsmallcaps{#1}}{\slcsmallcaps{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\slcsmallcaps{#1}}} 
 
-\lehead{\slcsmallcaps{\color{seccolor}\small\headmark}} 	
-\rehead{\slcsmallcaps{\color{seccolor}\small\thepage}}
-\lohead{\slcsmallcaps{\color{seccolor}\small\thepage}} 	
-\rohead{\slcsmallcaps{\color{seccolor}\small\headmark}}
+\lehead{\slcsmallcaps{\color{seccolor}\small\thepage}}
+\rehead{\slcsmallcaps{\color{seccolor}\small\headmark}} 	
+\lohead{\slcsmallcaps{\color{seccolor}\small\headmark}}
+\rohead{\slcsmallcaps{\color{seccolor}\small\thepage}} 	
+
+
+
 
 % ******************************************************************************                
 % Tables
@@ -354,8 +371,8 @@
 {\color{seccolor}\spacedallcaps}%
 % chapters
 
-\titleformat{\chapter}[display]{\vspace*{-1\baselineskip}}
-{\marginpar{\vspace*{\baselineskip}\color{textcolor!30!white}\chnumfont\thechapter}}{0pt}% "Chapter" name.. label 
+\titleformat{\chapter}[display]{\vspace*{-2\baselineskip}}
+{\marginpar{\color{textcolor!30!white}\chnumfont{\vspace*{-2\baselineskip}\thechapter}}}{0pt}% "Chapter" name.. label 
 {\raggedright\suppercase}[\vspace*{\baselineskip}\titlerule] % titlebody
 
 %\raggedright <- linksbündig
