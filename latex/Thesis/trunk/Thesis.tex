@@ -1,7 +1,7 @@
 %!TEX TS-program = xetex 
 %!TEX encoding = UTF-8 Unicode 
 \documentclass[bibliography=totoc, version=first, twoside, open=right,%
-titlepage, fleqn, numbers=noenddot, fontsize=12pt,%
+titlepage, fleqn, numbers=noenddot, fontsize=11pt,%
 cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
 headinclude=false,footinclude=false,%
 headlines=1, % default is 1.25 rows ... we want 1
@@ -55,12 +55,12 @@ draft=on]{scrreprt}
 
 \layout*
 
-\drawpage
-\drawparagraph
+\drawpage%
+\drawparagraph%
 parindent \the\parindent \\
 parskip  \the\parskip \\ \\
 
-\drawheading
+\drawheading%
 
 \setlayoutscale{0.9}
 \drawfloat
@@ -83,6 +83,7 @@ parskip  \the\parskip \\ \\
 \selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
+
 \pagenumbering{roman}
 \pagestyle{empty}
 

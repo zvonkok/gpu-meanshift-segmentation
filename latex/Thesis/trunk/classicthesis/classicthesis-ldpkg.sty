@@ -26,7 +26,7 @@
 %
 % ********************************************************************  
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{classicthesis-ldpkg}[2009/08/01 v2.6 Package Loader for Classic Thesis Style]
+\ProvidesPackage{classicthesis-ldpkg}[2009/10/04 v2.6.1 Package Loader for Classic Thesis Style]
  
 \@ifpackageloaded{classicthesis}%
     {\PackageWarningNoLine{classicthesis-ldpkg}{Package "classicthesis" should be loaded AFTER "classicthesis-ldpkg".}}%
@@ -117,16 +117,20 @@
         }
         \renewcommand{\thefigure}{\arabic{figure}}  
     \makeatother
-		\makeatletter
-		    \@ifpackageloaded{listings}{%
-			    \ifthenelse{\boolean{cld@nochapters}}%
-			    {\relax}{%
-			        \@removefromreset{lstlisting}{chapter}% requires remreset package
-			    }
-			    \AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{lstlisting}}} % <-- might cause an error with some TeX distributions
-			  }{\relax}
-		\makeatother
-
+%		\makeatletter
+%		    \@ifpackageloaded{listings}{%
+%			    \ifthenelse{\boolean{cld@nochapters}}%
+%			    {\relax}{%
+%			        \@removefromreset{lstlisting}{chapter}% requires remreset package
+%			        %\@removefromreset{listings}{chapter}% requires remreset package
+%			    }
+%			    \AtBeginDocument{%
+%			    	\renewcommand{\thelstlisting}{\arabic{lstlisting}}% % <-- might cause an error with some TeX distributions
+%			    	\renewcommand{\thelistings}{\arabic{listings}}% % <-- might cause an error with some TeX distributions
+%			    	}%
+%			  }{\relax}
+%		\makeatother
+		
 % ********************************************************************
 % enable subfigures in figures
 \RequirePackage{subfig}     

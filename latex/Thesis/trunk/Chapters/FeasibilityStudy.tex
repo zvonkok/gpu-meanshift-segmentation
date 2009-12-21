@@ -1,6 +1,6 @@
 \chapter{Feasibility Study}
 \label{chap:feas}
-There are several myths about \gls{GPGPU} which will be examined and solved 
+There are several myths about \gls{GPGPU} which will be examined and explained 
 with a feasibility study. Listed below some myths in no particular order.
 \begin{enumerate}
 	\item \gls{GPU} programs are written with a graphics api and layered on top 
@@ -116,10 +116,11 @@ blocks and grids is dependent on the three factors mentioned above.
 Each \gls{SM} has 8192 registers which means we could have 8192/48 = 170 threads
 to fully exploit the resources 8 blocks should be launched so 170/8 = 21 threads
 per block which is by far too low. It is easily spotted that the application is
-limited by registers \gls{SM}. These calculations can easily be done with the
+limited by registers per \gls{SM}. These calculations can easily be done with the
 \emph{CUDA occupancy calculator} supplied with the SDK.
 
-After fiddling around with compiler switches especially \emph{-maxrregcount=x}
+After fiddling around with compiler switches especially 
+\emph{-maxrregcount=x}
 the application used only 14 register which meant we could have a blocksize of
 8, 8x8 = 64 threads per block \graffito{It is always good to have a thread count
 which is a multiple of 32. A warp consits of 32 threads and the scheduler can

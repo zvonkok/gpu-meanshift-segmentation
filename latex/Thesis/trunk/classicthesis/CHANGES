@@ -1,3 +1,22 @@
+Changes in version 2.6.1 (October 2009)
+o Removed \myChapter and \myPart, you can now use the regular
+  \chapter and \part commands (in classicthesis.sty)
+  (thanks to Hinrich Harms for this)
+o Fixed used KOMA-options: numbers=noenddot, cleardoublepage=empty
+  (in ClassicThesis.tex)
+o Included hack to use citations in float environments, will 
+  be fixed with caption package version 3.2 (in classicthesis.sty)
+o Included some font and text area fine-tuning code 
+  (in ClassicThesis.tex)
+o Some testing with Libertine font (classicthesis-book.tex)
+o Fixed numbering of listings used in different chapters
+  (in ClassicThesis.tex, classicthesis.sty, classicthesis-ldpkg.sty)
+o Spacing between listings in different chapters and after List 
+  of Listings header fixed (in classicthesis.sty)
+o Increased \newnumberwidth to sizeof(999) which is better for 
+  documents with more than 99 pages (in classicthesis.sty)
+o New option for classicthesis.sty: manychapters
+    
 Changes in version 2.6 (August 2009)
 o Centered the title page with the addmargin environment
   (thanks to Nicolas Repp for the hint)

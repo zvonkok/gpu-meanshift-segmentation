@@ -42,7 +42,7 @@
 %
 % ********************************************************************  
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{classicthesis}[2009/08/01 v2.6 Typographic Style for a classic-looking thesis]
+\ProvidesPackage{classicthesis}[2009/10/04 v2.6.1 Typographic Style for a classic-looking thesis]
 \RequirePackage{ifthen}
     \newboolean{@tocaligned} % the left column of the toc will be aligned (no indention)
     \newboolean{@eulerchapternumbers} % use AMS Euler for chapter font (otherwise Palatino)
@@ -60,6 +60,7 @@
     \newboolean{@a5paper} % use those tiny DIN A5 pages
     \newboolean{@dottedtoc} % page numbers in ToC flushed right
 		\newboolean{@listings} % load listings package (if not already) and setup LoL
+		\newboolean{@manychapters} % additional space in ToC after chapter number (if two digits are needed)
     
 % ********************************************************************
 % Options
@@ -85,6 +86,7 @@
 \DeclareOption{pdfspacing}{\setboolean{@pdfspacing}{true}} 
 \DeclareOption{dottedtoc}{\setboolean{@dottedtoc}{true}} 
 \DeclareOption{listings}{\setboolean{@listings}{true}}
+\DeclareOption{manychapters}{\setboolean{@manychapters}{true}}
 \ProcessOptions\relax
 
 % subfig-related stuff
@@ -131,14 +133,21 @@
                 \PackageWarningNoLine{classicthesis}{You cannot use "parts" at the same time %
                     as "nochapters"!}%
             }{\relax}%
+        % is the user trying to use manychapters at the same time?
+        \ifthenelse{\boolean{@manychapters}}%
+            {% both manychapters and nochapters are active
+                \PackageWarningNoLine{classicthesis}{You cannot use "manychapters" at the same time %
+                    as "nochapters"!}%
+            }{\relax}%
         % turn off some things if we do not use chapters
         \PackageInfo{classicthesis}{Using option "nochapters" (probably for an article). %
-                This turns off the options "linedheaders",%
+                This turns off the options "linedheaders", "manychapters",%
                 "listsseparated", "eulerchapternumbers", and "parts". Please be aware of that.}
         \setboolean{@linedheaders}{false}%
         \setboolean{@listsseparated}{false}%
         \setboolean{@eulerchapternumbers}{false}%
-        \setboolean{@parts}{false}
+        \setboolean{@parts}{false}%
+        \setboolean{@manychapters}{false}%
     }{\relax}%
 
 % ********************************************************************                
@@ -169,11 +178,6 @@
         % default: Palatino
         \RequirePackage[osf,sc]{mathpazo} % Palatino with real small caps and old style figures
         \linespread{1.05} % a bit more for Palatino
-        % just some font experiments (ignore)
-        %\RequirePackage{lmodern}
-        %\RequirePackage[urw-garamond]{mathdesign}
-        %\RequirePackage[light,condensed,math]{iwona}
-        %\renewcommand{\sfdefault}{iwona}
     }
 
 \ifthenelse{\boolean{@beramono}}%
@@ -186,6 +190,7 @@
 \ifthenelse{\boolean{@eulermath}}%
     {\RequirePackage[euler-digits]{eulervm}} % Euler math fonts
     {\relax}
+
 \ifthenelse{\boolean{@eulerchapternumbers}}% font for the chapter numbers
     {\newfont{\chapterNumber}{eurb10 scaled 7000}}%
     {\newfont{\chapterNumber}{pplr9d scaled 7000}}          
@@ -230,10 +235,13 @@
 % Here are some suggestions for the text widths and heights:
 % Palatino 	10pt: 288--312pt | 609--657pt
 % Palatino 	11pt: 312--336pt | 657--705pt
-% Palatino 	12pt: 
+% Palatino 	12pt: 360--384pt | 768pt
 % Minion 	  10pt: 264--288pt | 561--609pt
 % Minion 	  11pt: 288--312pt | 609--657pt
-% Minion 	  12pt: 
+% Minion 	  12pt: 336pt      | 672pt
+% Libertine 10pt:
+% Libertine 11pt:
+% Libertine 12pt:
 
 % ********************************************************************
 % Own Stuff
@@ -367,11 +375,26 @@
 \RequirePackage[titles]{tocloft}
     % avoid page numbers being right-aligned in fixed-size box              
     \newlength{\newnumberwidth}
-    \settowidth{\newnumberwidth}{99} % yields overfull hbox warnings for pages > 99
+    \settowidth{\newnumberwidth}{999} % yields overfull hbox warnings for pages > 999
     \cftsetpnumwidth{\newnumberwidth}
+    
     % have the bib neatly positioned after the rest
     \newlength{\beforebibskip}  
     \setlength{\beforebibskip}{0em}
+    
+    % space for more than nine chapters
+    \newlength{\newchnumberwidth}
+    \settowidth{\newchnumberwidth}{.} % <--- tweak here if more space required
+    \ifthenelse{\boolean{@manychapters}}% <--- many chapters option
+    {%    
+    	\addtolength{\cftchapnumwidth}{\newchnumberwidth}%
+	    \addtolength{\cftsecnumwidth}{\newchnumberwidth}
+	    \addtolength{\cftsecindent}{\newchnumberwidth}
+	    \addtolength{\cftsubsecnumwidth}{\newchnumberwidth}
+	    \addtolength{\cftsubsecindent}{2\newchnumberwidth}
+	    \addtolength{\cftsubsubsecnumwidth}{\newchnumberwidth}
+	  }{\relax}%
+	  
     % pagenumbers right after the titles
     % parts
     \ifthenelse{\boolean{@parts}}%
@@ -503,17 +526,28 @@
     \ifthenelse{\boolean{@nochapters}}%
     {\relax}%
     {%
-%% w/ optional parameter 
-        \newcommand{\myChapter}[2][]{% for chapters
-        	\ifthenelse{\equal{#1}{}}{%  
-        		%\chapter[\tocEntry{#2}]{#2} % causes soul "reconstruction failed" with plain LaTeX    
-            	\ifpdf\chapter[\texorpdfstring{\spacedlowsmallcaps{#2}}{#2}]{#2}%
-            	\else\chapter[\spacedlowsmallcaps{#2}]{#2}\fi%
-          }{%
-          		%\chapter[\tocEntry{#1}]{#2}
-          		\ifpdf\chapter[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#2}%
-            	\else\chapter[\spacedlowsmallcaps{#1}]{#2}\fi%
-        }}%
+%% use modified \chapter (thanks to Hinrich Harms)
+         \let\oldchap=\chapter
+         \renewcommand*{\chapter}{%
+                 \secdef{\Chap}{\ChapS}%
+         }
+         \newcommand\ChapS[1]{\oldchap*{#1}}%
+         \newcommand\Chap[2][]{%
+                 \ifpdf\oldchap[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#2}%
+                 \else\oldchap[\spacedlowsmallcaps{#1}]{#2}%
+                 \fi%
+         }
+%% Old version w/ optional parameter 
+%        \newcommand{\myChapter}[2][]{% for chapters
+%        	\ifthenelse{\equal{#1}{}}{%  
+%        		%\chapter[\tocEntry{#2}]{#2} % causes soul "reconstruction failed" with plain LaTeX    
+%            	\ifpdf\chapter[\texorpdfstring{\spacedlowsmallcaps{#2}}{#2}]{#2}%
+%            	\else\chapter[\spacedlowsmallcaps{#2}]{#2}\fi%
+%          }{%
+%          		%\chapter[\tocEntry{#1}]{#2}
+%          		\ifpdf\chapter[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#2}%
+%            	\else\chapter[\spacedlowsmallcaps{#1}]{#2}\fi%
+%        }}%
 %% Old version w/o optional parameter
 %        \newcommand{\myChapter}[1]{% for chapters      
 %            \ifpdf\chapter[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#1}%
@@ -524,20 +558,33 @@
     % yet another dirty work-around to get the spaced low small caps into the toc ;-(
     \ifthenelse{\boolean{@parts}}%
     {% 
-	    	\newcommand{\myPart}[2][]{% for parts     
-	    		\ifthenelse{\equal{#1}{}}{%  
-		        	\ifpdf%
-		        	% ugly hack to remove the part number from the PDF bookmark entry
-		        	\pdfstringdefDisableCommands{\let\thepart\@gobbletwo}% 	        
-		        	\part[\texorpdfstring{\spacedlowsmallcaps{#2}}{#2}]{#2}% spacedallcaps spacedlowsmallcaps	
-		        	\else\part[\spacedlowsmallcaps{#2}]{#2}\fi%
-		      }{%
-		      		\ifpdf%
-		        	% ugly hack to remove the part number from the PDF bookmark entry
-		        	\pdfstringdefDisableCommands{\let\thepart\@gobbletwo}% 	        
-		        	\part[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#2}% spacedallcaps spacedlowsmallcaps	
-		        	\else\part[\spacedlowsmallcaps{#1}]{#2}\fi%
-     		}}%
+%% use modified \part (thanks to Hinrich Harms)
+	    	 \let\oldpart=\part%
+	       \renewcommand*{\part}{%
+	               \secdef{\Part}{\PartS}%
+	       }%
+	       \newcommand\PartS[1]{\oldpart*{#1}}%
+	       \newcommand\Part[2][]{%
+	               \ifpdf\pdfstringdefDisableCommands{\let\thepart\@gobbletwo}%
+	                     \oldpart[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#2}% spacedallcaps spacedlowsmallcaps
+%	               \else\oldpart[\spacedlowsmallcaps{#1}]{#2}%
+	               \fi%
+	       }%
+%% Old version w/ optional parameter 
+%	    	\newcommand{\myPart}[2][]{% for parts     
+%	    		\ifthenelse{\equal{#1}{}}{%  
+%		        	\ifpdf%
+%		        	% ugly hack to remove the part number from the PDF bookmark entry
+%		        	\pdfstringdefDisableCommands{\let\thepart\@gobbletwo}% 	        
+%		        	\part[\texorpdfstring{\spacedlowsmallcaps{#2}}{#2}]{#2}% spacedallcaps spacedlowsmallcaps	
+%		        	\else\part[\spacedlowsmallcaps{#2}]{#2}\fi%
+%		      }{%
+%		      		\ifpdf%
+%		        	% ugly hack to remove the part number from the PDF bookmark entry
+%		        	\pdfstringdefDisableCommands{\let\thepart\@gobbletwo}% 	        
+%		        	\part[\texorpdfstring{\spacedlowsmallcaps{#1}}{#1}]{#2}% spacedallcaps spacedlowsmallcaps	
+%		        	\else\part[\spacedlowsmallcaps{#1}]{#2}\fi%
+%     		}}%
      }{\relax}
              
     \newcommand{\tocEntry}[1]{% for bib, etc.
@@ -550,12 +597,19 @@
         \AtBeginDocument{%
             \addtocontents{lof}{\protect\vspace{-\cftbeforechapskip}}%
             \addtocontents{lot}{\protect\vspace{-\cftbeforechapskip}}%
+            \ifthenelse{\boolean{@listings}}%        
+    				{%
+             	\addtocontents{lol}{\protect\vspace{-2\cftbeforechapskip}}%
+            }%
         }%
     }{%
         \DeclareRobustCommand*{\deactivateaddvspace}{\let\addvspace\@gobble}% 
         \AtBeginDocument{%      
             \addtocontents{lof}{\deactivateaddvspace}% 
-            \addtocontents{lot}{\deactivateaddvspace}%      
+            \addtocontents{lot}{\deactivateaddvspace}%
+    				 {%
+             	\addtocontents{lol}{\deactivateaddvspace}%
+             }%                  
             %\addtocontents{lof}{\protect\renewcommand*{\protect\addvspace}[1]{}}% 
             %\addtocontents{lot}{\protect\renewcommand*{\protect\addvspace}[1]{}}% 
         }%

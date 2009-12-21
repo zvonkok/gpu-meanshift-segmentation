@@ -36,13 +36,13 @@ an individual data element to a separate core for processing
 has driven the \gls{GPU} evolution which makes the \gls{GPU} a perfect target for
 data-parallel code. There are several fine-grained or data-parallel programming
 environments that leverage the \gls{GPU} for general purpose computing (Brook, Sh,
-RapidMind, ...). 
+RapidMind,\ldots). 
 
 The focus of this work will be CUDA\footnote{www.nvidia.com}. \gls{CUDA}is the only
 environment which is not based on a graphics library and officialy released by
 NVIDIA for their GPUs. \gls{CUDA}is a minimal extension to C and C++ programming
 languages. The technique employed by \gls{CUDA}is single process, multiple data
-(SPMD). Tasks are split up and run simultaneously on multiple threads (cores)
+ (SPMD). Tasks are split up and run simultaneously on multiple threads (cores)
 with different input \citep{citeulike:3072519}.
 
 \section{Embarrassingly Parallel Algorithms} % (fold)
@@ -122,7 +122,6 @@ thing needed is the multiple precision library. In \citep{citeulike:3783254} the
 Gnu Multiple Precision (GMP) library was used to implement the algorithms. So
 the multiple precision arithmetic is another candidate for porting to the GPU.
 % paragraph multiple_precision_arithmetic (end)
-
 \subsection{High Dynamic Range} % (fold)
 \label{par:high_dynamic_range}
 Image processing is always a candidate for embarassingly parallel algorithms. A
