@@ -20,10 +20,9 @@
 
 
 % ******************************************************************************
-% Colors (need to load it first ... some package is loading it dont know which)
+% Colors (cmyk color space) (need to load it first, other package may load it..)
 % ******************************************************************************
-\RequirePackage[xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
-
+\RequirePackage[cmyk, xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
 
 \definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
@@ -66,7 +65,11 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 
+% ******************************************************************************
+% leading ...
+% ******************************************************************************
 \RequirePackage{leading}
+% increase leading a bit for better readability.. default font size * 120%
 \leading{15pt}
 
 % ******************************************************************************
@@ -119,13 +122,15 @@
 % Penalties
 % ******************************************************************************
 % Disable single lines at the start of a paragraph (Schusterjungen)
-\clubpenalty = 10000
+\clubpenalty = 1000
 % Disable single lines at the end of a paragraph (Hurenkinder)
-\widowpenalty = 10000 
-\displaywidowpenalty = 10000 % formulas
+\widowpenalty = 1000 
+\displaywidowpenalty = 1000 % formulas
+% single space betweeen sentences
 \frenchspacing
+% prevents LaTeX from adding vertical white space in strange places on pages
+% that it cannot fill properly. 
 \raggedbottom
-
 
 
 % ******************************************************************************
@@ -184,7 +189,7 @@
 % golden section .. 
 \geometry{hmarginratio=100:162}
 \geometry{vmarginratio=100:162}
-
+% KOMA - default 1.25\baselineskip
 \geometry{headheight=12pt}
 
 
@@ -327,7 +332,8 @@
 % ******************************************************************************                
 % Tables
 % ******************************************************************************  
-\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\slcsmallcaps{#1}}}
+%\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\slcsmallcaps{#1}}}
+
 
 % ******************************************************************************
 % Layout of the chapter-, section-, subsection-, subsubsection-,
@@ -337,18 +343,22 @@
 % \titleformat{⟨command⟩}[⟨shape⟩] {⟨format⟩}
 % {⟨label⟩}{⟨sep⟩}
 % {⟨before⟩}[⟨after⟩]
+
+%\titleformat{⟨command⟩}[⟨shape⟩]
+% {⟨format⟩}{⟨label⟩}
+% {⟨sep⟩}{⟨before⟩}[⟨after⟩]
+
 % parts
 \titleformat{\part}[display]{\normalfont\centering\large}%
 {\thispagestyle{empty}\partname~\MakeTextUppercase{\thepart}}{1em}%
 {\color{seccolor}\spacedallcaps}%
 % chapters
 
-%\titleformat{\chapter}[display]{\relax}%
-%{\ssmallcaps{\chaptertitlename}\hspace*{0.5em}\sucsmallcaps{\thechapter}}{0.3em}%
-%{\color{seccolor}\raggedright\suppercase}% 
-\titleformat{\chapter}[display]%
-{\relax}{\mbox{}\marginpar{\vspace*{-1\baselineskip}\color{textcolor!30!white}\chnumfont\thechapter}}{0pt}%
-{\raggedright\suppercase}[\normalsize\vspace*{\baselineskip}\titlerule]%
+\titleformat{\chapter}[display]{\vspace*{-1\baselineskip}}
+{\marginpar{\vspace*{\baselineskip}\color{textcolor!30!white}\chnumfont\thechapter}}{0pt}% "Chapter" name.. label 
+{\raggedright\suppercase}[\vspace*{\baselineskip}\titlerule] % titlebody
+
+%\raggedright <- linksbündig
 
 % sections
 \titleformat{\section}{\color{seccolor}}
@@ -370,6 +380,7 @@
 \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}\slcsmallcaps{#1}}%   
 
 % spacing
+% \titlespacing*{⟨command⟩}{⟨left⟩}{⟨beforesep⟩}{⟨aftersep⟩}[⟨right⟩]
 \titlespacing*{\chapter}{0pt}{0pt}{1.25\baselineskip}
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} 
 \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
