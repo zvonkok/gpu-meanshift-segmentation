@@ -26,8 +26,7 @@
 
 \definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
-
-\definecolor{Brown0}{cmyk}{0.33, 0.31, 0.32, 0.01}
+%\definecolor{seccolor}{cmyk}{0.59, 0.37, 0.53, 0.06}
 
 \definecolor{plotcolor0}{HTML}{CEAD7E}
 
@@ -39,10 +38,16 @@
 \colorlet{lcolor}{seccolor}
 \colorlet{ccolor}{seccolor}
 \colorlet{ucolor}{seccolor}
+
 \colorlet{lstbgcolor}{listingbgcolor}
 \colorlet{lstrlcolor}{listingfgcolor}
 
 
+% ********************************************************************
+% Setup and Finetuning
+%*******************************************************
+\setlength{\extrarowheight}{3pt} % increase table row height	
+\setcounter{errorcontextlines}{999}
 
 % ******************************************************************************
 % Load needed Packages
@@ -64,13 +69,13 @@
 \RequirePackage[fleqn]{amsmath} % math environments and more by the AMS 
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
-
+\RequirePackage{units} % A package for setting units in a typographically correct way
 % ******************************************************************************
 % leading ...
 % ******************************************************************************
 \RequirePackage{leading}
 % increase leading a bit for better readability.. default font size * 120%
-\leading{15pt}
+%\leading{13pt}
 
 % ******************************************************************************
 % pgfplots (very nice graph plots)
@@ -158,7 +163,7 @@
 %\setsansfont{Verdana}
 %\setmonofont{Pragmata}
 \newfontfamily\plotfont[Numbers=OldStyle]{\mainfont}
-\newfontfamily\lstfont[Scale=0.8]{Luxi Mono}
+\newfontfamily\lstfont[Scale=0.8]{Courier}
 \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
@@ -200,11 +205,7 @@
 \geometry{headheight=1em}
 \geometry{headsep=\baselineskip}
 
-%\newlength{\gsfootskip}
-%\setlength{\gsfootskip}{1.62\headsep}
-%\addtolength{\gsfootskip}{1em}
-
-\geometry{footskip=0pt}
+%\geometry{footskip=0pt}
 
 
 % left = (one inch) 72 + (oddsidemargin) 18 = 90pt
@@ -297,9 +298,11 @@
 % ******************************************************************************
 % glossaries
 % ******************************************************************************
-\RequirePackage[section=chapter,toc,acronym=true]{glossaries}
+\RequirePackage[section=chapter,toc,acronym=true,smallcaps,smaller]{glossaries}
 \RequirePackage{glossary-longragged}
 \makeglossary
+
+\renewcommand*{\acronymfont}[1]{\slcsmallcaps{#1}}
 
 % glossaries newstyle longraggedleft
 \renewcommand{\glossaryname}{\slcsmallcaps}
@@ -371,10 +374,10 @@
 {\color{seccolor}\spacedallcaps}%
 % chapters
 
-\titleformat{\chapter}[display]{\vspace*{-2\baselineskip}}
+\titleformat{\chapter}[display]{\vspace*{-2\baselineskip}\color{seccolor}}
 {\marginpar{\color{textcolor!30!white}\chnumfont{\vspace*{-2\baselineskip}\thechapter}}}{0pt}% "Chapter" name.. label 
-{\raggedright\suppercase}[\vspace*{\baselineskip}\titlerule] % titlebody
-
+%{\relax}{0pt}%
+{\raggedright\suppercase}[\vspace*{\baselineskip}\titlerule] % titlebod
 %\raggedright <- linksbündig
 
 % sections
@@ -546,14 +549,14 @@
 \lstset{language=C++,
 %    keywordstyle=\color{iBlue},
     basicstyle=\lstfont,	
-	tabsize=4,
+	tabsize=2,
     %identifierstyle=\color{NavyBlue},
     commentstyle=\color{seccolor},%\ttfamily,
     %stringstyle=\rmfamily,
-%    numbers=left,
+    numbers=left,
     numberstyle=\scriptsize,%\tiny
-	framexleftmargin=4em,
-	xleftmargin=4em,
+	framexleftmargin=0em,
+	xleftmargin=1em,
 	aboveskip=\baselineskip,
 	belowskip=\baselineskip,
 	abovecaptionskip=\abovecaptionskip,
@@ -562,13 +565,14 @@
     numbersep=4pt,
     showstringspaces=false,
     breaklines=true,
-    backgroundcolor=\color{lstbgcolor},
-	rulecolor=\color{lstrlcolor},
+%    backgroundcolor=\color{lstbgcolor!50!white},
+%	rulecolor=\color{lstrlcolor},
+	rulecolor=\color{textcolor},
 	captionpos=b,
 	framerule=1pt,
     %frameround=ftff,
     %frame=tb,
-	frame=single,
+%	frame=single,
 	%framexleftmargin=1em,
     %frame=L
 %	moredelim=[is][\bfseries\color{iRed}]{§}{§}
