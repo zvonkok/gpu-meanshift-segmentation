@@ -36,7 +36,7 @@ The \autoref{fig:tesla_architecture} shows the Tesla architectures. As mentioned
 above the new \gls{GPU} architectures are a radical departure from traditional
 \gls{GPU} design. The Tesla 8 Series has 16 multiprocessors. Each multiprocessor
 is composed of 8 streaming processors, 128 processors in total. Each streaming
-multiprocessor has 16 \gls{KB} of shared memory and a L1 cache attached and has access
+multiprocessor has 16 \gls{KB} of shared memory a L1 cache attached and has access
 to a texture unit. A streaming processor consists of a scalar \gls{ALU} and
 performs floating point operations. 32 streaming processor build up a \gls{SIMD}
 unit in NVIDIA terms called warp, in that one instruction is executed. The Tesla
@@ -47,13 +47,18 @@ architecture \citep{citeulike:3145468}. Programming for this architecture is
 done with \gls{CUDA} the C language extension which will be covered in the next
 section.
 
+
 \paragraph{The Mainstream GPU} % (fold)
+\label{par:the_mainstream_gpu}
 \textbf{welche karte habe ich zum teufel}
  The 8800 GTX has 768 MB of graphics memory, 620 GFlops
 of peak performance and 86 GB/s peak memory bandwidth. 
 % paragraph the_mainstream_gpu (end)
-\label{par:the_mainstream_gpu}
+power \gls{MGCP}:143 idle:62 3d:165  ref:http://www.tomshardware.com/de/Grafikkarte-Leistungsbedarf-Strombedarf-Netzteil-Auswahl,testberichte-240205-4.html
 
+624 \glspl{GFLOP} \unitfrac[62.1]{\gls{GB}}{s}
+
+architecture the same as the tesla except the main memory and bandwidht
 
 % section the_tesla_architecture (end)
 
