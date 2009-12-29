@@ -2,6 +2,7 @@
 % Abstract
 %*******************************************************
 \chapter*{Abstract}
+\renewcommand{\chapterpagestyle}{empty}
 % Motivation: Why do we care about the problem and the results? If the 
 % isn't obviously "interesting" it might be better to put motivation first; 
 % but if your work is incremental progress on a problem that is widely 
@@ -16,9 +17,9 @@ offer a tremendous memory bandwidth and computational power. Contrary to
 rates in terms of absolute transistor count. Implementing a massively parallel,
 unified shader design, its flexibility and programmability makes the \gls{GPU}
 an attractive platform for general purpose computation. Recent improvements in
-its programmability, especially high level languages, \glspl{GPU} have attracted
-developers to exploit the computational power of the hardware for general
-purpose computing.
+its programmability, especially high level languages (like C or C++), %
+\glspl{GPU} have attracted developers to exploit the computational power of the
+hardware for general purpose computing.
 
 %* Problem statement: What problem are you trying to solve? What is the scope of your work (a generalized approach, or for a specific situation)? Be careful not to use too much jargon. In some cases it is appropriate to put the problem statement before the motivation, but usually this only works if most readers already understand why the problem is important.
 Several \gls{GPU} programming interfaces and \glspl{API} represent a graphics

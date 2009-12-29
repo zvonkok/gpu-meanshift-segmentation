@@ -171,13 +171,13 @@ and Amdahl's as a non scaled speedup measure. Given the serial $s'$ and parallle
 time $p'$ a single processor would require $s' + p' \times n$ time to finish the execution.
 The speedup is then given by:
 \begin{equation}\label{eq:gus}
-	S_{max}(n) = \frac{s' + p' * n}{s' + p'} = n + ( 1 - n ) * s'
+	S_{max}(n) = \frac{s' + p' \times n}{s' + p'} = n + ( 1 - n ) \times s'
 \end{equation}
 
 Applying the calculation with $n = 128$, the used \gls{GPU} has 128 processors one
 can acheive a speedup according to Gustafson of:
 \begin{equation*}\label{eq:g92sp}
-		S_{max}(128) = 128 + (1 - 128) * 0.007 = 127.11
+		S_{max}(128) = 128 + (1 - 128) \times 0.007 = 127.11
 \end{equation*}
 
 
@@ -197,10 +197,6 @@ multiple processors.
 \section{Data and Task Parallelism} % (fold)
 \label{sec:data_and_task_parallelism}
 
-
-\subsection{Task Parallelism} % (fold)
-\label{sub:task_parallelism}
-
 There are two ways to decompose an algorithm to take advantage of parallelism.
 The first way is to decompose the algorithm into several tasks that can run
 independently. Each task is performing independently different calculation on the
@@ -219,6 +215,17 @@ following conditions \citep{citeulike:3838998}:
 		O_i \cap O_j & = \emptyset \label{eq:bern2}
 	\end{align}
 \end{subequations}
+The first two formulations \autoref{eq:bern0} and \autoref{eq:bern1} are stating
+that the input of one task has to be independent from the other task. Otherwise
+one task would have to wait for the output of the other task to continue. 
+Furthermore not only the inputs vs. the outputs have to be independent but 
+also the outputs of each task have to be independent. If the above conditions
+cannot be applied to a program $P$ than it is likewise that race conditions and 
+poor performance can arise through e.g. excessive synchronization overhead. 
+
+
+\subsection{Task Parallelism} % (fold)
+\label{sub:task_parallelism}
 
 Equipped with the knowledge how to identify independent parallel tasks, the 
 mean shift segmentation algorithm \autoref{alg:mss} can now be examined. 
@@ -230,11 +237,11 @@ of each step is written to the same location for each pixel. So it does not matt
 how big an image is or if it is a color or grayscale image the mean shift segmentation
 algorithm will always perform all from each other dependent calculations as
 described in \autoref{alg:mss}. The longest path of dependent calculations
-is the critical path. For the mean shift algorithm there exist no shorter path. 
+is the critical path. For the mean shift algorithm there exists no shorter path. 
 
 Having a look again at \autoref{tab:comp} where the most computationally 
 intensive parts are identified, one could think of having different tasks for the
-filtering step. But again here the same situation each calculation is inherently 
+filtering steps. But again here the same situation each calculation is inherently 
 dependent on each other. 
 
 In summary one can discard the idea of task parallelism for the mean shift
@@ -293,7 +300,7 @@ excessive synchronization overhead.
 In \autoref{sub:task_parallelism} it was shown that the filtering step is
 dependent on the color conversion step where the output data of the color
 conversion step becomes the input data of the filtering step. Since this is done
-sequentially there is no need to take of some synchronization. This scheme
+sequentially there is no need to take care of some synchronization. This scheme
 is the same for the filtering and segmentation step. Since the filtering step is
 done in parallel and the segmentation needs the output data form the filtering
 step a barrier after the filtering step is needed. 

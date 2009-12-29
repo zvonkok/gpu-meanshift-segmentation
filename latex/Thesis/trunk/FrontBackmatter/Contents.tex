@@ -1,20 +1,10 @@
 %*******************************************************
 % Table of Contents
 %*******************************************************
-%\phantomsection
-\refstepcounter{dummy}
-\pdfbookmark[1]{\contentsname}{tableofcontents}
-
-\begingroup%
-    \let\clearpage\relax%
-    \let\cleardoublepage\relax%
-    \let\cleardoublepage\relax%
-
-	\renewcommand{\contentsname}{Content Overview}
+\renewcommand{\chapterpagestyle}{empty}
+\renewcommand{\contentsname}{Content Overview}
 	
-	\setcounter{tocdepth}{2}
-	\tableofcontents%
-
-\endgroup
+\setcounter{tocdepth}{2}
+\tableofcontents%
 
 \cleardoublepage

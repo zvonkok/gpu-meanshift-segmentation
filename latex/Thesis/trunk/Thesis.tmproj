@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Chapters/Typearea.tex</string>
+	<string>dissertation.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -58,13 +58,15 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2009-12-18T20:29:40Z</date>
+			<date>2009-12-21T20:32:35Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Thesis.tex</string>
 			<key>lastUsed</key>
-			<date>2009-12-18T20:29:48Z</date>
+			<date>2009-12-21T15:22:40Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -82,7 +84,7 @@
 			<key>filename</key>
 			<string>Frontcover.tex</string>
 			<key>lastUsed</key>
-			<date>2009-12-18T12:16:06Z</date>
+			<date>2009-12-20T19:11:15Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -124,58 +126,56 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>45</integer>
+				<integer>305</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>35</integer>
+			<integer>270</integer>
+		</dict>
+		<key>Chapters/FeasibilityStudy.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>137</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>160</integer>
 		</dict>
 		<key>Chapters/Introduction.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>52</integer>
 				<key>line</key>
-				<integer>43</integer>
+				<integer>50</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>10</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Chapters/LiteratureReview.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>54</integer>
+				<integer>47</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>123</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>54</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
+			<integer>307</integer>
 		</dict>
 		<key>Chapters/MeanShift.tex</key>
 		<dict>
@@ -254,9 +254,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>55</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>33</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -268,30 +268,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>43</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>6</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
+		</dict>
+		<key>FrontBackmatter/Colophon.tex</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
+				<integer>65</integer>
+				<key>line</key>
 				<integer>21</integer>
-				<key>line</key>
-				<integer>4</integer>
 			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>FrontBackmatter/Contents.aux</key>
 		<dict>
@@ -301,6 +299,20 @@
 				<integer>0</integer>
 				<key>line</key>
 				<integer>46</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>FrontBackmatter/Contents.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -328,7 +340,7 @@
 				<key>column</key>
 				<integer>15</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>67</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -343,6 +355,34 @@
 				<integer>9</integer>
 				<key>line</key>
 				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Tables/comp.cpu.gpu.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Tables/run.configuration.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>54</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -368,14 +408,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>62</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>23</integer>
 		</dict>
 		<key>algorithm2e.sty</key>
 		<dict>
@@ -396,19 +436,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>340</integer>
+				<integer>183</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>257</integer>
+			<integer>166</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>dissertation.sty</string>
+		<string>Chapters/FeasibilityStudy.tex</string>
+		<string>Tables/run.configuration.data</string>
+		<string>FrontBackmatter/Colophon.tex</string>
+		<string>Tables/comp.cpu.gpu.data</string>
 		<string>Chapters/Performance.tex</string>
 		<string>Thesis.tex</string>
 		<string>Chapters/Typearea.tex</string>
@@ -416,6 +460,7 @@
 		<string>Frontcover.tex</string>
 		<string>Chapters/Analysis.tex</string>
 		<string>FrontBackmatter/Abstract.tex</string>
+		<string>FrontBackmatter/Contents.tex</string>
 		<string>FrontBackmatter/Acknowledgments.tex</string>
 		<string>Chapters/Introduction.tex</string>
 		<string>FrontBackmatter/Glossary.tex</string>
@@ -448,6 +493,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{713, 29}, {673, 978}}</string>
+	<string>{{818, 43}, {673, 978}}</string>
 </dict>
 </plist>

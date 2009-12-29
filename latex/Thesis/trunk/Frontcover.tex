@@ -1,10 +1,10 @@
-\documentclass{scrreprt}
+\documentclass[fontsize=11pt]{scrreprt}
 % ********************************************************************
 % Re-usable information
 % ********************************************************************
 \newcommand{\myTitle}{High Performance Computing on Graphic Processing Units\xspace}
 \newcommand{\myDegree}{An Homage to The Elements of Typographic Style\xspace}
-\newcommand{\myName}{Zvonko Krnjaji\'c\xspace}
+\newcommand{\myName}{Zvonko Krnjajic\xspace}
 \newcommand{\myProf}{Dr. Abbes Amira\xspace}
 \newcommand{\myOtherProf}{Put name here\xspace}
 \newcommand{\mySupervisor}{Dr. Abbes Amira\xspace}
@@ -17,86 +17,98 @@
 
 \usepackage{dissertation}
 
+%\RequirePackage[colorgrid, draft]{showframe}
+\geometry{hmarginratio=1:1}
+\geometry{vmarginratio=100:162}
+
+
 \begin{document}
 %*******************************************************
 % Titlepage
 %*******************************************************
 \color{textcolor}
+\normalsize
+\pagestyle{empty}
 
-\begin{titlepage}
+\centering
 
-		%%\centering
-		\begin{center}
-        \large  
-		\vspace*{1cm}
-		{School of Engineering \& Design}\\
-		{Electronic \& Computer Engineering}\\
-		\vspace{1.2cm}
-		{MSc Distributed Computing Systems}\\
-		{Engineering}\\
-		\vspace{2cm}
-		\huge
-		{\myUni}\\
-		\vspace{2.5cm}
-		\Huge
-		\begingroup
-			\color{seccolor}{\myTitle}\\
-			\textit{\large{Mean Shift Image Segmentation}} \\
-		\endgroup	
-		\vspace{4.0cm}
-		\large
-		{\Large\myName}\\
-		\vspace{1em}
-		{\Large{Supervisor: \mySupervisor}}\\
-		\vspace{2em}
-		{\myTime}\\
-%		\spacedlowsmallcaps{\myTime}\\
-		\vspace{4em}
-		A Dissertation submitted in partial fulfillment of the\\
-		requirements for the degree of Master of Science
-		\end{center}
-		\normalsize
-\end{titlepage}        
+{School of Engineering \& Design}\\
+{Electronic \& Computer Engineering}\\
 
+\vspace{2\baselineskip}
+
+{MSc Distributed Computing Systems}\\
+{Engineering}\\
+
+\vspace{4\baselineskip}
+
+{\suppercase\myUni}\\
+
+\vspace{4\baselineskip}
+
+\begingroup
+	\color{seccolor}{\suppercase\myTitle}\\
+	\vspace{0.5\baselineskip}	
+	\textit{{Mean Shift Image Segmentation}} \\
+\endgroup	
+
+\vspace{6\baselineskip}
+
+\normalsize
+
+{\myName}\\
+
+\vspace{1\baselineskip}
+
+{Supervisor: \mySupervisor}\\
+
+\vspace{2\baselineskip}
+
+{\myTime}\\
+
+\vfill
+A Dissertation submitted in partial fulfillment of the\\
+requirements for the degree of Master of Science
+%\end{center}
+
+    
 \newpage
 %*******************************************************
 % Titlepage
 %*******************************************************
-\begin{titlepage}
-    \begin{center}
-        \large  
-		\vspace*{1cm}
-		{School of Engineering \& Design}\\
-		{Electronic \& Computer Engineering}\\
-		\vspace{1.2cm}
-		{MSc Distributed Computing Systems}\\
-		{Engineering}\\
-		\vspace{2cm}
-		\huge
-		{\myUni}\\
-		\vspace{2.5cm}
-		\Huge
-		\begingroup
-			\color{seccolor}{\myTitle}\\
-			\textit{\large{Mean Shift Image Segmentation}} \\
-		\endgroup	
-		\vspace{3.5cm}
-		\large
-		{\Large{Student's name: \myName (0631351)}}\\
-		\vspace{1em}
-	   	\color{textcolor}{\Large{Signature of student: \underline{\hspace{4.5cm}}}}\\
+{School of Engineering \& Design}\\
+{Electronic \& Computer Engineering}\\
 
-		\vspace{4em}
-		\noindent {\textsc{Declaration:}} I have read and I understand the Dissertation
-        guidelines on plagiarism and cheating, and I certify that this
-        submission fully complies with these guidelines.
-		
-		\normalsize
+\vspace{2\baselineskip}
 
-    \end{center}
+{MSc Distributed Computing Systems}\\
+{Engineering}\\
 
-	
-\end{titlepage}        
+\vspace{4\baselineskip}
 
+{\suppercase\myUni}\\
 
+\vspace{4\baselineskip}
+
+\begingroup
+	\color{seccolor}{\suppercase\myTitle}\\
+	\vspace{0.5\baselineskip}	
+	\textit{{Mean Shift Image Segmentation}} \\
+\endgroup	
+
+\vspace{6\baselineskip}
+
+\parbox{0.8\textwidth}{%
+{Student's name: \myName (0631351)}\
+\vspace{\baselineskip}
+\color{textcolor}{Signature of student: \underline{\hspace{4.5cm}}}\\
+}%
+
+\vfill
+\parbox{\textwidth}{%
+\noindent {\textit{Declaration:}} I have read and I understand the Dissertation
+guidelines on plagiarism and cheating, and I certify that this
+submission fully complies with these guidelines.
+}%
+   
 \end{document}

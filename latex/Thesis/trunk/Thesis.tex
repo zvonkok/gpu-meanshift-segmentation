@@ -35,11 +35,6 @@ draft=on]{scrreprt}
 
 \usepackage{dissertation}
 
-% ********************************************************************
-% Setup and Finetuning
-%*******************************************************
-\setlength{\extrarowheight}{3pt} % increase table row height	
-\setcounter{errorcontextlines}{999}
 
 
 %********************************************************************
@@ -55,31 +50,31 @@ draft=on]{scrreprt}
 
 \layout*
 
-\drawpage%
-\drawparagraph%
-parindent \the\parindent \\
-parskip  \the\parskip \\ \\
+%\drawpage%
+%\drawparagraph%
+%parindent \the\parindent \\
+%parskip  \the\parskip \\ \\
 
-\drawheading%
+%\drawheading%
 
-\setlayoutscale{0.9}
-\drawfloat
+%\setlayoutscale{0.9}
+%\drawfloat
 %\drawheading
 
 %\printparam
-\newlength{\abcd} % for ab..z string length calculation
-\settowidth{\abcd}{abcdefghijklmnopqrstuvwxyz} 	
-\the\abcd
+
+%\newlength{\abcd} % for ab..z string length calculation
+%\settowidth{\abcd}{abcdefghijklmnopqrstuvwxyz} 	
+%\the\abcd
+
 %\prntlen{\abcd} 
-
-
-
 
 
 \color{textcolor}
 
-\includepdf{Frontcover.pdf}
+\includepdf[pages={1,2}]{Frontcover.pdf}
 
+% Babel
 \selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
@@ -97,12 +92,11 @@ parskip  \the\parskip \\ \\
 %\cleardoublepage\include{FrontBackmatter/Dedication}
 \cleardoublepage\include{FrontBackmatter/Abstract}
 \cleardoublepage\include{FrontBackmatter/Acknowledgments}
-
-\pagenumbering{arabic}
-\pagestyle{scrheadings}
 \cleardoublepage\include{FrontBackmatter/Contents}
 
 
+\pagenumbering{arabic}
+\pagestyle{scrheadings}
 %*******************************************************************************
 %\mainmatter
 %*******************************************************************************
