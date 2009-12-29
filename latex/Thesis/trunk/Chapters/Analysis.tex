@@ -239,11 +239,6 @@ algorithm will always perform all from each other dependent calculations as
 described in \autoref{alg:mss}. The longest path of dependent calculations
 is the critical path. For the mean shift algorithm there exists no shorter path. 
 
-Having a look again at \autoref{tab:comp} where the most computationally 
-intensive parts are identified, one could think of having different tasks for the
-filtering steps. But again here the same situation each calculation is inherently 
-dependent on each other. 
-
 In summary one can discard the idea of task parallelism for the mean shift
 segmentation algorithm. Thats why the focus of parallelization is now on data
 parallelism.
@@ -272,12 +267,12 @@ this case the algorithm even exhibits embarrassingly parallel parallelism. The
 subtasks never have to communicate or synchronize. Each subtask takes one or a
 chunk of pixels applies the filtering steps and writes back the result. The
 intermediate steps where the mean shift vector is moved over the spatial space
-are also independent for each pixel.
+are also independent for each pixel. 
 
 The approach in parallelizing the mean shift algorithm is to use a data
-decomposition where each subtask is filtering a chunk of the image. Depending on
-the number of processing units one can choose an appropriate chunk size to
-exploit every unit.
+decomposition where each subtask is filtering a chunk or a pixel of the entire
+image. Depending on the number of processing units one can choose an appropriate
+chunk size to exploit every unit.
 
 If the algorithm would only exhibit fine-grained parallelism the next steps would
 be to identify groups to simplify the job of managing dependencies and have a 
@@ -305,9 +300,22 @@ is the same for the filtering and segmentation step. Since the filtering step is
 done in parallel and the segmentation needs the output data form the filtering
 step a barrier after the filtering step is needed. 
 
-Now to the interesting part the parallel filtering step. In
-\autoref{sub:data_parallelism} it was said that each processing unit gets a chunk
-of the image for processing. The mean shift method takes 
+Now to the interesting part the parallel filtering step. For the following
+considerations the viewpoint will be a single processing unit. It is firstly
+enough to consider only one unit and one pixel at a time since the \gls{GPU}
+exhibits a \gls{SPMD} programming model (see
+\autoref{ssub:single_program_multiple_data_spmd}) and secondly the mean shift
+algorithm is embarrassingly parallel. It is later easy to broaden the
+examination to a cluster of processing units and chunks of pixels if its needed. 
+
+A processing unit firstly reads the corresponding pixel $x_n = (x_n^r, x_n^f)$
+from the image. Then it moves the mean shift vector to the next pixel on the 
+path to the convergence point $z_n = (x_n^r, y_{conf}^f)$ by finding the feature
+vector which falls into the search window. This new pixel  is the basis for the
+next iteration---calculation of the mean shift vector. On average of about
+15--20 iterations the mean shift vector converges to the mean at the convergence
+point \citep{DBLP:conf/eccv/ZhangKT06}. 
+
 
 
 
