@@ -7,50 +7,24 @@
 
 The following chapter will present optimization strategies which were used to
 accelerate the mean shift image segmentation. The presented strategies are not 
-onyl valid for CUDA, they can be applied to many parallel machines which are 
-build after the shared memory model. 
+only valid for CUDA, they can be applied to many parallel machines which are 
+build after the shared memory or \gls{SPMD} model.
 
 \section{Offload Compute Intensive Parts}
 \label{sec:offload_intensive}
-\color{seccolor}
 
-The amount of performance benefit an application will realize by running on CUDA
-depends entirely on the extent to which it can be parallelized. As mentioned
-previously, code that cannot be sufficiently parallelized should run on the
-host, unless doing so would result in excessive transfers between host and
-device. Amdahl’s law specifies the maximum speed-up that can be expected by
-parallelizing portions of a serial program. Essentially, it states that the
-maximum speed-up (S) of a program is
+As shown in \autoref{ch:algorithm_analysis} the most compute intensive part
+of the mean shift segmentation is the filtering step. 
 
-\begin{equation}
-	S = \frac{1}{(1-p) + \frac{P}{N} }
-\end{equation}
-
-where P is the fraction of the total serial execution time taken by the portion
-of code that can be parallelized and N is the number of processors over which
-the parallel portion of the code runs. The larger N is (that is, the greater the
-number of processors), the smaller the P/N fraction. It can be simpler to view N
-as a very large number, which essentially transforms the equation into $S=1/1-P$. 
-Now, if $3⁄4$ of a program is parallelized, the maximum speed-up over serial
-code is $1/(1- 3/4) = 4$ . For most purposes, the key point is that the
-greater P is, the greater the speed-up. An additional caveat is implicit in this
-equation, which is that if P is a small number
-
-
-(so not substantially parallel), increasing N does little to improve
-performance. To get the largest lift, best practices suggest spending most
-effort on increasing P; that is, by maximizing the amount of code that can be
-parallelized.
-\color{black}
-
-The first naive implementation of the mean shift filter resulted in a speedup of
+The first naive implementation of the mean shift filter in CUDA resulted in a
+speedup of
 \begin{equation*}\label{eq:speedup0}
 	S = \timegold\ ms/\timecuda\ ms= \speedup
 \end{equation*}
 times faster than the \gls{CPU} version. The reference time was
 generated from
 \href{http://www.caip.rutgers.edu/riul/research/code.html}{ \gls{EDISON}}. It
-reports timings for filtering segmentation.
+reports timings for filtering segmentation. The naive implementation was 
 
 \section*{Optimize Access to Global Memory}
 \label{sec:coalescing}
@@ -85,7 +59,7 @@ dl = (luv.x - yj_2) / sigmaR;
 du = (luv.y - yj_3) / sigmaR;               
 dv = (luv.z - yj_4) / sigmaR;
 \end{lstlisting}
-one can calculate $rsigmaR = 1.0f/sigmaR$ in advance and everywhere where a division by
+one can calculate \emph{rsigmaR = 1.0f/sigma} in advance and everywhere where a division by
 $sigmaR$ occurs replace it into a multiplication. The resulting code is
 \begin{lstlisting}[caption=Precalculated Divison, label=lst:precalcdivision]
 dl = (luv.x - yj_2) * rsigmaR;               

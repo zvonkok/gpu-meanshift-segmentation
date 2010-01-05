@@ -4,7 +4,7 @@
 \section{Parallel Architectures}
 \label{sec:parallel_architectures} 
 
-\subsubsection{Single Program Multiple Data (SPMD)}
+\subsection{Single Program Multiple Data (SPMD)}
 \label{ssub:single_program_multiple_data_spmd} 
 
 
@@ -50,16 +50,54 @@ section.
 
 \paragraph{The Mainstream GPU} % (fold)
 \label{par:the_mainstream_gpu}
-\textbf{welche karte habe ich zum teufel}
- The 8800 GTX has 768 MB of graphics memory, 620 GFlops
-of peak performance and 86 GB/s peak memory bandwidth. 
-% paragraph the_mainstream_gpu (end)
-power \gls{MGCP}:143 idle:62 3d:165  ref:http://www.tomshardware.com/de/Grafikkarte-Leistungsbedarf-Strombedarf-Netzteil-Auswahl,testberichte-240205-4.html
+There are two solutions for \gls{GPU} computing from NVIDIA. Firstly the
+\emph{Tesla 8 Series} which is specifically designed for high-performance
+computing. The \emph{Tesla 8 Series} is available as an \gls{PCIE} add-in card,
+desk-side computing system and as a \gls{1U} computing system. All this systems have
+no display port and hence they can exclusively be used as a computing nodes. 
 
-624 \glspl{GFLOP} \unitfrac[62.1]{\gls{GB}}{s}
+The second solution are the mainstream \emph{GeForce 8 Series} card that
+is mainly used for gaming. The architecture of these both solutions is the same
+(\gls{USM}) they differentiate only in the magnitude of some performance
+characteristics (memory size, peak memory bandwidth, peak \gls{GFLOP}). The
+advantage of a mainstream \gls{GPU} is that the visualization can be done on the
+same card and the low price. 
 
-architecture the same as the tesla except the main memory and bandwidht
+For the purpose of this thesis a \emph{GeForce 8800 GTX 512} card will be
+used. The main performance characteristics are shown in
+\autoref{tab:tesla_geforce_mem} and \autoref{tab:tesla_geforce}. For reference
+the \emph{Tesla C870} card is shown as well.
 
+\begin{table}[ht]
+	\centering
+	%\pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
+	\pgfplotstabletypeset[
+%		column type=r,
+		columns/Card/.style={string type}
+	]{Tables/tesla.geforce.memory.data}
+  	\caption{Memory performance characteristics for Tesla and GeForce}
+  	\label{tab:tesla_geforce_mem}
+\end{table}
+
+The most significant difference between the two cards is the peak bandwidth. There
+are several algorithms which rely on a high bandwidth which would increase the
+run time on as \emph{8800 GTS} card even if it has a higher peak floating
+point operations per second as seen in  \autoref{tab_tesla_geforce}. 
+
+\begin{table}[ht]
+	\centering
+%	\pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
+	\pgfplotstabletypeset[
+%		column type=r,
+		columns/Card/.style={string type}
+	]{Tables/tesla.geforce.data}
+  	\caption{Computing performance characteristics for Tesla and GeForce}
+  	\label{tab:tesla_geforce}
+\end{table}
+
+Every card of the \emph{8 Series} can be programmed with \gls{CUDA} an
+\gls{API} for \gls{GPU} computing. What \gls{CUDA} is and how to use it will 
+be explained in the next section. 
 % section the_tesla_architecture (end)
 
 
@@ -83,8 +121,8 @@ memories and barrier synchronization \citep{citeulike:3325943} that are exposed
 to the developer. \Gls{CUDA} uses extensive multithreading where threads express
 fine-grained instruction, data and thread parallelism that are grouped into
 thread blocks which express coarse grained data and task parallelism. The
-developer has to rethink about his algorithms to be aggresively parallel.
-The problem has to be split into indepedent coarse sub-problems and at finer
+developer has to rethink about his algorithms to be aggressively parallel.
+The problem has to be split into independent coarse sub-problems and at finer
 level into fine-grained sub-problems that can be solved cooperatively
 \citep{citeulike:3325943}.
 
