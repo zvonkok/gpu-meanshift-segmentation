@@ -1,12 +1,104 @@
-%************************************************
-\chapter{Performance {\itshape{\&}} Scalability}
-\label{ch:performance}
-%************************************************
-explains how the PPM image is read in
-and written back to. cutLoadPPM4ub() function reads the PPM file which is in RGB
-(0-255) format and pads a zero to the fourth byte, thereby making the data to be
-four bytes in total. This padding is very helpful because memory coalescence and
-better performance is achieved by accessing 1/2/4 consecutive memory locations
-at a time.
+\chapter{Performance {\itshape{\&}} Scalability} % (fold)
+\label{cha:performance_and_scalability_}
+
+To evaluate the performance and the scalability of the implemented mean shift
+algorithm several benchmarks will be made. Firstly the algorithm is tested 
+against different image sizes. After that a multiple \gls{GPU} version is 
+evaluated and tested with the same image sizes as in the previous test. Lastly
+the hardware parameters of the \gls{GPU} like the core clock and memory clock
+are manipulated to get a clue if the algorithm is memory or computational bound. 
+In the case that the algorithm is memory bound one should try to decrease the
+communication and if the algorithm is computational bound a restructuring of 
+the algorithm could help here. All in all its interesting to see how an algorithm
+behaves at different circumstances. In general all runs were performed 20 times
+in a row and the mean was taken as the final result.
+
+\section{Varying the Image Size} % (fold)
+\label{sec:varying_the_image_size}
+The first benchmark varies the image size from 128 $\times$ 128 pixels to 2688
+$\times$ 2688 pixels. The image size is incremented by 128 pixels. The
+\autoref{fig:gpu_speedup} shows the \gls{GPU} runtime and the speedup compared
+to the \gls{CPU} run time. 
+% section varying_the_image_size (end)
 
 
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+			% colormap/violet,
+			% legend columns=2,
+      % smooth,
+      % stack plots=y,
+      % area style,
+      ybar, 
+			bar width=4pt,
+      width=0.88\textwidth,
+      height=7cm,
+      xtick={128,384,...,2688},
+      axis x line=bottom,
+      axis y line=left,
+      xmin=0, xmax=2796, 
+      %ymin=0, ymax=1100,
+      xlabel=Image size, ylabel={Milliseconds [ms]}, 
+			enlargelimits=0.03,
+      ymajorgrids ]
+  %    \addplot%[color=plotcolor0!50!black,fill=plotcolor0]
+  %    table[x=PIX,y={CPU [ms]}] {Plots/cpu_gpu_runtime.data};%
+	%		\addlegendentry{CPU}
+  %    \closedcycle;
+
+      \addplot%[color=plotcolor1!50!black,fill=plotcolor1]
+      table[x=PIX,y={GPU [ms]}] {Plots/cpu_gpu_runtime.data};%
+			\addlegendentry{GPU}
+      \closedcycle;
+
+    \end{axis}
+
+		\begin{axis}[
+     	width=0.88\textwidth,
+      height=7cm,
+      xtick={128,384,...,2688},
+      axis x line=none,
+      axis y line=right,
+      xmin=0, xmax=2796, 
+      ymin=100, ymax=180,
+  %    xlabel=Image size, 
+			ylabel={Speedup}, 
+			enlargelimits=0.03,
+      ymajorgrids ]
+      \addplot%[color=plotcolor0!50!black,fill=plotcolor0]
+      table[x=PIX,y={Speedup}] {Plots/cpu_gpu_runtime.data};%
+%			\addlegendentry{CPU}
+      \closedcycle;
+    \end{axis}
+
+  \end{tikzpicture}%
+  \caption{GPU runtime and speedup dependent on the image size}%
+	\label{fig:gpu_speedup}%
+\end{figure}
+
+
+
+
+\section{Multiple GPUS} % (fold)
+\label{sec:multiple_gpus}
+
+\begin{table}[ht]
+    \centering
+	\pgfkeys{/pgf/number format/.cd,fixed,precision=2}
+	\pgfplotstabletypeset{Plots/multi.gpu.data}
+  	\caption[Global memory loads and stores]{Global memory loads and stores.}
+  	\label{tab:globalmem}
+\end{table}
+
+
+% section multiple_gpus (end)
+
+\section{Overclocking the GPU} % (fold)
+\label{sec:overclocking_the_gpu}
+
+% section overclocking_the_gpu (end)
+
+
+% chapter performance_and_scalability_ (end)

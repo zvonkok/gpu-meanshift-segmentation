@@ -1,5 +1,6 @@
-%!TEX TS-program = xetex 
+%!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode 
+
 \documentclass[bibliography=totoc, version=first, twoside, open=right,%
 titlepage, fleqn, numbers=noenddot, fontsize=11pt,%
 cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
@@ -97,11 +98,12 @@ draft=on]{scrreprt}
 
 \pagenumbering{arabic}
 \pagestyle{scrheadings}
-%*******************************************************************************
-%\mainmatter
+% *******************************************************************************
+% \mainmatter
 %*******************************************************************************
 \include{Chapters/Introduction}
 \include{Chapters/LiteratureReview}
+
 \include{Chapters/Parallel}
 \include{Chapters/FeasibilityStudy}
 \include{Chapters/MeanShift}
@@ -110,11 +112,13 @@ draft=on]{scrreprt}
 \include{Chapters/Optimization}
 \include{Chapters/Performance}
 
-%\addtocontents{toc}{\protect\clearpage} % TEST
 
-%*******************************************************************************
-%\backmatter
-%*******************************************************************************
+
+% \addtocontents{toc}{\protect\clearpage} % TEST
+
+% *******************************************************************************
+% \backmatter
+% *******************************************************************************
 \cleardoublepage\include{FrontBackmatter/Managment}
 \cleardoublepage\include{FrontBackmatter/Listof}
 \cleardoublepage\include{FrontBackmatter/Bibliography}
@@ -134,3 +138,9 @@ draft=on]{scrreprt}
 %*******************************************************
 \end{document}
 % ********************************************************************
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8
+%%% TeX-master: t
+%%% End: 
