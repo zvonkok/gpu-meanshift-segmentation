@@ -97,6 +97,76 @@ to the \gls{CPU} run time.
 
 \section{Overclocking the GPU} % (fold)
 \label{sec:overclocking_the_gpu}
+The \gls{GPU} has three \glspl{clock} that can be over-clocked to achieve higher
+performance. The first is the core \glspl{clock}, the second \glspl{clock} is
+the memory clock and the third clock is the \gls{shader} \gls{clock} where the
+shader clock typically moves synchronically with the core as they work on a set
+ratio. For example the used \emph{GeForce 8800 GTS 512} features a 650 \gls{MHz}
+core, a 1620 \gls{MHz} shader and a 970 \gls{MHz} memory clock. This means this
+particular graphics card uses a core to shader \gls{clock} multiplier of
+2.5$\times$. Increasing the core \gls{clock} means increasing the shader clock
+at the same time. Therefore only the core and memory clock will be considered
+for the experiments.
+
+The reason why someone would over-clock a \gls{GPU} is at first hand to increase
+the performance and on the second hand to find out if an algorithm is
+computational or memory bound by experiment.
+
+Therefore several experiments will be undertaken. One experiment will involve
+the change of the core \gls{clock}, second the change of the memory \gls{clock}
+and lastly the combination of both \glspl{clock}. All experiments were done with
+a free tool, \emph{NVClock}
+\footnote{http://www.linuxhardware.org/nvclock/}. NVClock is a small utility
+that allows to over-clock NVIDIA based \glspl{GPU} and adjust the fan speed. This
+is important since the \gls{GPU} will run out of specification and could overheat.
+The experiments will begin with changing the core clock and evaluation of the
+results. 
+
+\subsection{Increasing the Core Clock} % (fold)
+\label{sub:increasing_the_core_clock}
+For the first experiment the core clock will be changed by steps of 10 \gls{MHz}
+and as a dependency the shader clock as well. As a starting point the default
+648 \gls{MHz} of the core clock will be used and the memory clock will be fixed
+at the default of 972 \gls{MHz}. Experiments have shown that the maximal
+achievable core clock is 783 \gls{MHz}. All clocks were read out from hardware
+with \emph{NVClock}. Additionally it must be noted that all frequency settings
+were not accepted one-on-one which means an increase per software of 10 \gls{MHz}
+doesn't mean an increase of 10 \gls{MHz} in hardware due to hardware restrictions.
+The \autoref{tab:core_sw_hw} shows the frequency set in software and the resulting
+real frequency in hardware. 
+\begin{table}[ht]
+    \centering
+	\pgfkeys{/pgf/number format/.cd,fixed,precision=0}
+	
+	\pgfplotstabletypeset%[display columns/0/.style={select equal part entry of={0}{2},string type}, 
+												%display columns/1/.style={select equal part entry of={0}{2},string type}, 
+												%display columns/2/.style={select equal part entry of={1}{2},string type}, 
+												%display columns/3/.style={select equal part entry of={1}{2},string type}, 
+												%columns={{Software [MHz]},{Hardware [MHz]},{Software [MHz]},{Hardware [MHz]}} ]
+												{Tables/core.sw.hw.data}
+
+ 	\caption{Frequencies set in software and the resulting hardware frequencies}
+ 	\label{tab:core_sw_hw}
+\end{table}
+
+
+\paragraph{Image Size 1024$\times$1024 pixel} % (fold)
+\label{par:image_size_256_times_256_pixel}
+
+% paragraph image_size_256_times_256_pixel (end)
+
+
+% subsection increasing_the_core_clock (end)
+
+
+
+
+
+
+
+
+
+
 
 % section overclocking_the_gpu (end)
 
