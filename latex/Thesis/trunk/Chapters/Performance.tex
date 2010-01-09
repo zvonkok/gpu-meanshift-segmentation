@@ -16,15 +16,18 @@ in a row and the mean was taken as the final result.
 \section{Varying the Image Size} % (fold)
 \label{sec:varying_the_image_size}
 The first benchmark varies the image size from 128 $\times$ 128 pixels to 2688
-$\times$ 2688 pixels. The image size is incremented by 128 pixels. The
+$\times$ 2688 pixels. The image side length is incremented by 128 pixels. The
 \autoref{fig:gpu_speedup} shows the \gls{GPU} runtime and the speedup compared
-to the \gls{CPU} run time. 
-% section varying_the_image_size (end)
-
-
+to the \gls{CPU} run time. The \gls{CPU} run time was not included in
+\autoref{fig:gpu_speedup} because the range of \gls{CPU} values is 100$\times$ 
+larger and the \gls{GPU} values would not be visible. 
 \begin{figure}[ht]
   \centering
   \begin{tikzpicture}
+		\pgfplotsset{
+			every axis legend/.append style={at={(0.02,0.98)}, anchor=north west}
+		}
+	
     \begin{axis}[
 			% colormap/violet,
 			% legend columns=2,
@@ -34,7 +37,7 @@ to the \gls{CPU} run time.
       ybar, 
 			bar width=4pt,
       width=0.88\textwidth,
-      height=7cm,
+      height=5cm,
       xtick={128,384,...,2688},
       axis x line=bottom,
       axis y line=left,
@@ -50,14 +53,14 @@ to the \gls{CPU} run time.
 
       \addplot%[color=plotcolor1!50!black,fill=plotcolor1]
       table[x=PIX,y={GPU [ms]}] {Plots/cpu_gpu_runtime.data};%
-			\addlegendentry{GPU}
-      \closedcycle;
+			\addlegendentry{\slcsmallcaps{GPU}}
+%      \closedcycle;
 
     \end{axis}
 
 		\begin{axis}[
      	width=0.88\textwidth,
-      height=7cm,
+      height=5cm,
       xtick={128,384,...,2688},
       axis x line=none,
       axis y line=right,
@@ -70,28 +73,142 @@ to the \gls{CPU} run time.
       \addplot%[color=plotcolor0!50!black,fill=plotcolor0]
       table[x=PIX,y={Speedup}] {Plots/cpu_gpu_runtime.data};%
 %			\addlegendentry{CPU}
-      \closedcycle;
+%      \closedcycle;
     \end{axis}
 
   \end{tikzpicture}%
   \caption{GPU runtime and speedup dependent on the image size}%
 	\label{fig:gpu_speedup}%
 \end{figure}
+Its interesting to see that the speedup is increasing faster at the beginning
+and than to level off at about 160. This is no surprise because every software
+respectively hardware has a ramp-up phase. This ramp-up phase, where no
+computation is performed, often involves allocation and initialization of data
+and hardware and additionally on this platform the movement of data from the
+host to the \gls{GPU} buffers. With smaller image sizes the time for the ramp-up
+phase is a significant amount of the complete run-time. With bigger and bigger
+image sizes the amount of the ramp-up phase to the complete run-time becomes 
+smaller and hence the speedup increases. 
+
+\subsubsection{Linearity} % (fold)
+\label{ssub:linearity}
+Another fact to consider is how the algorithm is scaling with increasing image
+sizes. In \autoref{ch:algorithm_analysis} it was shown that the algorithm
+exposes linear complexity $O(n)$ and it is interesting to see how the
+implemented algorithm behaves in terms of linearity. An algorithm is linear when
+the two metrics for measuring the performance here the image size and the
+run-time are proportional. The image size is proportional to the run-time if 
+the ratio of the two variables is constant.
+\begin{figure}[ht]
+  \centering
+	
+%	\pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
+%  \pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+
+	\pgfplotstableread{Plots/cpu.gpu.linearity.data}\tableA
+
+  \begin{tikzpicture}
+		\begin{axis}[
+     	width=0.88\textwidth,
+      height=5cm,
+			ytick={0,0.5,1,1.5},
+      xtick={128,384,...,2688},
+      axis x line=bottom,
+      axis y line=left,
+%      xmin=0, xmax=2796, 
+      ymin=0, ymax=2,
+      xlabel=Image Size,
+      ylabel=Normalized Size/Time Ratio,
+			enlargelimits=0.01,
+    %  ymajorgrids 
+			]
+     
+ 			\addplot table[x=PIX,y=GPU] from \tableA;
+ 			\addplot table[x=PIX,y=CPU] from \tableA;
+
+			\addlegendentry{\slcsmallcaps{GPU}}
+			\addlegendentry{\slcsmallcaps{CPU}}
+
+    \end{axis}
+
+  \end{tikzpicture}%
+	\caption{Normalized size/time ratios}%
+	\label{fig:linearity}
+ \end{figure}
+
+The \autoref{fig:linearity} shows the normalized size per time ratios. As it can
+be seen the ratio for the \gls{CPU} is constant over image size and the \gls{GPU}
+ratio is increasing similar to the speedup because of the before mentioned 
+ramp-up phase until it reaches 1 as in the case of the \gls{CPU} ratio. If the
+image size is doubled the run-time is doubled. The algorithm scales linearly. 
+% subsubsection linearity (end)
+% section varying_the_image_size (end)
 
 
 
 
-\section{Multiple GPUS} % (fold)
+\section{Multiple gpus} % (fold)
 \label{sec:multiple_gpus}
 
-\begin{table}[ht]
-    \centering
-	\pgfkeys{/pgf/number format/.cd,fixed,precision=2}
-	\pgfplotstabletypeset{Plots/multi.gpu.data}
-  	\caption[Global memory loads and stores]{Global memory loads and stores.}
-  	\label{tab:globalmem}
-\end{table}
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+	
+		\pgfplotsset{
+			every axis legend/.append style={at={(0.02,0.98)}, anchor=north west}
+		}
+		\pgfplotstableread{multi.gpu.data}\tableA
+		
+    \begin{axis}[
+			% colormap/violet,
+			% legend columns=2,
+      % smooth,
+      % stack plots=y,
+      % area style,
+      ybar, 
+			bar width=4pt,
+      width=0.88\textwidth,
+      height=5cm,
+      xtick={128,384,...,2688},
+      axis x line=bottom,
+      axis y line=left,
+      xmin=0, xmax=2796, 
+      %ymin=0, ymax=1100,
+      %xlabel=Image size, 
+			%ylabel={Milliseconds [ms]}, 
+			enlargelimits=0.03,
+      ymajorgrids 
+			]
 
+      \addplot table[x=PIX,y={1 GPU(s) [ms]}] from \tableA;
+			\addplot table[x=PIX,y={2 GPU(s) [ms]}] from \tableA;
+			
+			\addlegendentry{\slcsmallcaps{GPU}}
+
+    \end{axis}
+
+		\begin{axis}[
+     	width=0.88\textwidth,
+      height=5cm,
+      xtick={128,384,...,2688},
+      axis x line=none,
+      axis y line=right,
+      xmin=0, xmax=2796, 
+      ymin=100, ymax=180,
+  %    xlabel=Image size, 
+			ylabel={Speedup}, 
+			enlargelimits=0.03,
+      ymajorgrids ]
+      \addplot%[color=plotcolor0!50!black,fill=plotcolor0]
+      table[x=PIX,y={Speedup}] from \tableA;
+%			\addlegendentry{CPU}
+%      \closedcycle;
+    \end{axis}
+
+  \end{tikzpicture}%
+  \caption{Multiple GPU runtime and speedup dependent on the image size}%
+	\label{fig:multi_gpu_speedup}%
+\end{figure}
 
 % section multiple_gpus (end)
 
@@ -117,7 +234,7 @@ the change of the core \gls{clock}, second the change of the memory \gls{clock}
 and lastly the combination of both \glspl{clock}. All experiments were done with
 a free tool, \emph{NVClock}
 \footnote{http://www.linuxhardware.org/nvclock/}. NVClock is a small utility
-that allows to over-clock NVIDIA based \glspl{GPU} and adjust the fan speed. This
+that allows to over-clock {\slcsmallcaps{NVIDIA}} based \glspl{GPU} and adjust the fan speed. This
 is important since the \gls{GPU} will run out of specification and could overheat.
 The experiments will begin with changing the core clock and evaluation of the
 results. 
