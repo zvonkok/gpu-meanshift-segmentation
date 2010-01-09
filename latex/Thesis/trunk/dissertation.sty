@@ -22,7 +22,8 @@
 % ******************************************************************************
 % Colors (cmyk color space) (need to load it first, other package may load it..)
 % ******************************************************************************
-\RequirePackage[cmyk, xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
+\RequirePackage[%cmyk, 
+								xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
 
 \definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
@@ -89,8 +90,7 @@
 	every tick label/.append style={font=\plotfont\scriptsize},
 	every axis/.append style={font=\footnotesize\plotfont},
 	every axis x label/.style={at={(0.5,0)}, below, yshift=-20pt},
-	every axis legend/.append style={at={(0.02,0.98)}, anchor=north west,%
-	 																 draw=white, shape=rectangle}
+	every axis legend/.append style={draw=white, shape=rectangle}
 }
 
 % ******************************************************************************
@@ -312,6 +312,7 @@
 \makeglossary
 
 \renewcommand*{\acronymfont}[1]{\slcsmallcaps{#1}}
+\renewcommand{\glspostdescription}{\relax} % remove full stop
 
 % glossaries newstyle longraggedleft
 \renewcommand{\glossaryname}{\slcsmallcaps}
