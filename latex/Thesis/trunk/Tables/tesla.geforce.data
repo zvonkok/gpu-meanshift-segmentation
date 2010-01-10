@@ -1,0 +1,3 @@
+Card 			{Stream Processors}	GFlops 	Clock 	{TDP [Watt]}
+{Tesla C870} 	128					519	     1536	170
+{8800 GTS}		128					624	     1625	135
