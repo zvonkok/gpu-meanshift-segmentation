@@ -29,15 +29,21 @@
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
 %\definecolor{seccolor}{cmyk}{0.59, 0.37, 0.53, 0.06}
 
-\definecolor{plotcolor0}{HTML}{325A8E}
-\definecolor{plotcolor1}{HTML}{B82B2E}
+\definecolor{plot0}{rgb}{0.6,0,0}
+\definecolor{plot1}{rgb}{0,0.6,0}
+\definecolor{plot2}{rgb}{0,0,0.6}
+
 
 \definecolor{listingbgcolor}{cmyk}{0.04, 0.02, 0.03, 0.0}
 
 \colorlet{listingbgcolor}{listingbgcolor!90!white}
 \colorlet{listingfgcolor}{listingbgcolor!95!black}
 
-\colorlet{textcolor}{textcolor!80!black}
+%\colorlet{textcolor}{textcolor!80!black}
+\definecolor{spot}{rgb}{0.6,0,0}
+
+\colorlet{textcolor}{black}
+\colorlet{seccolor}{spot}
 \colorlet{lcolor}{seccolor}
 \colorlet{ccolor}{seccolor}
 \colorlet{ucolor}{seccolor}
@@ -67,7 +73,6 @@
 \RequirePackage{mparhack} % get marginpar right
 \RequirePackage{fixltx2e} % fixes some LaTeX stuff
 \RequirePackage{relsize} % scale font up or down
-\RequirePackage[ngerman,american]{babel}           
 %\RequirePackage[authorformat=smallcaps]{jurabib} % nicer bibliography
 \RequirePackage[square,numbers]{natbib} 
 \RequirePackage[fleqn]{amsmath} % math environments and more by the AMS 
@@ -90,8 +95,10 @@
 	every tick label/.append style={font=\plotfont\scriptsize},
 	every axis/.append style={font=\footnotesize\plotfont},
 	every axis x label/.style={at={(0.5,0)}, below, yshift=-20pt},
-	every axis legend/.append style={draw=white, shape=rectangle}
+	every axis legend/.append style={draw=white, shape=rectangle},
+	/pgf/number format/.cd, set thousands separator={},
 }
+%\pgfkeys{}
 
 % ******************************************************************************
 % pgfplotstable (very nice tables)
@@ -113,11 +120,15 @@
 % ******************************************************************************
 % Math Package
 % ******************************************************************************
-%\RequirePackage[retainmissing,abx]{MnSymbol}
+\RequirePackage{MnSymbol}
 %\RequirePackage[fraktur,mdugm]{mathdesign}
-\RequirePackage[bitstream-charter]{mathdesign}
+%\RequirePackage[bitstream-charter]{mathdesign}
 %\RequirePackage[euler-digits]{eulervm} % Euler math fonts
-%\RequirePackage[minionint, openg, mathosf, onlymath]{MinionPro}% 
+\RequirePackage[minionint, openg,%
+	loosequotes,
+	footnotefigures, 
+	%mathosf, 
+	onlymath]{MinionPro}% 
 %\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
 
 
@@ -149,35 +160,49 @@
 % ******************************************************************************
 % XeTeX
 % ******************************************************************************
+\RequirePackage{mathspec}
 \RequirePackage[toc,eqno,enum,bib,lineno]{tabfigures}
-\RequirePackage[cm-default, no-math]{fontspec}
+%\RequirePackage[cm-default, no-math]{fontspec}
 \RequirePackage{xunicode}
 \RequirePackage{xltxtra}
 %\RequirePackage{polyglossia}
 
+
 \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
-\newcommand{\mainfont}{Charter OS ITC TT}
-%\newcommand{\mainfont}{Cochin}
-\newcommand{\scfont}{Charter SC ITC TT}
+%\newcommand{\mainfont}{Charter OS ITC TT}
+%\newcommand{\scfont}{Charter SC ITC TT}
 %\newcommand{\mainfont}{LeMonde Livre OsF}
 %\newcommand{\scfont}{LeMonde Livre SC}
-%\newcommand{\mainfont}{Minion Pro}
-%\newcommand{\scfont}{Minion Pro}
+\newcommand{\mainfont}{Minion Pro}
+\newcommand{\scfont}{Minion Pro}
 
 %\setdefaultlanguage{UKenglish} % polyglossia
 
-%5–10% of the size of the type.
+%mathosf \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} 
+\setmathsfont(Digits)[Numbers={Lining,Monospaced}]{\mainfont} % Set 
+
+
 
 \setmainfont{\mainfont}
-%\setsansfont{Verdana}
+\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
+\setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
+
 %\setmonofont{Pragmata}
 \newfontfamily\plotfont[Numbers=OldStyle]{\mainfont}
-\newfontfamily\lstfont[Scale=0.8]{Courier}
+%\newfontfamily\lstfont[Scale=0.8]{Courier}
+\newfontfamily\lstfont[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
 \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
-\newfontfamily\spaceduppercase[LetterSpace=20.0]{Charter ITC TT} % uc 20 - 25 %
-\newfontfamily\chnumfont[Scale=7, Numbers=Lining]{Charter ITC TT}
+\newfontfamily\spaceduppercase[LetterSpace=20.0]{\mainfont} % uc 20 - 25 %
+\newfontfamily\chnumfont[Scale=7, Numbers=OldStyle]{\mainfont}
+
+% ******************************************************************************
+% polyglossia, replacement for babel
+% ******************************************************************************
+\RequirePackage{polyglossia}
+\setdefaultlanguage[variant=british]{english}
+
 
 % ******************************************************************************
 % Spacing & SmallCaps stuff
@@ -236,9 +261,9 @@
 	breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
 	plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
 	hypertexnames=true, pdfhighlight=/O, hyperfootnotes=false, frenchlinks,%nesting=true, %
-	urlcolor=lcolor, linkcolor=lcolor, citecolor=ccolor, %pagecolor=RoyalBlue,%
+	%urlcolor=lcolor, linkcolor=lcolor, citecolor=ccolor, %pagecolor=RoyalBlue,%
 	% uncomment the following line if you want to have black links (e.g., for printing)
-	%urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+	urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
 	pdftitle={\myTitle},%
 	pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
 	pdfsubject={},%
@@ -266,6 +291,7 @@
 \captionsetup{skip=\baselineskip, font=small, format=hang,%
  			  labelfont={sc, seccolor}, textfont=textcolor}
 \captionsetup[subtable]{labelsep=quad}
+\captionsetup[subfigure]{labelsep=quad}
 \captionsetup[subfigureautorefname]{labelsep=quad}
 
 %\renewcommand{\captionfont}{\small\color{textcolor}}
@@ -393,7 +419,7 @@
 % sections
 \titleformat{\section}{\color{seccolor}}
 {\slcsmallcaps{\thesection}}{1em}%
-{\ssmallcaps}%
+{\slcsmallcaps}%
 % subsections
 \titleformat{\subsection}{\color{seccolor}}%
 {\slcsmallcaps{\thesubsection}}{1em}%
@@ -556,37 +582,53 @@
 % Listings
 % ******************************************************************************  
 \RequirePackage{listings}%
-\lstset{language=C++,
-%    keywordstyle=\color{iBlue},
-    basicstyle=\lstfont,	
+\lstset{
+	language=C++,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle={},
+%  commentstyle=\spotcolor\itshape,
+	commentstyle=\itshape,
+	numbers=left,
+	numberstyle=\footnotesize,
+	keepspaces=true,
+	basewidth=\dimen0,
+	columns=fullflexible,
 	tabsize=2,
-    %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{seccolor},%\ttfamily,
-    %stringstyle=\rmfamily,
-    numbers=left,
-    numberstyle=\scriptsize,%\tiny
-	framexleftmargin=0em,
-	xleftmargin=1em,
 	aboveskip=\baselineskip,
 	belowskip=\baselineskip,
 	abovecaptionskip=\abovecaptionskip,
 	belowcaptionskip=\belowcaptionskip,
+	captionpos=b,
+	showstringspaces=false,
+}
+
+
+%\lstset{language=C++,
+%    keywordstyle=\color{iBlue},
+		
+    %identifierstyle=\color{NavyBlue},
+%    commentstyle=\color{seccolor},%\ttfamily,
+    %stringstyle=\rmfamily,
+% 	framexleftmargin=0em,
+%	xleftmargin=1em,
+
     %stepnumber=1,
-    numbersep=4pt,
-    showstringspaces=false,
-    breaklines=true,
+%    numbersep=4pt,
+%    showstringspaces=false,
+%    breaklines=true,
 %    backgroundcolor=\color{lstbgcolor!50!white},
 %	rulecolor=\color{lstrlcolor},
-	rulecolor=\color{textcolor},
-	captionpos=b,
-	framerule=1pt,
+%	rulecolor=\color{textcolor},
+	
+%	framerule=1pt,
     %frameround=ftff,
     %frame=tb,
 %	frame=single,
 	%framexleftmargin=1em,
     %frame=L
 %	moredelim=[is][\bfseries\color{iRed}]{§}{§}
-} 
+%} 
+
 % ******************************************************************************
 % Enumeration small caps
 % ******************************************************************************
@@ -602,9 +644,9 @@
 % ******************************************************************************
 \deffootnote{0em}{0em}{\thefootnotemark\hspace*{.5em}}      
 %\setlength{\footnotemargin}{-1em}   
-\addtokomafont{footnote}{\color{seccolor}}
-\renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
-	\hrule width 0.4\columnwidth \vspace*{2.6pt}}}
+%\addtokomafont{footnote}{\color{seccolor}}
+%\renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
+%	\hrule width 0.4\columnwidth \vspace*{2.6pt}}}
 
 % ******************************************************************************
 % Graffiti as in GKP's book "Concrete Mathematics"

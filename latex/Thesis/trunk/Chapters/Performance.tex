@@ -53,7 +53,7 @@ larger and the \gls{GPU} values would not be visible.
 	%		\addlegendentry{CPU}
   %    \closedcycle;
 
-      \addplot table[x=PIX,y={GPU}] from \tableA;
+      \addplot[color=plot2,fill=plot2!50!white] table[x=PIX,y={GPU}] from \tableA;
 
 			\addlegendentry{\slcsmallcaps{GPU}}
 
@@ -71,7 +71,7 @@ larger and the \gls{GPU} values would not be visible.
 			ylabel={Speedup}, 
 			enlargelimits=0.03,
       ymajorgrids ]
-      \addplot table[x=PIX,y={Speedup}] from \tableA;
+      \addplot[color=plot0,mark=asterisk] table[x=PIX,y={Speedup}] from \tableA;
 %			\addlegendentry{CPU}
     \end{axis}
 
@@ -237,6 +237,7 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
 
   \begin{tikzpicture}
 		\begin{axis}[
+			area style,
      	width=\textwidth,
       height=5cm,
 %			ytick={0,0.5,1,1.5},
@@ -251,7 +252,7 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
     %  ymajorgrids 
 			]
      
- 			\addplot table[x=PIX,y=Speedup] from \tableA;
+ 			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=Speedup] from \tableA;
  			\addplot table[x=PIX,y=CPU_Speedup] from \tableB;
 
 			\addlegendentry{\slcsmallcaps{1 GPU}}
@@ -498,20 +499,15 @@ could help
 
 % subsubsection multiple_gpus_overclocked (end)
 
-\fpAdd{\timecpu}{0,0}{1076056}
-\fpAdd{\timegpu}{0,0}{}
+%\fpAdd{\timecpu}{0,0}{1076056}
+%\fpAdd{\timegpu}{0,0}{2734.836}
 
-\fpDiv{\speedup}{\timegold}{\timecuda}
+%\fpDiv{\speedup}{\timegold}{\timecuda}
 
 FINAL SPEEDUP  CPU 
 
+Equipped $\openg$ asda af
 % subsection increasing_the_core_clock (end)
-
-
-
-
-
-
 
 
 
@@ -521,3 +517,17 @@ FINAL SPEEDUP  CPU
 
 
 % chapter performance_and_scalability_ (end)
+
+
+
+\chapter{FONT STUFF}
+\font\fonta="Minion Pro:+onum" at 12pt \fonta onum figures: 0123456789 \\
+\font\fonta="Minion Pro:+lnum" at 12pt \fonta lnum figures: 0123456789 \\
+\font\fonta="Minion Pro:+pnum" at 12pt \fonta pnum figures: 0123456789 \\
+\font\fonta="Minion Pro:+tnum" at 12pt \fonta tnum figures: 0123456789
+
+
+\newlength{\abcd} % for ab..z string length calculation
+\settowidth{\abcd}{abcdefghijklmnopqrstuvwxyz} 	
+\the\abcd
+

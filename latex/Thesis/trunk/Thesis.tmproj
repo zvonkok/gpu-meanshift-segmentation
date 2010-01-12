@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>currentDocument</key>
+	<string>Chapters/Analysis.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -27,6 +29,8 @@
 			<true/>
 			<key>name</key>
 			<string>Chapters</string>
+			<key>regexFileFilter</key>
+			<string>.tex</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle|.aux))$</string>
 			<key>sourceDirectory</key>
@@ -86,7 +90,195 @@
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>200</integer>
 	<key>metaData</key>
-	<dict/>
+	<dict>
+		<key>Chapters/Analysis.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>262</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>236</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>35</integer>
+				<key>line</key>
+				<integer>275</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>262</integer>
+			</dict>
+		</dict>
+		<key>Chapters/Optimization.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>38</integer>
+				<key>line</key>
+				<integer>46</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>27</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>45</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>38</integer>
+				<key>line</key>
+				<integer>46</integer>
+			</dict>
+		</dict>
+		<key>Chapters/Performance.aux</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Chapters/Performance.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>505</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>455</integer>
+		</dict>
+		<key>FrontBackmatter/Titlepage.aux</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Plots/clock.multi.gpu.256.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>45</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>44</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>45</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+		</dict>
+		<key>Plots/clock.single.gpu.256.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>44</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Plots/single.gpu.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+		</dict>
+	</dict>
+	<key>openDocuments</key>
+	<array>
+		<string>Chapters/Performance.tex</string>
+		<string>Chapters/Analysis.tex</string>
+		<string>Chapters/Optimization.tex</string>
+		<string>Plots/clock.multi.gpu.256.data</string>
+		<string>Plots/single.gpu.data</string>
+		<string>Chapters/Performance.aux</string>
+		<string>Plots/clock.single.gpu.256.data</string>
+		<string>FrontBackmatter/Titlepage.aux</string>
+	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -109,6 +301,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{29, 39}, {704, 977}}</string>
+	<string>{{382, 46}, {704, 977}}</string>
 </dict>
 </plist>

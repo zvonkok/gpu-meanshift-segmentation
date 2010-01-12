@@ -2,7 +2,7 @@
 %!TEX encoding = UTF-8 Unicode 
 
 \documentclass[bibliography=totoc, version=first, twoside, open=right,%
-titlepage, fleqn, numbers=noenddot, fontsize=11pt,%
+titlepage, fleqn, numbers=noenddot, fontsize=12pt,%
 cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
 headinclude=false,footinclude=false,%
 headlines=1, % default is 1.25 rows ... we want 1
@@ -46,7 +46,6 @@ draft=on]{scrreprt}
 \usepackage{layout}
 \usepackage{layouts}
 
-
 \begin{document}
 
 \layout*
@@ -63,13 +62,6 @@ draft=on]{scrreprt}
 %\drawheading
 
 %\printparam
-
-%\newlength{\abcd} % for ab..z string length calculation
-%\settowidth{\abcd}{abcdefghijklmnopqrstuvwxyz} 	
-%\the\abcd
-
-%\prntlen{\abcd} 
-
 
 \color{textcolor}
 
@@ -104,9 +96,9 @@ draft=on]{scrreprt}
 %\include{Chapters/Introduction}
 %\include{Chapters/LiteratureReview}
 
-%\include{Chapters/Parallel}
+\include{Chapters/Parallel}
 %\include{Chapters/FeasibilityStudy}
-%\include{Chapters/MeanShift}
+\include{Chapters/MeanShift}
 %\include{Chapters/Analysis}
 %\include{Chapters/Design}
 %\include{Chapters/Optimization}
