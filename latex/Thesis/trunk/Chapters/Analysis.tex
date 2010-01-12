@@ -46,7 +46,7 @@ side length in pixels of the quadratic \autoref{fig:orig0}.
       % ymin=0, ymax=1100,
       xlabel=Image size, ylabel={Seconds [s]}, enlargelimits=0.03,
       ymajorgrids ]
-      \addplot[color=plotcolor0!50!black,fill=plotcolor0]
+      \addplot[color=plot0!50!black,fill=plot0]
       table[x=PIX] {Plots/cpu_gpu_runtime.data}%
       \closedcycle;
     \end{axis}
@@ -241,6 +241,7 @@ performance can arise through e.g. excessive synchronization overhead.
 \subsection{Task Parallelism} % (fold)
 \label{sub:task_parallelism}
 
+
 Equipped with the knowledge how to identify independent parallel
 tasks, the mean shift segmentation algorithm \autoref{alg:mss} can now
 be examined.  Having a look at the algorithm steps one can easily see
@@ -353,6 +354,65 @@ considerations will be made.
 
 
 
+
+Three Big Lies By Mike Acton on March 14, 2008 9:44 PM This is a repost of a
+blog entry I wrote for the Insomniac R&D site (Three Big Lies). It's
+representative of what I believe are some of the fundamental problems in the
+culture of software development in general, and games in particular. There are
+some fundamental truths that seem to be often forgotten. For example, that the
+point of any program is simply to transform data from one form into another and
+nothing else. And as one "solution" which ignores the real core problems of
+development is developed and others over time are built on top of that idea, and
+so on, we're left with systems that are over-designed, perform poorly and simply
+do not accomplish what they intended to in the first place - and certainly not
+well. I continue to suggest that we all take a step back from what we're doing
+and the methods we're using to solve problems and try to remember what the real
+issues are.
+
+One of the things we talked about this year at GDC was what we called the "Three
+Big Lies of Software Development." How much programmers buy into these "lies"
+has a pretty profound effect on the design (and performance!) of an engine, or
+any high-performance embedded system for that matter. (Lie #1) Software is a
+platform I blame the universities for this one. Academics like to remove as many
+variables from a problem as possible and try to solve things under "ideal" or
+completely general conditions. It's like old physicist jokes that go "We have
+made several simplifying assumptions... first, let each horse be a perfect
+rolling sphere..."
+
+The reality is software is not a platform. You can't idealize the hardware. And
+the constants in the "Big-O notation" that are so often ignored, are often the
+parts that actually matter in reality (for example, memory performance.) You
+can't judge code in a vacuum. Hardware impacts data design. Data design impacts
+code choices. If you forget that, you have something that might work, but you
+aren't going to know if it's going to work well on the platform you're working
+with, with the data you actually have. (Lie #2) Code should be designed around a
+model of the world
+
+There is no value in code being some kind of model or map of an imaginary world.
+I don't know why this one is so compelling for some programmers, but it is
+extremely popular. If there's a rocket in the game, rest assured that there is a
+"Rocket" class (Assuming the code is C++) which contains data for exactly one
+rocket and does rockety stuff. With no regard at all for what data tranformation
+is really being done, or for the layout of the data. Or for that matter, without
+the basic understanding that where there's one thing, there's probably more than
+one.
+
+Though there are a lot of performance penalties for this kind of design, the
+most significant one is that it doesn't scale. At all. One hundred rockets costs
+one hundred times as much as one rocket. And it's extremely likely it costs even
+more than that! Even to a non-programmer, that shouldn't make any sense. Economy
+of scale. If you have more of something, it should get cheaper, not more
+expensive. And the way to do that is to design the data properly and group
+things by similar transformations. (Lie #3) Code is more important than data
+
+This is the biggest lie of all. Programmers have spent untold billions of
+man-years writing about code, how to write it faster, better, prettier, etc. and
+at the end of the day, it's not that significant. Code is ephimiral and has no
+real intrinsic value. The algorithms certainly do, sure. But the code itself
+isn't worth all this time (and shelf space! - have you seen how many books there
+are on UML diagrams?). The code, the performance and the features hinge on one
+thing - the data. Bad data equals slow and crappy application. Writing a good
+engine means first and formost, understanding the data.
 
 
 

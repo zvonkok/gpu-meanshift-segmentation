@@ -217,12 +217,10 @@ initalization.
 
 %
 \begin{lstlisting}[caption=Hardware initalization, label=lst:init]
-int main( int argc, char** argv) {
-	CUT_DEVICE_INIT(argc, argv);
+CUT_DEVICE_INIT(argc, argv);
 
-	uint32_t num_threads = 32;
-	uint32_t mem_size = sizeof(float) * num_threads;				
-                  ...
+uint32_t num_threads = 32;
+uint32_t mem_size = sizeof(float) * num_threads;				
 \end{lstlisting} 
 %
 
@@ -235,16 +233,16 @@ for input and output data. This is shown in listing \autoref{lst:datatransfer}.
 
 
 \begin{lstlisting}[caption=Data transfer of data, label=lst:datatransfer]
-	// allocate host memory 
-	float* h_idata = (float*) malloc(mem_size);
-	// allocate device memory 
-	float* d_idata; cudaMalloc((void**) &d_idata, mem_size);
-	// allocate device memory for result
-	float* d_odata; cudaMalloc((void**) &d_odata, mem_size);
-	// allocate mem for the result on host side
-	float* h_odata = (float*) malloc( mem_size);
-	// copy host memory to device 
-	cudaMemcpy(d_idata, h_idata, mem_size, cudaMemcpyHostToDevice);
+// allocate host memory 
+float* h_idata = (float*) malloc(mem_size);
+// allocate device memory 
+float* d_idata; cudaMalloc((void**) &d_idata, mem_size);
+// allocate device memory for result
+float* d_odata; cudaMalloc((void**) &d_odata, mem_size);
+// allocate mem for the result on host side
+float* h_odata = (float*) malloc( mem_size);
+// copy host memory to device 
+cudaMemcpy(d_idata, h_idata, mem_size, cudaMemcpyHostToDevice);
 \end{lstlisting} 
 
 
@@ -258,12 +256,12 @@ output data.
 
 
 \begin{lstlisting}[caption=Execution of the Kernel, label=lst:execution]
-	    // setup execution parameters
-	    dim3  grid( 1, 1, 1);
-	    dim3  threads(num_threads, 1, 1);
+// setup execution parameters
+dim3  grid( 1, 1, 1);
+dim3  threads(num_threads, 1, 1);
 
-	    // execute the kernel
-	    kernel<<< grid, threads, mem_size >>>(d_idata, d_odata);
+// execute the kernel
+kernel<<< grid, threads, mem_size >>>(d_idata, d_odata);
 \end{lstlisting} 
 
 If everything went well the host can copy the data from device memory
@@ -271,24 +269,23 @@ to host memory and check, visualize or store the calculated values.
 \autoref{lst:result} shows the last steps before exiting the program.
 
 \begin{lstlisting}[caption=Retrieving of the Results, label=lst:result]
-	    // check if kernel execution generated and error
-	    CUT_CHECK_ERROR("Kernel execution failed");
+// check if kernel execution generated and error
+CUT_CHECK_ERROR("Kernel execution failed");
  
-	    // copy result from device to host
-	    cudaMemcpy(h_odata, d_odata, sizeof( float) * num_threads, 
-			       cudaMemcpyDeviceToHost);
+// copy result from device to host
+cudaMemcpy(h_odata, d_odata, sizeof( float) * num_threads, 
+           cudaMemcpyDeviceToHost);
 
-	    // cleanup memory free(x), free(y), free(z) ...
-		CUT_EXIT(argc, argv);
-	} 
+// cleanup memory free(x), free(y), free(z) ...
+CUT_EXIT(argc, argv);
 \end{lstlisting} 
 
 The previous listings showed the host code and how to launch a kernel on the
 device. The \autoref{lst:device} shows the device code portion. There are
 several qualifiers that define which function is compiled for which processing
-unit. The \textit{\_\_global\_\_} qualifier specifies that this function is run
+unit. The \textsf{\_\_global\_\_} qualifier specifies that this function is run
 on the device and hence compiled for the \gls{GPU} where the
-\textit{\_\_host\_\_} qualifier specifies that this function is only run on the
+\textsf{\_\_host\_\_} qualifier specifies that this function is only run on the
 host and not on the device. There are more function specifiers that can be
 looked up in \citep{citeulike:3325943}.
 
@@ -297,36 +294,35 @@ located, either in constant, global or shared memory. In \autoref{lst:device}
 the \textit{\_\_shared\_\_} qualifier is used. The device will use the shared
 memory to preload the data for faster access.
 
-
 \begin{lstlisting}[caption=CUDA device code, label=lst:device]
-	#include <stdio.h>
+#include <stdio.h>
 
-	#define SDATA(index) CUT_BANK_CHECKER(sdata, index)
-	// Simple test kernel for device functionality
-	__global__ void kernel( float* g_idata, float* g_odata) 
-	{
-	  // shared memory
-	  // the size is determined by the host application
-	  extern  __shared__  float sdata[];
+#define SDATA(index) CUT_BANK_CHECKER(sdata, index)
+// Simple test kernel for device functionality
+__global__ void kernel( float* g_idata, float* g_odata) 
+{
+  /* shared memory */
+  /* the size is determined by the host application */
+  extern  __shared__  float sdata[];
 
-	  // access thread id
-	  const unsigned int tid = threadIdx.x;
-	  // access number of threads in this block
-	  const unsigned int num_threads = blockDim.x;
+  /* access thread id */
+  const unsigned int tid = threadIdx.x;
+  /* access number of threads in this block */
+  const unsigned int num_threads = blockDim.x;
 
-	  // read in input data from global memory
-	  // use the bank checker macro to check for bank conflicts during host
-	  // emulation
-	  SDATA(tid) = g_idata[tid];
-	  __syncthreads();
+  /* read in input data from global memory
+   * use the bank checker macro to check for bank conflicts
+ 	 * during host emulation */
+  SDATA(tid) = g_idata[tid];
+  __syncthreads();
 
-	  // perform some computations
-	  SDATA(tid) = (float) num_threads * SDATA( tid);
-	  __syncthreads();
+  /* perform some computations */
+  SDATA(tid) = (float) num_threads * SDATA( tid);
+  __syncthreads();
 
-	  // write data to global memory
-	  g_odata[tid] = SDATA(tid);
-	} 
+  /* write data to global memory */
+  g_odata[tid] = SDATA(tid);
+} 
 \end{lstlisting} 
 
 

@@ -322,7 +322,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         ]
         
-        \addplot[color=Brown] expression[domain=-1:1] {3/4*(1-x*x)};
+        \addplot[color=plot0] expression[domain=-1:1] {3/4*(1-x*x)};
 
       \end{axis}
     \end{tikzpicture}
@@ -348,7 +348,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         ]
         
-        \addplot[color=Brown] expression[domain=-3:3]
+        \addplot[color=plot1] expression[domain=-3:3]
         {1/sqrt(2*3.14)*exp((-1/2)*x*x)};
 
       \end{axis}
@@ -375,7 +375,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         mark size=0.01pt ]
         
-        \addplot+[const plot] coordinates { (-1,0) (-1,0.5) (1,0.5)
+        \addplot+[const plot,color=plot2] coordinates { (-1,0) (-1,0.5) (1,0.5)
           (1,0) };
       \end{axis}
     \end{tikzpicture}
