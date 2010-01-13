@@ -47,7 +47,7 @@ side length in pixels of the quadratic \autoref{fig:orig0}.
       xlabel=Image size, ylabel={Seconds [s]}, enlargelimits=0.03,
       ymajorgrids ]
       \addplot[color=plot0!50!black,fill=plot0]
-      table[x=PIX] {Plots/cpu_gpu_runtime.data}%
+      table[x=PIX] {Plots/single.gpu.data}%
       \closedcycle;
     \end{axis}
   \end{tikzpicture}%
@@ -91,7 +91,7 @@ analysis of \gls{EDISON}.
   \pgfplotstabletypeset[
   % column type=r,
   every row no 5/.style={
-    before row={\rowcolor{lstbgcolor}}
+    before row={\rowcolor{pf0}}
   },
   columns/Self/.style={column type=r, column name={Self (\%)}},
   columns/Total/.style={column type=r, column name={Total (\%)}},
@@ -356,7 +356,7 @@ considerations will be made.
 
 
 Three Big Lies By Mike Acton on March 14, 2008 9:44 PM This is a repost of a
-blog entry I wrote for the Insomniac R&D site (Three Big Lies). It's
+blog entry I wrote for the Insomniac R\&D site (Three Big Lies). It's
 representative of what I believe are some of the fundamental problems in the
 culture of software development in general, and games in particular. There are
 some fundamental truths that seem to be often forgotten. For example, that the
@@ -372,7 +372,7 @@ issues are.
 One of the things we talked about this year at GDC was what we called the "Three
 Big Lies of Software Development." How much programmers buy into these "lies"
 has a pretty profound effect on the design (and performance!) of an engine, or
-any high-performance embedded system for that matter. (Lie #1) Software is a
+any high-performance embedded system for that matter. (Lie 1) Software is a
 platform I blame the universities for this one. Academics like to remove as many
 variables from a problem as possible and try to solve things under "ideal" or
 completely general conditions. It's like old physicist jokes that go "We have
@@ -385,7 +385,7 @@ parts that actually matter in reality (for example, memory performance.) You
 can't judge code in a vacuum. Hardware impacts data design. Data design impacts
 code choices. If you forget that, you have something that might work, but you
 aren't going to know if it's going to work well on the platform you're working
-with, with the data you actually have. (Lie #2) Code should be designed around a
+with, with the data you actually have. (Lie 2) Code should be designed around a
 model of the world
 
 There is no value in code being some kind of model or map of an imaginary world.
@@ -403,7 +403,7 @@ one hundred times as much as one rocket. And it's extremely likely it costs even
 more than that! Even to a non-programmer, that shouldn't make any sense. Economy
 of scale. If you have more of something, it should get cheaper, not more
 expensive. And the way to do that is to design the data properly and group
-things by similar transformations. (Lie #3) Code is more important than data
+things by similar transformations. (Lie 3) Code is more important than data
 
 This is the biggest lie of all. Programmers have spent untold billions of
 man-years writing about code, how to write it faster, better, prettier, etc. and
