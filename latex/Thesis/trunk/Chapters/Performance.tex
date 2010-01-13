@@ -41,6 +41,7 @@ larger and the \gls{GPU} values would not be visible.
       width=0.88\textwidth,
       height=5cm,
       xtick={128,384,...,2688},
+%			xticklabel={$2^14$, $2^15$},
       axis x line=bottom,
       axis y line=left,
       xmin=0, xmax=2796, 
@@ -252,8 +253,8 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
     %  ymajorgrids 
 			]
      
- 			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=Speedup] from \tableA;
- 			\addplot table[x=PIX,y=CPU_Speedup] from \tableB;
+ 			\addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
 
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}
@@ -266,7 +267,162 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
 	\label{fig:multi_gpu_cpu_speedup}
 \end{figure}
 
+\begin{figure}[ht]
+  \centering
+	
+	\pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
+ 	\pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
 
+	\pgfplotstableread{Plots/single.gpu.data}\tableA
+	\pgfplotstableread{Plots/multi.gpu.data}\tableB	
+
+  \begin{tikzpicture}
+		\begin{axis}[
+			area style,
+     	width=\textwidth,
+      height=5cm,
+%			ytick={0,0.5,1,1.5},
+      xtick={128,384,...,2688},
+      axis x line=bottom,
+      axis y line=left,
+%      xmin=0, xmax=2796, 
+      ymin=0, ymax=350,
+      xlabel=$x$,
+      ylabel=$y$,
+		%	enlargelimits=0.01,
+    %  ymajorgrids 
+			]
+     
+ 			\addplot[color=plot2!80!black,fill=plot2!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 			\addplot[color=plot3!80!black,fill=plot3!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+
+			\addlegendentry{\slcsmallcaps{1 GPU}}
+			\addlegendentry{\slcsmallcaps{2 GPUS}}
+
+    \end{axis}
+
+  \end{tikzpicture}%
+	\caption{{\ssmallcaps{Gpu}} speedups compared to the {\slcsmallcaps{CPU}} 
+					 run-times over image size}%
+	\label{fig:multi_gpu_cpu_speedup}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+	
+	\pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
+ 	\pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+
+	\pgfplotstableread{Plots/single.gpu.data}\tableA
+	\pgfplotstableread{Plots/multi.gpu.data}\tableB	
+
+  \begin{tikzpicture}
+		\begin{axis}[
+			area style,
+     	width=\textwidth,
+      height=5cm,
+%			ytick={0,0.5,1,1.5},
+      xtick={128,384,...,2688},
+      axis x line=bottom,
+      axis y line=left,
+%      xmin=0, xmax=2796, 
+      ymin=0, ymax=350,
+      xlabel=$x$,
+      ylabel=$y$,
+		%	enlargelimits=0.01,
+    %  ymajorgrids 
+			]
+     
+ 			\addplot[color=plot4!80!black,fill=plot4!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 			\addplot[color=plot5!80!black,fill=plot5!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+
+			\addlegendentry{\slcsmallcaps{1 GPU}}
+			\addlegendentry{\slcsmallcaps{2 GPUS}}
+
+    \end{axis}
+
+  \end{tikzpicture}%
+	\caption{{\ssmallcaps{Gpu}} speedups compared to the {\slcsmallcaps{CPU}} 
+					 run-times over image size}%
+	\label{fig:multi_gpu_cpu_speedup}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+	
+	\pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
+ 	\pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+
+	\pgfplotstableread{Plots/single.gpu.data}\tableA
+	\pgfplotstableread{Plots/multi.gpu.data}\tableB	
+
+  \begin{tikzpicture}
+		\begin{axis}[
+			area style,
+     	width=\textwidth,
+      height=5cm,
+%			ytick={0,0.5,1,1.5},
+      xtick={128,384,...,2688},
+      axis x line=bottom,
+      axis y line=left,
+%      xmin=0, xmax=2796, 
+      ymin=0, ymax=350,
+      xlabel=$x$,
+      ylabel=$y$,
+		%	enlargelimits=0.01,
+    %  ymajorgrids 
+			]
+     
+ 			\addplot[color=plot6!80!black,fill=plot6!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 			\addplot[color=plot7!80!black,fill=plot7!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+
+			\addlegendentry{\slcsmallcaps{1 GPU}}
+			\addlegendentry{\slcsmallcaps{2 GPUS}}
+
+    \end{axis}
+
+  \end{tikzpicture}%
+	\caption{{\ssmallcaps{Gpu}} speedups compared to the {\slcsmallcaps{CPU}} 
+					 run-times over image size}%
+	\label{fig:multi_gpu_cpu_speedup}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+	
+	\pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
+ 	\pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+
+	\pgfplotstableread{Plots/single.gpu.data}\tableA
+	\pgfplotstableread{Plots/multi.gpu.data}\tableB	
+
+  \begin{tikzpicture}
+		\begin{axis}[
+			area style,
+     	width=\textwidth,
+      height=5cm,
+%			ytick={0,0.5,1,1.5},
+      xtick={128,384,...,2688},
+      axis x line=bottom,
+      axis y line=left,
+%      xmin=0, xmax=2796, 
+      ymin=0, ymax=350,
+      xlabel=$x$,
+      ylabel=$y$,
+		%	enlargelimits=0.01,
+    %  ymajorgrids 
+			]
+     
+ 			\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 			\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+
+			\addlegendentry{\slcsmallcaps{1 GPU}}
+			\addlegendentry{\slcsmallcaps{2 GPUS}}
+
+    \end{axis}
+
+  \end{tikzpicture}%
+	\caption{{\ssmallcaps{Gpu}} speedups compared to the {\slcsmallcaps{CPU}} 
+					 run-times over image size}%
+	\label{fig:multi_gpu_cpu_speedup}
+\end{figure}
 % section multiple_gpus (end)
 
 \section{Overclocking the gpu} % (fold)
@@ -506,7 +662,6 @@ could help
 
 FINAL SPEEDUP  CPU 
 
-Equipped $\openg$ asda af
 % subsection increasing_the_core_clock (end)
 
 

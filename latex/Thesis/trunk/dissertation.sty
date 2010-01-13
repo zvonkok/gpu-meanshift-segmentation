@@ -29,9 +29,15 @@
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
 %\definecolor{seccolor}{cmyk}{0.59, 0.37, 0.53, 0.06}
 
-\definecolor{plot0}{rgb}{0.6,0,0}
-\definecolor{plot1}{rgb}{0,0.6,0}
-\definecolor{plot2}{rgb}{0,0,0.6}
+\definecolor{plot0}{rgb}{0.6,0.0,0.0}
+\definecolor{plot1}{rgb}{0.6,0.3,0.0}
+\definecolor{plot2}{rgb}{0.6,0.0,0.3}
+\definecolor{plot3}{rgb}{0.0,0.6,0.0}
+\definecolor{plot4}{rgb}{0.0,0.6,0.3}
+\definecolor{plot5}{rgb}{0.3,0.6,0.0}
+\definecolor{plot6}{rgb}{0.0,0.0,0.6}
+\definecolor{plot7}{rgb}{0.3,0.0,0.6}
+\definecolor{plot8}{rgb}{0.0,0.3,0.6}
 
 
 \definecolor{listingbgcolor}{cmyk}{0.04, 0.02, 0.03, 0.0}
@@ -120,15 +126,18 @@
 % ******************************************************************************
 % Math Package
 % ******************************************************************************
-\RequirePackage{MnSymbol}
+%\RequirePackage{MnSymbol}
 %\RequirePackage[fraktur,mdugm]{mathdesign}
 %\RequirePackage[bitstream-charter]{mathdesign}
 %\RequirePackage[euler-digits]{eulervm} % Euler math fonts
-\RequirePackage[minionint, openg,%
+
+\RequirePackage[
+	minionint, openg,%
 	loosequotes,
 	footnotefigures, 
 	%mathosf, 
-	onlymath]{MinionPro}% 
+	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
+	
 %\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
 
 
@@ -160,7 +169,7 @@
 % ******************************************************************************
 % XeTeX
 % ******************************************************************************
-\RequirePackage{mathspec}
+\RequirePackage[MnSymbol]{mathspec}
 \RequirePackage[toc,eqno,enum,bib,lineno]{tabfigures}
 %\RequirePackage[cm-default, no-math]{fontspec}
 \RequirePackage{xunicode}
@@ -180,6 +189,7 @@
 
 %mathosf \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} 
 \setmathsfont(Digits)[Numbers={Lining,Monospaced}]{\mainfont} % Set 
+\setmathrm{\mainfont}
 
 
 
@@ -187,10 +197,11 @@
 \setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
 \setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
 
+
 %\setmonofont{Pragmata}
 \newfontfamily\plotfont[Numbers=OldStyle]{\mainfont}
 %\newfontfamily\lstfont[Scale=0.8]{Courier}
-\newfontfamily\lstfont[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
+%\newfontfamily\lstfont[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
 \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
@@ -279,17 +290,48 @@
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
 
+% ******************************************************************************                
+% Listings
+% ******************************************************************************  
+\RequirePackage{listings}%
+\lstset{
+	language=C++,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle={},
+  commentstyle=\color{seccolor}\itshape,
+%	commentstyle=\itshape,
+	numbers=left,
+	numberstyle=\footnotesize,
+	keepspaces=true,
+	basewidth=\dimen0,
+	columns=fullflexible,
+	tabsize=2,
+	aboveskip=\baselineskip,
+	belowskip=\baselineskip,
+	abovecaptionskip=\abovecaptionskip,
+	belowcaptionskip=\belowcaptionskip,
+	captionpos=b,
+	showstringspaces=false,
+}
+
 % ******************************************************************************
 % Captions look and feel
 % ******************************************************************************
-\RequirePackage{caption}[2008/04/01]
+\RequirePackage{caption}[2009/10/09]
 %\RequirePackage{subcaption}
 \DeclareCaptionFont{seccolor}{\color{seccolor}}
 \DeclareCaptionFont{textcolor}{\color{textcolor}}
 \DeclareCaptionLabelSeparator{zspace}{ }
 
-\captionsetup{skip=\baselineskip, font=small, format=hang,%
- 			  labelfont={sc, seccolor}, textfont=textcolor}
+%captionlabelfont
+
+\captionsetup{%
+				skip=\baselineskip, font=small, format=hang,%
+				figurename=figure, tablename=table,
+ 			  labelfont={seccolor, sc}, 
+				textfont=textcolor}
+				
+\captionsetup[lstlisting]{skip=10pt}
 \captionsetup[subtable]{labelsep=quad}
 \captionsetup[subfigure]{labelsep=quad}
 \captionsetup[subfigureautorefname]{labelsep=quad}
@@ -413,7 +455,7 @@
 \titleformat{\chapter}[display]{\vspace*{-2\baselineskip}\color{seccolor}}
 {\marginpar{\color{textcolor!30!white}\chnumfont{\vspace*{-2\baselineskip}\thechapter}}}{0pt}% "Chapter" name.. label 
 %{\relax}{0pt}%
-{\raggedright\suppercase}[\vspace*{\baselineskip}\titlerule] % titlebod
+{\raggedright\suppercase}[\vspace*{\baselineskip}\color{black}\titlerule] % titlebod
 %\raggedright <- linksbündig
 
 % sections
@@ -450,6 +492,7 @@
 \newlength{\newnumberwidth}
 \settowidth{\newnumberwidth}{99} % yields overfull hbox warnings for pages > 99
 \cftsetpnumwidth{\newnumberwidth}
+
 % have the bib neatly positioned after the rest
 \newlength{\beforebibskip}  
 \setlength{\beforebibskip}{0em}
@@ -474,7 +517,7 @@
 
 % chapters
 \renewcommand{\cftchappresnum}{\slcsmallcaps}%
-\renewcommand{\cftchapfont}{\color{seccolor}\ssmallcaps}%
+\renewcommand{\cftchapfont}{\color{seccolor}\slcsmallcaps}%
 \renewcommand{\cftchappagefont}{\ssmallcaps}%
 \ifthenelse{\boolean{@dottedtoc}}{\relax}%
 {%
@@ -578,66 +621,12 @@
 		\addtocontents{lot}{\deactivateaddvspace}%      
       }%
 }
-% ******************************************************************************                
-% Listings
-% ******************************************************************************  
-\RequirePackage{listings}%
-\lstset{
-	language=C++,
-	basicstyle=\footnotesize\ttfamily,
-	keywordstyle={},
-%  commentstyle=\spotcolor\itshape,
-	commentstyle=\itshape,
-	numbers=left,
-	numberstyle=\footnotesize,
-	keepspaces=true,
-	basewidth=\dimen0,
-	columns=fullflexible,
-	tabsize=2,
-	aboveskip=\baselineskip,
-	belowskip=\baselineskip,
-	abovecaptionskip=\abovecaptionskip,
-	belowcaptionskip=\belowcaptionskip,
-	captionpos=b,
-	showstringspaces=false,
-}
-
-
-%\lstset{language=C++,
-%    keywordstyle=\color{iBlue},
-		
-    %identifierstyle=\color{NavyBlue},
-%    commentstyle=\color{seccolor},%\ttfamily,
-    %stringstyle=\rmfamily,
-% 	framexleftmargin=0em,
-%	xleftmargin=1em,
-
-    %stepnumber=1,
-%    numbersep=4pt,
-%    showstringspaces=false,
-%    breaklines=true,
-%    backgroundcolor=\color{lstbgcolor!50!white},
-%	rulecolor=\color{lstrlcolor},
-%	rulecolor=\color{textcolor},
-	
-%	framerule=1pt,
-    %frameround=ftff,
-    %frame=tb,
-%	frame=single,
-	%framexleftmargin=1em,
-    %frame=L
-%	moredelim=[is][\bfseries\color{iRed}]{§}{§}
-%} 
 
 % ******************************************************************************
 % Enumeration small caps
 % ******************************************************************************
 \newenvironment{aenumerate}%
 	{\def\theenumi{\textsc{\alph{enumi}}}\enumerate}{\endenumerate}
-% ******************************************************************************
-% Booktabs
-% ******************************************************************************
-\RequirePackage{booktabs} % for better rules in tables
 
 % ******************************************************************************
 % Footnotes setup   
@@ -671,7 +660,6 @@
 %\crefname{subsubsection}{Section}{Sections}
 %\crefname{figure}{Figure}{Figures}
 %\crefname{table}{Table}{Tables}
-
 
 
 \endinput
