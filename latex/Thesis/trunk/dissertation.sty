@@ -22,40 +22,43 @@
 % ******************************************************************************
 % Colors (cmyk color space) (need to load it first, other package may load it..)
 % ******************************************************************************
-\RequirePackage[%cmyk, 
+\RequirePackage[%cmyk, really weird colors.... 
 								xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
 
 \definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
 %\definecolor{seccolor}{cmyk}{0.59, 0.37, 0.53, 0.06}
 
-\definecolor{plot0}{rgb}{0.6,0.0,0.0}
-\definecolor{plot1}{rgb}{0.6,0.3,0.0}
-\definecolor{plot2}{rgb}{0.6,0.0,0.3}
-\definecolor{plot3}{rgb}{0.0,0.6,0.0}
-\definecolor{plot4}{rgb}{0.0,0.6,0.3}
-\definecolor{plot5}{rgb}{0.3,0.6,0.0}
-\definecolor{plot6}{rgb}{0.0,0.0,0.6}
-\definecolor{plot7}{rgb}{0.3,0.0,0.6}
-\definecolor{plot8}{rgb}{0.0,0.3,0.6}
+%\definecolor{plot0}{rgb}{0.6,0.0,0.0}
+%\definecolor{plot1}{rgb}{0.6,0.3,0.0}
+%\definecolor{plot2}{rgb}{0.6,0.0,0.3}
+%\definecolor{plot3}{rgb}{0.0,0.6,0.0}
+%\definecolor{plot4}{rgb}{0.0,0.6,0.3}
+%\definecolor{plot5}{rgb}{0.3,0.6,0.0}
+%\definecolor{plot6}{rgb}{0.0,0.0,0.6}
+%\definecolor{plot7}{rgb}{0.3,0.0,0.6}
+%\definecolor{plot8}{rgb}{0.0,0.3,0.6}
 
+\definecolor{plot0}{HTML}{990000}
+\definecolor{plot1}{HTML}{994D00}
+\definecolor{plot2}{HTML}{99004D}
+\definecolor{plot3}{HTML}{009900}
+\definecolor{plot4}{HTML}{00994D}
+\definecolor{plot5}{HTML}{4D9900}
+\definecolor{plot6}{HTML}{000099}
+\definecolor{plot7}{HTML}{4D0099}
+\definecolor{plot8}{HTML}{004D99}
 
-\definecolor{listingbgcolor}{cmyk}{0.04, 0.02, 0.03, 0.0}
+%color=plot0!80!black,fill=plot0!40!white
+% define plotoutline & plotfill
 
-\colorlet{listingbgcolor}{listingbgcolor!90!white}
-\colorlet{listingfgcolor}{listingbgcolor!95!black}
-
-%\colorlet{textcolor}{textcolor!80!black}
-\definecolor{spot}{rgb}{0.6,0,0}
 
 \colorlet{textcolor}{black}
-\colorlet{seccolor}{spot}
+\colorlet{seccolor}{plot0}
 \colorlet{lcolor}{seccolor}
 \colorlet{ccolor}{seccolor}
 \colorlet{ucolor}{seccolor}
 
-\colorlet{lstbgcolor}{listingbgcolor}
-\colorlet{lstrlcolor}{listingfgcolor}
 
 
 % ********************************************************************
@@ -98,8 +101,8 @@
 % ******************************************************************************
 \RequirePackage{pgfplots}
 \pgfplotsset{
-	every tick label/.append style={font=\plotfont\scriptsize},
-	every axis/.append style={font=\footnotesize\plotfont},
+	every tick label/.append style={font=\scriptsize},
+	every axis/.append style={font=\footnotesize},
 	every axis x label/.style={at={(0.5,0)}, below, yshift=-20pt},
 	every axis legend/.append style={draw=white, shape=rectangle},
 	/pgf/number format/.cd, set thousands separator={},
@@ -197,11 +200,6 @@
 \setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
 \setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
 
-
-%\setmonofont{Pragmata}
-\newfontfamily\plotfont[Numbers=OldStyle]{\mainfont}
-%\newfontfamily\lstfont[Scale=0.8]{Courier}
-%\newfontfamily\lstfont[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
 \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
 \renewcommand{\textsc}[1]{\scshape{#1}}
 
@@ -323,13 +321,14 @@
 \DeclareCaptionFont{textcolor}{\color{textcolor}}
 \DeclareCaptionLabelSeparator{zspace}{ }
 
-%captionlabelfont
 
 \captionsetup{%
 				skip=\baselineskip, font=small, format=hang,%
 				figurename=figure, tablename=table,
  			  labelfont={seccolor, sc}, 
+				labelsep=quad,
 				textfont=textcolor}
+				
 				
 \captionsetup[lstlisting]{skip=10pt}
 \captionsetup[subtable]{labelsep=quad}
