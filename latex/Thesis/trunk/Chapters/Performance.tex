@@ -361,7 +361,7 @@ and the resulting real frequency in hardware.
 The test was performed with three different image sizes: 256$\times$256 pixel, 
 1024$\times$1024 pixel and 2048$\times$2048 pixel. The \autoref{fig:core_clk_256}
 shows the run-time dependent on the core clock. Additionally the normalized
-ratio \textbf{clock/time} is depicted as well. 
+ratio {\color{red}{clock/time}} is depicted as well. 
 
 \begin{figure}[ht]
   \centering
@@ -373,7 +373,7 @@ ratio \textbf{clock/time} is depicted as well.
   \pgfplotstableread{Plots/clock.single.gpu.256.data}\tableA
 
   \begin{tikzpicture}
-    \begin{axis}[
+		\begin{axis}[
 			cycle list name=exotic,
       % smooth, 
       % stack plots=y,
@@ -409,7 +409,7 @@ ratio \textbf{clock/time} is depicted as well.
 	      axis x line=none,
 	      axis y line=right,
 	      xmin=648, xmax=783, 
-	      ymin=0,
+				ymin=0,
 				ymax=2,
 %	      xlabel=$x$,
 %	      ylabel=$y$,
@@ -423,22 +423,30 @@ ratio \textbf{clock/time} is depicted as well.
 
 
  \end{tikzpicture}%
- \label{fig:clock_single_256}%
- \caption{Image 256x256 varying the core and mem clock}
+ \label{fig:core_clk_256}%
+ \caption{Image 256x256 varying the core clock with fixed mem clock}
 \end{figure}
 
-It's visible that the run-time is decreasing proportionally with the increase 
-of the core-clock. This means that the algorithm is heavily computational bound.
+It's visible that the run-time is decreasing proportionally with the increase of
+the core-clock. This means that the algorithm is heavily computational bound.
 The run-time is determined in this implementation solely by the speed of the
 \gls{GPU}. One way to get over this barrier is to (1) minimize the instructions
 executed by the \gls{GPU} by restructuring the code or (2) adopting a another
-algorithm for finding feature point that fall into the search window, see 
-\autoref{cha:future_work} for enhancements that could be made to accelerate
-the search. 
-
+algorithm for finding feature point that fall into the search window, see
+\autoref{ch:future_work} for enhancements that could be made to accelerate the
+search. Additionally, the image sizes 1024$\times$1024 and 2048$\times$2048
+pixel show the same behavior.
+For completeness the next section shows the case when two \glspl{GPU} are 
+overclocked.
 
 \subsubsection{Multiple gpus overclocked} % (fold)
 \label{ssub:multiple_gpus_overclocked}
+It's no surprise to see almost a identical diagram compared to the previous
+section. As the algorithm scales well with multiple \gls{GPU} (see
+\autoref{sec:multiple_gpus}) and with the frequency of the core clock one can 
+assume to see the same sequence of run-times just cut by half. The
+\autoref{fig:clock_multi_256} shows that, additionally attention should be paid
+to the shape of the curve as its the same as in \autoref{fig:core_clk_256}. 
 
 \begin{figure}[ht]
   \centering
@@ -501,27 +509,41 @@ the search.
 
  \end{tikzpicture}%
  \label{fig:clock_multi_256}%
- \caption{Image 256x256 varying the core and mem clock}
+ \caption{Image 256x256 varying the core on two GPUS}
 \end{figure}
 
 % subsubsection multiple_gpus_overclocked (end)
-
-%\fpAdd{\timecpu}{0,0}{1076056}
-%\fpAdd{\timegpu}{0,0}{2734.836}
-
-%\fpDiv{\speedup}{\timegold}{\timecuda}
-
-FINAL SPEEDUP  CPU 
-
 % subsection increasing_the_core_clock (end)
-
-
-
-
-
 % section overclocking_the_gpu (end)
 
 
+\section{Final Speedup} % (fold)
+\label{sec:final_speedup}
+The previous sections showed the how the algorithm compares to the \gls{CPU} over
+different work-sizes. Disregarding the ramp-up phase a single \gls{GPU} achieved
+a speedup of about 160$\times$. Computing with two \glspl{GPU} the resulting 
+speedup was of about 320$\times$. This showed that a suitable algorithm can 
+achieve reasonable speedups compared to traditional \glspl{CPU}.
+
+Additionally the scalability over the work-sizes, an additional \glspl{GPU} and
+frequency were analyzed and depicted. The result is clear, the algorithm scales
+linearly over all three before mentioned parameters. 
+
+The speedup for an image of 2688$\times$2688 pixel segmented by one
+overclocked \gls{GPU} is 
+\begin{equation}\label{eq:final_speedup_single}
+ S_{single}(n) = \frac{T_{CPU}}{T_{GPU}} = \frac{1076056 ms}{5465,28 ms} = 196,89
+\end{equation}
+and the final speedup by two overclocked \glspl{GPU} is
+\begin{equation}\label{eq:final_speedup_multi}
+ S_{multi}(n) = \frac{T_{CPU}}{T_{GPU}} = \frac{1076056 ms}{2736,14 ms} = 393,27
+\end{equation}
+
+That's an impressive number about 400$\times$ faster than the \gls{CPU} version. 
+Of course on has to take into account that the used algorithm is highly suitable
+for the \gls{GPU}. Nevertheless this chapter showed to which extent algorithms 
+can be accelerated on the \gls{GPU}.
+% section final_speedup (end)
 % chapter performance_and_scalability_ (end)
 
 
