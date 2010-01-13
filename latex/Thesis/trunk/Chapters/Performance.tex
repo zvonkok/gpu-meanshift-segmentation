@@ -98,8 +98,8 @@ exposes linear complexity $O(n)$ and it is interesting to see how the
 implemented algorithm behaves in terms of linearity. An algorithm is linear when
 the two metrics for measuring the performance here the image size and the
 run-time are proportional. The image size is proportional to the run-time if 
-the increase {\color{red}{TODO wenn die differenz gleich ansteigt und siehe wikipedia}}
-ratio of the two variables is constant.
+they have a constant ratio. If one variable increases by an factor $x$ than the
+proportional variable increases by that factor too.
 \begin{figure}[ht]
   \centering
 	
@@ -137,12 +137,12 @@ ratio of the two variables is constant.
 	\label{fig:linearity}
  \end{figure}
 
-The \autoref{fig:linearity} shows the normalized size per time ratios. As it can
-be seen the ratio for the \gls{CPU} and the \gls{GPU} is increasing
-similar to the speedup because of the before mentioned ramp-up phase until it
-reaches 1 as in the case of the \gls{CPU} ratio. If the image size is doubled
-the run-time is doubled (image size $\propto$ run-time) which means the
-algorithm scales linearly. {\color{red}{TODO paragraph ueberpruefen}}
+The \autoref{fig:linearity} shows the normalized image size per time ratios in
+the interval $[0,1]$. As it can be seen the ratio for the \gls{CPU} and the
+\gls{GPU} are increasing similar to the speedup because of the before mentioned
+ramp-up phase. The ratio increases until it reaches the right endpoint of the
+interval. If the image size is doubled the run-time is doubled (image size
+$\propto$ run-time) which means the algorithm scales linearly.
 % subsubsection linearity (end)
 % section varying_the_image_size (end)
 
@@ -361,7 +361,7 @@ and the resulting real frequency in hardware.
 The test was performed with three different image sizes: 256$\times$256 pixel, 
 1024$\times$1024 pixel and 2048$\times$2048 pixel. The \autoref{fig:core_clk_256}
 shows the run-time dependent on the core clock. Additionally the normalized
-ratio clock/time is depicted as well. 
+ratio \textbf{clock/time} is depicted as well. 
 
 \begin{figure}[ht]
   \centering
@@ -427,8 +427,15 @@ ratio clock/time is depicted as well.
  \caption{Image 256x256 varying the core and mem clock}
 \end{figure}
 
-scales as well over the frequency is computational bound. restructuring
-could help
+It's visible that the run-time is decreasing proportionally with the increase 
+of the core-clock. This means that the algorithm is heavily computational bound.
+The run-time is determined in this implementation solely by the speed of the
+\gls{GPU}. One way to get over this barrier is to (1) minimize the instructions
+executed by the \gls{GPU} by restructuring the code or (2) adopting a another
+algorithm for finding feature point that fall into the search window, see 
+\autoref{cha:future_work} for enhancements that could be made to accelerate
+the search. 
+
 
 \subsubsection{Multiple gpus overclocked} % (fold)
 \label{ssub:multiple_gpus_overclocked}
