@@ -137,23 +137,6 @@
 
 
 
-% ******************************************************************************
-% Math Package
-% ******************************************************************************
-%\RequirePackage{MnSymbol}
-%\RequirePackage[fraktur,mdugm]{mathdesign}
-%\RequirePackage[bitstream-charter]{mathdesign}
-%\RequirePackage[euler-digits]{eulervm} % Euler math fonts
-
-\RequirePackage[
-	minionint, openg,%
-	loosequotes,
-	footnotefigures, 
-	%mathosf, 
-	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
-	
-%\RequirePackage[osf,sc]{mathpazo} % Palatino with smallcaps and osf
-
 
 % ******************************************************************************
 % Commands
@@ -179,16 +162,24 @@
 % that it cannot fill properly. 
 \raggedbottom
 
+% ******************************************************************************
+% MinionPro
+% ******************************************************************************
+\RequirePackage[
+	minionint, openg,%
+	loosequotes,
+	footnotefigures, 
+	%mathosf, 
+	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
+
 
 % ******************************************************************************
 % XeTeX
 % ******************************************************************************
 \RequirePackage[MnSymbol]{mathspec}
-\RequirePackage[toc,eqno,enum,bib,lineno]{tabfigures}
 %\RequirePackage[cm-default, no-math]{fontspec}
 \RequirePackage{xunicode}
 \RequirePackage{xltxtra}
-%\RequirePackage{polyglossia}
 
 
 \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
@@ -222,6 +213,14 @@
 % ******************************************************************************
 \RequirePackage{polyglossia}
 \setdefaultlanguage[variant=british]{english}
+
+% ******************************************************************************
+% tabfigures for minionpro
+% ******************************************************************************
+\RequirePackage[toc,enum,bib,eqno,lineno,debug]{tabfigures}
+\newfontfamily\tabularfigures%
+								 [Numbers={OldStyle,Monospaced},Scale=MatchLowercase]{\mainfont}
+\renewcommand*\Tf@font{\tabularfigures}
 
 
 % ******************************************************************************
@@ -298,6 +297,7 @@
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
+%\renewcommand{\algorithmautorefname}{Algorithm}%
 
 % ******************************************************************************                
 % Listings
@@ -355,8 +355,8 @@
 % ******************************************************************************
 % algorithm2e
 % ******************************************************************************
-\RequirePackage[algochapter, algo2e, boxed]{algorithm2e}
-\SetAlgorithmName{Algorithm}{Algorithm}
+\RequirePackage[algochapter, algo2e]{algorithm2e}
+\SetAlgorithmName{algorithm}{Algorithm}{List of Algorithms}
 
 % In Fact caption is printed as follow :
 % \AlCapSty{\AlCapFnt Algorithm 1:} \AlCapNameSty{\AlCapNameFnt my algorithm}
@@ -420,10 +420,9 @@
 \RequirePackage[automark]{scrpage2} % provides headers and footers (KOMA Script)
 
 % Reset all headerstuff
-\clearscrheadings
-\clearscrheadfoot
-\setheadsepline{0pt}
-\setfootsepline{0pt}
+\clearscrheadings\clearscrheadfoot
+\setheadsepline{0pt}\setfootsepline{0pt}
+
 
 % Remove the numbers from chapter and section mark
 \renewcommand{\chaptermark}[1]{\markboth{\slcsmallcaps{#1}}{\slcsmallcaps{#1}}}
@@ -433,14 +432,6 @@
 \rehead{\slcsmallcaps{\color{seccolor}\small\headmark}} 	
 \lohead{\slcsmallcaps{\color{seccolor}\small\headmark}}
 \rohead{\slcsmallcaps{\color{seccolor}\small\thepage}} 	
-
-
-
-
-% ******************************************************************************                
-% Tables
-% ******************************************************************************  
-%\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\slcsmallcaps{#1}}}
 
 
 % ******************************************************************************
@@ -487,12 +478,17 @@
 % descriptionlabels
 \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}\slcsmallcaps{#1}}%   
 
-% spacing
-% \titlespacing*{⟨command⟩}{⟨left⟩}{⟨beforesep⟩}{⟨aftersep⟩}[⟨right⟩]
+% ******************************************************************************                
+% spacing  \titlespacing*{⟨command⟩}{⟨left⟩}{⟨beforesep⟩}{⟨aftersep⟩}[⟨right⟩] 
+% ******************************************************************************
+
 \titlespacing*{\chapter}{0pt}{0pt}{1.25\baselineskip}
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} 
 \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
 \titlespacing*{\paragraph}{0pt}{\baselineskip}{\baselineskip}
+
+
+
 
 % ********************************************************************                
 % layout of the TOC, LOF and LOT (LOL-workaround see next section)
@@ -511,9 +507,6 @@
 % parts
 \renewcommand{\thepart}{\roman{part}}%
 \renewcommand{\cftpartpresnum}{\slcsmallcaps}% 
-%\renewcommand{\cftpartaftersnum}{\cftchapaftersnum}%
-%\renewcommand{\cftpartaftersnumb}{\quad}%
-%\setlength{\cftpartnumwidth}{\cftpartnumwidth}
 \renewcommand{\cftpartfont}{\color{seccolor}\normalfont}%
 \renewcommand{\cftpartpagefont}{\normalfont}%
 \ifthenelse{\boolean{@dottedtoc}}{\relax}%
@@ -632,11 +625,6 @@
       }%
 }
 
-% ******************************************************************************
-% Enumeration small caps
-% ******************************************************************************
-\newenvironment{aenumerate}%
-	{\def\theenumi{\textsc{\alph{enumi}}}\enumerate}{\endenumerate}
 
 % ******************************************************************************
 % Footnotes setup   
