@@ -1,30 +1,62 @@
 \chapter{Optimization Strategies}
 \label{ch:optimization}
 
+The following chapter will present optimization strategies which were used to
+accelerate the mean shift image segmentation. The presented strategies are not
+only valid for \gls{CUDA}, they can be applied to many parallel machines which
+are build after the shared memory or \gls{SPMD} model. The chapter is divided in
+several sections. Each section will present an optimization. The are major and
+minor optimization that are examined where mostly major optimization give higher
+speedup whereas minor optimization give lower speedup. 
+
+Many of the optimization are hardware centric, which means that one has to have
+a good knowledge about the architecture to understand which steps can be
+undertaken to accelerate the algorithm and which where even possible. Each
+section will cover the architectural specialty which led to perform the specific
+optimization. The first optimization of the next section is a general rule when
+trying to accelerate an algorithm, offload compute intensive parts. The succeeding
+sections respectively optimizations are in chronological order and where applied
+in that order, identifiable by the ever increasing speedups. 
+
+
+\section{Offload Compute Intensive Parts}
+\label{sec:offload_intensive}
 \fpAdd{\timegold}{0,0}{11310}
 \fpAdd{\timecuda}{0,0}{1942}
 \fpDiv{\speedup}{11310}{1942}
 
-The following chapter will present optimization strategies which were used to
-accelerate the mean shift image segmentation. The presented strategies are not 
-only valid for CUDA, they can be applied to many parallel machines which are 
-build after the shared memory or \gls{SPMD} model.
+As shown in \autoref{ch:algorithm_analysis} {\color{red} DESIGN IMPLEMNtAtION..}
+the most compute intensive part of the mean shift segmentation is the filtering
+step. bla bla blbub.. mal sehen was vorne noch steht 98\%. In this case the most
+compute intensive part is 98.2\% of the complete run-time and hence a valuable
+part to offload. All other parts have no significant part of the run-time but
+when optimizing it can happen that these other part grow in terms of run-time
+and the before most compute intensive part with a very high percentage drops to
+a low percentage and hence the percentages of all other parts increase and
+become very compute intensive. 
 
-\section{Offload Compute Intensive Parts}
-\label{sec:offload_intensive}
+In other cases the run-time is often distributed among several parts and in this
+case it should be tried to offload as much as possible of the computational parts
+to an accelerator as the \gls{GPU}. In the first place the focus will be on the
+filter part that is executing in total 99.1\% of the run-time.
 
-As shown in \autoref{ch:algorithm_analysis} the most compute intensive part
-of the mean shift segmentation is the filtering step. 
+For the following considerations about speedup the \autoref{eq:speedup} will be
+used to calculate the speedup. 
 
-The first naive implementation of the mean shift filter in CUDA resulted in a
-speedup of
+In {\color{red} bezug zu design implementierun} it was shown how to design and
+to implement the algorithm to offload the important parts to the \gls{GPU} and
+the first naive implementation of the mean shift filter in \gls{CUDA} resulted
+in a speedup of
+
 \begin{equation*}\label{eq:speedup0}
-	S = \timegold\ ms/\timecuda\ ms= \speedup
+	S = \frac{T_{CPU}}{T_{GPU}} = %
+	\frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
-times faster than the \gls{CPU} version. The reference time was
-generated from
+
+times faster than the \gls{CPU} version. The reference time was generated from
 \href{http://www.caip.rutgers.edu/riul/research/code.html}{ \gls{EDISON}}. It
-reports timings for filtering segmentation. The naive implementation was 
+reports timings for filtering and segmentation.
+ The naive implementation was 
 
 \section*{Optimize Access to Global Memory}
 \label{sec:coalescing}
@@ -221,6 +253,15 @@ After implementing a $luvtorgb$ kernel the speedup is
 
 
 
+After a lot of optimization the most computational task became really small. Now
+small function which where a tiny fraction of the complete run time became 
+significant. 
+After a lot of optimization the most computational task became really small. Now
+small function which where a tiny fraction of the complete run time became 
+significant. 
+After a lot of optimization the most computational task became really small. Now
+small function which where a tiny fraction of the complete run time became 
+significant. 
 
 
 
