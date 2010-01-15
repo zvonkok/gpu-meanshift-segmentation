@@ -166,9 +166,10 @@
 % MinionPro
 % ******************************************************************************
 \RequirePackage[
-	minionint, openg,%
+	minionint, 
+	openg,%
 	loosequotes,
-	footnotefigures, 
+%	footnotefigures, nichts geändert...
 	%mathosf, 
 	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
 
@@ -183,23 +184,17 @@
 
 
 \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
-%\newcommand{\mainfont}{Charter OS ITC TT}
-%\newcommand{\scfont}{Charter SC ITC TT}
-%\newcommand{\mainfont}{LeMonde Livre OsF}
-%\newcommand{\scfont}{LeMonde Livre SC}
 \newcommand{\mainfont}{Minion Pro}
 \newcommand{\scfont}{Minion Pro}
 
-%\setdefaultlanguage{UKenglish} % polyglossia
-
 %mathosf \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} 
-\setmathsfont(Digits)[Numbers={Lining,Monospaced}]{\mainfont} % Set 
+\setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} % Set 
 \setmathrm{\mainfont}
 
-
-
 \setmainfont{\mainfont}
-\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
+%\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
+%better match sans to serif than Candara.. Candara better for font used in mathspec.pdf...
+\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Syntax LT Std} 
 \setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
 
 \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
@@ -237,8 +232,6 @@
 % ******************************************************************************
 % Typesetting... typeares
 % ******************************************************************************
-
-%\areaset[0mm]{360pt}{576pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
 %\RequirePackage[colorgrid, draft]{showframe}
 
 \RequirePackage[twoside, includeheadfoot]{geometry}
@@ -308,7 +301,6 @@
 	basicstyle=\footnotesize\ttfamily,
 	keywordstyle={},
   commentstyle=\color{seccolor}\itshape,
-%	commentstyle=\itshape,
 	numbers=left,
 	numberstyle=\footnotesize,
 	keepspaces=true,
@@ -342,21 +334,16 @@
 				
 				
 \captionsetup[lstlisting]{skip=10pt}
-\captionsetup[subtable]{labelsep=quad}
-\captionsetup[subfigure]{labelsep=quad}
+\captionsetup[subtable]{labelsep=quad, labelfont={textcolor, sc}}
+\captionsetup[subfigure]{labelsep=quad, labelfont={textcolor, sc}} 
 \captionsetup[subfigureautorefname]{labelsep=quad}
-
-%\renewcommand{\captionfont}{\small\color{textcolor}}
-%\renewcommand{\captionlabelfont}{\scshape\color{seccolor}}
-%\setlength{\intextsep}{14.5pt}
-%\setlength{\intextsep}{10pt plus 4pt minus 4pt}
-
 
 % ******************************************************************************
 % algorithm2e
 % ******************************************************************************
 \RequirePackage[algochapter, algo2e]{algorithm2e}
 \SetAlgorithmName{algorithm}{Algorithm}{List of Algorithms}
+
 
 % In Fact caption is printed as follow :
 % \AlCapSty{\AlCapFnt Algorithm 1:} \AlCapNameSty{\AlCapNameFnt my algorithm}
@@ -365,10 +352,11 @@
 \renewcommand{\AlCapNameSty}{\captionfont}% 
 
 \SetAlCapSkip{\baselineskip}%
-%\SetAlgoSkip{medskip}
 % space before box & after box
 \renewcommand{\@algoskip}{\vspace{\baselineskip}}%\SetAlgoSkip{bigskip}%
-%\setlength{\algomargin}{2em}% margin in the box
+\setlength{\algomargin}{0em} % margin in the box
+\newcommand{\kwsty}{\color{plot0}}
+\SetKwSty{kwsty}
 
 % ******************************************************************************
 % paralist  (Allow for smarter labeling of enumerations)
@@ -486,8 +474,6 @@
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} 
 \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
 \titlespacing*{\paragraph}{0pt}{\baselineskip}{\baselineskip}
-
-
 
 
 % ********************************************************************                

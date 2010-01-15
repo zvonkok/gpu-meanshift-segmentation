@@ -247,10 +247,10 @@ cudaMemcpy(d_idata, h_idata, mem_size, cudaMemcpyHostToDevice);
 
 
 After setting up the input data the setup execution parameters are defined that
-are used to startup the kernel. The \textit{grid(1, 1, 1)} statement defines
-a multi-dimensional array of grids \textit{x=1, y=1, z=1} whereas the
-\textit{threads(num\_threads, 1, 1)} defines a multi-dimensional array of
-threads \textit{x=num\_threads, y=1, z=1} which are actually \gls{1D} arrays.
+are used to startup the kernel. The \textsf{grid(1, 1, 1)} statement defines
+a multi-dimensional array of grids $x=1, y=1, z=1$ whereas the
+\textsf{threads(num\_threads, 1, 1)} defines a multi-dimensional array of
+threads $x=num\_threads, y=1, z=1$ which are actually \gls{1D} arrays.
 \autoref{lst:execution} shows the call of the kernel with its input and
 output data.
 
@@ -291,7 +291,7 @@ looked up in \citep{citeulike:3325943}.
 
 For data there are as well qualifiers where one can specify where the data is
 located, either in constant, global or shared memory. In \autoref{lst:device}
-the \textit{\_\_shared\_\_} qualifier is used. The device will use the shared
+the \textsf{\_\_shared\_\_} qualifier is used. The device will use the shared
 memory to preload the data for faster access.
 
 \begin{lstlisting}[caption=CUDA device code, label=lst:device]
