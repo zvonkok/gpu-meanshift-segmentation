@@ -28,17 +28,9 @@
 		<dict/>
 		<dict/>
 		<dict/>
-		<dict/>
-		<dict/>
-		<dict/>
-		<dict/>
-		<dict/>
-		<dict/>
-		<dict/>
 	</array>
 	<key>ImageList</key>
 	<array>
-		<string>image57.pdf</string>
 		<string>image29.jpg</string>
 		<string>image28.jpg</string>
 		<string>image27.jpg</string>
@@ -46,12 +38,6 @@
 		<string>image24.jpg</string>
 		<string>image23.jpg</string>
 		<string>image22.jpg</string>
-		<string>image21.pdf</string>
-		<string>image20.pdf</string>
-		<string>image19.pdf</string>
-		<string>image17.pdf</string>
-		<string>image16.pdf</string>
-		<string>image15.pdf</string>
 	</array>
 	<key>LinksVisible</key>
 	<string>NO</string>
@@ -60,7 +46,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2009-11-05 22:04:17 +0100</string>
+	<string>2010-01-16 23:49:24 +0100</string>
 	<key>Modifier</key>
 	<string>Zvonko Krnjajic</string>
 	<key>NotesVisible</key>
@@ -147,6 +133,8 @@
 					<integer>15</integer>
 					<key>ImageID</key>
 					<integer>26</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -172,6 +160,8 @@
 					<integer>13</integer>
 					<key>ImageID</key>
 					<integer>24</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -197,6 +187,8 @@
 					<integer>12</integer>
 					<key>ImageID</key>
 					<integer>23</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -222,6 +214,8 @@
 					<integer>11</integer>
 					<key>ImageID</key>
 					<integer>22</integer>
+					<key>Layer</key>
+					<integer>1</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -249,7 +243,17 @@
 			<array>
 				<dict>
 					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>Ebene 1</string>
+					<key>Print</key>
+					<string>NO</string>
+					<key>View</key>
 					<string>YES</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
 					<key>Name</key>
 					<string>source</string>
 					<key>Print</key>
@@ -464,281 +468,6 @@
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {559.2, 782.8}}</string>
-				<key>Class</key>
-				<string>SolidGraphic</string>
-				<key>ID</key>
-				<integer>2</integer>
-				<key>Style</key>
-				<dict>
-					<key>fill</key>
-					<dict>
-						<key>GradientColor</key>
-						<dict>
-							<key>w</key>
-							<string>0.666667</string>
-						</dict>
-					</dict>
-					<key>shadow</key>
-					<dict>
-						<key>Draws</key>
-						<string>NO</string>
-					</dict>
-					<key>stroke</key>
-					<dict>
-						<key>Draws</key>
-						<string>NO</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>CanvasOrigin</key>
-			<string>{0, 0}</string>
-			<key>ColumnAlign</key>
-			<integer>1</integer>
-			<key>ColumnSpacing</key>
-			<real>36</real>
-			<key>DisplayScale</key>
-			<string>1 0/72 in = 1.0000 in</string>
-			<key>GraphicsList</key>
-			<array>
-				<dict>
-					<key>Bounds</key>
-					<string>{{194, 168}, {146, 117}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>ID</key>
-					<integer>19</integer>
-					<key>ImageID</key>
-					<integer>16</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{356, 16}, {150, 113}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>ID</key>
-					<integer>18</integer>
-					<key>ImageID</key>
-					<integer>21</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{172, 16}, {150, 113}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>ID</key>
-					<integer>17</integer>
-					<key>ImageID</key>
-					<integer>20</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{17, 26}, {155, 113}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>ID</key>
-					<integer>16</integer>
-					<key>ImageID</key>
-					<integer>19</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{30, 168}, {148, 116}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>ID</key>
-					<integer>12</integer>
-					<key>ImageID</key>
-					<integer>15</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-				<dict>
-					<key>Bounds</key>
-					<string>{{356, 150}, {151, 119}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>ID</key>
-					<integer>14</integer>
-					<key>ImageID</key>
-					<integer>17</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-			</array>
-			<key>GridInfo</key>
-			<dict/>
-			<key>HPages</key>
-			<integer>1</integer>
-			<key>KeepToScale</key>
-			<false/>
-			<key>Layers</key>
-			<array>
-				<dict>
-					<key>Lock</key>
-					<string>NO</string>
-					<key>Name</key>
-					<string>Ebene 1</string>
-					<key>Print</key>
-					<string>YES</string>
-					<key>View</key>
-					<string>YES</string>
-				</dict>
-			</array>
-			<key>LayoutInfo</key>
-			<dict>
-				<key>Animate</key>
-				<string>NO</string>
-				<key>circoMinDist</key>
-				<real>18</real>
-				<key>circoSeparation</key>
-				<real>0.0</real>
-				<key>layoutEngine</key>
-				<string>dot</string>
-				<key>neatoSeparation</key>
-				<real>0.0</real>
-				<key>twopiSeparation</key>
-				<real>0.0</real>
-			</dict>
-			<key>Orientation</key>
-			<integer>2</integer>
-			<key>PrintOnePage</key>
-			<false/>
-			<key>RowAlign</key>
-			<integer>1</integer>
-			<key>RowSpacing</key>
-			<real>36</real>
-			<key>SheetTitle</key>
-			<string>Kernel</string>
-			<key>UniqueID</key>
-			<integer>2</integer>
-			<key>VPages</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>ActiveLayerIndex</key>
-			<integer>0</integer>
-			<key>AutoAdjust</key>
-			<true/>
-			<key>BackgroundGraphic</key>
-			<dict>
-				<key>Bounds</key>
 				<string>{{0, 0}, {1565.6, 559.2}}</string>
 				<key>Class</key>
 				<string>SolidGraphic</string>
@@ -802,7 +531,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -830,7 +559,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -858,7 +587,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -886,7 +615,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -914,7 +643,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -942,7 +671,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -970,7 +699,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -998,7 +727,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1026,7 +755,7 @@
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1055,7 +784,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1092,7 +821,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1120,7 +849,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1148,7 +877,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1176,7 +905,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1204,7 +933,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1232,7 +961,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1260,7 +989,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1288,7 +1017,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1316,7 +1045,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1345,7 +1074,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1382,7 +1111,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1410,7 +1139,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1442,7 +1171,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1484,7 +1213,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1512,7 +1241,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1540,7 +1269,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1568,7 +1297,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1596,7 +1325,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1624,7 +1353,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1652,7 +1381,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1680,7 +1409,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1708,7 +1437,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1737,7 +1466,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1774,7 +1503,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1802,7 +1531,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1830,7 +1559,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1858,7 +1587,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1886,7 +1615,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1914,7 +1643,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1942,7 +1671,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1970,7 +1699,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -1998,7 +1727,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2027,7 +1756,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2064,7 +1793,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2092,7 +1821,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2124,7 +1853,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2166,7 +1895,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2194,7 +1923,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2222,7 +1951,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2250,7 +1979,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2278,7 +2007,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2306,7 +2035,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2334,7 +2063,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2362,7 +2091,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2390,7 +2119,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2419,7 +2148,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2456,7 +2185,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2484,7 +2213,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2512,7 +2241,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2540,7 +2269,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2568,7 +2297,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2596,7 +2325,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2624,7 +2353,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2652,7 +2381,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2680,7 +2409,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2709,7 +2438,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2746,7 +2475,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2774,7 +2503,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2806,7 +2535,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2848,7 +2577,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2876,7 +2605,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2904,7 +2633,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2932,7 +2661,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2960,7 +2689,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -2988,7 +2717,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3016,7 +2745,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3044,7 +2773,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3072,7 +2801,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3101,7 +2830,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3138,7 +2867,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3166,7 +2895,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3194,7 +2923,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3222,7 +2951,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3250,7 +2979,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3278,7 +3007,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3306,7 +3035,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3334,7 +3063,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3362,7 +3091,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3391,7 +3120,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3428,7 +3157,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3456,7 +3185,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3488,7 +3217,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3530,7 +3259,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3558,7 +3287,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3586,7 +3315,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3614,7 +3343,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3642,7 +3371,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3670,7 +3399,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3698,7 +3427,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3726,7 +3455,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3754,7 +3483,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3783,7 +3512,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3820,7 +3549,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3848,7 +3577,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3876,7 +3605,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3904,7 +3633,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3932,7 +3661,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3960,7 +3689,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -3988,7 +3717,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4016,7 +3745,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4044,7 +3773,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4073,7 +3802,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4110,7 +3839,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4138,7 +3867,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4170,7 +3899,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4212,7 +3941,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4240,7 +3969,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4268,7 +3997,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4296,7 +4025,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4324,7 +4053,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4352,7 +4081,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4380,7 +4109,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4408,7 +4137,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4436,7 +4165,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4465,7 +4194,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4502,7 +4231,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4530,7 +4259,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4558,7 +4287,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4586,7 +4315,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4614,7 +4343,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4642,7 +4371,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4670,7 +4399,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4698,7 +4427,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4726,7 +4455,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4755,7 +4484,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4792,7 +4521,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4820,7 +4549,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4852,7 +4581,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4960,7 +4689,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -4988,7 +4717,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5016,7 +4745,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5044,7 +4773,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5072,7 +4801,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5100,7 +4829,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5128,7 +4857,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5156,7 +4885,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5184,7 +4913,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5213,7 +4942,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5250,7 +4979,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5278,7 +5007,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5306,7 +5035,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5334,7 +5063,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5362,7 +5091,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5390,7 +5119,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5418,7 +5147,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5446,7 +5175,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5474,7 +5203,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5503,7 +5232,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5540,7 +5269,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5568,7 +5297,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5600,7 +5329,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5642,7 +5371,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5670,7 +5399,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5698,7 +5427,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5726,7 +5455,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5754,7 +5483,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5782,7 +5511,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5810,7 +5539,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5838,7 +5567,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5866,7 +5595,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5895,7 +5624,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5932,7 +5661,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5960,7 +5689,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -5988,7 +5717,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6016,7 +5745,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6044,7 +5773,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6072,7 +5801,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6100,7 +5829,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6128,7 +5857,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6156,7 +5885,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6185,7 +5914,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6222,7 +5951,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6250,7 +5979,7 @@ Memory}</string>
 										<key>Pad</key>
 										<integer>0</integer>
 										<key>Text</key>
-										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6282,7 +6011,7 @@ Memory}</string>
 								<key>Pad</key>
 								<integer>0</integer>
 								<key>Text</key>
-								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6602,7 +6331,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6635,7 +6364,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6670,7 +6399,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6779,7 +6508,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6812,7 +6541,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6847,7 +6576,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6956,7 +6685,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -6989,7 +6718,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7024,7 +6753,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7133,7 +6862,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7166,7 +6895,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7201,7 +6930,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7310,7 +7039,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7343,7 +7072,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7378,7 +7107,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7487,7 +7216,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7520,7 +7249,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7555,7 +7284,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7619,7 +7348,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7652,7 +7381,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7685,7 +7414,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7718,7 +7447,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Capt;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7751,7 +7480,7 @@ Memory}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7786,7 +7515,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7821,7 +7550,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7856,7 +7585,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7891,7 +7620,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7926,7 +7655,7 @@ Memory}</string>
 						<key>Pad</key>
 						<integer>0</integer>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
 {\fonttbl\f0\fnil\fcharset0 MinionPro-Regular;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
@@ -7988,131 +7717,6 @@ Memory}</string>
 			<key>VPages</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>ActiveLayerIndex</key>
-			<integer>0</integer>
-			<key>AutoAdjust</key>
-			<true/>
-			<key>BackgroundGraphic</key>
-			<dict>
-				<key>Bounds</key>
-				<string>{{0, 0}, {782.8, 559.2}}</string>
-				<key>Class</key>
-				<string>SolidGraphic</string>
-				<key>ID</key>
-				<integer>2</integer>
-				<key>Style</key>
-				<dict>
-					<key>fill</key>
-					<dict>
-						<key>GradientColor</key>
-						<dict>
-							<key>w</key>
-							<string>0.666667</string>
-						</dict>
-					</dict>
-					<key>shadow</key>
-					<dict>
-						<key>Draws</key>
-						<string>NO</string>
-					</dict>
-					<key>stroke</key>
-					<dict>
-						<key>Draws</key>
-						<string>NO</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>CanvasOrigin</key>
-			<string>{0, 0}</string>
-			<key>ColumnAlign</key>
-			<integer>1</integer>
-			<key>ColumnSpacing</key>
-			<real>36</real>
-			<key>DisplayScale</key>
-			<string>1 0/72 in = 1.0000 in</string>
-			<key>GraphicsList</key>
-			<array>
-				<dict>
-					<key>Bounds</key>
-					<string>{{45, 49}, {603, 264}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>ID</key>
-					<integer>32</integer>
-					<key>ImageID</key>
-					<integer>57</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-			</array>
-			<key>GridInfo</key>
-			<dict/>
-			<key>HPages</key>
-			<integer>1</integer>
-			<key>KeepToScale</key>
-			<false/>
-			<key>Layers</key>
-			<array>
-				<dict>
-					<key>Lock</key>
-					<string>NO</string>
-					<key>Name</key>
-					<string>Ebene 1</string>
-					<key>Print</key>
-					<string>YES</string>
-					<key>View</key>
-					<string>YES</string>
-				</dict>
-			</array>
-			<key>LayoutInfo</key>
-			<dict>
-				<key>Animate</key>
-				<string>NO</string>
-				<key>circoMinDist</key>
-				<real>18</real>
-				<key>circoSeparation</key>
-				<real>0.0</real>
-				<key>layoutEngine</key>
-				<string>dot</string>
-				<key>neatoSeparation</key>
-				<real>0.0</real>
-				<key>twopiSeparation</key>
-				<real>0.0</real>
-			</dict>
-			<key>Orientation</key>
-			<integer>1</integer>
-			<key>PrintOnePage</key>
-			<false/>
-			<key>RowAlign</key>
-			<integer>1</integer>
-			<key>RowSpacing</key>
-			<real>36</real>
-			<key>SheetTitle</key>
-			<string>Diagramme</string>
-			<key>UniqueID</key>
-			<integer>5</integer>
-			<key>VPages</key>
-			<integer>1</integer>
-		</dict>
 	</array>
 	<key>SmartAlignmentGuidesActive</key>
 	<string>YES</string>
@@ -8123,7 +7727,7 @@ Memory}</string>
 	<key>WindowInfo</key>
 	<dict>
 		<key>CurrentSheet</key>
-		<integer>4</integer>
+		<integer>0</integer>
 		<key>ExpandedCanvases</key>
 		<array>
 			<dict>
@@ -8140,7 +7744,7 @@ Memory}</string>
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{207, 50}, {1315, 978}}</string>
+		<string>{{355, 141}, {1107, 976}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -8154,7 +7758,7 @@ Memory}</string>
 		<key>SidebarWidth</key>
 		<integer>143</integer>
 		<key>VisibleRegion</key>
-		<string>{{-116, -132}, {1014, 824}}</string>
+		<string>{{0, -12}, {806, 807}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>
@@ -8165,22 +7769,12 @@ Memory}</string>
 				<real>1</real>
 			</array>
 			<array>
-				<string>Kernel</string>
-				<real>1</real>
-				<real>1</real>
-			</array>
-			<array>
 				<string>CUDA</string>
 				<real>1</real>
 				<real>1.5</real>
 			</array>
 			<array>
 				<string>Limitcycle</string>
-				<real>1</real>
-				<real>1</real>
-			</array>
-			<array>
-				<string>Diagramme</string>
 				<real>1</real>
 				<real>1</real>
 			</array>
