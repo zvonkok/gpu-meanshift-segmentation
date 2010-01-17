@@ -39,8 +39,8 @@ smaller than 20 pixel).
 \section{Offload Compute Intensive Parts}
 \label{sec:offload_intensive}
 \fpAdd{\timegold}{0,0}{9616,77}
-\fpAdd{\timecuda}{0,0}{1942}
-\fpDiv{\speedup}{11310}{1942}
+\fpAdd{\timecuda}{0,0}{1932}
+\fpDiv{\speedup}{\timegold}{\timecuda}
 
 As shown in \autoref{ch:algorithm_analysis} {\color{red} DESIGN IMPLEMNtAtION..}
 the most compute intensive part of the mean shift segmentation is the filtering
@@ -91,7 +91,7 @@ One important fact for coalescing is the sequential accesses to global memory
 should be grouped together. A simple optimization is to use the \emph{float4}
 data type available in \gls{CUDA}. After rewriting the algorithm the new speedup
 was 
-\fpAdd{\timecuda}{0,0}{1464}
+\fpAdd{\timecuda}{0,0}{1454}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup1}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
@@ -101,7 +101,7 @@ basin of attraction, random access to global memory, not knowing where each pixe
 is moving to. Switching to \emph{textures} (glossary texturess) yield to a huge
 speedup of 
 
-\fpAdd{\timecuda}{0,0}{260}
+\fpAdd{\timecuda}{0,0}{250}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup2}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
@@ -148,7 +148,7 @@ With this technique the kernel code is free of divisions except only one that
 cannot be eliminated since the value is changing throughout the calculations.
 This optimization yielded a speedup of
 
-\fpAdd{\timecuda}{0,0}{203}
+\fpAdd{\timecuda}{0,0}{193}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup3}
 	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
@@ -166,9 +166,9 @@ the application to use threads and blocks so that the hardware can balance the
 work across the multiprocessors. 
 
 After testing all configurations the 
-best fit was a $8x32=256 threads$ configuration.
+best fit was a $2x64=256 threads$ configuration.
 
-\fpAdd{\timecuda}{0,0}{181}
+\fpAdd{\timecuda}{0,0}{171}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup4}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
@@ -185,7 +185,7 @@ mathematical functions. One should use the $float$ data type where ever
 possible. The \glspl{GPU} are highly optimized for floating point calculations.
 After converting all integer calculations to floating point operations another
 speedup was achieved.
-\fpAdd{\timecuda}{0,0}{175}
+\fpAdd{\timecuda}{0,0}{165}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup5}
 	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
@@ -204,7 +204,7 @@ to calculate values rather then generating them through $if$ and $else$ statemen
 The remaining $if$ and $else$ statements where arranged in such a way so that a 
 thread is exiting early from the loop and avoiding uneccesary calculations. This leads
 of course to higher branch divergence but the execution time is lower. 
-\fpAdd{\timecuda}{0,0}{125}
+\fpAdd{\timecuda}{0,0}{115}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup6}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
@@ -338,29 +338,11 @@ Implementing a simple period-8 limit cycle detection yields to a speedup of
 \label{sec:unrolling_loops_and_multiplications}
 
 After unrolling the multiplications 
-\fpAdd{\timecuda}{0,0}{83}
+\fpAdd{\timecuda}{0,0}{73}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup11}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
 \end{equation*}
-
-\section{Extra luv to rgb Kernel}
-
-After a lot of optimization the most computational task became really small. Now
-small function which where a tiny fraction of the complete run time became 
-significant. 
-After implementing a $luvtorgb$ kernel the speedup is 
-\fpAdd{\timecuda}{0,0}{75}
-\fpDiv{\speedup}{\timegold}{\timecuda}
-\begin{equation*}\label{eq:speedup12}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
-\end{equation*}
-
-
-
-After a lot of optimization the most computational task became really small. Now
-small function which where a tiny fraction of the complete run time became 
-significant. 
 
 
 
