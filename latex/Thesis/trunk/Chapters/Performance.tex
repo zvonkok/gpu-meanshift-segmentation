@@ -529,14 +529,22 @@ Additionally the scalability over the work-sizes, an additional \glspl{GPU} and
 frequency were analyzed and depicted. The result is clear, the algorithm scales
 linearly over all three before mentioned parameters. 
 
+\fpAdd{\timegold}{0,0}{1082570,14}
+\fpAdd{\timecuda}{0,0}{5465,28}
+\fpDiv{\speedup}{\timegold}{\timecuda}
+
 The speedup for an image of 2688$\times$2688 pixel segmented by one
 overclocked \gls{GPU} is 
 \begin{equation}\label{eq:final_speedup_single}
- S_{single}(n) = \frac{T_{CPU}}{T_{GPU}} = \frac{\unit[1076056]{ms}}{\unit[5465.28]{ms}} = 196.89
+ S_{single}(n) = \frac{T_{CPU}}{T_{GPU}} = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation}
+
+\fpAdd{\timecuda}{0,0}{2736,14}
+\fpDiv{\speedup}{\timegold}{\timecuda}
+
 and the final speedup by two overclocked \glspl{GPU} is
 \begin{equation}\label{eq:final_speedup_multi}
- S_{multi}(n) = \frac{T_{CPU}}{T_{GPU}} = \frac{\unit[1076056]{ms}}{\unit[2736.14]{ms}} = 393.27
+ S_{multi}(n) = \frac{T_{CPU}}{T_{GPU}} = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation}
 
 That's an impressive number about 400$\times$ faster than the \gls{CPU} version. 
