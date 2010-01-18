@@ -122,12 +122,12 @@ bigger bandwidth $h$ the density estimation becomes smoother.
         % ymajorgrids
         ]
         
-        \addplot[mark=none] table[x=X,y=Y5] from \tableA;
-        \addplot[mark=none] table[x=X,y=Y1] from \tableA;
-        \addplot[mark=none] table[x=X,y=Y_1] from \tableA;
-        \addplot[mark=none] table[x=X,y=Y_4] from \tableA;
-        \addplot[mark=none] table[x=X,y=Y_5] from \tableA;
-        \addplot[mark=none] table[x=X,y=SUMME] from \tableA;
+        \addplot[color=pl0, mark=none] table[x=X,y=Y5] from \tableA;
+        \addplot[color=pl1, mark=none] table[x=X,y=Y1] from \tableA;
+        \addplot[color=pl2, mark=none] table[x=X,y=Y_1] from \tableA;
+        \addplot[color=pl3, mark=none] table[x=X,y=Y_4] from \tableA;
+        \addplot[color=pl4, mark=none] table[x=X,y=Y_5] from \tableA;
+        \addplot[color=pl5, mark=none] table[x=X,y=SUMME] from \tableA;
         
 
       \end{axis}
@@ -155,12 +155,12 @@ bigger bandwidth $h$ the density estimation becomes smoother.
         % ymajorgrids
         ]
         
-        \addplot[mark=none] table[x=X,y=Y5] from \tableB;
-        \addplot[mark=none] table[x=X,y=Y1] from \tableB;
-        \addplot[mark=none] table[x=X,y=Y_1] from \tableB;
-        \addplot[mark=none] table[x=X,y=Y_4] from \tableB;
-        \addplot[mark=none] table[x=X,y=Y_5] from \tableB;
-        \addplot[mark=none] table[x=X,y=SUMME] from \tableB;
+        \addplot[color=pl0, mark=none] table[x=X,y=Y5] from \tableB;
+        \addplot[color=pl1, mark=none] table[x=X,y=Y1] from \tableB;
+        \addplot[color=pl2, mark=none] table[x=X,y=Y_1] from \tableB;
+        \addplot[color=pl3, mark=none] table[x=X,y=Y_4] from \tableB;
+        \addplot[color=pl4, mark=none] table[x=X,y=Y_5] from \tableB;
+        \addplot[color=pl5, mark=none] table[x=X,y=SUMME] from \tableB;
         
 
       \end{axis}
@@ -188,12 +188,12 @@ bigger bandwidth $h$ the density estimation becomes smoother.
         % ymajorgrids
         ]
         
-        \addplot[mark=none] table[x=X,y=Y5] from \tableC;
-        \addplot[mark=none] table[x=X,y=Y1] from \tableC;
-        \addplot[mark=none] table[x=X,y=Y_1] from \tableC;
-        \addplot[mark=none] table[x=X,y=Y_4] from \tableC;
-        \addplot[mark=none] table[x=X,y=Y_5] from \tableC;
-        \addplot[mark=none] table[x=X,y=SUMME] from \tableC;
+        \addplot[color=pl0, mark=none] table[x=X,y=Y5] from \tableC;
+        \addplot[color=pl1, mark=none] table[x=X,y=Y1] from \tableC;
+        \addplot[color=pl2, mark=none] table[x=X,y=Y_1] from \tableC;
+        \addplot[color=pl3, mark=none] table[x=X,y=Y_4] from \tableC;
+        \addplot[color=pl4, mark=none] table[x=X,y=Y_5] from \tableC;
+        \addplot[color=pl5, mark=none] table[x=X,y=SUMME] from \tableC;
         
 
       \end{axis}
@@ -322,7 +322,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         ]
         
-        \addplot[color=plot0] expression[domain=-1:1] {3/4*(1-x*x)};
+        \addplot[color=pl0] expression[domain=-1:1] {3/4*(1-x*x)};
 
       \end{axis}
     \end{tikzpicture}
@@ -348,7 +348,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         ]
         
-        \addplot[color=plot1] expression[domain=-3:3]
+        \addplot[color=pl0] expression[domain=-3:3]
         {1/sqrt(2*3.14)*exp((-1/2)*x*x)};
 
       \end{axis}
@@ -375,7 +375,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         mark size=0.01pt ]
         
-        \addplot+[const plot,color=plot2] coordinates { (-1,0) (-1,0.5) (1,0.5)
+        \addplot+[const plot,color=pl0] coordinates { (-1,0) (-1,0.5) (1,0.5)
           (1,0) };
       \end{axis}
     \end{tikzpicture}
