@@ -23,17 +23,3 @@
 \BOOKMARK [1][-]{section.3.5}{3.5\040Avoid\040Branch\040Divergence}{chapter.3}% 23
 \BOOKMARK [1][-]{section.3.6}{3.6\040Shared\040Memory}{chapter.3}% 24
 \BOOKMARK [1][-]{section.3.7}{3.7\040Know\040the\040Algorithm}{chapter.3}% 25
-\BOOKMARK [2][-]{figure.caption.9}{Limit\040Cycle,\040Iterating\040Dynamical\040Systems}{section.3.7}% 26
-\BOOKMARK [1][-]{section.3.8}{3.8\040Unrolling\040Loops\040and\040Multiplications}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.9}{3.9\040Extra\040luv\040to\040rgb\040Kernel}{chapter.3}% 28
-\BOOKMARK [0][]{chapter.4}{4\040Performance\040&\040Scalability}{}% 29
-\BOOKMARK [1][-]{section.4.1}{4.1\040Varying\040the\040Image\040Size}{chapter.4}% 30
-\BOOKMARK [2][-]{figure.caption.10}{Linearity}{section.4.1}% 31
-\BOOKMARK [1][-]{section.4.2}{4.2\040Multiple\040gpus}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.3}{4.3\040Overclocking\040the\040gpu}{chapter.4}% 33
-\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1\040Increasing\040the\040Memory\040Clock}{section.4.3}% 34
-\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2\040Increasing\040the\040Core\040Clock}{section.4.3}% 35
-\BOOKMARK [3][-]{figure.caption.15}{Multiple\040gpus\040overclocked}{subsection.4.3.2}% 36
-\BOOKMARK [1][-]{section.4.4}{4.4\040Final\040Speedup}{chapter.4}% 37
-\BOOKMARK [0][]{chapter.5}{5\040FONT\040STUFF}{}% 38
-\BOOKMARK [0][]{appendix.A}{A\040Host\040&\040Kernel\040Source\040Code\040}{}% 39

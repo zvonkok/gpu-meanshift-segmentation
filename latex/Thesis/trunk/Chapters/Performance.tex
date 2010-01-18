@@ -35,26 +35,27 @@ larger and the \gls{GPU} values would not be visible.
 			% legend columns=2,
       % smooth,
       % stack plots=y,
-      % area style,
-      ybar, 
-			bar width=4pt,
+      area style,
+      %ybar, 
+			%bar width=4pt,
       width=0.88\textwidth,
       height=5cm,
       xtick={128,384,...,2688},
 %			xticklabel={$2^14$, $2^15$},
       axis x line=bottom,
       axis y line=left,
-      xmin=0, xmax=2796, 
-      %ymin=0, ymax=1100,
+      % xmin=128, xmax=2688, 
+      %ymin=0, 
+			ymax=7000,
       xlabel=Image size, ylabel={Milliseconds [ms]}, 
-			enlargelimits=0.03,
+			% enlargelimits=0.03,
       ymajorgrids ]
   %    \addplot%[color=plotcolor0!50!black,fill=plotcolor0]
   %    table[x=PIX,y={CPU [ms]}] {Plots/cpu_gpu_runtime.data};%
 	%		\addlegendentry{CPU}
   %    \closedcycle;
 
-      \addplot[color=plot2,fill=plot2!50!white] table[x=PIX,y={GPU}] from \tableA;
+      \addplot[color=pl1,fill=pf1,mark=none] table[x=PIX,y={GPU}] from \tableA;
 
 			\addlegendentry{\slcsmallcaps{GPU}}
 
@@ -66,13 +67,14 @@ larger and the \gls{GPU} values would not be visible.
       xtick={128,384,...,2688},
       axis x line=none,
       axis y line=right,
-      xmin=0, xmax=2796, 
-      ymin=100, ymax=180,
+      xmin=128, xmax=2688, 
+      ymin=100,
+ 			ymax=190,
   %    xlabel=Image size, 
 			ylabel={Speedup}, 
-			enlargelimits=0.03,
+	%		enlargelimits=0.03,
       ymajorgrids ]
-      \addplot[color=plot0,mark=asterisk] table[x=PIX,y={Speedup}] from \tableA;
+      \addplot[color=plot0,mark=none] table[x=PIX,y={Speedup}] from \tableA;
 %			\addlegendentry{CPU}
     \end{axis}
 
@@ -245,7 +247,7 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
       xtick={128,384,...,2688},
       axis x line=bottom,
       axis y line=left,
-%      xmin=0, xmax=2796, 
+      xmin=128, xmax=2816, 
       ymin=0, ymax=350,
       xlabel=$x$,
       ylabel=$y$,
@@ -253,8 +255,8 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
     %  ymajorgrids 
 			]
      
- 			\addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
  			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+ 			\addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
 
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}
@@ -594,9 +596,10 @@ can be accelerated on the \gls{GPU}.
     %  ymajorgrids 
 			]
      
- 			\addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
- 			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
-
+			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+ 			
+\addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 			
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}
 
@@ -634,9 +637,10 @@ can be accelerated on the \gls{GPU}.
     %  ymajorgrids 
 			]
      
- 			\addplot[color=plot2!80!black,fill=plot2!40!white] table[x=PIX,y=Speedup] from \tableA;
- 			\addplot[color=plot3!80!black,fill=plot3!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
-
+					\addplot[color=plot3!80!black,fill=plot3!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+ 	
+		\addplot[color=plot2!80!black,fill=plot2!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 	
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}
 
@@ -672,10 +676,10 @@ can be accelerated on the \gls{GPU}.
 		%	enlargelimits=0.01,
     %  ymajorgrids 
 			]
-     
+  
+					\addplot[color=plot5!80!black,fill=plot5!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;   
  			\addplot[color=plot4!80!black,fill=plot4!40!white] table[x=PIX,y=Speedup] from \tableA;
- 			\addplot[color=plot5!80!black,fill=plot5!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
-
+ 	
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}
 
@@ -712,9 +716,10 @@ can be accelerated on the \gls{GPU}.
     %  ymajorgrids 
 			]
      
- 			\addplot[color=plot6!80!black,fill=plot6!40!white] table[x=PIX,y=Speedup] from \tableA;
- 			\addplot[color=plot7!80!black,fill=plot7!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
-
+					\addplot[color=plot7!80!black,fill=plot7!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+ 	
+		\addplot[color=plot6!80!black,fill=plot6!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 	
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}
 
@@ -751,9 +756,10 @@ can be accelerated on the \gls{GPU}.
     %  ymajorgrids 
 			]
      
- 			\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=Speedup] from \tableA;
- 			\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
-
+					\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+s 	
+		\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 	
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}
 

@@ -118,6 +118,11 @@
 	every axis legend/.append style={draw=white, shape=rectangle},
 	/pgf/number format/.cd, set thousands separator={},
 }
+% The external library offers a convenient method to export every single
+% tikzpicture into a sepa- rate .pdf (or .eps). Later runs of LATEX will simply
+% include these graphics, thereby reducing typesetting time considerably.
+%\usepgfplotslibrary{external} 
+%\tikzexternalize{Thesis}
 %\pgfkeys{}
 
 % ******************************************************************************

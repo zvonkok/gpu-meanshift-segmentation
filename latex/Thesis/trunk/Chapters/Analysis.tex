@@ -35,18 +35,21 @@ side length in pixels of the quadratic \autoref{fig:orig0}.
     \begin{axis}[
       % smooth,
       % stack plots=y,
-      % area style,
+     % area style,
       ybar, bar width=8pt,
       width=\textwidth,
-      height=7cm,
+      height=5cm,
       xtick={128,384,...,2688},
       axis x line=bottom,
       axis y line=left,
-      xmin=0, xmax=2796, 
-      % ymin=0, ymax=1100,
-      xlabel=Image size, ylabel={Seconds [s]}, enlargelimits=0.03,
-      ymajorgrids ]
-      \addplot[color=plot0!50!black,fill=plot0]
+      xmin=128, xmax=2816, 
+      % ymin=0, 
+			ymax=7000,
+      xlabel=Image size, ylabel={Seconds [s]}, 
+			%enlargelimits=0.03,
+      %ymajorgrids
+ 			]
+      \addplot[color=pl0,fill=pf0]
       table[x=PIX] {Plots/single.gpu.data}%
       \closedcycle;
     \end{axis}
@@ -151,11 +154,10 @@ is relative to the overall execution time using a single processor. It
 is independent of the number $n$ of processors
 \citeauthor{citeulike:3838998} \citep{citeulike:3838998}.
 
-
-Assuming that the mean shift filtering can be parallelized with any
-number of processing units one can calculate the maximum speedup
-achieveable according to Amdahl. Taking the parallel processing
-percentage from \autoref{tab:comp} for the filtering step:
+Assuming that the mean shift filtering can be parallelized with any number of
+processing units one can calculate the maximum speedup achieveable according to
+Amdahl. Taking the parallel processing percentage from \autoref{tab:comp} for
+the filtering step:
 \begin{equation*}\label{eq:parallel}
   p = 99,3\% = 0.993 
   p\end{equation*}
@@ -170,56 +172,49 @@ processors one can acheive a speedup of:
 \begin{equation*}\label{eq:g92sp}
   S_{max}(128) = \frac{1}{(1-0.993) + \frac{0.993}{128}} = \frac{1}{0.007 + 0.0077578125} = 67.76
 \end{equation*}
-
-One can see that even for very small serial processing percentage the
-speedup is not very high. Therefore \citeauthor{citeulike:3732921}
-proposed a alternative formulation where the fractions are now
-dependent on $n$. He assumed that for larger problem, the fraction of
-a program to parallelization increases. Thats why Gustafson's law is
-often referred as a scaled speedup measure and Amdahl's as a non
-scaled speedup measure. Given the serial $s'$ and paralllel time $p'$
-a single processor would require $s' + p' \times n$ time to finish the
-execution.  The speedup is then given by:
+One can see that even for very small serial processing percentage the speedup is
+not very high. Therefore \citeauthor{citeulike:3732921} proposed a alternative
+formulation where the fractions are now dependent on $n$. He assumed that for
+larger problem, the fraction of a program to parallelization increases. Thats
+why Gustafson's law is often referred as a scaled speedup measure and Amdahl's
+as a non scaled speedup measure. Given the serial $s'$ and paralllel time $p'$ a
+single processor would require $s' + p' \times n$ time to finish the execution.
+The speedup is then given by:
 \begin{equation}\label{eq:gus}
   S_{max}(n) = \frac{s' + p' \times n}{s' + p'} = n + ( 1 - n ) \times s'
 \end{equation}
-
-Applying the calculation with $n = 128$, the used \gls{GPU} has 128
-processors one can acheive a speedup according to Gustafson of:
+Applying the calculation with $n = 128$, the used \gls{GPU} has 128 processors
+one can acheive a speedup according to Gustafson of:
 \begin{equation*}\label{eq:g92sp}
   S_{max}(128) = 128 + (1 - 128) \times 0.007 = 127.11
 \end{equation*}
 
+It looks like that Amdahl's \& Gustafson's law are in contradiction but looking
+more precise on both definitions one can see that both laws employ different
+definitions for the fraction of the serial and parallel exectuion times. Amdahl
+uses non scaled percentage and Gustafson scaled percentage. Mathematicaly they
+are equal just two different formulations. The scaled percentage can be
+transformed to a non scaled perecentage where Gustafson's law gives the same
+results as Amdahl's law \citep{citeulike:3838998}.
 
-It looks like that Amdahl's \& Gustafson's law are in contradiction
-but looking more precise on both definitions one can see that both
-laws employ different definitions for the fraction of the serial and
-parallel exectuion times. Amdahl uses non scaled percentage and
-Gustafson scaled percentage. Mathematicaly they are equal just two
-different formulations. The scaled percentage can be transformed to a
-non scaled perecentage where Gustafson's law gives the same results as
-Amdahl's law \citep{citeulike:3838998}.
-
-In summary one can expect more than a 100 fold speedup when
-parallelizing the filter step of the mean shift algorithm. The next
-steps will focus on analyzing how the mean shift filter can be
-decomposed to take advantage of multiple processors.
+In summary one can expect more than a 100 fold speedup when parallelizing the
+filter step of the mean shift algorithm. The next steps will focus on analyzing
+how the mean shift filter can be decomposed to take advantage of multiple
+processors.
 
 \section{Data and Task Parallelism} % (fold)
 \label{sec:data_and_task_parallelism}
+There are two ways to decompose an algorithm to take advantage of parallelism.
+The first way is to decompose the algorithm into several tasks that can run
+independently. Each task is performing independently different calculation on
+the data. This characteristic is known as task parallelism. To know if two task
+can run independent one can take \citeauthor{citeulike:6113408} conditions and
+evaluate them.
 
-There are two ways to decompose an algorithm to take advantage of
-parallelism.  The first way is to decompose the algorithm into several
-tasks that can run independently. Each task is performing
-independently different calculation on the data. This characteristic
-is known as task parallelism. To know if two task can run independent
-one can take \citeauthor{citeulike:6113408} conditions and evaluate
-them.
-
-Let $P_i$ and $P_j$ be two tasks of a program $P$. For $P_i$ let $I_i$
-be the input and $O_i$ the output data and for $P_j$ let $I_j$ be the
-input and $O_j$ be the output data, then $P_i$ and $P_j$ are
-independent if they satisfy the following conditions
+Let $P_i$ and $P_j$ be two tasks of a program $P$. For $P_i$ let $I_i$ be the
+input and $O_i$ the output data and for $P_j$ let $I_j$ be the input and $O_j$
+be the output data, then $P_i$ and $P_j$ are independent if they satisfy the
+following conditions
 \citep{citeulike:3838998}:
 \begin{subequations}\label{eq:bern_cond}
   \begin{align}
@@ -228,109 +223,99 @@ independent if they satisfy the following conditions
     O_i \cap O_j & = \emptyset \label{eq:bern2}
   \end{align}
 \end{subequations}
-The first two formulations \autoref{eq:bern0} and \autoref{eq:bern1}
-are stating that the input of one task has to be independent from the
-other task. Otherwise one task would have to wait for the output of
-the other task to continue.  Furthermore not only the inputs vs. the
-outputs have to be independent but also the outputs of each task have
-to be independent. If the above conditions cannot be applied to a
-program $P$ than it is likewise that race conditions and poor
+The first two formulations \autoref{eq:bern0} and \autoref{eq:bern1} are stating
+that the input of one task has to be independent from the other task. Otherwise
+one task would have to wait for the output of the other task to continue.
+Furthermore not only the inputs vs. the outputs have to be independent but also
+the outputs of each task have to be independent. If the above conditions cannot
+be applied to a program $P$ than it is likewise that race conditions and poor
 performance can arise through e.g. excessive synchronization overhead.
 
 
 \subsection{Task Parallelism} % (fold)
 \label{sub:task_parallelism}
 
+Equipped with the knowledge how to identify independent parallel tasks, the mean
+shift segmentation algorithm \autoref{alg:mss} can now be examined. Having a
+look at the algorithm steps one can easily see that every task is violating
+every condition stated above. The filtering step input data is dependent on the
+\gls{RGB} to \gls{LUV} conversion output data. The segmentation step input data
+is dependent on the filtering output data. So it does not matter how big an
+image is or if it is a color or grayscale image the mean shift segmentation
+algorithm will always perform all from each other dependent calculations as
+described in \autoref{alg:mss}. The longest path of dependent calculations is
+the critical path. For the mean shift algorithm there exists no shorter path.
 
-Equipped with the knowledge how to identify independent parallel
-tasks, the mean shift segmentation algorithm \autoref{alg:mss} can now
-be examined.  Having a look at the algorithm steps one can easily see
-that every task is violating every condition stated above. The
-filtering step input data  is dependent on the \gls{RGB} to \gls{LUV}
-conversion output data. The segmentation step input data is dependent
-on the filtering output data. So it does not matter how
-big an image is or if it is a color or grayscale image the mean shift
-segmentation algorithm will always perform all from each other
-dependent calculations as described in \autoref{alg:mss}. The longest
-path of dependent calculations is the critical path. For the mean
-shift algorithm there exists no shorter path.
-
-In summary one can discard the idea of task parallelism for the mean
-shift segmentation algorithm. Thats why the focus of parallelization
-is now on data parallelism.
+In summary one can discard the idea of task parallelism for the mean shift
+segmentation algorithm. Thats why the focus of parallelization is now on data
+parallelism. 
 % subsection task_parallelism (end)
 
 
 \subsection{Data Parallelism} % (fold)
 \label{sub:data_parallelism}
-The second way of decomposing an algorithm is data decomposition. The
-data is decomposed into chunks on which similar operations are being
-applied in such a way that the different chunks can be operated on
-concurrently. The focus in data parallelism is on the data structures
-which define the problem and not at the tasks.
+The second way of decomposing an algorithm is data decomposition. The data is
+decomposed into chunks on which similar operations are being applied in such a
+way that the different chunks can be operated on concurrently. The focus in data
+parallelism is on the data structures which define the problem and not at the
+tasks.
 
-Focusing on data and having a look at the most computational intensive
-part (the filtering step) one can see that each pixel of an image can
-be calculated independently. The input and output pixels are
-independent and furthermore it doesn't matter at which pixel one
-starts, the filtering step is deterministic, starting from the same
-input will lead to the same output.
+Focusing on data and having a look at the most computational intensive part (the
+filtering step) one can see that each pixel of an image can be calculated
+independently. The input and output pixels are independent and furthermore it
+doesn't matter at which pixel one starts, the filtering step is deterministic,
+starting from the same input will lead to the same output.
 
-Another important aspect is how often the subtasks (where each subtask
-is calculating one pixel) have to synchronize or communicate. An
-algorithm exhibits fine-grained parallelism if the subtasks have to
-communicate many times, coarse-grained parallelism if the subtasks do
-not communicate many times. In this case the algorithm even exhibits
-embarrassingly parallel parallelism. The subtasks never have to
-communicate or synchronize. Each subtask takes one or a chunk of
-pixels applies the filtering steps and writes back the result. The
-intermediate steps where the mean shift vector is moved over the
-spatial space are also independent for each pixel.
+Another important aspect is how often the subtasks (where each subtask is
+calculating one pixel) have to synchronize or communicate. An algorithm exhibits
+fine-grained parallelism if the subtasks have to communicate many times,
+coarse-grained parallelism if the subtasks do not communicate many times. In
+this case the algorithm even exhibits embarrassingly parallel parallelism. The
+subtasks never have to communicate or synchronize. Each subtask takes one or a
+chunk of pixels applies the filtering steps and writes back the result. The
+intermediate steps where the mean shift vector is moved over the spatial space
+are also independent for each pixel.
 
-The approach in parallelizing the mean shift algorithm is to use a
-data decomposition where each subtask is filtering a chunk or a pixel
-of the entire image. Depending on the number of processing units one
-can choose an appropriate chunk size to exploit every unit.
+The approach in parallelizing the mean shift algorithm is to use a data
+decomposition where each subtask is filtering a chunk or a pixel of the entire
+image. Depending on the number of processing units one can choose an appropriate
+chunk size to exploit every unit.
 
-If the algorithm would only exhibit fine-grained parallelism the next
-steps would be to identify groups to simplify the job of managing
-dependencies and have a look at the ordering to satisfy constraints
-among tasks. Luckily here one has only to deal with a embarrassingly
-parallel algorithm and can move to the next step, identify how data is
-accessed and shared among subtasks.
+If the algorithm would only exhibit fine-grained parallelism the next steps
+would be to identify groups to simplify the job of managing dependencies and
+have a look at the ordering to satisfy constraints among tasks. Luckily here one
+has only to deal with a embarrassingly parallel algorithm and can move to the
+next step, identify how data is accessed and shared among subtasks.
 % subsection data_parallelism (end)
 % section data_and_task_parallelism (end)
 
 \section{Data Flow} % (fold)
 \label{sec:data_flow}
 
-It is important to understand that inefficient data access can lead to
-very poor performance on every processing unit especially on a
-\gls{GPU}. Inefficient data access leads to an algorithm that is
-memory bound which means it doesn't matter how much computational
-power the processing unit has it will be bound to the memory
-performance (See \autoref{ch:literature_review} for \emph{arithmetic
-  intensity}). Therefore its crucial to understand the data and
-optimize it for access. If done incorrectly tasks may get invalid data
-or it could lead to excessive synchronization overhead.
+It is important to understand that inefficient data access can lead to very poor
+performance on every processing unit especially on a \gls{GPU}. Inefficient data
+access leads to an algorithm that is memory bound which means it doesn't matter
+how much computational power the processing unit has it will be bound to the
+memory performance (See \autoref{ch:literature_review} for \emph{arithmetic
+intensity}). Therefore its crucial to understand the data and optimize it for
+access. If done incorrectly tasks may get invalid data or it could lead to
+excessive synchronization overhead.
 
-In \autoref{sub:task_parallelism} it was shown that the filtering step
-is dependent on the color conversion step where the output data of the
-color conversion step becomes the input data of the filtering
-step. Since this is done sequentially there is no need to take care of
-some synchronization. This scheme is the same for the filtering and
-segmentation step. Since the filtering step is done in parallel and
-the segmentation needs the output data form the filtering step a
-barrier after the filtering step is needed.
+In \autoref{sub:task_parallelism} it was shown that the filtering step is
+dependent on the color conversion step where the output data of the color
+conversion step becomes the input data of the filtering step. Since this is done
+sequentially there is no need to take care of some synchronization. This scheme
+is the same for the filtering and segmentation step. Since the filtering step is
+done in parallel and the segmentation needs the output data form the filtering
+step a barrier after the filtering step is needed.
 
-Now to the interesting part the parallel filtering step. For the
-following considerations the viewpoint will be a single processing
-unit. It is firstly enough to consider only one unit and one pixel at
-a time since the \gls{GPU} exhibits a \gls{SPMD} programming model
-(see \autoref{ssub:single_program_multiple_data_spmd}) and secondly
-the mean shift algorithm is embarrassingly parallel. It is later easy
-to broaden the examination to a cluster of processing units and chunks
-of pixels if its needed.
+Now to the interesting part the parallel filtering step. For the following
+considerations the viewpoint will be a single processing unit. It is firstly
+enough to consider only one unit and one pixel at a time since the \gls{GPU}
+exhibits a \gls{SPMD} programming model (see
+\autoref{ssub:single_program_multiple_data_spmd}) and secondly the mean shift
+algorithm is embarrassingly parallel. It is later easy to broaden the
+examination to a cluster of processing units and chunks of pixels if its needed.
 
 A processing unit firstly reads the corresponding pixel $x_n = (x_n^r, x_n^f)$
 from the image. Then it moves the mean shift vector to the next pixel on the
