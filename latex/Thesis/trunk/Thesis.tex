@@ -95,6 +95,7 @@ draft=on]{scrreprt}
 % *******************************************************************************
 % \mainmatter
 %*******************************************************************************
+\tikzset{external/export=false}
 %\include{Chapters/Introduction}
 %\include{Chapters/LiteratureReview}
 
@@ -103,8 +104,12 @@ draft=on]{scrreprt}
 \include{Chapters/MeanShift}
 \include{Chapters/Analysis}
 %\include{Chapters/Design}
+%\tikzset{external/export=true}
+%{\tikzset{external/figure name/.add={}{_optimization}}
+\tikzsetfigurename{optimization}
 \include{Chapters/Optimization}
-\include{Chapters/Performance}
+%\tikzset{external/export=false}
+%\include{Chapters/Performance}
 %\include{Chapters/Future}
 
 

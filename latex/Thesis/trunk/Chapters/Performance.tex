@@ -1,5 +1,6 @@
 \chapter{Performance {\itshape{\&}} Scalability} % (fold)
 \label{cha:performance_and_scalability_}
+\tikzsetfigurename{performance}
 
 To evaluate the performance and the scalability of the implemented mean shift
 algorithm several benchmarks will be made. Firstly the algorithm is tested 
@@ -600,8 +601,8 @@ can be accelerated on the \gls{GPU}.
  			
 \addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
  			
-			\addlegendentry{\slcsmallcaps{1 GPU}}
-			\addlegendentry{\slcsmallcaps{2 GPUS}}
+			\addlegendentry{\slcsmallcaps{plot1}}
+			\addlegendentry{\slcsmallcaps{plot0}}
 
     \end{axis}
 
@@ -637,12 +638,12 @@ can be accelerated on the \gls{GPU}.
     %  ymajorgrids 
 			]
      
-					\addplot[color=plot3!80!black,fill=plot3!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+			\addplot[color=plot3!80!black,fill=plot3!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
  	
 		\addplot[color=plot2!80!black,fill=plot2!40!white] table[x=PIX,y=Speedup] from \tableA;
  	
-			\addlegendentry{\slcsmallcaps{1 GPU}}
-			\addlegendentry{\slcsmallcaps{2 GPUS}}
+		\addlegendentry{\slcsmallcaps{plot3}}
+		\addlegendentry{\slcsmallcaps{plot2}}
 
     \end{axis}
 
@@ -679,9 +680,9 @@ can be accelerated on the \gls{GPU}.
   
 					\addplot[color=plot5!80!black,fill=plot5!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;   
  			\addplot[color=plot4!80!black,fill=plot4!40!white] table[x=PIX,y=Speedup] from \tableA;
- 	
-			\addlegendentry{\slcsmallcaps{1 GPU}}
-			\addlegendentry{\slcsmallcaps{2 GPUS}}
+
+			\addlegendentry{\slcsmallcaps{plot5}}
+			\addlegendentry{\slcsmallcaps{plot4}}
 
     \end{axis}
 
@@ -720,8 +721,8 @@ can be accelerated on the \gls{GPU}.
  	
 		\addplot[color=plot6!80!black,fill=plot6!40!white] table[x=PIX,y=Speedup] from \tableA;
  	
-			\addlegendentry{\slcsmallcaps{1 GPU}}
-			\addlegendentry{\slcsmallcaps{2 GPUS}}
+		\addlegendentry{\slcsmallcaps{plot7}}
+		\addlegendentry{\slcsmallcaps{plot6}}
 
     \end{axis}
 
@@ -757,11 +758,11 @@ can be accelerated on the \gls{GPU}.
 			]
      
 					\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
-s 	
+	
 		\addplot[color=plot8!80!black,fill=plot8!40!white] table[x=PIX,y=Speedup] from \tableA;
  	
-			\addlegendentry{\slcsmallcaps{1 GPU}}
-			\addlegendentry{\slcsmallcaps{2 GPUS}}
+		\addlegendentry{\slcsmallcaps{plot8}}
+		\addlegendentry{\slcsmallcaps{plot8}}
 
     \end{axis}
 

@@ -1,6 +1,7 @@
 \chapter{Optimization Strategies}
 \label{ch:optimization}
 
+
 The following chapter will present optimization strategies which were used to
 accelerate the mean shift image segmentation. The presented strategies are not
 only valid for \gls{CUDA}, they can be applied to many parallel machines which
@@ -127,8 +128,8 @@ to produce faster multiplications.
 
 For example if it looks like this
 \begin{lstlisting}[caption=Expensive divison, label=lst:division]
-//Determine if inside search window
-//Calculate distance squared of sub-space s
+// Determine if inside search window
+// Calculate distance squared of sub-space s
 float dl = (luv.x - yj_2) / sigmaR;               
 float du = (luv.y - yj_3) / sigmaR;               
 float dv = (luv.z - yj_4) / sigmaR;
@@ -137,8 +138,8 @@ one can calculate \textsf{rsigmaR} = 1.0f/\textsf{sigmfaR} in advance and everyw
 division by \textsf{sigmaR} occurs replace it into a multiplication. The
 resulting code is then
 \begin{lstlisting}[caption=Division turned into fast multiplication, label=lst:precalcdivision]
-//Determine if inside search window
-//Calculate distance squared of sub-space s
+// Determine if inside search window
+// Calculate distance squared of sub-space s
 float dl = (luv.x - yj_2) * rsigmaR;               
 float du = (luv.y - yj_3) * rsigmaR;               
 float dv = (luv.z - yj_4) * rsigmaR;
@@ -245,7 +246,7 @@ speedup was
  
 \fpAdd{\tgold}{0}{7369}
 \fpAdd{\tcuda}{0}{29}
-\fpDiv{\speedup}{\tgold}{\tcuda}
+\fpDiv{\speedupten}{\tgold}{\tcuda}
 \begin{equation*}\label{eq:speedup7}
 		S = \frac{\unit[\tgold]{ms}}{\unit[\tcuda]{ms}} = \speedup
 \end{equation*}
@@ -260,14 +261,14 @@ the speedup was
 \end{equation*}
 
 In the case where the limit is 10 the \gls{GPU} could achieve a speedup of 
-\fpDiv{\speedup}{\tgold}{\tcuda} \speedup$\times$ because all multiprocessors
+\fpDiv{\speedup}{\tgold}{\tcuda} \speedupten$\times$ because all multiprocessors
 are busy then and are not idle as in the case when the limit is 100 and just a few
 threads are calculating and the rest idles. The algorithm is as fast as the slowest
 thread which is iterating until 100. 
 
 A candidate with iteration count of 100 is picked up from the iteration list and
 examined further. For this the magnitude squared (the length) of the mean shift
-vector is analyzed over the iterations. When the mean shift vector approaches
+vector is analysed over the iterations. When the mean shift vector approaches
 the convergence point the magnitude becomes smaller and smaller until it falls
 under a small number. In this implementation this small number is
 $\epsilon=0.01$. Then it can be said that the mean shift vector has reached the
@@ -284,44 +285,32 @@ basin of attraction.
 \end{lstlisting}
 Examining the sequence of the magnitude squared for pixel $10992$
 \autoref{lst:msp} one can easily see that after some iterations the magnitude is
-fixed to $2.52029$. This behaviour is known as a fixed point limit cycle.
+fixed to $2.52029$. This behaviour is known as a fixed point.
 
 
+\begin{figure}[ht] \centering
+\includegraphics{figures/optimization0.pdf}%
+\caption{Period-0 Limitcycle}
+\label{fig:lc0}%
+\end{figure}
 
-
-\begin{figure}[ht]
-\centering
-\subfloat[Period-0 Limitcycle]{%
-\includegraphics[width=0.33\textwidth]{gfx/itr_limitcycle0}\label{fig:lc0}}%
-\subfloat[Period-4 Limitcycle]{%
-\includegraphics[width=0.33\textwidth]{gfx/itr_limitcycle4}\label{fig:lc4}}%
-\subfloat[Period-8 Limitcycle]{%
-\includegraphics[width=0.33\textwidth]{gfx/itr_limitcycle8}\label{fig:lc8}}%
-
-\caption{Effect of limitcycle detection on iteration count}
-\label{fig:limitcycle}
+\begin{figure}[ht] \centering
+\includegraphics{figures/optimization1.pdf}%
+\caption{Period-4 Limitcycle}
+\label{fig:lc0}%
+\end{figure}
+\begin{figure}[ht] \centering
+\includegraphics{figures/optimization2.pdf}%
+\caption{Period-8 Limitcycle}
+\label{fig:lc0}%
 \end{figure}
 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.6\textwidth]{gfx/itr_limitcycle0.pdf}
+\begin{figure}[ht] \centering
+\includegraphics{figures/optimization0.pdf}
 \caption{Visualization of Iteration Count}
 \label{fig:vis_iteration_count}
 \end{figure}
-
-
-
-\begin{tikzpicture}
-\begin{axis}[
-	 	xlabel=$x$, 
-		ylabel=$y$,
-		zlabel={$iter$},
-		title=A Scatter Plot Example] 
-		\addplot3 table {Plots/iter.dat}; 
-\end{axis}
-\end{tikzpicture}
-
 
 
 \subsubsection{Limit Cycle, Iterating Dynamical Systems} % (fold)

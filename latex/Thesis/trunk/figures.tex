@@ -1,0 +1,127 @@
+
+\documentclass[bibliography=totoc, version=first, twoside, open=right,%
+titlepage, fleqn, numbers=noenddot, fontsize=12pt,%
+cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
+headinclude=false,footinclude=false,%
+headlines=1, % default is 1.25 rows ... we want 1
+draft=on]{scrreprt}
+
+% to grayscale
+% convert image.jpg -monochrome image-bw.jpg
+% ASCII pgm
+% convert source_2448_bw.ppm -resize 64x64  -compress none bw_64.pgm
+\newcommand{\myTitle}{High Performance Computing on Graphic Processing Units\xspace}
+\newcommand{\myDegree}{An Homage to The Elements of Typographic Style\xspace}
+\newcommand{\myName}{Zvonko Krnjaji\'c\xspace}
+\newcommand{\myProf}{Dr. Abbes Amira\xspace}
+\newcommand{\myOtherProf}{Put name here\xspace}
+\newcommand{\mySupervisor}{Dr. Abbes Amira\xspace}
+\newcommand{\myFaculty}{Put data here\xspace}
+\newcommand{\myDepartment}{Put data here\xspace}
+\newcommand{\myUni}{\protect{Brunel University}\xspace}
+\newcommand{\myLocation}{Gerlingen\xspace}
+\newcommand{\myTime}{May/2009\xspace}
+\newcommand{\myVersion}{Version 2.5\xspace}
+
+
+\usepackage{dissertation-figures}
+% ******************************************************************************
+% pgfplots (very nice graph plots)
+% ******************************************************************************
+ % \usepackage{pgfplots}
+ %   \pgfplotsset{
+ %   	every tick label/.append style={font=\scriptsize},
+ %   	every axis/.append style={font=\footnotesize},
+ %   	every axis x label/.style={at={(0.5,0)}, below, yshift=-20pt},
+ %   	every axis legend/.append style={draw=white, shape=rectangle},
+ %   	/pgf/number format/.cd, set thousands separator={},
+ %   }
+ % % The external library offers a convenient method to export every single
+ % % tikzpicture into a sepa- rate .pdf (or .eps). Later runs of LATEX will simply
+ % % include these graphics, thereby reducing typesetting time considerably.
+ % \usepgfplotslibrary{external} 
+ % \tikzexternalize{test}
+%{\tikzset{external/system call={xelatex -shell-escape -halt-on-error	-interaction=batchmode -jobname "\image" "\texsource"}}
+
+\begin{document}
+
+\pgfplotsset{colormap={dissmap}{color(0cm)=(blue); color(1cm)=(yellow); color(2cm)=(orange); color(3cm)=(red)}} % HOT
+%{rgb255(0cm)=(255,255,255); rgb255(1cm)=(0,128,255); rgb255(2cm)=(255,0,255)}} % COOL
+
+%{rgb255=(25,25,122) color=(white) rgb255=(238,140,238)}}
+%\pgfplotsset{colormap={dissmap}{color(0cm)=(blue); color(1cm)=(yellow); color(2cm)=(orange); color(3cm)=(red)}}
+
+% Chapter optimization ---------------------------------------------------------
+\tikzsetfigurename{optimization}
+\tikzset{external/optimize=false}
+
+\begin{tikzpicture} 
+\begin{axis}[
+		height=5cm,
+		width=0.91\textwidth,
+	  shader=interp, % interp = faster, smaller pdf's
+		point meta max = 100, % color bar range from 0 - 100
+		colorbar,
+	 	colorbar style={ ymax=100},
+	 	xlabel=$x$, 
+		ylabel=$y$,
+		zlabel=$z$,
+		zmin=0, zmax=100,
+		] 
+		\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle0.dat}; 
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture} 
+\begin{axis}[
+	height=5cm,
+	width=0.91\textwidth,
+	  shader=interp, % interp = faster, smaller pdf's
+		point meta max = 100, % color bar range from 0 - 100
+		colorbar,
+	 	colorbar style={ ymax=100},
+	 	xlabel=$x$, 
+		ylabel=$y$,
+		zlabel=$z$,
+		zmin=0, zmax=100,
+		] 
+		\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle4.dat}; 
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture} 
+\begin{axis}[
+	height=5cm,
+	width=0.91\textwidth,
+	  shader=interp, % interp = faster, smaller pdf's
+		point meta max = 100, % color bar range from 0 - 100
+		colorbar,
+	 	colorbar style={ ymax=100},
+ 		xlabel=$x$, 
+		ylabel=$y$,
+		zlabel=$z$,
+		zmin=0, zmax=100,
+		] 
+		\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle8.dat}; 
+\end{axis}
+\end{tikzpicture}
+% 
+% \begin{tikzpicture} 
+% \begin{axis}[
+% 	height=5cm,
+% 	width=0.97\textwidth,
+% 	  shader=interp, % interp = faster, smaller pdf's
+% 		point meta max = 100, % color bar range from 0 - 100
+% 		colorbar,
+% 	 	colorbar style={ ymax=100},
+% 	 	xlabel=$x$, 
+% 		ylabel=$y$,
+% 		zlabel=$z$,
+% 		zmin=0, zmax=100,
+% 		] 
+% 		\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle8.dat}; 
+% \end{axis}
+% \end{tikzpicture}
+
+
+\end{document}
