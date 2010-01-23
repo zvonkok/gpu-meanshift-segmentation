@@ -3,6 +3,9 @@
 %
 % Copyright (C) 2009 Zvonko Kosic-Krnjajic
 % ******************************************************************************
+
+
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{dissertation}%
 	[2009/08/31 v0.1 Typographic Style for a classic looking dissertation]
@@ -110,6 +113,28 @@
 % ******************************************************************************
 % pgfplots (very nice graph plots)
 % ******************************************************************************
+% To create consistency between graphics and text, stick to the following 
+% guidelines:
+% 	• Do not scale graphics. This means that when generating graphics using an 
+% 		external program, create them “at the right size.”
+% 	• Use the same font(s) both in graphics and the body text. 
+% 	• Use the same line width in text and graphics.
+% The “line width” for normal text is the width of the stem of letters like T.
+% For TEX, this is usually 0.4 pt. However, some journals will not accept 
+% graphics with a normal line width below 0.5 pt.
+% 	• When using colors, use a consistent color coding in the text and in 
+% 		graphics.
+% For example, if red is supposed to alert the reader to something in the main
+% text, use red also in graphics for important parts of the graphic. If blue is
+% used for structural elements like headlines and section titles, use blue also
+% for structural elements of your graphic. However, graphics may also use a
+% logical intrinsic color coding. For example, no matter what colors you normally
+% use, readers will generally assume, say, that the color green as “positive, go,
+% ok” and red as “alert, warning, action.” Creating consistency when using
+% different graphic programs is almost impossible. For this reason, you should
+% consider sticking to a single graphics program.
+%
+% Further stuff see pgfmanual Chapter 6 ...
 \RequirePackage{pgfplots}
 \pgfplotsset{
 	every tick label/.append style={font=\scriptsize},
@@ -121,9 +146,18 @@
 % The external library offers a convenient method to export every single
 % tikzpicture into a sepa- rate .pdf (or .eps). Later runs of LATEX will simply
 % include these graphics, thereby reducing typesetting time considerably.
-%\usepgfplotslibrary{external} 
-%\tikzexternalize{Thesis}
-%\pgfkeys{}
+\usepgfplotslibrary{external} 
+\tikzexternalize[prefix=figures/]{Thesis}% Assigns a common prefix used by all file names.
+\tikzset{external/figure name=thesis} % uses thesis_0.pdf, thesis_1.pdf, ...
+
+% \section{The first section} {\tikzset{external/figure name/.add={}{_firstsection}}
+% ... % uses main_firstsection_0.pdf, main_firstsection_1.pdf, ...
+% }
+
+%{\tikzset{external/system call={xelatex -shell-escape -halt-on-error	-interaction=batchmode -jobname "\image" "\texsource"}}
+
+
+
 
 % ******************************************************************************
 % pgfplotstable (very nice tables)
@@ -174,8 +208,8 @@
 	minionint, 
 	openg,%
 	loosequotes,
-%	footnotefigures, nichts geändert...
-	%mathosf, 
+	footnotefigures, %nichts geändert...
+	mathosf, 
 	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
 
 
@@ -370,12 +404,6 @@
 % ******************************************************************************
 % and itemizations (consider using enumitem instead)
 \RequirePackage[newitem, newenum]{paralist}
-
-
-% ******************************************************************************
-% PDFpages
-% ******************************************************************************
-\RequirePackage{pdfpages} % for including a frontcover 
 
 % ******************************************************************************
 % glossaries

@@ -1,0 +1,682 @@
+% ******************************************************************************
+% dissertation.sty
+%
+% Copyright (C) 2009 Zvonko Kosic-Krnjajic
+% ******************************************************************************
+
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dissertation}%
+	[2009/08/31 v0.1 Typographic Style for a classic looking dissertation]
+\RequirePackage{ifthen}
+\newboolean{@tocaligned} % the left column of the toc will be aligned (no indention)
+\newboolean{@dottedtoc} % page numbers in ToC flushed right
+\newboolean{@listsseparated} % toggles the vertical space between lof/lot entries of different chapters
+% ******************************************************************************
+% Options
+% ******************************************************************************
+\DeclareOption{tocaligned}{\setboolean{@tocaligned}{false}}
+\DeclareOption{dottedtoc}{\setboolean{@dottedtoc}{false}} 
+\DeclareOption{listsseparated}{\setboolean{@listsseparated}{false}}
+\ProcessOptions\relax
+
+
+% ******************************************************************************
+% Colors (cmyk color space) (need to load it first, other package may load it..)
+% ******************************************************************************
+\RequirePackage[%cmyk, really weird colors.... 
+								xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
+
+\definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
+\definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
+%\definecolor{seccolor}{cmyk}{0.59, 0.37, 0.53, 0.06}
+
+%\definecolor{plot0}{rgb}{0.6,0.0,0.0}
+%\definecolor{plot1}{rgb}{0.6,0.3,0.0}
+%\definecolor{plot2}{rgb}{0.6,0.0,0.3}
+%\definecolor{plot3}{rgb}{0.0,0.6,0.0}
+%\definecolor{plot4}{rgb}{0.0,0.6,0.3}
+%\definecolor{plot5}{rgb}{0.3,0.6,0.0}
+%\definecolor{plot6}{rgb}{0.0,0.0,0.6}
+%\definecolor{plot7}{rgb}{0.3,0.0,0.6}
+%\definecolor{plot8}{rgb}{0.0,0.3,0.6}
+
+\definecolor{plot0}{HTML}{990000}
+\definecolor{plot1}{HTML}{994D00}
+\definecolor{plot2}{HTML}{99004D}
+\definecolor{plot3}{HTML}{009900}
+\definecolor{plot4}{HTML}{00994D}
+\definecolor{plot5}{HTML}{4D9900}
+\definecolor{plot6}{HTML}{000099}
+\definecolor{plot7}{HTML}{4D0099}
+\definecolor{plot8}{HTML}{004D99}
+
+%color=plot0!80!black,fill=plot0!40!white
+% define plotoutline & plotfill
+
+\colorlet{pl0}{plot0!80!black}\colorlet{pf0}{plot0!40!white}
+\colorlet{pl1}{plot1!80!black}\colorlet{pf1}{plot1!40!white}
+\colorlet{pl2}{plot2!80!black}\colorlet{pf2}{plot2!40!white}
+\colorlet{pl3}{plot3!80!black}\colorlet{pf3}{plot3!40!white}
+\colorlet{pl4}{plot4!80!black}\colorlet{pf4}{plot4!40!white}
+\colorlet{pl5}{plot5!80!black}\colorlet{pf5}{plot5!40!white}
+\colorlet{pl6}{plot6!80!black}\colorlet{pf6}{plot6!40!white}
+\colorlet{pl7}{plot7!80!black}\colorlet{pf7}{plot7!40!white}
+\colorlet{pl8}{plot8!80!black}\colorlet{pf8}{plot8!40!white}
+
+
+
+\colorlet{textcolor}{black}
+\colorlet{seccolor}{plot0}
+\colorlet{lcolor}{seccolor}
+\colorlet{ccolor}{seccolor}
+\colorlet{ucolor}{seccolor}
+
+
+
+% ********************************************************************
+% Setup and Finetuning
+%*******************************************************
+\setlength{\extrarowheight}{3pt} % increase table row height	
+\setcounter{errorcontextlines}{999}
+
+% ******************************************************************************
+% Load needed Packages
+% ******************************************************************************
+\RequirePackage{subfig}  
+\newcommand{\subfigureautorefname}{\figureautorefname}
+
+\RequirePackage{fltpoint}
+\RequirePackage{listings}  
+\RequirePackage{textcomp}
+% \RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
+\RequirePackage{xspace} % to get the spacing after macros right
+\RequirePackage{tabularx} % better tables
+\RequirePackage{mparhack} % get marginpar right
+\RequirePackage{fixltx2e} % fixes some LaTeX stuff
+\RequirePackage{relsize} % scale font up or down
+%\RequirePackage[authorformat=smallcaps]{jurabib} % nicer bibliography
+\RequirePackage[square,numbers]{natbib} 
+\RequirePackage[fleqn]{amsmath} % math environments and more by the AMS 
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{units} % A package for setting units in a typographically correct way
+% ******************************************************************************
+% leading ...
+% ******************************************************************************
+\RequirePackage{leading}
+% increase leading a bit for better readability.. default font size * 120%
+%\leading{13pt}
+
+
+% ******************************************************************************
+% pgfplots (very nice graph plots)
+% ******************************************************************************
+% To create consistency between graphics and text, stick to the following 
+% guidelines:
+% 	• Do not scale graphics. This means that when generating graphics using an 
+% 		external program, create them “at the right size.”
+% 	• Use the same font(s) both in graphics and the body text. 
+% 	• Use the same line width in text and graphics.
+% The “line width” for normal text is the width of the stem of letters like T.
+% For TEX, this is usually 0.4 pt. However, some journals will not accept 
+% graphics with a normal line width below 0.5 pt.
+% 	• When using colors, use a consistent color coding in the text and in 
+% 		graphics.
+% For example, if red is supposed to alert the reader to something in the main
+% text, use red also in graphics for important parts of the graphic. If blue is
+% used for structural elements like headlines and section titles, use blue also
+% for structural elements of your graphic. However, graphics may also use a
+% logical intrinsic color coding. For example, no matter what colors you normally
+% use, readers will generally assume, say, that the color green as “positive, go,
+% ok” and red as “alert, warning, action.” Creating consistency when using
+% different graphic programs is almost impossible. For this reason, you should
+% consider sticking to a single graphics program.
+%
+% Further stuff see pgfmanual Chapter 6 ...
+\RequirePackage{pgfplots}
+\pgfplotsset{
+	every tick label/.append style={font=\scriptsize},
+	every axis/.append style={font=\footnotesize},
+	every axis x label/.style={at={(0.5,0)}, below, yshift=-20pt},
+	every axis legend/.append style={draw=white, shape=rectangle},
+	/pgf/number format/.cd, set thousands separator={},
+}
+% The external library offers a convenient method to export every single
+% tikzpicture into a sepa- rate .pdf (or .eps). Later runs of LATEX will simply
+% include these graphics, thereby reducing typesetting time considerably.
+\usepgfplotslibrary{external} 
+\tikzexternalize[prefix=figures/]{figures}% Assigns a common prefix used by all file names.
+%{\tikzset{external/system call={xelatex -shell-escape -halt-on-error	-interaction=batchmode -jobname "\image" "\texsource"}}
+
+
+% ******************************************************************************
+% pgfplotstable (very nice tables)
+% ******************************************************************************
+\RequirePackage{pgfplotstable}
+\pgfplotstableset{
+	every head row/.style={before row={\toprule},after row=\midrule},
+	every last row/.style={after row=\bottomrule},
+	font=\color{textcolor}%\scshape
+}
+% recommendations...
+\RequirePackage{booktabs}
+\RequirePackage{array} 
+\RequirePackage{colortbl}
+
+
+
+
+
+% ******************************************************************************
+% Commands
+% ******************************************************************************
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+%\numberwithin{lstlisting}{section} % Make sure listings are numbered by section
+%\numberwithin{equation}{section} % Make sure equations are numbered by section
+%\numberwithin{figure}{section} % Make sure equations are numbered by section
+%\numberwithin{table}{section} % Make sure equations are numbered by section
+
+
+% ******************************************************************************
+% Penalties
+% ******************************************************************************
+% Disable single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 1000
+% Disable single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 1000 
+\displaywidowpenalty = 1000 % formulas
+% single space betweeen sentences
+\frenchspacing
+% prevents LaTeX from adding vertical white space in strange places on pages
+% that it cannot fill properly. 
+\raggedbottom
+
+% ******************************************************************************
+% MinionPro
+% ******************************************************************************
+\RequirePackage[
+	minionint, 
+	openg,%
+	loosequotes,
+	footnotefigures, %nichts geändert...
+	mathosf, 
+	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
+
+
+% % ******************************************************************************
+% % XeTeX
+% % ******************************************************************************
+% \RequirePackage[MnSymbol]{mathspec}
+% %\RequirePackage[cm-default, no-math]{fontspec}
+% \RequirePackage{xunicode}
+% \RequirePackage{xltxtra}
+% 
+% 
+% \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
+% \newcommand{\mainfont}{Minion Pro}
+% \newcommand{\scfont}{Minion Pro}
+% 
+% %mathosf \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} 
+% \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} % Set 
+% \setmathrm{\mainfont}
+% 
+% \setmainfont{\mainfont}
+% %\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
+% %better match sans to serif than Candara.. Candara better for font used in mathspec.pdf...
+% \setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Syntax LT Std} 
+% \setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
+% 
+% \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
+% \renewcommand{\textsc}[1]{\scshape{#1}}
+% 
+% \newfontfamily\spaceduppercase[LetterSpace=20.0]{\mainfont} % uc 20 - 25 %
+% \newfontfamily\chnumfont[Scale=7, Numbers=OldStyle]{\mainfont}
+% 
+% 
+% % ******************************************************************************
+% % polyglossia, replacement for babel
+% % ******************************************************************************
+% \RequirePackage{polyglossia}
+% \setdefaultlanguage[variant=british]{english}
+% 
+% ******************************************************************************
+% tabfigures for minionpro
+% ******************************************************************************
+\RequirePackage[toc,enum,bib,eqno,lineno,debug]{tabfigures}
+%\newfontfamily\tabularfigures%
+%								 [Numbers={OldStyle,Monospaced},Scale=MatchLowercase]{\mainfont}
+%\renewcommand*\Tf@font{\tabularfigures}
+
+
+% ******************************************************************************
+% Spacing & SmallCaps stuff
+% ******************************************************************************
+\RequirePackage[overload]{textcase} % for \MakeTextUppercase
+\DeclareRobustCommand{\sucsmallcaps}[1]{\textsc{\MakeTextUppercase{#1}}}%   
+\DeclareRobustCommand{\slcsmallcaps}[1]{\textsc{\MakeTextLowercase{#1}}}%
+\DeclareRobustCommand{\ssmallcaps}[1]{\textsc{#1}}%
+
+\DeclareRobustCommand{\suppercase}[1]{\spaceduppercase{\MakeTextUppercase{#1}}}%   
+
+
+% ******************************************************************************
+% Typesetting... typeares
+% ******************************************************************************
+%\RequirePackage[colorgrid, draft]{showframe}
+
+\RequirePackage[twoside, includeheadfoot]{geometry}
+
+\newlength{\linelength}
+\setlength{\linelength}{28pc}
+
+\newlength{\gstextheight}
+\setlength{\gstextheight}{1.62\linelength}
+
+\geometry{textwidth=\linelength}
+\geometry{textheight=\gstextheight} % 384 * 1.62
+% golden section .. 
+\geometry{hmarginratio=100:162}
+\geometry{vmarginratio=100:162}
+% KOMA - default 1.25\baselineskip
+\geometry{headheight=1em}
+\geometry{headsep=\baselineskip}
+
+%\geometry{footskip=0pt}
+
+
+% left = (one inch) 72 + (oddsidemargin) 18 = 90pt
+% 90 + 360 = 450 ; 597 - 450 = 147  ... 
+% \marginparwidth 84pt 
+
+% ******************************************************************************
+% Randnotiz stuff ...
+% ******************************************************************************
+\setlength{\marginparwidth}{7em}% == 12*7 = 84pt
+\setlength{\marginparsep}{2em}% 24:40 .. 1:1.62
+
+% ******************************************************************************
+% Hyperreferences
+% ******************************************************************************
+\RequirePackage[xetex, pdfpagelabels, pagebackref]{hyperref}
+\hypersetup{%
+	colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+	breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+	plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+	hypertexnames=true, pdfhighlight=/O, hyperfootnotes=false, frenchlinks,%nesting=true, %
+	%urlcolor=lcolor, linkcolor=lcolor, citecolor=ccolor, %pagecolor=RoyalBlue,%
+	% uncomment the following line if you want to have black links (e.g., for printing)
+	urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+	pdftitle={\myTitle},%
+	pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
+	pdfsubject={},%
+	pdfkeywords={},%
+	pdfcreator={XeLaTeX},%
+	pdfproducer={XeLateX ... }%
+}
+\renewcommand{\figureautorefname}{Figure}
+\renewcommand{\tableautorefname}{Table}
+\renewcommand{\partautorefname}{Part}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+%\renewcommand{\algorithmautorefname}{Algorithm}%
+
+% % ******************************************************************************                
+% % Listings
+% % ******************************************************************************  
+% \RequirePackage{listings}%
+% \lstset{
+% 	language=C++,
+% 	basicstyle=\footnotesize\ttfamily,
+% 	keywordstyle={},
+%   commentstyle=\color{seccolor}\itshape,
+% 	numbers=left,
+% 	numberstyle=\footnotesize,
+% 	keepspaces=true,
+% 	basewidth=\dimen0,
+% 	columns=fullflexible,
+% 	tabsize=2,
+% 	aboveskip=\baselineskip,
+% 	belowskip=\baselineskip,
+% 	abovecaptionskip=\abovecaptionskip,
+% 	belowcaptionskip=\belowcaptionskip,
+% 	captionpos=b,
+% 	showstringspaces=false,
+% 	escapeinside={§}{§},
+% }
+% 
+% % ******************************************************************************
+% % Captions look and feel
+% % ******************************************************************************
+% \RequirePackage{caption}[2009/10/09]
+% %\RequirePackage{subcaption}
+% \DeclareCaptionFont{seccolor}{\color{seccolor}}
+% \DeclareCaptionFont{textcolor}{\color{textcolor}}
+% \DeclareCaptionLabelSeparator{zspace}{ }
+% 
+% 
+% \captionsetup{%
+% 				skip=\baselineskip, font=small, format=hang,%
+% 				figurename=figure, tablename=table,
+%  			  labelfont={seccolor, sc}, 
+% 				labelsep=quad,
+% 				textfont=textcolor}
+% 				
+% 				
+% \captionsetup[lstlisting]{skip=10pt}
+% \captionsetup[subtable]{labelsep=quad, labelfont={textcolor, sc}}
+% \captionsetup[subfigure]{labelsep=quad, labelfont={textcolor, sc}} 
+% \captionsetup[subfigureautorefname]{labelsep=quad}
+% 
+% % ******************************************************************************
+% % algorithm2e
+% % ******************************************************************************
+% \RequirePackage[algochapter, algo2e]{algorithm2e}
+% \SetAlgorithmName{algorithm}{Algorithm}{List of Algorithms}
+% 
+% 
+% % In Fact caption is printed as follow :
+% % \AlCapSty{\AlCapFnt Algorithm 1:} \AlCapNameSty{\AlCapNameFnt my algorithm}
+% \renewcommand{\AlCapSty}{\captionfont}%
+% \renewcommand{\AlCapFnt}{\captionlabelfont}%
+% \renewcommand{\AlCapNameSty}{\captionfont}% 
+% 
+% \SetAlCapSkip{\baselineskip}%
+% % space before box & after box
+% \renewcommand{\@algoskip}{\vspace{\baselineskip}}%\SetAlgoSkip{bigskip}%
+% \setlength{\algomargin}{0em} % margin in the box
+% \newcommand{\kwsty}{\color{plot0}}
+% \SetKwSty{kwsty}
+% 
+% % ******************************************************************************
+% % paralist  (Allow for smarter labeling of enumerations)
+% % ******************************************************************************
+% % and itemizations (consider using enumitem instead)
+% \RequirePackage[newitem, newenum]{paralist}
+% 
+% 
+% % ******************************************************************************
+% % PDFpages
+% % ******************************************************************************
+% \RequirePackage{pdfpages} % for including a frontcover 
+% 
+% % ******************************************************************************
+% % glossaries
+% % ******************************************************************************
+\RequirePackage[section=chapter,toc,acronym=true,smallcaps,smaller]{glossaries}
+% \RequirePackage{glossary-longragged}
+% \makeglossary
+% 
+% \renewcommand*{\acronymfont}[1]{\slcsmallcaps{#1}}
+% \renewcommand{\glspostdescription}{\relax} % remove full stop
+% 
+% % glossaries newstyle longraggedleft
+% \renewcommand{\glossaryname}{\slcsmallcaps}
+% \newglossarystyle{longraggedleft}{%
+%   \renewenvironment{theglossary}%
+%      {\setlength\LTpost{0pt}%
+% 		\setlength\LTpre{0pt}%
+% 		\setlength\LTleft{0pt}%
+% 	  	\setlength\LTright{0pt}% 
+% 	  	\begin{longtable}{@{}l@{}p{\glsdescwidth}}}%
+%      {\end{longtable}}%
+%   \renewcommand*{\glossaryheader}{}%
+%   \renewcommand*{\glsgroupheading}[1]{}%
+% 
+%   \renewcommand*{\glossaryentryfield}[5]{%
+%     \ssmallcaps{ \glstarget{##1}{##2}} \hspace{2.5em} 
+%     & ##3 \glspostdescription\space \hspace{1.0em} ##5 \tabularnewline}%
+% 
+%   \renewcommand*{\glossarysubentryfield}[6]{%
+%      & \glstarget{##2}{\strut}##4 \glspostdescription\space ##6%
+%     \tabularnewline}%
+%   \renewcommand*{\glsgroupskip}{ & \tabularnewline}%
+% }
+% % ******************************************************************************                
+% % headlines
+% % ******************************************************************************  
+% \RequirePackage[automark]{scrpage2} % provides headers and footers (KOMA Script)
+% 
+% % Reset all headerstuff
+% \clearscrheadings\clearscrheadfoot
+% \setheadsepline{0pt}\setfootsepline{0pt}
+% 
+% 
+% % Remove the numbers from chapter and section mark
+% \renewcommand{\chaptermark}[1]{\markboth{\slcsmallcaps{#1}}{\slcsmallcaps{#1}}}
+% \renewcommand{\sectionmark}[1]{\markright{\slcsmallcaps{#1}}} 
+% 
+% \lehead{\slcsmallcaps{\color{seccolor}\small\thepage}}
+% \rehead{\slcsmallcaps{\color{seccolor}\small\headmark}} 	
+% \lohead{\slcsmallcaps{\color{seccolor}\small\headmark}}
+% \rohead{\slcsmallcaps{\color{seccolor}\small\thepage}} 	
+% 
+% 
+% % ******************************************************************************
+% % Layout of the chapter-, section-, subsection-, subsubsection-,
+% % paragraph and description-headings
+% % ******************************************************************************             
+% \RequirePackage{titlesec}
+% % \titleformat{⟨command⟩}[⟨shape⟩] {⟨format⟩}
+% % {⟨label⟩}{⟨sep⟩}
+% % {⟨before⟩}[⟨after⟩]
+% 
+% %\titleformat{⟨command⟩}[⟨shape⟩]
+% % {⟨format⟩}{⟨label⟩}
+% % {⟨sep⟩}{⟨before⟩}[⟨after⟩]
+% 
+% % parts
+% \titleformat{\part}[display]{\normalfont\centering\large}%
+% {\thispagestyle{empty}\partname~\MakeTextUppercase{\thepart}}{1em}%
+% {\color{seccolor}\spacedallcaps}%
+% % chapters
+% 
+% \titleformat{\chapter}[display]{\vspace*{-2\baselineskip}\color{seccolor}}
+% {\marginpar{\color{textcolor!30!white}\chnumfont{\vspace*{-2\baselineskip}\thechapter}}}{0pt}% "Chapter" name.. label 
+% %{\relax}{0pt}%
+% {\raggedright\suppercase}[\vspace*{\baselineskip}\color{black}\titlerule] % titlebod
+% %\raggedright <- linksbündig
+% 
+% % sections
+% \titleformat{\section}{\color{seccolor}}
+% {\slcsmallcaps{\thesection}}{1em}%
+% {\slcsmallcaps}%
+% % subsections
+% \titleformat{\subsection}{\color{seccolor}}%
+% {\slcsmallcaps{\thesubsection}}{1em}%
+% {\normalsize\itshape}
+% % subsubsections
+% \titleformat{\subsubsection}{\color{seccolor}}%
+% {\slcsmallcaps{\thesubsubsection}}{1em}%
+% {\normalsize\itshape}        
+% % paragraphs
+% \titleformat{\paragraph}[runin]{\color{seccolor}\normalfont\normalsize}%
+% {\theparagraph}{0pt}%
+% {\slcsmallcaps}    
+% % descriptionlabels
+% \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}\slcsmallcaps{#1}}%   
+% 
+% % ******************************************************************************                
+% % spacing  \titlespacing*{⟨command⟩}{⟨left⟩}{⟨beforesep⟩}{⟨aftersep⟩}[⟨right⟩] 
+% % ******************************************************************************
+% 
+% \titlespacing*{\chapter}{0pt}{0pt}{1.25\baselineskip}
+% \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} 
+% \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+% \titlespacing*{\paragraph}{0pt}{\baselineskip}{\baselineskip}
+% 
+% 
+% % ********************************************************************                
+% % layout of the TOC, LOF and LOT (LOL-workaround see next section)
+% % ********************************************************************
+% \RequirePackage[subfigure,titles]{tocloft}
+% % avoid page numbers being right-aligned in fixed-size box              
+% \newlength{\newnumberwidth}
+% \settowidth{\newnumberwidth}{99} % yields overfull hbox warnings for pages > 99
+% \cftsetpnumwidth{\newnumberwidth}
+% 
+% % have the bib neatly positioned after the rest
+% \newlength{\beforebibskip}  
+% \setlength{\beforebibskip}{0em}
+% 
+% % pagenumbers right after the titles
+% % parts
+% \renewcommand{\thepart}{\roman{part}}%
+% \renewcommand{\cftpartpresnum}{\slcsmallcaps}% 
+% \renewcommand{\cftpartfont}{\color{seccolor}\normalfont}%
+% \renewcommand{\cftpartpagefont}{\normalfont}%
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%
+% 	\renewcommand{\cftpartleader}{\hspace{1.5em}}% 
+% 	\renewcommand{\cftpartafterpnum}{\cftparfillskip}%
+% }%        
+% \setlength{\cftbeforepartskip}{1em}%
+% \setlength{\cftbeforechapskip}{.1em}%
+% \setlength{\beforebibskip}{\cftbeforepartskip}%
+% 
+% % chapters
+% \renewcommand{\cftchappresnum}{\slcsmallcaps}%
+% \renewcommand{\cftchapfont}{\color{seccolor}\slcsmallcaps}%
+% \renewcommand{\cftchappagefont}{\ssmallcaps}%
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%
+% 	\renewcommand{\cftchapleader}{\hspace{1.5em}}% 
+% 	\renewcommand{\cftchapafterpnum}{\cftparfillskip}% 
+% }
+% %\setlength{\cftbeforechapskip}{.1em}%           
+% 
+% % sections
+% \renewcommand{\cftsecpresnum}{\slcsmallcaps}%
+% \renewcommand{\cftsecfont}{\normalfont}%
+% \renewcommand{\cftsecpagefont}{\normalfont}%
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%        
+% 	\renewcommand{\cftsecleader}{\hspace{1.5em}}% 
+% 	\renewcommand{\cftsecafterpnum}{\cftparfillskip}%
+% }
+% \ifthenelse{\boolean{@tocaligned}}{\renewcommand{\cftsecindent}{0em}}{\relax}
+% 
+% % subsections
+% \renewcommand{\cftsubsecpresnum}{\slcsmallcaps}%
+% \renewcommand{\cftsubsecfont}{\normalfont}%
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%      
+% 	\renewcommand{\cftsubsecleader}{\hspace{1.5em}}% 
+% 	\renewcommand{\cftsubsecafterpnum}{\cftparfillskip}%   
+% }
+% \ifthenelse{\boolean{@tocaligned}}{\renewcommand{\cftsubsecindent}{0em}}{\relax}
+% 
+% % subsubsections
+% \renewcommand{\cftsubsubsecpresnum}{\slcsmallcaps}%
+% \renewcommand{\cftsubsubsecfont}{\normalfont}%
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%      
+% 	\renewcommand{\cftsubsubsecleader}{\hspace{1.5em}}% 
+% 	\renewcommand{\cftsubsubsecafterpnum}{\cftparfillskip}%   
+% }             
+% \ifthenelse{\boolean{@tocaligned}}{\renewcommand{\cftsubsubsecindent}{0em}}{\relax}
+% 
+% % figures     
+% \renewcommand{\cftfigpresnum}{\slcsmallcaps}% 
+% \renewcommand{\cftfigfont}{\normalfont}%                 
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%
+% 	\renewcommand{\cftfigleader}{\hspace{1.5em}}% 
+% 	\renewcommand{\cftfigafterpnum}{\cftparfillskip}%
+% }
+% \renewcommand{\cftfigpresnum}{\ssmallcaps\figurename~}%Fig.~}
+% \newlength{\figurelabelwidth}
+% \settowidth{\figurelabelwidth}{\cftfigpresnum~99}
+% \addtolength{\figurelabelwidth}{2.5em}
+% \cftsetindents{figure}{0em}{\figurelabelwidth}
+% 
+% % tables
+% \renewcommand{\cfttabpresnum}{\slcsmallcaps}%
+% \renewcommand{\cfttabfont}{\normalfont}%
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%
+% 	\renewcommand{\cfttableader}{\hspace{1.5em}}% 
+% 	\renewcommand{\cfttabafterpnum}{\cftparfillskip}%   
+% } 
+% \renewcommand{\cfttabpresnum}{\ssmallcaps\tablename~}%Tab.~}
+% \newlength{\tablelabelwidth}
+% \settowidth{\tablelabelwidth}{\cfttabpresnum~99}
+% \addtolength{\tablelabelwidth}{2.5em}
+% \cftsetindents{table}{0em}{\tablelabelwidth}
+% \cftsetindents{table}{0em}{\figurelabelwidth}
+% 
+% % listings
+% \renewcommand{\lstlistlistingname}{List of Listings}
+% \newlistof{listings}{lol}{\lstlistlistingname}%
+% \renewcommand{\cftlistingspresnum}{\slcsmallcaps}%
+% \renewcommand{\cftlistingsfont}{\normalfont}%
+% \renewcommand{\cftlistingspagefont}{\normalfont}%
+% \ifthenelse{\boolean{@dottedtoc}}{\relax}%
+% {%  
+% 	\renewcommand{\cftlistingsleader}{\hspace{1.5em}}%
+% 	\renewcommand{\cftlistingsafterpnum}{\cftparfillskip}%
+% }
+% \renewcommand{\cftlistingspresnum}{\ssmallcaps\lstlistingname~}%
+% \newlength{\listingslabelwidth}%
+% \settowidth{\listingslabelwidth}{\cftlistingspresnum~99}%
+% \addtolength{\listingslabelwidth}{2.5em}%
+% %\cftsetindents{listings}{0em}{\listingslabelwidth}%
+% \cftsetindents{listings}{0em}{\figurelabelwidth}%
+% \let\l@lstlisting\l@listings%
+% \let\lstlistoflistings\listoflistings%
+% 
+% 
+% 
+% % remove the vertical space between lof/lot entries of different chapters
+% \ifthenelse{\boolean{@listsseparated}}{%
+% 	\AtBeginDocument{%
+% 		\addtocontents{lof}{\protect\vspace{-\cftbeforechapskip}}%
+% 		\addtocontents{lot}{\protect\vspace{-\cftbeforechapskip}}%
+% 	}%
+% }{%
+% 	\DeclareRobustCommand*{\deactivateaddvspace}{\let\addvspace\@gobble}% 
+% 	\AtBeginDocument{%      
+% 		\addtocontents{lof}{\deactivateaddvspace}% 
+% 		\addtocontents{lot}{\deactivateaddvspace}%      
+%       }%
+% }
+% 
+% 
+% % ******************************************************************************
+% % Footnotes setup   
+% % ******************************************************************************
+% \deffootnote{0em}{0em}{\thefootnotemark\hspace*{.5em}}      
+% %\setlength{\footnotemargin}{-1em}   
+% %\addtokomafont{footnote}{\color{seccolor}}
+% %\renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
+% %	\hrule width 0.4\columnwidth \vspace*{2.6pt}}}
+% 
+% % ******************************************************************************
+% % Graffiti as in GKP's book "Concrete Mathematics"
+% % ******************************************************************************
+% \DeclareRobustCommand{\graffito}[1]{\marginpar{%
+% 	\slshape\footnotesize%\small%
+% 		\ifodd\thepage\raggedright\else\raggedleft\fi%
+% 		\parindent=0pt\lineskip=0pt\lineskiplimit=0pt%\baselineskip=10pt
+% 		\tolerance=2000\hyphenpenalty=300\exhyphenpenalty=300%
+% 		\doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
+% 		%\raggedright%
+% 		\hspace{0pt}#1}}
+% 
+% 
+% % ******************************************************************************
+% % cleverref
+% % ******************************************************************************
+% %\RequirePackage{cleveref}
+% %\crefname{chapter}{Chapter}{Chapters}
+% %\crefname{section}{Section}{Sections}
+% %\crefname{subsection}{Section}{Sections}
+% %\crefname{subsubsection}{Section}{Sections}
+% %\crefname{figure}{Figure}{Figures}
+% %\crefname{table}{Table}{Tables}
+% 
+
+\endinput

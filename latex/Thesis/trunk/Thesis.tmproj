@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Chapters/Analysis.tex</string>
+	<string>Chapters/MeanShift.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -60,7 +60,7 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2010-01-18T11:42:01Z</date>
+			<date>2010-01-19T10:18:52Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -149,6 +149,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>Chapters/MeanShift.aux</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>Chapters/MeanShift.tex</key>
 		<dict>
 			<key>caret</key>
@@ -161,7 +175,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>315</integer>
+			<integer>509</integer>
 		</dict>
 		<key>Chapters/Optimization.tex</key>
 		<dict>
@@ -328,14 +342,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>60</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>55</integer>
+				<integer>125</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
+			<integer>76</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -348,6 +362,7 @@
 		<string>Bibliography.bib</string>
 		<string>Chapters/MeanShift.tex</string>
 		<string>dissertation.sty</string>
+		<string>Chapters/MeanShift.aux</string>
 		<string>Chapters/Future.aux</string>
 		<string>Thesis.tex</string>
 		<string>Chapters/Parallel.tex</string>
@@ -376,6 +391,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{522, 51}, {704, 977}}</string>
+	<string>{{298, 51}, {704, 977}}</string>
 </dict>
 </plist>

@@ -23,3 +23,6 @@
 \BOOKMARK [1][-]{section.3.5}{3.5\040Avoid\040Branch\040Divergence}{chapter.3}% 23
 \BOOKMARK [1][-]{section.3.6}{3.6\040Shared\040Memory}{chapter.3}% 24
 \BOOKMARK [1][-]{section.3.7}{3.7\040Know\040the\040Algorithm}{chapter.3}% 25
+\BOOKMARK [2][-]{figure.caption.11}{Limit\040Cycle,\040Iterating\040Dynamical\040Systems}{section.3.7}% 26
+\BOOKMARK [1][-]{section.3.8}{3.8\040Unrolling\040Loops\040and\040Multiplications}{chapter.3}% 27
+\BOOKMARK [0][]{appendix.A}{A\040Host\040&\040Kernel\040Source\040Code\040}{}% 28
