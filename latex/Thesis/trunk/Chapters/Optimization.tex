@@ -87,15 +87,16 @@ the pixel (see \autoref{lst:msk}).
 
 \section*{Global Memory \textit{\&} Coalescing} 
 \label{sec:coalescing}
-
 One important fact for coalescing is the sequential accesses to global memory
 should be grouped together. A simple optimization is to use the \emph{float4}
-data type available in \gls{CUDA}. After rewriting the algorithm the new speedup
+data type available in \gls{CUDA}. 
+
+After rewriting the algorithm the new speedup
 was 
 \fpAdd{\timecuda}{0,0}{1454}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup1}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
+	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 
 basin of attraction, random access to global memory, not knowing where each pixel
@@ -105,7 +106,7 @@ speedup of
 \fpAdd{\timecuda}{0,0}{250}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup2}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
+	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 
 
@@ -156,29 +157,34 @@ This optimization yielded a speedup of
 \end{equation*}
 
 
-\section{Run Configurations} % (fold)
+\section{Execution Configurations} % (fold)
 \label{sec:run_configurations}
+It is important to check the best execution configuration. Each execution
+configuration has its benefit. Some can exploit the bandwidth to the global
+memory some can benefit from the cache of the texture. Furthermore it is
+important to keep the hardware busy to hide memory latencies. Busy means that
+one should design the application to use threads and blocks so that the
+hardware can balance the work across the multiprocessors.
 
-It is important to check the best run configuration. Each run configruation 
-has its benefit. Some can exploit the bandwidth to the global memory some can
-benefit from the cache of the texture. Furthermore it is important to keep the
-hardware busy to hide memory latencies. Busy means that one should to design 
-the application to use threads and blocks so that the hardware can balance the 
-work across the multiprocessors. 
+A good execution configuration can hide latency arising from register
+dependencies , provide optimal computing efficiency and facilitate coalescing to
+global memory.
 
-After testing all configurations the 
-best fit was a $2x64=256 threads$ configuration.
+Several test showed that the best execution configuration for this algorithm is
+2$\times$64 threads and the new speedup  resulting out of this new configuration
+was
 
 \fpAdd{\timecuda}{0,0}{171}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup4}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
+	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
-
-
+ Another positive effect of a configuration that is multiple of the warp size is
+that the scheduler can work more efficiently because a warp consist out of 32 
+threads. 
 % section run_configurations (end)
 
-\section{Use the Float Data Type where Ever Possible}
+\section{Native Data Types}
 The \gls{CUDA} Programming Guide \citep{citeulike:3325943} highly recommends the
 use of the \emph{float} type for single-precision floating-point code.
 Additionally it is recommended to use the single-precision floating-point
@@ -200,23 +206,45 @@ against \emph{Fermi} the new architecture from {\slcsmallcaps{NVIDIA}}
 
 \section{Avoid Branch Divergence} % (fold)
 \label{sec:avoid_branch_divergence}
-On a architecture with such high throughput of calculations per cycle it is preferred
-to calculate values rather then generating them through $if$ and $else$ statements.
-The remaining $if$ and $else$ statements where arranged in such a way so that a 
-thread is exiting early from the loop and avoiding uneccesary calculations. This leads
-of course to higher branch divergence but the execution time is lower. 
+On a architecture with such high throughput of calculations per cycle it is
+preferred to calculate values rather then generating them through $if$ and
+$else$ statements. Further problems arise when control flow depends on the
+thread id which means that they are divided into groups that are executing
+different execution paths. In this case the execution gets serialised. This can
+happen when a thread has found a density maximum and all the other threads are
+still calculating.  
+
+{\color{red} hier noch die verbindung zwischen den absetzen}
+
+Therefore the remaining $if$ and $else$ statements where arranged in such a way
+so that a thread is exiting early from the loop and avoiding unnecessary
+calculations. This leads of course to higher branch divergence but the execution
+time is lower. 
+
+The speedup achieved from this optimisation was
 \fpAdd{\timecuda}{0,0}{115}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup6}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
 \end{equation*}
 
+
+
 \section{Shared Memory} % (fold)
 \label{sec:shared_memory}
 The optimization guides state that one should use shared memory to avoid 
-redundant transfers from global memory. But in this case the accesses are not 
-known in advance and would lead to heavy reduce in run time as the access to 
-shared memory from the threads would lead to many bank conflicts. 
+redundant transfers from global memory. Shared memory is much faster than global
+and local memory assumed that there are no bank conflicts. The \gls{GPU} shared
+memory is divided into so called banks for simultaenous access. If two threads
+are accessing the same bank the access is serialized and hence can be very slow
+if not only two but far more threads are accessing the same bank 
+\citep{citeulike:6584051}.
+
+In \autoref{sec:data_flow} it was shown that the search window is moving
+unpredictable over the image and hence preloading of data into the shared memory
+is not possible. Furthermore if two or more search windows from different
+threads overlap it is obvious that the access to the pixel would lead to bank
+conflicts. After many tryouts this optimization was discarded. 
 
 \section{Know the Algorithm} % (fold)
 \label{sec:know_the_algo}
@@ -274,6 +302,39 @@ under a small number. In this implementation this small number is
 $\epsilon=0.01$. Then it can be said that the mean shift vector has reached the
 basin of attraction.
 
+\subsubsection{Attractor} % (fold)
+\label{ssub:attractor}
+Dynamical systems evolve to a specific set called an attractor after many
+iterations. Dynamical systems are described either by differential equations or
+by difference equations. A difference equation is a specific type of recurrence
+relation where each term of a sequence is defined as a function of the
+preceding terms.
+
+Such an attractor can be a point (fixed point), curve (limit cycle), manifold or
+a complicated set with a fractal structure known as a strange attractor, see
+\citeauthor{citeulike:3745535} \citep{citeulike:3745535} for impressive pictures
+of strange attractors.
+
+But not only dynamical systems can lead to such an attractor, furthermore the 
+effect of quantization, the limited precision of the float data type can lead to
+an attractor. 
+
+The above terminology comes from chaos theory where the behaviour of dynamical
+and iterative functions systems are described. In \autoref{par:chaos_theory} 
+several books and articles were presented for further information. 
+
+The chaos theory was mentioned because it can happen very often without knowledge
+that some algorithms are iterating and iterating and the stopping criterion is never
+reached. In the mean shift algorithm case the upper bound was set to 100 without
+mentioning why. If the algorithm converges an that is proven, why do we have a 
+upper limit anyhow? Because in this case there are attractors as well. All the 
+densities where the mean shift vector moves to are attractors, fixed points.
+Small perturbations of the vector lead to the same density. 
+
+But there are also attractors where the mean shift vector is moving to and it is
+not the final density. 
+% subsubsection attractor (end)
+
 \begin{lstlisting}[caption=Magnitude squared of pixel 10992, label=lst:msp]
 10992 - 0.00000 - 1
 10992 - 2.52029 - 2
@@ -283,67 +344,109 @@ basin of attraction.
 	§$\ldots$§
 10992 - 2.52029 - 100
 \end{lstlisting}
-Examining the sequence of the magnitude squared for pixel $10992$
+Examining the sequence of the magnitude squared for pixel $10992$ in
 \autoref{lst:msp} one can easily see that after some iterations the magnitude is
-fixed to $2.52029$. This behaviour is known as a fixed point.
+fixed to $2.52029$. The algorithm is stuck at this value and will not move away
+from this attractor. An attractor with a single value is a fixed point. 
 
+At the beginning of the section it was shown that if the iteration count of each
+pixel is dropped to a lower level the performance increases. Further examination
+showed that several pixel have attractors that were limit cycles. Which means that
+the calculation of the magnitude squared is periodic. The period in this case
+is from a period-2 up to a period-8 limit cycle.
+
+For visual feedback the source image in \autoref{fig:orig} was taken and for
+each pixel the iteration count was visualized. The \autoref{fig:lc} shows
+from blue to red, where red values represent high iteration count, the iterations
+for each pixel in a 128$\times$128 big picture.
 
 \begin{figure}[ht] \centering
 \includegraphics{figures/optimization0.pdf}%
-\caption{Period-0 Limitcycle}
-\label{fig:lc0}%
+\caption{Iteration count for each pixel}
+\label{fig:lc}%
 \end{figure}
 
-\begin{figure}[ht] \centering
-\includegraphics{figures/optimization1.pdf}%
-\caption{Period-4 Limitcycle}
-\label{fig:lc0}%
-\end{figure}
-\begin{figure}[ht] \centering
-\includegraphics{figures/optimization2.pdf}%
-\caption{Period-8 Limitcycle}
-\label{fig:lc0}%
-\end{figure}
+It can be seen that there a several pixel that ware iterating to 100. To circumvent
+this problem a simple limit cycle detection algorithm was implemented to prevent
+that several threads are blocking the termination of the algorithm. 
 
+In the first place a period-4 limit cycle detection algorithm was implented where
+a vector was saved with the last four values and compared to the new calculated 
+value. If any value from the vector matches the new value the thread terminates
+and finishes the computation. 
 
-\begin{figure}[ht] \centering
-\includegraphics{figures/optimization0.pdf}
-\caption{Visualization of Iteration Count}
-\label{fig:vis_iteration_count}
-\end{figure}
-
-
-\subsubsection{Limit Cycle, Iterating Dynamical Systems} % (fold)
-\label{ssub:limit_cycle_iterating_dynamical_systems}
-bla bla  limit cycle attractors...
-
-
-examining $i = 15762$ shows that the iteration is a period-2 limit cycle.
-
-Implementing a simple period-4 limit cycle detection yields to a speedup of
+The period-4 limit cycle detection led to a speedup of 
 \fpAdd{\timecuda}{0,0}{99}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup9}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
 \end{equation*}
-
-Implementing a simple period-8 limit cycle detection yields to a speedup of
+Extending the limit cycle detection to period-8 limit cycle detection a speedup
+of 
 \fpAdd{\timecuda}{0,0}{87}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup10}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
 \end{equation*}
+was achieved. Surely one cannot be sure to have limit cycles with a higher
+period but the first problem is the register pressure. Because the compiler has
+to keep the saved values of the previous iterations in the registers for
+comparison the registers cannot be used for the other calculations. The
+\gls{CUDA} compiler tries to keep as much as possible in the registers. Secondly
+comparisons are not very fast as computation and having to compare 16 or even 32
+values makes no sense because than the prevention of limit cycles would cost
+more performance than just iterating to 100. The following series of
+\autoref{fig:lc0},\autoref{fig:lc1}, \autoref{fig:lc2} show visually the effect
+of limit cycle detection an how all iterations to 100 vanish.
 
+\begin{figure}[ht] \centering
+\includegraphics{figures/optimization0.pdf}%
+\caption{Period-0 limit cycle detection}
+\label{fig:lc0}%
+\end{figure}
+
+\begin{figure}[ht] \centering
+\includegraphics{figures/optimization1.pdf}%
+\caption{Period-4 limit cycle detection}
+\label{fig:lc1}%
+\end{figure}
+\begin{figure}[ht] \centering
+\includegraphics{figures/optimization2.pdf}%
+\caption{Period-8 limit cycle detection}
+\label{fig:lc2}%
+\end{figure}
 
 \section{Unrolling Loops and Multiplications} % (fold)
 \label{sec:unrolling_loops_and_multiplications}
+The last improvement that was made is to unroll loops and complicated
+multiplications. The idea behind this is that the compiler has more chances to
+schedule the instructions and reorder them in a proper way. This is important
+because there are some instructions, e.g. \textsf{fmadd}, that are executing two
+floating point operations rather than just one floating point operation per 4
+clock cycles and unrolled multiplications are more \emph{clear} to the compiler. 
 
-After unrolling the multiplications 
+After unrolling the multiplications and loops a final speedup of 
 \fpAdd{\timecuda}{0,0}{73}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup11}
 	S = \timegold\ ms/\timecuda\ ms = \speedup
 \end{equation*}
+was achieved.
+
+\section{Summary} % (fold)
+\label{sec:summary}
+The naive implementation has already led to an speedup of 5$\times$. But putting
+some knowledge and energy into the optimization one can acheive a speedup of 
+\speedup$\times$. The optimization was not only done on hardware but also on the 
+algorithm side. It is not enough to know some programming langauge very good the
+hardware on which its run is more important. No programming langauge will expose
+all hardware features directly to the developer, the developer has to know
+about the hardware and its features. {\color{red} +++++ noch was ++++}
+
+After all the optimizations and a recent speedup it is now important to look 
+after the performance and scalablility of the algorithm. The next chapter is 
+going to tackle this. 
+% section summary (end)
 
 
 
