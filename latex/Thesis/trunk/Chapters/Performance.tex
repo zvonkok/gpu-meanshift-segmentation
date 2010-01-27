@@ -560,11 +560,6 @@ can be accelerated on the \gls{GPU}.
 
 
 \chapter{FONT STUFF}
-\font\fonta="Minion Pro:+onum" at 12pt \fonta onum figures: 0123456789 \\
-\font\fonta="Minion Pro:+lnum" at 12pt \fonta lnum figures: 0123456789 \\
-\font\fonta="Minion Pro:+pnum" at 12pt \fonta pnum figures: 0123456789 \\
-\font\fonta="Minion Pro:+tnum" at 12pt \fonta tnum figures: 0123456789
-
 
 \newlength{\abcd} % for ab..z string length calculation
 \settowidth{\abcd}{abcdefghijklmnopqrstuvwxyz} 	
@@ -597,9 +592,9 @@ can be accelerated on the \gls{GPU}.
     %  ymajorgrids 
 			]
      
-			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+			\addplot[color=pl1,fill=pf1] table[x=PIX,y=CPU_Speedup] from \tableB;
  			
-\addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
+\addplot[color=pl0,fill=pf0] table[x=PIX,y=Speedup] from \tableA;
  			
 			\addlegendentry{\slcsmallcaps{plot1}}
 			\addlegendentry{\slcsmallcaps{plot0}}
@@ -640,7 +635,7 @@ can be accelerated on the \gls{GPU}.
      
 			\addplot[color=plot3!80!black,fill=plot3!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
  	
-		\addplot[color=plot2!80!black,fill=plot2!40!white] table[x=PIX,y=Speedup] from \tableA;
+		\addplot[color=pl2,fill=pf2] table[x=PIX,y=Speedup] from \tableA;
  	
 		\addlegendentry{\slcsmallcaps{plot3}}
 		\addlegendentry{\slcsmallcaps{plot2}}

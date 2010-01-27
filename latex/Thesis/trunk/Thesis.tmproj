@@ -3,12 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Chapters/MeanShift.tex</string>
+	<string>Tables/tesla.geforce.data</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>FrontBackmatter</string>
 			<key>regexFolderFilter</key>
@@ -25,8 +23,6 @@
 			<string>gfx</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Chapters</string>
 			<key>regexFileFilter</key>
@@ -37,8 +33,6 @@
 			<string>Chapters</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Plots</string>
 			<key>regexFolderFilter</key>
@@ -47,8 +41,6 @@
 			<string>Plots</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Tables</string>
 			<key>regexFolderFilter</key>
@@ -60,19 +52,31 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2010-01-19T10:18:52Z</date>
+			<date>2010-01-27T19:57:49Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Thesis.tex</string>
 			<key>lastUsed</key>
-			<date>2010-01-17T18:47:27Z</date>
+			<date>2010-01-27T19:58:15Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>diagrams.tex</string>
+			<key>lastUsed</key>
+			<date>2010-01-27T19:57:52Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>figures.tex</string>
+			<key>lastUsed</key>
+			<date>2010-01-27T19:57:52Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Bibliography.bib</string>
 			<key>lastUsed</key>
-			<date>2010-01-17T15:58:37Z</date>
+			<date>2010-01-27T19:57:51Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -88,39 +92,9 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>200</integer>
+	<integer>277</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Bibliography.bib</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>1453</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>1420</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>1453</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>1453</integer>
-			</dict>
-		</dict>
 		<key>Chapters/Analysis.tex</key>
 		<dict>
 			<key>caret</key>
@@ -128,186 +102,28 @@
 				<key>column</key>
 				<integer>6</integer>
 				<key>line</key>
-				<integer>38</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>13</integer>
-		</dict>
-		<key>Chapters/Future.aux</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>Chapters/MeanShift.aux</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>16</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>Chapters/MeanShift.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>324</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>509</integer>
-		</dict>
-		<key>Chapters/Optimization.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>301</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>281</integer>
-		</dict>
-		<key>Chapters/Parallel.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>223</integer>
+				<integer>292</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>201</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>218</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>223</integer>
-			</dict>
-		</dict>
-		<key>Chapters/Performance.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>23</integer>
-				<key>line</key>
-				<integer>249</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>221</integer>
+			<integer>284</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>21</integer>
 				<key>line</key>
-				<integer>249</integer>
+				<integer>292</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>249</integer>
+				<integer>292</integer>
 			</dict>
-		</dict>
-		<key>Chapters/SourceCode.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>50</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>-1</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>50</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-		</dict>
-		<key>Plots/multi.gpu.data</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>Plots/single.gpu.data</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>23</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
 		<key>Tables/tesla.geforce.data</key>
 		<dict>
@@ -323,49 +139,9 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Thesis.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>106</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>75</integer>
-		</dict>
-		<key>dissertation.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>125</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>76</integer>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Chapters/Optimization.tex</string>
-		<string>Chapters/SourceCode.tex</string>
-		<string>Plots/multi.gpu.data</string>
-		<string>Chapters/Performance.tex</string>
-		<string>Plots/single.gpu.data</string>
-		<string>Bibliography.bib</string>
-		<string>Chapters/MeanShift.tex</string>
-		<string>dissertation.sty</string>
-		<string>Chapters/MeanShift.aux</string>
-		<string>Chapters/Future.aux</string>
-		<string>Thesis.tex</string>
-		<string>Chapters/Parallel.tex</string>
 		<string>Tables/tesla.geforce.data</string>
 		<string>Chapters/Analysis.tex</string>
 	</array>
@@ -391,6 +167,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{298, 51}, {704, 977}}</string>
+	<string>{{332, 48}, {760, 977}}</string>
 </dict>
 </plist>
