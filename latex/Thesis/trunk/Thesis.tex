@@ -1,4 +1,4 @@
-%!TEX TS-program = xelatex
+%!TEX TS-program = pdflatex
 %!TEX encoding = UTF-8 Unicode 
 
 \documentclass[bibliography=totoc, version=first, twoside, open=right,%
@@ -33,7 +33,7 @@ draft=on]{scrreprt}
 \newcommand{\myTime}{May/2009\xspace}
 \newcommand{\myVersion}{Version 2.5\xspace}
 
-
+\usepackage[american,english]{babel}
 
 \usepackage{dissertation}
 
@@ -44,12 +44,12 @@ draft=on]{scrreprt}
 %*******************************************************
 \hyphenation{pro-gram-ma-bil-i-ty pro-gram-ming ma-chines}
 
-\usepackage{layout}
-\usepackage{layouts}
+%\usepackage{layout}
+%\usepackage{layouts}
 
 \begin{document}
 
-\layout*
+%\layout*
 
 %\drawpage%
 %\drawparagraph%
@@ -66,11 +66,12 @@ draft=on]{scrreprt}
 
 \color{textcolor}
 
-\includepdf[pages={1,2}]{Frontcover.pdf}
+%\includepdf[pages={1,2}]{Frontcover.pdf}
 
 
 % Babel
-\selectlanguage{american} % american ngerman
+
+%\selectlanguage{american} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
 
@@ -91,7 +92,7 @@ draft=on]{scrreprt}
 
 
 \pagenumbering{arabic}
-\pagestyle{scrheadings}
+%\pagestyle{scrheadings}
 % *******************************************************************************
 % \mainmatter
 %*******************************************************************************
@@ -105,11 +106,11 @@ draft=on]{scrreprt}
 %\include{Chapters/Analysis}
 %\include{Chapters/Design}
 %\tikzset{external/export=true}
-%{\tikzset{external/figure name/.add={}{_optimization}}
-\tikzsetfigurename{optimization}
+{\tikzset{external/figure name/.add={}{_optimization}}
+%\tikzsetfigurename{optimization}
 \include{Chapters/Optimization}
 %\tikzset{external/export=false}
-%\include{Chapters/Performance}
+\include{Chapters/Performance}
 %\include{Chapters/Future}
 
 

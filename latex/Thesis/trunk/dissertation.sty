@@ -26,7 +26,8 @@
 % Colors (cmyk color space) (need to load it first, other package may load it..)
 % ******************************************************************************
 \RequirePackage[%cmyk, really weird colors.... 
-								xetex, dvipsnames, x11names, table, hyperref]{xcolor} 
+								%xetex, 
+								dvipsnames, x11names, table, hyperref]{xcolor} 
 
 \definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
@@ -102,6 +103,8 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 \RequirePackage{units} % A package for setting units in a typographically correct way
+\RequirePackage[T1]{fontenc}                
+
 % ******************************************************************************
 % leading ...
 % ******************************************************************************
@@ -148,16 +151,10 @@
 % include these graphics, thereby reducing typesetting time considerably.
 \usepgfplotslibrary{external} 
 \tikzexternalize[prefix=figures/]{Thesis}% Assigns a common prefix used by all file names.
-\tikzset{external/figure name=thesis} % uses thesis_0.pdf, thesis_1.pdf, ...
-
+\tikzset{external/figure name=thesis} % uses thesis_0.pdf, thesis_1.pdf, ...å
 % \section{The first section} {\tikzset{external/figure name/.add={}{_firstsection}}
 % ... % uses main_firstsection_0.pdf, main_firstsection_1.pdf, ...
 % }
-
-%{\tikzset{external/system call={xelatex -shell-escape -halt-on-error	-interaction=batchmode -jobname "\image" "\texsource"}}
-
-
-
 
 % ******************************************************************************
 % pgfplotstable (very nice tables)
@@ -205,69 +202,87 @@
 % MinionPro
 % ******************************************************************************
 \RequirePackage[
+	opticals, 
 	minionint, 
-	openg,%
+	openg,
 	loosequotes,
-	footnotefigures, %nichts geändert...
+	footnotefigures,
 	mathosf, 
 	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
+\RequirePackage[toc,enum,bib,eqno,lineno]{tabfigures}
+\RequirePackage{MnSymbol}
 
-
-% ******************************************************************************
-% XeTeX
-% ******************************************************************************
-\RequirePackage[MnSymbol]{mathspec}
-%\RequirePackage[cm-default, no-math]{fontspec}
-\RequirePackage{xunicode}
-\RequirePackage{xltxtra}
-
-
-\defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
-\newcommand{\mainfont}{Minion Pro}
-\newcommand{\scfont}{Minion Pro}
-
-%mathosf \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} 
-\setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} % Set 
-\setmathrm{\mainfont}
-
-\setmainfont{\mainfont}
-%\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
-%better match sans to serif than Candara.. Candara better for font used in mathspec.pdf...
-\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Syntax LT Std} 
-\setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
-
-\newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
-\renewcommand{\textsc}[1]{\scshape{#1}}
-
-\newfontfamily\spaceduppercase[LetterSpace=20.0]{\mainfont} % uc 20 - 25 %
-\newfontfamily\chnumfont[Scale=7, Numbers=OldStyle]{\mainfont}
-
+\newfont{\chnumfont}{eurb10 scaled 7000}
 
 % ******************************************************************************
-% polyglossia, replacement for babel
+% microtype 
 % ******************************************************************************
-\RequirePackage{polyglossia}
-\setdefaultlanguage[variant=british]{english}
-
-% ******************************************************************************
-% tabfigures for minionpro
-% ******************************************************************************
-\RequirePackage[toc,enum,bib,eqno,lineno,debug]{tabfigures}
-\newfontfamily\tabularfigures%
-								 [Numbers={OldStyle,Monospaced},Scale=MatchLowercase]{\mainfont}
-\renewcommand*\Tf@font{\tabularfigures}
+\RequirePackage{microtype} % character protruding and other micro-typography stuff
 
 
+% % ******************************************************************************
+% % XeTeX
+% % ******************************************************************************
+% \RequirePackage[MnSymbol]{mathspec}
+% %\RequirePackage[cm-default, no-math]{fontspec}
+% \RequirePackage{xunicode}
+% \RequirePackage{xltxtra}
+% 
+% 
+% \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
+% \newcommand{\mainfont}{Minion Pro}
+% \newcommand{\scfont}{Minion Pro}
+% %\newcommand{\mainfont}{Cambria}
+% %\newcommand{\scfont}{Cambria}
+% 
+% %mathosf \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} 
+% \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} % Set 
+% \setmathrm{\mainfont}
+% 
+% \setmainfont{\mainfont}
+% %\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
+% %better match sans to serif than Candara.. Candara better for font used in mathspec.pdf...
+% \setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Syntax LT Std} 
+% \setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
+% 
+% \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
+% \renewcommand{\textsc}[1]{\scshape{#1}}
+% 
+% \newfontfamily\spaceduppercase[LetterSpace=20.0]{\mainfont} % uc 20 - 25 %
+% \newfontfamily\chnumfont[Scale=7, Numbers=OldStyle]{\mainfont}
+
+% 
+% % ******************************************************************************
+% % polyglossia, replacement for babel
+% % ******************************************************************************
+% \RequirePackage{polyglossia}
+% \setdefaultlanguage[variant=british]{english}
+% 
+% 
 % ******************************************************************************
 % Spacing & SmallCaps stuff
 % ******************************************************************************
 \RequirePackage[overload]{textcase} % for \MakeTextUppercase
-\DeclareRobustCommand{\sucsmallcaps}[1]{\textsc{\MakeTextUppercase{#1}}}%   
-\DeclareRobustCommand{\slcsmallcaps}[1]{\textsc{\MakeTextLowercase{#1}}}%
-\DeclareRobustCommand{\ssmallcaps}[1]{\textsc{#1}}%
+\DeclareRobustCommand{\sucsmallcaps}[1]{\textssc{\MakeTextUppercase{#1}}}%   
+\DeclareRobustCommand{\slcsmallcaps}[1]{\textssc{\MakeTextLowercase{#1}}}%
+\DeclareRobustCommand{\ssmallcaps}[1]{\textssc{#1}}%
 
 \DeclareRobustCommand{\suppercase}[1]{\spaceduppercase{\MakeTextUppercase{#1}}}%   
 
+% \ifthenelse{\boolean{@pdfspacing}}%
+% {%
+%  	\PackageInfo{classicthesis}{Using pdftex/microtype for character spacing.%
+%                               Make sure your pdftex is version 1.40 or higher.}%
+%   \microtypesetup{expansion=false}%
+%   \DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\MakeTextUppercase{#1}}}%
+%   \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\scshape\MakeTextLowercase{#1}}}%
+% }{%
+% 	\RequirePackage{soul} % for letterspacing 
+%   \sodef\allcapsspacing{\upshape}{0.15em}{0.65em}{0.6em}%
+%   \sodef\lowsmallcapsspacing{\scshape}{0.075em}{0.5em}{0.6em}%   
+%   \DeclareRobustCommand{\spacedallcaps}[1]{\MakeTextUppercase{\allcapsspacing{#1}}}%   
+%   \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\MakeTextLowercase{\textsc{\lowsmallcapsspacing{#1}}}}%
+% }%
 
 % ******************************************************************************
 % Typesetting... typeares
@@ -304,10 +319,25 @@
 \setlength{\marginparwidth}{7em}% == 12*7 = 84pt
 \setlength{\marginparsep}{2em}% 24:40 .. 1:1.62
 
+
+% ******************************************************************************
+% Graffiti as in GKP's book "Concrete Mathematics"
+% ******************************************************************************
+\DeclareRobustCommand{\graffito}[1]{\marginpar{%
+    \slshape\footnotesize%\small%
+    \ifodd\thepage\raggedright\else\raggedleft\fi%
+    \parindent=0pt\lineskip=0pt\lineskiplimit=0pt%\baselineskip=10pt
+    \tolerance=2000\hyphenpenalty=300\exhyphenpenalty=300%
+    \doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
+    %\raggedright%
+    \hspace{0pt}#1}}
+
+
 % ******************************************************************************
 % Hyperreferences
 % ******************************************************************************
-\RequirePackage[xetex, pdfpagelabels, pagebackref]{hyperref}
+\RequirePackage[%xetex,%
+ 	pdftex, pdfpagelabels, pagebackref]{hyperref}
 \hypersetup{%
 	colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
 	breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
@@ -331,6 +361,28 @@
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
 %\renewcommand{\algorithmautorefname}{Algorithm}%
+
+% ******************************************************************************
+% get the links to the figures and tables right
+% \RequirePackage[all]{hypcap} % to be loaded after hyperref package
+% ********************************************************************
+% setup the style of the backrefs from the bibliography
+\newcommand{\backrefnotcitedstring}{\relax}%(Not cited.)
+\newcommand{\backrefcitedsinglestring}[1]{(Cited on page~#1.)}
+\newcommand{\backrefcitedmultistring}[1]{(Cited on pages~#1.)}
+
+		\RequirePackage[hyperpageref]{backref} % to be loaded after hyperref package 
+		   \renewcommand{\backreftwosep}{ and~} % seperate 2 pages
+		   \renewcommand{\backreflastsep}{, and~} % seperate last of longer list
+		   \renewcommand*{\backref}[1]{}  % Disable standard
+		   \renewcommand*{\backrefalt}[4]{% Detailed backref
+		      \ifcase #1 %
+		         \backrefnotcitedstring%
+		      \or%
+		         \backrefcitedsinglestring{#2}%
+		      \else%
+		         \backrefcitedmultistring{#2}%
+		      \fi}%
 
 % ******************************************************************************                
 % Listings
@@ -456,6 +508,7 @@
 \lohead{\slcsmallcaps{\color{seccolor}\small\headmark}}
 \rohead{\slcsmallcaps{\color{seccolor}\small\thepage}} 	
 
+\RequirePackage{etex}
 
 % ******************************************************************************
 % Layout of the chapter-, section-, subsection-, subsubsection-,
@@ -479,7 +532,7 @@
 \titleformat{\chapter}[display]{\vspace*{-2\baselineskip}\color{seccolor}}
 {\marginpar{\color{textcolor!30!white}\chnumfont{\vspace*{-2\baselineskip}\thechapter}}}{0pt}% "Chapter" name.. label 
 %{\relax}{0pt}%
-{\raggedright\suppercase}[\vspace*{\baselineskip}\color{black}\titlerule] % titlebod
+{\raggedright\sucsmallcaps}[\vspace*{\baselineskip}\color{black}\titlerule] % titlebod
 %\raggedright <- linksbündig
 
 % sections
@@ -656,17 +709,6 @@
 %\renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
 %	\hrule width 0.4\columnwidth \vspace*{2.6pt}}}
 
-% ******************************************************************************
-% Graffiti as in GKP's book "Concrete Mathematics"
-% ******************************************************************************
-\DeclareRobustCommand{\graffito}[1]{\marginpar{%
-	\slshape\footnotesize%\small%
-		\ifodd\thepage\raggedright\else\raggedleft\fi%
-		\parindent=0pt\lineskip=0pt\lineskiplimit=0pt%\baselineskip=10pt
-		\tolerance=2000\hyphenpenalty=300\exhyphenpenalty=300%
-		\doublehyphendemerits=100000\finalhyphendemerits=\doublehyphendemerits%
-		%\raggedright%
-		\hspace{0pt}#1}}
 
 
 % ******************************************************************************

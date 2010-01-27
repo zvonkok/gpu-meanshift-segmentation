@@ -361,7 +361,23 @@ from blue to red, where red values represent high iteration count, the iteration
 for each pixel in a 128$\times$128 big picture.
 
 \begin{figure}[ht] \centering
-\includegraphics{figures/optimization0.pdf}%
+	\begin{tikzpicture} 
+		\begin{axis}[
+				height=5cm,
+				width=0.91\textwidth,
+			  shader=interp, % interp = faster, smaller pdf's
+				point meta max = 100, % color bar range from 0 - 100
+				colorbar,
+			 	colorbar style={ ymax=100},
+%				colormap name = dissmap,
+			 	xlabel=$x$, 
+				ylabel=$y$,
+				zlabel=$z$,
+				zmin=0, zmax=100,
+				] 
+				\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle0.dat}; 
+		\end{axis}
+	\end{tikzpicture}
 \caption{Iteration count for each pixel}
 \label{fig:lc}%
 \end{figure}
@@ -400,18 +416,68 @@ more performance than just iterating to 100. The following series of
 of limit cycle detection an how all iterations to 100 vanish.
 
 \begin{figure}[ht] \centering
-\includegraphics{figures/optimization0.pdf}%
+	\begin{tikzpicture} 
+		\begin{axis}[
+				height=5cm,
+				width=0.91\textwidth,
+			  shader=interp, % interp = faster, smaller pdf's
+				point meta max = 100, % color bar range from 0 - 100
+				colorbar,
+			 	colorbar style={ ymax=100},
+%				colormap name = dissmap,
+			 	xlabel=$x$, 
+				ylabel=$y$,
+				zlabel=$z$,
+				zmin=0, zmax=100,
+				] 
+				\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle0.dat}; 
+		\end{axis}
+	\end{tikzpicture}
 \caption{Period-0 limit cycle detection}
 \label{fig:lc0}%
 \end{figure}
 
 \begin{figure}[ht] \centering
-\includegraphics{figures/optimization1.pdf}%
+	\begin{tikzpicture} 
+		\begin{axis}[
+				height=5cm,
+				width=0.91\textwidth,
+			  shader=interp, % interp = faster, smaller pdf's
+				point meta max = 100, % color bar range from 0 - 100
+				colorbar,
+			 	colorbar style={ ymax=100},
+%				colormap name = dissmap,
+			 	xlabel=$x$, 
+				ylabel=$y$,
+				zlabel=$z$,
+				zmin=0, zmax=100,
+				] 
+				\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle4.dat}; 
+		\end{axis}
+	\end{tikzpicture}
 \caption{Period-4 limit cycle detection}
 \label{fig:lc1}%
 \end{figure}
+
+
 \begin{figure}[ht] \centering
-\includegraphics{figures/optimization2.pdf}%
+	\begin{tikzpicture} 
+		\begin{axis}[
+				height=5cm,
+				width=0.91\textwidth,
+			  shader=interp, % interp = faster, smaller pdf's
+				point meta max = 100, % color bar range from 0 - 100
+				colorbar,
+			 	colorbar style={ ymax=100},
+%				colormap name = dissmap,
+			 	xlabel=$x$, 
+				ylabel=$y$,
+				zlabel=$z$,
+				zmin=0, zmax=100,
+				] 
+				\addplot3[surf,mesh/rows=128] file {Plots/iter.128.limitcycle8.dat}; 
+		\end{axis}
+	\end{tikzpicture}
 \caption{Period-8 limit cycle detection}
 \label{fig:lc2}%
 \end{figure}
