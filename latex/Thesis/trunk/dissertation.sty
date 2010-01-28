@@ -91,7 +91,7 @@
 \RequirePackage{fltpoint}
 \RequirePackage{listings}  
 \RequirePackage{textcomp}
-\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
+%\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
 \RequirePackage{xspace} % to get the spacing after macros right
 \RequirePackage{tabularx} % better tables
 \RequirePackage{mparhack} % get marginpar right
@@ -138,6 +138,7 @@
 % consider sticking to a single graphics program.
 %
 % Further stuff see pgfmanual Chapter 6 ...
+\RequirePackage{atbegshi} % workaround for pgfplot cvs version 
 \RequirePackage{pgfplots}
 \pgfplotsset{
 	every tick label/.append style={font=\scriptsize},
@@ -199,6 +200,11 @@
 \raggedbottom
 
 % ******************************************************************************
+% microtype (% character protruding and other micro-typography stuff)
+% ******************************************************************************
+\RequirePackage{microtype} 
+
+% ******************************************************************************
 % MinionPro
 % ******************************************************************************
 \RequirePackage[
@@ -207,58 +213,16 @@
 	openg,
 	loosequotes,
 	footnotefigures,
-	mathosf, 
-	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
+ 	mathosf, 
+ 	]{MinionPro}% Must be loaded otherwise the math font doesnt look right
 \RequirePackage[toc,enum,bib,eqno,lineno]{tabfigures}
 \RequirePackage{MnSymbol}
 
-\newfont{\chnumfont}{eurb10 scaled 7000}
+\RequirePackage[sf,scaled=0.88]{syntaxlt}
+\RequirePackage[tt,scaled=0.88]{consolas}
 
-% ******************************************************************************
-% microtype 
-% ******************************************************************************
-\RequirePackage{microtype} % character protruding and other micro-typography stuff
+\newcommand{\chnumfont}{\fontsize{72pt}{14pt}\selectfont}
 
-
-% % ******************************************************************************
-% % XeTeX
-% % ******************************************************************************
-% \RequirePackage[MnSymbol]{mathspec}
-% %\RequirePackage[cm-default, no-math]{fontspec}
-% \RequirePackage{xunicode}
-% \RequirePackage{xltxtra}
-% 
-% 
-% \defaultfontfeatures{Mapping=tex-text, Numbers=OldStyle, Ligatures=NoCommon}
-% \newcommand{\mainfont}{Minion Pro}
-% \newcommand{\scfont}{Minion Pro}
-% %\newcommand{\mainfont}{Cambria}
-% %\newcommand{\scfont}{Cambria}
-% 
-% %mathosf \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} 
-% \setmathsfont(Digits)[Numbers={OldStyle,Monospaced}]{\mainfont} % Set 
-% \setmathrm{\mainfont}
-% 
-% \setmainfont{\mainfont}
-% %\setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Candara}
-% %better match sans to serif than Candara.. Candara better for font used in mathspec.pdf...
-% \setallsansfonts[Numbers={OldStyle,Proportional},Scale=MatchLowercase]{Syntax LT Std} 
-% \setallmonofonts[Numbers=OldStyle,Scale=MatchLowercase]{Consolas}
-% 
-% \newfontfamily\scshape[LetterSpace=8.0, Letters=SmallCaps]{\scfont} % sc 5 - 10 %
-% \renewcommand{\textsc}[1]{\scshape{#1}}
-% 
-% \newfontfamily\spaceduppercase[LetterSpace=20.0]{\mainfont} % uc 20 - 25 %
-% \newfontfamily\chnumfont[Scale=7, Numbers=OldStyle]{\mainfont}
-
-% 
-% % ******************************************************************************
-% % polyglossia, replacement for babel
-% % ******************************************************************************
-% \RequirePackage{polyglossia}
-% \setdefaultlanguage[variant=british]{english}
-% 
-% 
 % ******************************************************************************
 % Spacing & SmallCaps stuff
 % ******************************************************************************
@@ -445,6 +409,7 @@
 \renewcommand{\AlCapNameSty}{\captionfont}% 
 
 \SetAlCapSkip{\baselineskip}%
+\SetAlgoCaptionSeparator{\quad}
 % space before box & after box
 \renewcommand{\@algoskip}{\vspace{\baselineskip}}%\SetAlgoSkip{bigskip}%
 \setlength{\algomargin}{0em} % margin in the box
