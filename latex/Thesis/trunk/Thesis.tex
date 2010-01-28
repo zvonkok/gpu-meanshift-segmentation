@@ -37,8 +37,6 @@ draft=on]{scrreprt}
 
 \usepackage{dissertation}
 
-
-
 %********************************************************************
 % Hyphenation
 %*******************************************************
@@ -82,13 +80,14 @@ draft=on]{scrreprt}
 %\frontmatter
 %*******************************************************************************
 \include{FrontBackMatter/Glossary}
-\include{FrontBackmatter/Titlepage}
-\include{FrontBackmatter/Titleback}
-\include{FrontBackmatter/Declaration}
-\cleardoublepage\include{FrontBackmatter/Dedication}
-\cleardoublepage\include{FrontBackmatter/Abstract}
-\cleardoublepage\include{FrontBackmatter/Acknowledgments}
-\cleardoublepage\include{FrontBackmatter/Contents}
+%\include{FrontBackmatter/Titlepage}
+%\include{FrontBackmatter/Titleback}
+%\include{FrontBackmatter/Declaration}
+%\cleardoublepage\include{FrontBackmatter/Dedication}
+%\cleardoublepage\include{FrontBackmatter/Abstract}
+%\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+
+%\cleardoublepage\include{FrontBackmatter/Contents}
 
 
 \pagenumbering{arabic}
@@ -96,7 +95,7 @@ draft=on]{scrreprt}
 % *******************************************************************************
 % \mainmatter
 %*******************************************************************************
-\tikzset{external/export=false}
+\tikzset{external/export=true}
 %\include{Chapters/Introduction}
 %\include{Chapters/LiteratureReview}
 

@@ -1,33 +1,28 @@
-\BOOKMARK [1][-]{Dedication.1}{Dedication}{}% 1
-\BOOKMARK [1][-]{acknowledgments.1}{Acknowledgments}{}% 2
-\BOOKMARK [0][]{chapter.1}{1 Mean Shift}{}% 3
-\BOOKMARK [1][-]{section.1.1}{1.1 Density Estimation}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.2}{1.2 Kernel Density Estimation}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.3}{1.3 Kernel and their Properties}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.4}{1.4 Mean Shift}{chapter.1}% 7
-\BOOKMARK [2][-]{subsection.1.4.1}{1.4.1 Density Gradient Estimation}{section.1.4}% 8
-\BOOKMARK [2][-]{subsection.1.4.2}{1.4.2 Mean Shift Method}{section.1.4}% 9
-\BOOKMARK [1][-]{section.1.5}{1.5 Filtering \046 Segmentation}{chapter.1}% 10
-\BOOKMARK [2][-]{subsection.1.5.1}{1.5.1 Mean Shift Filtering}{section.1.5}% 11
-\BOOKMARK [2][-]{subsection.1.5.2}{1.5.2 Mean Shift Segmentation}{section.1.5}% 12
-\BOOKMARK [0][]{chapter.2}{2 Optimization Strategies}{}% 13
-\BOOKMARK [1][-]{section.2.1}{2.1 Test \046 Benchmark Configuration}{chapter.2}% 14
-\BOOKMARK [1][-]{section.2.2}{2.2 Offload Compute Intensive Parts}{chapter.2}% 15
-\BOOKMARK [1][-]{section.2.3}{2.3 Execution Configurations}{chapter.2}% 16
-\BOOKMARK [1][-]{section.2.4}{2.4 Native Data Types}{chapter.2}% 17
-\BOOKMARK [1][-]{section.2.5}{2.5 Avoid Branch Divergence}{chapter.2}% 18
-\BOOKMARK [1][-]{section.2.6}{2.6 Shared Memory}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.7}{2.7 Know the Algorithm}{chapter.2}% 20
-\BOOKMARK [2][-]{section*.7}{Attractor}{section.2.7}% 21
-\BOOKMARK [1][-]{section.2.8}{2.8 Unrolling Loops and Multiplications}{chapter.2}% 22
-\BOOKMARK [1][-]{section.2.9}{2.9 Summary}{chapter.2}% 23
-\BOOKMARK [0][]{chapter.3}{3 Performance \046 Scalability}{}% 24
-\BOOKMARK [1][-]{section.3.1}{3.1 Varying the Image Size}{chapter.3}% 25
-\BOOKMARK [2][-]{figure.caption.12}{Linearity}{section.3.1}% 26
-\BOOKMARK [1][-]{section.3.2}{3.2 Multiple gpus}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.3}{3.3 Overclocking the gpu}{chapter.3}% 28
-\BOOKMARK [2][-]{subsection.3.3.1}{3.3.1 Increasing the Memory Clock}{section.3.3}% 29
-\BOOKMARK [2][-]{subsection.3.3.2}{3.3.2 Increasing the Core Clock}{section.3.3}% 30
-\BOOKMARK [3][-]{figure.caption.17}{Multiple gpus overclocked}{subsection.3.3.2}% 31
-\BOOKMARK [1][-]{section.3.4}{3.4 Final Speedup}{chapter.3}% 32
-\BOOKMARK [0][]{chapter.4}{4 FONT STUFF}{}% 33
+\BOOKMARK [0][]{chapter.1}{1 Mean Shift}{}% 1
+\BOOKMARK [1][-]{section.1.1}{1.1 Density Estimation}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{1.2 Kernel Density Estimation}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{1.3 Kernel and their Properties}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{1.4 Mean Shift}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.4.1}{1.4.1 Density Gradient Estimation}{section.1.4}% 6
+\BOOKMARK [2][-]{subsection.1.4.2}{1.4.2 Mean Shift Method}{section.1.4}% 7
+\BOOKMARK [1][-]{section.1.5}{1.5 Filtering \046 Segmentation}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.5.1}{1.5.1 Mean Shift Filtering}{section.1.5}% 9
+\BOOKMARK [2][-]{subsection.1.5.2}{1.5.2 Mean Shift Segmentation}{section.1.5}% 10
+\BOOKMARK [0][]{chapter.2}{2 Optimization Strategies}{}% 11
+\BOOKMARK [1][-]{section.2.1}{2.1 Test \046 Benchmark Configuration}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{2.2 Offload Compute Intensive Parts}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.3}{2.3 Execution Configurations}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.4}{2.4 Native Data Types}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.5}{2.5 Avoid Branch Divergence}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.6}{2.6 Shared Memory}{chapter.2}% 17
+\BOOKMARK [1][-]{section.2.7}{2.7 Know the Algorithm}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.8}{2.8 Unrolling Loops and Multiplications}{chapter.2}% 19
+\BOOKMARK [1][-]{section.2.9}{2.9 Summary}{chapter.2}% 20
+\BOOKMARK [0][]{chapter.3}{3 Performance \046 Scalability}{}% 21
+\BOOKMARK [1][-]{section.3.1}{3.1 Varying the Image Size}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.2}{3.2 Multiple gpus}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.3}{3.3 Overclocking the gpu}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.1}{3.3.1 Increasing the Memory Clock}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.2}{3.3.2 Increasing the Core Clock}{section.3.3}% 26
+\BOOKMARK [1][-]{section.3.4}{3.4 Final Speedup}{chapter.3}% 27
+\BOOKMARK [0][]{chapter.4}{4 FONT STUFF}{}% 28
