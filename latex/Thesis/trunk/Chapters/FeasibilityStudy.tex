@@ -1,9 +1,19 @@
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+
 \chapter{Feasibility Study}
 \label{chap:feas}
-There are several myths about \gls{GPGPU} which will be examined and explained 
-with a feasibility study. Listed below some myths in no particular order.
-\begin{enumerate}
-	\item \Gls{GPU} programs are written with a graphics api and layered on top 
+Entering a new field in computing without enough exeperience on the platform it 
+is always advisable to get a better knowledge about the hardware ans software before
+designing anything without proper knowledge. A feasibility study can give an overview
+if a project is technically feasible and a way to gain some knowledge about the
+complete eco system. Furthermore the study  can answer first questions and help
+demistify myths. 
+
+There are several myths about \gls{GPGPU} which will be examined and explained
+Listed below some myths in no particular order.
+\begin{enum}
+	\item \Gls{GPU} programs are written with a graphics \gls{API} and layered on top 
 		of graphics
 	\label{enum:api}
 	\item \Glspl{GPU} can only do a gather and no scatter memory access
@@ -18,18 +28,18 @@ with a feasibility study. Listed below some myths in no particular order.
 	\item \Glspl{GPU} are very wide \gls{SIMD} machines on which branching is 	  
 		impossible, with 4-wide vector registers
  	\label{enum:simd}
-\end{enumerate}
+\end{enum}
 
 The most interesting myth here is that in average one can only exploit about
-10\% of the peak performance for general purpose computing, which in turn would 
-lead to that \glspl{GPU} are power-inefficient in average. Another thing to 
-keep an eye on is the statement that \glspl{GPU} do not do real floating point
-math which would exclude many communities ( \gls{HPC}, Physics, Astronomy, \ldots)
-\graffito{Many \gls{HPC}, Physics, Astronomy,... benchmarks and algorithms rely 
-on floating point math} from spending time in doing \gls{GPGPU}. 
+10\% of the peak performance for general purpose computing, which in turn would
+lead to that \glspl{GPU} are power-inefficient in average. Another thing to keep
+an eye on is the statement that \glspl{GPU} do not do real floating point math
+which would exclude many communities ( \gls{HPC}, Physics, Astronomy, \ldots)
+\graffito{Many \gls{HPC}, Physics, Astronomy,... benchmarks and algorithms rely
+on floating point math} from spending time in doing \gls{GPGPU}.
 
 Therefore the first step before choosing an algorithm or put further energy into
-research of \glspl{GPU} is to make a feasibility study. The study will examine
+research of \glspl{GPU} is to make the feasibility study. The study will examine
 the myths and show solutions to the problems respectively statements.
 Furthermore it will show whether the technology, software eco system exists for
 building applications on \glspl{GPU} and how difficult it will be to build.
@@ -84,10 +94,10 @@ tracing.
 
 Ray casters and ray tracers spent most of their time calculating intersections
 of rays with different objects. \citeauthor{Whitted80} \citep{Whitted80} estimates
-that anywhere from 75 percent to over 95 percent of rendering time is spent in
+that anywhere from 75\% to over 95\% of rendering time is spent in
 intersection tests. For example an image with 640 pixel width and 480 pixels
 height, for a total of 307200 pixels, with a medium complex scene with 100
-objects results in 30.720.000 intersection tests. There are well documented ray
+objects results in 30720000 intersection tests. There are well documented ray
 tracing accelerating techniques not only to decrease the number of intersection
 tests per ray but also to decrease the number of rays.
 
@@ -105,7 +115,7 @@ not help in solving the essential problems.
 After the initial port of the ray tracer to \gls{CUDA}, the first goal was to 
 make it run on the \gls{GPU}, it was time to fine tune the run configuration. 
 For any \gls{CUDA} application it is crucial to take a look at register, shared 
-memory and local memory usage. The performance of the application is depend on
+memory and local memory usage. The performance of the application  depends on
 how good/bad the existing resources are exploited.
 
 The examination of the ray traced showed that the initial port used 48
@@ -113,21 +123,21 @@ registers, 28 bytes shared memory and 96 byte constant memory per thread. As
 shown in \textbf{REF. to \gls{CUDA} Application Stuff} the number of launched threads,
 blocks and grids is dependent on the three factors mentioned above.
 
-Each \gls{SM} has 8192 registers which means we could have 8192/48 = 170 threads
+Each \gls{SM} has 8192 registers which means one could have 8192/48 = 170 threads
 to fully exploit the resources 8 blocks should be launched so 170/8 = 21 threads
 per block which is by far too low. It is easily spotted that the application is
 limited by registers per \gls{SM}. These calculations can easily be done with the
 \emph{CUDA occupancy calculator} supplied with the SDK.
 
-After fiddling around with compiler switches especially 
-\emph{-maxrregcount=x}
+After fiddling around with compiler switches especially the switch that limits
+the used registers \emph{-maxrregcount=x}
 the application used only 14 register which meant we could have a blocksize of
 8, 8x8 = 64 threads per block \graffito{It is always good to have a thread count
 which is a multiple of 32. A warp consits of 32 threads and the scheduler can
 easier schedule the threads}. When reducing the amount of registers used, one
 has to consider that registers which are additionally needed are allocated from
 the local memory rather than the register file. Local memory is located in the
-global memory which has a high latency (200-400 cycles) and registers often
+global memory which has a high latency (200--400 cycles) and registers often
 referenced have a big impact on performance. The application can become memory
 bound.
 
@@ -142,8 +152,8 @@ The \autoref{tab:runconfig} shows the run configuration used for the sample runs
 
 
 
-To summarize just by compiling the application and fiddling with the run
-parameters one can achieve, in this case, a speedup of about 8 times. See Table
+To summarize, just by compiling the application and fiddling with the run
+parameters one can achieve, in this case, a speedup of about 8 times. See
 \autoref{tab:comp} for several runs varying object count and image size.
 
 \begin{table}[ht]
@@ -156,18 +166,17 @@ parameters one can achieve, in this case, a speedup of about 8 times. See Table
 	
 As it can be seen in \autoref{tab:comp} the application runs 8 times faster but
 when looking at the \glspl{GFLOP} values there are far beyond that what a
-\gls{GPU} could achieve\footnote{The used \gls{GPU} is a G90 chip with peak 620
-\glspl{GFLOP}}. The application is only using 0.5\% of the peak
-performance!\graffito{All performance values are gathered with the {\slcsmallcaps{NVIDIA}}
-Performance Profiler availabe as well with the \gls{SDK}}
+\gls{GPU} could achieve\footnote{The used \gls{GPU} is a G92 chip with peak 620
+\glspl{GFLOP}}. The application is only using 0.5\% of the peak performance. All
+performance values are gathered with the {\slcsmallcaps{NVIDIA}} Performance
+Profiler availabe as well with the \gls{SDK}.
 
-
-The reasons for this uneffective usage of processing power can be seen in Table
-\autoref{tab:localmem} and Table \autoref{tab:globalmem}. The application is
-heavily memory bound. The consequence of reducing the register usage is heavy
-access to local memory, e.g. there are over 328000000 stores issued to the
-memory. Furthermore the code is using many branches which actually reflected by
-the value 22578032.
+The reasons for this uneffective usage of processing power can be seen in
+\autoref{tab:localmem} and \autoref{tab:globalmem}. The application is heavily
+memory bound. The consequence of reducing the register usage is heavy access to
+local memory, e.g. there are over 328000000 stores issued to the memory.
+Furthermore the code is using many branches which is actually reflected by the
+value 22578032.
 
 
 \begin{table}[ht]
@@ -187,7 +196,7 @@ the value 22578032.
 Another point is the access to global memory. The \gls{GPU} is able to do
 coalesced reads and writes when possible otherwise the access is serialized. The
 application was not ported with coalesced memory reads and writes in mind and
-hence the application is loading almost everything incoherent. See Table
+hence the application is loading almost everything incoherent. See
 \autoref{tab:globalmem} for the values.
 
 \begin{table}[ht]
@@ -198,25 +207,37 @@ hence the application is loading almost everything incoherent. See Table
   	\label{tab:globalmem}
 \end{table}
 
-The ray tracer could be extended or optimized in many ways but it will be leaved as is. The main point of the feasibility study was to get a \emph{feeling} for developing on \glspl{GPU} and to spot major drawbacks and obstacles. Keeping the lessons learned here in mind the development of the main application will be easier. The following section will demystify some but not all myths stated in the beginning.
+The ray tracer could be extended or optimized in many ways but it will be leaved
+as is. The main point of the feasibility study was to get a feeling for
+developing on \glspl{GPU} and to spot major drawbacks and obstacles. Keeping the
+lessons learned here in mind the development of the main application will be
+easier. The following section will demystify some but not all myths stated in
+the beginning.
 % section performance_tuning (end)
 
 \section{Demystifing the Myths} % (fold)
 \label{sec:demystifing_the_myths}
-There were several myths about \gls{GPGPU} see \autoref{chap:feas} that are simply wrong or need to be proven. Beginning with \autoref{enum:api} this statement is 
-simply wrong. Using \gls{CUDA} or the ATI \gls{SDK} \emph{Close To Metal}
-no developer is anymore forced to use graphics \glspl{API}. Furthermore the abandoned graphics \gls{API} for \glspl{GPGPU} makes it possible to gather and scatter to the memory, which resolves myth \autoref{enum:gather}. 
+There were several myths about \gls{GPGPU} see \autoref{chap:feas} that are
+simply wrong or need to be proven. Beginning with \autoref{enum:api} this
+statement is simply wrong. Using \gls{CUDA} or the ATI \gls{SDK} \emph{Close To
+Metal} no developer is anymore forced to use graphics \glspl{API}. Furthermore
+the abandoned graphics \gls{API} for \glspl{GPGPU} makes it possible to gather
+and scatter to the memory, which resolves myth \autoref{enum:gather}.
 
-The \glspl{GPU} are able to do real floating point math. The myth \autoref{enum:float} comes from a time where floats were only 16 or 24 bit and had no support for \emph{NaN}, \emph{Rounding to zero} and so on. The situation changed completely with the recent development and the switch to the \emph{Unified Device Architecture} where \gls{SIMD} processing was discarded in 
-favour of more single independent threads. 
+The \glspl{GPU} are able to do real floating point math. The myth
+\autoref{enum:float} comes from a time where floats were only 16 or 24 bit and
+had no support for \emph{NaN}, \emph{Rounding to zero} and so on. The situation
+changed completely with the recent development and the switch to the
+\emph{Unified Device Architecture} where \gls{SIMD} processing was discarded in
+favour of more single independent threads.
 
-The last to myths \autoref{enum:ineff} and \autoref{enum:exploit} are hard to demystify.
-If one has a algorithm which fits excellently to the \gls{GPU} the full power of
-the \gls{GPU} can be exploited and hence it is power efficient. It depends
-heavily on the algorithm. The feasibility study has shown that one can achieve
-easily a speedup but considering the inefficient use of the ressources and the
-power dissipation it could be a slow down investing so much power for so little
-return.
+The last to myths \autoref{enum:ineff} and \autoref{enum:exploit} are hard to
+demystify. If one has a algorithm which fits excellently to the \gls{GPU} the
+full power of the \gls{GPU} can be exploited and hence it is power efficient. It
+depends heavily on the algorithm. The feasibility study has shown that one can
+achieve easily a speedup but considering the inefficient use of the ressources
+and the power dissipation it could be a slow down investing so much power for so
+little return.
 
 % section demystifing_the_myths (end)
 

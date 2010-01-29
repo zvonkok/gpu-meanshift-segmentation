@@ -43,22 +43,23 @@ draft=on]{scrreprt}
 \hyphenation{pro-gram-ma-bil-i-ty pro-gram-ming ma-chines}
 
 %\usepackage{layout}
-%\usepackage{layouts}
+
 
 \begin{document}
 
 %\layout*
 
-%\drawpage%
-%\drawparagraph%
 %parindent \the\parindent \\
 %parskip  \the\parskip \\ \\
 
+\begin{figure} \listdiagram \caption{List parameters} \label{fig:lstp} \end{figure}
 %\drawheading%
+\drawpage%
+\drawparagraph%
 
-%\setlayoutscale{0.9}
-%\drawfloat
-%\drawheading
+\setlayoutscale{0.9}
+\drawfloat
+\drawheading
 
 %\printparam
 
@@ -67,12 +68,6 @@ draft=on]{scrreprt}
 %\includepdf[pages={1,2}]{Frontcover.pdf}
 
 
-% Babel
-
-%\selectlanguage{american} % american ngerman
-%\renewcommand*{\bibname}{new name}
-%\setbibpreamble{}
-
 \pagenumbering{roman}
 \pagestyle{empty}
 
@@ -80,14 +75,11 @@ draft=on]{scrreprt}
 %\frontmatter
 %*******************************************************************************
 \include{FrontBackMatter/Glossary}
-%\include{FrontBackmatter/Titlepage}
-%\include{FrontBackmatter/Titleback}
 %\include{FrontBackmatter/Declaration}
 %\cleardoublepage\include{FrontBackmatter/Dedication}
-%\cleardoublepage\include{FrontBackmatter/Abstract}
-%\cleardoublepage\include{FrontBackmatter/Acknowledgments}
-
-%\cleardoublepage\include{FrontBackmatter/Contents}
+\cleardoublepage\include{FrontBackmatter/Abstract}
+\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\cleardoublepage\include{FrontBackmatter/Contents}
 
 
 \pagenumbering{arabic}
@@ -96,23 +88,26 @@ draft=on]{scrreprt}
 % \mainmatter
 %*******************************************************************************
 \tikzset{external/export=true}
-%\include{Chapters/Introduction}
-%\include{Chapters/LiteratureReview}
-
-%\include{Chapters/Parallel}
-%\include{Chapters/FeasibilityStudy}
+\tikzsetfigurename{introduction}
+\include{Chapters/Introduction}
+\tikzsetfigurename{literaturereview}
+\include{Chapters/LiteratureReview}
+\tikzsetfigurename{parallel}
+\include{Chapters/Parallel}
+\tikzsetfigurename{feasibilitystudy}
+\include{Chapters/FeasibilityStudy}
+\tikzsetfigurename{meanshift}
 \include{Chapters/MeanShift}
-%\include{Chapters/Analysis}
-%\include{Chapters/Design}
-%\tikzset{external/export=true}
-{\tikzset{external/figure name/.add={}{_optimization}}
-%\tikzsetfigurename{optimization}
+\tikzsetfigurename{analysis}
+\include{Chapters/Analysis}
+\tikzsetfigurename{design}
+\include{Chapters/Design}
+\tikzsetfigurename{optimization}
 \include{Chapters/Optimization}
-%\tikzset{external/export=false}
+\tikzsetfigurename{performance}
 \include{Chapters/Performance}
-%\include{Chapters/Future}
-
-
+\tikzsetfigurename{future}
+\include{Chapters/Future}
 
 % \addtocontents{toc}{\protect\clearpage} % TEST
 
@@ -127,8 +122,8 @@ draft=on]{scrreprt}
 %%%%%\cleardoublepage\myPart{Appendix}
 %\include{Chapters/InterimReport}
 %\include{Chapters/ProjectPlanning}
-%\include{Chapters/Tables}
-%\include{Chapters/SourceCode}
+\include{Chapters/Tables}
+\include{Chapters/SourceCode}
 
 %********************************************************************
 % Other Stuff in the Back

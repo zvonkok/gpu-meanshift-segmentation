@@ -3,7 +3,8 @@
 %
 % Copyright (C) 2009 Zvonko Kosic-Krnjajic
 % ******************************************************************************
-
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
 
 
 \NeedsTeXFormat{LaTeX2e}
@@ -25,9 +26,8 @@
 % ******************************************************************************
 % Colors (cmyk color space) (need to load it first, other package may load it..)
 % ******************************************************************************
-\RequirePackage[%cmyk, really weird colors.... 
-								%xetex, 
-								dvipsnames, x11names, table, hyperref]{xcolor} 
+\RequirePackage[%cmyk,%really weird colors.... 
+								pdftex, dvipsnames, x11names, table, hyperref]{xcolor} 
 
 \definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
@@ -79,7 +79,7 @@
 % ********************************************************************
 % Setup and Finetuning
 %*******************************************************
-\setlength{\extrarowheight}{3pt} % increase table row height	
+%\setlength{\extrarowheight}{3pt} % increase table row height	
 \setcounter{errorcontextlines}{999}
 
 % ******************************************************************************
@@ -164,7 +164,7 @@
 \pgfplotstableset{
 	every head row/.style={before row={\toprule},after row=\midrule},
 	every last row/.style={after row=\bottomrule},
-	font=\color{textcolor}%\scshape
+	font=\small\color{textcolor}%\scshape
 }
 % recommendations...
 \RequirePackage{booktabs}
@@ -202,7 +202,15 @@
 % ******************************************************************************
 % microtype (% character protruding and other micro-typography stuff)
 % ******************************************************************************
-\RequirePackage{microtype} 
+\RequirePackage[%
+	verbose,
+	protrusion=true,
+	expansion=true,
+	kerning=true,
+	spacing=true,
+	tracking=true,
+	babel=true,
+	]{microtype} 
 
 % ******************************************************************************
 % MinionPro
@@ -219,7 +227,7 @@
 \RequirePackage{MnSymbol}
 
 \RequirePackage[sf,scaled=0.88]{syntaxlt}
-\RequirePackage[tt,scaled=0.88]{consolas}
+\RequirePackage[tt,scaled=0.8]{consolas}
 
 \newcommand{\chnumfont}{\fontsize{72pt}{14pt}\selectfont}
 
@@ -253,7 +261,11 @@
 % ******************************************************************************
 %\RequirePackage[colorgrid, draft]{showframe}
 
-\RequirePackage[twoside, includeheadfoot]{geometry}
+\RequirePackage[%
+	pdftex, 
+	twoside,
+	includeheadfoot,
+	]{geometry}
 
 \newlength{\linelength}
 \setlength{\linelength}{28pc}
@@ -280,7 +292,7 @@
 % ******************************************************************************
 % Randnotiz stuff ...
 % ******************************************************************************
-\setlength{\marginparwidth}{7em}% == 12*7 = 84pt
+\setlength{\marginparwidth}{9em}% == 12*7 = 84pt
 \setlength{\marginparsep}{2em}% 24:40 .. 1:1.62
 
 
@@ -317,13 +329,14 @@
 	pdfcreator={XeLaTeX},%
 	pdfproducer={XeLateX ... }%
 }
-\renewcommand{\figureautorefname}{Figure}
-\renewcommand{\tableautorefname}{Table}
-\renewcommand{\partautorefname}{Part}
-\renewcommand{\chapterautorefname}{Chapter}
-\renewcommand{\sectionautorefname}{Section}
-\renewcommand{\subsectionautorefname}{Section}
-\renewcommand{\subsubsectionautorefname}{Section}
+\renewcommand{\figureautorefname}{Figure}%
+\renewcommand{\tableautorefname}{Table}%
+\renewcommand{\partautorefname}{Part}%
+\renewcommand{\chapterautorefname}{Chapter}%
+\renewcommand{\sectionautorefname}{Section}%
+\renewcommand{\subsectionautorefname}{Section}%
+\renewcommand{\subsubsectionautorefname}{Section}%
+\renewcommand{\itemautorefname}{Item}%
 %\renewcommand{\algorithmautorefname}{Algorithm}%
 
 % ******************************************************************************
@@ -354,7 +367,7 @@
 \RequirePackage{listings}%
 \lstset{
 	language=C++,
-	basicstyle=\footnotesize\ttfamily,
+	basicstyle=\small\ttfamily,
 	keywordstyle={},
   commentstyle=\color{seccolor}\itshape,
 	numbers=left,
@@ -415,12 +428,6 @@
 \setlength{\algomargin}{0em} % margin in the box
 \newcommand{\kwsty}{\color{plot0}}
 \SetKwSty{kwsty}
-
-% ******************************************************************************
-% paralist  (Allow for smarter labeling of enumerations)
-% ******************************************************************************
-% and itemizations (consider using enumitem instead)
-\RequirePackage[newitem, newenum]{paralist}
 
 % ******************************************************************************
 % glossaries
@@ -502,7 +509,7 @@
 
 % sections
 \titleformat{\section}{\color{seccolor}}
-{\slcsmallcaps{\thesection}}{1em}%
+{\slcsmallcaps{\thesection}}{8pt}%
 {\slcsmallcaps}%
 % subsections
 \titleformat{\subsection}{\color{seccolor}}%
@@ -535,8 +542,8 @@
 \RequirePackage[subfigure,titles]{tocloft}
 % avoid page numbers being right-aligned in fixed-size box              
 \newlength{\newnumberwidth}
-\settowidth{\newnumberwidth}{99} % yields overfull hbox warnings for pages > 99
-\cftsetpnumwidth{\newnumberwidth}
+\settowidth{\newnumberwidth}{100} % yields overfull hbox warnings for pages > 99
+%\cftsetpnumwidth{\newnumberwidth}
 
 % have the bib neatly positioned after the rest
 \newlength{\beforebibskip}  
@@ -558,6 +565,8 @@
 \setlength{\beforebibskip}{\cftbeforepartskip}%
 
 % chapters
+\setlength{\cftchapnumwidth}{2em}%
+
 \renewcommand{\cftchappresnum}{\slcsmallcaps}%
 \renewcommand{\cftchapfont}{\color{seccolor}\slcsmallcaps}%
 \renewcommand{\cftchappagefont}{\ssmallcaps}%
@@ -569,6 +578,10 @@
 %\setlength{\cftbeforechapskip}{.1em}%           
 
 % sections
+\setlength{\cftsecindent}{0pt}%
+\addtolength{\cftsecindent}{\cftchapnumwidth}
+\setlength{\cftsecnumwidth}{3em}%
+
 \renewcommand{\cftsecpresnum}{\slcsmallcaps}%
 \renewcommand{\cftsecfont}{\normalfont}%
 \renewcommand{\cftsecpagefont}{\normalfont}%
@@ -580,6 +593,11 @@
 \ifthenelse{\boolean{@tocaligned}}{\renewcommand{\cftsecindent}{0em}}{\relax}
 
 % subsections
+\setlength{\cftsubsecindent}{0pt}%
+\addtolength{\cftsubsecindent}{\cftchapnumwidth}%
+\addtolength{\cftsubsecindent}{\cftsecnumwidth}%
+\setlength{\cftsubsecnumwidth}{4em}%
+
 \renewcommand{\cftsubsecpresnum}{\slcsmallcaps}%
 \renewcommand{\cftsubsecfont}{\normalfont}%
 \ifthenelse{\boolean{@dottedtoc}}{\relax}%
@@ -590,6 +608,13 @@
 \ifthenelse{\boolean{@tocaligned}}{\renewcommand{\cftsubsecindent}{0em}}{\relax}
 
 % subsubsections
+\setlength{\cftsubsubsecindent}{0pt}%
+\addtolength{\cftsubsubsecindent}{\cftchapnumwidth}%
+\addtolength{\cftsubsubsecindent}{\cftsecnumwidth}%
+\addtolength{\cftsubsubsecindent}{\cftsubsecnumwidth}%
+\setlength{\cftsubsubsecnumwidth}{5em}%
+
+
 \renewcommand{\cftsubsubsecpresnum}{\slcsmallcaps}%
 \renewcommand{\cftsubsubsecfont}{\normalfont}%
 \ifthenelse{\boolean{@dottedtoc}}{\relax}%
@@ -674,7 +699,57 @@
 %\renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
 %	\hrule width 0.4\columnwidth \vspace*{2.6pt}}}
 
+% ******************************************************************************
+% layouts
+% ******************************************************************************
+\RequirePackage{layouts}
 
+% ******************************************************************************
+% paralist  (Allow for smarter labeling of enumerations)
+% ******************************************************************************
+% and itemizations (consider using enumitem instead)
+\RequirePackage[newitem, newenum]{paralist}
+%\setdefaultleftmargin{0pt}{0pt}{0pt}{0pt}{0pt}{0pt}
+% lists
+\setlength\leftmargini{15pt}
+\setlength\leftmarginii{12.5pt}
+\setlength\leftmarginiii{10pt}
+\def\@listi{\leftmargin \leftmargini
+            \parsep 4.5pt plus 1pt minus 1pt
+            \topsep 4.5pt plus 1pt minus 1pt
+            \itemsep 0pt}
+
+\let\@listI\@listi
+%\def\descriptionlabel#1{\hspace\labelsep\normalfont#1:}
+\renewenvironment{itemize}
+  {\ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter\list
+      \csname\@itemitem\endcsname
+      {\ifnum\@itemdepth=\@ne\leftmargin 0pt\fi
+       \def\makelabel##1{\hss\llap{##1}}}%
+   \fi}
+  {\endlist}
+
+\newenvironment{enum}[1][0]
+  {\list\labelenumi
+    {\usecounter{enumi}\setcounter{enumi}{#1}
+     \leftmargin 0pt
+     \itemindent 0pt
+     \labelwidth 15pt
+     \labelsep 0pt
+     \def\makelabel##1{##1\hss}}}
+  {\endlist}
+
+\newenvironment{options}
+  {\list{}
+    {\leftmargin 0pt
+     \labelwidth 0pt
+     \labelsep 1em
+     \itemindent \labelsep
+     \lstset{belowskip=0pt}}}
+  {\endlist}
 
 % ******************************************************************************
 % cleverref

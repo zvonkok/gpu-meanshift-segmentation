@@ -1,7 +1,7 @@
 % ********************************************************************
 % classicthesis-ldpkg.sty (formerly known as loadpackages.sty)
 %
-% Copyright (C) 2009 André Miede http://www.miede.de
+% Copyright (C) 2010 André Miede http://www.miede.de
 %
 % If you like the style then I would appreciate a postcard. My address 
 % can be found in the file ClassicThesis.pdf. A collection of the 
@@ -26,7 +26,7 @@
 %
 % ********************************************************************  
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{classicthesis-ldpkg}[2009/10/04 v2.6.1 Package Loader for Classic Thesis Style]
+\ProvidesPackage{classicthesis-ldpkg}[2010/01/01 v2.6.2 Package Loader for Classic Thesis Style]
  
 \@ifpackageloaded{classicthesis}%
     {\PackageWarningNoLine{classicthesis-ldpkg}{Package "classicthesis" should be loaded AFTER "classicthesis-ldpkg".}}%
@@ -37,7 +37,9 @@
 % ******************************************************************** 
 \RequirePackage{ifthen}
     \newboolean{cld@nochapters} % disable all chapter-specific commands
+    \newboolean{cld@nobackref} % disable all chapter-specific commands
 \DeclareOption{nochapters}{\setboolean{cld@nochapters}{true}}
+\DeclareOption{nobackref}{\setboolean{cld@nobackref}{true}}
 \ProcessOptions\relax
 
 % ******************************************************************** 
@@ -138,7 +140,7 @@
 % ********************************************************************
 % Using PDFLaTeX:
 % ********************************************************************
-\RequirePackage[pdftex,hyperfootnotes=false,pdfpagelabels,pagebackref]{hyperref}  % backref linktocpage pagebackref
+\RequirePackage[pdftex,hyperfootnotes=false,pdfpagelabels]{hyperref}  % backref linktocpage pagebackref
 \pdfcompresslevel=9
 \pdfadjustspacing=1 
 \RequirePackage[pdftex]{graphicx} % PDFTeX driver for graphicx
@@ -173,18 +175,22 @@
 \newcommand{\backrefcitedsinglestring}[1]{(Cited on page~#1.)}
 \newcommand{\backrefcitedmultistring}[1]{(Cited on pages~#1.)}
 
-\RequirePackage[hyperpageref]{backref} % to be loaded after hyperref package 
-   \renewcommand{\backreftwosep}{ and~} % seperate 2 pages
-   \renewcommand{\backreflastsep}{, and~} % seperate last of longer list
-   \renewcommand*{\backref}[1]{}  % Disable standard
-   \renewcommand*{\backrefalt}[4]{% Detailed backref
-      \ifcase #1 %
-         \backrefnotcitedstring%
-      \or
-         \backrefcitedsinglestring{#2}%
-      \else
-         \backrefcitedmultistring{#2}%
-      \fi}
+\ifthenelse{\boolean{cld@nobackref}}%
+{\relax}{%
+		\RequirePackage[hyperpageref]{backref} % to be loaded after hyperref package 
+		   \renewcommand{\backreftwosep}{ and~} % seperate 2 pages
+		   \renewcommand{\backreflastsep}{, and~} % seperate last of longer list
+		   \renewcommand*{\backref}[1]{}  % Disable standard
+		   \renewcommand*{\backrefalt}[4]{% Detailed backref
+		      \ifcase #1 %
+		         \backrefnotcitedstring%
+		      \or%
+		         \backrefcitedsinglestring{#2}%
+		      \else%
+		         \backrefcitedmultistring{#2}%
+		      \fi}%
+}
+   
 %   \hspace*{\fill}{\scriptsize\itshape\mbox{%
 %   \ifnum#1=1 %
 %     (Cited on page~%
