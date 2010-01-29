@@ -222,23 +222,6 @@ filters on idividual pixels without considering the neigbouring pixels.
 %solution.
 
 
-\subsubsection{Typical Software Development Flow} % (fold)
-\label{ssub:typical_software_development_flow}
-\begin{itemize}
-	\item Algorithm complexity study
-	\item Data layout/locality and Data flow analysis
-	\item Experimental partitioning and mapping of the algorithm and program 
-		structure to the architecture
-	\item Develop CPU Control, CPU scalar/multicore code
-	\item Develop CPU Control, partitioned \gls{GPU}scalar code (Communication, 
-		synchronization, latency handling)
-	\item Transform \gls{GPU}scalar code to \gls{GPU}threaded code, multi \gls{GPU}code
-	\item Re-balance the computation / data movement
-	\item Other optimization considerations (load balancing, bottlenecks...)
-\end{itemize}
-% subsubsection typical_software_development_flow (end)
-
-
 \subsection{An Overview of Stream Computation} % (fold)
 \label{sub:an_overview_of_stream_computation}
 streaming programming model... sdk's .. 
@@ -255,7 +238,7 @@ Einsetzbarkeit, Leistung und Effizienz von \gls{GPU}Applikationen im nichtgrafis
 Bereich)
 % subsection stream_computing_in_use (end)
 
-\subsection{{\slcsmallcaps{NVIDIA}} CUDA} % (fold)
+\subsection{NVIDIA CUDA} % (fold)
 \label{sub:nvidia_cuda}
 Tesla, Stil, Aufwand, Debugbarkeit, Portieraufwand für 
 General Purpose Anwendungen, Vergleich zu SPUFS

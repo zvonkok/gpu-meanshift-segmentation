@@ -1,3 +1,7 @@
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+
+
 \chapter{Parallel Processing with GPUs}% (fold)
 \label{cha:parallel_processing_with_gpu} 
 
@@ -333,5 +337,32 @@ the result.
 % section cuda_programming_model (end)
 % section background_to_the_project (end)
 
-\section{Porting Strategies for GPUs}.% (fold)
+\section{Porting Strategy for GPUs}.% (fold)
 \label{sec:porting_strategies_for_gpu} 
+This section  is a high-level overview of the porting process to not only
+the \gls{GPU} it can be rather seen as general porting process to parallel 
+hardware. It includes strategies that help through the porting process. It 
+breaks down the porting process into a series of discrete steps. 
+
+The steps included here are not the only path through the porting process because
+the porting process is flexible and has to be adapted slightly for every hardware. 
+
+In general, one will follow these steps when porting an algorithm to the \gls{GPU}
+\begin{itemize}
+	\item Algorithm complexity study. Profile the code, find the most compute
+intensive parts analyze the parts of the algorithm which could be parallellized.
+	\item Data layout/locality and Data flow analysis. Look for independent task or 
+	independent data to exploit task or data paralellism.
+	\item Experimental partitioning and mapping of the algorithm and program 
+		structure to the architecture. 
+	\item Develop \gls{CPU} control, \gls{CPU} scalar/multicore code
+	\item Develop \gls{CPU} control, partitioned \gls{GPU} scalar code (Communication, 
+		synchronization, latency handling)
+	\item Transform \gls{GPU} scalar code to \gls{GPU}threaded code, multi \gls{GPU} code. 
+	Exploit all avaible cores and devices on the system. 
+	\item Re-balance the computation / data movement. 
+	\item Other optimization considerations (load balancing, bottlenecks...)
+\end{itemize}
+% subsubsection typical_software_development_flow (end)
+
+

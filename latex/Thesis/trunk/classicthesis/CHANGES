@@ -1,3 +1,9 @@
+Changes in version 2.6.2 (January 2010)
+o New option for classicthesis-ldpkg.sty: nobackref 
+  (removes links to cited page in bibliography)
+o Fixed some spacing issues for LoF, LoT, LoL with option
+  "listsseparated" (in classicthesis.sty)
+
 Changes in version 2.6.1 (October 2009)
 o Removed \myChapter and \myPart, you can now use the regular
   \chapter and \part commands (in classicthesis.sty)

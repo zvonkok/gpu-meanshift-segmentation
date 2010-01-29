@@ -1,7 +1,7 @@
 % ********************************************************************
 % classicthesis.sty
 %
-% Copyright (C) 2009 André Miede http://www.miede.de
+% Copyright (C) 2010 André Miede http://www.miede.de
 %
 % If you like the style then I would appreciate a postcard. My address 
 % can be found in the file ClassicThesis.pdf. A collection of the 
@@ -42,7 +42,7 @@
 %
 % ********************************************************************  
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{classicthesis}[2009/10/04 v2.6.1 Typographic Style for a classic-looking thesis]
+\ProvidesPackage{classicthesis}[2010/01/01 v2.6.2 Typographic Style for a classic-looking thesis]
 \RequirePackage{ifthen}
     \newboolean{@tocaligned} % the left column of the toc will be aligned (no indention)
     \newboolean{@eulerchapternumbers} % use AMS Euler for chapter font (otherwise Palatino)
@@ -595,11 +595,11 @@
     % remove the vertical space between lof/lot entries of different chapters
     \ifthenelse{\boolean{@listsseparated}}{%
         \AtBeginDocument{%
-            \addtocontents{lof}{\protect\vspace{-\cftbeforechapskip}}%
-            \addtocontents{lot}{\protect\vspace{-\cftbeforechapskip}}%
+            \addtocontents{lof}{\protect\vspace{-10\cftbeforechapskip}}%
+            \addtocontents{lot}{\protect\vspace{-10\cftbeforechapskip}}%
             \ifthenelse{\boolean{@listings}}%        
     				{%
-             	\addtocontents{lol}{\protect\vspace{-2\cftbeforechapskip}}%
+             	\addtocontents{lol}{\protect\vspace{-10\cftbeforechapskip}}%
             }%
         }%
     }{%

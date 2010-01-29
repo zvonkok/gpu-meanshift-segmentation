@@ -3,10 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Tables/tesla.geforce.data</string>
+	<string>dissertation.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>FrontBackmatter</string>
 			<key>regexFolderFilter</key>
@@ -23,6 +25,8 @@
 			<string>gfx</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Chapters</string>
 			<key>regexFileFilter</key>
@@ -52,25 +56,15 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2010-01-27T19:57:49Z</date>
+			<date>2010-01-28T11:53:58Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Thesis.tex</string>
 			<key>lastUsed</key>
-			<date>2010-01-27T19:58:15Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>diagrams.tex</string>
-			<key>lastUsed</key>
-			<date>2010-01-27T19:57:52Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>figures.tex</string>
-			<key>lastUsed</key>
-			<date>2010-01-27T19:57:52Z</date>
+			<date>2010-01-28T11:53:58Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -80,15 +74,9 @@
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>algorithm2e.sty</string>
-			<key>lastUsed</key>
-			<date>2009-12-23T10:00:21Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
 			<string>Frontcover.tex</string>
 			<key>lastUsed</key>
-			<date>2010-01-01T17:57:00Z</date>
+			<date>2010-01-27T21:33:53Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -125,25 +113,101 @@
 				<integer>292</integer>
 			</dict>
 		</dict>
-		<key>Tables/tesla.geforce.data</key>
+		<key>Chapters/Optimization.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>371</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>334</integer>
+		</dict>
+		<key>Chapters/Performance.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>537</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>503</integer>
+		</dict>
+		<key>Frontcover.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>111</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>47</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>111</integer>
+			</dict>
+		</dict>
+		<key>Thesis.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>126</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>78</integer>
+		</dict>
+		<key>dissertation.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>223</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>205</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Tables/tesla.geforce.data</string>
 		<string>Chapters/Analysis.tex</string>
+		<string>dissertation.sty</string>
+		<string>Chapters/Performance.tex</string>
+		<string>Chapters/Optimization.tex</string>
+		<string>Frontcover.tex</string>
+		<string>Thesis.tex</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -167,6 +231,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{332, 48}, {760, 977}}</string>
+	<string>{{85, 43}, {623, 976}}</string>
 </dict>
 </plist>

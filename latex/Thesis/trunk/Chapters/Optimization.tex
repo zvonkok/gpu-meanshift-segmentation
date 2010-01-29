@@ -1,3 +1,7 @@
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+
+
 \chapter{Optimization Strategies}
 \label{ch:optimization}
 
@@ -85,32 +89,60 @@ the pixel (see \autoref{lst:msk}).
 
 
 
-\section*{Global Memory \textit{\&} Coalescing} 
+\section{Global Memory \textit{\&} Coalescing} 
 \label{sec:coalescing}
-One important fact for coalescing is the sequential accesses to global memory
-should be grouped together. A simple optimization is to use the \emph{float4}
-data type available in \gls{CUDA}. 
+In \autoref{sec:data_flow} it was shown that the search window is moving
+unpredictable over the image the main memory is accessed randomly. The 
+issue that raises up is that only a fraction of the bandwidth is utilized. 
+Therefore it is advisable to clubb or coalesce the access to the
+global memory. 
 
-After rewriting the algorithm the new speedup
-was 
+The \gls{GPU} can coalesce global memory reads and wirtes in as few as one
+transaction, or two transactions in the case of 128-bit words when certain
+access requirements are met. These requirements are e.g. that a specific
+access pattern is realized, the address of a 64-byte segment is 64-byte aligned 
+and further more. For a complete list see Chapter 3 of \citep{citeulike:6584051}.
+This requirements are typical for high speed memory not only valid for \glspl{GPU}
+rather for many parallel architectures like the Cell or the Niagara \gls{CPU}. 
+
+To satisfy one requirement, the access pattern, it is advisable to use the
+\emph{float4} data type. It ensures that data is accessed on consecutive
+memory locations and hence it can be grouped together. After rewriting the 
+algorithm the new speedup was 
 \fpAdd{\timecuda}{0,0}{1454}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup1}
 	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 
-basin of attraction, random access to global memory, not knowing where each pixel
-is moving to. Switching to \emph{textures} (glossary texturess) yield to a huge
-speedup of 
+The speedup was really not very satisfying but the \gls{GPU} has another mechanism
+which could be used to speedup the algorithm. In {\color{red} LINK ZU read only image data}
+it was shown that the input image is read only and the results are written to another
+structure. Furthermore read pixels from the image are reused in the calculation
+when the search window is shifted and the access is rather random. 
 
+What now proves advantageous is the ability of \gls{CUDA} to use texture memory
+for computing. Texture memory can be more faster than device memory because it is
+first of all read only and it uses a cache for faster access. The image data
+stored in a texture is optimized in that way that locality is exploited. The
+texture is perfect match for the algorithm as random access do not harm the bandwidth
+so much compared to global memory and pixels read in for one search window can 
+be reused for the next search window as they are cached. 
+
+Switching to \emph{textures} (glossary texturess) yield to a huge speedup of 
 \fpAdd{\timecuda}{0,0}{250}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup2}
 	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 
+Texture memory is great for algorithms were random access to memory occurs and
+data read in are used more often than once. Where it is predictable how much and 
+how (access pattern) the data is read in global memory in conjunction with shared
+memory can be advantegous. But as said at the beginning of this section certain
+requirements have to be met to achieve a high bandwidth. 
 
-\section*{Division Instruction Optimization}
+\section{Division Instruction Optimization}
 \label{sec:expensive_divisions}
 Every hardware instruction is taking a specific amount of clock cycles to complete. 
 For single-precision floating-point arithmetic instructions like add, multiply
