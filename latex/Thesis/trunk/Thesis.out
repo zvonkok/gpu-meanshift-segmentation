@@ -56,34 +56,35 @@
 \BOOKMARK [0][]{chapter.7}{7 Mean Shift Algorithm Analysis}{}% 56
 \BOOKMARK [1][-]{section.7.1}{7.1 Profiling the Original Code}{chapter.7}% 57
 \BOOKMARK [1][-]{section.7.2}{7.2 Amdahl's law}{chapter.7}% 58
-\BOOKMARK [1][-]{section.7.3}{7.3 Data and Task Parallelism}{chapter.7}% 59
+\BOOKMARK [1][-]{section.7.3}{7.3 Data \046 Task Parallelism}{chapter.7}% 59
 \BOOKMARK [2][-]{subsection.7.3.1}{7.3.1 Task Parallelism}{section.7.3}% 60
 \BOOKMARK [2][-]{subsection.7.3.2}{7.3.2 Data Parallelism}{section.7.3}% 61
 \BOOKMARK [1][-]{section.7.4}{7.4 Data Flow}{chapter.7}% 62
-\BOOKMARK [0][]{chapter.8}{8 Mean Shift Algorithm Design}{}% 63
-\BOOKMARK [0][]{chapter.9}{9 Optimization Strategies}{}% 64
-\BOOKMARK [1][-]{section.9.1}{9.1 Test \046 Benchmark Configuration}{chapter.9}% 65
-\BOOKMARK [1][-]{section.9.2}{9.2 Offload Compute Intensive Parts}{chapter.9}% 66
-\BOOKMARK [1][-]{section.9.3}{9.3 Global Memory \046 Coalescing}{chapter.9}% 67
-\BOOKMARK [1][-]{section.9.4}{9.4 Division Instruction Optimization}{chapter.9}% 68
-\BOOKMARK [1][-]{section.9.5}{9.5 Execution Configurations}{chapter.9}% 69
-\BOOKMARK [1][-]{section.9.6}{9.6 Native Data Types}{chapter.9}% 70
-\BOOKMARK [1][-]{section.9.7}{9.7 Avoid Branch Divergence}{chapter.9}% 71
-\BOOKMARK [1][-]{section.9.8}{9.8 Shared Memory}{chapter.9}% 72
-\BOOKMARK [1][-]{section.9.9}{9.9 Know the Algorithm}{chapter.9}% 73
-\BOOKMARK [2][-]{section*.19}{Attractor}{section.9.9}% 74
-\BOOKMARK [1][-]{section.9.10}{9.10 Unrolling Loops and Multiplications}{chapter.9}% 75
-\BOOKMARK [1][-]{section.9.11}{9.11 Summary}{chapter.9}% 76
-\BOOKMARK [0][]{chapter.10}{10 Performance \046 Scalability}{}% 77
-\BOOKMARK [1][-]{section.10.1}{10.1 Varying the Image Size}{chapter.10}% 78
-\BOOKMARK [2][-]{subsection.10.1.1}{10.1.1 Linearity}{section.10.1}% 79
-\BOOKMARK [1][-]{section.10.2}{10.2 Multiple gpus}{chapter.10}% 80
-\BOOKMARK [1][-]{section.10.3}{10.3 Overclocking the gpu}{chapter.10}% 81
-\BOOKMARK [2][-]{subsection.10.3.1}{10.3.1 Increasing the Memory Clock}{section.10.3}% 82
-\BOOKMARK [2][-]{subsection.10.3.2}{10.3.2 Increasing the Core Clock}{section.10.3}% 83
-\BOOKMARK [3][-]{figure.caption.29}{Multiple gpus overclocked}{subsection.10.3.2}% 84
-\BOOKMARK [1][-]{section.10.4}{10.4 Final Speedup}{chapter.10}% 85
-\BOOKMARK [0][]{chapter.11}{11 FONT STUFF}{}% 86
-\BOOKMARK [0][]{chapter.12}{12 Future Work}{}% 87
-\BOOKMARK [0][]{appendix.A}{A Reference Tables}{}% 88
-\BOOKMARK [0][]{appendix.B}{B Host \046 Kernel Source Code }{}% 89
+\BOOKMARK [1][-]{section.7.5}{7.5 Summary}{chapter.7}% 63
+\BOOKMARK [0][]{chapter.8}{8 Mean Shift Algorithm Design}{}% 64
+\BOOKMARK [0][]{chapter.9}{9 Optimization Strategies}{}% 65
+\BOOKMARK [1][-]{section.9.1}{9.1 Test \046 Benchmark Configuration}{chapter.9}% 66
+\BOOKMARK [1][-]{section.9.2}{9.2 Offload Compute Intensive Parts}{chapter.9}% 67
+\BOOKMARK [1][-]{section.9.3}{9.3 Global Memory \046 Coalescing}{chapter.9}% 68
+\BOOKMARK [1][-]{section.9.4}{9.4 Division Instruction Optimization}{chapter.9}% 69
+\BOOKMARK [1][-]{section.9.5}{9.5 Execution Configurations}{chapter.9}% 70
+\BOOKMARK [1][-]{section.9.6}{9.6 Native Data Types}{chapter.9}% 71
+\BOOKMARK [1][-]{section.9.7}{9.7 Avoid Branch Divergence}{chapter.9}% 72
+\BOOKMARK [1][-]{section.9.8}{9.8 Shared Memory}{chapter.9}% 73
+\BOOKMARK [1][-]{section.9.9}{9.9 Know the Algorithm}{chapter.9}% 74
+\BOOKMARK [2][-]{section*.19}{Attractor}{section.9.9}% 75
+\BOOKMARK [1][-]{section.9.10}{9.10 Unrolling Loops and Multiplications}{chapter.9}% 76
+\BOOKMARK [1][-]{section.9.11}{9.11 Summary}{chapter.9}% 77
+\BOOKMARK [0][]{chapter.10}{10 Performance \046 Scalability}{}% 78
+\BOOKMARK [1][-]{section.10.1}{10.1 Varying the Image Size}{chapter.10}% 79
+\BOOKMARK [2][-]{subsection.10.1.1}{10.1.1 Linearity}{section.10.1}% 80
+\BOOKMARK [1][-]{section.10.2}{10.2 Multiple gpus}{chapter.10}% 81
+\BOOKMARK [1][-]{section.10.3}{10.3 Overclocking the gpu}{chapter.10}% 82
+\BOOKMARK [2][-]{subsection.10.3.1}{10.3.1 Increasing the Memory Clock}{section.10.3}% 83
+\BOOKMARK [2][-]{subsection.10.3.2}{10.3.2 Increasing the Core Clock}{section.10.3}% 84
+\BOOKMARK [3][-]{figure.caption.29}{Multiple gpus overclocked}{subsection.10.3.2}% 85
+\BOOKMARK [1][-]{section.10.4}{10.4 Final Speedup}{chapter.10}% 86
+\BOOKMARK [0][]{chapter.11}{11 FONT STUFF}{}% 87
+\BOOKMARK [0][]{chapter.12}{12 Future Work}{}% 88
+\BOOKMARK [0][]{appendix.A}{A Reference Tables}{}% 89
+\BOOKMARK [0][]{appendix.B}{B Host \046 Kernel Source Code }{}% 90
