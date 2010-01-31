@@ -5,8 +5,20 @@
 \chapter{Parallel Processing with GPUs}% (fold)
 \label{cha:parallel_processing_with_gpu} 
 
+In recent years more and more parallel hardware appeared on the computing market
+with different architecture specialized for different problems. One of the recent
+and most discussed architectures is the \gls{GPU}. The major player in the field
+are  \gls{ATI} and the \slcsmallcaps{NVIDIA} corporation that both offer 
+\glspl{SDK} and \glspl{GPU} for general purpose computing. Beside \glspl{GPU} there
+are a lot other companies that offer parallel hardware architectures listed in 
+\autoref{ch:literature_review}. Following a brief introduction to parallel
+ architectures important to specifiy and identify the sort of parallelism offered
+by \glspl{GPU} and other hardware.
+
 \section{Parallel Architectures}
 \label{sec:parallel_architectures} 
+
+
 
 \subsection{Single Program Multiple Data (SPMD)}
 \label{ssub:single_program_multiple_data_spmd} 
@@ -305,26 +317,25 @@ memory to preload the data for faster access.
 // Simple test kernel for device functionality
 __global__ void kernel( float* g_idata, float* g_odata) 
 {
-  /* shared memory */
-  /* the size is determined by the host application */
+  // shared memory, the size is determined by the host application
   extern  __shared__  float sdata[];
 
-  /* access thread id */
+  // access thread id 
   const unsigned int tid = threadIdx.x;
-  /* access number of threads in this block */
+  // access number of threads in this block 
   const unsigned int num_threads = blockDim.x;
 
-  /* read in input data from global memory
-   * use the bank checker macro to check for bank conflicts
- 	 * during host emulation */
+  // read in input data from global memory
+  // use the bank checker macro to check for bank conflicts
+ 	// during host emulation 
   SDATA(tid) = g_idata[tid];
   __syncthreads();
 
-  /* perform some computations */
+  // perform some computations 
   SDATA(tid) = (float) num_threads * SDATA( tid);
   __syncthreads();
 
-  /* write data to global memory */
+  // write data to global memory 
   g_odata[tid] = SDATA(tid);
 } 
 \end{lstlisting} 
