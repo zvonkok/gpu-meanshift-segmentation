@@ -1,26 +1,26 @@
 %!TEX TS-program = pdflatex
 %!TEX encoding = UTF-8 Unicode
-
+%!TEX TS-options = -halt-on-error
+%!TEX TS-options = -shell-escape
 \chapter{Mean Shift Algorithm Analysis} % (fold)
 \label{ch:algorithm_analysis}
-Before any porting can be started the developer has to find out if
-there are multiple activities or tasks which can run simultaneously
-which expose exploitable concurrency. The developer has to find
-concurrency either by decomposing the data or tasks. By this
-decomposition one wants to solve bigger problems in less time as
-several processing units can solve different parts of the problem.
+Before any porting can be started the developer has to find out if there are
+multiple activities or tasks which can run simultaneously which expose
+exploitable concurrency. The developer has to find concurrency either by
+decomposing the data or tasks. By this decomposition one wants to solve bigger
+problems in less time as several processing units can solve different parts of
+the problem.
 
-But before any analysis is started one has to know if the problem is
-large enough and if the resulting speedup justifies all the effort
-that is expended on making a parallel version out of it. In case of
-mean shift which is used for several things like filtering,
-segmentation, pattern recognition and real time tracking one can
-deduce that for bigger images or many images the computation time
-climbs fast as the size or the number of images rises. To have a clue
-how the mean shift algorithm behaves with big pictures several run
-times where recorded.  For the analysis of the mean shift algorithm a
-ready to use \gls{EDISON} was used that was profiled and modified and
-parallelized for the purpose of this thesis.
+But before any analysis is started one has to know if the problem is large
+enough and if the resulting speedup justifies all the effort that is expended on
+making a parallel version out of it. In case of mean shift which is used for
+several things like filtering, segmentation, pattern recognition and real time
+tracking one can deduce that for bigger images or many images the computation
+time climbs fast as the dsize or the number of images rises. To have a clue how
+the mean shift algorithm behaves with big pictures several run times where
+recorded. For the analysis of the mean shift algorithm a ready to use
+\gls{EDISON} was used that was profiled and modified and parallelized for the
+purpose of this thesis.
 
 The \gls{EDISON}
 \footnote{http://www.caip.rutgers.edu/riul/research/code/EDISON/index.html}

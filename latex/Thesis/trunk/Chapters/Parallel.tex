@@ -12,23 +12,55 @@ are  \gls{ATI} and the \slcsmallcaps{NVIDIA} corporation that both offer
 \glspl{SDK} and \glspl{GPU} for general purpose computing. Beside \glspl{GPU} there
 are a lot other companies that offer parallel hardware architectures listed in 
 \autoref{ch:literature_review}. Following a brief introduction to parallel
- architectures important to specifiy and identify the sort of parallelism offered
+ architectures important to specify and identify the sort of parallelism offered
 by \glspl{GPU} and other hardware.
 
 \section{Parallel Architectures}
 \label{sec:parallel_architectures} 
 
+There are several ways how operations in a system can be executed in parallel. 
+\begin{itemize}
+	\item \gls{SISD} This is the common von Neumann model, which is a system which
+	exploits no parallelism.
+	\item \gls{SIMD} operations inside a functional unit where one operation is 
+	simultaneously applied to a vector of 2--16 components. Many modern \glspl{CPU}
+	have now \gls{SIMD} units but every manufacturer is naming them differently
+(e.g. Altivec, \gls{VMX}, \gls{MMX}, \gls{SSE}).
+	\item \gls{MIMD} threads, cores, processors each executing on its own data. Many
+	parallel architectures can be mapped onto the \gls{MIMD} architecture. 
+	
+	There is as well the \gls{MISD} classification which is a uncommon architecture but
+	can be used e.g. in fault-tolerance systems where different units generate a result 
+	on the same data and they must all agree on the result. For common parallel architectures
+	its not used. By far the most used classification for parallel systems is \gls{MIMD}
+	that can be further divided into two more classifications. 
+	
+	\item \gls{SPMD} threads within a core where one program is running on the core
+	and different threads are executing with different data. A combination of the 
+	\gls{SIMD} and \gls{SPMD} model is used on modern \glspl{GPU}.
+	\item \gls{MPMD} threads executing a different program on different data. The 
+	\gls{MPMD} threads reside either within a single core (hardware threads,
+	hyper-threading) or in distinct cores of a processor or lastly in different
+	processors.
+\end{itemize}
+The above classification is based upon the number of concurrent instruction and 
+data streams available in a system. The classification comes from \citeauthor{citeulike:3789408}
+in \citep{citeulike:3789408}. Today there is  still no satisfactory characterization 
+of the different types of parallel systems. Flynn's taxonomy was a first step, 
+today there are much more characterizations that refine the previous mentioned. 
 
-
-\subsection{Single Program Multiple Data (SPMD)}
-\label{ssub:single_program_multiple_data_spmd} 
-
+To characterize the \gls{GPU} one needs two classifications. First of all in
+each \gls{GPU} there are threads that are grouped together which are executing 
+one instruction on different data. These \gls{SIMD} groups are further grouped
+to a \gls{SPMD} system where all of these, there can be many of them, are
+executing the same program. On the basis of \glspl{NVIDIA} Tesla architecture 
+a more detailed look at a \gls{GPU} will be given in the next sections.
 
 
 \section{The Tesla Architecture}% (fold)
 \label{sub:the_tesla_architecture} 
-The Tesla architecture announced 2007 and developed by {\slcsmallcaps{NVIDIA}} is the first
-\gls{GPU} highly specialized for raster operations and more important
+The Tesla architecture announced 2007 and developed by \gls{NVIDIA} is the first
+\gls{GPU} highly specialised for raster operations and more important
 for general purpose computing. Formerly \glspl{GPU} had fixed-function
 pipelines and separate processing units with no ability for programmability to
 the vertex and fragment stages of the pipeline. In recent years manufacturers of
@@ -36,7 +68,7 @@ the vertex and fragment stages of the pipeline. In recent years manufacturers of
 of the pipeline and at the same time general purpose computing capabilities
 \citep{citeulike:3844545}. Furthermore manufacturers introduced the  \gls{USM} 
 that unifies the processing units allowing for better
-utilization of  \gls{GPU} resources. The resources needed by different
+utilisation of  \gls{GPU} resources. The resources needed by different
 shaders varies greatly and the unified design can overcome this issue by
 balancing the load among vertex, fragment and geometry functionality
 \citep{citeulike:3145468}.
@@ -348,7 +380,7 @@ the result.
 % section cuda_programming_model (end)
 % section background_to_the_project (end)
 
-\section{Porting Strategy for GPUs}.% (fold)
+\section{Porting Strategy for GPUs}% (fold)
 \label{sec:porting_strategies_for_gpu} 
 This section  is a high-level overview of the porting process to not only
 the \gls{GPU} it can be rather seen as general porting process to parallel 

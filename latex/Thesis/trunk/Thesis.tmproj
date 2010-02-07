@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>dissertation.sty</string>
+	<string>Thesis.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -56,158 +56,112 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2010-01-28T11:53:58Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2010-02-02T22:16:02Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Thesis.tex</string>
 			<key>lastUsed</key>
-			<date>2010-01-28T11:53:58Z</date>
+			<date>2010-02-05T20:34:29Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Bibliography.bib</string>
 			<key>lastUsed</key>
-			<date>2010-01-27T19:57:51Z</date>
+			<date>2010-02-02T22:30:06Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Frontcover.tex</string>
 			<key>lastUsed</key>
-			<date>2010-01-27T21:33:53Z</date>
+			<date>2010-01-28T21:08:56Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>277</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Chapters/Analysis.tex</key>
+		<key>Bibliography.bib</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>292</integer>
+				<integer>1637</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>284</integer>
+			<integer>1582</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>292</integer>
+				<integer>1637</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>292</integer>
+				<integer>1637</integer>
 			</dict>
 		</dict>
-		<key>Chapters/Optimization.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>371</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>334</integer>
-		</dict>
-		<key>Chapters/Performance.tex</key>
+		<key>Chapters/MeanShift.aux</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>537</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>503</integer>
+			<integer>0</integer>
 		</dict>
-		<key>Frontcover.tex</key>
+		<key>Chapters/Parallel.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>71</integer>
 				<key>line</key>
-				<integer>111</integer>
+				<integer>56</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>47</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>25</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>111</integer>
-			</dict>
+			<integer>13</integer>
 		</dict>
 		<key>Thesis.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>126</integer>
+				<integer>98</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>78</integer>
-		</dict>
-		<key>dissertation.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>223</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>205</integer>
+			<integer>76</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Chapters/Analysis.tex</string>
-		<string>dissertation.sty</string>
-		<string>Chapters/Performance.tex</string>
-		<string>Chapters/Optimization.tex</string>
-		<string>Frontcover.tex</string>
+		<string>Chapters/Parallel.tex</string>
 		<string>Thesis.tex</string>
+		<string>Bibliography.bib</string>
+		<string>Chapters/MeanShift.aux</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -227,10 +181,18 @@
 			<key>variable</key>
 			<string>TM_LATEX_BIB</string>
 		</dict>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>value</key>
+			<string>pdflatex</string>
+			<key>variable</key>
+			<string>TM_LATEX_COMPILER</string>
+		</dict>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{85, 43}, {623, 976}}</string>
+	<string>{{556, 51}, {818, 971}}</string>
 </dict>
 </plist>

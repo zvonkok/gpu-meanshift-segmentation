@@ -5,6 +5,8 @@
 % ******************************************************************************
 %!TEX TS-program = pdflatex
 %!TEX encoding = UTF-8 Unicode
+%!TEX TS-options = -halt-on-error
+%!TEX TS-options = -shell-escape
 
 
 \NeedsTeXFormat{LaTeX2e}
@@ -31,17 +33,13 @@
 
 \definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
 \definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
-%\definecolor{seccolor}{cmyk}{0.59, 0.37, 0.53, 0.06}
+\definecolor{chnumcolor}{cmyk}{0.48, 0.42, 0.48, 0.03}
 
-%\definecolor{plot0}{rgb}{0.6,0.0,0.0}
-%\definecolor{plot1}{rgb}{0.6,0.3,0.0}
-%\definecolor{plot2}{rgb}{0.6,0.0,0.3}
-%\definecolor{plot3}{rgb}{0.0,0.6,0.0}
-%\definecolor{plot4}{rgb}{0.0,0.6,0.3}
-%\definecolor{plot5}{rgb}{0.3,0.6,0.0}
-%\definecolor{plot6}{rgb}{0.0,0.0,0.6}
-%\definecolor{plot7}{rgb}{0.3,0.0,0.6}
-%\definecolor{plot8}{rgb}{0.0,0.3,0.6}
+
+\definecolor{blue0}{cmyk}{0.71, 0.45, 0.17 0.05}
+\definecolor{blue1}{cmyk}{0.61, 0.34, 0.07 0.01}
+%\definecolor{blue2}{cmyk}{0.52, 0.24, 0.01 0.0}
+\definecolor{blue2}{HTML}{6590C8}
 
 \definecolor{plot0}{HTML}{990000}
 \definecolor{plot1}{HTML}{994D00}
@@ -66,6 +64,9 @@
 \colorlet{pl7}{plot7!80!black}\colorlet{pf7}{plot7!40!white}
 \colorlet{pl8}{plot8!80!black}\colorlet{pf8}{plot8!40!white}
 
+
+\colorlet{pl0}{blue0}
+\colorlet{pf0}{blue2}
 
 
 \colorlet{textcolor}{black}
@@ -103,6 +104,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 \RequirePackage{units} % A package for setting units in a typographically correct way
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}                
 
 % ******************************************************************************
@@ -312,8 +314,8 @@
 % ******************************************************************************
 % Hyperreferences
 % ******************************************************************************
-\RequirePackage[%xetex,%
- 	pdftex, pdfpagelabels, pagebackref]{hyperref}
+%\RequirePackage[draft,pdftex,pdfpagemode=UseNone,bookmarks=false]{hyperref}
+\RequirePackage[pdftex, pdfpagelabels, pagebackref]{hyperref}
 \hypersetup{%
 	colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
 	breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
@@ -338,6 +340,9 @@
 \renewcommand{\subsubsectionautorefname}{Section}%
 \renewcommand{\itemautorefname}{Item}%
 %\renewcommand{\algorithmautorefname}{Algorithm}%
+
+
+%\RequirePackage[x-1a]{pdfx}
 
 % ******************************************************************************
 % get the links to the figures and tables right
@@ -502,7 +507,7 @@
 % chapters
 
 \titleformat{\chapter}[display]{\vspace*{-2\baselineskip}\color{seccolor}}
-{\marginpar{\color{textcolor!30!white}\chnumfont{\vspace*{-2\baselineskip}\thechapter}}}{0pt}% "Chapter" name.. label 
+{\marginpar{\color{chnumcolor}\chnumfont{\vspace*{-2\baselineskip}\thechapter}}}{0pt}% "Chapter" name.. label 
 %{\relax}{0pt}%
 {\raggedright\sucsmallcaps}[\vspace*{\baselineskip}\color{black}\titlerule] % titlebod
 %\raggedright <- linksbündig
