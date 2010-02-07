@@ -539,7 +539,10 @@ some knowledge and energy into the optimization one can acheive a speedup of
 algorithm side. It is not enough to know some programming langauge very good the
 hardware on which its run is more important. No programming langauge will expose
 all hardware features directly to the developer, the developer has to know
-about the hardware and its features. {\color{red} +++++ noch was ++++}
+about the hardware and its features. Furthermore it is crucial to understand
+the data and how it is accessed. The biggest speedup was achieved when
+going from global memory to texture memory. The access of data fits perfectly
+the texture memory and hence the algorithm can take full advantage of it. 
 
 After all the optimizations and a recent speedup it is now important to look 
 after the performance and scalablility of the algorithm. The next chapter is 

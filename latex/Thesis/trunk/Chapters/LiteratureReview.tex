@@ -1,7 +1,37 @@
-
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-options = -halt-on-error
 %************************************************
 \chapter{Literature Review}\label{ch:literature_review}
 %************************************************
+
+%The related work section (sometimes called literature review) is just that, a
+%review of work related to the problem you are attempting to solve. It should
+%identify and evaluate past approaches to the problem. It should also identify
+%similar solutions to yours that have been applied to other problems not
+%necessarily directly related to the one your solving. Reviewing the successes or
+%limitations of your proposed solution in other contexts provides important
+%understanding that should result in avoiding past mistakes, taking advantage of
+%previous successes, and most importantly, potentially improving your solution or
+%the technique in general when applied in your context and others. In addition to
+%the obvious purpose indicated, the related work section also can serve to:
+
+%*  justify that the problem exists by example and argument,
+%* motivate interest in your work by demonstrating relevance and importance,
+%* identify the important issues,
+%* and provide background to your solution.
+
+%Any remaining doubts over the existence, justification, motivation, or
+%relevance of your thesis topic or problem at the end of the introduction should
+%be gone by the end of related work section.
+
+%Note that a literature review is just that, a review. It is not a list of
+%papers and a description of their contents! A literature review should critique,
+%categorize, evaluate, and summarize work related to your thesis. Related work is
+%also not a brain dump of everything you know in the field. You are not writing a
+%textbook; only include information directly related to your topic, problem, or
+%solution.
+
 
 The first thing to answer is why should someone do general purpose computing on
 GPUs (GPGPU) anyway. For the most people\glspl{CPU}are just enough. They do not
@@ -192,163 +222,4 @@ Many image processing algorithms are embarrassingly parallel as one can calculat
 filters on idividual pixels without considering the neigbouring pixels. 
 
 
-\section{OLD STUFF}
 
-%The related work section (sometimes called literature review) is just that, a
-%review of work related to the problem you are attempting to solve. It should
-%identify and evaluate past approaches to the problem. It should also identify
-%similar solutions to yours that have been applied to other problems not
-%necessarily directly related to the one your solving. Reviewing the successes or
-%limitations of your proposed solution in other contexts provides important
-%understanding that should result in avoiding past mistakes, taking advantage of
-%previous successes, and most importantly, potentially improving your solution or
-%the technique in general when applied in your context and others. In addition to
-%the obvious purpose indicated, the related work section also can serve to:
-
-%*  justify that the problem exists by example and argument,
-%* motivate interest in your work by demonstrating relevance and importance,
-%* identify the important issues,
-%* and provide background to your solution.
-
-%Any remaining doubts over the existence, justification, motivation, or
-%relevance of your thesis topic or problem at the end of the introduction should
-%be gone by the end of related work section.
-
-%Note that a literature review is just that, a review. It is not a list of
-%papers and a description of their contents! A literature review should critique,
-%categorize, evaluate, and summarize work related to your thesis. Related work is
-%also not a brain dump of everything you know in the field. You are not writing a
-%textbook; only include information directly related to your topic, problem, or
-%solution.
-
-
-\subsection{An Overview of Stream Computation} % (fold)
-\label{sub:an_overview_of_stream_computation}
-streaming programming model... sdk's .. 
-% subsection an_overview_of_stream_computation (end)
-
-\subsection{General Programming of Streaming Processors} % (fold)
-\label{sub:programming_streaming_processors}
-SDK's, CTM, Anbieter, verschieden Programiersprachen
-% subsection programming_streaming_processors (end)
-
-\subsection{Stream Computing in Field Use} % (fold)
-\label{sub:stream_computing_in_use}
-Einsetzbarkeit, Leistung und Effizienz von \gls{GPU}Applikationen im nichtgrafischen Applikationsbreich Kontext, Referenzen (wo wird eingesetzt im nicht-grafik
-Bereich)
-% subsection stream_computing_in_use (end)
-
-\subsection{NVIDIA CUDA} % (fold)
-\label{sub:nvidia_cuda}
-Tesla, Stil, Aufwand, Debugbarkeit, Portieraufwand für 
-General Purpose Anwendungen, Vergleich zu SPUFS
-% subsection nvidia_cuda (end)
-
-\subsection{The Classic GPU Pipeline} % (fold)
-\label{sub:the_classic_gpu_pipeline}
-% subsection the_classic_gpu_pipeline (end)
-
-\subsection{The GeForce 8 Series Architecture} % (fold)
-\label{sub:the_geforce_8_series_architecture}
-% subsection the_geforce_8_series_architecture (end)
-
-% section related_work_and_background (end)
-
-\section{Algorithmic point of view to GPUs} % (fold)
-\label{sec:algorithmic_view_to_gpus}
-Welche Algorithmen eignen sich fuer GPUs
-\subsubsection{Computational Concepts} % (fold)
-\label{ssub:computational_concepts}
-% subsubsection computational_concepts (end)
-
-\subsubsection{Efficient Data Structures} % (fold)
-\label{ssub:efficient_data_structures}
-% subsubsection efficient_data_structures (end)
-
-\subsubsection{Program Optimization} % (fold)
-\label{ssub:program_optimization}
-% subsubsection program_optimization (end)
-
-% section algorithmic_view_to_gpus (end)
-%\lstinputlisting[title=A Curriculum Vit\ae]%
- %   {Examples/classicthesis-cv.tex}
-    \graffito{\dots or your supervisor might use the margins for some
-    comments of her own while reading.}
-
-%*****************************************	
-
-
-
-
-
-%*****************************************
-\chapter{Examples}\label{ch:examples}
-%*****************************************
-\section{Proposed Solution} % (fold)
-\label{sec:proposed_solution}
-%At this point the reader will have enough background (from the related work and introduction) to begin a detailed problem analysis and solution proposal. You should clearly identify in detail what the problem is, what you believe are the important issues, describe your proposed solution to the problem, and demonstrate why you believe your particular proposal is worth exploring. Note you might have one or more variants that are worth exploring. This is okay assuming you have time to explore them as they can be compared experimentally if you cannot clearly justify the preference for a particular varient.
-
-%You must also clearly identify what the outstanding issues are with your solution. These are the issues that must be resolved by experiment. If you don't need to experiment, you must have proved your solution correct. This situation is occurs in mathematics, but it is rare in operating systems.
-% section proposed_solution (end)
-
-
-\section{Experimental Results} % (fold)
-\label{sec:experimental_results}
-%The reader now knows your proposed solution(s), understands the problem in detail, and knows what are the outstanding issues. You can now introduce the experiments you used to resolve the outstanding issues in your solution. You must describe how these experiments resolve the outstanding issues. Experiments without clear motivation why they were conducted are a waste of paper, give me an interesting novel to read if you really feel compelled to give me dead trees.
-
-%Describe the experimental set up in such a way that somebody could reproduce your results. This should be aimed at the level of somebody externally tackling the same problem, using your solution, and wanting to verify your results. This should not be targeted at the level of somebody within the local group, using your code, on our machines. Details such as  "do blah on machine X to get machine Y to perform monitor" should not be in a thesis. Such information is useful, but make it available outside your thesis.
-
-%Present the results in a comprehendible manner. Describe them in words. Don't simply include ten pages of tables and graphs. Again, buy me a book instead. Make sure that the tables and graphs have clear labels, scales, keys, and captions.
-Zugriffsarten, Profiling, Latencies, Bandbreiten, Berechnungen
-Is the DMA engine determnisitic?
-% section experimental_results (end)
-
-
-\section{... on the GPU} % (fold)
-\label{sec:_on_the_gpu}
-\subsubsection{Analysis} % (fold)
-%This section takes the outstanding issues you previously identified, the experimental results, and analyzes them. Did the experimental results substantiate your solution, and how do they substantiate your solution. Where the results what you expected? Did the experiments create new issues? If so, identify them.
-
-%By the end of this section the reader should know how your proposed solution worked out. The reader should know what issues were resolve, what the resolution was, and what issues remain.
-
-
-\colorbox{red}{10.2 Reducing Cost of Fitness with Caches}
-
-\label{ssub:analysis}
-% subsubsection analysis (end)
-
-\subsubsection{Design} % (fold)
-\label{ssub:design}
-% subsubsection design (end)
-
-% section _on_the_gpu (end)
-
-\section{Methodology and Discussion} % (fold)
-\label{sec:appraisal_of_achievement}
-%Discuss and explain your results. Show how they support your thesis (or, if they don't, come up with a damned good reason real quick). It is important to separate objective facts clearly from their discussion (which is bound to contain subjective opinion). If the reader doesn't understand your results, you probably do neither. And this will be reflected in the assessment.
-Methods applied, Results achieved if not why, 
-Benchmarks, it would be good if results are discussed in first placed
-and then discrepancies here discussed.
-% section appraisal_of_achievement (end)
-
-\section{Conclusion, Questions, Perspective} % (fold)
-\label{sec:conclusion_questions_perspective}
-%Recap on your thesis. It has been a long journey if the reader has made it this far. Remind the reader what the big picture was. Briefly outline your thesis, motivation, problem, and proposed solution.
-
-%Now the most important part, draw conclusions based on your analysis. Did your proposed solution work? What are the strong points? What are the limitations?
-
-%Significant issues identified in the thesis, or still outstanding after the thesis, should be describe as future work.
-
-% section conclusion_questions_perspective (end)
-
-\section{Summary} % (fold)
-\label{sec:summary}
-% section summary (end)
-bal bla blabub
-%Examples: \textit{Italics}, \spacedallcaps{All Caps}, \textsc{Small
-%Caps}, \spacedlowsmallcaps{Low Small Caps}.
-%*****************************************
-%*****************************************
-%*****************************************
-%*****************************************
-%*****************************************

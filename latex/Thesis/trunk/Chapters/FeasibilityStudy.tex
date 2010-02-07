@@ -61,8 +61,9 @@ ray tracing on a parallel machine see \citeauthor{citeulike:80546}
 \citep{citeulike:80546}}.
 
 \section{Ray Casting}
-Ray casting was first introduced by \citeauthor{Appel68} \citep{Appel68} he
-developed some techniques for a shading machine for rendering of solids.
+Ray casting was first introduced by \citeauthor{citeulike:841961}
+\citep{citeulike:841961} he developed some techniques for a shading machine for
+rendering of solids.
 
 First of all it is important to understand the concept of rays. A ray is the
 path of a particle of light (photon) extending from the eye into the
@@ -93,13 +94,13 @@ consider light reflected or transmitted by other objects in contrast to ray
 tracing.
 
 Ray casters and ray tracers spent most of their time calculating intersections
-of rays with different objects. \citeauthor{Whitted80} \citep{Whitted80} estimates
-that anywhere from 75\% to over 95\% of rendering time is spent in
-intersection tests. For example an image with 640 pixel width and 480 pixels
-height, for a total of 307200 pixels, with a medium complex scene with 100
-objects results in 30720000 intersection tests. There are well documented ray
-tracing accelerating techniques not only to decrease the number of intersection
-tests per ray but also to decrease the number of rays.
+of rays with different objects. \citeauthor{citeulike:3770900}
+\citep{citeulike:3770900} estimates that anywhere from 75\% to over 95\% of
+rendering time is spent in intersection tests. For example an image with 640
+pixel width and 480 pixels height, for a total of 307200 pixels, with a medium
+complex scene with 100 objects results in 30720000 intersection tests. There are
+well documented ray tracing accelerating techniques not only to decrease the
+number of intersection tests per ray but also to decrease the number of rays.
 
 In the study the standard ray casting algorithm will be used only, which means
 that every ray will be intersected with every object to have a high arithmetic
