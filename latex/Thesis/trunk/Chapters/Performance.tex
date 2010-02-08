@@ -1,5 +1,7 @@
 %!TEX TS-program = pdflatex
 %!TEX encoding = UTF-8 Unicode
+%!TEX TS-options = -halt-on-error
+%!TEX TS-options = -shell-escape
 \chapter{Performance {\itshape{\&}} Scalability} % (fold)
 \label{cha:performance_and_scalability_}
 
@@ -255,11 +257,11 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
       xlabel=$x$,
       ylabel=$y$,
 		%	enlargelimits=0.01,
-    %  ymajorgrids 
+      ymajorgrids,
 			]
      
- 			\addplot[color=plot1!80!black,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
- 			\addplot[color=plot0!80!black,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
+ 			\addplot[color=plot1!40!white,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
+ 			\addplot[color=plot0!40!white,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
 
 			\addlegendentry{\slcsmallcaps{1 GPU}}
 			\addlegendentry{\slcsmallcaps{2 GPUS}}

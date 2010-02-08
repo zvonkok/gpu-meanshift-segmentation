@@ -200,7 +200,11 @@ hardware can balance the work across the multiprocessors.
 
 A good execution configuration can hide latency arising from register
 dependencies , provide optimal computing efficiency and facilitate coalescing to
-global memory.
+global memory. Not every execution configuration is possible because ressources
+are limited and too many threads can eat up one ressource where the other ressource
+is not used. The ressource meant here are the shared, local memory and the register
+usage. See the \gls{CUDA} programming guide \citep{citeulike:3325943} for a in 
+depth description about the effects of execution configuration.
 
 Several test showed that the best execution configuration for this algorithm is
 2$\times$64 threads and the new speedup  resulting out of this new configuration
@@ -232,7 +236,7 @@ speedup was achieved.
 On current \gls{GPU} hardware integer operations can be very expensive in terms
 of clock cycles. The situation can change with future \gls{GPU} architecture check
 against \emph{Fermi} the new architecture from {\slcsmallcaps{NVIDIA}} 
-{\color{red}{\autoref{sec:fermi}}}.
+\autoref{citeulike:6640188}.
 
 
 
@@ -244,9 +248,8 @@ $else$ statements. Further problems arise when control flow depends on the
 thread id which means that they are divided into groups that are executing
 different execution paths. In this case the execution gets serialised. This can
 happen when a thread has found a density maximum and all the other threads are
-still calculating.  
-
-{\color{red} hier noch die verbindung zwischen den absetzen}
+still calculating. When the active threads finish the calculation they converge
+back to the same execution path as the idle threads and they finish together.
 
 Therefore the remaining $if$ and $else$ statements where arranged in such a way
 so that a thread is exiting early from the loop and avoiding unnecessary
