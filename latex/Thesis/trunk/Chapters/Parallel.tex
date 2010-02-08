@@ -312,6 +312,14 @@ dim3  threads(num_threads, 1, 1);
 kernel<<< grid, threads, mem_size >>>(d_idata, d_odata);
 \end{lstlisting} 
 
+Attention must be paid to the both statements that define the array for the grid
+and the thread block. The size of the array or the amount of threads dependent
+on three factors, (1) register usage, (2) shared and (3) local memory usage per
+thread. Accumulated per grid they are not allowed to pass a certain size.
+Calculations how the existing ressources are used can easily be calculated with
+the \emph{CUDA occupancy calculator}. The performance of the application depends
+on how good/bad the existing resources are exploited.
+
 If everything went well the host can copy the data from device memory
 to host memory and check, visualize or store the calculated values.
 \autoref{lst:result} shows the last steps before exiting the program.

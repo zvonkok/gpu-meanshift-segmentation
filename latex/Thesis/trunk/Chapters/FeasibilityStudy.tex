@@ -121,8 +121,8 @@ how good/bad the existing resources are exploited.
 
 The examination of the ray traced showed that the initial port used 48
 registers, 28 bytes shared memory and 96 byte constant memory per thread. As
-shown in \textbf{REF. to \gls{CUDA} Application Stuff} the number of launched threads,
-blocks and grids is dependent on the three factors mentioned above.
+shown in \autoref{sub:a_simple_example} the number of launched
+threads, blocks and grids is dependent on the three factors mentioned above.
 
 Each \gls{SM} has 8192 registers which means one could have 8192/48 = 170 threads
 to fully exploit the resources 8 blocks should be launched so 170/8 = 21 threads
@@ -142,12 +142,12 @@ global memory which has a high latency (200--400 cycles) and registers often
 referenced have a big impact on performance. The application can become memory
 bound.
 
-The \autoref{tab:runconfig} shows the run configuration used for the sample runs. 
+The \autoref{tab:runconfig} shows the execution configuration used for the sample runs. 
 
 \begin{table}[ht]
 	\centering
 	\pgfplotstabletypeset{Tables/run.configuration.data}
-  	\caption[Run configuration]{Run configuration.}	
+  	\caption[Execution configuration]{Execution configuration.}	
 	\label{tab:runconfig}
 \end{table}
 
@@ -160,7 +160,7 @@ parameters one can achieve, in this case, a speedup of about 8 times. See
 \begin{table}[ht]
 	\centering
 	\pgfplotstabletypeset{Tables/comp.cpu.gpu.data}
-	\caption[Comparison between CPU and GPU]{Comparison between CPU and GPU.}
+	\caption{Comparison between \protect\gls{CPU} and \protect\gls{GPU}}
 	\label{tab:comp}
 \end{table}
 	
