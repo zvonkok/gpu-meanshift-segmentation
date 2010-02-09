@@ -35,35 +35,105 @@
 % section introduction (end)
 %This section should briefly overview the provided topic.
 
-In recent years \glspl{GPU} have moved from fixed pipeline  processors to a 
-fully programmable processor. This evolvement
-has attracted many developers to do general purpose computing on \glspl{GPU}.
-\glspl{GPU} have devoted there silicon (transistors) for computing engines
-rather than for control engines like caches, branch prediction, coherency
-protocols and more. This incredible computing power made algorithms with an high
-arithmetic density run by an order of magnitude faster than on \glspl{CPU}.
-Speedups of 100$\times$ faster than the \gls{CPU} were stunning but
-only a few people understand why such speedups are possible and why only a
-couple of algorithm can attain such speedups.
+% What the subject is; general purpose computing on gpus -----------------------
 
-This thesis will cover all the topics to understand the architecture,
-programming model, software eco system, drawback and pitfalls when doing
-\gls{GPGPU}. The \gls{GPU} is a highly parallel processor with
-thousands of threads and a peak performance of ~600 \glspl{GFLOP} (G92
-core\footnote{http://www.nvidia.com/page/geforce\_8800.html}).
+In recent years \glspl{GPU} have moved from fixed pipeline processors to fully
+programmable processors. This evolvement has attracted many developers to do
+\glspl{GPGPU}. The \glspl{GPU} have devoted there silicon (transistors) for
+computing engines rather than for control engines like caches, branch
+prediction, coherency protocols compared to traditional \glspl{CPU}. This
+incredible computing power made algorithms with an high arithmetic density run
+by an order of magnitude faster than on \glspl{CPU}. Speedups of 
+100$\times$--400$\times$ faster than the \gls{CPU} were stunning but only a few
+people understand why such speedups are possible and why only a couple of
+algorithm can attain such speedups.
+
+% why you are investigating it -------------------------------------------------
 
 Many developers in these days are faced with multicore processors and have to
 implement or extend existing algorithms to take full advantage of the processing
-power of such cores. \gls{CPU} manufacturer are facing fundamental problems when
-increasing performance only by frequency. In former times higher frequency meant
-higher performance but a paradigm shift took place now the new stigma is more
-cores means higher performance. Moore's law says that for every 2 years the
-amount of cores on a chip will double. What does it mean to developers? They
-have to think in parallel, not only for two or four cores but rather for 16 or
-32 cores. They have to assure that there code is scaling over many cores over
-many generations of \gls{CPU} chips. There are several parallel programming languages
-and middleware to help developers to program in parallel but a quasi standard
-has not been established.
+power of such cores. The \gls{CPU} manufacturers are facing fundamental problems
+when increasing performance only by frequency. In former times higher frequency
+meant higher performance but a paradigm shift took place now the new way is
+going multicore which means higher performance. Moore's law says that for every
+2 years the number of transistors on a chip will double. The transistors will be
+dedicated to more cores rather than for bigger chips as in the past. What does
+it mean to developers? They have to think in parallel, not only for two or four
+cores but rather for 16 or 32 cores. They have to assure that there code is
+scaling over many cores over many generations of \gls{CPU} chips. There are
+several parallel programming languages and middleware to help developers to
+program in parallel but a quasi standard has not been established. 
+
+% which aspects you will consider, and why -------------------------------------
+
+There are several programming platforms that are favored in certain fields 
+respectively system leverls. On thread or loop-level there is OpenMP a programming
+interface for parallelization on shared-memory systems. Going a level higher to
+distributed systems that exchange messages during parallel execution there is 
+\gls{MPI} which is a quasi standard for message passing. There are further 
+libraries but none of them is really suited for heterogenous computing systems.
+
+Heterogeneous computing systems are different than common computing systems. For
+developers it is crucial to understand the underlying architecture and
+programming models. They have to find the right tool (\gls{API}, middleware,
+\ldots) to exploit parallelizm. Pitfalls and drawbacks often arise when studying
+the new system and developers have to adapt and deal with it. Furthermore its
+not only the use of the right tools its more the parallel thinking which is new
+to most of them. Parallel thinking and spotting concurrency in algorithms is the
+key for acceleration. Those aspects have to be considered when trying to do
+\gls{GPGPU}.
+
+% which aspects you will not consider, and why ---------------------------------
+
+% what you hope to find out ----------------------------------------------------
+At the time of writing this thesis there were several myths about \gls{GPGPU}.
+Developers are buffled when they here they have to implement the algorithm with
+a graphics \gls{API} or it is not possible to do scatter operations to the memory.
+There exist further myths that discourages developers from computing on
+\glspl{GPU} that should be demystified. 
+
+New technologies have a higher learning curve than existing and its always the 
+question if its feasible and if its even possible to do general purpose computing
+on \glspl{GPU}. 
+
+% what your starting point(s) will be ------------------------------------------
+
+The starting point will be a review of what has been done followed by a
+feasibility study which will demystify the myths and cover major obstacles and
+drawbacks when doing computations on a \gls{GPU}. Further experiments will show
+and reflect the computational capabilites.
+
+% what assumptions you are making ----------------------------------------------
+
+
+
+% how you will present the subject ---------------------------------------------
+
+The thesis will start with a background chapter to show the relevance of the 
+topic. After establishing the knowledge the reader will get a first introduction
+into the architecture and programming model of \glspl{GPU}. Equipped with the 
+knowledge a first algorithm will be ported to the \gls{GPU} for experiments and
+a first hands on. 
+
+This preparation will be helpful when getting to the main part where the actual
+algorithm is presented. An extensive analysis followed by the design and implementation
+of the algorithm will complete the theoretical part. 
+
+The following chapter will then go deeper into hardware specific stuff where the
+algorithm will be highly optimized for the \gls{GPU}. The optimization will be 
+verified in a subsequent chapter where the performance and scalability of the
+algorithm will be presented. 
+
+Last but not least a summary and future work will top the thesis off. 
+
+% the aims and objectives of the work presented in the report ------------------
+\section{Aims \textit{\&} Objectives} % (fold)
+\label{sec:aims_\&_objectives}
+
+This thesis will cover all the topics to understand the architecture,
+programming model, drawback and pitfalls when doing \gls{GPGPU}. The \gls{GPU}
+is a highly parallel processor with thousands of threads and a peak performance
+of several hundred \glspl{GFLOP}.
 
 By the means of an application which will be ported to the \gls{GPU} the general
 workflow will be shown and various procedure models examined. It will be
@@ -81,4 +151,15 @@ and show how to avoid them.
 
 Finally an application for segmenting an image will be implemented and presented
 in all aspects to the reader.
+% section aims_\&_objectives (end)
+
+% the initial time plan for the project work -----------------------------------
+
+
+
+
+ 
+
+
+
 % section introduction_ir (end)
