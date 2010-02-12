@@ -228,6 +228,7 @@
 \RequirePackage[toc,enum,bib,eqno,lineno]{tabfigures}
 \RequirePackage{MnSymbol}
 
+
 \RequirePackage[sf,scaled=0.88]{syntaxlt}
 \RequirePackage[tt,scaled=0.8]{consolas}
 
@@ -699,6 +700,8 @@
 % Footnotes setup   
 % ******************************************************************************
 \deffootnote{0em}{0em}{\thefootnotemark\hspace*{.5em}}      
+\deffootnotemark{\textsuperscript{\thefootnotemark}}
+
 %\setlength{\footnotemargin}{-1em}   
 %\addtokomafont{footnote}{\color{seccolor}}
 %\renewcommand{\footnoterule}{\textcolor{seccolor}{\vspace*{-3pt}%
