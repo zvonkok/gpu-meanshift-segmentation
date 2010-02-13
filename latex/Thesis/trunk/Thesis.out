@@ -52,29 +52,35 @@
 \BOOKMARK [1][-]{section.7.4}{7.4 Warps}{chapter.7}% 52
 \BOOKMARK [1][-]{section.7.5}{7.5 Program Flow}{chapter.7}% 53
 \BOOKMARK [1][-]{section.7.6}{7.6 Summary}{chapter.7}% 54
-\BOOKMARK [0][]{chapter.8}{8 Optimization Strategies}{}% 55
-\BOOKMARK [1][-]{section.8.1}{8.1 Test \046 Benchmark Configuration}{chapter.8}% 56
-\BOOKMARK [1][-]{section.8.2}{8.2 Offload Compute Intensive Parts}{chapter.8}% 57
-\BOOKMARK [1][-]{section.8.3}{8.3 Global Memory \046 Coalescing}{chapter.8}% 58
-\BOOKMARK [1][-]{section.8.4}{8.4 Division Instruction Optimization}{chapter.8}% 59
-\BOOKMARK [1][-]{section.8.5}{8.5 Execution Configurations}{chapter.8}% 60
-\BOOKMARK [1][-]{section.8.6}{8.6 Native Data Types}{chapter.8}% 61
-\BOOKMARK [1][-]{section.8.7}{8.7 Avoid Branch Divergence}{chapter.8}% 62
-\BOOKMARK [1][-]{section.8.8}{8.8 Shared Memory}{chapter.8}% 63
-\BOOKMARK [1][-]{section.8.9}{8.9 Know the Algorithm}{chapter.8}% 64
-\BOOKMARK [2][-]{section*.15}{Attractor}{section.8.9}% 65
-\BOOKMARK [1][-]{section.8.10}{8.10 Unrolling Loops and Multiplications}{chapter.8}% 66
-\BOOKMARK [1][-]{section.8.11}{8.11 Summary}{chapter.8}% 67
-\BOOKMARK [0][]{chapter.9}{9 Performance \046 Scalability}{}% 68
-\BOOKMARK [1][-]{section.9.1}{9.1 Varying the Image Size}{chapter.9}% 69
-\BOOKMARK [2][-]{subsection.9.1.1}{9.1.1 Linearity}{section.9.1}% 70
-\BOOKMARK [1][-]{section.9.2}{9.2 Multiple gpus}{chapter.9}% 71
-\BOOKMARK [1][-]{section.9.3}{9.3 Overclocking the gpu}{chapter.9}% 72
-\BOOKMARK [2][-]{subsection.9.3.1}{9.3.1 Increasing the Memory Clock}{section.9.3}% 73
-\BOOKMARK [2][-]{subsection.9.3.2}{9.3.2 Increasing the Core Clock}{section.9.3}% 74
-\BOOKMARK [3][-]{figure.caption.25}{Multiple gpus overclocked}{subsection.9.3.2}% 75
-\BOOKMARK [1][-]{section.9.4}{9.4 Final Speedup}{chapter.9}% 76
-\BOOKMARK [0][]{chapter.10}{10 Conclusions \046 Further Work}{}% 77
-\BOOKMARK [0][]{chapter.11}{11 Managment of the Project}{}% 78
-\BOOKMARK [0][]{appendix.A}{A Reference Tables}{}% 79
-\BOOKMARK [0][]{appendix.B}{B Host \046 Kernel Source Code }{}% 80
+\BOOKMARK [0][]{chapter.8}{8 Implementation}{}% 55
+\BOOKMARK [1][-]{section.8.1}{8.1 Reference Implementation}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.2}{8.2 The Host Part}{chapter.8}% 57
+\BOOKMARK [2][-]{section*.15}{Progress \046 Result Verification}{section.8.2}% 58
+\BOOKMARK [1][-]{section.8.3}{8.3 The Device Part}{chapter.8}% 59
+\BOOKMARK [0][]{chapter.9}{9 Optimization Strategies}{}% 60
+\BOOKMARK [1][-]{section.9.1}{9.1 Test \046 Benchmark Configuration}{chapter.9}% 61
+\BOOKMARK [1][-]{section.9.2}{9.2 Offload Compute Intensive Parts}{chapter.9}% 62
+\BOOKMARK [1][-]{section.9.3}{9.3 Global Memory \046 Coalescing}{chapter.9}% 63
+\BOOKMARK [1][-]{section.9.4}{9.4 Division Instruction Optimization}{chapter.9}% 64
+\BOOKMARK [1][-]{section.9.5}{9.5 Execution Configurations}{chapter.9}% 65
+\BOOKMARK [1][-]{section.9.6}{9.6 Native Data Types}{chapter.9}% 66
+\BOOKMARK [1][-]{section.9.7}{9.7 Avoid Branch Divergence}{chapter.9}% 67
+\BOOKMARK [1][-]{section.9.8}{9.8 Shared Memory}{chapter.9}% 68
+\BOOKMARK [1][-]{section.9.9}{9.9 Know the Algorithm}{chapter.9}% 69
+\BOOKMARK [2][-]{section*.17}{Attractor}{section.9.9}% 70
+\BOOKMARK [1][-]{section.9.10}{9.10 Unrolling Loops and Multiplications}{chapter.9}% 71
+\BOOKMARK [1][-]{section.9.11}{9.11 Summary}{chapter.9}% 72
+\BOOKMARK [0][]{chapter.10}{10 Performance \046 Scalability}{}% 73
+\BOOKMARK [1][-]{section.10.1}{10.1 Varying the Image Size}{chapter.10}% 74
+\BOOKMARK [2][-]{subsection.10.1.1}{10.1.1 Linearity}{section.10.1}% 75
+\BOOKMARK [1][-]{section.10.2}{10.2 Multiple gpus}{chapter.10}% 76
+\BOOKMARK [1][-]{section.10.3}{10.3 Overclocking the gpu}{chapter.10}% 77
+\BOOKMARK [2][-]{subsection.10.3.1}{10.3.1 Increasing the Memory Clock}{section.10.3}% 78
+\BOOKMARK [2][-]{subsection.10.3.2}{10.3.2 Increasing the Core Clock}{section.10.3}% 79
+\BOOKMARK [3][-]{figure.caption.27}{Multiple gpus overclocked}{subsection.10.3.2}% 80
+\BOOKMARK [1][-]{section.10.4}{10.4 Final Speedup}{chapter.10}% 81
+\BOOKMARK [0][]{chapter.11}{11 Conclusions \046 Further Work}{}% 82
+\BOOKMARK [1][-]{section.11.1}{11.1 Further Work}{chapter.11}% 83
+\BOOKMARK [2][-]{section*.29}{Fermi}{section.11.1}% 84
+\BOOKMARK [0][]{appendix.A}{A Reference Tables}{}% 85
+\BOOKMARK [0][]{appendix.B}{B Host \046 Kernel Source Code }{}% 86
