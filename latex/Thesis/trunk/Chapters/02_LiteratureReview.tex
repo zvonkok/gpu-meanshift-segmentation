@@ -1,0 +1,260 @@
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-options = -halt-on-error
+\chapter{Literature Review}\label{ch:literature_review}
+
+
+
+%The related work section (sometimes called literature review) is just that, a
+%review of work related to the problem you are attempting to solve. It should
+%identify and evaluate past approaches to the problem. It should also identify
+%similar solutions to yours that have been applied to other problems not
+%necessarily directly related to the one your solving. Reviewing the successes or
+%limitations of your proposed solution in other contexts provides important
+%understanding that should result in avoiding past mistakes, taking advantage of
+%previous successes, and most importantly, potentially improving your solution or
+%the technique in general when applied in your context and others. In addition to
+%the obvious purpose indicated, the related work section also can serve to:
+
+%*  justify that the problem exists by example and argument,
+%* motivate interest in your work by demonstrating relevance and importance,
+%* identify the important issues,
+%* and provide background to your solution.
+
+%Any remaining doubts over the existence, justification, motivation, or
+%relevance of your thesis topic or problem at the end of the introduction should
+%be gone by the end of related work section.
+
+%Note that a literature review is just that, a review. It is not a list of
+%papers and a description of their contents! A literature review should critique,
+%categorize, evaluate, and summarize work related to your thesis. Related work is
+%also not a brain dump of everything you know in the field. You are not writing a
+%textbook; only include information directly related to your topic, problem, or
+%solution.
+\section{General Purpose Computing on Graphics Hardware} % (fold)
+\label{sec:gpgpu}
+
+% section general_purpose_computing_on_graphics_hardware (end)
+The first thing to answer is why should someone do \gls{GPGPU} anyway. For the
+most people \glspl{CPU} are just enough. They do not demand on high
+computational power and on a high bandwidth. Still there is paradigm shift
+taking place and this can not be neglected. As stated in
+\citep{citeulike:1187394} and in \citep{citeulike:3421647} \glspl{CPU}
+manufacturers are facing problems which they cannnot overcome just by increasing
+the frequency. The problems are known as \emph{The Memory
+Wall}\citep{citeulike:457955}, \emph{The Frequency Wall} and \emph{The Power
+Wall}. The only way seen by \glspl{CPU} makers is currently to go multicore.
+Intel e.g. went multicore with there new \emph{Core Microarchitecture} for
+consumer products and even a \gls{GPU} replacement, \emph{Larrabee}
+\citep{citeulike:3153758}. \Gls{IBM}, Toshiba and Sony developed the \emph{Cell
+Broadband Architecture} a 9 core chip \citep{citeulike:1243173}. Sun Microsystems
+developed the \emph{Niagara} \gls{CPU} a multi-core general purpose processor. 
+It has eight in-order cores, each of them capable of executing four simultaneous threads
+\citep{citeulike:3743958}. A further processor from Sun is the \emph{Sun Rock} a
+16-core 32-thread plus 32-scout-thread \gls{CPU} developed for high throughput
+and high single-thread performance \citep{citeulike:6643579}.
+
+The \glspl{GPU} went years ago to multicore and multithreading compared to
+\glspl{CPU}. The \glspl{GPU} are maybe the kind of processor where \glspl{CPU}
+are heading to in terms of multithreading and raw performance. Forecasts project
+that every two years the amount of cores can double. The multicore approach may
+be the answer to the problems stated above but this yields to another thing the
+\emph{parallel programming problem} \citep{citeulike:3750573}. User will only
+benefit from this growth if software can make use of all the cores and software
+can only benefit from it if developers can leverage concurrency in software.
+Developers have to look at their code to identify computatinal intensive
+operations and identify how those operations can benefit from concurrency.
+\Citeauthor{citeulike:6643735}\citep{citeulike:6643735} stated that ``The free
+lunch is over'' , developers cannot count only anymore on \gls{CPU} throughput
+they have to get their hands on concurrent programming requirements, pitfalls,
+styles and idioms \citep{citeulike:6643735}.
+
+
+\section{Parallel Programming \textit{\&} Thinking} % (fold)
+\label{sec:parallel_programming__thinking}
+
+Many developers learned about the single-threaded von neumann model and are not
+familiar with parallel code which is subject to errors such as deadlocks and
+livelocks, race conditions and many more. Parallel programming is difficult and
+there are several paradigms to make life easier for developers.
+
+On of these is the data-parallel paradigm. Where one is not trying to assign
+diffferent subtasks to separate cores rather assigning an individual data
+element to a separate core for processing \citep{citeulike:3750565}. The
+\gls{3D} rendering, an embarassingly data-parallel problem, has driven the
+\gls{GPU} evolution which makes the \gls{GPU} a perfect target for data-parallel
+code. There are several fine-grained or data-parallel programming environments
+that leverage the \gls{GPU} and other parallel architectures for general purpose
+computing (Brook, Sh, RapidMind,\ldots).
+
+{\color{red} programmier modelle..}
+
+The focus of this work will be CUDA\footnote{www.nvidia.com}. \gls{CUDA} is the
+only environment which is not based on a graphics library and officialy released
+by {\slcsmallcaps{NVIDIA}} for their \glspl{GPU}. \Gls{CUDA} is a minimal
+extension to C and C++ programming languages. The technique employed by
+\gls{CUDA} is single process, multiple data (SPMD). Tasks are split up and run
+simultaneously on multiple threads (cores) with different input
+\citep{citeulike:3072519}.
+% section parallel_programming_\&_thinking (end)
+
+\section{Embarrassingly Parallel Algorithms} % (fold)
+\label{ssub:choosing_a_fast_algorithm}
+Before even digging into the wide field of algorithms and difficult problems in
+high performance computing one has to understand the hardware architecture of
+the \glspl{GPU} to make a decision if an algorithm can be mapped on \glspl{GPU}.
+A pretty good overview over the {\slcsmallcaps{NVIDIA}} \gls{GPU} gives the 
+\slcsmallcaps{NVIDIA} \gls{CUDA} Programming Guide \citep{citeulike:3325943}. 
+
+A little bit outdatet but still of interest is The GeForce 6 Series
+\gls{GPU} Architecture \citep{citeulike:3757915} which gives an overview how the
+\gls{GPU} fits into the whole system, what a fragment processor, vertex
+processor or what textures are. To have a even deeper look into \glspl{GPU} the
+article \citep{citeulike:2790995} is highly recommended.
+
+{\color{red} welche algorithmen brauchen viel cpu rechenpower..}
+
+\subsection{Computations which Map Well to GPUs} % (fold)
+\label{par:computations_which_map_well_to_GPUs}
+It is important to understand that \glspl{GPU} are good at running computer
+graphics and algorithms which mimic or have the attributes of computer graphics
+in terms of data parallelism and data independence. Not only that similar
+computations are applied to streams of many data elements (vertices, fragments,
+...) but also the computation of each element is completely or almost completely
+independent \citep{citeulike:3733428}. Such types of algorithms are often called
+embarassingly parallel algorithms where subtasks rarely or never communicate to
+each other.
+
+Another important fact for a algorithm is the \emph{Arithmetic Intensity}. The
+Arithmetic Intensity is the ratio of computation to bandwidth or formally:
+\begin{center} 
+ \emph{arithmetic intensity = operations / words transferred.}
+\end{center}
+This fact is important because the increase of computational throughput is
+faster than the memory throughput which leads to the problem known as \emph{The
+Memory Wall}. The \gls{GPU} memory systems are architected to deliver high bandwidth,
+rather than low-latency, data access. As such computations that benefit most of
+the \glspl{GPU} have a high arithmetic intensity \citep{citeulike:3733428}. The next 
+sections will represent some algorithms which are ported completely or to some 
+extent to the \glspl{GPU}.
+% paragraph computations_which_map_well_to_GPUs (end)
+
+\subsection{Ray Tracing} % (fold)
+\label{par:ray_tracing}
+Ray Tracing \citep{citeulike:841961} is an embarrassingly parallel alorithm which
+could fit well to \glspl{GPU}. The author has a extensible knowledge of Ray Tracing on
+massively parallel computers \citep{citeulike:80546}. Thats why Ray Tracing was
+first considered for porting to the GPU. Unfortuneately there were several
+implementations already done for the GPU. Nevertheless equipped with all the
+knowledge about Ray Tracing and how to split up the work, arrange the data on a
+parallel machine to run efficiently the Ray Tracing algorithm
+\citep{citeulike:3770900} will be used for initial benchmarks and the feasibility
+study \autoref{chap:feas}.
+% paragraph ray_tracing (end)
+
+\subsection{Photon Mapping} % (fold)
+\label{par:photon_mapping}
+Ray Tracing has a local illumination model. To generate more realistic effects
+like caustics, diffuse / glossy indirect illumination and more a more
+sophisticated model has to be used. Global illumination like \emph{Photon
+Mapping} \citep{citeulike:635695} can create all the effects that Ray Tracing
+cannot. There are implementations of photon mapping on GPUs
+\citep{Purcell:2003:PMO} which are developed with graphics apis and not with
+CUDA. Anyhow since photon mapping is heavily using a kd-tree it would be a major
+effort to develop an efficient data structure which has the same functionality
+as a kd-tree. Nevertheless the first candidate for porting to the \gls{GPU} is \emph{Photon Mapping}.
+% paragraph photon_mapping (end)
+
+\subsection{Multiple Precision Arithmetic} % (fold)
+\label{par:multiple_precision_arithmetic}
+Another interesting field which demands high computational power is number
+theory. The most common/known application is asymmetric cryptography. To
+decipher messages that are cyphered with an asymmetric algorithm one needs
+superior computational power. An overview over common algorithms gives
+\citep{citeulike:3783254}. All algorithms have one thing in common they need a
+multiple precision library to represent numbers with 200 and more digits. A good
+overview gives \citep{citeulike:3783244}.
+
+The idea was to implement some of the factoring algorithms to the GPU. The only
+thing needed is the multiple precision library. In \citep{citeulike:3783254} the
+\gls{GMP} library was used to implement the algorithms. So
+the multiple precision arithmetic is another candidate for porting to the GPU.
+% paragraph multiple_precision_arithmetic (end)
+
+
+\subsection{High Dynamic Range} % (fold)
+\label{par:high_dynamic_range}
+Image processing is always a candidate for embarassingly parallel algorithms. A
+pretty new algorithm to enhance images is tone mapping
+\citep{citeulike:3783303}. Tone mapping is the compression of dynamics in
+\gls{HDR} pictures. There are several algorithms for tone mapping: Mantiuk
+\citep{citeulike:3783315}, Reinhard \citep{citeulike:3783311}, Durand
+\citep{citeulike:789299}, Fattal \citep{citeulike:3783313} and many more. All of
+this algorithms are present in the pfs-tools library written by Krawczyk
+\citep{citeulike:3783303}. As this document was written Krawczyk was already
+implementing a part of the pfs-tools on \gls{GPU} but not publishing it. 
+So \gls{HDR} was discarded but there are several other algorithms in image
+processing which are considered as candidates. Some algorithms in no particular
+order: segmentation, tracking, filtering, ... and so on. This is put as another
+candidate to the list of the possible algorithms for porting.
+%paragraphhigh_dynamic_range (end)
+
+\subsection{Genetic Algorithms} % (fold)
+\label{par:genetic_algorithms}
+Parallel genetic algorithms are usually implemented on parallel machines but
+fine-grained parallel genetic algorithms can be mapped to \glspl{GPU}
+\citep{citeulike:3801879}. In \citep{citeulike:3801866} its shown what kind of
+genetic algorithm map well to \glspl{GPU} and how the work and communication is
+handled. It is pretty easy to implement simple genetic algorithms on the
+\gls{GPU} but with increasing complexity one has to consider many more things: load
+balancing, communication pattern, dynamic memory allocation, resolving of
+recursion ... . Another paper \citep{citeulike:3801883} compares genetic
+algorithms implemented on\glspl{CPU}and\glspl{GPU}and shows that the latter is much more
+effective than the former. All genetic algorithms have one thing in common the
+core algorithm. Once effectively implemented on the \gls{GPU} the core algorithm is
+extended with definitions like the population, selection, recombination and
+mutation to solve a specific problem. The skill here is to choose the right
+definitions and not more the efficient implementation of the core algorithm. So
+this topic excluded from the candidate list.
+% paragraph genetic_algorithms (end)
+
+\subsection{Chaos Theory} % (fold)
+\label{par:chaos_theory}
+Another interesting field is chaos theory. Especially the visualization of
+chaos. The maybe most famous visualization of chaos is \emph{The Fractal Flames
+Algorithm}. Fractal flames are a member of iterated function system class of
+fractals created by Scott Draves \citep{citeulike:3801950}. He uses a rather
+complicated set of functions in the system to generate stunning visualization of
+the iterative process of the system. The next release will have support for the
+GPU. Thats why it was firstly discarded but the research about chaos led to
+other interesting papers respectively books.
+
+There is no need to use approx. 21 function for a system to generate visually
+appealing pictures of chaos. Sprott showed in \citep{citeulike:3745535} that even
+with very simple functions one can create patterns in chaos. This patterns are
+called \emph{Strange Attractors} and are the visualization of chaotic behaviour.
+There are created by iterating a simple equation some million times. 
+
+Pickover shows in his book \citep{citeulike:3812233} how to create patterns from
+a variety of sources. He shows how to create nice looking patterns from fourier
+analysis, acoustic, chemistry and many more. Anyhow all of these equations or
+differential systems have on thing in common no matter how complicated the
+system is the core algorithm is to iterate a specific equation with correct
+input numbers to create chaos. The algorithm is heavily computational bound
+which makes it a good candidate for porting to the GPU.
+
+
+\subsection{Image Processing}
+Many image processing algorithms are embarrassingly parallel as one can calculate
+filters on idividual pixels without considering the neigbouring pixels. 
+
+
+
+\section{Summary \textit{\&} Conclusion} % (fold)
+\label{sec:summary_conclusion}
+
+
+
+
+
+% section summary_\&_conclusion (end)
