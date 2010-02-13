@@ -29,12 +29,29 @@ accelerated by executing data parallel portions of the algorithm on the
 \gls{SPMD} nature of a \gls{GPU}. Additionally in \autoref{sub:data_parallelism}
 the parallel portion of the algorithm was identified and hence the filtering
 step will be implemented as a \gls{CUDA} kernel where it operates on different
-data simultaneously. Since the most compute intensive parts are in the filtering
-step no further kernels are required. 
+data simultaneously. There is a strong dependency between the steps of the 
+alogrithm shown in \autoref{sec:data_and_task_parallelism} that have to be 
+considered here as well. Before and after the filtering a color conversion from
+\gls{RGB} to \gls{LUV} and back is needed. These steps are not very compute 
+intensive but why are they considered here?
 
-All the other portions will be run on the \gls{CPU} because there are not a
-significant part of the run-time and are mostly preparing steps for the actual
-algorithm. The \gls{CPU} will prepare, provide and gather the data and result 
+An example is taken to have some numbers to juggle with. Supposing the algorithm
+is split in 3 parts and the main part is executing 100 seconds and the two other
+parts are executing 2 seconds. Additionally supposing that the main part can be
+accelerated by a factor of 100 which means the main part takes now 1 second, the
+most computational intensive part is not more the main part but rather the
+remaining two parts. That means no matter how much faster the main part will be
+the program will need always at least 4 seconds + accelerated main part to
+execute. The solution to this problem would be to accelerate the two remaining
+parts as well and thats what will be done for the mean shift algorithm. The two
+color space conversion steps will be as well offloaded to the \gls{GPU}. With
+bigger and bigger images the \gls{CPU} will need more and more time to convert
+from one color space to another. 
+
+
+All the other portions will be run on the \gls{CPU} because there are not(-yet) a
+significant part of the run-time and are mostly postprocessing steps for the actual
+algorithm. The \gls{CPU} will prepare, provide and gather the data and results
 from the \gls{GPU}. 
 % section cuda_kernels (end)
 
