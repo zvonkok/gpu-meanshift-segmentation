@@ -92,7 +92,7 @@
 \RequirePackage{fltpoint}
 \RequirePackage{listings}  
 \RequirePackage{textcomp}
-%\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
+\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
 \RequirePackage{xspace} % to get the spacing after macros right
 \RequirePackage{tabularx} % better tables
 \RequirePackage{mparhack} % get marginpar right
@@ -155,10 +155,10 @@
 \usepgfplotslibrary{external} 
 \tikzexternalize[prefix=figures/]{Thesis}% Assigns a common prefix used by all file names.
 \tikzset{external/figure name=thesis} % uses thesis_0.pdf, thesis_1.pdf, ...å
-% \section{The first section} {\tikzset{external/figure name/.add={}{_firstsection}}
-% ... % uses main_firstsection_0.pdf, main_firstsection_1.pdf, ...
-% }
-
+% % \section{The first section} {\tikzset{external/figure name/.add={}{_firstsection}}
+% % ... % uses main_firstsection_0.pdf, main_firstsection_1.pdf, ...
+% % }
+% 
 % ******************************************************************************
 % pgfplotstable (very nice tables)
 % ******************************************************************************
@@ -641,7 +641,7 @@
 \renewcommand{\cftfigpresnum}{\ssmallcaps\figurename~}%Fig.~}
 \newlength{\figurelabelwidth}
 \settowidth{\figurelabelwidth}{\cftfigpresnum~99}
-\addtolength{\figurelabelwidth}{2.5em}
+\addtolength{\figurelabelwidth}{5em}
 \cftsetindents{figure}{0em}{\figurelabelwidth}
 
 % tables
@@ -655,7 +655,7 @@
 \renewcommand{\cfttabpresnum}{\ssmallcaps\tablename~}%Tab.~}
 \newlength{\tablelabelwidth}
 \settowidth{\tablelabelwidth}{\cfttabpresnum~99}
-\addtolength{\tablelabelwidth}{2.5em}
+\addtolength{\tablelabelwidth}{5em}
 \cftsetindents{table}{0em}{\tablelabelwidth}
 \cftsetindents{table}{0em}{\figurelabelwidth}
 
@@ -673,7 +673,7 @@
 \renewcommand{\cftlistingspresnum}{\ssmallcaps\lstlistingname~}%
 \newlength{\listingslabelwidth}%
 \settowidth{\listingslabelwidth}{\cftlistingspresnum~99}%
-\addtolength{\listingslabelwidth}{2.5em}%
+\addtolength{\listingslabelwidth}{5em}%
 %\cftsetindents{listings}{0em}{\listingslabelwidth}%
 \cftsetindents{listings}{0em}{\figurelabelwidth}%
 \let\l@lstlisting\l@listings%
@@ -770,14 +770,6 @@
 %\crefname{figure}{Figure}{Figures}
 %\crefname{table}{Table}{Tables}
 
-% Im Text:
-% \TReg für ®
-% \TCop für ©
-% \TTra für ™
-
-\newcommand{\TReg}{\textsuperscript{\normalfont\textregistered\xspace}}
-\newcommand{\TCop}{\textsuperscript{\normalfont\textcopyright\xspace}}
-\newcommand{\TTra}{\textsuperscript{\normalfont\texttrademark\xspace}}
 
 
 \endinput

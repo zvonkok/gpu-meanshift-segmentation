@@ -47,15 +47,18 @@ smaller than 20 pixel).
 \fpAdd{\timecuda}{0,0}{1932}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 
-As shown in \autoref{ch:algorithm_analysis} {\color{red} DESIGN IMPLEMNtAtION..}
-the most compute intensive part of the mean shift segmentation is the filtering
-step. bla bla blbub.. mal sehen was vorne noch steht 98\%. In this case the most
-compute intensive part is 98.2\% of the complete run-time and hence a valuable
-part to offload. All other parts have no significant part of the run-time but
-when optimizing it can happen that these other part grow in terms of run-time
-and the before most compute intensive part with a very high percentage drops to
-a low percentage and hence the percentages of all other parts increase and
-become very compute intensive. 
+As shown in \autoref{ch:algorithm_analysis} before any analysis is started one
+has to know if the problem is large enough and if the resulting speedup
+justifies all the effort that is expended on making a parallel version out of it.
+This way the most compute intensive parts are identified and these functions
+are candidates for offloading. 
+
+In this case the most compute intensive part is 98.2\% of the complete run-time
+and hence a valuable part to offload. All other parts have no significant part
+of the run-time but when optimising it can happen that these other part grow in
+terms of run-time and the before most compute intensive part with a very high
+percentage drops to a low percentage and hence the percentages of all other
+parts increase and become very compute intensive.
 
 In other cases the run-time is often distributed among several parts and in this
 case it should be tried to offload as much as possible of the computational parts
@@ -65,10 +68,10 @@ filter part that is executing in total 99.1\% of the run-time.
 For the following considerations about speedup the \autoref{eq:speedup} will be
 used to calculate the speedup. 
 
-In {\color{red} bezug zu design implementierun} it was shown how to design and
-to implement the algorithm to offload the important parts to the \gls{GPU} and
-the first naive implementation of the mean shift filter in \gls{CUDA} resulted
-in a speedup of
+In \autoref{cha:algorithm_design, cha:implementation} it was shown how to design
+and to implement the algorithm to offload the important parts to the \gls{GPU}
+and the first naive implementation of the mean shift filter in \gls{CUDA}
+resulted in a speedup of
 
 \begin{equation*}\label{eq:speedup0}
 	S = \frac{T_{CPU}}{T_{GPU}} = %
@@ -115,21 +118,21 @@ algorithm the new speedup was
 	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 
-The speedup was really not very satisfying but the \gls{GPU} has another mechanism
-which could be used to speedup the algorithm. In {\color{red} LINK ZU read only image data}
-it was shown that the input image is read only and the results are written to another
-structure. Furthermore read pixels from the image are reused in the calculation
-when the search window is shifted and the access is rather random. 
+The speedup was really not very satisfying but the \gls{GPU} has another
+mechanism which could be used to speedup the algorithm. The input image is read
+only and the results are written to another structure. Furthermore read pixels
+from the image are reused in the calculation when the search window is shifted
+and the access is rather random.
 
 What now proves advantageous is the ability of \gls{CUDA} to use texture memory
 for computing. Texture memory can be more faster than device memory because it is
 first of all read only and it uses a cache for faster access. The image data
-stored in a texture is optimized in that way that locality is exploited. The
+stored in a texture is optimised in that way that locality is exploited. The
 texture is perfect match for the algorithm as random access do not harm the bandwidth
 so much compared to global memory and pixels read in for one search window can 
 be reused for the next search window as they are cached. 
 
-Switching to \emph{textures} (glossary texturess) yield to a huge speedup of 
+Switching to \emph{textures} (glossary textures) yield to a huge speedup of 
 \fpAdd{\timecuda}{0,0}{250}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup2}
@@ -139,7 +142,7 @@ Switching to \emph{textures} (glossary texturess) yield to a huge speedup of
 Texture memory is great for algorithms were random access to memory occurs and
 data read in are used more often than once. Where it is predictable how much and 
 how (access pattern) the data is read in global memory in conjunction with shared
-memory can be advantegous. But as said at the beginning of this section certain
+memory can be advantageous. But as said at the beginning of this section certain
 requirements have to be met to achieve a high bandwidth. 
 
 \section{Division Instruction Optimization}
@@ -260,7 +263,7 @@ The speedup achieved from this optimisation was
 \fpAdd{\timecuda}{0,0}{115}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup6}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
+	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 
 
@@ -399,7 +402,7 @@ for each pixel in a 128$\times$128 big picture.
 	\begin{tikzpicture} 
 		\begin{axis}[
 				height=5cm,
-				width=0.91\textwidth,
+				width=0.9\textwidth,
 			  shader=interp, % interp = faster, smaller pdf's
 				point meta max = 100, % color bar range from 0 - 100
 				colorbar,
@@ -430,14 +433,14 @@ The period-4 limit cycle detection led to a speedup of
 \fpAdd{\timecuda}{0,0}{99}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup9}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
+	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 Extending the limit cycle detection to period-8 limit cycle detection a speedup
 of 
 \fpAdd{\timecuda}{0,0}{87}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup10}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
+	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 was achieved. Surely one cannot be sure to have limit cycles with a higher
 period but the first problem is the register pressure. Because the compiler has
@@ -454,7 +457,7 @@ of limit cycle detection an how all iterations to 100 vanish.
 	\begin{tikzpicture} 
 		\begin{axis}[
 				height=5cm,
-				width=0.91\textwidth,
+				width=0.9\textwidth,
 			  shader=interp, % interp = faster, smaller pdf's
 				point meta max = 100, % color bar range from 0 - 100
 				colorbar,
@@ -476,7 +479,7 @@ of limit cycle detection an how all iterations to 100 vanish.
 	\begin{tikzpicture} 
 		\begin{axis}[
 				height=5cm,
-				width=0.91\textwidth,
+				width=0.9\textwidth,
 			  shader=interp, % interp = faster, smaller pdf's
 				point meta max = 100, % color bar range from 0 - 100
 				colorbar,
@@ -499,7 +502,7 @@ of limit cycle detection an how all iterations to 100 vanish.
 	\begin{tikzpicture} 
 		\begin{axis}[
 				height=5cm,
-				width=0.91\textwidth,
+				width=0.9\textwidth,
 			  shader=interp, % interp = faster, smaller pdf's
 				point meta max = 100, % color bar range from 0 - 100
 				colorbar,
@@ -530,7 +533,7 @@ After unrolling the multiplications and loops a final speedup of
 \fpAdd{\timecuda}{0,0}{73}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup11}
-	S = \timegold\ ms/\timecuda\ ms = \speedup
+	S = \frac{\unit[\timegold]{ms}}{\unit[\timecuda]{ms}} = \speedup
 \end{equation*}
 was achieved.
 
