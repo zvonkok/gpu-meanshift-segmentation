@@ -89,27 +89,27 @@ draft=on]{scrreprt}
 %*******************************************************************************
 \tikzset{external/export=true}
 \tikzsetfigurename{introduction}
-\include{Chapters/01_Introduction}
+\cleardoublepage\include{Chapters/01_Introduction} %cleardoulbepage 
 \tikzsetfigurename{literaturereview}
-\include{Chapters/02_LiteratureReview}
+\cleardoublepage\include{Chapters/02_LiteratureReview}
 \tikzsetfigurename{parallel}
-\include{Chapters/03_Parallel}
+\cleardoublepage\include{Chapters/03_Parallel}
 \tikzsetfigurename{feasibilitystudy}
-\include{Chapters/04_FeasibilityStudy}
+\cleardoublepage\include{Chapters/04_FeasibilityStudy}
 \tikzsetfigurename{meanshift}
-\include{Chapters/05_MeanShift}
+\cleardoublepage\include{Chapters/05_MeanShift}
 \tikzsetfigurename{analysis}
-\include{Chapters/06_Analysis}
+\cleardoublepage\include{Chapters/06_Analysis}
 \tikzsetfigurename{design}
-\include{Chapters/07_Design}
+\cleardoublepage\include{Chapters/07_Design}
 \tikzsetfigurename{implementation}
-\include{Chapters/08_Implementation}
+\cleardoublepage\include{Chapters/08_Implementation}
 \tikzsetfigurename{optimization}
-\include{Chapters/09_Optimization}
+\cleardoublepage\include{Chapters/09_Optimization}
 \tikzsetfigurename{performance}
-\include{Chapters/10_Performance}
+\cleardoublepage\include{Chapters/10_Performance}
 \tikzsetfigurename{future}
-\include{Chapters/11_Future}
+\cleardoublepage\include{Chapters/11_Future}
 
 % \addtocontents{toc}{\protect\clearpage} % TEST
 
@@ -117,14 +117,14 @@ draft=on]{scrreprt}
 % \backmatter
 % *******************************************************************************
 
-%\cleardoublepage\include{FrontBackmatter/Bibliography}
-\include{Chapters/ManagmentProject}
-%\cleardoublepage\include{FrontBackmatter/Listof}
+\cleardoublepage\include{FrontBackmatter/Bibliography}
+\cleardoublepage\include{Chapters/ManagmentProject}
+\cleardoublepage\include{FrontBackmatter/Listof}
 
 \appendix
 %%%%%\cleardoublepage\myPart{Appendix}
-\include{Chapters/Tables}
-\include{Chapters/SourceCode}
+\cleardoublepage\include{Chapters/Tables}
+\cleardoublepage\include{Chapters/SourceCode}
 %\include{Chapters/InterimReport}
 
 %********************************************************************

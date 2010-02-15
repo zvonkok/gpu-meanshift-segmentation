@@ -31,6 +31,28 @@
 %also not a brain dump of everything you know in the field. You are not writing a
 %textbook; only include information directly related to your topic, problem, or
 %solution.
+There is a lot of literature that is describing and showing \gls{GPGPU}. The literature
+of old algorithms ported to the \gls{GPU} focuses how to exploit a graphics
+\gls{API} to do general purpose computing. With the rise of \glspl{SDK}
+specially for \gls{GPGPU} more and more literature emerges with variuos 
+algorithms ported to the \gls{GPU}. 
+
+The aim of this chapter is to provide, through selective reference to some
+of the literature, a clearer understanding why \gls{GPGPU} is a topic nowadays,
+the miscellaneous programming environments and lastly the wide field of \gls{GPU}
+computing. Several implementations of algorithms on the \gls{GPU} are presented
+and evaluated. 
+The chapter is divided in several parts. The subject of the first part is a
+general view about the move to parallel processing and obstacles and problems
+that arise when doing parallel programming. Building up on the first part,
+several programming environments that enable \gls{GPGPU} are presented and
+discussed. Succeding a part that describes the algorithms that are suited for
+computing on the \gls{GPU}. The remainder of this chapters shows some already
+implemented algorithms to the \gls{GPU} and shows the wide field of application.
+
+
+
+
 \section{General Purpose Computing on Graphics Hardware} % (fold)
 \label{sec:gpgpu}
 
@@ -85,17 +107,65 @@ element to a separate core for processing \citep{citeulike:3750565}. The
 \gls{GPU} evolution which makes the \gls{GPU} a perfect target for data-parallel
 code. There are several fine-grained or data-parallel programming environments
 that leverage the \gls{GPU} and other parallel architectures for general purpose
-computing (Brook, Sh, RapidMind,\ldots).
+computing.
 
-{\color{red} programmier modelle..}
+\subsubsection{Programming Libraries {\textit{\&}} Languages} % (fold)
+\label{ssub:programming_libraries_and_languages}
+Beyond graphics \glspl{API} like Cg, \gls{HLSL}, OpenGL or DirectX several 
+libraries and laguages were introduced to make \gls{GPGPU} possible. Many of them
+are based on the graphic \glspl{API} but have backends to many other libraries. 
 
-The focus of this work will be CUDA\footnote{www.nvidia.com}. \gls{CUDA} is the
-only environment which is not based on a graphics library and officialy released
-by {\slcsmallcaps{NVIDIA}} for their \glspl{GPU}. \Gls{CUDA} is a minimal
-extension to C and C++ programming languages. The technique employed by
-\gls{CUDA} is single process, multiple data (SPMD). Tasks are split up and run
-simultaneously on multiple threads (cores) with different input
-\citep{citeulike:3072519}.
+They have one thing in common, they enable stream computing on the \gls{GPU}. The
+first langauge is Brook\citep{Buck:2004} for \gls{GPU} it extends \gls{ANSI} C
+with concepts of stream programming. Brook stream are nothing else than arrays
+on which the computation is done in parallel. The program that is doing some
+operations on streams is called kernel. At run-time the kernels and streams are
+automatically mapped to the fragment processer and to texture memory. 
+
+A similar concept follows Sh \citep{citeulike:6661860}. Sh is embeded in C++ 
+and allows to program \glspl{GPU} for graphical and general purpose computations. 
+The research was commercialized and RapidMind Inc. was formed. RapidMind delivered
+with its programming environement not only support for \glspl{GPU} but also for
+other massively parallel processors like the Cell. Recently Intel aquired RapidMind
+to merge it into there Intel Ct Technology. 
+
+For scientific visualization there is Scout \citep{citeulike:3145428},
+it allows run-time mapping  of mathematical operations over data sets to the 
+\gls{GPU}, for general purpose computing it is rather limited as it focus is on
+visualization of data sets. 
+
+Another library is Glift \citep{Lefohn:2006:GGE} which is a template library 
+for a wide range of data structures. It opreates wiht C++, Cg and OpenGL 
+development environments. 
+
+All the above libraries and languages are all based on a graphics \gls{API}.
+The functions are all graphics centric and not all are suited for \gls{GPGPU}.
+Since these functions have to accomodate to the graphics pipeline not all
+hardware features are directly exposed to the developer they are encapsulated
+and additionally the graphics pipeline puts up some constraints to the
+programming flow \citep{citeulike:1187394}.
+
+Therefore \gls{ATI} and \gls{NVIDIA} developed programming envrionments
+specially for \gls{GPGPU}. From \gls{ATI} came \gls{CTM} a low level programming
+interface exposing previously unavailable low level functionality , direct
+access to the native instruction set and memory, for \gls{GPGPU}. \Gls{ATI}
+stand point was that the community should contribute the high level \gls{API}
+and tools. \Gls{NVIDIA} has gone a different way, they offered a complete
+programming environment (\gls{SDK}) for \gls{GPGPU} namely known as \gls{CUDA}
+\citep{citeulike:3839013} with many tools for programming and debugging. 
+
+Recently \gls{ATI} released as well a full featured programming environment, the
+Stream \gls{SDK}. Nevertheless as of writing of the thesis this \gls{SDK} was not
+available and hence not considered. 
+
+% subsubsection programming_libraries_and_languages (end)
+
+The focus of this work will be on \gls{CUDA}. \Gls{CUDA} is one of the
+environments which is not based on a graphics library and officialy released by
+\gls{NVIDIA} for their \glspl{GPU}. \Gls{CUDA} is a minimal extension to C and
+C++ programming languages. The technique employed by \gls{CUDA} is \gls{SPMD}.
+Tasks are split up and run simultaneously on multiple threads (cores) with
+different input \citep{citeulike:3072519}.
 % section parallel_programming_\&_thinking (end)
 
 \section{Embarrassingly Parallel Algorithms} % (fold)
@@ -103,16 +173,14 @@ simultaneously on multiple threads (cores) with different input
 Before even digging into the wide field of algorithms and difficult problems in
 high performance computing one has to understand the hardware architecture of
 the \glspl{GPU} to make a decision if an algorithm can be mapped on \glspl{GPU}.
-A pretty good overview over the {\slcsmallcaps{NVIDIA}} \gls{GPU} gives the 
-\slcsmallcaps{NVIDIA} \gls{CUDA} Programming Guide \citep{citeulike:3325943}. 
+A pretty good overview over the \gls{NVIDIA} \gls{GPU} gives the 
+\gls{NVIDIA} \gls{CUDA} programming guide \citep{citeulike:3325943}. 
 
-A little bit outdatet but still of interest is The GeForce 6 Series
+A little bit outdatet but still of interest is the GeForce 6 Series
 \gls{GPU} Architecture \citep{citeulike:3757915} which gives an overview how the
 \gls{GPU} fits into the whole system, what a fragment processor, vertex
 processor or what textures are. To have a even deeper look into \glspl{GPU} the
 article \citep{citeulike:2790995} is highly recommended.
-
-{\color{red} welche algorithmen brauchen viel cpu rechenpower..}
 
 \subsection{Computations which Map Well to GPUs} % (fold)
 \label{par:computations_which_map_well_to_GPUs}
@@ -125,8 +193,8 @@ independent \citep{citeulike:3733428}. Such types of algorithms are often called
 embarassingly parallel algorithms where subtasks rarely or never communicate to
 each other.
 
-Another important fact for a algorithm is the \emph{Arithmetic Intensity}. The
-Arithmetic Intensity is the ratio of computation to bandwidth or formally:
+Another important fact for a algorithm is the \emph{arithmetic intensity}. The
+arithmetic intensity is the ratio of computation to bandwidth or formally:
 \begin{center} 
  \emph{arithmetic intensity = operations / words transferred.}
 \end{center}
@@ -139,30 +207,27 @@ sections will represent some algorithms which are ported completely or to some
 extent to the \glspl{GPU}.
 % paragraph computations_which_map_well_to_GPUs (end)
 
-\subsection{Ray Tracing} % (fold)
+\subsection{Raytracing} % (fold)
 \label{par:ray_tracing}
-Ray Tracing \citep{citeulike:841961} is an embarrassingly parallel alorithm which
-could fit well to \glspl{GPU}. The author has a extensible knowledge of Ray Tracing on
-massively parallel computers \citep{citeulike:80546}. Thats why Ray Tracing was
-first considered for porting to the GPU. Unfortuneately there were several
-implementations already done for the GPU. Nevertheless equipped with all the
-knowledge about Ray Tracing and how to split up the work, arrange the data on a
-parallel machine to run efficiently the Ray Tracing algorithm
-\citep{citeulike:3770900} will be used for initial benchmarks and the feasibility
-study \autoref{chap:feas}.
+Ray Tracing \citep{citeulike:841961} is an embarrassingly parallel algorithm which
+could fit well to \glspl{GPU}. A work about raytracing on
+massively parallel computers \citep{citeulike:80546} is already done. 
+There were several implementations already done for the GPU e.g. 
 % paragraph ray_tracing (end)
 
 \subsection{Photon Mapping} % (fold)
 \label{par:photon_mapping}
-Ray Tracing has a local illumination model. To generate more realistic effects
+Raytracing has a local illumination model. To generate more realistic effects
 like caustics, diffuse / glossy indirect illumination and more a more
 sophisticated model has to be used. Global illumination like \emph{Photon
-Mapping} \citep{citeulike:635695} can create all the effects that Ray Tracing
+Mapping} \citep{citeulike:635695} can create all the effects that raytracing
 cannot. There are implementations of photon mapping on GPUs
 \citep{Purcell:2003:PMO} which are developed with graphics apis and not with
-CUDA. Anyhow since photon mapping is heavily using a kd-tree it would be a major
+\gls{CUDA}. Anyhow since photon mapping is heavily using a kd-tree it would be a major
 effort to develop an efficient data structure which has the same functionality
-as a kd-tree. Nevertheless the first candidate for porting to the \gls{GPU} is \emph{Photon Mapping}.
+as a kd-tree. Nevertheless \emph{Photon Mapping} is a embarassingly parallel 
+algorithm that could fit very well to the \gls{GPU}.
+
 % paragraph photon_mapping (end)
 
 \subsection{Multiple Precision Arithmetic} % (fold)
@@ -175,10 +240,13 @@ superior computational power. An overview over common algorithms gives
 multiple precision library to represent numbers with 200 and more digits. A good
 overview gives \citep{citeulike:3783244}.
 
-The idea was to implement some of the factoring algorithms to the GPU. The only
-thing needed is the multiple precision library. In \citep{citeulike:3783254} the
+The idea could be to implement some of the factoring algorithms to the \gls{GPU}.
+The onlything needed is the multiple precision library. In \citep{citeulike:3783254} the
 \gls{GMP} library was used to implement the algorithms. So
-the multiple precision arithmetic is another candidate for porting to the GPU.
+the multiple precision arithmetic is another candidate for algorithms that can
+run on the \gls{GPU}. There are several implementations but they are rather limited
+and implement a specific algorithm with multiple precision but not a generic multiple
+precision library \citep{citeulike:6661955, citeulike:6661957}. 
 % paragraph multiple_precision_arithmetic (end)
 
 
@@ -193,10 +261,7 @@ pretty new algorithm to enhance images is tone mapping
 this algorithms are present in the pfs-tools library written by Krawczyk
 \citep{citeulike:3783303}. As this document was written Krawczyk was already
 implementing a part of the pfs-tools on \gls{GPU} but not publishing it. 
-So \gls{HDR} was discarded but there are several other algorithms in image
-processing which are considered as candidates. Some algorithms in no particular
-order: segmentation, tracking, filtering, ... and so on. This is put as another
-candidate to the list of the possible algorithms for porting.
+
 %paragraphhigh_dynamic_range (end)
 
 \subsection{Genetic Algorithms} % (fold)
@@ -208,14 +273,13 @@ genetic algorithm map well to \glspl{GPU} and how the work and communication is
 handled. It is pretty easy to implement simple genetic algorithms on the
 \gls{GPU} but with increasing complexity one has to consider many more things: load
 balancing, communication pattern, dynamic memory allocation, resolving of
-recursion ... . Another paper \citep{citeulike:3801883} compares genetic
-algorithms implemented on\glspl{CPU}and\glspl{GPU}and shows that the latter is much more
+recursion \ldots . Another paper \citep{citeulike:3801883} compares genetic
+algorithms implemented on \glspl{CPU} and \glspl{GPU} and shows that the latter is much more
 effective than the former. All genetic algorithms have one thing in common the
 core algorithm. Once effectively implemented on the \gls{GPU} the core algorithm is
 extended with definitions like the population, selection, recombination and
 mutation to solve a specific problem. The skill here is to choose the right
-definitions and not more the efficient implementation of the core algorithm. So
-this topic excluded from the candidate list.
+definitions and not more the efficient implementation of the core algorithm. 
 % paragraph genetic_algorithms (end)
 
 \subsection{Chaos Theory} % (fold)
@@ -241,17 +305,40 @@ analysis, acoustic, chemistry and many more. Anyhow all of these equations or
 differential systems have on thing in common no matter how complicated the
 system is the core algorithm is to iterate a specific equation with correct
 input numbers to create chaos. The algorithm is heavily computational bound
-which makes it a good candidate for porting to the GPU.
+which makes it a good candidate for porting to the \gls{GPU}.
 
 
 \subsection{Image Processing}
 Many image processing algorithms are embarrassingly parallel as one can calculate
 filters on idividual pixels without considering the neigbouring pixels. 
+\Citeauthor{citeulike:6661950} showed by example how image processing is done
+on the \gls{GPU} by a canonical example, limb finding \citep{citeulike:6661950}. 
+Another paper shows how to do convolution, diffusion, wavelet or tone mapping
+\citep{citeulike:6661954}. Furthermore there are several universities that
+deal with \gls{GPU} image processing and publishing algorithms and reports. 
 
 
-
-\section{Summary \textit{\&} Conclusion} % (fold)
+\section{Summary {\textit{\&}} Conclusion} % (fold)
 \label{sec:summary_conclusion}
+The \gls{GPU} is intruding into more and more fields in scientific, mathematical, 
+financial and many more fields. This is happening because people are demanding
+more and more computational power and the \gls{GPU} can satisfy  this demand. 
+As it was shown in the previous chapters the \gls{GPU} is used in many ways and
+there is a high demand on exploiting the \gls{GPU} even farther. With the development
+of new native programming environments (\gls{CUDA}, Stream \gls{SDK}) even more
+developer will be attracted to use this new architecture. 
+
+But all of this reports showed that with the old tools the programming is and was
+error prune and difficult. Only some specialist that understood the graphics part
+in extense and the algorithm to be ported could implement a efficient solution. 
+
+This is where this thesis will attach. Taking the new programming envrionments
+and triying to port a sample application to the \gls{GPU}. 
+
+
+
+
+
 
 
 

@@ -101,12 +101,12 @@ described in \autoref{sec:data_and_task_parallelism} and effected the design
 host can fetch the results for saving and result verification. 
 
 \subsubsection{Progress \textit{\&} Result Verification} % (fold)
-\label{ssub:progress_result_verification}
+\label{ssub:progress_result_verificationcation}
 As mentioned in \autoref{sec:reference_implementation} there exists a \gls{CPU}
 and a \gls{GPU} implementation of the algorithm. When executing the program
 it is possible to supply a parameter which triggers the result verification. The
 images saved by the \gls{CPU} and \gls{GPU} are compared pixel by pixel. For 
-this comparison the great tools from ImageMagick\TReg a software suite to 
+this comparison the great tools from ImageMagick a software suite to 
 create, edit, and compose bitmap images, are used. 
 
 The compare program can mathematically and visually annotate the difference 
@@ -130,8 +130,74 @@ correctly and not changing the natural behaviour of the algorithm.
 
 \section{The Device Part} % (fold)
 \label{sec:the_device}
+For the device part only the filtering step will be further described. As said
+before the color conversion is rather simple and can be looked up in any good
+computer graphics book. It can be used with minor modifications on the \gls{GPU}. 
 
-the first shot --- just get the data.
+The kernel is a single source-code image that runs on each thread on the \gls{GPU}.
+The first thing that is done in the kernel is to obtain a unique identifier. 
+The identifier is obtained with special functions calls from the hardware. This
+unique identifier allows different threads to make different decisions during
+kernel execution. The assignment of the unique id to the hardware threads is
+deterministic. Thread zero is always the first hardware thread, one can be for
+sure that actions which have to be done by a certain thread are really done
+by the corresponding thread in the hardware. 
 
+The unique id is as well important for data distribution. 
+In \autoref{sec:cuda_thread_hierarchy} it was shown that one thread is responsible
+for a single pixel. So there are so many threads as there are pixel in the image 
+where the threads are numbered from 0--(number of pixel - 1). Every thread having
+its unique id which is at the same time the position in the array of pixel can
+now easily fetch the pixel from global memory for computation. 
+
+Each thread takes the \gls{LUV} values and calculates the mean shift vector 
+until convergence. When a thread finishes execution it saves the convergence 
+point to a second buffer to the same place in the array (unique id) where the 
+thread fetched the input pixel. 
+
+For the first shot no other memories where used to improve performance. The first
+implementation was just to make it work. The next chapter will digg deeper into
+the hardware and optimize the code to run efficiently. The performance
+and scalability is evaluated in a subsequente chapter. 
 % section the_device (end)
 % chapter implementation (end)
+
+\section{Summary} % (fold)
+\label{sec:summary}
+After an extensive analysis and a good design the effort to implement the algorihtm
+was not so big. The most difficult part was the implementation of the
+mean shift method in the reference implementation. It had to be verified that
+the algorithm is working and doing the right stuff. 
+
+After that it was crucial to get in touch with \gls{CUDA} and all dependent
+libraries and to know what function is exactly doing and how to use it. 
+
+Merging the reference implementation with \gls{CUDA} was pretty easy as \gls{CUDA}
+is just a extension to C and only some keywords where introduced that have to 
+be used in the right way. 
+
+The programming flow of first moving data to the \gls{GPU}, processing and then
+getting the data back to the host was already known, from implementing a raytracer
+on the Cell processor. Pretty all accelerators have a similar programming flow. 
+
+Luckily there was the reference implementation which was used for result verification
+not only for the filtering part but as well for the other two kernels where a bug
+was easily spotted in form of red pixels thanks to the great tools of ImageMagick.
+
+
+% section summary (end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
