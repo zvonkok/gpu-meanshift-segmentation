@@ -33,31 +33,28 @@ the \gls{EDISON} application dependant on image size. The vertical
 axis shows the run time in seconds and the horizontal axis shows the
 side length in pixels of the quadratic \autoref{fig:orig0}.
 \begin{figure}[ht]
-  \centering
-  \begin{tikzpicture}
-    \begin{axis}[
-      % smooth,
-      % stack plots=y,
-     % area style,
-      ybar, bar width=8pt,
-      width=\textwidth,
-      height=5cm,
-      xtick={128,384,...,2688},
-      axis x line=bottom,
-      axis y line=left,
-      xmin=128, xmax=2816, 
-      % ymin=0, 
-			ymax=7000,
-      xlabel=Image size, ylabel={Seconds [s]}, 
-			%enlargelimits=0.03,
-      %ymajorgrids
- 			]
-      \addplot[color=pl0,fill=pf0]
-      table[x=PIX] {Plots/single.gpu.data}%
-      \closedcycle;
-    \end{axis}
-  \end{tikzpicture}%
-  \caption{CPU run time depending on the image size}\label{fig:cpu_run_time}%
+ \centering
+ \begin{tikzpicture}
+   	\begin{axis}[
+   	scaled x ticks={real:1048576},
+   	xtick scale label code/.code={$\cdot 2^{20}$},
+   	smooth,
+    width=\textwidth,
+    height=5cm,
+    xtick={0, 1048576,2097152,3145728,4194304,5242880,6291456,7340032,8388608},
+    axis x line=bottom,
+    axis y line=left,
+    xmin=64, xmax=7800000,
+    % ymin=0,
+    ymax=7500,
+    xlabel=Image size, ylabel={Seconds [s]},
+		legend style={at={(0.03,0.97)}, anchor=north west},
+    ]
+    \addplot[color=red1,mark=diamond*] table[x=PIX] {Plots/single.gpu.data};%
+    \addlegendentry{\protect\gls{CPU}}
+   	\end{axis}
+ 	\end{tikzpicture}%
+ 	\caption{\protect\Gls{CPU} run time depending on the image size}\label{fig:cpu_run_time}%
 \end{figure}
 Considering the numbers in the result one can see that the run times
 grow linear to the image sizes. The mean shift algorithm has linear
@@ -96,9 +93,10 @@ analysis of \gls{EDISON}.
   \pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
   \pgfplotstabletypeset[
   % column type=r,
-  every row no 5/.style={
-    before row={\rowcolor{pf0}}
-  },
+  % every row no 5/.style={
+  % 		font=\textit,
+  %   before row={\rowcolor{grey1}}
+  % },
   columns/Self/.style={column type=r, column name={Self (\%)}},
   columns/Total/.style={column type=r, column name={Total (\%)}},
   columns/Symbol/.style={string type, column type=l, column name={Symbol}}

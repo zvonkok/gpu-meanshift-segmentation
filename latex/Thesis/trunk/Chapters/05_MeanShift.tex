@@ -1,6 +1,8 @@
-% *******************************************************************************
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-options = -halt-on-error
+%!TEX TS-options = -shell-escape
 \chapter{Mean Shift}\label{ch:mean_shift}
-% *******************************************************************************
 In low level computer vision tasks like filtering, segmentation or
 edge detection, the analysis of data is often not done on the original
 images.  Features like colors are rather projected into a feature
@@ -122,12 +124,12 @@ bigger bandwidth $h$ the density estimation becomes smoother.
         % ymajorgrids
         ]
         
-        \addplot[color=pl0, mark=none] table[x=X,y=Y5] from \tableA;
-        \addplot[color=pl1, mark=none] table[x=X,y=Y1] from \tableA;
-        \addplot[color=pl2, mark=none] table[x=X,y=Y_1] from \tableA;
-        \addplot[color=pl3, mark=none] table[x=X,y=Y_4] from \tableA;
-        \addplot[color=pl4, mark=none] table[x=X,y=Y_5] from \tableA;
-        \addplot[color=pl5, mark=none] table[x=X,y=SUMME] from \tableA;
+        \addplot[color=red1, mark=none] table[x=X,y=Y5] from \tableA;
+        \addplot[color=blue1, mark=none] table[x=X,y=Y1] from \tableA;
+        \addplot[color=lila1, mark=none] table[x=X,y=Y_1] from \tableA;
+        \addplot[color=green1, mark=none] table[x=X,y=Y_4] from \tableA;
+        \addplot[color=orange1, mark=none] table[x=X,y=Y_5] from \tableA;
+        \addplot[color=rosa1, mark=none] table[x=X,y=SUMME] from \tableA;
         
 
       \end{axis}
@@ -156,13 +158,13 @@ bigger bandwidth $h$ the density estimation becomes smoother.
         % ymajorgrids
         ]
         
-        \addplot[color=pl0, mark=none] table[x=X,y=Y5] from \tableB;
-        \addplot[color=pl1, mark=none] table[x=X,y=Y1] from \tableB;
-        \addplot[color=pl2, mark=none] table[x=X,y=Y_1] from \tableB;
-        \addplot[color=pl3, mark=none] table[x=X,y=Y_4] from \tableB;
-        \addplot[color=pl4, mark=none] table[x=X,y=Y_5] from \tableB;
-        \addplot[color=pl5, mark=none] table[x=X,y=SUMME] from \tableB;
-        
+        \addplot[color=red1, mark=none] table[x=X,y=Y5] from \tableB;
+        \addplot[color=blue1, mark=none] table[x=X,y=Y1] from \tableB;
+        \addplot[color=lila1, mark=none] table[x=X,y=Y_1] from \tableB;
+        \addplot[color=green1, mark=none] table[x=X,y=Y_4] from \tableB;
+        \addplot[color=orange1, mark=none] table[x=X,y=Y_5] from \tableB;
+        \addplot[color=rosa1, mark=none] table[x=X,y=SUMME] from \tableB;
+
 
       \end{axis}
     \end{tikzpicture}
@@ -189,13 +191,13 @@ bigger bandwidth $h$ the density estimation becomes smoother.
         % ymajorgrids
         ]
         
-        \addplot[color=pl0, mark=none] table[x=X,y=Y5] from \tableC;
-        \addplot[color=pl1, mark=none] table[x=X,y=Y1] from \tableC;
-        \addplot[color=pl2, mark=none] table[x=X,y=Y_1] from \tableC;
-        \addplot[color=pl3, mark=none] table[x=X,y=Y_4] from \tableC;
-        \addplot[color=pl4, mark=none] table[x=X,y=Y_5] from \tableC;
-        \addplot[color=pl5, mark=none] table[x=X,y=SUMME] from \tableC;
-        
+        \addplot[color=red1, mark=none] table[x=X,y=Y5] from \tableC;
+        \addplot[color=blue1, mark=none] table[x=X,y=Y1] from \tableC;
+        \addplot[color=lila1, mark=none] table[x=X,y=Y_1] from \tableC;
+        \addplot[color=green1, mark=none] table[x=X,y=Y_4] from \tableC;
+        \addplot[color=orange1, mark=none] table[x=X,y=Y_5] from \tableC;
+        \addplot[color=rosa1, mark=none] table[x=X,y=SUMME] from \tableC;
+      
 
       \end{axis}
     \end{tikzpicture}
@@ -323,7 +325,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         ]
         
-        \addplot[color=pl0] expression[domain=-1:1] {3/4*(1-x*x)};
+        \addplot[color=red1] expression[domain=-1:1] {3/4*(1-x*x)};
 
       \end{axis}
     \end{tikzpicture}
@@ -349,7 +351,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         ]
         
-        \addplot[color=pl0] expression[domain=-3:3]
+        \addplot[color=red1] expression[domain=-3:3]
         {1/sqrt(2*3.14)*exp((-1/2)*x*x)};
 
       \end{axis}
@@ -376,7 +378,7 @@ epanechnikov kernel. The dervative of the kernel is a uniform profile.
         % ymajorgrids
         mark size=0.01pt ]
         
-        \addplot+[const plot,color=pl0] coordinates { (-1,0) (-1,0.5) (1,0.5)
+        \addplot+[const plot,color=red1] coordinates { (-1,0) (-1,0.5) (1,0.5)
           (1,0) };
       \end{axis}
     \end{tikzpicture}
