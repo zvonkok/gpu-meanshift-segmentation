@@ -3,12 +3,12 @@
 
 \chapter{Feasibility Study}
 \label{chap:feas}
-Entering a new field in computing without enough exeperience on the platform it 
-is always advisable to get a better knowledge about the hardware ans software before
+Entering a new field in computing without enough experience on the platform it 
+is always advisable to get a better knowledge about the hardware and software before
 designing anything without proper knowledge. A feasibility study can give an overview
 if a project is technically feasible and a way to gain some knowledge about the
 complete eco system. Furthermore the study  can answer first questions and help
-demistify myths. 
+demystify myths. 
 
 There are several myths about \gls{GPGPU} which will be examined and explained
 Listed below some myths in no particular order.
@@ -70,16 +70,16 @@ path of a particle of light (photon) extending from the eye into the
 scene \citep{Glassner289}. The path is a thin, straight line used to model a beam
 of light. Each ray can be seen as a \textit{feeler}\graffito{The ray scans or 
 rasters the scene that is why a ray is often called a feeler} that reaches the 
-scene and finds out which objects are visible and what color the object has at a 
+scene and finds out which objects are visible and what colour the object has at a 
 specific point. Rays are the fundamental element of any ray tracer.
 
-The representation of light on the screen is organized in so called pixels.
+The representation of light on the screen is organised in so called pixels.
 A pixel is a point sample not a little geometric square. This misconception
 is widespread and it is an issue that strikes right at the root of correct
 image computing and the ability to correctly integrate the discrete and the
 continuous \citep{AlvyRaySmith95}.
 
-The color of a given pixel is the color of the light that passes from the
+The colour of a given pixel is the colour of the light that passes from the
 object, through the associated pixel into the eye \citep{Hearn94}.
 
 For each pixel on the screen a ray is cast from the eye through the pixel into
@@ -87,9 +87,9 @@ the virtual world. Then for each object it is checked if the ray intersects any
 of them. If there are several objects in a scene intersected by the ray the
 shortest distance to the intersection point is the one that is visible to the
 eye. All other intersection are behind the nearest object and not visible
-respectively occluded by the visible object. The color at that point is the
+respectively occluded by the visible object. The colour at that point is the
 accumulated contribution of intensities radiated from all light sources. This
-color is given to the pixel through which the ray passed. Ray casting does not
+colour is given to the pixel through which the ray passed. Ray casting does not
 consider light reflected or transmitted by other objects in contrast to ray
 tracing.
 
@@ -132,9 +132,9 @@ limited by registers per \gls{SM}. These calculations can easily be done with th
 
 After fiddling around with compiler switches especially the switch that limits
 the used registers \emph{-maxrregcount=x}
-the application used only 14 register which meant we could have a blocksize of
+the application used only 14 register which meant we could have a block-size of
 8, 8x8 = 64 threads per block \graffito{It is always good to have a thread count
-which is a multiple of 32. A warp consits of 32 threads and the scheduler can
+which is a multiple of 32. A warp consists of 32 threads and the scheduler can
 easier schedule the threads}. When reducing the amount of registers used, one
 has to consider that registers which are additionally needed are allocated from
 the local memory rather than the register file. Local memory is located in the
@@ -153,7 +153,7 @@ The \autoref{tab:runconfig} shows the execution configuration used for the sampl
 
 
 
-To summarize, just by compiling the application and fiddling with the run
+To summarise, just by compiling the application and fiddling with the run
 parameters one can achieve, in this case, a speedup of about 8 times. See
 \autoref{tab:comp} for several runs varying object count and image size.
 
@@ -170,9 +170,9 @@ when looking at the \glspl{GFLOP} values there are far beyond that what a
 \gls{GPU} could achieve\footnote{The used \gls{GPU} is a G92 chip with peak 620
 \glspl{GFLOP}}. The application is only using 0.5\% of the peak performance. All
 performance values are gathered with the {\slcsmallcaps{NVIDIA}} Performance
-Profiler availabe as well with the \gls{SDK}.
+Profiler available as well with the \gls{SDK}.
 
-The reasons for this uneffective usage of processing power can be seen in
+The reasons for this ineffective usage of processing power can be seen in
 \autoref{tab:localmem} and \autoref{tab:globalmem}. The application is heavily
 memory bound. The consequence of reducing the register usage is heavy access to
 local memory, e.g. there are over 328000000 stores issued to the memory.
@@ -195,7 +195,7 @@ value 22578032.
 \end{table}
 
 Another point is the access to global memory. The \gls{GPU} is able to do
-coalesced reads and writes when possible otherwise the access is serialized. The
+coalesced reads and writes when possible otherwise the access is serialised. The
 application was not ported with coalesced memory reads and writes in mind and
 hence the application is loading almost everything incoherent. See
 \autoref{tab:globalmem} for the values.
@@ -208,7 +208,7 @@ hence the application is loading almost everything incoherent. See
   	\label{tab:globalmem}
 \end{table}
 
-The ray tracer could be extended or optimized in many ways but it will be leaved
+The ray tracer could be extended or optimised in many ways but it will be leaved
 as is. The main point of the feasibility study was to get a feeling for
 developing on \glspl{GPU} and to spot major drawbacks and obstacles. Keeping the
 lessons learned here in mind the development of the main application will be
@@ -216,7 +216,7 @@ easier. The following section will demystify some but not all myths stated in
 the beginning.
 % section performance_tuning (end)
 
-\section{Demystifing the Myths} % (fold)
+\section{Demystifying the Myths} % (fold)
 \label{sec:demystifing_the_myths}
 There were several myths about \gls{GPGPU} see \autoref{chap:feas} that are
 simply wrong or need to be proven. Beginning with \autoref{enum:api} this
@@ -236,7 +236,7 @@ The last to myths \autoref{enum:ineff} and \autoref{enum:exploit} are hard to
 demystify. If one has a algorithm which fits excellently to the \gls{GPU} the
 full power of the \gls{GPU} can be exploited and hence it is power efficient. It
 depends heavily on the algorithm. The feasibility study has shown that one can
-achieve easily a speedup but considering the inefficient use of the ressources
+achieve easily a speedup but considering the inefficient use of the resources
 and the power dissipation it could be a slow down investing so much power for so
 little return.
 

@@ -6,7 +6,7 @@
 \label{cha:parallel_processing_with_gpu} 
 
 In recent years more and more parallel hardware appeared on the computing market
-with different architecture specialized for different problems. One of the recent
+with different architecture specialised for different problems. One of the recent
 and most discussed architectures is the \gls{GPU}. The major player in the field
 are  \gls{ATI} and the \slcsmallcaps{NVIDIA} corporation that both offer 
 \glspl{SDK} and \glspl{GPU} for general purpose computing. Beside \glspl{GPU} there
@@ -45,11 +45,11 @@ There are several ways how operations in a system can be executed in parallel.
 \end{itemize}
 The above classification is based upon the number of concurrent instruction and 
 data streams available in a system. The classification comes from \citeauthor{citeulike:3789408}
-in \citep{citeulike:3789408}. Today there is  still no satisfactory characterization 
+in \citep{citeulike:3789408}. Today there is  still no satisfactory characterisation 
 of the different types of parallel systems. Flynn's taxonomy was a first step, 
-today there are much more characterizations that refine the previous mentioned. 
+today there are much more characterisations that refine the previous mentioned. 
 
-To characterize the \gls{GPU} one needs two classifications. First of all in
+To characterise the \gls{GPU} one needs two classifications. First of all in
 each \gls{GPU} there are threads that are grouped together which are executing 
 one instruction on different data. These \gls{SIMD} groups are further grouped
 to a \gls{SPMD} system where all of these, there can be many of them, are
@@ -90,7 +90,7 @@ performs floating point operations. 32 streaming processor build up a \gls{SIMD}
 unit in {\slcsmallcaps{NVIDIA}} terms called warp, in that one instruction is executed. The Tesla
 C870 has 1.5 \gls{GB} \gls{GDDR3} graphics memory, 519 \glspl{GFLOP} of peak
 performance and \unitfrac[77]{\gls{GB}}{s} peak memory bandwidth. Many massively
-data-parallel algorithms can be run sufficiently on this specialized
+data-parallel algorithms can be run sufficiently on this specialised
 architecture \citep{citeulike:3145468}. Programming for this architecture is
 done with \gls{CUDA} the C language extension which will be covered in the next
 section.
@@ -108,7 +108,7 @@ The second solution are the mainstream \emph{GeForce 8 Series} card that
 is mainly used for gaming. The architecture of these both solutions is the same
 (\gls{USM}) they differentiate only in the magnitude of some performance
 characteristics (memory size, peak memory bandwidth, peak \gls{GFLOP}). The
-advantage of a mainstream \gls{GPU} is that the visualization can be done on the
+advantage of a mainstream \gls{GPU} is that the visualisation can be done on the
 same card and the low price. 
 
 For the purpose of this thesis a \emph{GeForce 8800 GTX 512} card will be
@@ -165,7 +165,7 @@ an the parallelism applies to both \glspl{CPU} and \glspl{GPU}
 
 \Gls{CUDA} is C with minimal extensions and defines a programming and memory model.
 There are three key abstractions in \gls{CUDA}, a hierarchy of thread groups, shared
-memories and barrier synchronization \citep{citeulike:3325943} that are exposed
+memories and barrier synchronisation \citep{citeulike:3325943} that are exposed
 to the developer. \Gls{CUDA} uses extensive multithreading where threads express
 fine-grained instruction, data and thread parallelism that are grouped into
 thread blocks which express coarse grained data and task parallelism. The
@@ -182,13 +182,13 @@ A brief look shows the \gls{CUDA} computing sweet
 spots\citep{citeulike:3839013}
 
 \begin{itemize}
-	\item High arithmetic intensity (Dense linera algebra, PDEs, n-body, 
+	\item High arithmetic intensity (Dense linear algebra, PDEs, n-body, 
 			finite difference, ...) 
 	\item High bandwidth (Sequencing (virus scanning, genomics), sorting, 			
 			database, ...) 
 	\item Visual computing: (Graphics, image processing, tomography, 
 			machine vision, ... ) 
-	\item Computational modeling, science, engineering, finance, ... 			
+	\item Computational modelling, science, engineering, finance, ... 			
 \end{itemize} 
 
 This is just a small snapshot of algorithms that can be used with \gls{CUDA} on
@@ -214,7 +214,7 @@ creation overhead and are extremely lightweight compared to \gls{CPU} threads.
 \label{par:thread_batching} 
 A kernel is executed as a grid of thread blocks where data memory space is
 shared by all threads. A thread block is a batch of threads that can cooperate
-with each other by synchronizing there execution\footnote{For hazard free shared
+with each other by synchronising there execution\footnote{For hazard free shared
 memory access} and efficiently share data through the low latency shared
 memory. Two threads from two different blocks can cooperate with atomic 
 functions through the global memory. The identification of a thread is 
@@ -225,7 +225,7 @@ creation time.
 \paragraph{Block and Thread IDs}% (fold)
 \label{par:block_and_thread_ids} 
 Every thread and block has a unique id. As a result of this each thread can
-decide whata data to work on. For every block there is a assigned id in \gls{1D}
+decide what data to work on. For every block there is a assigned id in \gls{1D}
 or \gls{2D} layout. Thread ids can be accessed either with \gls{1D}, \gls{2D} or
 \gls{3D} coordinates similar to multidimensional arrays. It simplifies memory
 addressing when processing multidimensional data( e.g image processing, matrix
@@ -248,7 +248,7 @@ where local data is spilled out to global memory} and shared memory resides
 on-chip. The global, constant and texture memory are mainly used for
 communication of \gls{RW} data between host and device where the contents is
 visible to all threads. As mentioned above texture and constant memory can be
-written by the host where constants and data are initialized.
+written by the host where constants and data are initialised.
 % paragraph device_memory_space (end)
 
 
@@ -259,12 +259,12 @@ kernel will do some easy calculations on the data provided, load the data into
 shared memory  and write back the results to the global memory. 
 
 A \gls{CUDA} program has a specific structure where the major parts are
-described in this paragraph. The first thing to do is to initialize the device
+described in this paragraph. The first thing to do is to initialise the device
 and some auxiliary variables. The \autoref{lst:init} shows the
-initalization.
+initialisation.
 
 %
-\begin{lstlisting}[caption=Hardware initalization, label=lst:init]
+\begin{lstlisting}[caption=Hardware initialisation, label=lst:init]
 CUT_DEVICE_INIT(argc, argv);
 
 uint32_t num_threads = 32;
@@ -316,12 +316,12 @@ Attention must be paid to the both statements that define the array for the grid
 and the thread block. The size of the array or the amount of threads dependent
 on three factors, (1) register usage, (2) shared and (3) local memory usage per
 thread. Accumulated per grid they are not allowed to pass a certain size.
-Calculations how the existing ressources are used can easily be calculated with
+Calculations how the existing resources are used can easily be calculated with
 the \emph{CUDA occupancy calculator}. The performance of the application depends
 on how good/bad the existing resources are exploited.
 
 If everything went well the host can copy the data from device memory
-to host memory and check, visualize or store the calculated values.
+to host memory and check, visualise or store the calculated values.
 \autoref{lst:result} shows the last steps before exiting the program.
 
 \begin{lstlisting}[caption=Retrieving of the Results, label=lst:result]
@@ -401,18 +401,18 @@ the porting process is flexible and has to be adapted slightly for every hardwar
 In general, one will follow these steps when porting an algorithm to the \gls{GPU}
 \begin{itemize}
 	\item Algorithm complexity study. Profile the code, find the most compute
-intensive parts analyze the parts of the algorithm which could be parallellized.
+intensive parts analyse the parts of the algorithm which could be parallelised.
 	\item Data layout/locality and Data flow analysis. Look for independent task or 
-	independent data to exploit task or data paralellism.
+	independent data to exploit task or data parallelism.
 	\item Experimental partitioning and mapping of the algorithm and program 
 		structure to the architecture. 
 	\item Develop \gls{CPU} control, \gls{CPU} scalar/multicore code
 	\item Develop \gls{CPU} control, partitioned \gls{GPU} scalar code (Communication, 
-		synchronization, latency handling)
+		synchronisation, latency handling)
 	\item Transform \gls{GPU} scalar code to \gls{GPU}threaded code, multi \gls{GPU} code. 
-	Exploit all avaible cores and devices on the system. 
+	Exploit all available cores and devices on the system. 
 	\item Re-balance the computation / data movement. 
-	\item Other optimization considerations (load balancing, bottlenecks...)
+	\item Other optimisation considerations (load balancing, bottlenecks...)
 \end{itemize}
 % subsubsection typical_software_development_flow (end)
 

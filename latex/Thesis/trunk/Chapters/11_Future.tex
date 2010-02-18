@@ -23,7 +23,7 @@
 % identify specific additional investigation that is required (and why)
 The field of \gls{GPU} computing is nowadays very broad. Starting from dense
 linear algebra, n-body, finite difference over graphics, image processing to
-computational modeling in science, engineering and finance the \gls{GPU} is
+computational modelling in science, engineering and finance the \gls{GPU} is
 existent in all this fields. A lot of algorithms profited from using the
 \gls{GPU} as an accelerator and many will profit too. There is a high demand on
 performance and computational power for scientific algorithms. Developers search
@@ -32,7 +32,7 @@ promising candidate because of its incredible raw power.
 
 New architectures meant new programming models and in the case of the \gls{GPU}
 the first programming model was not build for general purpose computing and
-developers were accidently forced to use \gls{3D} \glspl{API}
+developers were accidentally forced to use \gls{3D} \glspl{API}
 (OpenGL\footnote{http://www.opengl.org},
 DirectX\footnote{http://www.microsoft.com}) to accomplish task like matrix
 multiplication or fast fourier transformation. These \glspl{API} implied some
@@ -49,27 +49,27 @@ more feasible.
 
 With the advent of these new programming environments more and more developers
 are using \glspl{GPU} for general purpose computing. Many of them come from a
-world where everything is sequentiel and struggle with thinking in parallel.
+world where everything is sequential and struggle with thinking in parallel.
 Developers often only needed to compile their code with another compiler to
 port the code to another architecture. For example porting code from x86
 to PowerPC or x86 to \gls{SPARC}  was easy enough if it was standard C or C++
 without any special operating system calls. But the situation for parallel
 processors like the Cell, Niagara and here the \gls{GPU} is completely
 different. One has to identify the critical parts and explicitly offload tasks
-to the \gls{GPU}. It is obviuos that this is not the only step to do.
+to the \gls{GPU}. It is obvious that this is not the only step to do.
 Furthermore there are other facts which have to be considered, like
 load-balancing, deadlocks, concurrency, cache coherency and other. A workflow
 was presented throughout this thesis by the means of an algorithm how all this
-neccessary steps were untertaken.
+necessary steps were undertaken.
 
 The porting step is not the last when considering high performance code on a
-\gls{GPU}. The next big thing is to optimize the code to some extent to run
-efficiently on the hardware. The main cause of unefficient code is bad data
-design. It is the biggest problem of an alogirthm when trying to attain maximum
+\gls{GPU}. The next big thing is to optimise the code to some extent to run
+efficiently on the hardware. The main cause of inefficient code is bad data
+design. It is the biggest problem of an algorithm when trying to attain maximum
 performance. If the algorithm is memory bound and not computational bound the
 limiting factor or bottleneck is the bandwidth to the memory. Good data design
 is essential for good, performant code. The data and how it is used must be
-known in order to effectively design and optimize a application for a \gls{GPU}
+known in order to effectively design and optimise a application for a \gls{GPU}
 or other highly parallel systems like the Cell processor
 \citep{citeulike:80546}. A simple computationally bound algorithm can be easily
 designed in a way that it becomes memory bound if data arrangement and access is
@@ -79,9 +79,9 @@ parallel system.
 
 \section{Further Work} % (fold)
 \label{sec:further_work}
-For the mean shift algorithm there exist several acceleration teqhniques. These
+For the mean shift algorithm there exist several acceleration techniques. These
 techniques could be applied to the algorithm implemented in this thesis to
-accelerate the algoirthm to some extent. There were several papers that describe
+accelerate the algorithm to some extent. There were several papers that describe
 the techniques in depth. All of them have on thing in common, they degrade the
 quality of the segmented image whereas the algorithm used throughout this thesis
 is the most accurate but also the slowest. But not all techniques imply a very high
@@ -102,7 +102,7 @@ Fermi is a announced but yet not released new groundbreaking architecture from
 non \gls{ECC} memory, single kernel, no C++ support, small main memory, register
 pressure and so on are being improved or completely eliminated. It features more
 shared memory, register, streaming multiprocessors and many more especially
-designe to meet the requirements of the \gls{HPC} and general purpose computing
+a design to meet the requirements of the \gls{HPC} and general purpose computing
 communities. It would be worthwhile to run the algorithm on this new architecture
 to see how the promised scaling without recompiling is really doing. But for more
 performance it should be recompiled and adapted to all the new features available.

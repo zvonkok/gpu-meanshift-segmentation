@@ -34,7 +34,7 @@
 There is a lot of literature that is describing and showing \gls{GPGPU}. The literature
 of old algorithms ported to the \gls{GPU} focuses how to exploit a graphics
 \gls{API} to do general purpose computing. With the rise of \glspl{SDK}
-specially for \gls{GPGPU} more and more literature emerges with variuos 
+specially for \gls{GPGPU} more and more literature emerges with various 
 algorithms ported to the \gls{GPU}. 
 
 The aim of this chapter is to provide, through selective reference to some
@@ -46,7 +46,7 @@ The chapter is divided in several parts. The subject of the first part is a
 general view about the move to parallel processing and obstacles and problems
 that arise when doing parallel programming. Building up on the first part,
 several programming environments that enable \gls{GPGPU} are presented and
-discussed. Succeding a part that describes the algorithms that are suited for
+discussed. Succeeding a part that describes the algorithms that are suited for
 computing on the \gls{GPU}. The remainder of this chapters shows some already
 implemented algorithms to the \gls{GPU} and shows the wide field of application.
 
@@ -62,11 +62,11 @@ most people \glspl{CPU} are just enough. They do not demand on high
 computational power and on a high bandwidth. Still there is paradigm shift
 taking place and this can not be neglected. As stated in
 \citep{citeulike:1187394} and in \citep{citeulike:3421647} \glspl{CPU}
-manufacturers are facing problems which they cannnot overcome just by increasing
+manufacturers are facing problems which they cannot overcome just by increasing
 the frequency. The problems are known as \emph{The Memory
 Wall}\citep{citeulike:457955}, \emph{The Frequency Wall} and \emph{The Power
 Wall}. The only way seen by \glspl{CPU} makers is currently to go multicore.
-Intel e.g. went multicore with there new \emph{Core Microarchitecture} for
+Intel e.g. went multicore with there new \emph{Core Micro-architecture} for
 consumer products and even a \gls{GPU} replacement, \emph{Larrabee}
 \citep{citeulike:3153758}. \Gls{IBM}, Toshiba and Sony developed the \emph{Cell
 Broadband Architecture} a 9 core chip \citep{citeulike:1243173}. Sun Microsystems
@@ -84,7 +84,7 @@ be the answer to the problems stated above but this yields to another thing the
 \emph{parallel programming problem} \citep{citeulike:3750573}. User will only
 benefit from this growth if software can make use of all the cores and software
 can only benefit from it if developers can leverage concurrency in software.
-Developers have to look at their code to identify computatinal intensive
+Developers have to look at their code to identify computational intensive
 operations and identify how those operations can benefit from concurrency.
 \Citeauthor{citeulike:6643735}\citep{citeulike:6643735} stated that ``The free
 lunch is over'' , developers cannot count only anymore on \gls{CPU} throughput
@@ -95,15 +95,15 @@ styles and idioms \citep{citeulike:6643735}.
 \section{Parallel Programming \textit{\&} Thinking} % (fold)
 \label{sec:parallel_programming__thinking}
 
-Many developers learned about the single-threaded von neumann model and are not
+Many developers learned about the single-threaded von Neumann model and are not
 familiar with parallel code which is subject to errors such as deadlocks and
-livelocks, race conditions and many more. Parallel programming is difficult and
+live-locks, race conditions and many more. Parallel programming is difficult and
 there are several paradigms to make life easier for developers.
 
 On of these is the data-parallel paradigm. Where one is not trying to assign
-diffferent subtasks to separate cores rather assigning an individual data
+different subtasks to separate cores rather assigning an individual data
 element to a separate core for processing \citep{citeulike:3750565}. The
-\gls{3D} rendering, an embarassingly data-parallel problem, has driven the
+\gls{3D} rendering, an embarrassingly data-parallel problem, has driven the
 \gls{GPU} evolution which makes the \gls{GPU} a perfect target for data-parallel
 code. There are several fine-grained or data-parallel programming environments
 that leverage the \gls{GPU} and other parallel architectures for general purpose
@@ -112,40 +112,40 @@ computing.
 \subsubsection{Programming Libraries {\textit{\&}} Languages} % (fold)
 \label{ssub:programming_libraries_and_languages}
 Beyond graphics \glspl{API} like Cg, \gls{HLSL}, OpenGL or DirectX several 
-libraries and laguages were introduced to make \gls{GPGPU} possible. Many of them
+libraries and languages were introduced to make \gls{GPGPU} possible. Many of them
 are based on the graphic \glspl{API} but have backends to many other libraries. 
 
 They have one thing in common, they enable stream computing on the \gls{GPU}. The
-first langauge is Brook\citep{Buck:2004} for \gls{GPU} it extends \gls{ANSI} C
+first language is Brook\citep{Buck:2004} for \gls{GPU} it extends \gls{ANSI} C
 with concepts of stream programming. Brook stream are nothing else than arrays
 on which the computation is done in parallel. The program that is doing some
 operations on streams is called kernel. At run-time the kernels and streams are
-automatically mapped to the fragment processer and to texture memory. 
+automatically mapped to the fragment processor and to texture memory. 
 
-A similar concept follows Sh \citep{citeulike:6661860}. Sh is embeded in C++ 
+A similar concept follows Sh \citep{citeulike:6661860}. Sh is embedded in C++ 
 and allows to program \glspl{GPU} for graphical and general purpose computations. 
-The research was commercialized and RapidMind Inc. was formed. RapidMind delivered
-with its programming environement not only support for \glspl{GPU} but also for
-other massively parallel processors like the Cell. Recently Intel aquired RapidMind
+The research was commercialised and RapidMind Inc. was formed. RapidMind delivered
+with its programming environment not only support for \glspl{GPU} but also for
+other massively parallel processors like the Cell. Recently Intel acquired RapidMind
 to merge it into there Intel Ct Technology. 
 
-For scientific visualization there is Scout \citep{citeulike:3145428},
+For scientific visualisation there is Scout \citep{citeulike:3145428},
 it allows run-time mapping  of mathematical operations over data sets to the 
 \gls{GPU}, for general purpose computing it is rather limited as it focus is on
-visualization of data sets. 
+visualisation of data sets. 
 
 Another library is Glift \citep{Lefohn:2006:GGE} which is a template library 
-for a wide range of data structures. It opreates wiht C++, Cg and OpenGL 
+for a wide range of data structures. It operates with C++, Cg and OpenGL 
 development environments. 
 
 All the above libraries and languages are all based on a graphics \gls{API}.
 The functions are all graphics centric and not all are suited for \gls{GPGPU}.
-Since these functions have to accomodate to the graphics pipeline not all
+Since these functions have to accommodate to the graphics pipeline not all
 hardware features are directly exposed to the developer they are encapsulated
 and additionally the graphics pipeline puts up some constraints to the
 programming flow \citep{citeulike:1187394}.
 
-Therefore \gls{ATI} and \gls{NVIDIA} developed programming envrionments
+Therefore \gls{ATI} and \gls{NVIDIA} developed programming environments
 specially for \gls{GPGPU}. From \gls{ATI} came \gls{CTM} a low level programming
 interface exposing previously unavailable low level functionality , direct
 access to the native instruction set and memory, for \gls{GPGPU}. \Gls{ATI}
@@ -161,7 +161,7 @@ available and hence not considered.
 % subsubsection programming_libraries_and_languages (end)
 
 The focus of this work will be on \gls{CUDA}. \Gls{CUDA} is one of the
-environments which is not based on a graphics library and officialy released by
+environments which is not based on a graphics library and officially released by
 \gls{NVIDIA} for their \glspl{GPU}. \Gls{CUDA} is a minimal extension to C and
 C++ programming languages. The technique employed by \gls{CUDA} is \gls{SPMD}.
 Tasks are split up and run simultaneously on multiple threads (cores) with
@@ -176,7 +176,7 @@ the \glspl{GPU} to make a decision if an algorithm can be mapped on \glspl{GPU}.
 A pretty good overview over the \gls{NVIDIA} \gls{GPU} gives the 
 \gls{NVIDIA} \gls{CUDA} programming guide \citep{citeulike:3325943}. 
 
-A little bit outdatet but still of interest is the GeForce 6 Series
+A little bit outdated but still of interest is the GeForce 6 Series
 \gls{GPU} Architecture \citep{citeulike:3757915} which gives an overview how the
 \gls{GPU} fits into the whole system, what a fragment processor, vertex
 processor or what textures are. To have a even deeper look into \glspl{GPU} the
@@ -190,7 +190,7 @@ in terms of data parallelism and data independence. Not only that similar
 computations are applied to streams of many data elements (vertices, fragments,
 ...) but also the computation of each element is completely or almost completely
 independent \citep{citeulike:3733428}. Such types of algorithms are often called
-embarassingly parallel algorithms where subtasks rarely or never communicate to
+embarrassingly parallel algorithms where subtasks rarely or never communicate to
 each other.
 
 Another important fact for a algorithm is the \emph{arithmetic intensity}. The
@@ -225,7 +225,7 @@ cannot. There are implementations of photon mapping on GPUs
 \citep{Purcell:2003:PMO} which are developed with graphics apis and not with
 \gls{CUDA}. Anyhow since photon mapping is heavily using a kd-tree it would be a major
 effort to develop an efficient data structure which has the same functionality
-as a kd-tree. Nevertheless \emph{Photon Mapping} is a embarassingly parallel 
+as a kd-tree. Nevertheless \emph{Photon Mapping} is a embarrassingly parallel 
 algorithm that could fit very well to the \gls{GPU}.
 
 % paragraph photon_mapping (end)
@@ -241,7 +241,7 @@ multiple precision library to represent numbers with 200 and more digits. A good
 overview gives \citep{citeulike:3783244}.
 
 The idea could be to implement some of the factoring algorithms to the \gls{GPU}.
-The onlything needed is the multiple precision library. In \citep{citeulike:3783254} the
+The only thing needed is the multiple precision library. In \citep{citeulike:3783254} the
 \gls{GMP} library was used to implement the algorithms. So
 the multiple precision arithmetic is another candidate for algorithms that can
 run on the \gls{GPU}. There are several implementations but they are rather limited
@@ -252,7 +252,7 @@ precision library \citep{citeulike:6661955, citeulike:6661957}.
 
 \subsection{High Dynamic Range} % (fold)
 \label{par:high_dynamic_range}
-Image processing is always a candidate for embarassingly parallel algorithms. A
+Image processing is always a candidate for embarrassingly parallel algorithms. A
 pretty new algorithm to enhance images is tone mapping
 \citep{citeulike:3783303}. Tone mapping is the compression of dynamics in
 \gls{HDR} pictures. There are several algorithms for tone mapping: Mantiuk
@@ -284,11 +284,11 @@ definitions and not more the efficient implementation of the core algorithm.
 
 \subsection{Chaos Theory} % (fold)
 \label{par:chaos_theory}
-Another interesting field is chaos theory. Especially the visualization of
-chaos. The maybe most famous visualization of chaos is \emph{The Fractal Flames
+Another interesting field is chaos theory. Especially the visualisation of
+chaos. The maybe most famous visualisation of chaos is \emph{The Fractal Flames
 Algorithm}. Fractal flames are a member of iterated function system class of
 fractals created by Scott Draves \citep{citeulike:3801950}. He uses a rather
-complicated set of functions in the system to generate stunning visualization of
+complicated set of functions in the system to generate stunning visualisation of
 the iterative process of the system. The next release will have support for the
 GPU. Thats why it was firstly discarded but the research about chaos led to
 other interesting papers respectively books.
@@ -296,7 +296,7 @@ other interesting papers respectively books.
 There is no need to use approx. 21 function for a system to generate visually
 appealing pictures of chaos. Sprott showed in \citep{citeulike:3745535} that even
 with very simple functions one can create patterns in chaos. This patterns are
-called \emph{Strange Attractors} and are the visualization of chaotic behaviour.
+called \emph{Strange Attractors} and are the visualisation of chaotic behaviour.
 There are created by iterating a simple equation some million times. 
 
 Pickover shows in his book \citep{citeulike:3812233} how to create patterns from
@@ -310,7 +310,7 @@ which makes it a good candidate for porting to the \gls{GPU}.
 
 \subsection{Image Processing}
 Many image processing algorithms are embarrassingly parallel as one can calculate
-filters on idividual pixels without considering the neigbouring pixels. 
+filters on individual pixels without considering the neighbouring pixels. 
 \Citeauthor{citeulike:6661950} showed by example how image processing is done
 on the \gls{GPU} by a canonical example, limb finding \citep{citeulike:6661950}. 
 Another paper shows how to do convolution, diffusion, wavelet or tone mapping
@@ -330,10 +330,10 @@ developer will be attracted to use this new architecture.
 
 But all of this reports showed that with the old tools the programming is and was
 error prune and difficult. Only some specialist that understood the graphics part
-in extense and the algorithm to be ported could implement a efficient solution. 
+in extensive and the algorithm to be ported could implement a efficient solution. 
 
-This is where this thesis will attach. Taking the new programming envrionments
-and triying to port a sample application to the \gls{GPU}. 
+This is where this thesis will attach. Taking the new programming environments
+and trying to port a sample application to the \gls{GPU}. 
 
 
 

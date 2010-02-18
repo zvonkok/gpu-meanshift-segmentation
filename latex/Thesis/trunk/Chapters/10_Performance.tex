@@ -8,8 +8,8 @@
 
 To evaluate the performance and the scalability of the implemented mean shift
 algorithm several benchmarks will be made. Firstly the algorithm is tested 
-against different image sizes. After that a multiple \gls{GPU} version is 
-evaluated and tested with the same image sizes as in the previous test. Lastly
+against different Image-sizes. After that a multiple \gls{GPU} version is 
+evaluated and tested with the same Image-sizes as in the previous test. Lastly
 the hardware parameters of the \gls{GPU} like the core clock and memory clock
 are manipulated to get a clue if the algorithm is memory or computational bound. 
 In the case that the algorithm is memory bound one should try to decrease the
@@ -18,11 +18,11 @@ the algorithm could help here. All in all its interesting to see how an algorith
 behaves at different circumstances. In general all runs were performed 20 times
 in a row and the mean was taken as the final result.
 
-\section{Varying the Image Size} % (fold)
+\section{Varying the Image-size} % (fold)
 \label{sec:varying_the_image_size}
-The first benchmark varies the image size from 128 $\times$ 128 pixels to 2688
+The first benchmark varies the Image-size from 128 $\times$ 128 pixels to 2688
 $\times$ 2688 pixels. The image side length is incremented by 128 pixels. The
-\autoref{fig:gpu_speedup} shows the \gls{GPU} runtime and the speedup compared
+\autoref{fig:gpu_speedup} shows the \gls{GPU} run-time and the speedup compared
 to the \gls{CPU} run time. The \gls{CPU} run time was not included in
 \autoref{fig:gpu_speedup} because the range of \gls{CPU} values is 100$\times$ 
 larger and the \gls{GPU} values would not be visible. 
@@ -44,11 +44,12 @@ larger and the \gls{GPU} values would not be visible.
 			xmin=64, xmax=7225344,
 			% ymin=0,
 			ymax=7500,
-			xlabel=Image size, ylabel={Seconds [s]},
+			xlabel={Image-size in [pixel]}, 
+			ylabel={Time in [ms]},
 			legend style={at={(0.03,0.95)}, anchor=north west}]
 
 			\addplot[color=red1,mark=diamond*] table[x=PIX,y={GPU}] from \tableA;
-			\addlegendentry{Runtime}
+			\addlegendentry{Run-time}
 
 		\end{axis}
 
@@ -63,7 +64,7 @@ larger and the \gls{GPU} values would not be visible.
 			axis y line=right,
 			xmin=64, xmax=7225344, 
 			ymin=100, ymax=190,
-			ylabel={Speedup}, 
+			ylabel={Speedup-factor}, 
 			legend style={at={(0.03,0.93)}, anchor=south west}]
 
 			\addplot[color=blue1,mark=triangle*] table[x=PIX,y={Speedup}] from \tableA;
@@ -71,17 +72,17 @@ larger and the \gls{GPU} values would not be visible.
 		\end{axis}
 
 		\end{tikzpicture}%
-		\caption{\protect\gls{GPU} runtime and speedup dependent on the image size}%
+		\caption{\protect\gls{GPU} run-time and speedup with increasing image-size}%
 		\label{fig:gpu_speedup}%
 	\end{figure}
 Its interesting to see that the speedup is increasing faster at the beginning
 and than to level off at about 160. This is no surprise because every software
 respectively hardware has a ramp-up phase. This ramp-up phase, where no
-computation is performed, often involves allocation and initialization of data
+computation is performed, often involves allocation and initialisation of data
 and hardware and additionally on this platform the movement of data from the
-host to the \gls{GPU} buffers. With smaller image sizes the time for the ramp-up
+host to the \gls{GPU} buffers. With smaller Image-sizes the time for the ramp-up
 phase is a significant amount of the complete run-time. With bigger and bigger
-image sizes the amount of the ramp-up phase to the complete run-time becomes 
+Image-sizes the amount of the ramp-up phase to the complete run-time becomes 
 smaller and hence the speedup increases. 
 
 \subsection{Linearity} % (fold)
@@ -90,8 +91,8 @@ Another fact to consider is how the algorithm is scaling with increasing image
 sizes. In \autoref{ch:algorithm_analysis} it was shown that the algorithm
 exposes linear complexity $O(n)$ and it is interesting to see how the
 implemented algorithm behaves in terms of linearity. An algorithm is linear when
-the two metrics for measuring the performance here the image size and the
-run-time are proportional. The image size is proportional to the run-time if 
+the two metrics for measuring the performance here the Image-size and the
+run-time are proportional. The Image-size is proportional to the run-time if 
 they have a constant ratio. If one variable increases by an factor $x$ than the
 proportional variable increases by that factor too.
 \begin{figure}[ht]
@@ -114,8 +115,8 @@ proportional variable increases by that factor too.
       axis y line=left,
 			xmin=64, xmax=7750000, 
       ymin=0.3, ymax=1.7,
-      xlabel=Image Size,
-      ylabel=Normalized Ratio (size/time),
+			xlabel={Image-size in [pixel]}, 
+      ylabel={Normalised ratio (size/time)},
  			ytick={0,0.5,1,1.5},
 			legend style={at={(0.03,0.95)}, anchor=north west}]
      
@@ -128,15 +129,15 @@ proportional variable increases by that factor too.
     \end{axis}
 
   \end{tikzpicture}%
-	\caption{Normalized size/time ratios}%
+	\caption{Normalised size/time ratios for the \protect\gls{CPU} and \protect\gls{GPU}}%
 	\label{fig:linearity}
  \end{figure}
 
-The \autoref{fig:linearity} shows the normalized image size per time ratios in
+The \autoref{fig:linearity} shows the normalised Image-size per time ratios in
 the interval $[0,1]$. As it can be seen the ratio for the \gls{CPU} and the
 \gls{GPU} are increasing similar to the speedup because of the before mentioned
 ramp-up phase. The ratio increases until it reaches the right endpoint of the
-interval. If the image size is doubled the run-time is doubled (image size
+interval. If the Image-size is doubled the run-time is doubled (Image-size
 $\propto$ run-time) which means the algorithm scales linearly.
 % subsubsection linearity (end)
 % section varying_the_image_size (end)
@@ -144,8 +145,8 @@ $\propto$ run-time) which means the algorithm scales linearly.
 
 \section{Multiple gpus} % (fold)
 \label{sec:multiple_gpus}
-The previous section analyzed how the implemented algorithm scales over the
-image size. Another important attribute is how the algorithm scales if another
+The previous section analysed how the implemented algorithm scales over the
+Image-size. Another important attribute is how the algorithm scales if another
 \gls{GPU} is added for computation. A second identical \gls{GPU} was used to
 generate the results shown in \autoref{fig:multi_gpu_speedup}.
 
@@ -167,14 +168,15 @@ generate the results shown in \autoref{fig:multi_gpu_speedup}.
 			xmin=64, xmax=7225344,
 			% ymin=0,
 			ymax=7000,
-			xlabel=Image size, ylabel={Runtime [s]},
+			xlabel={Image-size in [pixel]}, 
+			ylabel={Time in [ms]},
 			legend style={at={(0.03,1.05)}, anchor=north west}]
 
       \addplot[color=blue1,mark=*] table[x=PIX,y=1GPU] from \tableA;
 			\addplot[color=lila1,mark=diamond*] table[x=PIX,y=2GPU] from \tableA;
 			
-			\addlegendentry{Runtime \slcsmallcaps{1 GPU}}
-			\addlegendentry{Runtime \slcsmallcaps{2 GPUs}}
+			\addlegendentry{1 \protect\gls{GPU}}
+			\addlegendentry{2 \protect\glspl{GPU}}
 
     \end{axis}
 
@@ -189,8 +191,8 @@ generate the results shown in \autoref{fig:multi_gpu_speedup}.
 			axis y line=right,
 			xmin=64, xmax=7225344,
       ymin=0, ymax=4,
-			xlabel=Image size,
-			ylabel={Factor $\times$}, 
+			xlabel={Image-size in [pixel]},
+			ylabel={Speedup-factor}, 
 			ytick={0,1,2,3},
 			legend style={at={(0.03,0.80)}, anchor=north west}]
 			
@@ -201,14 +203,14 @@ generate the results shown in \autoref{fig:multi_gpu_speedup}.
     \end{axis}
 
   \end{tikzpicture}%
-  \caption{Multiple GPU(s) runtime and speedup dependent on the image size}%
+  \caption{Multiple \protect\glspl{GPU} run-time and speedup with increasing image-size}%
 	\label{fig:multi_gpu_speedup}%
 \end{figure}
 
 As stated in the previous sections the ramp-up phase is responsible that the
-algorithm is not scaling with small image sizes. Its again clearly identifiable
+algorithm is not scaling with small Image-sizes. Its again clearly identifiable
 in the \autoref{fig:multi_gpu_speedup}. It's safe to assume that the multiple
-\gls{GPU} run-times are proportional to the image size as in
+\gls{GPU} run-times are proportional to the Image-size as in
 \autoref{fig:linearity} seen for one \gls{GPU} since the run-times are 2$\times$
 faster but the ratio will nevertheless still be a constant. For the precise
 numbers see \autoref{tab:multi_gpu_run}. This section showed that the algorithm
@@ -238,8 +240,8 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
 			axis y line=left,
 			xmin=64, xmax=7800000,
 			ymin=0, ymax=350,
-			xlabel=Image size, 
-			ylabel={Factor $\times$},
+			xlabel={Image-size in [pixel]}, 
+			ylabel={Speedup-factor},
 			legend style={at={(1,0.85)}, anchor=north east}]
 			% 
 			% 			[
@@ -261,20 +263,20 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
  			\addplot[color=blue1, mark=diamond*] table[x=PIX,y=CPU_Speedup] from \tableB;
  			\addplot[color=lila1, mark=triangle*] table[x=PIX,y=Speedup] from \tableA;
 
-			\addlegendentry{Speedup 1 \protect\gls{GPU}}
-			\addlegendentry{Speedup 2 \protect\glspl{GPUs}}
+			\addlegendentry{1 \protect\gls{GPU}}
+			\addlegendentry{2 \protect\glspl{GPU}}
 
     \end{axis}
 
   \end{tikzpicture}%
-	\caption{{\ssmallcaps{Gpu}} speedups compared to the {\slcsmallcaps{CPU}} 
-					 run-times over image size}%
+	\caption{{\protect\Gls{GPU}} speedups compared to the {\protect\gls{CPU}} 
+					 run-times with increasing image-size}%
 	\label{fig:multi_gpu_cpu_speedup}
 \end{figure}
 
 % section multiple_gpus (end)
 
-\section{Overclocking the gpu} % (fold)
+\section{Over-clocking the gpu} % (fold)
 \label{sec:overclocking_the_gpu}
 The \gls{GPU} has three \glspl{clock} that can be over-clocked to achieve higher
 performance. The first is the core \glspl{clock}, the second \gls{clock} is
@@ -314,7 +316,7 @@ increase per software of 100 \gls{MHz} doesn't mean an increase of 100 \gls{MHz}
 in hardware due to hardware restrictions. The \autoref{tab:mem_sw_hw} shows the 
 frequency set in software and the resulting real frequency in hardware. 
 
-The test was performed with three different image sizes: 256$\times$256 pixel, 
+The test was performed with three different Image-sizes: 256$\times$256 pixel, 
 1024$\times$1024 pixel and 2048$\times$2048 pixel. The \autoref{fig:mem_clk_256}
 shows the run-time dependent on the memory clock.
 
@@ -333,14 +335,14 @@ shows the run-time dependent on the memory clock.
       xmin=972, xmax=1110, 
     	ymin=70,
 			ymax=73.5,
-      ylabel={Runtime [ms]},
-      xlabel={Memory Clock [MHz]}]
+      ylabel={Time in [ms]},
+      xlabel={Memory-clock in [MHz]}]
       \addplot[color=red1,mark=diamond*] table[x=MEMCLK,y=256] from \tableA;
 			\addlegendentry{\protect\gls{GPU}}
    \end{axis}
  \end{tikzpicture}%
  \label{fig:mem_clk_256}%
- \caption{Image 256x256 increasing the memory clock}
+ \caption{Run-time with increasing memory clock on an image with 256$\times$256 pixel}
 \end{figure}
 
 A straight line indicates that the algorithm is not memory bound. It does not
@@ -364,7 +366,7 @@ core clock is 783 \gls{MHz}. All clocks were read out from hardware with
 \emph{NVClock}. The \autoref{tab:core_sw_hw} shows the frequency set in software
 and the resulting real frequency in hardware.
 
-The test was performed with three different image sizes: 256$\times$256 pixel, 
+The test was performed with three different Image-sizes: 256$\times$256 pixel, 
 1024$\times$1024 pixel and 2048$\times$2048 pixel. The \autoref{fig:core_clk_256}
 shows the run-time dependent on the core clock. Additionally the normalised
 ratio between the differences of clock and ratio is depicted as well. 
@@ -395,8 +397,8 @@ ratio between the differences of clock and ratio is depicted as well.
       xmin=648, xmax=783, 
       ymin=50,
 			ymax=85,
-      xlabel={Core Clock [MHz]},
-      ylabel={Runtime [ms]},
+      xlabel={Core clock in [MHz]},
+      ylabel={Time in [ms]},
  %     enlarge x limits=0.1,
       % ymajorgrids
 			legend style={at={(0.03,0.95)}, anchor=north west}]
@@ -421,20 +423,21 @@ ratio between the differences of clock and ratio is depicted as well.
 				ymax=2,
 %	      xlabel=$x$,
 				ytick={0,0.5,1,1.5},
-	      ylabel={Normalised Ratio (clock/time)},
+	      ylabel={Normalised ratio (clock/time)},
 %	      enlarge x limits=0.1,
 	      % ymajorgrids
 				legend style={at={(0.03,0.95)}, anchor=south west}]
 	      ]
 	      \addplot[color=blue1, mark=triangle*] table[x=CLK,y=CT_NRatio] from \tableA;
-				\addlegendentry{clock/time}
+				\addlegendentry{Ratio}
 	   \end{axis}
 
 
 
  \end{tikzpicture}%
  \label{fig:core_clk_256}%
- \caption{Image 256x256 varying the core clock with fixed mem clock}
+ \caption{Run-time with increasing core clock and fixed memory clock on an image
+ with 256$\times$256 pixel with one \protect\gls{GPU}}
 \end{figure}
 
 It's visible that the run-time is decreasing proportionally with the increase of
@@ -443,13 +446,13 @@ The run-time is determined in this implementation solely by the speed of the
 \gls{GPU}. One way to get over this barrier is to (1) minimize the instructions
 executed by the \gls{GPU} by restructuring the code or (2) adopting a another
 algorithm for finding feature point that fall into the search window, see
-\autoref{ch:future_work} for enhancements that could be made to accelerate the
-search. Additionally, the image sizes 1024$\times$1024 and 2048$\times$2048
-pixel show the same behavior.
+\autoref{ch:further_work} for enhancements that could be made to accelerate the
+search. Additionally, the Image-sizes 1024$\times$1024 and 2048$\times$2048
+pixel show the same behaviour.
 For completeness the next section shows the case when two \glspl{GPU} are 
-overclocked.
+over-clocked.
 
-\subsubsection{Multiple gpus overclocked} % (fold)
+\subsubsection{Multiple gpus over-clocked} % (fold)
 \label{ssub:multiple_gpus_overclocked}
 It's no surprise to see almost a identical diagram compared to the previous
 section. As the algorithm scales well with multiple \gls{GPU} (see
@@ -484,8 +487,8 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
       xmin=648, xmax=783, 
       ymin=25,
 			ymax=45,
- 			    xlabel={Core Clock [MHz]},
-		      ylabel={Runtime [ms]},
+ 			    xlabel={Core clock in [MHz]},
+		      ylabel={Time in [ms]},
  %     enlarge x limits=0.1,
       % ymajorgrids
 			legend style={at={(0.03,0.95)}, anchor=north west}]
@@ -509,7 +512,7 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
 	      ymin=0,
 				ymax=2,
 %	      xlabel=$x$,
- 				ylabel={Normalised Ratio (clock/time)},
+ 				ylabel={Normalised ratio (clock/time)},
 				ytick={0,0.5,1,1.5},
 %	      enlarge x limits=0.1,
 	      % ymajorgrids
@@ -523,7 +526,8 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
 
  \end{tikzpicture}%
  \label{fig:clock_multi_256}%
- \caption{Image 256x256 varying the core on two GPUS}
+ \caption{Run-time with increasing core clock and fixed memory clock on an image with 256$\times$256 pixel
+with two \protect\gls{GPU}}
 \end{figure}
 
 % subsubsection multiple_gpus_overclocked (end)

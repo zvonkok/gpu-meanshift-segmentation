@@ -47,14 +47,16 @@ side length in pixels of the quadratic \autoref{fig:orig0}.
     xmin=64, xmax=7800000,
     % ymin=0,
     ymax=7500,
-    xlabel=Image size, ylabel={Seconds [s]},
+    xlabel={Image-size in [pixel]}, 
+		ylabel={Time in [s]},
 		legend style={at={(0.03,0.97)}, anchor=north west},
     ]
     \addplot[color=red1,mark=diamond*] table[x=PIX] {Plots/single.gpu.data};%
     \addlegendentry{\protect\gls{CPU}}
    	\end{axis}
  	\end{tikzpicture}%
- 	\caption{\protect\Gls{CPU} run time depending on the image size}\label{fig:cpu_run_time}%
+ 	\caption{\protect\Gls{CPU} run time with increasing image size}%
+	\label{fig:cpu_run_time}%
 \end{figure}
 Considering the numbers in the result one can see that the run times
 grow linear to the image sizes. The mean shift algorithm has linear
@@ -73,16 +75,16 @@ accelerated. The problem has to be well understood.
 The next important step is to find parts which can be offloaded to an
 accelerator as the \gls{GPU}. A first good point for such parts is to
 make a profiling of the application to find out the most
-computationally intensive parts. It makes no sense to parallelize
+computationally intensive parts. It makes no sense to parallelise
 functions which contribute only 1\% to the run time.
     
 \section{Profiling the Original Code} % (fold)
 \label{sec:run_time_analysis_of_the_original_code}
-A good start point is to take a profiler und generate a profile of the
+A good start point is to take a profiler and generate a profile of the
 functions, recording their run time and call history. In this case a
 statistical profiler is used which operates by sampling. The samples
 are taken from the hardware performance counters which every modern
-\gls{CPU} has builtin.
+\gls{CPU} has built-in.
 OProfile\footnote{http://oprofile.sourceforge.net/news/} a system wide
 profiler for Linux was used to examine the run time of the
 \gls{EDISON} program. The \autoref{tab:comped} shows the run time
@@ -101,7 +103,7 @@ analysis of \gls{EDISON}.
   columns/Total/.style={column type=r, column name={Total (\%)}},
   columns/Symbol/.style={string type, column type=l, column name={Symbol}}
   ]{Tables/run.time.edison.data}
-  \caption[EDISON run time profile]{ \gls{EDISON} run time analysis}
+  \caption[\protect\Gls{EDISON} run time profile]{ \protect\Gls{EDISON} run time analysis}
   \label{tab:comped}
 \end{table}
 
@@ -118,22 +120,22 @@ executing 98.2\% of the run time, the function
 algorithm tries to find feature points that fall into the search
 window with radius $h$ (see \autoref{sec:mean_shift}). This is the
 starting point as it is the most computationally intensive and the
-focus for parallelization. There is a way to calculate to which extent
-the particular function can be parallelized and which speedup one can
+focus for parallelisation. There is a way to calculate to which extent
+the particular function can be parallelised and which speedup one can
 expect. Speedup is the ratio of run time when executing a program on a
-single processr to the run time when using $n$ processors. Given $T_1$
-the run time of a program on a single processeor and $T_n$ the run
+single processor to the run time when using $n$ processors. Given $T_1$
+the run time of a program on a single processor and $T_n$ the run
 time of the same program on $n$ processors then
 \begin{equation}\label{eq:speedup}
   S(n) = \frac{T_1}{T_n}
 \end{equation}
 is a measure for the speedup. One familiar law to calculate the how
-much speedup can be obtained through paralellism is Amdahl's law.
+much speedup can be obtained through parallelism is Amdahl's law.
 
 \section{Amdahl's law}
 \label{sec:amdahl_s_law}
 Amdahl's law says supposing that 80\% of a computation can be
-parallelized and 20\% can't, then even if the 80\% that is parallel
+parallelised and 20\% can't, then even if the 80\% that is parallel
 were run on an infinite number of processors the highest speedup that
 one can achieve is 5. Generally speaking if a fraction $p$ of a
 computation can be run in parallel and the rest must run serially,
@@ -156,7 +158,7 @@ is independent of the number $n$ of processors
 \citeauthor{citeulike:3838998} \citep{citeulike:3838998}.
 
 Assuming that the mean shift filtering can be parallelized with any number of
-processing units one can calculate the maximum speedup achieveable according to
+processing units one can calculate the maximum speedup achievable according to
 Amdahl. Taking the parallel processing percentage from \autoref{tab:comp} for
 the filtering step:
 \begin{equation*}\label{eq:parallel}
@@ -169,37 +171,37 @@ we get
 \end{equation*}
 
 Applying the calculation with $n = 128$, the used \gls{GPU} has 128
-processors one can acheive a speedup of:
+processors one can achieve a speedup of:
 \begin{equation*}\label{eq:g92sp}
   S_{max}(128) = \frac{1}{(1-0.993) + \frac{0.993}{128}} = \frac{1}{0.007 + 0.0077578125} = 67.76
 \end{equation*}
 One can see that even for very small serial processing percentage the speedup is
 not very high. Therefore \citeauthor{citeulike:3732921} proposed a alternative
 formulation where the fractions are now dependent on $n$. He assumed that for
-larger problem, the fraction of a program to parallelization increases. Thats
+larger problem, the fraction of a program to parallelisation increases. Thats
 why Gustafson's law is often referred as a scaled speedup measure and Amdahl's
-as a non scaled speedup measure. Given the serial $s'$ and paralllel time $p'$ a
+as a non scaled speedup measure. Given the serial $s'$ and parallel time $p'$ a
 single processor would require $s' + p' \times n$ time to finish the execution.
 The speedup is then given by:
 \begin{equation}\label{eq:gus}
   S_{max}(n) = \frac{s' + p' \times n}{s' + p'} = n + ( 1 - n ) \times s'
 \end{equation}
 Applying the calculation with $n = 128$, the used \gls{GPU} has 128 processors
-one can acheive a speedup according to Gustafson of:
+one can achieve a speedup according to Gustafson of:
 \begin{equation*}\label{eq:g92sp}
   S_{max}(128) = 128 + (1 - 128) \times 0.007 = 127.11
 \end{equation*}
 
 It looks like that Amdahl's \& Gustafson's law are in contradiction but looking
 more precise on both definitions one can see that both laws employ different
-definitions for the fraction of the serial and parallel exectuion times. Amdahl
-uses non scaled percentage and Gustafson scaled percentage. Mathematicaly they
+definitions for the fraction of the serial and parallel execution times. Amdahl
+uses non scaled percentage and Gustafson scaled percentage. Mathematically they
 are equal just two different formulations. The scaled percentage can be
-transformed to a non scaled perecentage where Gustafson's law gives the same
+transformed to a non scaled percentage where Gustafson's law gives the same
 results as Amdahl's law \citep{citeulike:3838998}.
 
-In summary one can expect more than a 100 fold speedup when parallelizing the
-filter step of the mean shift algorithm. The next steps will focus on analyzing
+In summary one can expect more than a 100 fold speedup when parallelising the
+filter step of the mean shift algorithm. The next steps will focus on analysing
 how the mean shift filter can be decomposed to take advantage of multiple
 processors.
 
@@ -230,7 +232,7 @@ one task would have to wait for the output of the other task to continue.
 Furthermore not only the inputs vs. the outputs have to be independent but also
 the outputs of each task have to be independent. If the above conditions cannot
 be applied to a program $P$ than it is likewise that race conditions and poor
-performance can arise through e.g. excessive synchronization overhead.
+performance can arise through e.g. excessive synchronisation overhead.
 
 
 \subsection{Task Parallelism} % (fold)
@@ -242,13 +244,13 @@ look at the algorithm steps one can easily see that every task is violating
 every condition stated above. The filtering step input data is dependent on the
 \gls{RGB} to \gls{LUV} conversion output data. The segmentation step input data
 is dependent on the filtering output data. So it does not matter how big an
-image is or if it is a color or grayscale image the mean shift segmentation
+image is or if it is a colour or grayscale image the mean shift segmentation
 algorithm will always perform all from each other dependent calculations as
 described in \autoref{alg:mss}. The longest path of dependent calculations is
 the critical path. For the mean shift algorithm there exists no shorter path.
 
 In summary one can discard the idea of task parallelism for the mean shift
-segmentation algorithm. Thats why the focus of parallelization is now on data
+segmentation algorithm. Thats why the focus of parallelisation is now on data
 parallelism. 
 % subsection task_parallelism (end)
 
@@ -268,16 +270,16 @@ doesn't matter at which pixel one starts, the filtering step is deterministic,
 starting from the same input will lead to the same output.
 
 Another important aspect is how often the subtasks (where each subtask is
-calculating one pixel) have to synchronize or communicate. An algorithm exhibits
+calculating one pixel) have to synchronise or communicate. An algorithm exhibits
 fine-grained parallelism if the subtasks have to communicate many times,
 coarse-grained parallelism if the subtasks do not communicate many times. In
 this case the algorithm even exhibits embarrassingly parallel parallelism. The
-subtasks never have to communicate or synchronize. Each subtask takes one or a
+subtasks never have to communicate or synchronise. Each subtask takes one or a
 chunk of pixels applies the filtering steps and writes back the result. The
 intermediate steps where the mean shift vector is moved over the spatial space
 are also independent for each pixel.
 
-The approach in parallelizing the mean shift algorithm is to use a data
+The approach in parallelising the mean shift algorithm is to use a data
 decomposition where each subtask is filtering a chunk or a pixel of the entire
 image. Depending on the number of processing units one can choose an appropriate
 chunk size to exploit every unit.
@@ -298,14 +300,14 @@ performance on every processing unit especially on a \gls{GPU}. Inefficient data
 access leads to an algorithm that is memory bound which means it doesn't matter
 how much computational power the processing unit has it will be bound to the
 memory performance (See \autoref{ch:literature_review} for \emph{arithmetic
-intensity}). Therefore its crucial to understand the data and optimize it for
+intensity}). Therefore its crucial to understand the data and optimise it for
 access. If done incorrectly tasks may get invalid data or it could lead to
-excessive synchronization overhead.
+excessive synchronisation overhead.
 
 In \autoref{sub:task_parallelism} it was shown that the filtering step is
-dependent on the color conversion step where the output data of the color
+dependent on the colour conversion step where the output data of the colour
 conversion step becomes the input data of the filtering step. Since this is done
-sequentially there is no need to take care of some synchronization. This scheme
+sequentially there is no need to take care of some synchronisation. This scheme
 is the same for the filtering and segmentation step. Since the filtering step is
 done in parallel and the segmentation needs the output data form the filtering
 step a barrier after the filtering step is needed.
@@ -313,8 +315,7 @@ step a barrier after the filtering step is needed.
 Now to the interesting part the parallel filtering step. For the following
 considerations the viewpoint will be a single processing unit. It is firstly
 enough to consider only one unit and one pixel at a time since the \gls{GPU}
-exhibits a \gls{SPMD} programming model (see
-\autoref{ssub:single_program_multiple_data_spmd}) and secondly the mean shift
+exhibits a \gls{SPMD} programming model and secondly the mean shift
 algorithm is embarrassingly parallel. It is later easy to broaden the
 examination to a cluster of processing units and chunks of pixels if its needed.
 
@@ -338,8 +339,8 @@ considerations will be made.
 
 \section{Summary} % (fold)
 \label{sec:analysis_summary}
-So far the problem has been extensively analyzed. The most compute intensive
-parts have been identified and a perliminary speedup has been calculated
+So far the problem has been extensively analysed. The most compute intensive
+parts have been identified and a preliminary speedup has been calculated
 according to Gustafon's law. Furthermore the problem has been decomposed into
 tasks that can execute concurrently using task respectively the data
 decomposition. Additionally to the decomposition the dependencies between
@@ -352,20 +353,20 @@ have done the decomposition in the right way.
 The decomposition has to be suitable for the target platform. Since the
 \gls{GPU} is a \gls{SPMD} architecture, which means one program the mean shift
 algorithm is operating on many data the pixels. Above it was shown that the way
-of data decomposition is preferrable because (1) the pixels can be mapped 1:1 to
+of data decomposition is preferable because (1) the pixels can be mapped 1:1 to
 a processing unit on the \gls{GPU} and (2) there are enough pixel to keep the
 \gls{GPU} busy. Furthermore the \gls{GPU} is a number cruncher and algorithms
 doing heavy math or calculations can profit from the sheer computational power.
 
-The decomposition has to be flexible, efficent and simple. A flexible setup
+The decomposition has to be flexible, efficient and simple. A flexible setup
 means that the amount of independent task can vary and the configuration how
 they are arranged is as well selectable. This means it can be adapted to from
-one to many processing units, the load can evely be distributed among the
+one to many processing units, the load can evenly be distributed among the
 processing units which leads to good efficiency and scalability and the
-decomposition can be parameterized in terms of units and problem size.
+decomposition can be parameterised in terms of units and problem size.
 Additionally weak dependency in the decomposition makes load balancing easier.
-Simple in this case means minimizing the synchronization and communication overhead
-through the decomposition, which is in this case non-existant. 
+Simple in this case means minimising the synchronisation and communication overhead
+through the decomposition, which is in this case non-existent. 
 
 This chapter exposed the concurrency in the mean shift algorithm that can now be
 taken into the next phase, designing the algorithm. 
