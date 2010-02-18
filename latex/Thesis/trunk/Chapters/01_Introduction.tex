@@ -66,9 +66,9 @@ program in parallel but a quasi standard has not been established.
 
 % which aspects you will consider, and why -------------------------------------
 
-There are several programming platforms that are favored in certain fields 
-respectively system leverls. On thread or loop-level there is OpenMP a programming
-interface for parallelization on shared-memory systems. Going a level higher to
+There are several programming platforms that are favoured in certain fields 
+respectively system levels. On thread or loop-level there is OpenMP a programming
+interface for parallelisation on shared-memory systems. Going a level higher to
 distributed systems that exchange messages during parallel execution there is 
 \gls{MPI} which is a quasi standard for message passing. There are further 
 libraries but none of them is really suited for heterogenous computing systems.
@@ -76,7 +76,7 @@ libraries but none of them is really suited for heterogenous computing systems.
 Heterogeneous computing systems are different than common computing systems. For
 developers it is crucial to understand the underlying architecture and
 programming models. They have to find the right tool (\gls{API}, middleware,
-\ldots) to exploit parallelizm. Pitfalls and drawbacks often arise when studying
+\ldots) to exploit parallelism. Pitfalls and drawbacks often arise when studying
 the new system and developers have to adapt and deal with it. Furthermore its
 not only the use of the right tools its more the parallel thinking which is new
 to most of them. Parallel thinking and spotting concurrency in algorithms is the
@@ -86,7 +86,7 @@ key for acceleration. Those aspects have to be considered when trying to do
 % which aspects you will not consider, and why ---------------------------------
 
 As stated before there are several programming models respectively \glspl{API} 
-availabe for programming the \gls{GPU}. Most of them are based on a graphics 
+available for programming the \gls{GPU}. Most of them are based on a graphics 
 \gls{API} and are exporting a C++ interface to the developer abstracting
 the underlying hardware. The biggest problem with such \glspl{API} is that 
 there are a lot of them and every has its pros and cons. Thats why the focus
@@ -94,7 +94,7 @@ will be on \glspl{API} directly supplied by the manufacturers of the \glspl{GPU}
 
 % what you hope to find out ----------------------------------------------------
 At the time of writing this thesis there were several myths about \gls{GPGPU}.
-Developers are buffled when they here they have to implement the algorithm with
+Developers are baffled when they hear they have to implement the algorithm with
 a graphics \gls{API} or it is not possible to do scatter operations to the memory.
 There exist further myths that discourages developers from computing on
 \glspl{GPU} that should be demystified. 
@@ -108,7 +108,7 @@ on \glspl{GPU}.
 The starting point will be a review of what has been done followed by a
 feasibility study which will demystify the myths and cover major obstacles and
 drawbacks when doing computations on a \gls{GPU}. Further experiments will show
-and reflect the computational capabilites especially in the view of general 
+and reflect the computational capabilities especially in the view of general 
 purpose programs. 
 
 % what assumptions you are making ----------------------------------------------
@@ -133,7 +133,7 @@ algorithm is presented. An extensive analysis followed by the design and impleme
 of the algorithm will complete the theoretical part. 
 
 The following chapter will then go deeper into hardware specific stuff where the
-algorithm will be highly optimized for the \gls{GPU}. The optimization will be 
+algorithm will be highly optimised for the \gls{GPU}. The optimisation will be 
 verified in a subsequent chapter where the performance and scalability of the
 algorithm will be presented. 
 
@@ -181,7 +181,7 @@ of the thesis.
 \label{par:m1_related_work_identified}
 The next step to take is to identify related work, conducting the literature 
 survey. This survey should show the demand of GPGPU and used algorithms. 
-Furhtermore it will help to understand the architecture and programming models. 
+Furthermore it will help to understand the architecture and programming models. 
 After gaining enough knowledge about the field its time to get the hands on the 
 GPU.
 % paragraph m1_related_work_identified (end)
@@ -195,16 +195,16 @@ right algorithm for porting, analysis, design and implementation.
 % paragraph m2_architecture_algorithmic_view_understood (end)
 \paragraph{M3: Feasibility Study (3/14/2009)} % (fold)
 \label{par:m3_feasibility_study}
-The feasiblity study will be used for the first steps into GPGPU. A low featured
+The feasibility study will be used for the first steps into GPGPU. A low featured
 ray tracer will be used for examining what the hurdles and obstacles are when 
 developing for the GPU. The knowledge will be used for choosing the right 
 algorithm. 
 % paragraph m3_feasibility_study (end)
-\paragraph{M4: Application, Algorithm choosen (3/21/2009)} % (fold)
+\paragraph{M4: Application, Algorithm chosen (3/21/2009)} % (fold)
 \label{par:m4_application_algorithm_choosen}
 After completion of this milestone the algorithm is chosen to be ported to the 
 GPU. So the next milestones will be concentrated only on this algorithm and not 
-more generaly. 
+more generally. 
 % paragraph m4_application_algorithm_choosen (end)
 \paragraph{M5: Analysis, Solution Proposed (4/4/2009)} % (fold)
 \label{par:m5_analysis_solution_proposed}
@@ -233,7 +233,7 @@ applied which will be done in this milestone.
 
 \paragraph{M9: Master Thesis Edited (5/30/2009)} % (fold)
 \label{par:master_thesis_edited}
-Here the thesis will be recaped and briefly outlined. Conclusions will be drawn
+Here the thesis will be recapped and briefly outlined. Conclusions will be drawn
 and future work presented. A critical summary and conclusion will be provided as
 well. % paragraph master_thesis_edited (end)
 

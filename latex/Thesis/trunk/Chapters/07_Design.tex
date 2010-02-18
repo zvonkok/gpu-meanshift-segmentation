@@ -3,17 +3,17 @@
 
 \chapter{Mean Shift Algorithm Design} % (fold)
 \label{cha:algorithm_design}
-The previous chapter explained and showed what is gonna be done to the algorihtm
+The previous chapter explained and showed what is gonna be done to the algorithm
 to have it running on a \gls{GPU}. In this chapter it will be explained how all
-the proposals are realized and how everything is put together. The result is an
-scalable and efficient realization of the mean shift algorithm on the \gls{GPU}.
+the proposals are realised and how everything is put together. The result is an
+scalable and efficient realisation of the mean shift algorithm on the \gls{GPU}.
 
 The next step involves the structuring of the algorithm to refine the design
 going further into detail and move it closer to a program that can run on the
 \gls{GPU}. The main concern here is how to map the concurrency identified in the
 previous chapters to the processing units of a \gls{GPU}. Usually one wouldn't
 go to much into hardware details in this phase because the design should be
-flexible und portable, but without considering any hardware details of the
+flexible and portable, but without considering any hardware details of the
 \gls{GPU} the algorithm is unlikely to run efficient. Therefore each design
 decision made is based upon observance of hardware and programming model
 (\gls{CUDA}) features. The strategy taken here is start from high level elements
@@ -30,8 +30,8 @@ accelerated by executing data parallel portions of the algorithm on the
 the parallel portion of the algorithm was identified and hence the filtering
 step will be implemented as a \gls{CUDA} kernel where it operates on different
 data simultaneously. There is a strong dependency between the steps of the 
-alogrithm shown in \autoref{sec:data_and_task_parallelism} that have to be 
-considered here as well. Before and after the filtering a color conversion from
+algorithm shown in \autoref{sec:data_and_task_parallelism} that have to be 
+considered here as well. Before and after the filtering a colour conversion from
 \gls{RGB} to \gls{LUV} and back is needed. These steps are not very compute 
 intensive but why are they considered here?
 
@@ -44,13 +44,13 @@ remaining two parts. That means no matter how much faster the main part will be
 the program will need always at least 4 seconds + accelerated main part to
 execute. The solution to this problem would be to accelerate the two remaining
 parts as well and thats what will be done for the mean shift algorithm. The two
-color space conversion steps will be as well offloaded to the \gls{GPU}. With
+colour space conversion steps will be as well offloaded to the \gls{GPU}. With
 bigger and bigger images the \gls{CPU} will need more and more time to convert
-from one color space to another. 
+from one colour space to another. 
 
 
 All the other portions will be run on the \gls{CPU} because there are not(-yet) a
-significant part of the run-time and are mostly postprocessing steps for the actual
+significant part of the run-time and are mostly post processing steps for the actual
 algorithm. The \gls{CPU} will prepare, provide and gather the data and results
 from the \gls{GPU}. 
 % section cuda_kernels (end)
@@ -62,23 +62,23 @@ Fine grained, data parallel threads are the key concept of \gls{CUDA}. Several
 of these threads are grouped together to a thread block. Thread blocks are again
 grouped to so called grids and kernel is as a grid of thread blocks where data 
 memory space is shared by all threads. The grid and the thread block can be 
-organized either as a \gls{1D},\gls{2D} or as a \gls{3D} array, dependent on 
+organised either as a \gls{1D},\gls{2D} or as a \gls{3D} array, dependent on 
 the problem structure adjusting to the state of the original data. This means 
 that e.g. if the problem is \gls{3D} one could use the \gls{3D} configuration or
 as in the mean shift algorithm case where the problem is a an \gls{2D} image than
-obviuosly one should use the \gls{2D} array configuration.
+obviously one should use the \gls{2D} array configuration.
 
 Therefore the kernel used will be a \gls{2D} grid of \gls{2D} thread blocks. The
 grid represents the whole image and the thread blocks are the image chunks that
 are updated in parallel where a single thread is working on a single pixel. The 
-exposed parallelity is directly mapped to the problem.  
+exposed parallelism is directly mapped to the problem.  
 
 For a efficient execution several $x$,$y$ combinations for the \gls{2D} array of the
 thread blocks should be evaluated. The grid size in $x$ and in $y$ is fixed since
-that are the dimensions of the analyzed image. 
+that are the dimensions of the analysed image. 
 
-Since the algorithm is embarassingly parallel there is no need to look for 
-communication and sychronization mechanisms in \gls{CUDA}.
+Since the algorithm is embarrassingly parallel there is no need to look for 
+communication and synchronisation mechanisms in \gls{CUDA}.
 % section cuda_thread_hierarchy (end)
 
 \section{Device Memory space} % (fold) 
@@ -89,18 +89,18 @@ thread, block, grid and the host. The first most important memory is the global
 memory that is the main data exchange place between the \gls{CPU} and \gls{GPU}. 
 For the further considerations other memory types are not taken into account 
 because (1) there are implementation specific and (2) using different memories
-for the algorithm would not change the original nature of organization and
+for the algorithm would not change the original nature of organisation and
 decomposition. They can be later used to increase performance and data throughput. 
 
 Coming back to global memory it is mainly used to read in the input data and
-store the results which can be later either visualized using a graphics library
+store the results which can be later either visualised using a graphics library
 or transferred back to the \gls{CPU} where it can be further processed. 
 
 Therefore the \gls{CPU} will run all preprocessing steps to the image and
 transfer it to the global memory on the \gls{GPU}. After the filtering step
-where the \gls{GPU} is reading continuosly from the global memory for each
+where the \gls{GPU} is reading continuously from the global memory for each
 iteration of the filtering step the \gls{CPU} will fetch the data and
-postprocess it. Further interaction between \gls{CPU} and \gls{GPU} are
+post process it. Further interaction between \gls{CPU} and \gls{GPU} are
 non-existent.
 % section cuda_memory (end)
 
@@ -113,10 +113,10 @@ terms called warp, in that the same instruction is executed at a time but on
 different data where on a \gls{CPU} the threads are scheduled independently. 
 
 The consequence out of this is that if there is a branch the execution of the
-two branch paths, when both are executed, are serialized. The only branch that
+two branch paths, when both are executed, are serialised. The only branch that
 can happen in the mean shift algorithm is that several threads have found there
 basin of attraction and other are still calculating. In this case there will no
-serialization happen rather there are threads that are idle.
+serialisation happen rather there are threads that are idle.
 
 This branching or dividing of a warp into idle and active threads is impossible
 to circumvent. Because each image has different densities and the locations
@@ -142,13 +142,13 @@ the \gls{RGB} pixel values to \gls{LUV}. After the conversion the \gls{CPU}
 transfers via \gls{DMA} the image to the \gls{GPU}.
 
 A thread in the grid having a unique id can now fetch the corresponding pixel
-according to the id. Equipped with the color data the thread can now calculate
+according to the id. Equipped with the colour data the thread can now calculate
 the mean shift vector until convergence. While calculating the thread will 
 access various pixel in the image that are read-only in the global memory. The 
 found convergence point is saved to a new buffer in the global memory.
 
 Finally the \gls{CPU} fetches the convergence points, converges the image from 
-the \gls{LUV} color space to the \gls{RGB} space. The postprocessing step
+the \gls{LUV} colour space to the \gls{RGB} space. The post processing step
 involves the segmentation and pruning of regions smaller than a specified 
 variable. The result is a segmented image. 
 % section program_flow (end)
@@ -161,9 +161,9 @@ to form a program. The design phase usually does not consider any hardware but
 in this case where an efficient algorithm should be mapped to the \gls{GPU} it
 is crucial to know the architecture and the features the hardware offers. 
 Furthermore it is important to have a look at the data. A good design follows
-from good data design. In this case a data decomposition was choosen and hence the 
-program had to accomodate to this circumstance. The data decomposition was not 
-choosen arbitrarily it was choosen with the ulterior motive that the data fits
+from good data design. In this case a data decomposition was chosen and hence the 
+program had to accommodate to this circumstance. The data decomposition was not 
+chosen arbitrarily it was chosen with the ulterior motive that the data fits
 $1:1$ to the hardware features. 
 
 In summary, data is more important than code, because crappy data design leads

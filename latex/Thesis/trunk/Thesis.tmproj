@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Thesis.tex</string>
+	<string>Chapters/10_Performance.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -37,6 +37,8 @@
 			<string>Chapters</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Plots</string>
 			<key>regexFolderFilter</key>
@@ -56,31 +58,29 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2010-02-02T22:16:02Z</date>
+			<date>2010-02-17T21:20:16Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Thesis.tex</string>
 			<key>lastUsed</key>
-			<date>2010-02-05T20:34:29Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2010-02-18T21:04:26Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Bibliography.bib</string>
 			<key>lastUsed</key>
-			<date>2010-02-02T22:30:06Z</date>
+			<date>2010-02-18T21:03:51Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Frontcover.tex</string>
 			<key>lastUsed</key>
-			<date>2010-01-28T21:08:56Z</date>
+			<date>2010-02-16T19:57:33Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>277</integer>
+	<integer>235</integer>
 	<key>metaData</key>
 	<dict>
 		<key>Bibliography.bib</key>
@@ -90,78 +90,502 @@
 				<key>column</key>
 				<integer>26</integer>
 				<key>line</key>
-				<integer>1637</integer>
+				<integer>1652</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1582</integer>
+			<integer>1618</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>9</integer>
 				<key>line</key>
-				<integer>1637</integer>
+				<integer>1652</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
 				<integer>26</integer>
 				<key>line</key>
-				<integer>1637</integer>
+				<integer>1652</integer>
 			</dict>
 		</dict>
-		<key>Chapters/MeanShift.aux</key>
+		<key>Chapters/01_Introduction.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>61</integer>
+				<key>line</key>
+				<integer>126</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>94</integer>
+		</dict>
+		<key>Chapters/02_LiteratureReview.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>38</integer>
+				<key>line</key>
+				<integer>126</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>97</integer>
+		</dict>
+		<key>Chapters/03_Parallel.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Chapters/Parallel.tex</key>
+		<key>Chapters/04_FeasibilityStudy.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>71</integer>
+				<integer>14</integer>
 				<key>line</key>
-				<integer>56</integer>
+				<integer>184</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>133</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>184</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>184</integer>
+			</dict>
+		</dict>
+		<key>Chapters/05_MeanShift.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>696</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
+			<integer>671</integer>
 		</dict>
-		<key>Thesis.tex</key>
+		<key>Chapters/06_Analysis.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>29</integer>
+				<integer>59</integer>
 				<key>line</key>
-				<integer>98</integer>
+				<integer>105</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>76</integer>
 		</dict>
+		<key>Chapters/07_Design.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>7</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+		</dict>
+		<key>Chapters/08_Implementation.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>121</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>96</integer>
+		</dict>
+		<key>Chapters/09_Optimization.aux</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Chapters/09_Optimization.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>241</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>207</integer>
+		</dict>
+		<key>Chapters/10_Performance.aux</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Chapters/10_Performance.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>31</integer>
+				<key>line</key>
+				<integer>521</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>490</integer>
+		</dict>
+		<key>Chapters/11_Future.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>7</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+		</dict>
+		<key>Chapters/12_ManagmentProject.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>40</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Chapters/Tables.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>20</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>FrontBackmatter/Abstract.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>FrontBackmatter/Acknowledgments.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>FrontBackmatter/Bibliography.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>FrontBackmatter/Glossary.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>29</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>FrontBackmatter/Managment.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Plots/clock.single.gpu.256.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>44</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Plots/iter.128.limitcycle0.dat</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Plots/mem.single.gpu.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Plots/multi.gpu.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>56</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Plots/single.gpu.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>61</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>60</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>61</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+		</dict>
+		<key>Thesis.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>125</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>77</integer>
+		</dict>
+		<key>dissertation.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>31</integer>
+				<key>line</key>
+				<integer>439</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>397</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Chapters/Parallel.tex</string>
+		<string>Chapters/02_LiteratureReview.tex</string>
+		<string>Chapters/01_Introduction.tex</string>
+		<string>Chapters/11_Future.tex</string>
+		<string>Chapters/12_ManagmentProject.tex</string>
+		<string>Chapters/10_Performance.tex</string>
+		<string>Chapters/09_Optimization.aux</string>
 		<string>Thesis.tex</string>
+		<string>Chapters/03_Parallel.tex</string>
+		<string>Chapters/07_Design.tex</string>
+		<string>FrontBackmatter/Managment.tex</string>
+		<string>Chapters/06_Analysis.tex</string>
+		<string>Chapters/08_Implementation.tex</string>
+		<string>Chapters/Tables.tex</string>
+		<string>Chapters/05_MeanShift.tex</string>
+		<string>dissertation.sty</string>
+		<string>Plots/single.gpu.data</string>
+		<string>Plots/mem.single.gpu.data</string>
+		<string>Plots/multi.gpu.data</string>
+		<string>Plots/iter.128.limitcycle0.dat</string>
+		<string>Plots/clock.single.gpu.256.data</string>
+		<string>FrontBackmatter/Acknowledgments.tex</string>
+		<string>FrontBackmatter/Bibliography.tex</string>
+		<string>FrontBackmatter/Glossary.tex</string>
+		<string>Chapters/09_Optimization.tex</string>
 		<string>Bibliography.bib</string>
-		<string>Chapters/MeanShift.aux</string>
+		<string>Chapters/10_Performance.aux</string>
+		<string>Chapters/04_FeasibilityStudy.tex</string>
+		<string>FrontBackmatter/Abstract.tex</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -193,6 +617,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{556, 51}, {818, 971}}</string>
+	<string>{{77, 189}, {622, 977}}</string>
 </dict>
 </plist>
