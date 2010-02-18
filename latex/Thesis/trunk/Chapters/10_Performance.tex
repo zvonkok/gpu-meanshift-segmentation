@@ -27,66 +27,53 @@ to the \gls{CPU} run time. The \gls{CPU} run time was not included in
 \autoref{fig:gpu_speedup} because the range of \gls{CPU} values is 100$\times$ 
 larger and the \gls{GPU} values would not be visible. 
 \begin{figure}[ht]
-  \centering
-  \begin{tikzpicture}
-	
-		\pgfplotsset{
-			every axis legend/.append style={at={(0.02,0.98)}, anchor=north west}
-		}
+	\centering
+	\begin{tikzpicture}
+
 		\pgfplotstableread{Plots/single.gpu.data}\tableA
-		
-    \begin{axis}[
-			% colormap/violet,
-			% legend columns=2,
-      % smooth,
-      % stack plots=y,
-    %  area style,
-      ybar, 
-			bar width=4pt,
-      width=0.88\textwidth,
-      height=5cm,
-      xtick={128,384,...,2688},
-%			xticklabel={$2^14$, $2^15$},
-      axis x line=bottom,
-      axis y line=left,
-      % xmin=128, xmax=2688, 
-      %ymin=0, 
-			ymax=7000,
-      xlabel=Image size, ylabel={Milliseconds [ms]}, 
-			% enlargelimits=0.03,
-      ymajorgrids ]
-  %    \addplot%[color=plotcolor0!50!black,fill=plotcolor0]
-  %    table[x=PIX,y={CPU [ms]}] {Plots/cpu_gpu_runtime.data};%
-	%		\addlegendentry{CPU}
-  %    \closedcycle;
-
-      \addplot[color=pl0,fill=pf0,mark=none] table[x=PIX,y={GPU}] from \tableA;
-
-			\addlegendentry{\slcsmallcaps{GPU}}
-
-    \end{axis}
 
 		\begin{axis}[
-     	width=0.88\textwidth,
-      height=5cm,
-      xtick={128,384,...,2688},
-      axis x line=none,
-      axis y line=right,
-      xmin=128, xmax=2688, 
-      ymin=100,
- 			ymax=190,
-  %    xlabel=Image size, 
-			ylabel={Speedup}, 
-	%		enlargelimits=0.03,
-      ymajorgrids ]
-      \addplot[color=plot0,mark=none] table[x=PIX,y={Speedup}] from \tableA;
-%			\addlegendentry{CPU}
-    \end{axis}
+			scaled x ticks={real:1048576},
+			xtick scale label code/.code={$\cdot 2^{20}$},
+			smooth,
+			width=0.88\textwidth,
+			height=5cm,
+			xtick={0, 1048576,2097152,3145728,4194304,5242880,6291456,7340032,8388608},
+			axis x line=bottom,
+			axis y line=left,
+			xmin=64, xmax=7225344,
+			% ymin=0,
+			ymax=7500,
+			xlabel=Image size, ylabel={Seconds [s]},
+			legend style={at={(0.03,0.95)}, anchor=north west}]
 
-  \end{tikzpicture}%
-  \caption{GPU runtime and speedup dependent on the image size}%
-	\label{fig:gpu_speedup}%
-\end{figure}
+			\addplot[color=red1,mark=diamond*] table[x=PIX,y={GPU}] from \tableA;
+			\addlegendentry{Runtime}
+
+		\end{axis}
+
+		\begin{axis}[
+			scaled x ticks={real:1048576},
+			xtick scale label code/.code={$\cdot 2^{20}$},
+			smooth, 
+			width=0.88\textwidth, 
+			height=5cm,
+			xtick={0, 1048576,2097152,3145728,4194304,5242880,6291456,7340032,8388608},
+			axis x line=none,
+			axis y line=right,
+			xmin=64, xmax=7225344, 
+			ymin=100, ymax=190,
+			ylabel={Speedup}, 
+			legend style={at={(0.03,0.93)}, anchor=south west}]
+
+			\addplot[color=blue1,mark=triangle*] table[x=PIX,y={Speedup}] from \tableA;
+			\addlegendentry{Speedup}
+		\end{axis}
+
+		\end{tikzpicture}%
+		\caption{\protect\gls{GPU} runtime and speedup dependent on the image size}%
+		\label{fig:gpu_speedup}%
+	\end{figure}
 Its interesting to see that the speedup is increasing faster at the beginning
 and than to level off at about 160. This is no surprise because every software
 respectively hardware has a ramp-up phase. This ramp-up phase, where no
@@ -117,22 +104,23 @@ proportional variable increases by that factor too.
 
   \begin{tikzpicture}
 		\begin{axis}[
-     	width=0.88\textwidth,
-      height=5cm,
-			ytick={0,0.5,1,1.5},
-      xtick={128,384,...,2688},
+			scaled x ticks={real:1048576},
+			xtick scale label code/.code={$\cdot 2^{20}$},
+			smooth, 
+			width=\textwidth, 
+			height=5cm,
+			xtick={ 1048576,2097152,3145728,4194304,5242880,6291456,7340032,8388608},
       axis x line=bottom,
       axis y line=left,
-%      xmin=0, xmax=2796, 
-      ymin=0, ymax=2,
+			xmin=64, xmax=7750000, 
+      ymin=0.3, ymax=1.7,
       xlabel=Image Size,
-      ylabel=Normalized Size/Time Ratio,
-			enlargelimits=0.01,
-    %  ymajorgrids 
-			]
+      ylabel=Normalized Ratio (size/time),
+ 			ytick={0,0.5,1,1.5},
+			legend style={at={(0.03,0.95)}, anchor=north west}]
      
- 			\addplot table[x=PIX,y=GPU_Norm_Ratio] from \tableA;
- 			\addplot table[x=PIX,y=CPU_Norm_Ratio] from \tableA;
+ 			\addplot[color=red1,mark=diamond*] table[x=PIX,y=GPU_Norm_Ratio] from \tableA;
+ 			\addplot[color=blue1,mark=triangle*] table[x=PIX,y=CPU_Norm_Ratio] from \tableA;
 
 			\addlegendentry{\slcsmallcaps{GPU}}
 			\addlegendentry{\slcsmallcaps{CPU}}
@@ -165,55 +153,50 @@ generate the results shown in \autoref{fig:multi_gpu_speedup}.
   \centering
   \begin{tikzpicture}
 	
-		\pgfplotsset{
-			every axis legend/.append style={at={(0.02,0.98)}, anchor=north west}
-		}
 		\pgfplotstableread{Plots/multi.gpu.data}\tableA
 		
     \begin{axis}[
-			% colormap/violet,
-			% legend columns=2,
-      % smooth,
-      % stack plots=y,
-      % area style,
-      ybar, 
-			bar width=4pt,
-      width=0.88\textwidth,
-      height=5cm,
-      xtick={128,384,...,2688},
-      axis x line=bottom,
-      axis y line=left,
-      xmin=0, xmax=2796, 
-      %ymin=0, ymax=1100,
-      %xlabel=Image size, 
-			%ylabel={Milliseconds [ms]}, 
-			enlargelimits=0.03,
-      ymajorgrids 
-			]
+			scaled x ticks={real:1048576},
+			xtick scale label code/.code={$\cdot 2^{20}$},
+			smooth,
+		 	width=0.88\textwidth,
+			height=5cm,
+			xtick={0, 1048576,2097152,3145728,4194304,5242880,6291456,7340032,8388608},
+			axis x line=bottom,
+			axis y line=left,
+			xmin=64, xmax=7225344,
+			% ymin=0,
+			ymax=7000,
+			xlabel=Image size, ylabel={Runtime [s]},
+			legend style={at={(0.03,1.05)}, anchor=north west}]
 
-      \addplot table[x=PIX,y=1GPU] from \tableA;
-			\addplot table[x=PIX,y=2GPU] from \tableA;
+      \addplot[color=blue1,mark=*] table[x=PIX,y=1GPU] from \tableA;
+			\addplot[color=lila1,mark=diamond*] table[x=PIX,y=2GPU] from \tableA;
 			
-			\addlegendentry{\slcsmallcaps{1 GPU}}
-			\addlegendentry{\slcsmallcaps{2 GPUs}}
+			\addlegendentry{Runtime \slcsmallcaps{1 GPU}}
+			\addlegendentry{Runtime \slcsmallcaps{2 GPUs}}
 
     \end{axis}
 
 		\begin{axis}[
-     	width=0.88\textwidth,
-      height=5cm,
-      xtick={128,384,...,2688},
-      axis x line=none,
-      axis y line=right,
-      xmin=0, xmax=2796, 
+			scaled x ticks={real:1048576},
+			xtick scale label code/.code={$\cdot 2^{20}$},
+			smooth,
+		 	width=0.88\textwidth,
+			height=5cm,
+			xtick={0, 1048576,2097152,3145728,4194304,5242880,6291456,7340032,8388608},
+			axis x line=none,
+			axis y line=right,
+			xmin=64, xmax=7225344,
       ymin=0, ymax=4,
-  %    xlabel=Image size, 
-			ylabel={Speedup}, 
-			enlargelimits=0.03,
-      ymajorgrids ]
-      \addplot%[color=plotcolor0!50!black,fill=plotcolor0]
+			xlabel=Image size,
+			ylabel={Factor $\times$}, 
+			ytick={0,1,2,3},
+			legend style={at={(0.03,0.80)}, anchor=north west}]
+			
+      \addplot[color=red1,mark=triangle*]
       table[x=PIX,y={GPU_Speedup}] from \tableA;
-%			\addlegendentry{CPU}
+			\addlegendentry{Speedup}
 %      \closedcycle;
     \end{axis}
 
@@ -237,34 +220,49 @@ the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
 \begin{figure}[ht]
   \centering
 	
-	\pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
- 	\pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+%	\pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
+% 	\pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
 
 	\pgfplotstableread{Plots/single.gpu.data}\tableA
 	\pgfplotstableread{Plots/multi.gpu.data}\tableB	
 
   \begin{tikzpicture}
 		\begin{axis}[
-			area style,
-     	width=\textwidth,
-      height=5cm,
-%			ytick={0,0.5,1,1.5},
-      xtick={128,384,...,2688},
-      axis x line=bottom,
-      axis y line=left,
-      xmin=128, xmax=2816, 
-      ymin=0, ymax=350,
-      xlabel=$x$,
-      ylabel=$y$,
-		%	enlargelimits=0.01,
-      ymajorgrids,
-			]
-     
- 			\addplot[color=plot1!40!white,fill=plot1!40!white] table[x=PIX,y=CPU_Speedup] from \tableB;
- 			\addplot[color=plot0!40!white,fill=plot0!40!white] table[x=PIX,y=Speedup] from \tableA;
+			scaled x ticks={real:1048576},
+			xtick scale label code/.code={$\cdot 2^{20}$},
+			smooth,
+			width=\textwidth,
+			height=5cm,
+			xtick={0, 1048576,2097152,3145728,4194304,5242880,6291456,7340032,8388608},
+			axis x line=bottom,
+			axis y line=left,
+			xmin=64, xmax=7800000,
+			ymin=0, ymax=350,
+			xlabel=Image size, 
+			ylabel={Factor $\times$},
+			legend style={at={(1,0.85)}, anchor=north east}]
+			% 
+			% 			[
+			% 			area style,
+			%      	width=\textwidth,
+			%       height=5cm,
+			% %			ytick={0,0.5,1,1.5},
+			%       xtick={128,384,...,2688},
+			%       axis x line=bottom,
+			%       axis y line=left,
+			%       xmin=128, xmax=2816, 
+			%       ymin=0, ymax=350,
+			%       xlabel=$x$,
+			%       ylabel=$y$,
+			% 		%	enlargelimits=0.01,
+			%       ymajorgrids,
+			% 			]
+			%      
+ 			\addplot[color=blue1, mark=diamond*] table[x=PIX,y=CPU_Speedup] from \tableB;
+ 			\addplot[color=lila1, mark=triangle*] table[x=PIX,y=Speedup] from \tableA;
 
-			\addlegendentry{\slcsmallcaps{1 GPU}}
-			\addlegendentry{\slcsmallcaps{2 GPUS}}
+			\addlegendentry{Speedup 1 \protect\gls{GPU}}
+			\addlegendentry{Speedup 2 \protect\glspl{GPUs}}
 
     \end{axis}
 
@@ -323,8 +321,8 @@ shows the run-time dependent on the memory clock.
 \begin{figure}[ht]
   \centering
 
-  \pgfplotsset{every axis x label/.style={at={(1,0)}, above}}
-  \pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+%  \pgfplotsset{every axis x label/.style={at={(1,0)}, above}}%
+%  \pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
 
   \pgfplotstableread{Plots/mem.single.gpu.data}\tableA
 
@@ -335,9 +333,10 @@ shows the run-time dependent on the memory clock.
       xmin=972, xmax=1110, 
     	ymin=70,
 			ymax=73.5,
-      xlabel=$x$,
-      ylabel=$y$]
-      \addplot table[x=MEMCLK,y=256] from \tableA;
+      ylabel={Runtime [ms]},
+      xlabel={Memory Clock [MHz]}]
+      \addplot[color=red1,mark=diamond*] table[x=MEMCLK,y=256] from \tableA;
+			\addlegendentry{\protect\gls{GPU}}
    \end{axis}
  \end{tikzpicture}%
  \label{fig:mem_clk_256}%
@@ -373,8 +372,8 @@ ratio between the differences of clock and ratio is depicted as well.
 \begin{figure}[ht]
   \centering
 
-  \pgfplotsset{every axis x label/.style={at={(0.96,0)}, above}}
-  \pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+%  \pgfplotsset{every axis x label/.style={at={(0.96,0)}, above}}
+%  \pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
 
 
   \pgfplotstableread{Plots/clock.single.gpu.256.data}\tableA
@@ -387,7 +386,7 @@ ratio between the differences of clock and ratio is depicted as well.
      % area style,
     %  ybar, bar width=10pt,
       % line width=0.7pt, %0.5pt default
-      width=\textwidth,
+      width=0.88\textwidth,
       height=5cm,
       % xtick={128,384,...,2688},
       ytick={50,60,70,80},
@@ -396,12 +395,14 @@ ratio between the differences of clock and ratio is depicted as well.
       xmin=648, xmax=783, 
       ymin=50,
 			ymax=85,
-      xlabel=$x$,
-      ylabel=$y$,
+      xlabel={Core Clock [MHz]},
+      ylabel={Runtime [ms]},
  %     enlarge x limits=0.1,
       % ymajorgrids
+			legend style={at={(0.03,0.95)}, anchor=north west}]
       ]
-      \addplot table[x=CLK,y=972.000] from \tableA;
+      \addplot[color=red1, mark=diamond*] table[x=CLK,y=972.000] from \tableA;
+			\addlegendentry{\protect\gls{GPU}}
    \end{axis}	
 	\begin{axis}[
 	      % smooth, 
@@ -409,7 +410,7 @@ ratio between the differences of clock and ratio is depicted as well.
 	     % area style,
 	    %  ybar, bar width=10pt,
 	      % line width=0.7pt, %0.5pt default
-	      width=\textwidth,
+	      width=0.88\textwidth,
 	      height=5cm,
 	      % xtick={128,384,...,2688},
 %	      ytick={40,50,60,70,80},
@@ -419,12 +420,14 @@ ratio between the differences of clock and ratio is depicted as well.
 				ymin=0,
 				ymax=2,
 %	      xlabel=$x$,
-%	      ylabel=$y$,
+				ytick={0,0.5,1,1.5},
+	      ylabel={Normalised Ratio (clock/time)},
 %	      enlarge x limits=0.1,
 	      % ymajorgrids
+				legend style={at={(0.03,0.95)}, anchor=south west}]
 	      ]
-	      \addplot table[x=CLK,y=CT_NRatio] from \tableA;
-				\addlegendentry{cl}
+	      \addplot[color=blue1, mark=triangle*] table[x=CLK,y=CT_NRatio] from \tableA;
+				\addlegendentry{clock/time}
 	   \end{axis}
 
 
@@ -458,8 +461,8 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
 \begin{figure}[ht]
   \centering
 
-  \pgfplotsset{every axis x label/.style={at={(0.96,0)}, above}}
-  \pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
+%  \pgfplotsset{every axis x label/.style={at={(0.96,0)}, above}}
+%  \pgfplotsset{every axis y label/.style={at={(0,1)}, left}}
 
 
   \pgfplotstableread{Plots/clock.multi.gpu.256.data}\tableA
@@ -472,7 +475,7 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
      % area style,
     %  ybar, bar width=10pt,
       % line width=0.7pt, %0.5pt default
-      width=\textwidth,
+      width=0.88\textwidth,
       height=5cm,
       % xtick={128,384,...,2688},
      	ytick={25,30,35,40},
@@ -481,12 +484,14 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
       xmin=648, xmax=783, 
       ymin=25,
 			ymax=45,
-      xlabel=$x$,
-      ylabel=$y$,
+ 			    xlabel={Core Clock [MHz]},
+		      ylabel={Runtime [ms]},
  %     enlarge x limits=0.1,
       % ymajorgrids
+			legend style={at={(0.03,0.95)}, anchor=north west}]
       ]
-      \addplot table[x=CLK,y=972.000] from \tableA;
+      \addplot[color=red1, mark=diamond*] table[x=CLK,y=972.000] from \tableA;
+			\addlegendentry{\protect\gls{GPU}}
    \end{axis}	
 	\begin{axis}[
 	      % smooth, 
@@ -494,7 +499,7 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
 	     % area style,
 	    %  ybar, bar width=10pt,
 	      % line width=0.7pt, %0.5pt default
-	      width=\textwidth,
+	      width=0.88\textwidth,
 	      height=5cm,
 	      % xtick={128,384,...,2688},
 %	      ytick={40,50,60,70,80},
@@ -504,12 +509,14 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
 	      ymin=0,
 				ymax=2,
 %	      xlabel=$x$,
-%	      ylabel=$y$,
+ 				ylabel={Normalised Ratio (clock/time)},
+				ytick={0,0.5,1,1.5},
 %	      enlarge x limits=0.1,
 	      % ymajorgrids
+				legend style={at={(0.03,0.95)}, anchor=south west}]
 	      ]
-	      \addplot table[x=CLK,y=CT_NRatio] from \tableA;
-				\addlegendentry{cl}
+	      \addplot[color=blue1, mark=triangle*] table[x=CLK,y=CT_NRatio] from \tableA;
+				\addlegendentry{clock/time}
 	   \end{axis}
 
 

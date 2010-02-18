@@ -29,48 +29,49 @@
 % Colors (cmyk color space) (need to load it first, other package may load it..)
 % ******************************************************************************
 \RequirePackage[%cmyk,%really weird colors.... 
-								pdftex, dvipsnames, x11names, table, hyperref]{xcolor} 
+								rgb, pdftex, dvipsnames, x11names, table, hyperref]{xcolor} 
 
-\definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
-\definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
-\definecolor{chnumcolor}{cmyk}{0.48, 0.42, 0.48, 0.03}
-
-
-\definecolor{blue0}{cmyk}{0.71, 0.45, 0.17 0.05}
-\definecolor{blue1}{cmyk}{0.61, 0.34, 0.07 0.01}
-%\definecolor{blue2}{cmyk}{0.52, 0.24, 0.01 0.0}
-\definecolor{blue2}{HTML}{6590C8}
-
-\definecolor{plot0}{HTML}{990000}
-\definecolor{plot1}{HTML}{994D00}
-\definecolor{plot2}{HTML}{99004D}
-\definecolor{plot3}{HTML}{009900}
-\definecolor{plot4}{HTML}{00994D}
-\definecolor{plot5}{HTML}{4D9900}
-\definecolor{plot6}{HTML}{000099}
-\definecolor{plot7}{HTML}{4D0099}
-\definecolor{plot8}{HTML}{004D99}
-
-%color=plot0!80!black,fill=plot0!40!white
-% define plotoutline & plotfill
-
-\colorlet{pl0}{plot0!80!black}\colorlet{pf0}{plot0!40!white}
-\colorlet{pl1}{plot1!80!black}\colorlet{pf1}{plot1!40!white}
-\colorlet{pl2}{plot2!80!black}\colorlet{pf2}{plot2!40!white}
-\colorlet{pl3}{plot3!80!black}\colorlet{pf3}{plot3!40!white}
-\colorlet{pl4}{plot4!80!black}\colorlet{pf4}{plot4!40!white}
-\colorlet{pl5}{plot5!80!black}\colorlet{pf5}{plot5!40!white}
-\colorlet{pl6}{plot6!80!black}\colorlet{pf6}{plot6!40!white}
-\colorlet{pl7}{plot7!80!black}\colorlet{pf7}{plot7!40!white}
-\colorlet{pl8}{plot8!80!black}\colorlet{pf8}{plot8!40!white}
+%\definecolor{textcolor}{cmyk}{0.61, 0.56, 0.47, 0.06}
+%\definecolor{seccolor}{cmyk}{0.57, 0.41, 0.82, 0.29}
+%\definecolor{chnumcolor}{cmyk}{0.48, 0.42, 0.48, 0.03}
 
 
-\colorlet{pl0}{blue0}
-\colorlet{pf0}{blue2}
+\definecolor{blue0}{Hsb}{214, 0.48, 0.50}
+\definecolor{blue1}{Hsb}{214, 0.48, 0.65}
+\definecolor{blue2}{Hsb}{214, 0.48, 0.70}
+
+\definecolor{grey0}{Hsb}{39, 0.15, 0.45}
+\definecolor{grey1}{Hsb}{39, 0.15, 0.60}
+\definecolor{grey2}{Hsb}{39, 0.15, 0.75}
+
+\definecolor{lila0}{Hsb}{240, 0.18, 0.45}
+\definecolor{lila1}{Hsb}{242, 0.18, 0.60}
+\definecolor{lila2}{Hsb}{244, 0.18, 0.75}
+
+\definecolor{green0}{Hsb}{69, 0.78, 0.45}
+\definecolor{green1}{Hsb}{69, 0.63, 0.60}
+\definecolor{green2}{Hsb}{69, 0.58, 0.75}
+
+\definecolor{orange0}{Hsb}{29, 0.61, 0.55}
+\definecolor{orange1}{Hsb}{29, 0.61, 0.70}
+\definecolor{orange2}{Hsb}{29, 0.61, 0.85}
+
+\definecolor{red0}{Hsb}{359, 0.49, 0.50}
+\definecolor{red1}{Hsb}{359, 0.49, 0.65}
+\definecolor{red2}{Hsb}{359, 0.49, 0.80}
+
+\definecolor{rosa0}{Hsb}{315, 0.23, 0.45}
+\definecolor{rosa1}{Hsb}{315, 0.22, 0.60}
+\definecolor{rosa2}{Hsb}{315, 0.21, 0.75}
+
+
+
+
+\definecolor{chnumcolor}{Hsb}{0, 0, 0.9}
+\definecolor{seccolor}{HTML}{990000}
 
 
 \colorlet{textcolor}{black}
-\colorlet{seccolor}{plot0}
 \colorlet{lcolor}{seccolor}
 \colorlet{ccolor}{seccolor}
 \colorlet{ucolor}{seccolor}
@@ -92,7 +93,7 @@
 \RequirePackage{fltpoint}
 \RequirePackage{listings}  
 \RequirePackage{textcomp}
-\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
+%\RequirePackage{pdfpages} % to include pdf pages (FrontCover..)
 \RequirePackage{xspace} % to get the spacing after macros right
 \RequirePackage{tabularx} % better tables
 \RequirePackage{mparhack} % get marginpar right
@@ -143,18 +144,22 @@
 \RequirePackage{atbegshi} % workaround for pgfplot cvs version 
 \RequirePackage{pgfplots}
 \pgfplotsset{
+	every axis/.append style={thick, tick style={semithick}, color=black},
 	every tick label/.append style={font=\scriptsize},
 	every axis/.append style={font=\footnotesize},
 	every axis x label/.style={at={(0.5,0)}, below, yshift=-20pt},
 	every axis legend/.append style={draw=white, shape=rectangle},
 	/pgf/number format/.cd, set thousands separator={},
 }
+
 % The external library offers a convenient method to export every single
 % tikzpicture into a sepa- rate .pdf (or .eps). Later runs of LATEX will simply
 % include these graphics, thereby reducing typesetting time considerably.
+
 \usepgfplotslibrary{external} 
 \tikzexternalize[prefix=figures/]{Thesis}% Assigns a common prefix used by all file names.
 \tikzset{external/figure name=thesis} % uses thesis_0.pdf, thesis_1.pdf, ...å
+
 % % \section{The first section} {\tikzset{external/figure name/.add={}{_firstsection}}
 % % ... % uses main_firstsection_0.pdf, main_firstsection_1.pdf, ...
 % % }
@@ -432,7 +437,7 @@
 % space before box & after box
 \renewcommand{\@algoskip}{\vspace{\baselineskip}}%\SetAlgoSkip{bigskip}%
 \setlength{\algomargin}{0em} % margin in the box
-\newcommand{\kwsty}{\color{plot0}}
+\newcommand{\kwsty}{\color{red1}}
 \SetKwSty{kwsty}
 
 % ******************************************************************************
