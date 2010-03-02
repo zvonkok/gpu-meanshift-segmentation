@@ -44,8 +44,11 @@ draft=on]{scrreprt}
 
 %\usepackage{layout}
 
+\usepackage{pdfpages} % to include pdf pages (FrontCover..)
 
 \begin{document}
+	
+\includepdf[pages={1,2}]{Frontcover.pdf}
 
 %\layout*
 
@@ -64,9 +67,6 @@ draft=on]{scrreprt}
 %\printparam
 
 \color{textcolor}
-
-%\includepdf[pages={1,2}]{Frontcover.pdf}
-
 
 \pagenumbering{roman}
 \pagestyle{empty}
