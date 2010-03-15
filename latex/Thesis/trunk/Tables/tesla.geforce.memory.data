@@ -1,3 +1,3 @@
-Card 			{Mem. Size [MB]} {BW [GB/s]} {Clock [MHz]} 	{Bus Width [bit]}
+Card 			{Memory Size} {Bandwidth} {Clock} 	{Bus Width}
 {Tesla C870} 	1500 				77					1600			384
 {8800 GTS}		512					62.1				1940			256

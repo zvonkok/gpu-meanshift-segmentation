@@ -1,6 +1,7 @@
 %!TEX TS-program = pdflatex
 %!TEX encoding = UTF-8 Unicode
-
+%!TEX TS-options = -halt-on-error
+%!TEX TS-options = -shell-escape
 
 \chapter{Optimisation Strategies}
 \label{ch:optimization}
@@ -68,7 +69,7 @@ filter part that is executing in total 99.1\% of the run-time.
 For the following considerations about speedup the \autoref{eq:speedup} will be
 used to calculate the speedup. 
 
-In \autoref{cha:algorithm_design},\autoref{cha:implementation} it was shown how to design
+In \autoref{ch:algorithm_analysis},\autoref{cha:implementation} it was shown how to design
 and to implement the algorithm to offload the important parts to the \gls{GPU}
 and the first naive implementation of the mean shift filter in \gls{CUDA}
 resulted in a speedup of
@@ -88,7 +89,7 @@ mean shift vector the algorithm fetches colour values for every pixel contained
 in the search window. The search window is defined by \textsf{sigmaS} the
 spatial window and \textsf{sigmaR} the range window. For now, only
 \textsf{sigmaS} is important since that value spans the spatial window over
-the pixel (see \autoref{lst:msk}). 
+the pixel. 
 
 
 
@@ -239,7 +240,7 @@ speedup was achieved.
 On current \gls{GPU} hardware integer operations can be very expensive in terms
 of clock cycles. The situation can change with future \gls{GPU} architecture check
 against \emph{Fermi} the new architecture from {\slcsmallcaps{NVIDIA}} 
-\autoref{citeulike:6640188}.
+\citep{citeulike:6640188}.
 
 
 
@@ -398,16 +399,17 @@ each pixel the iteration count was visualised. The \autoref{fig:lc} shows
 from blue to red, where red values represent high iteration count, the iterations
 for each pixel in a 128$\times$128 big picture.
 
+
 \begin{figure}[ht] \centering
 	\begin{tikzpicture} 
 		\begin{axis}[
+%				colormap name = violetnew,
 				height=5cm,
 				width=0.9\textwidth,
 			  shader=interp, % interp = faster, smaller pdf's
 				point meta max = 100, % color bar range from 0 - 100
 				colorbar,
 			 	colorbar style={ ymax=100},
-%				colormap name = dissmap,
 			 	xlabel=$x$, 
 				ylabel=$y$,
 				zlabel=$z$,
@@ -451,7 +453,7 @@ comparisons are not very fast as computation and having to compare 16 or even 32
 values makes no sense because than the prevention of limit cycles would cost
 more performance than just iterating to 100. The following series of
 \autoref{fig:lc0},\autoref{fig:lc1}, \autoref{fig:lc2} show visually the effect
-of limit cycle detection an how all iterations to 100 vanish.
+of limit cycle detection and how all iterations to 100 vanish.
 
 \begin{figure}[ht] \centering
 	\begin{tikzpicture} 

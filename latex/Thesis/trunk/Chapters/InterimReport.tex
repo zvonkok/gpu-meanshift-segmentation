@@ -1,10 +1,12 @@
-%********************************************************************
-% Appendix B
-%*******************************************************
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-options = -halt-on-error
+%!TEX TS-options = -shell-escape
+
 \chapter{Interim Report}
-\label{ch:interim_report}
+\label{ch:iinterim_report}
 \section*{Introduction} 
-\label{sub:introduction} 
+\label{sub:iintroduction} 
 
 %This section should briefly overview the provided topic.
 In recent years graphic processing units (GPUs) have moved from fixed pipeline
@@ -55,7 +57,7 @@ Finnaly an application for visualization of complex and chaotic dynamical
 systems will be implemented and presented in all aspects to the reader.
 % section introduction_ir (end)
 \section*{Background to the Project} 
-\label{sub:background_to_the_project} 
+\label{sub:ibackground_to_the_project} 
 % This section should provide a more 
 % detailed review of the technickal field, largely base upon survey material.
 There are many opinions about parallel programming. On the one hand some say
@@ -70,16 +72,16 @@ architecture of modern graphics processors it will be shown how these \glspl{GPU
 be programmed and at last a simple example implemented in CUDA. 
 
 \subsection*{The Tesla Architecture} % (fold)
-\label{sub:the_tesla_architecture}
+\label{sub:ithe_tesla_architecture}
 The Tesla architecture announced 1999 and developed by {\slcsmallcaps{NVIDIA}} is the first
-GPU highly specialized for raster operations and more important
-for general purpose computing. Formerly \glspl{GPU}had fixed-function
+\gls{GPU} highly specialized for raster operations and more important
+for general purpose computing. Formerly \glspl{GPU} had fixed-function
 pipelines and separate processing units with no ability for programmability to
 the vertex and fragment stages of the pipeline. In recent years manufacturers of
 GPUs added more and more programmability to the different stages
 of the pipeline and at the same time general purpose computing capabilities
-\citep{citeulike:3844545}. Furthermore manufacturers introduced the \emph{Unified
-Shader Model (USM)} that unifies the processing units allowing for better
+\citep{citeulike:3844545}. Furthermore manufacturers introduced the \gls{USM}
+that unifies the processing units allowing for better
 utilization of \gls{GPU} resources. The resources needed by different
 shaders varies greatly and the unified design can overcome this issue by
 balancing the load among vertex, fragment and geometry functionality
@@ -89,7 +91,7 @@ balancing the load among vertex, fragment and geometry functionality
 \centering
 %\includegraphics[width=0.6\textwidth]{gfx/tesla_architecture}
 \caption{Tesla Architecture}
-\label{fig:tesla_architecture}
+\label{fig:itesla_architecture}
 \end{figure}
 
 The figure \autoref{fig:tesla_architecture} shows the Tesla architectures. As
@@ -99,7 +101,7 @@ Each multiprocessor is composed of 8 streaming processors, 128 processors in
 total. Each streaming multiprocessor has 16 KB of shared memory
 and a L1 cache attached and has access to a texture unit. A streaming processor
 consists of a scalar ALU and performs floating point operations. 32 streaming
-processor build up a SIMD unit (warp) in that one instruction is executed.
+processor build up a \gls{SIMD} unit (warp) in that one instruction is executed.
 The 8800 GTX has 768 MB of graphics memory, 620 GFlops of peak performance and
 86 GB/s peak memory bandwidth. Many massively data-parallel algorithms can be
 run sufficiently on this specialized architecture \citep{citeulike:3145468}.
@@ -110,7 +112,7 @@ section.
 
 
 \subsection*{Common Unified Device Architecture (CUDA)} % (fold)
-\label{sub:common_unified_device_architecture_cuda_}
+\label{sub:icommon_unified_device_architecture_cuda_}
 In 2007, {\slcsmallcaps{NVIDIA}} introduced an extended ANSI C programming model and software
 environment the Compute Unified Device Architecture (CUDA). The reason why CUDA
 was is born is that parallelism is increasing rapidly with Moore's
@@ -139,11 +141,10 @@ of already developed software and contributions to the \gls{CUDA} Zone:
 spots\citep{citeulike:3839013}: 
 \begin{itemize} 
 	\item High arithmetic intensity (Dense linera algebra, PDEs, n-body, 
-			finite difference, ...) 
-	\item High bandwidth (Sequencing (virus scanning, genomics), sorting, 			
-			database, ...) 
+			finite difference, \ldots) 
+	\item High bandwidth Sorting, database, sequencing, virus scanning, genomics, \ldots) 
 	\item Visual computing: (Graphics, image processing, tomography, 
-			machine vision, ... ) 
+			machine vision, \ldots) 
 	\item Computational modeling, science, engineering, finance, ... 			
 \end{itemize}
 
@@ -153,7 +154,7 @@ GPUs. For a more extensive list and speedups compared to high end CPUS see
  % section common_unified_device_architecture_cuda_ (end)
 
 \subsection*{CUDA Programming Model} % (fold)
-\label{sub:cuda_programming_model}
+\label{sub:icuda_programming_model}
 The \gls{CUDA} programming model exposes the graphics processor as a highly
 multithreaded coprocessor. The graphics processor is viewed as a compute device
 that is a coprocessor to the host that has its own device memory and runs many
@@ -167,7 +168,7 @@ them. \gls{GPU} threads have a very little creation overhead and are extremely
 lightweight compared to CPU threads.
 
 \paragraph{Thread Batching} % (fold)
-\label{par:thread_batching}
+\label{par:ithread_batching}
 A kernel is executed as a grid of thread blocks where data memory space is
 shared by all threads. A thread block is a batch of threads that can cooperate
 with each other by synchronizing there execution\footnote{For hazard free shared
@@ -179,7 +180,7 @@ creation time.
 % paragraph thread_batching (end)
 
 \paragraph{Block and Thread IDs} % (fold)
-\label{par:block_and_thread_ids}
+\label{par:iblock_and_thread_ids}
 Every thread and block have a unique id. As a result of this each thread can
 decide whata data to work on. For every block there is a assigned id in 1D or 2D
 layout. Thread ids can be accessed either with 1D, 2D or 3D coordinates similar
@@ -190,7 +191,7 @@ in several levels of the device memory.
 % paragraph block_and_thread_ids (end)
 
 \paragraph{Device Memory Space} % (fold)
-\label{par:device_memory_space}
+\label{par:idevice_memory_space}
 The memory space is a hierarchy of several memory types that can be accessed per
 thread, block, grid and the host. The threads have access to all memory levels
 beginning with the read/write (rw) registers, local, shared, global, read only
@@ -209,17 +210,17 @@ constants and textures are initialized.
 
 
 \subsection*{A Simple Example} % (fold)
-\label{sub:a_simple_example}
+\label{sub:ia_simple_example}
 This simple example will show the structure of an \gls{CUDA} program. The executing
 kernel will do some easy calculations on the data provided, load the data into
 shared memory  and write back the results to the global memory. 
 
 A \gls{CUDA} program has a specific structure where the major parts are described in
 this paragraph. The first thing to do is to initialize the device and some
-auxiliary variables. THe \autoref{lst:init} shows the initalization.
+auxiliary variables. THe \autoref{lst:iinit} shows the initalization.
 
 %
-\begin{lstlisting}[caption=Hardware initalization, label=lst:init]
+\begin{lstlisting}[caption=Hardware initalization, label=lst:iinit]
 int main( int argc, char** argv) {
 	CUT_DEVICE_INIT(argc, argv);
 
@@ -235,10 +236,10 @@ the global, constant and texture memory and has to transfer the data back
 and forth with the DMA engine of the device. This is accomplished through the 
 CUDA api calls that initiate the transfer. Before any transfer can be done
 one has to allocate memory on the host and on the device for input and output
-data. This is shown in listing \autoref{lst:datatransfer}.
+data. This is shown in listing \autoref{lst:idatatransfer}.
 
 
-\begin{lstlisting}[caption=Data transfer of data, label=lst:datatransfer]
+\begin{lstlisting}[caption=Data transfer of data, label=lst:idatatransfer]
 	// allocate host memory 
 	float* h_idata = (float*) malloc(mem_size);
 	// allocate device memory 
@@ -257,10 +258,10 @@ are used to startup the kernel. The $grid(1, 1, 1)$ statement defines a
 multi-dimensional array of grids $x=1, y=1, z=1$ whereas the
 $threads(num\_threads, 1, 1)$ defines a multi-dimensional array of threads
 $x=num\_threads, y=1, z=1$ which are actually $1D$ arrays. Listing
-\autoref{lst:execution} shows the call of the kernel with its input and output data.
+\autoref{lst:iexecution} shows the call of the kernel with its input and output data.
 
 
-\begin{lstlisting}[caption=Execution of the Kernel, label=lst:execution]
+\begin{lstlisting}[caption=Execution of the Kernel, label=lst:iexecution]
 	    // setup execution parameters
 	    dim3  grid( 1, 1, 1);
 	    dim3  threads(num_threads, 1, 1);
@@ -274,10 +275,10 @@ $x=num\_threads, y=1, z=1$ which are actually $1D$ arrays. Listing
 
 If everything went well the host can copy the data from device memory
 to host memory and check, visualize or store the calculated values. Listing
-\autoref{lst:result} shows the last steps before exiting the program.
+\autoref{lst:iresult} shows the last steps before exiting the program.
 
 
-\begin{lstlisting}[caption=Retrieving of the Results, label=lst:result]
+\begin{lstlisting}[caption=Retrieving of the Results, label=lst:iresult]
 	    // check if kernel execution generated and error
 	    CUT_CHECK_ERROR("Kernel execution failed");
  
@@ -293,7 +294,7 @@ to host memory and check, visualize or store the calculated values. Listing
 
 
 The previous listings showed the host code and how to launch a kernel on the
-device. The listing \autoref{lst:device} shows the device code portion. There are
+device. The listing \autoref{lst:idevice} shows the device code portion. There are
 several qualifiers that define which function is compiled for which processing
 unit. The \textit{\_\_global\_\_} qualifier specifies that this function is run
 on the device and hence compiled for the \gls{GPU} where the \textit{\_\_host\_\_}
@@ -303,11 +304,11 @@ device. There are more function specifiers that can be looked up in
 
 For data there are as well qualifiers where one can specify where the data is
 located, either in constant, global or shared memory. In listing
-\autoref{lst:device} the \textit{\_\_shared\_\_} qualifier is used. The device will
+\autoref{lst:idevice} the \textit{\_\_shared\_\_} qualifier is used. The device will
 use the shared memory to preload the data for faster access.
 
 
-\begin{lstlisting}[caption=CUDA device code, label=lst:device]
+\begin{lstlisting}[caption=CUDA device code, label=lst:idevice]
 	#include <stdio.h>
 
 	#define SDATA(index) CUT_BANK_CHECKER(sdata, index)
@@ -349,7 +350,7 @@ the result.
 
 
 \section*{Initial Survey} 
-\label{sub:initial_survey} 
+\label{sub:iinitial_survey} 
 % This survey is a quick perliminary survey, to discover something of the shape 
 % of the relevant field of information; in doing this you will identify key 
 % abstracts, journals, books, series of reports, and so on. Key technical issues 
@@ -399,7 +400,7 @@ languages. The technique employed by \gls{CUDA} is single process, multiple data
 with different input \citep{citeulike:3072519}.
 
 \subsection*{Choosing a Fast Algorithm} % (fold)
-\label{ssub:choosing_a_fast_algorithm}
+\label{ssub:ichoosing_a_fast_algorithm}
 Before even digging into the wide field of algorithms and difficult problems in
 high performance computing one has to understand the hardware architecture of
 the \glspl{GPU}to make a decision if an algorithm can be mapped on GPUs. A pretty good
@@ -411,7 +412,7 @@ vertex processor or what textures are. To have a even deeper look into \glspl{GP
 article \citep{citeulike:2790995} is highly recommended.
 
 \paragraph{Computations which Map Well to GPUs} % (fold)
-\label{par:computations_which_map_well_to_GPUs}
+\label{par:icomputations_which_map_well_to_GPUs}
 It is important to understand that \glspl{GPU}are good at running computer graphics
 and algorithms which \emph{mimic} or have the attributes of computer graphics in
 terms of data parallelism and data independence. Not only that similar
@@ -435,7 +436,7 @@ sections will represent some algorithms which could fit to GPUs.
 % paragraph computations_which_map_well_to_GPUs (end)
 
 \paragraph{Ray Tracing} % (fold)
-\label{par:ray_tracing}
+\label{par:iray_tracing}
 Ray Tracing \citep{citeulike:841961} is an embarrassingly parallel alorithm which
 could fit well to GPUs. The author has a extensible knowledge of Ray Tracing on
 massively parallel computers \citep{citeulike:80546}. Thats why Ray Tracing was
@@ -448,7 +449,7 @@ study.
 % paragraph ray_tracing (end)
 
 \paragraph{Photon Mapping} % (fold)
-\label{par:photon_mapping}
+\label{par:iphoton_mapping}
 Ray Tracing has a local illumination model. To generate more realistic effects
 like caustics, diffuse / glossy indirect illumination and more a more
 sophisticated model has to be used. Global illumination like \emph{Photon
@@ -461,7 +462,7 @@ as a kd-tree. Nevertheless the first candidate for porting to the \gls{GPU} is \
 % paragraph photon_mapping (end)
 
 \paragraph{Multiple Precision Arithmetic} % (fold)
-\label{par:multiple_precision_arithmetic}
+\label{par:imultiple_precision_arithmetic}
 Another interesting field which demands high computational power is number
 theory. The most common/known application is asymmetric cryptography. To
 decipher messages that are cyphered with an asymmetric algorithm one needs
@@ -477,7 +478,7 @@ the multiple precision arithmetic is another candidate for porting to the GPU.
 % paragraph multiple_precision_arithmetic (end)
 
 \paragraph{High Dynamic Range} % (fold)
-\label{par:high_dynamic_range}
+\label{par:ihigh_dynamic_range}
 Image processing is always a candidate for embarassingly parallel algorithms. A
 pretty new algorithm to enhance images is \emph{tone mapping}
 \citep{citeulike:3783303}. Tone mapping is the compression of dynamics in High
@@ -495,7 +496,7 @@ candidate to the list of the possible algorithms for porting.
 %paragraphhigh_dynamic_range (end)
 
 \paragraph{Genetic Algorithms} % (fold)
-\label{par:genetic_algorithms}
+\label{par:igenetic_algorithms}
 Parallel genetic algorithms are usually implemented on parallel machines but
 fine-grained parallel genetic algorithms can be mapped to GPUs
 \citep{citeulike:3801879}. In \citep{citeulike:3801866} its shown what kind of
@@ -514,7 +515,7 @@ this topic excluded from the candidate list.
 % paragraph genetic_algorithms (end)
 
 \paragraph{Chaos Theory} % (fold)
-\label{par:chaos_theory}
+\label{par:ichaos_theory}
 Another interesting field is chaos theory. Especially the visualization of
 chaos. The maybe most famous visualization of chaos is \emph{The Fractal Flames
 Algorithm}. Fractal flames are a member of iterated function system class of
@@ -540,7 +541,7 @@ which makes it a good candidate for porting to the GPU.
 % paragraph chaos_theory (end)
 % section choosing_a_fast_algorithm (end)
 \subsection*{Summary} % (fold)
-\label{ssub:summary}
+\label{ssub:isummary}
 After examining many possible candidates which can be accelerated with an GPU,
 some of them were already in progress, some other maybe not feasible in the
 timeframe of a master thesis. Nevertheless one algorithm has to be chosen and
@@ -551,7 +552,7 @@ be shown and it will be illustrated how to think in paralllel.
 % section summary (end)
 % section initial_survey (end)
 \section*{Aims and Objectives} 
-\label{sub:aims_and_objectives} 
+\label{sub:iaims_and_objectives} 
 % A clear statement of the Aims and Objectives. Remember, aims and objectives 
 % are generally a statement of what is to be achieved, not how it is to be
 % achieved.
@@ -590,7 +591,7 @@ purpose computing.
 % section aims_and_objectives (end)
 
 \section*{Experimental/Investigative methods to be adopted} 
-\label{ssub:experimental_investigative_methods_to_be_adopted} 
+\label{ssub:iexperimental_investigative_methods_to_be_adopted} 
 % An outline of the key activities necessary to complete the project, itemising
 % the experimental methods to tebe used (in, for example, a design-based 
 % project), or the investigative techniques to be adopted (in the case of, say, 
@@ -651,7 +652,7 @@ examined an explained in the responsible chapters.
 
 % section experimental_investigative_methods_to_be_adopted (end)
 \section*{Time-plan} 
-\label{sub:time_plan} 
+\label{sub:itime_plan} 
 %Strongly related to the key activities identified above.
 For the project \emph{General Purpose Computing on Graphics Hardware} the
 following milestones were defined and listed below. Each milestone will have a
@@ -661,14 +662,14 @@ be written which corresponds to the current carried out milestone. So the
 development of the milestones goes hand in hand with editing of the thesis.
 
 \paragraph{M0: Interim Report (1/31/2009)} % (fold)
-\label{par:interim_report}
+\label{par:iinterim_report}
 For this milestone following tasks were done, the conduct of the initial survey 
 and the writing of the interim report. The initial survey will give a coarse 
 overview over the field and related work. 
 % paragraph interim_report (end)
 
 \paragraph{M1: Related Work Identified (2/14/2009)} % (fold)
-\label{par:m1_related_work_identified}
+\label{par:im1_related_work_identified}
 The next step to take is to identify related work, conducting the literature 
 survey. This survey should show the demand of GPGPU and used algorithms. 
 Furhtermore it will help to understand the architecture and programming models. 
@@ -676,7 +677,7 @@ After gaining enough knowledge about the field its time to get the hands on the
 GPU.
 % paragraph m1_related_work_identified (end)
 \paragraph{M2: Algorithmic view understood (2/28/2009)} % (fold)
-\label{par:m2_architecture_algorithmic_view_understood}
+\label{par:im2_architecture_algorithmic_view_understood}
 Equipped with the knowledge from the latter milestone it is time to understand
 how the architecture works by examining algorithms already mapped to the GPU.
 This step is crucial as it shows how algorithms map to and work on the \gls{GPU}
@@ -684,31 +685,31 @@ and a good understanding of the environment can help later on for choosing the
 right algorithm for porting, analysis, design and implementation.
 % paragraph m2_architecture_algorithmic_view_understood (end)
 \paragraph{M3: Feasibility Study (3/14/2009)} % (fold)
-\label{par:m3_feasibility_study}
+\label{par:im3_feasibility_study}
 The feasiblity study will be used for the first steps into GPGPU. A low featured
 ray tracer will be used for examining what the hurdles and obstacles are when 
 developing for the GPU. The knowledge will be used for choosing the right 
 algorithm. 
 % paragraph m3_feasibility_study (end)
 \paragraph{M4: Application, Algorithm choosen (3/21/2009)} % (fold)
-\label{par:m4_application_algorithm_choosen}
+\label{par:im4_application_algorithm_choosen}
 After completion of this milestone the algorithm is chosen to be ported to the 
 GPU. So the next milestones will be concentrated only on this algorithm and not 
 more generaly. 
 % paragraph m4_application_algorithm_choosen (end)
 \paragraph{M5: Analysis, Solution Proposed (4/4/2009)} % (fold)
-\label{par:m5_analysis_solution_proposed}
+\label{par:im5_analysis_solution_proposed}
 Here a solution will be proposed and outstanding issues will be identified. 
 There are several myths about GPGPU which will be stated here as well, because 
 there are affecting the design of the application and cannot be discarded.
 % paragraph m5_analysis_solution_proposed (end)
 \paragraph{M6: Experiments (4/14/2009)} % (fold)
-\label{par:m6_experiments}
+\label{par:im6_experiments}
 To exclude all eventualities a set of experiments will be undertaken. This will 
 as well solve all myths.
 % paragraph m6_experiments (end)
 \paragraph{M7: Design, Application Ported (5/14/2009)} % (fold)
-\label{par:m7_design_application_ported}
+\label{par:im7_design_application_ported}
 This milestone will cover the design of the application with all constraints,
 obstacles and hurdles that are involved with GPGPU. In this task the application
 will be implemented and run on the GPU. A good implementation will need several
@@ -716,20 +717,20 @@ iterations were several aspects will be tuned: coalesced memory access, load
 balancing and many more.
 % paragraph m7_design_application_ported (end)
 \paragraph{M8: Discussion (5/22/2009)} % (fold)
-\label{par:m8_discussion}
+\label{par:im8_discussion}
 Another important part is the discussion of the results and methodologies
 applied which will be done in this milestone.
 % paragraph m8_discussion (end)
 
 \paragraph{M9: Master Thesis Edited (5/30/2009)} % (fold)
-\label{par:master_thesis_edited}
+\label{par:imaster_thesis_edited}
 Here the thesis will be recaped and briefly outlined. Conclusions will be drawn
 and future work presented. A critical summary and conclusion will be provided as
 well. % paragraph master_thesis_edited (end)
 
 % section time_plan (end)
 \section*{Deliverables or specific outcomes} 
-\label{sub:deliverables_or_specific_outcomes} 
+\label{sub:ideliverables_or_specific_outcomes} 
 % A clear statement of the expected outcome(s).
 The main outcome of this work is to show how \glspl{GPU} can be utilized for general
 purpose computing. There is a high demand on performance and computational power

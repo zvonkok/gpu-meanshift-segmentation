@@ -39,57 +39,56 @@
 \BOOKMARK [2][-]{subsection.5.5.1}{5.5.1 Mean Shift Filtering}{section.5.5}% 39
 \BOOKMARK [2][-]{subsection.5.5.2}{5.5.2 Mean Shift Segmentation}{section.5.5}% 40
 \BOOKMARK [1][-]{section.5.6}{5.6 Summary}{chapter.5}% 41
-\BOOKMARK [0][]{chapter.6}{6 Mean Shift Algorithm Analysis}{}% 42
+\BOOKMARK [0][]{chapter.6}{6 Mean Shift Algorithm Analysis \046 Design}{}% 42
 \BOOKMARK [1][-]{section.6.1}{6.1 Profiling the Original Code}{chapter.6}% 43
 \BOOKMARK [1][-]{section.6.2}{6.2 Amdahl's law}{chapter.6}% 44
 \BOOKMARK [1][-]{section.6.3}{6.3 Data \046 Task Parallelism}{chapter.6}% 45
 \BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Task Parallelism}{section.6.3}% 46
 \BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Data Parallelism}{section.6.3}% 47
 \BOOKMARK [1][-]{section.6.4}{6.4 Data Flow}{chapter.6}% 48
-\BOOKMARK [1][-]{section.6.5}{6.5 Summary}{chapter.6}% 49
-\BOOKMARK [0][]{chapter.7}{7 Mean Shift Algorithm Design}{}% 50
-\BOOKMARK [1][-]{section.7.1}{7.1 Programming Model}{chapter.7}% 51
-\BOOKMARK [1][-]{section.7.2}{7.2 Thread Batching}{chapter.7}% 52
-\BOOKMARK [1][-]{section.7.3}{7.3 Device Memory space}{chapter.7}% 53
-\BOOKMARK [1][-]{section.7.4}{7.4 Warps}{chapter.7}% 54
-\BOOKMARK [1][-]{section.7.5}{7.5 Program Flow}{chapter.7}% 55
-\BOOKMARK [1][-]{section.7.6}{7.6 Summary}{chapter.7}% 56
-\BOOKMARK [0][]{chapter.8}{8 Mean Shift Implementation}{}% 57
-\BOOKMARK [1][-]{section.8.1}{8.1 Reference Implementation}{chapter.8}% 58
-\BOOKMARK [1][-]{section.8.2}{8.2 The Host Part}{chapter.8}% 59
-\BOOKMARK [2][-]{section*.16}{Progress \046 Result Verification}{section.8.2}% 60
-\BOOKMARK [1][-]{section.8.3}{8.3 The Device Part}{chapter.8}% 61
-\BOOKMARK [1][-]{section.8.4}{8.4 Summary}{chapter.8}% 62
-\BOOKMARK [0][]{chapter.9}{9 Optimisation Strategies}{}% 63
-\BOOKMARK [1][-]{section.9.1}{9.1 Test \046 Benchmark Configuration}{chapter.9}% 64
-\BOOKMARK [1][-]{section.9.2}{9.2 Offload Compute Intensive Parts}{chapter.9}% 65
-\BOOKMARK [1][-]{section.9.3}{9.3 Global Memory \046 Coalescing}{chapter.9}% 66
-\BOOKMARK [1][-]{section.9.4}{9.4 Division Instruction Optimisation}{chapter.9}% 67
-\BOOKMARK [1][-]{section.9.5}{9.5 Execution Configurations}{chapter.9}% 68
-\BOOKMARK [1][-]{section.9.6}{9.6 Native Data Types}{chapter.9}% 69
-\BOOKMARK [1][-]{section.9.7}{9.7 Avoid Branch Divergence}{chapter.9}% 70
-\BOOKMARK [1][-]{section.9.8}{9.8 Shared Memory}{chapter.9}% 71
-\BOOKMARK [1][-]{section.9.9}{9.9 Know the Algorithm}{chapter.9}% 72
-\BOOKMARK [2][-]{section*.18}{Attractor}{section.9.9}% 73
-\BOOKMARK [1][-]{section.9.10}{9.10 Unrolling Loops and Multiplications}{chapter.9}% 74
-\BOOKMARK [1][-]{section.9.11}{9.11 Summary}{chapter.9}% 75
-\BOOKMARK [0][]{chapter.10}{10 Performance \046 Scalability}{}% 76
-\BOOKMARK [1][-]{section.10.1}{10.1 Varying the Image-size}{chapter.10}% 77
-\BOOKMARK [2][-]{subsection.10.1.1}{10.1.1 Linearity}{section.10.1}% 78
-\BOOKMARK [1][-]{section.10.2}{10.2 Multiple gpus}{chapter.10}% 79
-\BOOKMARK [1][-]{section.10.3}{10.3 Over-clocking the gpu}{chapter.10}% 80
-\BOOKMARK [2][-]{subsection.10.3.1}{10.3.1 Increasing the Memory Clock}{section.10.3}% 81
-\BOOKMARK [2][-]{subsection.10.3.2}{10.3.2 Increasing the Core Clock}{section.10.3}% 82
-\BOOKMARK [3][-]{figure.caption.28}{Multiple gpus over-clocked}{subsection.10.3.2}% 83
-\BOOKMARK [1][-]{section.10.4}{10.4 Final Speedup}{chapter.10}% 84
-\BOOKMARK [0][]{chapter.11}{11 Conclusions \046 Further Work}{}% 85
-\BOOKMARK [1][-]{section.11.1}{11.1 Further Work}{chapter.11}% 86
-\BOOKMARK [2][-]{section*.30}{Fermi}{section.11.1}% 87
-\BOOKMARK [0][]{chapter*.31}{Bibliography}{}% 88
-\BOOKMARK [0][]{section*.32}{Glossary}{}% 89
-\BOOKMARK [0][]{section*.34}{Acronyms}{}% 90
-\BOOKMARK [1][-]{lof.1}{List of Figures}{section*.34}% 91
-\BOOKMARK [1][-]{lot.1}{List of Tables}{section*.34}% 92
-\BOOKMARK [1][-]{lol.1}{List of Listings}{section*.34}% 93
-\BOOKMARK [0][]{appendix.A}{A Reference Tables}{}% 94
-\BOOKMARK [0][]{appendix.B}{B Host \046 Kernel Source Code }{}% 95
+\BOOKMARK [1][-]{section.6.5}{6.5 The next phase}{chapter.6}% 49
+\BOOKMARK [1][-]{section.6.6}{6.6 The Algorithm Structure}{chapter.6}% 50
+\BOOKMARK [1][-]{section.6.7}{6.7 Programming Model}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.8}{6.8 Thread Batching}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.9}{6.9 Device Memory space}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.10}{6.10 Warps}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.11}{6.11 Program Flow}{chapter.6}% 55
+\BOOKMARK [1][-]{section.6.12}{6.12 Summary}{chapter.6}% 56
+\BOOKMARK [0][]{chapter.7}{7 Mean Shift Implementation}{}% 57
+\BOOKMARK [1][-]{section.7.1}{7.1 Reference Implementation}{chapter.7}% 58
+\BOOKMARK [1][-]{section.7.2}{7.2 The Host Part}{chapter.7}% 59
+\BOOKMARK [2][-]{section*.16}{Progress \046 Result Verification}{section.7.2}% 60
+\BOOKMARK [1][-]{section.7.3}{7.3 The Device Part}{chapter.7}% 61
+\BOOKMARK [1][-]{section.7.4}{7.4 Summary}{chapter.7}% 62
+\BOOKMARK [0][]{chapter.8}{8 Optimisation Strategies}{}% 63
+\BOOKMARK [1][-]{section.8.1}{8.1 Test \046 Benchmark Configuration}{chapter.8}% 64
+\BOOKMARK [1][-]{section.8.2}{8.2 Offload Compute Intensive Parts}{chapter.8}% 65
+\BOOKMARK [1][-]{section.8.3}{8.3 Global Memory \046 Coalescing}{chapter.8}% 66
+\BOOKMARK [1][-]{section.8.4}{8.4 Division Instruction Optimisation}{chapter.8}% 67
+\BOOKMARK [1][-]{section.8.5}{8.5 Execution Configurations}{chapter.8}% 68
+\BOOKMARK [1][-]{section.8.6}{8.6 Native Data Types}{chapter.8}% 69
+\BOOKMARK [1][-]{section.8.7}{8.7 Avoid Branch Divergence}{chapter.8}% 70
+\BOOKMARK [1][-]{section.8.8}{8.8 Shared Memory}{chapter.8}% 71
+\BOOKMARK [1][-]{section.8.9}{8.9 Know the Algorithm}{chapter.8}% 72
+\BOOKMARK [2][-]{section*.18}{Attractor}{section.8.9}% 73
+\BOOKMARK [1][-]{section.8.10}{8.10 Unrolling Loops and Multiplications}{chapter.8}% 74
+\BOOKMARK [1][-]{section.8.11}{8.11 Summary}{chapter.8}% 75
+\BOOKMARK [0][]{chapter.9}{9 Performance \046 Scalability}{}% 76
+\BOOKMARK [1][-]{section.9.1}{9.1 Varying the Image-size}{chapter.9}% 77
+\BOOKMARK [2][-]{subsection.9.1.1}{9.1.1 Linearity}{section.9.1}% 78
+\BOOKMARK [1][-]{section.9.2}{9.2 Multiple gpus}{chapter.9}% 79
+\BOOKMARK [1][-]{section.9.3}{9.3 Over-clocking the gpu}{chapter.9}% 80
+\BOOKMARK [2][-]{subsection.9.3.1}{9.3.1 Increasing the Memory Clock}{section.9.3}% 81
+\BOOKMARK [2][-]{subsection.9.3.2}{9.3.2 Increasing the Core Clock}{section.9.3}% 82
+\BOOKMARK [3][-]{figure.caption.31}{Multiple gpus over-clocked}{subsection.9.3.2}% 83
+\BOOKMARK [1][-]{section.9.4}{9.4 Final Speedup}{chapter.9}% 84
+\BOOKMARK [0][]{chapter.10}{10 Conclusions \046 Further Work}{}% 85
+\BOOKMARK [1][-]{section.10.1}{10.1 Further Work}{chapter.10}% 86
+\BOOKMARK [2][-]{section*.33}{Fermi}{section.10.1}% 87
+\BOOKMARK [0][]{chapter*.34}{Bibliography}{}% 88
+\BOOKMARK [0][]{section*.35}{Glossary}{}% 89
+\BOOKMARK [0][]{section*.37}{Acronyms}{}% 90
+\BOOKMARK [1][-]{lof.1}{List of Figures}{section*.37}% 91
+\BOOKMARK [1][-]{lot.1}{List of Tables}{section*.37}% 92
+\BOOKMARK [1][-]{lol.1}{List of Listings}{section*.37}% 93
+\BOOKMARK [0][]{appendix.A}{A Interim Report}{}% 94

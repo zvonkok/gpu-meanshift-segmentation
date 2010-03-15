@@ -97,11 +97,11 @@ the \gls{GPU} for the next kernel. Memory stays consistent across kernel calls
 and the subsequent kernel needs the preprocessed data from the previous kernel.
 This coupling and strong dependency of the kernels or steps was already
 described in \autoref{sec:data_and_task_parallelism} and effected the design
-\autoref{cha:algorithm_design}. When the last finishes execution the
+\autoref{ch:algorithm_analysis}. When the last finishes execution the
 host can fetch the results for saving and result verification. 
 
 \subsubsection{Progress \textit{\&} Result Verification} % (fold)
-\label{ssub:progress_result_verificationcation}
+\label{ssub:progress_result_verification}
 As mentioned in \autoref{sec:reference_implementation} there exists a \gls{CPU}
 and a \gls{GPU} implementation of the algorithm. When executing the program
 it is possible to supply a parameter which triggers the result verification. The
@@ -166,7 +166,7 @@ and scalability is evaluated in a subsequent chapter.
 % chapter implementation (end)
 
 \section{Summary} % (fold)
-\label{sec:summary}
+\label{sec:summary_implementation}
 After an extensive analysis and a good design the effort to implement the algorithm
 was not so big. The most difficult part was the implementation of the
 mean shift method in the reference implementation. It had to be verified that
