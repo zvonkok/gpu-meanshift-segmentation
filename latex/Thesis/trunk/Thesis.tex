@@ -6,7 +6,8 @@ titlepage, fleqn, numbers=noenddot, fontsize=12pt,%
 cleardoublepage=empty,abstract=false, % <--- obsolete, remove (todo)
 headinclude=false,footinclude=false,%
 headlines=1, % default is 1.25 rows ... we want 1
-draft=on]{scrreprt}
+%draft=on%
+]{scrreprt}
 % ********************************************************************
 % Development Stuff
 % ********************************************************************
@@ -44,11 +45,11 @@ draft=on]{scrreprt}
 
 %\usepackage{layout}
 
-\usepackage{pdfpages} % to include pdf pages (FrontCover..)
+%\usepackage{pdfpages} % to include pdf pages (FrontCover..)
 
 \begin{document}
 	
-\includepdf[pages={1,2}]{Frontcover.pdf}
+%\includepdf[pages={1,2}]{Frontcover.pdf}
 
 %\layout*
 
@@ -123,9 +124,9 @@ draft=on]{scrreprt}
 
 \appendix
 %%%%%\cleardoublepage\myPart{Appendix}
-\cleardoublepage\include{Chapters/Tables}
-\cleardoublepage\include{Chapters/SourceCode}
-%\include{Chapters/InterimReport}
+%\cleardoublepage\include{Chapters/Tables}
+%\cleardoublepage\include{Chapters/SourceCode}
+\cleardoublepage\include{Chapters/InterimReport}
 
 %********************************************************************
 % Other Stuff in the Back

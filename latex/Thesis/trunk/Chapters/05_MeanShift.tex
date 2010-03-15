@@ -676,8 +676,7 @@ $h_r$ for the spatial part and $h_f$ for the colour range part
   k \left( \left\lVert \frac{x^f}{h_f} \right\rVert^2\right) 
 \end{equation}
 where $p$ is the colour dimension of the image, $p=1$ gray tone and
-$p=3$ colour.  An example of an gray tone image with its feature space
-is shown in \autoref{fig:feature_space}. With the parameter $h = (h_r,
+$p=3$ colour. With the parameter $h = (h_r,
 h_f)$ the window radius one can specify the size of the kernel and
 thereby specify the resolution of the maximum search.
 
@@ -692,6 +691,7 @@ across the discontinuity from consideration.
 \begin{figure}[ht]
   \centering
   \subfloat[Original]{\includegraphics[width=0.33\textwidth]{gfx/source}\label{fig:orig0}}%
+	\,
   \subfloat[Filtered]{\includegraphics[width=0.33\textwidth]{gfx/filtimage_ref}\label{fig:filt}}%
   \caption{Mean shift filtering with parameters $(h_r, h_f) = (6.5,
     7)$ applied to a colour image}
@@ -762,13 +762,13 @@ all points are labeled after their cluster assignment.
 \begin{figure}[ht]
   \centering \subfloat[Original]{%
 
-    \includegraphics[width=0.33\textwidth]{gfx/source}\label{fig:orig}}%
+    \includegraphics[width=0.32\textwidth]{gfx/source}\label{fig:orig}}%
   \subfloat[Segmented]{%
-
-    \includegraphics[width=0.33\textwidth]{gfx/segmimage_ref}\label{fig:segm}}%
+	\,
+    \includegraphics[width=0.32\textwidth]{gfx/segmimage_ref}\label{fig:segm}}%
   \subfloat[Region boundaries]{%
-
-    \includegraphics[width=0.33\textwidth]{gfx/bndyimage_ref}\label{fig:bndy}}%
+	\,
+    \includegraphics[width=0.32\textwidth]{gfx/bndyimage_ref}\label{fig:bndy}}%
 
   \caption{Mean shift segmentation with parameters $(h_r, h_f, M) =
     (6.5, 7, 20)$ applied to a colour image}
@@ -845,7 +845,7 @@ significant impact on the run time.
 \end{algorithm2e}
 
 \section{Summary} % (fold)
-\label{sec:summary}
+\label{sec:summary_meanshift}
 
 Mean shift is a elegant method to analyse feature spaces without gradient based
 methods. Using gradient based methods first an density estimation has to be defined.

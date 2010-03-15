@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Chapters/10_Performance.tex</string>
+	<string>Chapters/06_Analysis.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -37,8 +37,6 @@
 			<string>Chapters</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Plots</string>
 			<key>regexFolderFilter</key>
@@ -47,6 +45,8 @@
 			<string>Plots</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Tables</string>
 			<key>regexFolderFilter</key>
@@ -58,19 +58,19 @@
 			<key>filename</key>
 			<string>dissertation.sty</string>
 			<key>lastUsed</key>
-			<date>2010-02-17T21:20:16Z</date>
+			<date>2010-03-02T13:05:12Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Thesis.tex</string>
 			<key>lastUsed</key>
-			<date>2010-02-18T21:04:26Z</date>
+			<date>2010-03-02T12:55:00Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Bibliography.bib</string>
 			<key>lastUsed</key>
-			<date>2010-02-18T21:03:51Z</date>
+			<date>2010-03-11T20:31:29Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -83,36 +83,6 @@
 	<integer>235</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Bibliography.bib</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>1652</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>1618</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>9</integer>
-				<key>line</key>
-				<integer>1652</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>1652</integer>
-			</dict>
-		</dict>
 		<key>Chapters/01_Introduction.tex</key>
 		<dict>
 			<key>caret</key>
@@ -146,14 +116,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>80</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>110</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>93</integer>
 		</dict>
 		<key>Chapters/04_FeasibilityStudy.tex</key>
 		<dict>
@@ -204,44 +174,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>59</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>105</integer>
+				<integer>339</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>76</integer>
+			<integer>453</integer>
 		</dict>
 		<key>Chapters/07_Design.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
+				<integer>0</integer>
 				<key>line</key>
 				<integer>4</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
 		</dict>
 		<key>Chapters/08_Implementation.tex</key>
 		<dict>
@@ -276,14 +230,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>74</integer>
 				<key>line</key>
-				<integer>241</integer>
+				<integer>249</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>207</integer>
+			<integer>304</integer>
 		</dict>
 		<key>Chapters/10_Performance.aux</key>
 		<dict>
@@ -304,14 +258,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>31</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>521</integer>
+				<integer>25</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>490</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Chapters/11_Future.tex</key>
 		<dict>
@@ -527,33 +481,47 @@
 				<integer>22</integer>
 			</dict>
 		</dict>
+		<key>Tables/tesla.geforce.memory.data</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>Thesis.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>41</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>125</integer>
+				<integer>54</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>77</integer>
+			<integer>31</integer>
 		</dict>
 		<key>dissertation.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>31</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>439</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>397</integer>
+			<integer>127</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -566,6 +534,7 @@
 		<string>Chapters/09_Optimization.aux</string>
 		<string>Thesis.tex</string>
 		<string>Chapters/03_Parallel.tex</string>
+		<string>Tables/tesla.geforce.memory.data</string>
 		<string>Chapters/07_Design.tex</string>
 		<string>FrontBackmatter/Managment.tex</string>
 		<string>Chapters/06_Analysis.tex</string>
@@ -582,7 +551,6 @@
 		<string>FrontBackmatter/Bibliography.tex</string>
 		<string>FrontBackmatter/Glossary.tex</string>
 		<string>Chapters/09_Optimization.tex</string>
-		<string>Bibliography.bib</string>
 		<string>Chapters/10_Performance.aux</string>
 		<string>Chapters/04_FeasibilityStudy.tex</string>
 		<string>FrontBackmatter/Abstract.tex</string>
@@ -617,6 +585,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{77, 189}, {622, 977}}</string>
+	<string>{{85, 84}, {622, 977}}</string>
 </dict>
 </plist>

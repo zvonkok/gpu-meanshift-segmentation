@@ -75,8 +75,8 @@ balancing the load among vertex, fragment and geometry functionality
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{gfx/tesla_architecture} 
-\caption{Tesla Architecture [NOT FINISHED YET]} 
+\includegraphics[width=4in]{gfx/tesla_architecture} 
+\caption{Tesla Architecture} 
 \label{fig:tesla_architecture} 
 \end{figure} 
 
@@ -111,7 +111,7 @@ characteristics (memory size, peak memory bandwidth, peak \gls{GFLOP}). The
 advantage of a mainstream \gls{GPU} is that the visualisation can be done on the
 same card and the low price. 
 
-For the purpose of this thesis a \emph{GeForce 8800 GTX 512} card will be
+For the purpose of this thesis a \emph{GeForce 8800 GTS 512} card will be
 used. The main performance characteristics are shown in
 \autoref{tab:tesla_geforce_mem} and \autoref{tab:tesla_geforce}. For reference
 the \emph{Tesla C870} card is shown as well.
@@ -121,7 +121,11 @@ the \emph{Tesla C870} card is shown as well.
 	%\pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
 	\pgfplotstabletypeset[
 %		column type=r,
-		columns/Card/.style={string type}
+		columns={Card, {Memory Size}, {Bandwidth}, Clock},
+		columns/Card/.style={string type},
+		columns/{Memory Size}/.style={column name={Memory Size [\protect\slcsmallcaps{MB}]}},
+		columns/{Bandwidth}/.style={column name={Bandwidth [\unitfrac{GB}{s}]}},
+		columns/{Clock}/.style={column name={Clock [\slcsmallcaps{MHz}]}},
 	]{Tables/tesla.geforce.memory.data}
   	\caption{Memory performance characteristics for Tesla and GeForce}
   	\label{tab:tesla_geforce_mem}
@@ -137,13 +141,16 @@ point operations per second as seen in  \autoref{tab:tesla_geforce}.
 %	\pgfkeys{/pgf/number format/.cd,fixed zerofill,precision=2}
 	\pgfplotstabletypeset[
 %		column type=r,
+		columns={Card, {No. of Stream Processors}, GFlops, Clock},
+		columns/{GFlops}/.style={column name={\slcsmallcaps{GFlops}}},
+		columns/{Clock}/.style={column name={Clock [\slcsmallcaps{MHz}]}},
 		columns/Card/.style={string type}
 	]{Tables/tesla.geforce.data}
   	\caption{Computing performance characteristics for Tesla and GeForce}
   	\label{tab:tesla_geforce}
 \end{table}
 
-Every card of the \emph{8 Series} can be programmed with \gls{CUDA} an
+Every card of the \emph{GeForce 8 Series} can be programmed with \gls{CUDA} an
 \gls{API} for \gls{GPU} computing. What \gls{CUDA} is and how to use it will 
 be explained in the next section. 
 % section the_tesla_architecture (end)
@@ -183,11 +190,10 @@ spots\citep{citeulike:3839013}
 
 \begin{itemize}
 	\item High arithmetic intensity (Dense linear algebra, PDEs, n-body, 
-			finite difference, ...) 
-	\item High bandwidth (Sequencing (virus scanning, genomics), sorting, 			
-			database, ...) 
+			finite difference, \ldots) 
+	\item High bandwidth (Sorting, database,  sequencing, virus scanning, genomics, \ldots) 
 	\item Visual computing: (Graphics, image processing, tomography, 
-			machine vision, ... ) 
+			machine vision, \ldots) 
 	\item Computational modelling, science, engineering, finance, ... 			
 \end{itemize} 
 

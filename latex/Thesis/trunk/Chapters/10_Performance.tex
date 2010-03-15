@@ -212,8 +212,9 @@ algorithm is not scaling with small Image-sizes. Its again clearly identifiable
 in the \autoref{fig:multi_gpu_speedup}. It's safe to assume that the multiple
 \gls{GPU} run-times are proportional to the Image-size as in
 \autoref{fig:linearity} seen for one \gls{GPU} since the run-times are 2$\times$
-faster but the ratio will nevertheless still be a constant. For the precise
-numbers see \autoref{tab:multi_gpu_run}. This section showed that the algorithm
+faster but the ratio will nevertheless still be a constant. 
+
+This section showed that the algorithm
 scales perfectly with multiple devices and it would be no surprise to see a
 speedup of 3$\times$ if a third \gls{GPU} were added to the system. Additionally
 the \autoref{fig:multi_gpu_cpu_speedup} shows the speedups of 1 \gls{GPU} and 2
@@ -316,6 +317,17 @@ increase per software of 100 \gls{MHz} doesn't mean an increase of 100 \gls{MHz}
 in hardware due to hardware restrictions. The \autoref{tab:mem_sw_hw} shows the 
 frequency set in software and the resulting real frequency in hardware. 
 
+\begin{table}[ht]
+  \centering
+	\pgfkeys{/pgf/number format/.cd,fixed,precision=0}
+	
+	\pgfplotstabletypeset{Tables/mem.sw.hw.data}
+
+ 	\caption{Memory clock frequencies set in software and the resulting hardware frequencies}
+ 	\label{tab:mem_sw_hw}
+\end{table}
+
+
 The test was performed with three different Image-sizes: 256$\times$256 pixel, 
 1024$\times$1024 pixel and 2048$\times$2048 pixel. The \autoref{fig:mem_clk_256}
 shows the run-time dependent on the memory clock.
@@ -341,8 +353,8 @@ shows the run-time dependent on the memory clock.
 			\addlegendentry{\protect\gls{GPU}}
    \end{axis}
  \end{tikzpicture}%
- \label{fig:mem_clk_256}%
  \caption{Run-time with increasing memory clock on an image with 256$\times$256 pixel}
+ \label{fig:mem_clk_256}%
 \end{figure}
 
 A straight line indicates that the algorithm is not memory bound. It does not
@@ -351,6 +363,19 @@ Additionally it can be concluded that the algorithm is computational bound. This
 will be proven in the next section when the core clock is manipulated. The image
 sizes 1024$\times$1024 and 2048$\times$2048 pixel show the same behaviour. For 
 the complete list of numbers see \autoref{tab:mem_clk_gpu}.
+
+
+\begin{table}[ht]
+	\centering
+	%\pgfkeys{/pgf/number format/.cd,fixed,precision=0}
+	
+	\pgfplotstabletypeset{Plots/mem.single.gpu.data}
+
+ 	\caption{Various memory clocks and the corresponding run times}
+ 	\label{tab:mem_clk_gpu}
+\end{table}
+
+
 
 % subsection increasing_the_memory_clcok (end)
 
@@ -365,6 +390,23 @@ no effect on the run-time. Experiments have shown that the maximal achievable
 core clock is 783 \gls{MHz}. All clocks were read out from hardware with
 \emph{NVClock}. The \autoref{tab:core_sw_hw} shows the frequency set in software
 and the resulting real frequency in hardware.
+
+\begin{table}[ht]
+    \centering
+	\pgfkeys{/pgf/number format/.cd,fixed,precision=0}
+	
+	\pgfplotstabletypeset%[display columns/0/.style={select equal part entry of={0}{2},string type}, 
+												%display columns/1/.style={select equal part entry of={0}{2},string type}, 
+												%display columns/2/.style={select equal part entry of={1}{2},string type}, 
+												%display columns/3/.style={select equal part entry of={1}{2},string type}, 
+												%columns={{Software [MHz]},{Hardware [MHz]},{Software [MHz]},{Hardware [MHz]}} ]
+												{Tables/core.sw.hw.data}
+
+ 	\caption{Core clock frequencies set in software and the resulting hardware frequencies}
+ 	\label{tab:core_sw_hw}
+\end{table}
+
+
 
 The test was performed with three different Image-sizes: 256$\times$256 pixel, 
 1024$\times$1024 pixel and 2048$\times$2048 pixel. The \autoref{fig:core_clk_256}
@@ -435,9 +477,10 @@ ratio between the differences of clock and ratio is depicted as well.
 
 
  \end{tikzpicture}%
- \label{fig:core_clk_256}%
+
  \caption{Run-time with increasing core clock and fixed memory clock on an image
  with 256$\times$256 pixel with one \protect\gls{GPU}}
+ \label{fig:core_clk_256}%
 \end{figure}
 
 It's visible that the run-time is decreasing proportionally with the increase of
@@ -458,7 +501,7 @@ It's no surprise to see almost a identical diagram compared to the previous
 section. As the algorithm scales well with multiple \gls{GPU} (see
 \autoref{sec:multiple_gpus}) and with the frequency of the core clock one can 
 assume to see the same sequence of run-times just cut by half. The
-\autoref{fig:clock_multi_256} shows that, additionally attention should be paid
+\autoref{fig:clock_multi_ABC} shows that, additionally attention should be paid
 to the shape of the curve as its the same as in \autoref{fig:core_clk_256}. 
 
 \begin{figure}[ht]
@@ -524,10 +567,11 @@ to the shape of the curve as its the same as in \autoref{fig:core_clk_256}.
 
 
 
- \end{tikzpicture}%
- \label{fig:clock_multi_256}%
+ \end{tikzpicture}
+
  \caption{Run-time with increasing core clock and fixed memory clock on an image with 256$\times$256 pixel
 with two \protect\gls{GPU}}
+	\label{fig:clock_multi_ABC}
 \end{figure}
 
 % subsubsection multiple_gpus_overclocked (end)
