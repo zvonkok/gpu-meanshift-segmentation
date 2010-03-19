@@ -16,7 +16,7 @@ enough and if the resulting speedup justifies all the effort that is expended on
 making a parallel version out of it. In case of mean shift which is used for
 several things like filtering, segmentation, pattern recognition and real time
 tracking one can deduce that for bigger images or many images the computation
-time climbs fast as the dsize or the number of images rises. To have a clue how
+time climbs fast as the size or the number of images rises. To have a clue how
 the mean shift algorithm behaves with big pictures several run times where
 recorded. For the analysis of the mean shift algorithm a ready to use
 \gls{EDISON} was used that was profiled and modified and parallelized for the
@@ -109,7 +109,7 @@ analysis of \gls{EDISON}.
 
 Before taking a closer look at the table, the columns have to be
 explained. The column \emph{Total} shows how long the function plus
-their child function were executing. Whereas the column \emph{Self}
+their child functions were executing. Whereas the column \emph{Self}
 shows how long the function spent executing itself without the
 execution time of their child functions. The column \emph{Symbol}
 shows the function that was executed.
@@ -162,7 +162,7 @@ processing units one can calculate the maximum speedup achievable according to
 Amdahl. Taking the parallel processing percentage from \autoref{tab:comp} for
 the filtering step:
 \begin{equation*}\label{eq:parallel}
-  p = 99,3\% = 0.993 
+  p = 99.3\% = 0.993 
   p\end{equation*}
 we get
 
@@ -239,7 +239,7 @@ performance can arise through e.g. excessive synchronisation overhead.
 \label{sub:task_parallelism}
 
 Equipped with the knowledge how to identify independent parallel tasks, the mean
-shift segmentation algorithm \autoref{alg:mss} can now be examined. Having a
+shift segmentation \autoref{alg:mss} can now be examined. Having a
 look at the algorithm steps one can easily see that every task is violating
 every condition stated above. The filtering step input data is dependent on the
 \gls{RGB} to \gls{LUV} conversion output data. The segmentation step input data
@@ -351,7 +351,7 @@ phase. Therefore it is important to have clearly understood the algorithm and
 have done the decomposition in the right way. 
 
 The decomposition has to be suitable for the target platform. Since the
-\gls{GPU} is a \gls{SPMD} architecture, which means one program the mean shift
+\gls{GPU} is a \gls{SPMD} architecture, which means one program, the mean shift
 algorithm is operating on many data the pixels. Above it was shown that the way
 of data decomposition is preferable because (1) the pixels can be mapped 1:1 to
 a processing unit on the \gls{GPU} and (2) there are enough pixel to keep the
@@ -510,7 +510,7 @@ transfers via \gls{DMA} the image to the \gls{GPU}.
 
 A thread in the grid having a unique id can now fetch the corresponding pixel
 according to the id. Equipped with the colour data the thread can now calculate
-the mean shift vector until convergence. While calculating the thread will 
+the mean shift vector until convergence. While calculating, the thread will 
 access various pixel in the image that are read-only in the global memory. The 
 found convergence point is saved to a new buffer in the global memory.
 
