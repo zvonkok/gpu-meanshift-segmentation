@@ -25,7 +25,7 @@ The maxima of a feature space correspond to the searched components
 like the edges of an image. Gradient based methods of feature space
 analysis are using gradients of the probability density function to
 find the maxima. Such methods are complex because they need among
-other things a estimation of the probability of density.
+other things an estimation of the probability of density.
 
 Mean shift is an alternative to the gradient based methods as it is
 easier to calculate then to estimate the probability of density and
@@ -351,7 +351,7 @@ epanechnikov kernel. The derivative of the kernel is a uniform profile.
         % ymajorgrids
         ]
         
-        \addplot[colour=red1] expression[domain=-3:3]
+        \addplot[color=red1] expression[domain=-3:3]
         {1/sqrt(2*3.14)*exp((-1/2)*x*x)};
 
       \end{axis}
@@ -437,7 +437,7 @@ shadow kernel (See \autoref{sub:gradient_estimation}).
 
 \section{Mean Shift} % (fold)
 \label{sec:mean_shift}
-In gradient based methods first the gradient s calculated and then the
+In gradient based methods first the gradient is calculated and then the
 kernel is shifted by a vector with a specific length in direction of a
 maximum of the probability. The magnitude/length that is the step size
 of the vector has to be chosen. The problem of such gradient based
@@ -603,7 +603,7 @@ of the density, it defines a path to the maximum. The \emph{mean
 \begin{algorithm2e}[H]
   % \dontprintsemicolon
 
-  \begin{enumerate}%[{\textsc{step}} 1]
+  \begin{enum}%[{\textsc{step}} 1]
   \item Choose a window radius $h_n$ for the kernel density estimator
     in \autoref{eq:kernel4}
   \item Choose a start position $y_1 \in \mathbb{R}^D$ for the kernel
@@ -611,7 +611,7 @@ of the density, it defines a path to the maximum. The \emph{mean
   \item Calculate the \emph{mean shift} vector $m_{h,G}(y_j)$ and
     shift the kernel window $G$
   \item Repeat 3. until convergence
-  \end{enumerate}
+  \end{enum}
 
   \caption{Mean Shift Method}
   \label{alg:ms}
@@ -735,7 +735,7 @@ local density maximum applying the filtering \autoref{alg:msf}.
 \end{algorithm2e}
 
 
-All pixels that converge to the same um are lying in the basin of
+All pixels that converge to the same maximum are lying in the basin of
 attraction of this maximum. The filtered image points $z_n, n = 1 ,
 \ldots , N$ keep there spatial coordinates but obtain the colour values
 off the convergence point. The convergence points are found by moving

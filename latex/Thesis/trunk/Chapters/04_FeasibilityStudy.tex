@@ -7,7 +7,7 @@ Entering a new field in computing without enough experience on the platform it
 is always advisable to get a better knowledge about the hardware and software before
 designing anything without proper knowledge. A feasibility study can give an overview
 if a project is technically feasible and a way to gain some knowledge about the
-complete eco system. Furthermore the study  can answer first questions and help
+complete eco-system. Furthermore the study  can answer first questions and help
 demystify myths. 
 
 There are several myths about \gls{GPGPU} which will be examined and explained
@@ -41,7 +41,7 @@ on floating point math} from spending time in doing \gls{GPGPU}.
 Therefore the first step before choosing an algorithm or put further energy into
 research of \glspl{GPU} is to make the feasibility study. The study will examine
 the myths and show solutions to the problems respectively statements.
-Furthermore it will show whether the technology, software eco system exists for
+Furthermore it will show whether the technology, software eco-system exists for
 building applications on \glspl{GPU} and how difficult it will be to build.
 
 By the means of a ray tracer the study will show which steps have to be 
@@ -86,7 +86,7 @@ For each pixel on the screen a ray is cast from the eye through the pixel into
 the virtual world. Then for each object it is checked if the ray intersects any
 of them. If there are several objects in a scene intersected by the ray the
 shortest distance to the intersection point is the one that is visible to the
-eye. All other intersection are behind the nearest object and not visible
+eye. All other intersections are behind the nearest object and not visible
 respectively occluded by the visible object. The colour at that point is the
 accumulated contribution of intensities radiated from all light sources. This
 colour is given to the pixel through which the ray passed. Ray casting does not
@@ -119,7 +119,7 @@ For any \gls{CUDA} application it is crucial to take a look at register, shared
 memory and local memory usage. The performance of the application  depends on
 how good/bad the existing resources are exploited.
 
-The examination of the ray traced showed that the initial port used 48
+The examination of the ray tracer showed that the initial port used 48
 registers, 28 bytes shared memory and 96 byte constant memory per thread. As
 shown in \autoref{sub:a_simple_example} the number of launched
 threads, blocks and grids is dependent on the three factors mentioned above.
@@ -128,7 +128,7 @@ Each \gls{SM} has 8192 registers which means one could have 8192/48 = 170 thread
 to fully exploit the resources 8 blocks should be launched so 170/8 = 21 threads
 per block which is by far too low. It is easily spotted that the application is
 limited by registers per \gls{SM}. These calculations can easily be done with the
-\emph{CUDA occupancy calculator} supplied with the SDK.
+\emph{CUDA occupancy calculator} supplied with the \gls{SDK}.
 
 After fiddling around with compiler switches especially the switch that limits
 the used registers \emph{-maxrregcount=x}
@@ -218,11 +218,11 @@ the beginning.
 
 \section{Demystifying the Myths} % (fold)
 \label{sec:demystifing_the_myths}
-There were several myths about \gls{GPGPU} see \autoref{chap:feas} that are
+There were several myths about \gls{GPGPU}, see \autoref{chap:feas}, that are
 simply wrong or need to be proven. Beginning with \autoref{enum:api} this
-statement is simply wrong. Using \gls{CUDA} or the ATI \gls{SDK} \emph{Close To
-Metal} no developer is anymore forced to use graphics \glspl{API}. Furthermore
-the abandoned graphics \gls{API} for \glspl{GPGPU} makes it possible to gather
+statement is simply wrong. Using \gls{CUDA} or the \gls{ATI} \gls{SDK} \emph{Close To
+Metal} no developer is anymore forced to use graphic \glspl{API}. Furthermore
+the abandoned graphic \gls{API} for \gls{GPGPU} makes it possible to gather
 and scatter to the memory, which resolves myth \autoref{enum:gather}.
 
 The \glspl{GPU} are able to do real floating point math. The myth

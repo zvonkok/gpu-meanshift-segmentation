@@ -39,7 +39,7 @@
 
 In recent years \glspl{GPU} have moved from fixed pipeline processors to fully
 programmable processors. This evolvement has attracted many developers to do
-\glspl{GPGPU}. The \glspl{GPU} have devoted there silicon (transistors) for
+\gls{GPGPU}. The \glspl{GPU} have devoted there silicon (transistors) for
 computing engines rather than for control engines like caches, branch
 prediction, coherency protocols compared to traditional \glspl{CPU}. This
 incredible computing power made algorithms with an high arithmetic density run
@@ -69,7 +69,7 @@ program in parallel but a quasi standard has not been established.
 There are several programming platforms that are favoured in certain fields 
 respectively system levels. On thread or loop-level there is OpenMP a programming
 interface for parallelisation on shared-memory systems. Going a level higher to
-distributed systems that exchange messages during parallel execution there is 
+distributed systems that exchange messages during parallel execution there is the
 \gls{MPI} which is a quasi standard for message passing. There are further 
 libraries but none of them is really suited for heterogenous computing systems.
 
@@ -116,7 +116,7 @@ purpose programs.
 The \gls{GPU} compared to the \gls{CPU} is very powerful and inexpensive. It has
 a much higher memory bandwidth and computational throughput. Not only that it is
 fast it is accelerating quickly. Recent improvements made the \gls{GPU} as well
-flexible and programmable. But there are limitations and difficulties. It is a not
+flexible and programmable. But there are limitations and difficulties. It is not
 only the new programming model or architecture the massively parallel nature of 
 a \gls{GPU} discomforts many developers. 
 
@@ -152,11 +152,11 @@ By the means of an application which will be ported to the \gls{GPU} the general
 workflow will be shown and various procedure models examined. It will be
 presented that often traditional software engineering principles do not apply to
 high performance, parallel computing. For this work a \slcsmallcaps{NVIDIA} \gls{GPU}
-will be used together with \gls{CUDA} that is a extension to C for parallel
+will be used together with \gls{CUDA} which is a extension to C for parallel
 programming of \glspl{GPU}.
 
 The remainder of the thesis will give some in depth background to the topic and
-expose with programming models and the architecture of \glspl{GPU}. Furthermore the
+expose the programming models and the architecture of \glspl{GPU}. Furthermore the
 development of a parallel implementation of an algorithm will be examined step
 by step. In this context software analysis and design principles will be shown
 that fit to parallel programming. A feasibility study will cover major obstacles
@@ -180,36 +180,36 @@ of the thesis.
 \paragraph{M1: Related Work Identified (2/14/2009)} % (fold)
 \label{par:m1_related_work_identified}
 The next step to take is to identify related work, conducting the literature 
-survey. This survey should show the demand of GPGPU and used algorithms. 
+survey. This survey should show the demand of \gls{GPGPU} and used algorithms. 
 Furthermore it will help to understand the architecture and programming models. 
 After gaining enough knowledge about the field its time to get the hands on the 
-GPU.
+\gls{GPU}.
 % paragraph m1_related_work_identified (end)
 \paragraph{M2: Algorithmic view understood (2/28/2009)} % (fold)
 \label{par:m2_architecture_algorithmic_view_understood}
 Equipped with the knowledge from the latter milestone it is time to understand
-how the architecture works by examining algorithms already mapped to the GPU.
+how the architecture works by examining algorithms already mapped to the \gls{GPU}.
 This step is crucial as it shows how algorithms map to and work on the \gls{GPU}
 and a good understanding of the environment can help later on for choosing the
 right algorithm for porting, analysis, design and implementation.
 % paragraph m2_architecture_algorithmic_view_understood (end)
 \paragraph{M3: Feasibility Study (3/14/2009)} % (fold)
 \label{par:m3_feasibility_study}
-The feasibility study will be used for the first steps into GPGPU. A low featured
+The feasibility study will be used for the first steps into \gls{GPGPU} . A low featured
 ray tracer will be used for examining what the hurdles and obstacles are when 
-developing for the GPU. The knowledge will be used for choosing the right 
+developing for the \gls{GPU}. The knowledge will be used for choosing the right 
 algorithm. 
 % paragraph m3_feasibility_study (end)
 \paragraph{M4: Application, Algorithm chosen (3/21/2009)} % (fold)
 \label{par:m4_application_algorithm_choosen}
 After completion of this milestone the algorithm is chosen to be ported to the 
-GPU. So the next milestones will be concentrated only on this algorithm and not 
-more generally. 
+\gls{GPU}. So the next milestones will concentrate only on this algorithm and will
+not consider the general case. 
 % paragraph m4_application_algorithm_choosen (end)
 \paragraph{M5: Analysis, Solution Proposed (4/4/2009)} % (fold)
 \label{par:m5_analysis_solution_proposed}
 Here a solution will be proposed and outstanding issues will be identified. 
-There are several myths about GPGPU which will be stated here as well, because 
+There are several myths about \gls{GPGPU}  which will be stated here as well, because 
 there are affecting the design of the application and cannot be discarded.
 % paragraph m5_analysis_solution_proposed (end)
 \paragraph{M6: Experiments (4/14/2009)} % (fold)
@@ -220,8 +220,8 @@ as well solve all myths.
 \paragraph{M7: Design, Application Ported (5/14/2009)} % (fold)
 \label{par:m7_design_application_ported}
 This milestone will cover the design of the application with all constraints,
-obstacles and hurdles that are involved with GPGPU. In this task the application
-will be implemented and run on the GPU. A good implementation will need several
+obstacles and hurdles that are involved with \gls{GPGPU} . In this task the application
+will be implemented and run on the \gls{GPU}. A good implementation will need several
 iterations were several aspects will be tuned: coalesced memory access, load
 balancing and many more.
 % paragraph m7_design_application_ported (end)

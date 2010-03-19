@@ -133,7 +133,7 @@ texture is perfect match for the algorithm as random access do not harm the band
 so much compared to global memory and pixels read in for one search window can 
 be reused for the next search window as they are cached. 
 
-Switching to \emph{textures} (glossary textures) yield to a huge speedup of 
+Switching to \emph{textures} yield to a huge speedup of 
 \fpAdd{\timecuda}{0,0}{250}
 \fpDiv{\speedup}{\timegold}{\timecuda}
 \begin{equation*}\label{eq:speedup2}

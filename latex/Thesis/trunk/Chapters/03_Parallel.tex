@@ -76,7 +76,7 @@ balancing the load among vertex, fragment and geometry functionality
 \begin{figure}[ht]
 \centering
 \includegraphics[width=4in]{gfx/tesla_architecture} 
-\caption{Tesla Architecture} 
+\caption{Tesla architecture} 
 \label{fig:tesla_architecture} 
 \end{figure} 
 
@@ -86,7 +86,7 @@ above the new \gls{GPU} architectures are a radical departure from traditional
 is composed of 8 streaming processors, 128 processors in total. Each streaming
 multiprocessor has 16 \gls{KB} of shared memory a L1 cache attached and has access
 to a texture unit. A streaming processor consists of a scalar \gls{ALU} and
-performs floating point operations. 32 streaming processor build up a \gls{SIMD}
+performs floating point operations. An amount of 32 streaming processors build up a \gls{SIMD}
 unit in {\slcsmallcaps{NVIDIA}} terms called warp, in that one instruction is executed. The Tesla
 C870 has 1.5 \gls{GB} \gls{GDDR3} graphics memory, 519 \glspl{GFLOP} of peak
 performance and \unitfrac[77]{\gls{GB}}{s} peak memory bandwidth. Many massively
@@ -133,7 +133,7 @@ the \emph{Tesla C870} card is shown as well.
 
 The most significant difference between the two cards is the peak bandwidth. There
 are several algorithms which rely on a high bandwidth which would increase the
-run time on as \emph{8800 GTS} card even if it has a higher peak floating
+run time on a \emph{8800 GTS} card even if it has a higher peak floating
 point operations per second as seen in  \autoref{tab:tesla_geforce}. 
 
 \begin{table}[ht]
@@ -189,7 +189,7 @@ A brief look shows the \gls{CUDA} computing sweet
 spots\citep{citeulike:3839013}
 
 \begin{itemize}
-	\item High arithmetic intensity (Dense linear algebra, PDEs, n-body, 
+	\item High arithmetic intensity (Dense linear algebra, \glspl{PDE}, n-body, 
 			finite difference, \ldots) 
 	\item High bandwidth (Sorting, database,  sequencing, virus scanning, genomics, \ldots) 
 	\item Visual computing: (Graphics, image processing, tomography, 
@@ -200,7 +200,7 @@ spots\citep{citeulike:3839013}
 This is just a small snapshot of algorithms that can be used with \gls{CUDA} on
 \glspl{GPU}. For a more extensive list and speedups compared to high-end
 \glspl{CPU} see the webpage of {\slcsmallcaps{NVIDIA}}
-\href{http://www.nvidia.com/cuda}{\gls{CUDA} zone}. 
+\href{http://www.nvidia.com/cuda}{\gls{CUDA}}. 
 % section_unified_device_architecture_cuda_ (end)
 
 \section{CUDA Programming Model}% (fold)
@@ -330,7 +330,7 @@ If everything went well the host can copy the data from device memory
 to host memory and check, visualise or store the calculated values.
 \autoref{lst:result} shows the last steps before exiting the program.
 
-\begin{lstlisting}[caption=Retrieving of the Results, label=lst:result]
+\begin{lstlisting}[caption=Retrieving the results, label=lst:result]
 // check if kernel execution generated and error
 CUT_CHECK_ERROR("Kernel execution failed");
  
@@ -356,7 +356,7 @@ located, either in constant, global or shared memory. In \autoref{lst:device}
 the \textsf{\_\_shared\_\_} qualifier is used. The device will use the shared
 memory to preload the data for faster access.
 
-\begin{lstlisting}[caption=CUDA device code, label=lst:device]
+\begin{lstlisting}[caption=\protect\Gls{CUDA} device code, label=lst:device]
 #include <stdio.h>
 
 #define SDATA(index) CUT_BANK_CHECKER(sdata, index)
@@ -407,15 +407,15 @@ the porting process is flexible and has to be adapted slightly for every hardwar
 In general, one will follow these steps when porting an algorithm to the \gls{GPU}
 \begin{itemize}
 	\item Algorithm complexity study. Profile the code, find the most compute
-intensive parts analyse the parts of the algorithm which could be parallelised.
-	\item Data layout/locality and Data flow analysis. Look for independent task or 
+intensive parts, analyse the parts of the algorithm which could be parallelised.
+	\item Data layout/locality and data flow analysis. Look for independent task or 
 	independent data to exploit task or data parallelism.
 	\item Experimental partitioning and mapping of the algorithm and program 
 		structure to the architecture. 
 	\item Develop \gls{CPU} control, \gls{CPU} scalar/multicore code
-	\item Develop \gls{CPU} control, partitioned \gls{GPU} scalar code (Communication, 
+	\item Develop \gls{CPU} control, partitioned \gls{GPU} scalar code (communication, 
 		synchronisation, latency handling)
-	\item Transform \gls{GPU} scalar code to \gls{GPU}threaded code, multi \gls{GPU} code. 
+	\item Transform \gls{GPU} scalar code to \gls{GPU} threaded code, multi \gls{GPU} code. 
 	Exploit all available cores and devices on the system. 
 	\item Re-balance the computation / data movement. 
 	\item Other optimisation considerations (load balancing, bottlenecks...)
