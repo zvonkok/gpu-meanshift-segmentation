@@ -1,6 +1,10 @@
 ### High Performance Computing on Graphics Processing Units
 #### Mean Shift Image Segmentation
+Mean shift is a non-parametric feature-space analysis technique for locating the maxima of a density function, a so-called mode-seeking algorithm. Application domains include cluster analysis in computer vision and image processing.
+
 #### Master Thesis
+![Example from the Thesis with Segmentation](ref.png)
+
 [Thesis.pdf](https://github.com/zvonkok/gpu-meanshift-segmentation/latex/Thesis/trunk/Thesis.pdf)
 
 Today’s Graphic Processing Units (gpus) are not only good for gaming
