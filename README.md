@@ -5,7 +5,7 @@ Mean shift is a non-parametric feature-space analysis technique for locating the
 #### Master Thesis
 ![Example from the Thesis with Segmentation](ref.png)
 
-[Thesis.pdf](https://github.com/zvonkok/gpu-meanshift-segmentation/latex/Thesis/trunk/Thesis.pdf)
+[Thesis.pdf](https://github.com/zvonkok/gpu-meanshift-segmentation/blob/master/latex/Thesis/trunk/Thesis.pdf)
 
 Today’s Graphic Processing Units (gpus) are not only good for gaming
 and graphics processing their highly parallel structure is predestined for
