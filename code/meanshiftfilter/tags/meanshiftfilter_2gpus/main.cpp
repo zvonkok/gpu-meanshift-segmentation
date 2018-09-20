@@ -44,12 +44,12 @@
 #endif
 
 #include <cuda_runtime.h>
-#include <cutil_inline.h>
-#include <cutil_gl_inline.h>
+//#include <cutil_inline.h>
+//#include <cutil_gl_inline.h>
 #include <cuda_gl_interop.h>
 
-#include <rendercheck_gl.h>
-#include "meanshift_kernels.h"
+//#include <rendercheck_gl.h>
+//#include "meanshift_kernel.h"
 
 // EDISON //////////////////////////////////////////////////////////////////
 //include local and system libraries and definitions

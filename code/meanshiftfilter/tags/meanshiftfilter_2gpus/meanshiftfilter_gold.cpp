@@ -1,6 +1,7 @@
 #include "filter.h"
 #include "rgbluv.h"
 
+#include <stdio.h>
 #include <iostream>
 #include <cuda_runtime_api.h>
 

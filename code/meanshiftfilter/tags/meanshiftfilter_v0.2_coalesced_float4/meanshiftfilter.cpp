@@ -8,10 +8,12 @@
 #endif
 
 #include <cuda_runtime_api.h>
-#include <cutil_inline.h>
-#include <cutil_gl_inline.h>
+#include <helper_cuda.h>
+#include <helper_functions.h>
+//#include <cutil_inline.h>
+//#include <cutil_gl_inline.h>
 #include <cuda_gl_interop.h>
-#include <rendercheck_gl.h>
+//#include <rendercheck_gl.h>
 
 extern "C" 
 void setArgs(float*);
@@ -62,7 +64,7 @@ const unsigned int BNDY = 2;
 const unsigned int APPD = 3;
 
 std::string image = "source.ppm";
-std::string path = "../../../src/Meanshift/data/";
+std::string path = "/root/data/";
 
 std::string imgOutGOLD[] = {
     path + "filtimage_gold.ppm",
@@ -105,14 +107,15 @@ void loadImageData(int argc __attribute__ ((unused)),
 				   char **argv)
 {
     // load image (needed so we can get the width and height before we create the window
-    char* image_path = cutFindFilePath(image.c_str(), argv[0]);
+    char* image_path = sdkFindFilePath(image.c_str(), argv[0]);
     if (image_path == 0) {
         fprintf(stderr, "Error finding image file '%s'\n", image.c_str());
         exit(EXIT_FAILURE);
     }
 	printf("Image path %s\n", image_path);
 	
-    cutilCheckError(cutLoadPPM4ub(image_path, (unsigned char **) &h_img, &width, &height));
+    //checkCudaErrors(sdkLoadPPM4ub(image_path, (unsigned char **) &h_img, &width, &height));
+    sdkLoadPPM4ub(image_path, (unsigned char **) &h_img, &width, &height);
 	
     if (!h_img) {
         printf("Error opening file '%s'\n", image_path);
@@ -154,11 +157,12 @@ int main( int argc, char** argv)
 	}
 
 	// use command-line specified CUDA device, otherwise use device with highest Gflops/s
-	if (cutCheckCmdLineFlag(argc, (const char**)argv, "device")) {
-		cutilDeviceInit(argc, argv);
-	} else {
-		cudaSetDevice(cutGetMaxGflopsDeviceId());
-	}
+//	if (checkCmdLineFlag(argc, (const char**)argv, "device")) {
+//		gpuDeviceInit(argc, argv);
+//	} else {
+//		cudaSetDevice(gpuGetMaxGflopsDeviceId());
+//	}
+        cudaSetDevice(0);
 	
 	std::string append = "convert +append ";
 	std::string compare = "compare ";
@@ -168,11 +172,11 @@ int main( int argc, char** argv)
 	std::string open = "open " + imgDiff[APPD];
 #endif	
 	
-	if (cutCheckCmdLineFlag(argc, (const char**)argv, "gold")) {
+	if (checkCmdLineFlag(argc, (const char**)argv, "gold")) {
 		computeGold();
-		cutilCheckError(cutSavePPM4ub(imgOutGOLD[FILT].c_str(), (unsigned char *)h_filt, width, height));	
-		cutilCheckError(cutSavePPM4ub(imgOutGOLD[SEGM].c_str(), (unsigned char *)h_segm, width, height));
-		cutilCheckError(cutSavePGMub( imgOutGOLD[BNDY].c_str(), (unsigned char *)h_bndy, width, height));
+		sdkSavePPM4ub(imgOutGOLD[FILT].c_str(), (unsigned char *)h_filt, width, height);	
+		sdkSavePPM4ub(imgOutGOLD[SEGM].c_str(), (unsigned char *)h_segm, width, height);
+		sdkSavePGM( imgOutGOLD[BNDY].c_str(), (unsigned char *)h_bndy, width, height);
 		append += imgOutGOLD[FILT] + " ";
 		append += imgOutGOLD[SEGM] + " ";
 		append += imgOutGOLD[BNDY] + " ";
@@ -181,9 +185,9 @@ int main( int argc, char** argv)
 		
 	} else {
 		computeCUDA();
-		cutilCheckError(cutSavePPM4ub(imgOutCUDA[FILT].c_str(), (unsigned char *)h_filt, width, height));	
-		cutilCheckError(cutSavePPM4ub(imgOutCUDA[SEGM].c_str(), (unsigned char *)h_segm, width, height));
-		cutilCheckError(cutSavePGMub( imgOutCUDA[BNDY].c_str(), (unsigned char *)h_bndy, width, height));
+		sdkSavePPM4ub(imgOutCUDA[FILT].c_str(), (unsigned char *)h_filt, width, height);	
+		sdkSavePPM4ub(imgOutCUDA[SEGM].c_str(), (unsigned char *)h_segm, width, height);
+		sdkSavePGM( imgOutCUDA[BNDY].c_str(), (unsigned char *)h_bndy, width, height);
 		append += imgOutCUDA[FILT] + " ";
 		append += imgOutCUDA[SEGM] + " ";
 		append += imgOutCUDA[BNDY] + " ";
@@ -208,8 +212,8 @@ void computeCUDA()
 	unsigned int thy = 8;
 	
 	unsigned int imgSize = height * width * sizeof(float4);
-	cutilSafeCall(cudaMalloc((void**) &d_src, imgSize));
-	cutilSafeCall(cudaMalloc((void**) &d_dst, imgSize));
+	checkCudaErrors(cudaMalloc((void**) &d_src, imgSize));
+	checkCudaErrors(cudaMalloc((void**) &d_dst, imgSize));
 	
 	// convert to float array and then copy ... 
 	float4 * h_flt = new float4[height * width];
@@ -219,13 +223,13 @@ void computeCUDA()
 	}
 	
 	// copy host memory to device
-	cutilSafeCall(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));
+	checkCudaErrors(cudaMemcpy(d_src, h_flt, imgSize, cudaMemcpyHostToDevice));
 	
 	setArgs(h_options);
 	// create and start timer
-	unsigned int timer = 0;
-	cutilCheckError(cutCreateTimer(&timer));
-	cutilCheckError(cutStartTimer(timer));
+	StopWatchInterface* timer = NULL;
+	sdkCreateTimer(&timer);
+	sdkStartTimer(&timer);
 	
 	// setup execution parameters
 	dim3 threads(thx, thy); // 128 threads 
@@ -234,11 +238,11 @@ void computeCUDA()
 	meanShiftFilter(grid, threads, d_src, d_dst, width, height, sigmaS, sigmaR);
 
 	
-	cutilCheckMsg("Kernel Execution failed");
+	getLastCudaError("Kernel Execution failed");
 		
 	// copy result from device to host
 	//h_tmp = new float[imgSize];
-	cutilSafeCall(cudaMemcpy(h_dst, d_dst, imgSize, cudaMemcpyDeviceToHost));
+	checkCudaErrors(cudaMemcpy(h_dst, d_dst, imgSize, cudaMemcpyDeviceToHost));
 	
 	for(unsigned int i = 0; i < height * width; i++) {
 		unsigned char * pix = (unsigned char *)&h_filt[i];
@@ -249,13 +253,13 @@ void computeCUDA()
 	boundaries();
 		
 	// stop and destroy timer
-	cutilCheckError(cutStopTimer(timer));
-	printf("Processing time: %f (ms) \n", cutGetTimerValue(timer));
-    	cutilCheckError(cutDeleteTimer(timer));
+	sdkStopTimer(&timer);
+	printf("Processing time: %f (ms) \n", sdkGetTimerValue(&timer));
+    	sdkDeleteTimer(&timer);
 
 	// clean up memory
-	cutilSafeCall(cudaFree(d_src));
-	cutilSafeCall(cudaFree(d_dst));
+	checkCudaErrors(cudaFree(d_src));
+	checkCudaErrors(cudaFree(d_dst));
 
 	cudaThreadExit();
 }

@@ -2,7 +2,7 @@
 #define _MSFILTER_KERNEL_H_
 
 #include <stdio.h>
-#include <cutil_inline.h>
+//#include <cutil_inline.h>
 #include "meanshiftfilter_common.h"
 
 //#define USE_CONST_MEMORY 1
@@ -313,7 +313,7 @@ __global__ void mean_shift_filter(float4* d_src, float4* d_dst,
 
 extern "C" void setArgs(float* h_options)
 {
-	CUDA_SAFE_CALL(cudaMemcpyToSymbol(d_options, h_options, MAX_OPTS * sizeof(float)));
+	cudaMemcpyToSymbol(d_options, h_options, MAX_OPTS * sizeof(float));
 }
 
 extern "C" void meanShiftFilter(dim3 grid, dim3 threads, float4* d_src, float4* d_dst,

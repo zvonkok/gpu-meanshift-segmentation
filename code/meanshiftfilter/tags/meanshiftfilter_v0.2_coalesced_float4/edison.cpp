@@ -30,7 +30,7 @@
 #endif
 
 #include <cuda_runtime_api.h>
-#include <cutil_inline.h>
+//#include <cutil_inline.h>
 
 //////////////////////////////////////////////////////////////////////////////////////
 // cleaned up stuff 
